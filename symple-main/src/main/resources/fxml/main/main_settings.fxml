@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.symfound.controls.user.*?>
+<?import org.symfound.controls.system.*?>
+
+<AnchorPane fx:id="apMain" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="480.0" prefWidth="720.0" styleClass="settings-background" stylesheets="@../../styles/default.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.symfound.main.settings.SettingsController">
+    <children>
+        <GridPane fx:id="gpMain" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" percentHeight="8.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TabPane fx:id="tpMain" layoutX="29.0" layoutY="44.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.rowIndex="1">
+                    <tabs>
+                        <Tab text="APPLICATION">
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                                        <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                                <GridPane hgap="20.0" styleClass="main" prefHeight="800.0" vgap="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints percentHeight="25.0" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="settings-pane" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+                                                     
+                                                        <SettingsRow helpText="Coincides with user's ability to select number of buttons in each dimension" titleText="Level" GridPane.columnSpan="3" GridPane.rowIndex="0">
+                                                            <DiagnosticTestButton fx:id="dtbTest" controlType="SETTING_CONTROL" maxHeight="60.0" maxWidth="180.0" symStyle="settings-button" text="TEST" GridPane.columnIndex="1" GridPane.columnSpan="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />                           
+                                                            <Slider fx:id="slLevel" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="1.0" minorTickCount="1" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="2" GridPane.columnSpan="1" />
+                                                        </SettingsRow>  
+                                                        <SettingsRow helpText="Configure how your device makes selections" titleText="Mode" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                                                            <ChoiceBox fx:id="cbSelection"  maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/> 
+                                                            <GridPane fx:id="gpDwellTime" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.columnSpan="1">
+                                                                <columnConstraints>
+                                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                </columnConstraints>
+                                                                <rowConstraints>
+                                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                </rowConstraints>
+                                                                <children>
+                                                                    <Slider fx:id="slDwellTime" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="1.0" minorTickCount="4" showTickLabels="true" showTickMarks="false" GridPane.columnSpan="1" />
+                                                                    <Label fx:id="lblDwellTime" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="settings-caption" text="DWELL TIME (seconds)" GridPane.rowIndex="1">
+                                                                        <GridPane.margin>
+                                                                            <Insets top="-15.0" />
+                                                                        </GridPane.margin>
+                                                                    </Label>
+                                                                </children>
+                                                                <GridPane.margin>
+                                                                    <Insets left="10.0" />
+                                                                </GridPane.margin>
+                                                            </GridPane> 
+                                                            <GridPane fx:id="gpScanTime" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.columnSpan="1" >
+                                                                <columnConstraints>
+                                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                </columnConstraints>
+                                                                <rowConstraints>
+                                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                </rowConstraints>
+                                                                <children>
+                                                                    <Slider fx:id="slScanTime" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="1.0" minorTickCount="4" showTickLabels="true" showTickMarks="false" GridPane.columnSpan="1" />
+                                                                    <Label alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="settings-caption" text="SCAN TIME (seconds)" GridPane.rowIndex="1">
+                                                                        <GridPane.margin>
+                                                                            <Insets top="-15.0" />
+                                                                        </GridPane.margin>
+                                                                    </Label>
+                                                                </children>
+                                                                <GridPane.margin>
+                                                                    <Insets left="10.0" />
+                                                                </GridPane.margin>
+                                                            </GridPane>          
+                                                            <GridPane fx:id="gpStepTime" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.columnSpan="1" >
+                                                                <columnConstraints>
+                                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                </columnConstraints>
+                                                                <rowConstraints>
+                                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                </rowConstraints>
+                                                                <children>
+                                                                    <Slider fx:id="slStepTime" blockIncrement="1.0" majorTickUnit="1.0" max="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="1.0" minorTickCount="4" showTickLabels="true" showTickMarks="false" GridPane.columnSpan="1" />
+                                                                    <Label alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="settings-caption" text="STEP TIME (seconds)" GridPane.rowIndex="1">
+                                                                        <GridPane.margin>
+                                                                            <Insets top="-15.0" />
+                                                                        </GridPane.margin>
+                                                                    </Label>
+                                                                </children>
+                                                                <GridPane.margin>
+                                                                    <Insets left="10.0" />
+                                                                </GridPane.margin>
+                                                            </GridPane>                                              
+                                                        </SettingsRow>  
+                                                       
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="20.0" left="80.0" right="80.0" top="20.0" />
+                                                    </padding>    
+                                                </GridPane>
+                                            </content>
+                                        </ScrollPane>
+                                        <Label alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" onMouseReleased="#launchAppSettings" prefHeight="20.0" styleClass="settings-hyperlink" text="Launch Advanced Settings" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                      
+                        <Tab text="DEVICE">
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                                        <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                                <GridPane hgap="20.0" styleClass="main" prefHeight="600.0" vgap="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <SettingsRow helpText="Select the device you are using" titleText="Device" GridPane.columnSpan="3" GridPane.rowIndex="0">
+                                                            <DeviceButton fx:id="dbConfigure" controlType="SETTING_CONTROL" iconType="None"  maxHeight="60.0" maxWidth="180.0" symStyle="settings-button" pane="apMain" text="CONFIGURE" GridPane.columnIndex="1"  GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                                            <GridPane alignment="CENTER" maxHeight="240.0" maxWidth="360.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowSpan="1" GridPane.valignment="CENTER">
+                                                                <columnConstraints>
+                                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+                                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+                                                                </columnConstraints>
+                                                                <rowConstraints>
+                                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                </rowConstraints>
+                                                                <children>
+                                                                    
+                                                                    <!--   <ChoiceBox fx:id="cbDevice" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="settings-control" text="Other" GridPane.columnSpan="3" />-->                                              
+                                                                    <Button fx:id="btnDevice" alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="settings-control" text="Other" GridPane.columnSpan="3" />
+                                                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseReleased="#prevDevice">
+                                                                        <styleClass>
+                                                                            <String fx:value="transparent-previous" />
+                                                                        </styleClass>
+                                                                    </Button>
+                                                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseReleased="#nextDevice" GridPane.columnIndex="2">
+                                                                        <styleClass>
+                                                                            <String fx:value="transparent-next" />
+                                                                        </styleClass>
+                                                                    </Button>
+                                                                </children>
+                                                                <GridPane.margin>
+                                                                    <Insets bottom="10.0" />
+                                                                </GridPane.margin>
+                                                            </GridPane>
+                                                        </SettingsRow>  
+                                                        <SettingsRow helpText="Determine how the device controls the mouse" titleText="Mouse Control" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                                                            <OnOffButton fx:id="btnMouseControl" maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />                                              
+                                                        </SettingsRow>  
+                                                        <SettingsRow helpText="Adjust the variance of the mouse movement that triggers a click" titleText="Selection Control" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                                                            <OnOffButton fx:id="btnSelectionControl" maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                                            <Slider fx:id="dwellSensitivityField" majorTickUnit="20.0" max="200.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="20.0" minorTickCount="1" showTickLabels="true" snapToTicks="true" GridPane.columnIndex="2" />
+                                                            <ChoiceBox fx:id="cbSelectionEvent"  maxWidth="540.0" maxHeight="60.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                                           
+                                                        </SettingsRow>  
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="20.0" left="80.0" right="80.0" top="20.0" />
+                                                    </padding>    
+                                                </GridPane>
+                                            </content>
+                                            <padding>
+                                                <Insets bottom="40.0" />
+                                            </padding>
+                                        </ScrollPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="PROFILE">
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                                        <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                                <GridPane hgap="20.0" styleClass="main" prefHeight="600.0" vgap="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <SettingsRow helpText="Enter your first and last name" titleText="Name" GridPane.columnSpan="3" GridPane.rowIndex="0">
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.columnSpan="2" >
+                                                                <children>     
+                                                                    <TextField fx:id="lastNameField" maxHeight="60.0" promptText="Last Name" styleClass="settings-text-area" />                                               
+                                                                    <TextField fx:id="firstNameField" maxHeight="60.0" promptText="First Name" styleClass="settings-text-area" />                                               
+                                                                </children>
+                                                            </HBox>
+                                                        </SettingsRow>  
+                                                        <SettingsRow helpText="Used to personalize your application data" titleText="Location" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="600.0" spacing="20.0" GridPane.columnIndex="1" GridPane.columnSpan="2" >
+                                                                <children>     
+                                                                    <TextField fx:id="cityField" maxHeight="60.0" promptText="City" styleClass="settings-text-area" />                                               
+                                                                    <TextField fx:id="regionField" maxHeight="60.0" promptText="Region" styleClass="settings-text-area" />                                               
+                                                                    <TextField fx:id="countryField" maxHeight="60.0" promptText="Country" styleClass="settings-text-area" />                                               
+                                                                </children>
+                                                            </HBox>
+                                                        </SettingsRow> 
+                                                        <SettingsRow helpText="Export or clear user settings" titleText="Manage Settings" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                                                            
+                                                            <GridPane hgap="20.0" styleClass="main" prefHeight="60.0" vgap="20.0" GridPane.columnSpan="2" GridPane.columnIndex="1">
+                                                                <columnConstraints>
+                                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="180.0" prefWidth="100.0" />
+                                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="180.0" />
+                                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="180.0" prefWidth="100.0" />
+                                                                </columnConstraints>
+                                                                <rowConstraints>
+                                                                    <RowConstraints minHeight="60.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                </rowConstraints>
+                                                                <children>    
+                                                                    <SettingsExportButton controlType="SETTING_CONTROL" okText="CONFIRM" cancelText="CANCEL" pane="apMain" maxHeight="60.0" minWidth="180.0" maxWidth="180.0" text="EXPORT" />
+                                                                    <SettingsImportButton controlType="SETTING_CONTROL" okText="CONFIRM" cancelText="CANCEL" pane="apMain" maxHeight="60.0" minWidth="180.0" maxWidth="180.0" text="IMPORT" GridPane.columnIndex="1"/>
+                                                                    <SettingsRestoreButton controlType="SETTING_CONTROL" okText="CONFIRM" cancelText="CANCEL" pane="apMain" minWidth="180.0" maxHeight="60.0" maxWidth="180.0" text="RESET" GridPane.columnIndex="2"/>
+                                                                </children>
+                                                            </GridPane>
+                                                        </SettingsRow>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="20.0" left="80.0" right="80.0" top="20.0" />
+                                                    </padding>    
+                                                </GridPane>
+                                            </content>
+                                        </ScrollPane>
+                                        <Label alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" onMouseReleased="#launchAppSettings" prefHeight="20.0" styleClass="settings-hyperlink" text="Launch Advanced Settings" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="ABOUT">
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                                        <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                                <GridPane hgap="20.0" styleClass="main" prefHeight="400.0" vgap="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <SettingsRow helpText="Current version of the software" titleText="Version" GridPane.columnSpan="3" GridPane.rowIndex="0">
+                                                            <VersionUpdateButton cancelText="CANCEL" controlType="SETTING_CONTROL" confirmable="true" maxHeight="60.0" maxWidth="180.0" okText="CONFIRM" pane="apMain" symStyle="settings-button" text="UPDATE" GridPane.columnIndex="2" />
+                                                            <VersionLabel symStyle="settings-text" maxHeight="60.0" GridPane.columnIndex="1" />
+                                                        </SettingsRow>
+                                                        <SettingsRow helpText="Send us an email if you find an issue with the software" titleText="Contact" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                                                            <Label styleClass="settings-label" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="80.0" text="support@speakyourmindfoundation.org" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                                                        </SettingsRow>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="20.0" left="80.0" right="80.0" top="20.0" />
+                                                    </padding>    
+                                                </GridPane>
+                                            </content>
+                                            <padding>
+                                                <Insets bottom="40.0" />
+                                            </padding>
+                                        </ScrollPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+                <GridPane hgap="20.0" maxHeight="60.0" maxWidth="380.0" vgap="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#updateSettings" styleClass="settings-button" text="UPDATE" />
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#cancelSettings" styleClass="settings-button" text="CANCEL" GridPane.columnIndex="1" />
+                    </children>
+                </GridPane>
+                <Toolbar titleText="Settings" buttonOrder="Minimize=default, Exit=default"/>
+            </children>
+        </GridPane>
+    </children>
+    
+</AnchorPane>

@@ -1,0 +1,19 @@
+    private static final String HIGHLIGHT_BORDER_KEY = "app.navigation.highlightBorder";
+    private BooleanProperty highlightBorder;
+
+    public void setHighlightBorder(Boolean value) {
+        highlightBorderProperty().setValue(value);
+        getPreferences().put(HIGHLIGHT_BORDER_KEY, value.toString());
+    }
+
+    public Boolean highlightBorder() {
+        return highlightBorderProperty().getValue();
+    }
+
+    public BooleanProperty highlightBorderProperty() {
+        if (highlightBorder == null) {
+            Boolean initValue = Boolean.parseBoolean(getPreference(HIGHLIGHT_BORDER_KEY));
+            highlightBorder = new SimpleBooleanProperty(initValue);
+        }
+        return highlightBorder;
+    }

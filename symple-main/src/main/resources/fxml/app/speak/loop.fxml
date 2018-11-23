@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.symfound.controls.user.*?>
+
+<AnchorPane fx:id="apMain" styleClass="main" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #d3d3d3;" stylesheets="@../../../styles/default.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.symfound.app.SpeakController">
+    <children>
+        <GridPane fx:id="gpMain" gridLinesVisible="false" hgap="20.0" prefHeight="470.0" prefWidth="723.0" vgap="20.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+            <children>
+                <AnimatedButton fx:id="button00" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" minWidth="-1.0" mnemonicParsing="false" onMouseEntered="#MEntrDwellScanType" onMouseExited="#MExitDwellScanType" prefHeight="-1.0" prefWidth="-1.0" styleClass="type-button" text="ABC&#10;DEFG" textAlignment="LEFT" wrapText="true" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                <AnimatedButton fx:id="button02" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" minWidth="-1.0" mnemonicParsing="false" onMouseEntered="#MEntrDwellScanType" onMouseExited="#MExitDwellScanType" prefHeight="-1.0" prefWidth="-1.0" styleClass="type-button" text="NOP&#10;QRST" textAlignment="LEFT" wrapText="true" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                <AnimatedButton fx:id="button32" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" minWidth="-1.0" mnemonicParsing="false" onMouseEntered="#MEntrDwellScanType" onMouseExited="#MExitDwellScanType" prefHeight="-1.0" prefWidth="-1.0" styleClass="type-button" text="UVW&#10;XYZ." textAlignment="RIGHT" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                <AnimatedButton fx:id="button30" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" minWidth="-1.0" mnemonicParsing="false" onMouseEntered="#MEntrDwellScanType" onMouseExited="#MExitDwellScanType" prefHeight="-1.0" prefWidth="-1.0" styleClass="type-button" text="HIJ&#10;KLM" textAlignment="RIGHT" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+                <ScriptButton textAreaID="txtMain" actionKey="-5" text="" symStyle="backspace" GridPane.rowIndex="1" />
+                <ScriptButton text=" " textAreaID="txtMain" actionKey="32" symStyle="space" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                <ActiveTextArea fx:id="txtMain" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />     
+            </children>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" percentHeight="34.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="32.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="34.0" prefHeight="28.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+    </children>
+</AnchorPane>

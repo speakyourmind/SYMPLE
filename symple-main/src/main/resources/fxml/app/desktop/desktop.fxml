@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.symfound.controls.user.*?>
+<?import org.symfound.controls.system.*?>
+
+<AnchorPane fx:id="apMain" prefHeight="600.0" prefWidth="600.0" styleClass="transparent" stylesheets="@../../../styles/default.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.symfound.app.DesktopController">
+    <children>
+        <DesktopGrid  AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="40.0"/>
+    </children>
+</AnchorPane>

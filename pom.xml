@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.symfound</groupId>
+    <artifactId>SYMPLE</artifactId>
+    <version>2.2.10</version>
+    <packaging>pom</packaging>
+    <url>http://speakyourmindfoundation.org/</url>
+    
+ <!--   <ciManagement>
+        <system>hudson</system>
+        <url>http://52.25.48.194:8080/job/SYMPLE/</url>
+    </ciManagement>-->
+    <modules>
+        <module>symple-main</module>
+        <module>symple-audio</module>
+        <module>symple-builder</module>
+        <module>symple-comm</module>
+        <module>symple-device</module>
+        <module>symple-text</module>
+        <module>symple-tools</module>
+        <module>symple-social</module>
+        <module>symple-voice</module>
+    </modules>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

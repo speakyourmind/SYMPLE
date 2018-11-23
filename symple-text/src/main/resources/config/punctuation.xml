@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<Scenarios>
+	<Scenario>
+		<name>Comma</name>
+		<determiner>,</determiner>
+		<type>SKIP</type>
+	</Scenario>
+	<Scenario>
+		<name>Space</name>
+		<determiner> </determiner>
+		<role>NEXT_WORD</role>
+	</Scenario>
+	<Scenario>
+		<name>Apostrophe</name>
+		<determiner>'</determiner>
+		<role>PREFIX</role>
+	</Scenario>
+</Scenarios>
