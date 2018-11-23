@@ -664,6 +664,7 @@
     -fx-background-color:  -fx-dark, derive(-fx-blue,-10%), -fx-blue; 
     -fx-text-alignment:center;
     -fx-text-fill: -fx-light;
+
 }
 
 .update-version-button:hover {
