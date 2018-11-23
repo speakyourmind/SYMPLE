@@ -48,7 +48,6 @@
     -fx-font-size: 1.6em;
 }
 
-//Check Box
 .check-box .text {
     -fx-font-size: 1.6em;
 }
@@ -72,7 +71,6 @@
     -fx-padding: 0.5em;
 }
 
-// Choice Box
 .choice-box {
     -fx-background-color: -fx-dark, -fx-light;
     -fx-background-insets: 0,5;
@@ -89,7 +87,7 @@
 .choice-box .context-menu {-fx-background-color: -fx-dark, -fx-light;}
 #choice-box-menu-item:hover {-fx-background-color: -fx-blue;}
 #choice-box-menu-item:focused{-fx-background-color: -fx-blue;}
-// Text Field
+
 .text-field {
     -fx-background-radius: 0;
     -fx-background-color: -fx-light;
@@ -98,7 +96,7 @@
     -fx-font-size: 1.6em;
 }
 
-// Text Area
+
 .text-area {
     -fx-background-radius: 0,0,0,0;
     -fx-padding: 1 30 1 30;
@@ -127,7 +125,6 @@
     -fx-background-color: transparent;
 }
 
-//.text-area .context-menu .label {-fx-text-fill:-fx-green;}
 
 .toggle-button {
     -fx-background-color: -fx-dark;
@@ -144,7 +141,6 @@
     -fx-background-color: -fx-blue;
 }
 
-// Progress Bar
 .progress-bar-dark > .track {
     -fx-background-color: -fx-light;
     -fx-background-radius: 0,0,0,0;
@@ -154,7 +150,6 @@
     -fx-background-color: -fx-dark;
     -fx-background-radius: 0,0,0,0;
 }
-// Progress Bar
 .progress-bar > .track {
     -fx-background-color: -fx-grey;
     -fx-background-radius: 0,0,0,0;
@@ -176,7 +171,6 @@
     -fx-alignment:center;
 }
 
-//Slider
 .slider .thumb {
     -fx-background-color: -fx-grey;
     -fx-background-insets: 0;
@@ -202,14 +196,10 @@
     -fx-tick-label-fill: -fx-dark;
 }
 
-// MAIN COMPONENTS	
-
-// Menu
 .main-menu-button, .main-menu-button:hover  {
     -fx-background-color: -fx-dark;
 }
 
-// APPLICATIONS
 
 .app-button-label{
     -fx-font-family:"Roboto Bk";
@@ -218,7 +208,6 @@
     -fx-font-size:4em;
 }
 
-// Desktop App
 .desktop-app-button {
     -fx-background-image: url("../images/app_desktop.png");
     -fx-background-size: 80 80;
@@ -248,7 +237,6 @@
 
 .transparent {-fx-background-color: transparent;}
 
-// Diagnostic App
 .diagnostic-app-button {
     -fx-background-image: url("../images/app_diagnostic.png");
     -fx-background-color: -fx-purple;
@@ -313,7 +301,6 @@
 
 .close-button:hover {-fx-background-color: -fx-red;}
 
-// Mail App
 .mail-app-button {
     -fx-background-image: url("../images/app_mail.png");
     -fx-background-size: 80 80;
@@ -333,7 +320,6 @@
 }
 .mail-button:hover {-fx-background-color: derive(-fx-green,10%);}
 
-//Media
 .video-app-button {	
     -fx-background-image: url("../images/app_video.png");
     -fx-background-color:  -fx-blue, derive(-fx-purple,-10%), -fx-purple;
@@ -431,7 +417,6 @@
     -fx-background-color: transparent;
 }
 
-//Music
 .music-app-button {
     -fx-background-image: url("../images/app_music.png");
     -fx-background-color:  -fx-blue, derive(-fx-orange,-10%), -fx-orange;
@@ -485,7 +470,6 @@
     -fx-background-size: contain;
 }
 
-// TO DO: replace with single music-button class
 .media-next:hover, 
 .media-stop:hover, 
 .media-previous:hover, 
@@ -508,7 +492,7 @@
     -fx-text-box-border: transparent;
     -fx-control-inner-background: transparent;
 }
-//Reddit
+
 .reddit-app-button {
     -fx-background-image: url("../images/app_reddit.png");
     -fx-background-color: -fx-blue, derive(-fx-red,10%),-fx-red;
@@ -518,7 +502,6 @@
 
 .reddit-app-button:hover {-fx-background-color: derive(-fx-red,10%);}
 
-//YouTube
 .youtube-app-button {
     -fx-background-image: url("../images/app_youtube.png");
     -fx-background-color: -fx-blue, derive(-fx-red,10%), -fx-red;
@@ -528,7 +511,6 @@
 
 .youtube-app-button:hover {-fx-background-color: derive(-fx-red,10%);}
 
-//Slideshow
 .slideshow-app-button {
     -fx-background-image: url("../images/app_slideshow.png");
     -fx-background-size: 100 100;
@@ -544,7 +526,6 @@
 
 .slideshow-background {-fx-background-color: -fx-dark;}
 
-// Speak App
 .speak-app-button {
     -fx-background-image: url("../images/app_speak.png");
     -fx-background-size: contain;
@@ -632,7 +613,6 @@
 }
 
 
-// DEVICES
 .calibrate-button {
     -fx-background-color: -fx-red;
     -fx-padding: 0 0 15 0;
@@ -691,7 +671,6 @@
     -fx-text-fill: derive(-fx-light,10%);
 }
 
-// PRE-LOADER
 .preloader-background {
     -fx-background-color: transparent;
     -fx-background-image: url("../images/blue.png");
@@ -876,8 +855,6 @@
     -fx-background-color: -fx-dark;
 }
 
-//PREFERENCES
-
 .delete-button {
     -fx-background-image: url("../images/delete.png");
     -fx-background-size: 40 40;
@@ -907,7 +884,6 @@
     -fx-text-fill: derive(-fx-light,10%);
 }
 
-//CALIBRATION
 .calibration-background{-fx-background-color: -fx-dark;}
 .calibration-button{-fx-background-color: -fx-green;}
 .calibration-button:hover{-fx-background-color: derive(-fx-green,10%);}
@@ -1011,7 +987,6 @@
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track {
     -fx-background-color: transparent;
-    //-fx-border-color:transparent;
     -fx-background-radius: 0;
 }
 .scroll-bar:vertical .track-background,
