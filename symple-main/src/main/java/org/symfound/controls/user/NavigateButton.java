@@ -16,7 +16,7 @@ import org.symfound.main.HomeController;
 import org.symfound.tools.selection.SelectionMethod;
 
 /**
- *
+ * To Be Deprecated
  * @author Javed Gangjee
  */
 public class NavigateButton extends AppableControl {

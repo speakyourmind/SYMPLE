@@ -11,6 +11,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import org.apache.log4j.Logger;
 import org.symfound.builder.characteristic.PreferencesManager;
 import org.symfound.controls.user.AnimatedButton;
+import static org.symfound.main.Main.getSession;
 import org.symfound.main.builder.UI;
 
 /**
@@ -39,22 +40,40 @@ public final class SettingsImportButton extends SettingsManagerControl {
      */
     @Override
     public void run() {
+        try {
+            Preferences.userRoot().node("/org/symfound").removeNode();
+        } catch (BackingStoreException ex) {
+            java.util.logging.Logger.getLogger(SettingsImportButton.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        final String fileSelection = getSelectedFile();
+        SettingsImporter settingsImporter = new SettingsImporter(fileSelection);
+        final Thread thread = new Thread(settingsImporter);
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException ex) {
+            LOGGER.fatal(ex);
+        }
+        String masterFile = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Master.xml";
+        File file = new File(masterFile);
+        if (file.delete()) {
+            LOGGER.info("Master file " + masterFile + " deleted successfully");
+        } else {
+            LOGGER.fatal("Failed to delete master file " + masterFile);
+        }
+        getSession().shutdown(Boolean.FALSE);
 
-        final List<String> fileSelection = getFileSelection();
-        Runnable runnable = () -> {
-            try {
+    }
 
-                Preferences.userRoot().node("/org/symfound").removeNode();
-                PreferencesManager.importFrom(fileSelection);
-                Preferences.userRoot().node("/org/symfound").flush();
-               getSession().shutdown();
-            } catch (BackingStoreException ex) {
-                LOGGER.fatal(ex);
-            }
-
-        };
-        (new Thread(runnable)).start();
-
+    private String getSelectedFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Import Settings Source");
+        final ExtensionFilter xmlFilter = new ExtensionFilter("XML Files", "*.xml");
+        fileChooser.getExtensionFilters().addAll(xmlFilter);
+        final UI root = getPrimaryControl().getParentUI();
+        File selectedFile = fileChooser.showOpenDialog(root);
+        String importedFile = selectedFile.getAbsolutePath();
+        return importedFile;
     }
 
     private List<String> getFileSelection() {
@@ -64,6 +83,7 @@ public final class SettingsImportButton extends SettingsManagerControl {
         fileChooser.getExtensionFilters().addAll(xmlFilter);
 
         final UI root = getPrimaryControl().getParentUI();
+
         List<File> selectedFiles = fileChooser.showOpenMultipleDialog(root);
         List<String> importFiles = new ArrayList<>();
         for (File selectedFile : selectedFiles) {

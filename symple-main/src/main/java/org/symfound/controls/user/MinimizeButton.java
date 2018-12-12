@@ -31,6 +31,7 @@ public final class MinimizeButton extends AppableControl {
      */
     @Override
     public void run() {
+        LOGGER.info("Minimize button clicked");
         getPrimaryControl().getParentUI().setIconified(true);
         LOGGER.info("Window minimized");
     }

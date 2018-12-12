@@ -216,7 +216,7 @@ public class MusicControlButton extends MusicButton {
 
         SettingsRow settingsRowC = createSettingRow("Shuffle", "Shuffle order of playlist");
 
-        shuffleButton = new OnOffButton("SHOW", "HIDE");
+        shuffleButton = new OnOffButton("ENABLED", "DISABLED");
         shuffleButton.setMaxSize(180.0, 60.0);
         shuffleButton.setValue(toShuffle());
         GridPane.setHalignment(shuffleButton, HPos.LEFT);

@@ -224,7 +224,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
             }
 
             if (!appable.getNavigateIndex().isEmpty()) {
-                LOGGER.info("Clicked");
+                LOGGER.info(this.srcText+" Clicked");
                 appable.openHomeScreen();
                 ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
                 configurableGrid.setIndex(appable.getNavigateIndex());

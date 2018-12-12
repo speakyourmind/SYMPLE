@@ -18,6 +18,7 @@
 package org.symfound.main;
 
 import com.sun.javafx.stage.StageHelper;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,10 +34,11 @@ import org.symfound.builder.loader.UIPath;
 import org.symfound.builder.session.Session;
 import org.symfound.builder.user.User;
 import org.symfound.comm.file.PathWriter;
+import org.symfound.controls.system.SettingsExporter;
+import org.symfound.controls.system.SettingsImporter;
 import org.symfound.device.emulation.input.InputListener;
 import org.symfound.main.builder.App;
 import org.symfound.main.builder.StackedUI;
-import org.symfound.main.builder.StandaloneUI;
 import org.symfound.main.manager.DeviceManager;
 import org.symfound.main.manager.TTSManager;
 import static org.symfound.text.TextOperator.EOL;
@@ -89,7 +91,6 @@ public class FullSession extends Session {
     public static String PRELOADER = SCREENS_FOLDER + "preloader/preloader";
 
     // TO DO: Dynamically build as in apps using priority property
-
     /**
      *
      */
@@ -115,7 +116,6 @@ public class FullSession extends Session {
      */
     public static String SWITCH_CALIBRATION = SCREENS_FOLDER + "device/switch_calibration";
 
-
     /**
      *
      */
@@ -135,14 +135,30 @@ public class FullSession extends Session {
      */
     @Override
     public void build(Builder builder) {
+        String masterFile = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Master.xml";
+        File file = new File(masterFile);
+        if (file.exists()) {
+            SettingsImporter settingsImporter = new SettingsImporter(masterFile);
+            final Thread thread = new Thread(settingsImporter);
+            thread.start();
+            try {
+                thread.join();
+                LOGGER.info("Settings import from " + masterFile + " complete");
+                
+            } catch (InterruptedException ex) {
+                LOGGER.warn(ex);
+            }
+        } else {
+            LOGGER.warn("Master file does not exist in " + masterFile + " Proceeding with default settings");
+        }
 
         //   System.getProperties().list(System.out);
         getBuilder().start(getBuildTimeout());
 
         localFonts = loadFonts();
-        
+
         //TODO: Move to thread
-      //  Thread deviceThread = new Thread(getDeviceManager());
+        //  Thread deviceThread = new Thread(getDeviceManager());
         //deviceThread.start();
         getDeviceManager().run();
         //Thread thread = new Thread(getTTSManager());
@@ -166,7 +182,7 @@ public class FullSession extends Session {
                 getDeviceManager().launch(getUser().getDeviceName());
                 getBuilder().setProgress(1.0); // TO DO: Combine built and progress
                 LOGGER.info("Launching session");
-             //   log(": Starting SYMPLE");
+                //   log(": Starting SYMPLE");
                 if (getUser().getProfile().isFirstUse()) {
                     //      uiMain.getStack().load(WIZARD_DEVICE);
                 } else {
@@ -184,6 +200,7 @@ public class FullSession extends Session {
     }
 
     private static TTSManager ttsManager;
+
     /**
      *
      * @return
@@ -226,7 +243,7 @@ public class FullSession extends Session {
      * @param name
      * @return
      */
-    public App getApp(String name) {  
+    public App getApp(String name) {
         return appMap.get(name);
     }
 
@@ -302,16 +319,49 @@ public class FullSession extends Session {
         }
     }
 
-    /**
-     *
-     */
     @Override
-    public void shutdown() {
+    public void shutdown(Boolean backupSettings) {
         LOGGER.info("Shutting down SYMPLE");
+
+        LOGGER.info("Closing hardware");
         Main.getSession().getDeviceManager().getCurrent().getHardware().close();
+        LOGGER.info("Stopping Input Listener");
         InputListener.stop();
+
+        if (backupSettings) {
+            String backupFolder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Backup";
+            PathWriter backupPathWriter = new PathWriter(backupFolder);
+            backupPathWriter.file.mkdirs();
+            SettingsExporter backupSettingsExporter = new SettingsExporter(backupFolder);
+            LOGGER.info("Backing up settings");
+            Thread backupThread = new Thread(backupSettingsExporter);
+            try {
+                backupThread.start();
+                backupThread.join();
+            } catch (InterruptedException ex) {
+                LOGGER.warn("Unable to backup settings file to " + backupFolder, ex);
+            }
+        } else {
+            LOGGER.info("Settings have not been backed up");
+        }
+
+        String folder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings";
+        PathWriter savePathWriter = new PathWriter(folder);
+        savePathWriter.file.mkdirs();
+        SettingsExporter settingsExporter = new SettingsExporter(folder, "/Master.xml");
+
+        LOGGER.info("Backing up master settings");
+        Thread thread = new Thread(settingsExporter);
+        try {
+            thread.start();
+            thread.join();
+        } catch (InterruptedException ex) {
+            LOGGER.warn(ex);
+        }
+
         Platform.exit();
         System.exit(0);
+
     }
 
     /**

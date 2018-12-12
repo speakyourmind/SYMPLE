@@ -122,7 +122,7 @@ public abstract class UI extends BaseUI {
         }
         // Required to exit cleanly when the window is closed
         setOnCloseRequest((WindowEvent t) -> {
-            Main.getSession().shutdown();
+            Main.getSession().shutdown(Boolean.TRUE);
         });
         return scene;
     }

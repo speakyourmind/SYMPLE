@@ -80,6 +80,7 @@ public class EditGridButton extends AppableControl {
     public List<SettingsRow> orderSettings = new ArrayList<>();
     public List<SettingsRow> fillSettings = new ArrayList<>();
     public List<SettingsRow> lookSettings = new ArrayList<>();
+    public List<SettingsRow> selectionSettings = new ArrayList<>();
     public List<SettingsRow> gridSettings = new ArrayList<>();
 
     /**
@@ -230,6 +231,11 @@ public class EditGridButton extends AppableControl {
                 lookSettings.add(styleRow);
                 lookSettings.add(gridGapRow);
                 Tab lookTab = buildTab("LOOK", lookSettings);
+                
+                
+                selectionSettings.add(styleRow);
+                selectionSettings.add(gridGapRow);
+                Tab selectionTab = buildTab("SELECTION", selectionSettings);
 
                 TabPane tabPane = new TabPane();
                 tabPane.setPadding(new Insets(5));
@@ -238,6 +244,7 @@ public class EditGridButton extends AppableControl {
                 tabPane.getTabs().add(fillTab);
                 tabPane.getTabs().add(gridTab);
                 tabPane.getTabs().add(lookTab);
+                tabPane.getTabs().add(selectionTab);
                 return tabPane;
             }
 

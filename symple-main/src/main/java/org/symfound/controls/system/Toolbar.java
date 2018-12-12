@@ -79,7 +79,7 @@ public class Toolbar extends ScreenControl<AnimatedButton> {
         buttonOrderProperty().addListener((observable, oldValue, newValue) -> {
             grid.reload(getParallelList(), FillMethod.ROW_WISE, FillDirection.FORWARD, size);
         });
-        addToPane(grid, 0.0, null, null, 0.0);
+        addToPane(grid, 0.0, null, 0.0, 0.0);
     }
 
     /**

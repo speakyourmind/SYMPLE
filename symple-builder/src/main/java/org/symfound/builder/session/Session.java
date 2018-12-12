@@ -81,8 +81,9 @@ public abstract class Session implements Buildable {
 
     /**
      *
+     * @param backupSettings
      */
-    public void shutdown() {
+    public void shutdown(Boolean backupSettings) {
         LOGGER.info("Shutting down session");
         Platform.exit();
         System.exit(0);

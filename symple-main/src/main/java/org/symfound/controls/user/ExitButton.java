@@ -24,6 +24,8 @@ public final class ExitButton extends AppableControl {
      *
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+    
+    private static final boolean BACKUP_ON_EXIT = Boolean.TRUE;
 
     /**
      *
@@ -61,7 +63,7 @@ public final class ExitButton extends AppableControl {
         }*/
 
         LOGGER.info("Exiting the program");
-        getSession() .shutdown();
+        getSession() .shutdown(BACKUP_ON_EXIT);
     }
 
     @Override

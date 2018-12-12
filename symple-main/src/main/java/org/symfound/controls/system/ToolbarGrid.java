@@ -28,8 +28,8 @@ import org.symfound.tools.selection.ParallelList;
 public class ToolbarGrid extends ButtonGrid {
 
     private static final Integer DEFAULT_ROWS = 1;
-    private static final double CONTROL_MAX_HEIGHT = 30.0;
-    private static final double CONTROL_MAX_WIDTH = 30.0;
+    private static final double CONTROL_MAX_HEIGHT = 200.0;
+    private static final double CONTROL_MAX_WIDTH = 75.0;
 
     /**
      *

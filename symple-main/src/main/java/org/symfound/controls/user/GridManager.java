@@ -29,7 +29,8 @@ public abstract class GridManager implements Editable {
     public Preferences getPrefs(String index) {
         String name = "subgrid/" + index.toLowerCase();
         Class<? extends GridManager> aClass = this.getClass();
-        return Preferences.userNodeForPackage(aClass).node(name);
+        final Preferences node = Preferences.userNodeForPackage(aClass).node(name);
+        return node;
     }
     /**
      *

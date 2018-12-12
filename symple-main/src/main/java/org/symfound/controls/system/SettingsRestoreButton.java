@@ -29,14 +29,10 @@ public final class SettingsRestoreButton extends SettingsManagerControl {
      */
     @Override
     public void run() {
-        LOGGER.info("Backing up current settings");
-        String destination = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/";
-        getSession().getDeviceManager().exportAllPreferences(destination); // Backup settings on update TO DO: Pick a better folder
-
         getSession().getDeviceManager().clearAllPreferences();
 
         LOGGER.info("Exiting the program");
-        getSession().shutdown();
+        getSession().shutdown(Boolean.FALSE);
 
     }
 
