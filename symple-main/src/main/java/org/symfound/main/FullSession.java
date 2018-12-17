@@ -144,7 +144,7 @@ public class FullSession extends Session {
             try {
                 thread.join();
                 LOGGER.info("Settings import from " + masterFile + " complete");
-                
+
             } catch (InterruptedException ex) {
                 LOGGER.warn(ex);
             }
@@ -323,11 +323,6 @@ public class FullSession extends Session {
     public void shutdown(Boolean backupSettings) {
         LOGGER.info("Shutting down SYMPLE");
 
-        LOGGER.info("Closing hardware");
-        Main.getSession().getDeviceManager().getCurrent().getHardware().close();
-        LOGGER.info("Stopping Input Listener");
-        InputListener.stop();
-
         if (backupSettings) {
             String backupFolder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Backup";
             PathWriter backupPathWriter = new PathWriter(backupFolder);
@@ -359,6 +354,10 @@ public class FullSession extends Session {
             LOGGER.warn(ex);
         }
 
+        LOGGER.info("Closing hardware");
+        Main.getSession().getDeviceManager().getCurrent().getHardware().close();
+        LOGGER.info("Stopping Input Listener");
+        InputListener.stop();
         Platform.exit();
         System.exit(0);
 

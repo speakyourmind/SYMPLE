@@ -545,7 +545,6 @@
     -fx-opacity:1.0;
 }
 .type-button, type-button:disabled{-fx-font-size: 4.5em;}
-.type-button-small, type-button-small:disabled{-fx-font-size: 1.6em;}
 .type-button:hover,.type-button-small:hover {-fx-background-color:-fx-light;}
 
 .backspace {
@@ -1081,4 +1080,8 @@
 .selector{
     -fx-background-color:-fx-dark;
     -fx-opacity:0.0;
+}
+.locked{
+    -fx-background-color:-fx-light;
+    -fx-opacity:0.1;
 }

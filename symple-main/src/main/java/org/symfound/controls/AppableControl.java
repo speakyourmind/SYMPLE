@@ -1123,7 +1123,7 @@ public abstract class AppableControl extends ConfirmableControl {
         return speakable;
     }
 
-    private String navigateTo = "home";
+    private String navigateTo = "";
     private StringProperty navigateIndex;
 
     /**

@@ -228,4 +228,37 @@ public class Interaction extends Characteristic {
         }
         return selectionControl;
     }
+    
+     private static final String OVERRIDE_METHOD_KEY = "app.selection.override";
+    private BooleanProperty overrideSelectionMethod;
+
+    /**
+     *
+     * @param value
+     */
+    public void setOverrideSelectionMethod(Boolean value) {
+        overrideSelectionMethodProperty().setValue(value);
+        getPreferences().put(OVERRIDE_METHOD_KEY, value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean overrideSelectionMethod() {
+        return overrideSelectionMethodProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty overrideSelectionMethodProperty() {
+        if (overrideSelectionMethod == null) {
+            Boolean initValue = Boolean.valueOf(getPreference(OVERRIDE_METHOD_KEY));
+            overrideSelectionMethod = new SimpleBooleanProperty(initValue);
+        }
+        return overrideSelectionMethod;
+    }
+
 }

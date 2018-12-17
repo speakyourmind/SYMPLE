@@ -60,8 +60,19 @@ public abstract class Selector {
 
     public void configureStartStop() {
         startStop();
+        getUser().getInteraction().overrideSelectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
+            LOGGER.info("User selection method override changed from "
+                    + oldValue1.toString() + " to " + newValue1.toString());
+            startStop();
+        });
         getUser().getInteraction().selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
             LOGGER.info("User selection method changed from "
+                    + oldValue1.toString() + " to " + newValue1.toString());
+            startStop();
+        });
+
+        grid.selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
+            LOGGER.info("Grid selection method override changed from "
                     + oldValue1.toString() + " to " + newValue1.toString());
             startStop();
         });
@@ -75,22 +86,28 @@ public abstract class Selector {
     }
 
     public void startStop() {
-        SelectionMethod selectionMethod = getUser().getInteraction().getSelectionMethod();
+        SelectionMethod userMethod = getUser().getInteraction().getSelectionMethod();
+        SelectionMethod gridMethod = grid.getSelectionMethod();
+
+        Boolean overrideSelectionMethod = getUser().getInteraction().overrideSelectionMethod();
+
+        SelectionMethod deducedMethod = (overrideSelectionMethod) ? gridMethod : userMethod;
+
         final int size = grid.getGridManager().getOrder().getFirstList().size();
-        if (selectionMethod.equals(getSelectionMethod())
+        if (deducedMethod.equals(getSelectionMethod())
                 && !inEditMode()
                 && grid.isRootGrid()
                 && size > 1) {
             if (!inProcess()) {
                 removeSelectorButton();
-                LOGGER.info("User is in " + selectionMethod.toString()
+                LOGGER.info("Required method is " + deducedMethod.toString()
                         + ". Starting selector:" + getSelectionMethod());
                 addSelectorButton(grid, getSelectorButton());
             }
-        } else if (!selectionMethod.equals(getSelectionMethod()) 
+        } else if (!deducedMethod.equals(getSelectionMethod())
                 || inEditMode()
                 || size <= 1) {
-            LOGGER.info("User is in " + selectionMethod.toString()
+            LOGGER.info("Required method is " + deducedMethod.toString()
                     + ". Stopping selector." + getSelectionMethod());
             stop();
         }

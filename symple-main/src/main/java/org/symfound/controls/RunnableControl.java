@@ -171,7 +171,9 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
      * @param e
      */
     public void mouseEnter(MouseEvent e) {
-        if (getUser().getInteraction().getSelectionMethod().equals(SelectionMethod.DWELL)) {
+        SelectionMethod deducedMethod = getDeducedSelectionMethod();
+
+        if (deducedMethod.equals(SelectionMethod.DWELL)) {
             buttonHandler();
             enter();
         }
@@ -196,9 +198,24 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
      * @param e
      */
     public void mouseExit(MouseEvent e) {
-        if (getUser().getInteraction().getSelectionMethod().equals(SelectionMethod.DWELL)) {
+           SelectionMethod deducedMethod = getDeducedSelectionMethod();
+        if (deducedMethod.equals(SelectionMethod.DWELL)) {
             exit();
         }
+    }
+
+    private SelectionMethod getDeducedSelectionMethod() {
+        SelectionMethod deducedMethod;
+        Boolean overrideSelectionMethod = getUser().getInteraction().overrideSelectionMethod();
+        SelectionMethod userMethod = getUser().getInteraction().getSelectionMethod();
+        if (this.getParent() instanceof ConfigurableGrid) {
+            ConfigurableGrid grid = (ConfigurableGrid) this.getParent();
+            SelectionMethod gridMethod = grid.getSelectionMethod();
+            deducedMethod = (overrideSelectionMethod) ? gridMethod:userMethod;
+        } else {
+            deducedMethod = userMethod;
+        }
+        return deducedMethod;
     }
 
     /**
@@ -224,7 +241,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
             }
 
             if (!appable.getNavigateIndex().isEmpty()) {
-                LOGGER.info(this.srcText+" Clicked");
+                LOGGER.info(this.srcText + " Clicked");
                 appable.openHomeScreen();
                 ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
                 configurableGrid.setIndex(appable.getNavigateIndex());

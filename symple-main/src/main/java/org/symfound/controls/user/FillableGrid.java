@@ -12,12 +12,15 @@ import java.util.Objects;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import static org.symfound.builder.user.characteristic.Ability.MAX_LEVEL;
 import org.symfound.controls.RunnableControl;
+import org.symfound.tools.selection.SelectionMethod;
 
 /**
  *
@@ -153,13 +156,13 @@ public class FillableGrid extends BuildableGrid {
         // Add the populated list of buttons to the grid
         //System.out.println(" Adding controls to grid of size (" + getSpecRows() + "," + getSpecColumns() + ")");
         int k = 0;
-          
+
         if (method.equals(FillMethod.ROW_WISE)) {
             for (int i = 0; i < getSpecRows(); i++) {
                 for (int j = 0; j < getSpecColumns(); j++) {
                     if (k < getControlsQueue().size()) {
                         RunnableControl screenControl = getControlsQueue().get(k);
-                      //  screenControl.setGridLocation(k);
+                        //  screenControl.setGridLocation(k);
                         //System.out.println("Adding " + screenControl.getText() + " to column " + j + " to row " + i);
                         add(screenControl, j, i, DEFAULT_COLUMN_SPAN, DEFAULT_ROW_SPAN);
                         k++;
@@ -197,7 +200,7 @@ public class FillableGrid extends BuildableGrid {
             }
         }
         expand("row");
-           expand("column");
+        expand("column");
     }
 
     /**
@@ -345,7 +348,8 @@ public class FillableGrid extends BuildableGrid {
             }
         }
     }
-   /**
+
+    /**
      *
      * @param size
      * @return
@@ -378,8 +382,8 @@ public class FillableGrid extends BuildableGrid {
         }
         return columnSize;
     }
-    
-      public DoubleProperty overrideRow;
+
+    public DoubleProperty overrideRow;
 
     /**
      *
@@ -428,6 +432,7 @@ public class FillableGrid extends BuildableGrid {
         }
         return overrideColumn;
     }
+
 
     /**
      *

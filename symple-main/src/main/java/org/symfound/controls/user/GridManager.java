@@ -19,6 +19,7 @@ import org.symfound.tools.selection.ParallelList;
 import java.util.prefs.Preferences;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import org.symfound.tools.selection.SelectionMethod;
 
 /**
  *
@@ -288,4 +289,41 @@ public abstract class GridManager implements Editable {
         }
         return overrideStyle;
     }
+
+    private static final String SELECTION_METHOD_KEY = "selectionMethod";
+    private ObjectProperty<SelectionMethod> selectionMethod;
+
+    /**
+     * Sets the user's selection preference
+     *
+     * @param value
+     */
+    public void setSelectionMethod(SelectionMethod value) {
+        selectionMethodProperty().setValue(value);
+        getPreferences().put(SELECTION_METHOD_KEY, value.toString());
+
+    }
+
+    /**
+     * Get how the user wants to interact with the program
+     *
+     * @return selection mode
+     */
+    public SelectionMethod getSelectionMethod() {
+        return selectionMethodProperty().getValue();
+    }
+
+    /**
+     * Defines the way in which the user interacts with the program, that is,
+     * the selection mode.
+     *
+     * @return selection
+     */
+    public ObjectProperty<SelectionMethod> selectionMethodProperty() {
+        // if (selectionMethod == null) {
+        selectionMethod = new SimpleObjectProperty<>(SelectionMethod.valueOf(getPreferences().get(SELECTION_METHOD_KEY, SelectionMethod.CLICK.toString())));
+        //}
+        return selectionMethod;
+    }
+
 }

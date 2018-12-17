@@ -43,25 +43,38 @@ public final class LockButton extends AppableControl {
      *
      */
     public LockButton() {
-        super("lock-button", KEY, DEFAULT_TITLE,"default");
+        super("type-button", KEY, DEFAULT_TITLE, "default");
+        configureStyle();
 
         // Add a listener when the paused property is changed.
         pausedProperty().addListener((observable, oldValue, newValue) -> {
-            // By default the button chooses the Parent pane.
+            /*  // By default the button chooses the Parent pane.
             if (getSession().isBuilt()) {
-                Pane root;
-                if (!getPane().isEmpty()) {
-                    // Or it can lookup another pane in the scene.
-                    root = (Pane) getScene().lookup("#" + getPane());
-                } else {
-                    root = (Pane) getParent();
-                }
+            Pane root;
+            if (!getPane().isEmpty()) {
+            // Or it can lookup another pane in the scene.
+            root = (Pane) getScene().lookup("#" + getPane());
+            } else {
+            root = (Pane) getParent();
+            }
+            
+            root.getChildren().stream().forEach((node) -> {
+            node.setDisable(newValue);
+            });
+            // Ensure that this button is still selectable.
+            setDisable(false);
+            }*/
 
-                root.getChildren().stream().forEach((node) -> {
-                    node.setDisable(newValue);
+            if (this.getParent() instanceof ConfigurableGrid) {
+                ConfigurableGrid grid = (ConfigurableGrid) this.getParent();
+                grid.getChildren().forEach((child) -> {
+                    if (child instanceof AppableControl) {
+                        AppableControl control = (AppableControl) child;
+                        if (!(control instanceof LockButton)) {
+                            control.setDisable(newValue);
+                        }
+                    }
                 });
-                // Ensure that this button is still selectable.
-                setDisable(false);
             }
 
         });
@@ -73,8 +86,10 @@ public final class LockButton extends AppableControl {
      */
     @Override
     public void run() {
-        LOGGER.info("Locking screen at pane " + getPane());
+//        LOGGER.info("Locking screen at pane " + getPane());
+        LOGGER.info("Locking screen");
         pause();
+        LOGGER.info("Screen locked");
     }
 
     private BooleanProperty paused;

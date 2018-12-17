@@ -24,7 +24,7 @@ public final class ExitButton extends AppableControl {
      *
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
-    
+
     private static final boolean BACKUP_ON_EXIT = Boolean.TRUE;
 
     /**
@@ -48,7 +48,7 @@ public final class ExitButton extends AppableControl {
 
     @Override
     public void run() {
-    /*    LOGGER.info("Backing up current settings");
+        /*    LOGGER.info("Backing up current settings");
         String folder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/";
         Preferences allprefs = Preferences.userRoot().node("/org/symfound");
         final String fileName = "\\" + getUser().getProfile().getFullName() + " All Settings.xml";
@@ -63,7 +63,7 @@ public final class ExitButton extends AppableControl {
         }*/
 
         LOGGER.info("Exiting the program");
-        getSession() .shutdown(BACKUP_ON_EXIT);
+        getSession().shutdown(BACKUP_ON_EXIT);
     }
 
     @Override

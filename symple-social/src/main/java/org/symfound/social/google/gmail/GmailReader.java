@@ -33,6 +33,7 @@ import javafx.collections.ObservableList;
 
 public class GmailReader {
 
+    // SECURITY TO DO: Secure gmail credentials
     /**
      * Application name.
      */

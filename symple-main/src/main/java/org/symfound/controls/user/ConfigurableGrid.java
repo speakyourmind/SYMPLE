@@ -56,9 +56,10 @@ public class ConfigurableGrid extends ButtonGrid {
      *
      */
     public void configure() {
+
         setOrder(getGridManager().getOrder());
         orderProperty().addListener((observable2, oldValue2, newValue2) -> {
-            LOGGER.info("Setting order "+ newValue2);
+            LOGGER.info("Setting order " + newValue2);
             getGridManager().setOrder(newValue2);
         });
 
@@ -102,7 +103,10 @@ public class ConfigurableGrid extends ButtonGrid {
             getGridManager().setOverrideStyle(newValue7);
 
         });
-
+        setSelectionMethod(getGridManager().getSelectionMethod());
+        selectionMethodProperty().addListener((observable7, oldValue7, newValue7) -> {
+            getGridManager().setSelectionMethod(newValue7);
+        });
         triggerReloadProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 reload();
@@ -123,13 +127,14 @@ public class ConfigurableGrid extends ButtonGrid {
             setOverrideRow(getGridManager().getOverrideRow());
             setOverrideColumn(getGridManager().getOverrideColumn());
             setOverrideStyle(getGridManager().getOverrideStyle());
+            setSelectionMethod(getGridManager().getSelectionMethod());
             triggerReload();
         });
 
         BooleanProperty updatedSettings = SettingsController.updatedProperty();
         updatedSettings.addListener((observable2, oldValue2, newValue2) -> {
             if (newValue2) {
-             /*   if (getOrder().getFirstList().contains(EditGridButton.KEY)) {
+                /*   if (getOrder().getFirstList().contains(EditGridButton.KEY)) {
                     getOrder().remove(EditGridButton.KEY);
                 }*/
                 triggerReload();
@@ -220,7 +225,7 @@ public class ConfigurableGrid extends ButtonGrid {
                         LOGGER.info("Stopping stepper as user is not in STEP mode");
                         getStepper().stop();
                     }
-                }               
+                }
             }
         } else {
             LOGGER.warn("The scene of this grid is NULL");
@@ -235,12 +240,12 @@ public class ConfigurableGrid extends ButtonGrid {
                 LOGGER.info("Reloading App Grid with " + buildOrder.asString() + " and size " + size);
                 build(buildOrder, method, direction, size);
                 if (getUser().getInteraction().getSelectionMethod().equals(SelectionMethod.DWELL)) {
-                   // setDisable(true);
+                    // setDisable(true);
                     setOpacity(1.0);
                     DelayedEvent delayedEvent = new DelayedEvent();
                     final Hardware hardware = getSession().getDeviceManager().getCurrent().getHardware();
                     delayedEvent.setup(hardware.getSelectability().getPostSelectTime(), (ActionEvent e) -> {
-                     //   setDisable(false);
+                        //   setDisable(false);
                         setOpacity(1.0);
                     });
                     delayedEvent.play();
@@ -390,7 +395,7 @@ public class ConfigurableGrid extends ButtonGrid {
      */
     public Stepper getStepper() {
         if (stepper == null) {
-            stepper = new Stepper(this,Main.getSession().getUser());
+            stepper = new Stepper(this, Main.getSession().getUser());
         }
         return stepper;
     }

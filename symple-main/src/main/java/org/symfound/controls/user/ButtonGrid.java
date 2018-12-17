@@ -61,6 +61,7 @@ import org.symfound.main.HomeController;
 import static org.symfound.main.Main.getVersionManager;
 import org.symfound.main.builder.App;
 import org.symfound.tools.selection.ParallelList;
+import org.symfound.tools.selection.SelectionMethod;
 
 /**
  *
@@ -486,7 +487,7 @@ public abstract class ButtonGrid extends FillableGrid {
                         LockButton lockButton = new LockButton();
                         configureItem(lockButton);
                         lockButton.setGridLocation(i);
-                        lockButton.setPane("agApp"); // Change to apMain for Menu Grid
+                       // lockButton.setPane("agApp"); // Change to apMain for Menu Grid
                         requestedControls.add(lockButton);
                         break;
                     case EditGridButton.KEY:
@@ -967,6 +968,30 @@ public abstract class ButtonGrid extends FillableGrid {
         return minDifficulty;
     }
 
+    public ObjectProperty<SelectionMethod> selectionMethod;
+
+    /**
+     *
+     * @param value
+     */
+    public void setSelectionMethod(SelectionMethod value) {
+        selectionMethodProperty().setValue(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public SelectionMethod getSelectionMethod() {
+        return selectionMethodProperty().getValue();
+    }
+
+    public ObjectProperty<SelectionMethod> selectionMethodProperty() {
+        if (selectionMethod == null) {
+            selectionMethod = new SimpleObjectProperty<>();
+        }
+        return selectionMethod;
+    }
   
     private ObjectProperty<ScreenStatus> status;
 

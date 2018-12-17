@@ -33,6 +33,7 @@ public class TwitterConnector extends SocialMediaConnector {
 
     private Twitter twitter;
 
+    // SECURITY TO DO: Secure Oath and secret
     public Twitter getTwitterFactory() {
         if (twitter == null) {
             twitter = new TwitterFactory(new ConfigurationBuilder()
