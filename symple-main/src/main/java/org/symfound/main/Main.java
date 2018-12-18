@@ -28,7 +28,7 @@ public class Main extends Application {
     /**
      *
      */
-    public static final String VERSION = "v2.2.15";
+    public static final String VERSION = "v2.2.17";
 
     @Override
     public void start(Stage stage) throws Exception {

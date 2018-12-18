@@ -247,12 +247,15 @@
 .diagnostic-app-button:hover {-fx-background-color: derive(-fx-purple,10%);}
 
 .diagnostic-button {
-    -fx-background-color: -fx-dark;
+    -fx-background-color: -fx-blue;
     -fx-text-fill: -fx-light;
+    -fx-font-size: 3em;
     -fx-font-weight: bold;
+    -fx-border-color: -fx-dark;
+    -fx-border-insets: 0;
 }
 
-.diagnostic-button:hover {-fx-background-color: -fx-dark;}
+.diagnostic-button:hover {-fx-background-color: -fx-blue;}
 
 .diagnostic-button:disabled {-fx-opacity: 1.0;}
 

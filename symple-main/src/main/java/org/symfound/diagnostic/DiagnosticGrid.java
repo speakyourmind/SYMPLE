@@ -25,6 +25,11 @@ import org.symfound.test.TestGrid;
  * @author Javed Gangjee
  */
 public class DiagnosticGrid extends TestGrid {
+    public DiagnosticGrid(){
+        super();
+        this.setStyle("-fx-background-color:-fx-light;");
+                
+    }
 
     /**
      *

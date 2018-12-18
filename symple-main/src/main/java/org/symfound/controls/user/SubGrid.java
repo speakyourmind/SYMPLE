@@ -91,7 +91,7 @@ public class SubGrid extends AppableControl {
         };
         addToPane(getAddKeyButton(), null, 0.0, 80.0, null);
         addToPane(getEditGridButton(), null, 0.0, 0.0, null);
-//        getPrimaryControl().setDisable(true);
+//     getPrimaryControl().setDisable(true);
     }
 
     @Override
