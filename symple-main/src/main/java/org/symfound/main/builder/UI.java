@@ -87,6 +87,10 @@ public abstract class UI extends BaseUI {
                         Movability movability = currentHardware.getMovability();
                         movability.setEnabled(!movability.isEnabled());
                         LOGGER.info("Mouse Control is now " + movability.isEnabled());
+                        if(!movability.isEnabled()&& scene.getCursor().equals(Cursor.NONE)){
+                            LOGGER.info("Making cursor visible");
+                            scene.setCursor(Cursor.DEFAULT);
+                        }
                         break;
                     case TAB:
                         LOGGER.info("Key Pressed: " + event.getCode().getName());

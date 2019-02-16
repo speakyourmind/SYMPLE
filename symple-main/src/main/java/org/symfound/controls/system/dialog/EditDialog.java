@@ -108,7 +108,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         LOGGER.info("OK Clicked on Edit Dialog. "
                 + "Setting all settings to updated values");
         setSettings();
-        getParentUI().setEditMode(Boolean.FALSE);
+       // getParentUI().setEditMode(Boolean.FALSE);
     }
 
     /**
@@ -119,7 +119,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         LOGGER.info("CANCEL Clicked on Edit Dialog"
                 + "Resetting settings to default values");
         resetSettings();
-        getParentUI().setEditMode(Boolean.FALSE);
+       // getParentUI().setEditMode(Boolean.FALSE);
     }
 
     public AnimatedPane buildActionPane(HPos hpos, Double maxWidth, Double maxHeight) {

@@ -58,9 +58,7 @@ import org.symfound.controls.user.AnimatedPane;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.system.grid.editor.DeleteKeyButton;
-import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
-import static org.symfound.controls.user.ButtonGrid.BUTTON_DELIMITER;
-import static org.symfound.controls.user.ButtonGrid.KEY_DELIMITER;
+import org.symfound.controls.user.LockButton;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
 import org.symfound.tools.selection.ParallelList;
@@ -110,11 +108,10 @@ public abstract class AppableControl extends ConfirmableControl {
     public static Integer SOURCE_COLUMN_SPAN = 0;
     public static Integer GRID_LOCATION = 0;
 
+    //TODO: Give credit for code?
     private void configureDrag() {
         setOnDragDetected((MouseEvent event) -> {
             /* drag was detected, start drag-and-drop gesture*/
-
-
  /* allow any transfer mode */
             Dragboard db = startDragAndDrop(TransferMode.ANY);
 
@@ -234,7 +231,6 @@ public abstract class AppableControl extends ConfirmableControl {
 
     public void configButtons() {
         boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
-    
 
         ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1 && !isSettingsControl && isEditable()) {
@@ -328,7 +324,7 @@ public abstract class AppableControl extends ConfirmableControl {
     public DeleteKeyButton deleteKeyButton;
     public List<SettingsRow> textSettings = new ArrayList<>();
     public OnOffButton showTitleButton;
-    public TextArea titleField;
+    public TextArea titleArea;
     private ChoiceBox<ColourChoices> textColourChoices;
     private Slider fontScaleSlider = new Slider();
 
@@ -352,7 +348,7 @@ public abstract class AppableControl extends ConfirmableControl {
     public List<SettingsRow> settings = new ArrayList<>();
 
     public void resetAppableSettings() {
-        titleField.setText(getTitle());
+        titleArea.setText(getTitle());
         textAlignment.setValue(Pos.valueOf(getTitlePos()));
         textColourChoices.setValue(getTextColour());
         fontScaleSlider.setValue(getFontScale());
@@ -368,7 +364,7 @@ public abstract class AppableControl extends ConfirmableControl {
     }
 
     public void setAppableSettings() {
-        setTitle(titleField.getText());
+        setTitle(titleArea.getText());
         setTitlePos(textAlignment.getValue().toString());
         setTextColour(textColourChoices.getValue());
         setFontScale(fontScaleSlider.getValue());
@@ -405,19 +401,21 @@ public abstract class AppableControl extends ConfirmableControl {
         GridPane.setValignment(showTitleButton, VPos.CENTER);
         showTitleRow.add(showTitleButton, 1, 0, 1, 1);
 
-        titleField = new TextArea();
-        titleField.setText(getTitle());
-        GridPane.setMargin(titleField, new Insets(10.0));
-        titleField.prefHeight(80.0);
-        titleField.prefWidth(360.0);
-        titleField.getStyleClass().add("settings-text-area");
-        showTitleRow.add(titleField, 2, 0, 1, 1);
+        titleArea = new TextArea();
+        titleArea.setText(getTitle());
+        GridPane.setMargin(titleArea, new Insets(10.0));
+        titleArea.prefHeight(80.0);
+        titleArea.prefWidth(360.0);
+        titleArea.getStyleClass().add("settings-text-area");
+        showTitleRow.add(titleArea, 2, 0, 1, 1);
 
         SettingsRow textColourRow = createSettingRow("Colour", "Change the colour of the text");
         textColourChoices = new ChoiceBox<>(FXCollections.observableArrayList(
                 Arrays.asList(
                         ColourChoices.DARK,
+                        ColourChoices.BLACK,
                         ColourChoices.LIGHT,
+                        ColourChoices.WHITE,
                         ColourChoices.RED,
                         ColourChoices.BLUE,
                         ColourChoices.PURPLE,
@@ -472,12 +470,15 @@ public abstract class AppableControl extends ConfirmableControl {
         backgroundColourChoices = new ChoiceBox<>(FXCollections.observableArrayList(
                 Arrays.asList(
                         ColourChoices.DARK,
+                        ColourChoices.BLACK,
                         ColourChoices.LIGHT,
+                        ColourChoices.WHITE,
                         ColourChoices.RED,
                         ColourChoices.BLUE,
                         ColourChoices.PURPLE,
                         ColourChoices.ORANGE,
-                        ColourChoices.GREEN
+                        ColourChoices.GREEN,
+                        ColourChoices.TRANSPARENT
                 )));
         backgroundColourChoices.setValue(getBackgroundColour());
         backgroundColourChoices.maxHeight(80.0);
@@ -615,7 +616,7 @@ public abstract class AppableControl extends ConfirmableControl {
                     GridPane.setHalignment(animatedButton, HPos.CENTER);
                     GridPane.setValignment(animatedButton, VPos.CENTER);
                     GridPane.setMargin(animatedButton, new Insets(10.0, 0, 10.0, 0));
-                    animatedButton.textProperty().bind(titleField.textProperty());
+                    animatedButton.textProperty().bind(titleArea.textProperty());
 
                     animatedButton.alignmentProperty().bind(textAlignment.valueProperty());
 
@@ -703,6 +704,7 @@ public abstract class AppableControl extends ConfirmableControl {
         if (showTitle()) {
             setAlignment(Pos.valueOf(getTitlePos()));
             setText(getTitle());
+
         } else {
             setText("");
         }
@@ -912,8 +914,8 @@ public abstract class AppableControl extends ConfirmableControl {
      * @return
      */
     public ObjectProperty<FontWeight> fontWeightProperty() {
-      //  if (fontWeight == null) {
-            fontWeight = new SimpleObjectProperty(FontWeight.valueOf(getPreferences().get("fontWeight", "BOLD").toUpperCase()));
+        //  if (fontWeight == null) {
+        fontWeight = new SimpleObjectProperty(FontWeight.valueOf(getPreferences().get("fontWeight", "BOLD").toUpperCase()));
         //}
         return fontWeight;
     }

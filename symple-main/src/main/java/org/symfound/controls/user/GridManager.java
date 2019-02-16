@@ -17,6 +17,8 @@ import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
 import org.symfound.tools.selection.ParallelList;
 import java.util.prefs.Preferences;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.symfound.tools.selection.SelectionMethod;
@@ -98,10 +100,10 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public DoubleProperty gapProperty() {
-        if (gap == null) {
+      //  if (gap == null) {
             Double value = Double.valueOf(getPreferences().get("gap", DEFAULT_GRID_GAP.toString()));
             gap = new SimpleDoubleProperty(value);
-        }
+        //}
         return gap;
     }
 
@@ -284,9 +286,9 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public StringProperty overrideStyleProperty() {
-        if (overrideStyle == null) {
+    //    if (overrideStyle == null) {
             overrideStyle = new SimpleStringProperty(getPreferences().get("overrideStyle", ""));
-        }
+      //  }
         return overrideStyle;
     }
 
@@ -324,6 +326,36 @@ public abstract class GridManager implements Editable {
         selectionMethod = new SimpleObjectProperty<>(SelectionMethod.valueOf(getPreferences().get(SELECTION_METHOD_KEY, SelectionMethod.CLICK.toString())));
         //}
         return selectionMethod;
+    }
+
+    private BooleanProperty paused;
+
+    /**
+     *
+     * @param value
+     */
+    public void setPaused(Boolean value) {
+        pausedProperty().set(value);
+        getPreferences().put("paused", value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean isPaused() {
+        return pausedProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty pausedProperty() {
+      //  if (paused == null) {
+            paused = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("paused", "false")));
+        //}
+        return paused;
     }
 
 }

@@ -10,15 +10,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import static org.symfound.builder.user.characteristic.Ability.MAX_LEVEL;
+import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
 import org.symfound.tools.selection.SelectionMethod;
 
@@ -78,8 +81,58 @@ public class FillableGrid extends BuildableGrid {
         Runnable runnable = () -> {
             populate(method);
             spread(method);
+            System.out.println("------------------------------>" + isPaused());
+            disableAll(isPaused());
         };
         Platform.runLater(runnable);
+    }
+    
+    
+    public void disableAll(Boolean value) {
+        System.out.println("------------> No of children " + getChildren().size());
+        getChildren().forEach((child) -> {
+            if (child instanceof AppableControl) {
+                AppableControl control = (AppableControl) child;
+                if (!(control instanceof LockButton)) {
+                    System.out.println(value.toString());
+                    control.setDisable(value);
+                }
+            }
+        });
+    }
+    
+      private BooleanProperty paused;
+
+    /**
+     * Toggles the paused boolean property.
+     */
+    public void togglePause() {
+        setPaused(!isPaused());
+    }
+
+    public void setPaused(Boolean value) {
+        pausedProperty().setValue(value);
+    }
+
+    /**
+     * Finds out whether the pause button is active.
+     *
+     * @return paused if true, false otherwise
+     */
+    public Boolean isPaused() {
+        return pausedProperty().getValue();
+    }
+
+    /**
+     * Represents the pause function of the button.
+     *
+     * @return paused
+     */
+    public BooleanProperty pausedProperty() {
+        if (paused == null) {
+            paused = new SimpleBooleanProperty();
+        }
+        return paused;
     }
 
     public void expand(String dimension) throws IllegalArgumentException {
@@ -432,7 +485,6 @@ public class FillableGrid extends BuildableGrid {
         }
         return overrideColumn;
     }
-
 
     /**
      *

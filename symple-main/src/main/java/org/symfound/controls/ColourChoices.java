@@ -11,10 +11,13 @@ package org.symfound.controls;
  */
 public enum ColourChoices {
     DARK,
+    BLACK,
     LIGHT,
+    WHITE,
     RED,
     ORANGE,
     BLUE,
     PURPLE,
-    GREEN
+    GREEN,
+    TRANSPARENT
 }

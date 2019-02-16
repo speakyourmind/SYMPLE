@@ -25,7 +25,6 @@ import static javafx.scene.layout.AnchorPane.setTopAnchor;
 import javafx.scene.media.MediaPlayer.Status;
 import org.apache.log4j.Logger;
 import org.symfound.app.DesktopController;
-import org.symfound.app.SpeakController;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.system.EditButton;
@@ -139,7 +138,6 @@ public abstract class ButtonGrid extends FillableGrid {
             VersionUpdateButton.KEY,
             ClockButton.KEY,
             HomeController.KEY,
-            SpeakController.KEY,
             DesktopController.KEY);
 
     /**
@@ -166,6 +164,11 @@ public abstract class ButtonGrid extends FillableGrid {
             LOGGER.info("Setting style to " + newValue1);
             getStyleClass().clear();
             setStyle(newValue1);
+        });
+
+        // Add a listener when the paused property is changed.
+        pausedProperty().addListener((observable, oldValue, newValue) -> {
+            disableAll(newValue);
         });
 
         ChangeListener<ParallelList<String, String>> listener = (observable, oldValue, newValue) -> {
@@ -259,13 +262,17 @@ public abstract class ButtonGrid extends FillableGrid {
         setStatus(ScreenStatus.LOADING);
         build();
         configure(getControlsQueue(), method, direction);
+
         Insets insets = new Insets(DEFAULT_GRID_GAP);
         setPadding(insets);
         /*        if (!AppGrid.inEditMode()) {
         launchAnimation();
         }*/
+
         setStatus(ScreenStatus.PLAYING);
+
         toBack();
+
     }
 
     @Override
@@ -280,12 +287,14 @@ public abstract class ButtonGrid extends FillableGrid {
             if (!mutex) {
                 mutex = true;
                 build(buildOrder, method, direction, size);
+
                 mutex = false;
+
             }
         });
     }
 
-     /*    public void initializeControl(RunnableControl control) {
+    /*    public void initializeControl(RunnableControl control) {
     if (control instanceof AppableControl) {
     AppableControl appableControl = (AppableControl) control;
     appableControl.configureTitle();
@@ -341,7 +350,7 @@ public abstract class ButtonGrid extends FillableGrid {
                         textArea.setGridLocation(i);
                         requestedControls.add(textArea);
                         break;
-                        case TwilioSendButton.KEY:
+                    case TwilioSendButton.KEY:
                         TwilioSendButton twilioButton = new TwilioSendButton(index);
                         configureItem(twilioButton);
                         twilioButton.setGridLocation(i);
@@ -484,10 +493,10 @@ public abstract class ButtonGrid extends FillableGrid {
                         requestedControls.add(button);
                         break;
                     case LockButton.KEY:
-                        LockButton lockButton = new LockButton();
+                        LockButton lockButton = new LockButton(this);
                         configureItem(lockButton);
                         lockButton.setGridLocation(i);
-                       // lockButton.setPane("agApp"); // Change to apMain for Menu Grid
+                        // lockButton.setPane("agApp"); // Change to apMain for Menu Grid
                         requestedControls.add(lockButton);
                         break;
                     case EditGridButton.KEY:
@@ -575,7 +584,7 @@ public abstract class ButtonGrid extends FillableGrid {
                     default:
                         if (toBuild.length() > 0) {
                             System.out.println(getSession().appMap.keySet());
-                            App appToBuild = getSession().appMap.get("Speak");
+                            App appToBuild = getSession().appMap.get("Desktop");
                             String appString = appToBuild.getValue();
                             System.out.println(appString);
                             int usablesSize = appToBuild.getUsables().size();
@@ -603,6 +612,7 @@ public abstract class ButtonGrid extends FillableGrid {
                 getControlsQueue().addAll(requestedControls);
                 getControlsQueue().forEach((control) -> {
                     LOGGER.debug("Control " + control.getText() + " is at " + control.getGridLocation());
+
                 });
             } else {
                 LOGGER.warn("No controls available!");
@@ -992,7 +1002,7 @@ public abstract class ButtonGrid extends FillableGrid {
         }
         return selectionMethod;
     }
-  
+
     private ObjectProperty<ScreenStatus> status;
 
     public void setStatus(ScreenStatus value) {
@@ -1009,4 +1019,5 @@ public abstract class ButtonGrid extends FillableGrid {
         }
         return status;
     }
+
 }

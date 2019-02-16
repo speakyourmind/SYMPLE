@@ -58,58 +58,68 @@ public class ConfigurableGrid extends ButtonGrid {
     public void configure() {
 
         setOrder(getGridManager().getOrder());
-        orderProperty().addListener((observable2, oldValue2, newValue2) -> {
-            LOGGER.info("Setting order " + newValue2);
-            getGridManager().setOrder(newValue2);
+        orderProperty().addListener((observable, oldValue, newValue) -> {
+            LOGGER.info("Setting order " + newValue);
+            getGridManager().setOrder(newValue);
         });
 
         setGap(getGridManager().getGap());
-        gapProperty().addListener((observable3, oldValue3, newValue3) -> {
-            getGridManager().setGap(newValue3.doubleValue());
+        gapProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setGap(newValue.doubleValue());
         });
 
         setFillMethod(getGridManager().getFillMethod());
-        fillMethodProperty().addListener((observable3, oldValue3, newValue3) -> {
-            getGridManager().setFillMethod(newValue3);
+        fillMethodProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setFillMethod(newValue);
         });
 
         setFillDirection(getGridManager().getFillDirection());
-        fillDirectionProperty().addListener((observable3, oldValue3, newValue3) -> {
-            getGridManager().setFillDirection(newValue3);
+        fillDirectionProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setFillDirection(newValue);
         });
 
         setMaxDifficulty(getGridManager().getMaxDifficulty());
-        maxDifficultyProperty().addListener((observable4, oldValue4, newValue4) -> {
-            getGridManager().setMaxDifficulty(newValue4.doubleValue());
+        maxDifficultyProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setMaxDifficulty(newValue.doubleValue());
         });
 
         setMinDifficulty(getGridManager().getMinDifficulty());
-        minDifficultyProperty().addListener((observable5, oldValue5, newValue5) -> {
-            getGridManager().setMinDifficulty(newValue5.doubleValue());
+        minDifficultyProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setMinDifficulty(newValue.doubleValue());
         });
 
         setOverrideRow(getGridManager().getOverrideRow());
-        overrideRowProperty().addListener((observable6, oldValue6, newValue6) -> {
-            getGridManager().setOverrideRow(newValue6.doubleValue());
+        overrideRowProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setOverrideRow(newValue.doubleValue());
         });
 
         setOverrideColumn(getGridManager().getOverrideColumn());
-        overrideColumnProperty().addListener((observable7, oldValue7, newValue7) -> {
-            getGridManager().setOverrideColumn(newValue7.doubleValue());
+        overrideColumnProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setOverrideColumn(newValue.doubleValue());
         });
 
         setOverrideStyle(getGridManager().getOverrideStyle());
-        overrideStyleProperty().addListener((observable7, oldValue7, newValue7) -> {
-            getGridManager().setOverrideStyle(newValue7);
+        overrideStyleProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setOverrideStyle(newValue);
 
         });
+
         setSelectionMethod(getGridManager().getSelectionMethod());
-        selectionMethodProperty().addListener((observable7, oldValue7, newValue7) -> {
-            getGridManager().setSelectionMethod(newValue7);
+        selectionMethodProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setSelectionMethod(newValue);
         });
+
+        setPaused(getGridManager().isPaused());
+        pausedProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setPaused(newValue);
+        });
+
         triggerReloadProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 reload();
+                
+                
+                
                 setTriggerReload(Boolean.FALSE);
             }
         });
@@ -128,6 +138,8 @@ public class ConfigurableGrid extends ButtonGrid {
             setOverrideColumn(getGridManager().getOverrideColumn());
             setOverrideStyle(getGridManager().getOverrideStyle());
             setSelectionMethod(getGridManager().getSelectionMethod());
+            setPaused(getGridManager().isPaused());
+
             triggerReload();
         });
 
@@ -180,6 +192,7 @@ public class ConfigurableGrid extends ButtonGrid {
             LOGGER.warn("This screen is not well suited to the user");
         }
         reload(getValidatedKeyOrder(getOrder()), getFillMethod(), getFillDirection(), size);
+                
 
     }
 
@@ -251,6 +264,7 @@ public class ConfigurableGrid extends ButtonGrid {
                     delayedEvent.play();
                 }
                 mutex = false;
+                
             }
         });
     }

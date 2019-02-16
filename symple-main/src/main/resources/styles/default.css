@@ -7,6 +7,8 @@
 */
 *{
     -fx-dark:#2c3e50;
+    -fx-white:white;
+    -fx-black:black;
     -fx-grey:derive(-fx-dark,60%);
     -fx-alt-base:derive(-fx-dark,100%);
     -fx-light:derive(-fx-dark,160%);
@@ -15,6 +17,7 @@
     -fx-green:#1F894B;
     -fx-red:#c0392b;	
     -fx-orange:#C75000;
+    -fx-transparent:transparent;
 }
 .text {
     -fx-font-family: "Roboto";

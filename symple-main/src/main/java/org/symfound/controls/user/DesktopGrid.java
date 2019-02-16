@@ -66,18 +66,18 @@ public class DesktopGrid extends BuildableGrid {
         addClickButton(MouseSelectionType.DRAG, "Drag", 0, 2);
         addClickButton(MouseSelectionType.ZOOM, "Zoom", 1, 2);
 
-        StandalonePopupButton osk = new StandalonePopupButton(SCREENS_FOLDER + "keyboard/onscreen");
+        //TODO: Allow opening a customized OSK    
+        /*StandalonePopupButton osk = new StandalonePopupButton(SCREENS_FOLDER + "keyboard/onscreen");
         osk.setSymStyle("desktop-keyboard");
         osk.setAlignment(Pos.BOTTOM_CENTER);
         osk.setText("Keyboard");
-        add(osk, 0, 3);
-
-        NavigateButton homeButton = new NavigateButton("desktop");
-        homeButton.setSymStyle("desktop-home-button");
-        homeButton.setConfirmable(false);
+        add(osk, 0, 3);*/
+        NavigateButton homeButton = new NavigateButton("default");
+        //homeButton.setSymStyle("home-button");
+        //homeButton.setConfirmable(false);
         homeButton.setText("Home");
-        homeButton.setAlignment(Pos.BOTTOM_CENTER);
-        add(homeButton, 1, 3);
+        //homeButton.setAlignment(Pos.BOTTOM_CENTER);
+        add(homeButton, 0, 3, 2, 1);
     }
 
     private void addClickButton(String clickType, String text, Integer column, Integer row) {

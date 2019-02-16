@@ -116,8 +116,8 @@
                                                                 </GridPane.margin>
                                                             </GridPane>                                              
                                                         </SettingsRow>  
-                                                         <SettingsRow helpText="Makes the selection method specific to each Grid" titleText="Caregiver Mode" GridPane.columnSpan="3" GridPane.rowIndex="2">
-                                                              <OnOffButton fx:id="btnCaregiverMode" maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />                                              
+                                                         <SettingsRow helpText="Enable when users need assistance in navigating menus" titleText="Assisted Mode" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                                                              <OnOffButton fx:id="btnAssistedMode" maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />                                              
                                                          </SettingsRow> 
                                                     </children>
                                                     <padding>

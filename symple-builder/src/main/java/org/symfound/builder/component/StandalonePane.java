@@ -71,7 +71,7 @@ public class StandalonePane extends AnchorPane {
                     try {
                         throw loader.getException();
                     } catch (Throwable ex) {
-                        LOGGER.fatal("UI " + file + " failed build", ex);
+                        LOGGER.fatal("UI " + file.get() + " failed build", ex);
                     }
                 }
                 break;

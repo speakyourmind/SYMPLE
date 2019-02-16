@@ -13,10 +13,12 @@ import org.symfound.device.Device;
 import org.symfound.device.emulation.EmulationManager;
 import org.symfound.device.emulation.EmulationRequest;
 import org.symfound.main.HomeController;
+import org.symfound.main.builder.UI;
 import org.symfound.tools.selection.SelectionMethod;
 
 /**
  * To Be Deprecated
+ *
  * @author Javed Gangjee
  */
 public class NavigateButton extends AppableControl {
@@ -69,7 +71,13 @@ public class NavigateButton extends AppableControl {
     @Override
     public void run() {
         LOGGER.info("Requesting navigation to " + getNavigateIndex());
-        //     if (!ConfigurableGrid.inEditMode()) {
+        
+        UI ui = (UI) getScene().getWindow();
+        if (ui.inEditMode()) {
+            LOGGER.info("Exiting edit mode before navigating");
+            ui.setEditMode(Boolean.FALSE);
+        }
+        
         openHomeScreen();
 
         ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
@@ -80,7 +88,7 @@ public class NavigateButton extends AppableControl {
             final EmulationRequest emulationRequest = new EmulationRequest();
             emulationRequest.setPosition(new Point(0, 0));
             em.getMouse().getAutomator().navigate(new Point((int) (getParentUI().getWidth() / 2), (int) (getParentUI().getHeight() / 2)));
-          
+
         }
         configurableGrid.setIndex(getNavigateIndex());
         getSession().setPlaying(false);

@@ -71,6 +71,7 @@ public class EditButton extends ConfirmableControl {
     public void run() {
         LOGGER.info("Edit button clicked. Toggling parent edit mode");
         UI ui = (UI) getScene().getWindow();
+        // ui.setEditMode(Boolean.TRUE);
         ui.toggleEditMode();
         LOGGER.info("Edit mode for UI is now" + ui.inEditMode());
     }

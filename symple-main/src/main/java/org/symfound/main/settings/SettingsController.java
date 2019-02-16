@@ -76,7 +76,7 @@ public class SettingsController extends SettingsControllerBase {
     @FXML
     private Slider slLevel;
     @FXML
-    private OnOffButton btnCaregiverMode;
+    private OnOffButton btnAssistedMode;
     @FXML
     private Button btnDevice;
     @FXML
@@ -181,7 +181,7 @@ public class SettingsController extends SettingsControllerBase {
         getUser().getTiming().setScanTime(slScanTime.getValue());
         getUser().getTiming().setStepTime(slStepTime.getValue());
         getUser().getAbility().setLevel(slLevel.getValue());
-        getUser().getInteraction().setOverrideSelectionMethod(btnCaregiverMode.getValue());
+        getUser().getInteraction().setOverrideSelectionMethod(btnAssistedMode.getValue());
         //DEVICE
         final String selectedDeviceName = getSession().getDeviceManager().getIterator().get();
         getUser().setDeviceName(selectedDeviceName);
@@ -211,7 +211,7 @@ public class SettingsController extends SettingsControllerBase {
         getSelectionMode().set(getUser().getInteraction().getSelectionMethod());
         cbSelection.setValue(selectionMode.get());
         slLevel.setValue(getUser().getAbility().getLevel());
-        btnCaregiverMode.setValue(getUser().getInteraction().overrideSelectionMethod());
+        btnAssistedMode.setValue(getUser().getInteraction().overrideSelectionMethod());
 
         //DEVICE
         final String activeDevice = getUser().getDeviceName();
