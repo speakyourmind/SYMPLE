@@ -8,8 +8,7 @@ package org.symfound.controls.system.grid.editor;
 import java.util.prefs.Preferences;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
-import org.symfound.controls.ScreenControl;
-import org.symfound.controls.system.dialog.OKCancelDialog;
+import org.symfound.controls.SystemControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.selection.ParallelList;
@@ -18,7 +17,7 @@ import org.symfound.tools.selection.ParallelList;
  *
  * @author Javed Gangjee
  */
-public class DeleteKeyButton extends AppableControl {
+public class DeleteKeyButton extends SystemControl {
 
     public static final String NAME = EditGridButton.class.getName();
     public static final Logger LOGGER = Logger.getLogger(NAME);
@@ -37,7 +36,6 @@ public class DeleteKeyButton extends AppableControl {
 
     private void initialize() {
         setConfirmable(Boolean.FALSE);
-        setControlType(ScreenControl.ControlType.SETTING_CONTROL);
     }
 
     @Override
@@ -49,7 +47,7 @@ public class DeleteKeyButton extends AppableControl {
         configurableGrid.getGridManager().setOrder(configurableGrid.getOrder());
         control.getEditAppButton().getDialog().onCancel();
         control.getEditAppButton().getDialog().setDone(true);
-        ConfigurableGrid.setEditMode(false);
+       // ConfigurableGrid.setEditMode(false);
         SettingsController.setUpdated(true);
     }
 

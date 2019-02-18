@@ -23,6 +23,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -59,6 +60,7 @@ import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.system.grid.editor.DeleteKeyButton;
 import org.symfound.controls.user.LockButton;
+import org.symfound.controls.user.ScreenStatus;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
 import org.symfound.tools.selection.ParallelList;
@@ -96,10 +98,9 @@ public abstract class AppableControl extends ConfirmableControl {
 
     private void initialize() {
         setConfirmable(false);
-        configurePrimaryDisabled();
         configureDrag();
+        configurePrimaryDisabled();
         configButtons();
-
     }
 
     public static Integer SOURCE_ROW_INDEX = 0;
@@ -223,7 +224,7 @@ public abstract class AppableControl extends ConfirmableControl {
     }
 
     public void configurePrimaryDisabled() {
-        getPrimaryControl().setDisable(disablePrimary());
+        getPrimaryControl().setDisable(isPrimaryDisabled());
         disablePrimaryProperty().addListener((observable, oldValue, newValue) -> {
             getPrimaryControl().setDisable(newValue);
         });
@@ -231,7 +232,12 @@ public abstract class AppableControl extends ConfirmableControl {
 
     public void configButtons() {
         boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
-
+        if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
+            addConfigButtons();
+        } else {
+            removeConfigButtons();
+        }
+        
         ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1 && !isSettingsControl && isEditable()) {
                 addConfigButtons();
@@ -357,7 +363,7 @@ public abstract class AppableControl extends ConfirmableControl {
         backgroundURLField.setText(getBackgroundURL());
         showTitleButton.setValue(showTitle());
         selectableButton.setValue(isSelectable());
-        disabledPrimaryButton.setValue(disablePrimary());
+        disabledPrimaryButton.setValue(isPrimaryDisabled());
         rowExpandField.setText(String.valueOf(getRowExpand()));
         columnExpandField.setText(String.valueOf(getColumnExpand()));
         navigateIndexField.setText(getNavigateIndex());
@@ -508,7 +514,7 @@ public abstract class AppableControl extends ConfirmableControl {
 
         disabledPrimaryButton = new OnOffButton("YES", "NO");
         disabledPrimaryButton.setMaxSize(180.0, 60.0);
-        disabledPrimaryButton.setValue(disablePrimary());
+        disabledPrimaryButton.setValue(isPrimaryDisabled());
         GridPane.setHalignment(disabledPrimaryButton, HPos.LEFT);
         GridPane.setValignment(disabledPrimaryButton, VPos.CENTER);
         settingsRow45.add(disabledPrimaryButton, 1, 0, 1, 1);
@@ -678,9 +684,8 @@ public abstract class AppableControl extends ConfirmableControl {
     }
 
     public void removeConfigButtons() {
-        //     getKeyRemoveButton().removeFromParent();
         getEditAppButton().removeFromParent();
-        getPrimaryControl().setDisable(this.disablePrimary());
+        getPrimaryControl().setDisable(isPrimaryDisabled());
     }
 
     /**
@@ -1081,7 +1086,7 @@ public abstract class AppableControl extends ConfirmableControl {
      *
      * @return
      */
-    public Boolean disablePrimary() {
+    public Boolean isPrimaryDisabled() {
         return disablePrimaryProperty().get();
     }
 

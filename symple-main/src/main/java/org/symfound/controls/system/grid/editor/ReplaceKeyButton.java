@@ -11,15 +11,13 @@ import java.util.prefs.Preferences;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import org.apache.log4j.Logger;
 import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
 import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
-import org.symfound.controls.AppableControl;
-import org.symfound.controls.ScreenControl;
+import org.symfound.controls.SystemControl;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import org.symfound.controls.system.dialog.OKCancelDialog;
@@ -33,7 +31,7 @@ import org.symfound.tools.selection.ParallelList;
  *
  * @author Javed Gangjee
  */
-public class ReplaceKeyButton extends AppableControl {
+public class ReplaceKeyButton extends SystemControl {
 
     public static final String NAME = EditGridButton.class.getName();
     public static final Logger LOGGER = Logger.getLogger(NAME);
@@ -56,7 +54,6 @@ public class ReplaceKeyButton extends AppableControl {
 
     private void initialize() {
         setConfirmable(Boolean.TRUE);
-        setControlType(ScreenControl.ControlType.SETTING_CONTROL);
     }
 
     /**

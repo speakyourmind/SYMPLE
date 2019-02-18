@@ -41,7 +41,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
     }
 
     private void initialize() {
-        setScreenFactor(0.92);
+        setScreenFactor(0.98);
         final Display display = getSession().getDisplay();
         Double width = getScreenFactor() * display.getScreenWidth();
         baseGrid.setMaxWidth(width);

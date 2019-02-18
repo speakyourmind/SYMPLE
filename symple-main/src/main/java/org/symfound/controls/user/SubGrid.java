@@ -15,6 +15,7 @@ import org.symfound.controls.AppableControl;
 import java.util.prefs.Preferences;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import org.apache.log4j.Logger;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.system.grid.editor.KeyRemoveButton;
 
@@ -24,6 +25,12 @@ import org.symfound.controls.system.grid.editor.KeyRemoveButton;
  */
 public class SubGrid extends AppableControl {
 
+    private static final String NAME = SubGrid.class.getName();
+
+    /**
+     *
+     */
+    public static final Logger LOGGER = Logger.getLogger(NAME);
     /**
      *
      */
@@ -60,6 +67,7 @@ public class SubGrid extends AppableControl {
             grid = new ConfigurableGrid();
             grid.setIndex(getIndex());
             grid.configure();
+
             setCSS("subgrid", this);
         }
         return grid;
@@ -73,25 +81,37 @@ public class SubGrid extends AppableControl {
     List<KeyRemoveButton> removeButtons;
 
     @Override
-    public void addConfigButtons() {
-        final ObservableList<Node> children = this.getConfigurableGrid().getChildren();
+    public void configButtons() {
+        boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
 
-        for (int i = 0; i < children.size(); i++) {
-            Node node = children.get(i);
-            if (node instanceof RunnableControl) {
-                RunnableControl control = (RunnableControl) node;
-                final KeyRemoveButton keyRemoveButton = new KeyRemoveButton(control.getGridLocation(), getConfigurableGrid());
-                keyRemoveButton.gridLocationProperty().bindBidirectional(control.gridLocationProperty());
-                keyRemoveButton.setPane("apMain");
-                keyRemoveButton.setConfirmable(false);
-                getRemoveButtons().add(keyRemoveButton);
-                control.addToPane(keyRemoveButton, 0.0, null, null, 0.0);
-                LOGGER.info("Key Remove Button added to control " + control.getText() + " with index " + control.getGridLocation() + ". Order is " + getConfigurableGrid().getOrder().asString());
+        getConfigurableGrid().statusProperty().addListener((ob, o, n) -> {
+            System.out.println("Status is " + n);
+            if (n.equals(ScreenStatus.PLAYING)) {
+                System.out.println("Playing. Edit Mode:" + ConfigurableGrid.inEditMode());
+                if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
+                    System.out.println("attempting to add keyremove buttons");
+                    final ObservableList<Node> children = this.getConfigurableGrid().getChildren();
+                    System.out.println("Size" + children.size());
+                    addKeyRemoveButtons();
+                }
             }
-        };
+        });
+
+        ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
+            if (newValue1 && !isSettingsControl && isEditable()) {
+                addConfigButtons();
+            } else {
+                removeConfigButtons();
+            }
+        });
+
+    }
+
+    @Override
+    public void addConfigButtons() {
+        addKeyRemoveButtons();
         addToPane(getAddKeyButton(), null, 0.0, 80.0, null);
         addToPane(getEditGridButton(), null, 0.0, 0.0, null);
-//     getPrimaryControl().setDisable(true);
     }
 
     @Override
@@ -115,6 +135,23 @@ public class SubGrid extends AppableControl {
         //   getPrimaryControl().setDisable(false);
     }
 
+    public void addKeyRemoveButtons() {
+        final ObservableList<Node> children = this.getConfigurableGrid().getChildren();
+        for (int i = 0; i < children.size(); i++) {
+            Node node = children.get(i);
+            if (node instanceof RunnableControl) {
+                RunnableControl control = (RunnableControl) node;
+                final KeyRemoveButton keyRemoveButton = new KeyRemoveButton(control.getGridLocation(), getConfigurableGrid());
+                keyRemoveButton.gridLocationProperty().bindBidirectional(control.gridLocationProperty());
+                keyRemoveButton.setPane("apMain");
+                keyRemoveButton.setConfirmable(false);
+                getRemoveButtons().add(keyRemoveButton);
+                control.addToPane(keyRemoveButton, 0.0, null, null, 0.0);
+                keyRemoveButton.toFront();
+                LOGGER.info("Key Remove Button added to control " + control.getText() + " with index " + control.getGridLocation() + ". Order is " + getConfigurableGrid().getOrder().asString());
+            }
+        }
+    }
     EditGridButton editGridButton;
 
     public EditGridButton getEditGridButton() {

@@ -117,9 +117,7 @@ public class ConfigurableGrid extends ButtonGrid {
         triggerReloadProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 reload();
-                
-                
-                
+
                 setTriggerReload(Boolean.FALSE);
             }
         });
@@ -192,7 +190,6 @@ public class ConfigurableGrid extends ButtonGrid {
             LOGGER.warn("This screen is not well suited to the user");
         }
         reload(getValidatedKeyOrder(getOrder()), getFillMethod(), getFillDirection(), size);
-                
 
     }
 
@@ -264,7 +261,6 @@ public class ConfigurableGrid extends ButtonGrid {
                     delayedEvent.play();
                 }
                 mutex = false;
-                
             }
         });
     }

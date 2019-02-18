@@ -7,7 +7,7 @@ package org.symfound.controls.system.grid.editor;
 
 import java.util.prefs.Preferences;
 import org.apache.log4j.Logger;
-import org.symfound.controls.AppableControl;
+import org.symfound.controls.SystemControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.selection.ParallelList;
@@ -16,7 +16,7 @@ import org.symfound.tools.selection.ParallelList;
  *
  * @author Javed Gangjee
  */
-public class AddKeyButton extends AppableControl {
+public class AddKeyButton extends SystemControl {
 
     public static final String NAME = EditGridButton.class.getName();
     public static final Logger LOGGER = Logger.getLogger(NAME);
@@ -39,17 +39,16 @@ public class AddKeyButton extends AppableControl {
 
     private void initialize() {
         setConfirmable(Boolean.FALSE);
-        setControlType(ControlType.SETTING_CONTROL);
     }
 
     @Override
     public void run() {
-        LOGGER.info("Add Keys button clicked");
+        LOGGER.info("Add Key button clicked");
         final ParallelList<String, String> order1 = configurableGrid.getOrder();
         order1.put(ReplaceKeyButton.KEY, getIndex().toLowerCase());
         configurableGrid.setOrder(order1);
         configurableGrid.getGridManager().setOrder(configurableGrid.getOrder());
-        ConfigurableGrid.setEditMode(false);
+       // ConfigurableGrid.setEditMode(false);
         SettingsController.setUpdated(true);
     }
 

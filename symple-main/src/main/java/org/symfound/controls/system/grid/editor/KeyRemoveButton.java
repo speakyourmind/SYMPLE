@@ -61,7 +61,7 @@ public class KeyRemoveButton extends ConfirmableControl {
         configurableGrid.setOrder(getOrder());
         configurableGrid.getGridManager().setOrder(getOrder());
 
-        ConfigurableGrid.setEditMode(false);
+    //    ConfigurableGrid.setEditMode(false);
         SettingsController.setUpdated(Boolean.TRUE);
     }
     private ObjectProperty<ParallelList<String, String>> order;

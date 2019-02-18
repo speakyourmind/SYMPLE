@@ -81,15 +81,14 @@ public class FillableGrid extends BuildableGrid {
         Runnable runnable = () -> {
             populate(method);
             spread(method);
-            System.out.println("------------------------------>" + isPaused());
             disableAll(isPaused());
+
+            setStatus(ScreenStatus.PLAYING);
         };
         Platform.runLater(runnable);
     }
-    
-    
+
     public void disableAll(Boolean value) {
-        System.out.println("------------> No of children " + getChildren().size());
         getChildren().forEach((child) -> {
             if (child instanceof AppableControl) {
                 AppableControl control = (AppableControl) child;
@@ -100,8 +99,8 @@ public class FillableGrid extends BuildableGrid {
             }
         });
     }
-    
-      private BooleanProperty paused;
+
+    private BooleanProperty paused;
 
     /**
      * Toggles the paused boolean property.
@@ -595,5 +594,22 @@ public class FillableGrid extends BuildableGrid {
             overlappingCells = new SimpleIntegerProperty(0);
         }
         return overlappingCells;
+    }
+
+    private ObjectProperty<ScreenStatus> status;
+
+    public void setStatus(ScreenStatus value) {
+        statusProperty().setValue(value);
+    }
+
+    public ScreenStatus getStatus() {
+        return statusProperty().getValue();
+    }
+
+    public ObjectProperty<ScreenStatus> statusProperty() {
+        if (status == null) {
+            status = new SimpleObjectProperty<>(ScreenStatus.CLOSED);
+        }
+        return status;
     }
 }

@@ -20,8 +20,7 @@ import javafx.scene.control.TextField;
 import org.apache.log4j.Logger;
 import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
 import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
-import org.symfound.controls.AppableControl;
-import org.symfound.controls.ColourChoices;
+import org.symfound.controls.SystemControl;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
@@ -39,7 +38,7 @@ import org.symfound.tools.selection.SelectionMethod;
  *
  * @author Javed Gangjee
  */
-public class EditGridButton extends AppableControl {
+public class EditGridButton extends SystemControl {
     
     public static final String NAME = EditGridButton.class.getName();
     public static final Logger LOGGER = Logger.getLogger(NAME);
@@ -62,7 +61,6 @@ public class EditGridButton extends AppableControl {
     
     private void initialize() {
         setConfirmable(Boolean.TRUE);
-        setControlType(ControlType.SETTING_CONTROL);
     }
 
     /**

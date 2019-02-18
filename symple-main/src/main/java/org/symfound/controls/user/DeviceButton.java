@@ -41,7 +41,8 @@ public final class DeviceButton extends AppableControl {
     public DeviceButton() {
         super("calibrate-button", KEY, "Configure Your Device","default");
         initialize();
-        setConfirmable(true);
+        setEditable(Boolean.FALSE);
+        setConfirmable(Boolean.TRUE);
         initTitleText = "Activate To Configure";
         initCaptionText = "In order to configure this device, it needs to first be launched";
         setOkText("CONFIRM");

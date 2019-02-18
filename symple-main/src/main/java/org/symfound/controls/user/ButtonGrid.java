@@ -269,7 +269,6 @@ public abstract class ButtonGrid extends FillableGrid {
         launchAnimation();
         }*/
 
-        setStatus(ScreenStatus.PLAYING);
 
         toBack();
 
@@ -287,9 +286,7 @@ public abstract class ButtonGrid extends FillableGrid {
             if (!mutex) {
                 mutex = true;
                 build(buildOrder, method, direction, size);
-
                 mutex = false;
-
             }
         });
     }
@@ -1003,21 +1000,6 @@ public abstract class ButtonGrid extends FillableGrid {
         return selectionMethod;
     }
 
-    private ObjectProperty<ScreenStatus> status;
-
-    public void setStatus(ScreenStatus value) {
-        statusProperty().setValue(value);
-    }
-
-    public ScreenStatus getStatus() {
-        return statusProperty().getValue();
-    }
-
-    public ObjectProperty<ScreenStatus> statusProperty() {
-        if (status == null) {
-            status = new SimpleObjectProperty<>(ScreenStatus.CLOSED);
-        }
-        return status;
-    }
+   
 
 }
