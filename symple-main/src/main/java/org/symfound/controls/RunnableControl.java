@@ -469,7 +469,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
     @Override
     public void loadPrimaryControl() {
         primary = new AnimatedButton();
-        primary.setWrapText(true);
+        primary.setWrapText(Boolean.TRUE);
         load(primary);
         setCSS(cssClass, primary);
         setSelection(primary);
@@ -622,97 +622,6 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
             gridLocation = new SimpleIntegerProperty(0);
         }
         return gridLocation;
-    }
-
-    public void setExpandByDimension(Integer value, String dimension) {
-        switch (dimension) {
-            case "row":
-                setRowExpand(value);
-                break;
-            case "column":
-                setColumnExpand(value);
-                break;
-            default:
-                throw new IllegalArgumentException(dimension + " parameter not recognized");
-        }
-    }
-
-    public Integer getExpandByDimension(String dimension) {
-        Integer expand = -1;
-        switch (dimension) {
-            case "row":
-                expand = getRowExpand();
-                break;
-            case "column":
-                expand = getColumnExpand();
-                break;
-            default:
-                throw new IllegalArgumentException(dimension + " parameter not recognized");
-        }
-        return expand;
-    }
-    /**
-     *
-     */
-    public IntegerProperty rowExpand;
-
-    /**
-     *
-     * @param value
-     */
-    public void setRowExpand(Integer value) {
-        rowExpandProperty().set(value);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Integer getRowExpand() {
-        return rowExpandProperty().get();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public IntegerProperty rowExpandProperty() {
-        if (rowExpand == null) {
-            rowExpand = new SimpleIntegerProperty(0);
-        }
-        return rowExpand;
-    }
-
-    /**
-     *
-     */
-    public IntegerProperty columnExpand;
-
-    /**
-     *
-     * @param value
-     */
-    public void setColumnExpand(Integer value) {
-        columnExpandProperty().set(value);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Integer getColumnExpand() {
-        return columnExpandProperty().get();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public IntegerProperty columnExpandProperty() {
-        if (columnExpand == null) {
-            columnExpand = new SimpleIntegerProperty(0);
-        }
-        return columnExpand;
     }
 
     private BooleanProperty execute;

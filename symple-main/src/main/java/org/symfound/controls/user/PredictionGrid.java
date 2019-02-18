@@ -13,7 +13,7 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.Scene;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.characteristic.Typing;
-import org.symfound.controls.RunnableControl;
+import org.symfound.controls.AppableControl;
 import org.symfound.text.prediction.local.PredictionGenerator;
 
 /**
@@ -97,7 +97,7 @@ public class PredictionGrid extends FillableGrid {
      * @param direction
      */
     @Override
-    public void configure(List<RunnableControl> controls, FillMethod method, FillDirection direction) {
+    public void configure(List<AppableControl> controls, FillMethod method, FillDirection direction) {
         build();
         setHgap(5.0);
         setVgap(5.0);

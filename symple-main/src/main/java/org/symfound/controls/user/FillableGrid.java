@@ -58,8 +58,8 @@ public class FillableGrid extends BuildableGrid {
             if (newValue) {
                 ObservableList<Node> children = getChildren();
                 for (Node node : children) {
-                    if (node instanceof RunnableControl) {
-                        getControlsQueue().add((RunnableControl) node);
+                    if (node instanceof AppableControl) {
+                        getControlsQueue().add((AppableControl) node);
                     }
                 }
 
@@ -73,7 +73,7 @@ public class FillableGrid extends BuildableGrid {
      * @param method
      * @param direction
      */
-    public void configure(List<RunnableControl> screenControls, FillMethod method, FillDirection direction) {
+    public void configure(List<AppableControl> screenControls, FillMethod method, FillDirection direction) {
         if (direction.equals(FillDirection.REVERSE)) {
             Collections.reverse(screenControls);
         }
@@ -160,26 +160,29 @@ public class FillableGrid extends BuildableGrid {
             for (int j = 0; j < spec1; j++) {
                 RunnableControl node = this.get(i, j);
                 if (node != null) {
-                    Integer span1 = getDimensionSpan(node, dimension1);
-                    Integer index1 = getDimensionIndex(node, dimension1);
+                    if (node instanceof AppableControl){
+                        AppableControl appableControl = (AppableControl)node;
+                   
+                    Integer span1 = getDimensionSpan(appableControl, dimension1);
+                    Integer index1 = getDimensionIndex(appableControl, dimension1);
 
-                    Integer span2 = getDimensionSpan(node, dimension2);
-                    Integer index2 = getDimensionIndex(node, dimension2);
+                    Integer span2 = getDimensionSpan(appableControl, dimension2);
+                    Integer index2 = getDimensionIndex(appableControl, dimension2);
 
-                    Integer expandedSpan1 = span1 + node.getExpandByDimension(dimension1);
+                    Integer expandedSpan1 = span1 + appableControl.getExpandByDimension(dimension1);
                     if (expandedSpan1 + index1 > spec1) {
                         expandedSpan1 = spec1 - index1;
-                        node.setExpandByDimension(spec1 - index1, dimension1);
+                        appableControl.setExpandByDimension(spec1 - index1, dimension1);
                     }
-                    setDimensionSpan(node, expandedSpan1, dimension1);
-                    node.toFront();
+                    setDimensionSpan(appableControl, expandedSpan1, dimension1);
+                    appableControl.toFront();
 
-                    if (node.getExpandByDimension(dimension1) > 0) {
-                        LOGGER.info("Checking for overlap for node " + node.getText());
+                    if (appableControl.getExpandByDimension(dimension1) > 0) {
+                        LOGGER.info("Checking for overlap for appableControl " + appableControl.getText());
                         for (int k = 1; k < expandedSpan1; k++) {
                             for (int l = 0; l < span2; l++) {
-                                Integer nextIndex2 = getDimensionIndex(node, dimension2) + l;
-                                Integer nextIndex1 = getDimensionIndex(node, dimension1) + k;
+                                Integer nextIndex2 = getDimensionIndex(appableControl, dimension2) + l;
+                                Integer nextIndex1 = getDimensionIndex(appableControl, dimension1) + k;
 
                                 RunnableControl spanCheckNode;
                                 if (dimension.equals("row")) {
@@ -188,7 +191,7 @@ public class FillableGrid extends BuildableGrid {
                                     spanCheckNode = get(nextIndex2, nextIndex1);
                                 }
                                 if (spanCheckNode != null) {
-                                    LOGGER.info("Found overlapping node " + spanCheckNode.getText()
+                                    LOGGER.info("Found overlapping appableControl " + spanCheckNode.getText()
                                             + " at " + nextIndex2 + "," + nextIndex1);
                                     LOGGER.info("Cascading remaining cells from "
                                             + nextIndex2 + ", " + nextIndex1 + " to "
@@ -197,7 +200,8 @@ public class FillableGrid extends BuildableGrid {
                                 }
                             }
                         }
-                    }
+                    }}
+                    
                 }
             }
         }
@@ -488,13 +492,13 @@ public class FillableGrid extends BuildableGrid {
     /**
      *
      */
-    public List<RunnableControl> controlsQueue;
+    public List<AppableControl> controlsQueue;
 
     /**
      *
      * @return
      */
-    public List<RunnableControl> getControlsQueue() {
+    public List<AppableControl> getControlsQueue() {
         if (controlsQueue == null) {
             controlsQueue = new ArrayList<>();
         }

@@ -5,16 +5,19 @@
  */
 package org.symfound.controls.user;
 
+import static java.lang.System.load;
+import java.util.prefs.Preferences;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.symfound.builder.loader.RuntimeExecutor;
-import org.symfound.controls.ConfirmableControl;
+import org.symfound.controls.AppableControl;
+import static org.symfound.controls.user.IftttButton.KEY;
 
 /**
  *
  * @author Javed Gangjee
  */
-public class ExecButton extends ConfirmableControl {
+public class ExecButton extends AppableControl {
 
     /**
      *
@@ -59,7 +62,7 @@ public class ExecButton extends ConfirmableControl {
      * @param command
      */
     public ExecButton(String CSSClass, String command) {
-        super(CSSClass);
+        super(CSSClass, "Execute", command, "default");
         primary = new AnimatedButton();
         primary.setWrapText(true);
         load(primary);
@@ -105,5 +108,15 @@ public class ExecButton extends ConfirmableControl {
             command = new SimpleStringProperty(initCommand);
         }
         return command;
+    }
+
+    @Override
+    public Preferences getPreferences() {
+        if (preferences == null) {
+            String name = KEY.toLowerCase() + "/" + getIndex().toLowerCase();
+            Class<? extends ExecButton> aClass = this.getClass();
+            preferences = Preferences.userNodeForPackage(aClass).node(name);
+        }
+        return preferences;
     }
 }

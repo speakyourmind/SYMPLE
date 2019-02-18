@@ -5,17 +5,19 @@
  */
 package org.symfound.controls.system;
 
+import java.util.prefs.Preferences;
 import org.apache.log4j.Logger;
-import org.symfound.controls.ConfirmableControl;
 import org.symfound.controls.ScreenControl.ControlType;
+import org.symfound.controls.SystemControl;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.main.builder.UI;
+import org.symfound.main.settings.SettingsController;
 
 /**
  *
  * @author Javed Gangjee
  */
-public class EditButton extends ConfirmableControl {
+public class EditButton extends SystemControl {
 
     private static final String NAME = EditButton.class.getName();
 
@@ -38,7 +40,7 @@ public class EditButton extends ConfirmableControl {
      *
      */
     public EditButton() {
-        super("toolbar-edit");
+        super("toolbar-edit","Edit","","default");
         initialize();
     }
 
@@ -74,6 +76,16 @@ public class EditButton extends ConfirmableControl {
         // ui.setEditMode(Boolean.TRUE);
         ui.toggleEditMode();
         LOGGER.info("Edit mode for UI is now" + ui.inEditMode());
+        
     }
+
+    @Override
+    public Preferences getPreferences() {
+      if (preferences == null) {
+            String name = KEY.toLowerCase() + "/" + getIndex().toLowerCase();
+            Class<? extends EditButton> aClass = this.getClass();
+            preferences = Preferences.userNodeForPackage(aClass).node(name);
+        }
+        return preferences; }
 
 }

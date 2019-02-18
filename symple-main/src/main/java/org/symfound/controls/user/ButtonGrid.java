@@ -298,7 +298,7 @@ public abstract class ButtonGrid extends FillableGrid {
     appableControl.getKeyRemoveButton().orderProperty().bindBidirectional(this.orderProperty());
     }
     }*/
-    public List<RunnableControl> requestedControls = new ArrayList<>();
+    public List<AppableControl> requestedControls = new ArrayList<>();
 
     public void fill(ParallelList<String, String> buildOrder, Integer size) {
         if (buildOrder.getFirstList().size() > 0) {

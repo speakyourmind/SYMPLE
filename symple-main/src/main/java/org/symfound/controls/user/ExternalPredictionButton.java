@@ -7,19 +7,24 @@ package org.symfound.controls.user;
 
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
+import java.util.prefs.Preferences;
 import org.symfound.builder.user.characteristic.Typing;
-import org.symfound.controls.RunnableControl;
+import org.symfound.controls.AppableControl;
+import static org.symfound.controls.user.IftttButton.KEY;
 import org.symfound.device.Device;
 import org.symfound.device.emulation.input.keyboard.KeyboardAutomator;
 import org.symfound.device.processing.Processor;
+import static org.symfound.main.Main.getSession;
 import org.symfound.text.TextOperator;
 import org.symfound.text.prediction.local.Predictor;
 
 /**
+ * TODO: Fix and test after migration to AppableControl
  *
+ * @Deprecated
  * @author Javed Gangjee
  */
-public class ExternalPredictionButton extends RunnableControl {
+public class ExternalPredictionButton extends AppableControl {
 
     private final String predictionWord;
 
@@ -29,7 +34,7 @@ public class ExternalPredictionButton extends RunnableControl {
      * @param cssClass
      */
     public ExternalPredictionButton(String predictionWord, String cssClass) {
-        super(cssClass);
+        super(cssClass, "Prediction", "Prediction", "default");
         this.predictionWord = predictionWord;
         this.setText(predictionWord);
     }
@@ -62,5 +67,15 @@ public class ExternalPredictionButton extends RunnableControl {
         Processor processor = current.getProcessor();
         KeyboardAutomator keyboardAutomator = processor.getEmulationManager().getKeyboard().getAutomator();
         keyboardAutomator.sendToComponent((char) KeyEvent.VK_V, true);
+    }
+
+    @Override
+    public Preferences getPreferences() {
+        if (preferences == null) {
+            String name = KEY.toLowerCase() + "/" + getIndex().toLowerCase();
+            Class<? extends ExternalPredictionButton> aClass = this.getClass();
+            preferences = Preferences.userNodeForPackage(aClass).node(name);
+        }
+        return preferences;
     }
 }

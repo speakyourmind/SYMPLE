@@ -7,12 +7,12 @@ package org.symfound.controls.system;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.symfound.controls.AppableControl;
 import org.symfound.controls.ColourChoices;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl.ControlType;
 import org.symfound.controls.user.ButtonGrid;
 import static org.symfound.controls.user.ButtonGrid.LOGGER;
-import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.ExecButton;
 import org.symfound.controls.user.ExitButton;
 import org.symfound.controls.user.NavigateButton;
@@ -80,7 +80,7 @@ public class ToolbarGrid extends ButtonGrid {
      * @param direction
      */
     @Override
-    public void configure(List<RunnableControl> controlsQueue, FillMethod method, FillDirection direction) {
+    public void configure(List<AppableControl> controlsQueue, FillMethod method, FillDirection direction) {
         build();
         setPrefHeight(CONTROL_MAX_HEIGHT);
         setMaxHeight(CONTROL_MAX_HEIGHT);
@@ -97,7 +97,7 @@ public class ToolbarGrid extends ButtonGrid {
 
     @Override
     public void fill(ParallelList<String, String> buildOrder, Integer size) {
-        List<RunnableControl> requestedControls = new ArrayList<>();
+        List<AppableControl> requestedControls = new ArrayList<>();
         for (int i = 0; i < buildOrder.getFirstList().size(); i++) {
             String toBuild = buildOrder.getFirstList().get(i);
             switch (toBuild.trim()) {

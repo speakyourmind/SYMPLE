@@ -23,7 +23,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -59,10 +58,9 @@ import org.symfound.controls.user.AnimatedPane;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.system.grid.editor.DeleteKeyButton;
-import org.symfound.controls.user.LockButton;
-import org.symfound.controls.user.ScreenStatus;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
+import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.selection.ParallelList;
 
 /**
@@ -237,7 +235,7 @@ public abstract class AppableControl extends ConfirmableControl {
         } else {
             removeConfigButtons();
         }
-        
+
         ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1 && !isSettingsControl && isEditable()) {
                 addConfigButtons();
@@ -367,6 +365,7 @@ public abstract class AppableControl extends ConfirmableControl {
         rowExpandField.setText(String.valueOf(getRowExpand()));
         columnExpandField.setText(String.valueOf(getColumnExpand()));
         navigateIndexField.setText(getNavigateIndex());
+        SettingsController.setUpdated(Boolean.FALSE);
     }
 
     public void setAppableSettings() {
@@ -381,9 +380,18 @@ public abstract class AppableControl extends ConfirmableControl {
         setShowTitle(showTitleButton.getValue());
         setSelectable(selectableButton.getValue());
         setDisablePrimary(disabledPrimaryButton.getValue());
-        setRowExpand(Integer.valueOf(rowExpandField.getText()));
-        setColumnExpand(Integer.valueOf(columnExpandField.getText()));
         setNavigateIndex(navigateIndexField.getText());
+        Boolean reloadRequired = Boolean.FALSE;
+        if (!rowExpandField.getText().equals(getRowExpand().toString())) {
+            setRowExpand(Integer.valueOf(rowExpandField.getText()));
+            reloadRequired = Boolean.TRUE;
+        }
+        if (!columnExpandField.getText().equals(getColumnExpand().toString())) {
+            setColumnExpand(Integer.valueOf(columnExpandField.getText()));
+            reloadRequired = Boolean.TRUE;
+        }
+
+        SettingsController.setUpdated(reloadRequired);
     }
 
     public List<Tab> addAppableSettings() {
@@ -1226,11 +1234,39 @@ public abstract class AppableControl extends ConfirmableControl {
         return index;
     }
 
+    public void setExpandByDimension(Integer value, String dimension) {
+        switch (dimension) {
+            case "row":
+                setRowExpand(value);
+                break;
+            case "column":
+                setColumnExpand(value);
+                break;
+            default:
+                throw new IllegalArgumentException(dimension + " parameter not recognized");
+        }
+    }
+
+    public Integer getExpandByDimension(String dimension) {
+        Integer expand = -1;
+        switch (dimension) {
+            case "row":
+                expand = getRowExpand();
+                break;
+            case "column":
+                expand = getColumnExpand();
+                break;
+            default:
+                throw new IllegalArgumentException(dimension + " parameter not recognized");
+        }
+        return expand;
+    }
+    private IntegerProperty rowExpand;
+
     /**
      *
      * @param value
      */
-    @Override
     public void setRowExpand(Integer value) {
         rowExpandProperty().set(value);
         getPreferences().put("rowExpand", value.toString());
@@ -1240,7 +1276,14 @@ public abstract class AppableControl extends ConfirmableControl {
      *
      * @return
      */
-    @Override
+    public Integer getRowExpand() {
+        return rowExpandProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
     public IntegerProperty rowExpandProperty() {
         if (rowExpand == null) {
             rowExpand = new SimpleIntegerProperty(Integer.valueOf(getPreferences().get("rowExpand", "0")));
@@ -1248,11 +1291,12 @@ public abstract class AppableControl extends ConfirmableControl {
         return rowExpand;
     }
 
+    private IntegerProperty columnExpand;
+
     /**
      *
      * @param value
      */
-    @Override
     public void setColumnExpand(Integer value) {
         columnExpandProperty().set(value);
         getPreferences().put("columnExpand", value.toString());
@@ -1262,7 +1306,14 @@ public abstract class AppableControl extends ConfirmableControl {
      *
      * @return
      */
-    @Override
+    public Integer getColumnExpand() {
+        return columnExpandProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
     public IntegerProperty columnExpandProperty() {
         if (columnExpand == null) {
             columnExpand = new SimpleIntegerProperty(Integer.valueOf(getPreferences().get("columnExpand", "0")));
