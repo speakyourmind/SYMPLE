@@ -42,9 +42,9 @@ import org.symfound.device.hardware.characteristic.Selectability;
 import org.symfound.device.hardware.eyetracker.EyeTracker;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.*;
-import org.symfound.tools.selection.ModeIterator;
-import org.symfound.tools.selection.SelectionEventType;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.tools.iteration.ModeIterator;
+import org.symfound.device.selection.SelectionEventType;
+import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *

@@ -5,6 +5,8 @@
  */
 package org.symfound.controls;
 
+import org.symfound.tools.ui.FontTracker;
+import org.symfound.tools.ui.ColourChoices;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -61,7 +63,7 @@ import org.symfound.controls.system.grid.editor.DeleteKeyButton;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
 import org.symfound.main.settings.SettingsController;
-import org.symfound.tools.selection.ParallelList;
+import org.symfound.tools.iteration.ParallelList;
 
 /**
  *

@@ -116,7 +116,7 @@ public final class Processor implements Runnable {
                     } catch (IOException ex) {
                         LOGGER.fatal("Unable to read JSON request file: " + readFile, ex);
                     } catch (ParseException ex) {
-                   //     LOGGER.fatal("Unable to parse JSON request file: " + readFile, ex);
+                        //     LOGGER.fatal("Unable to parse JSON request file: " + readFile, ex);
                     }
                     break;
                 case ReadMethod.LOCAL:
@@ -162,6 +162,7 @@ public final class Processor implements Runnable {
         request.setClick(clicked);
         request.setPosition(rawPoint);
         request.setKeyPressed("");
+        LOGGER.info("1 - from JSON data package:" + request.getPosition());
         getEmulationManager().request(request);
 
     }

@@ -13,7 +13,7 @@ import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import org.apache.log4j.Logger;
 import org.symfound.controls.RunnableControl;
-import org.symfound.tools.selection.ModeIterator;
+import org.symfound.tools.iteration.ModeIterator;
 import org.symfound.tools.timing.LoopedEvent;
 
 /**

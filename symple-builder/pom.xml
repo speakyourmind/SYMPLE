@@ -46,6 +46,7 @@
             <artifactId>symple-text</artifactId>
             <version>${project.version}</version>
         </dependency>
+       
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>symple-voice</artifactId>

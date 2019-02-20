@@ -14,7 +14,7 @@ import org.symfound.device.emulation.EmulationManager;
 import org.symfound.device.emulation.EmulationRequest;
 import org.symfound.main.HomeController;
 import org.symfound.main.builder.UI;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  * To Be Deprecated

@@ -23,7 +23,7 @@ import javafx.scene.Node;
 import static org.symfound.builder.user.characteristic.Ability.MAX_LEVEL;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *
@@ -93,7 +93,7 @@ public class FillableGrid extends BuildableGrid {
             if (child instanceof AppableControl) {
                 AppableControl control = (AppableControl) child;
                 if (!(control instanceof LockButton)) {
-                    System.out.println(value.toString());
+                 //   System.out.println(value.toString());
                     control.setDisable(value);
                 }
             }

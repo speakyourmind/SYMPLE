@@ -49,7 +49,7 @@ import org.symfound.main.Main;
 import org.symfound.main.builder.UI;
 import org.symfound.tools.animation.Animated;
 import org.symfound.tools.animation.NodeAnimator;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.tools.timing.DelayedEvent;
 import org.symfound.tools.timing.transition.DwellTransition;
 import org.symfound.tools.timing.transition.ScanTransition;

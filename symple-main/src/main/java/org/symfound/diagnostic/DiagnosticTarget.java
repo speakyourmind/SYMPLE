@@ -15,7 +15,7 @@ import org.symfound.controls.user.AnimatedButton;
 import org.symfound.test.Result;
 import org.symfound.test.Target;
 import org.symfound.tools.animation.NodeAnimator;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.tools.timing.DelayedEvent;
 import org.symfound.voice.player.AudioPlayer;
 

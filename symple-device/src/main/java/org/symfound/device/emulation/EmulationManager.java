@@ -34,7 +34,7 @@ import org.symfound.device.emulation.input.mouse.NativeMouseListener;
 import org.symfound.device.emulation.input.switcher.SwitchEmulator;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.device.hardware.characteristic.Movability;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.tools.timing.DelayedEvent;
 
 /**
@@ -93,8 +93,9 @@ public final class EmulationManager {
                 Integer sampleSize = hardware.getMovability().getSampleSize();
                 Point position = getRequest().getPosition();
                 MousePositionLog positionLogger = getMouse().getListener().positionLog;
+
                 positionLogger.log(position, sampleSize);
-                LOGGER.debug("Mouse position recorded: " + position);
+                LOGGER.info("2 - Mouse position log size: " + positionLogger.size() + ". Position recorded:" + position);
             }
         });
     }
@@ -232,35 +233,40 @@ public final class EmulationManager {
         if (shouldUpdateSelection(request)) {
             SelectionMethod selectionMethod = user.getInteraction().getSelectionMethod();
             record(true);
-            if (selectionMethod.equals(SelectionMethod.CLICK)) {
+            switch (selectionMethod) {
                 // This means the user is able to select directly from the hardware
                 // and the program does not need to click for them. For example: Swifty
                 // break;
-            } else if (selectionMethod.equals(SelectionMethod.DWELL)) {
+                case CLICK:
+                    break;
                 // This means the user is unable to select directly from the hardware
                 // Program needs to do it for them. For example
                 /*
-                 Integer dwellSensitivity = hardware.getSelectability().getSensitivity();
-                 if (getMouse().getListener().isDwellSelect(dwellSensitivity)) {
-                 if (!clickMutex) {
-                 clickMutex = true;
-                 getDwellTimeline().play();
-                            
-                 } else {
-                 clickMutex = false;
-                 }
-                 } else {
-                 getDwellTimeline().stop();
-                 clickMutex = false;
-                 }
-                 break;
+            Integer dwellSensitivity = hardware.getSelectability().getSensitivity();
+            if (getMouse().getListener().isDwellSelect(dwellSensitivity)) {
+            if (!clickMutex) {
+            clickMutex = true;
+            getDwellTimeline().play();
+            } else {
+            clickMutex = false;
+            }
+            } else {
+            getDwellTimeline().stop();
+            clickMutex = false;
+            }
+            break;
                  */
-            } else if (selectionMethod.equals(SelectionMethod.SWITCH)) {
-                // This means the user is unable to switch from the hardware.
-                // Program needs to do it for them. For example: ColourTracker
-                Point requestedPosition = request.getPosition();
-                Double tau = hardware.getSelectability().getSwitchability().getTau();
-                getSwitch().getListener().getZScore().updateMagnitude(tau, requestedPosition);
+                case DWELL:
+                    break;
+                case SWITCH:
+                    // This means the user is unable to switch from the hardware.
+                    // Program needs to do it for them. For example: ColourTracker
+                    Point requestedPosition = request.getPosition();
+                    Double tau = hardware.getSelectability().getSwitchability().getTau();
+                    getSwitch().getListener().getZScore().updateMagnitude(tau, requestedPosition);
+                    break;
+                default:
+                    break;
             }
         }
     }

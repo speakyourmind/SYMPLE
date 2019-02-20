@@ -45,7 +45,7 @@ import org.symfound.test.ResultMap;
 import org.symfound.test.ResultValue;
 import static org.symfound.test.Test.COUNTDOWN_TIME;
 import org.symfound.test.TestControllerBase;
-import org.symfound.tools.selection.ModeIterator;
+import org.symfound.tools.iteration.ModeIterator;
 import org.symfound.tools.timing.DelayedEvent;
 import org.symfound.tools.timing.clock.Countdown;
 import org.symfound.voice.player.AudioPlayer;

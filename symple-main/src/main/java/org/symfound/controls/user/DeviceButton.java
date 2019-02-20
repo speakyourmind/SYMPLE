@@ -17,7 +17,7 @@ import org.symfound.controls.device.EyeTrackerSettings;
 import org.symfound.controls.system.dialog.ScreenPopup;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.manager.DeviceManager;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *

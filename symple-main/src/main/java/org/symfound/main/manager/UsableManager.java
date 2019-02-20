@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import org.symfound.builder.user.Usable;
 import org.symfound.builder.user.User;
-import org.symfound.tools.selection.ModeIterator;
+import org.symfound.tools.iteration.ModeIterator;
 
 /**
  *

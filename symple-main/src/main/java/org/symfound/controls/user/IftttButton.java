@@ -62,8 +62,7 @@ public final class IftttButton extends AppableControl {
             final Double postSelectTime = Main.getSession().getDeviceManager().getCurrent().getHardware().getSelectability().getPostSelectTime();
             
             final long name = (long)(postSelectTime*1000.0);
-            System.out.println(name);
-             //Thread.sleep(name);
+            //Thread.sleep(name);
 
             String urlStart = "https://maker.ifttt.com/trigger/" + getWebhookEventStart() + "/with/key/" + getWebhookKey();
             webhooks.request(urlStart);

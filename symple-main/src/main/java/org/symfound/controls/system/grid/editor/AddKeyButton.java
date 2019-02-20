@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import org.symfound.controls.SystemControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.settings.SettingsController;
-import org.symfound.tools.selection.ParallelList;
+import org.symfound.tools.iteration.ParallelList;
 
 /**
  *
@@ -38,6 +38,7 @@ public class AddKeyButton extends SystemControl {
     }
 
     private void initialize() {
+        setEditable(Boolean.FALSE);
         setConfirmable(Boolean.FALSE);
     }
 

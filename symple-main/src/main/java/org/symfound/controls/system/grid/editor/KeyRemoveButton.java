@@ -15,7 +15,7 @@ import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.settings.SettingsController;
-import org.symfound.tools.selection.ParallelList;
+import org.symfound.tools.iteration.ParallelList;
 
 /**
  *

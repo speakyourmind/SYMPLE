@@ -68,8 +68,8 @@ public class MouseEmulator extends InputEmulator<MouseAutomator, NativeMouseList
     private void initialize() {
         requestedPositionProperty().addListener((observable, oldValue, newValue) -> {
             try {
-                final Boolean userRequires = user.getInteraction().needsMouseControl();
-                if (userRequires) {
+                final Boolean needsMouse = user.getInteraction().needsMouseControl();
+                if (needsMouse) {
                     // Navigate to the requested position
 
                     //TODO: Test
@@ -80,7 +80,7 @@ public class MouseEmulator extends InputEmulator<MouseAutomator, NativeMouseList
                     getAutomator().navigate(newValue);
                     
                     }*/
-                    LOGGER.debug("Requesting mouse to position: " + newValue);
+                    LOGGER.info("3 - Requesting mouse to position: " + newValue);
                     getAutomator().navigate(newValue);
                 }
             } catch (NullPointerException ex) {

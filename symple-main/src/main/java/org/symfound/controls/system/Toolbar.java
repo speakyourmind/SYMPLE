@@ -18,7 +18,7 @@ import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.FillableGrid.FillDirection;
 import org.symfound.controls.user.FillableGrid.FillMethod;
 import org.symfound.controls.user.MoveWindowButton;
-import org.symfound.tools.selection.ParallelList;
+import org.symfound.tools.iteration.ParallelList;
 
 /**
  *

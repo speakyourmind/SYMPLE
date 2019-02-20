@@ -36,7 +36,7 @@ import org.symfound.controls.user.AnimatedButton;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.device.hardware.characteristic.Movability;
 import org.symfound.main.Main;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *

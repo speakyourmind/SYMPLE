@@ -32,9 +32,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        
-        getSessionLauncher().launch();
         LOGGER.info("Logging started");
+        getSessionLauncher().launch();
         LOGGER.debug("Launching session");
         LOGGER.info("Current version: " + getSession().getVersion()
                 + "; Remote version: " + getVersionManager().getRemoteVersion());

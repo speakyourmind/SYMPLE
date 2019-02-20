@@ -15,13 +15,13 @@ import org.symfound.builder.controller.Editable;
 import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
 import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
-import org.symfound.tools.selection.ParallelList;
+import org.symfound.tools.iteration.ParallelList;
 import java.util.prefs.Preferences;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *

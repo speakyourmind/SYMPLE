@@ -31,8 +31,8 @@ import org.symfound.controls.user.FillableGrid.FillDirection;
 import org.symfound.controls.user.FillableGrid.FillMethod;
 import org.symfound.main.Main;
 import org.symfound.main.settings.SettingsController;
-import org.symfound.tools.selection.ParallelList;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.tools.iteration.ParallelList;
+import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *

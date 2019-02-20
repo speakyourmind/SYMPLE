@@ -5,6 +5,7 @@
  */
 package org.symfound.selection;
 
+import org.symfound.builder.user.selection.Chooser;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Parent;
@@ -12,7 +13,7 @@ import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.controls.RunnableControl;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.user.ConfigurableGrid;
 import static org.symfound.controls.user.ConfigurableGrid.editModeProperty;
 import static org.symfound.controls.user.ConfigurableGrid.inEditMode;

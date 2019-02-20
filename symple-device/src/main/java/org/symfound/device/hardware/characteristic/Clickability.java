@@ -12,7 +12,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import org.symfound.builder.characteristic.Characteristic;
-import org.symfound.tools.selection.SelectionEventType;
+import org.symfound.device.selection.SelectionEventType;
 
 /**
  *

@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Navigation;
 import org.symfound.controls.RunnableControl;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.selection.Selector;

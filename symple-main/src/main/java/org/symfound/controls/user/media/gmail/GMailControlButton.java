@@ -16,7 +16,7 @@ import javafx.scene.control.Tab;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
-import org.symfound.tools.selection.ModeIterator;
+import org.symfound.tools.iteration.ModeIterator;
 
 /**
  *

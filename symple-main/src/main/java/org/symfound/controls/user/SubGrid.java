@@ -85,7 +85,7 @@ public class SubGrid extends AppableControl {
         boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
 
         getConfigurableGrid().statusProperty().addListener((ob, o, n) -> {
-            System.out.println("Status is " + n);
+           // System.out.println("Status is " + n);
             if (n.equals(ScreenStatus.PLAYING)) {
                 System.out.println("Playing. Edit Mode:" + ConfigurableGrid.inEditMode());
                 if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {

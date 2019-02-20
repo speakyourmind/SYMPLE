@@ -25,7 +25,7 @@ import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ButtonGrid;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.settings.SettingsController;
-import org.symfound.tools.selection.ParallelList;
+import org.symfound.tools.iteration.ParallelList;
 
 /**
  *

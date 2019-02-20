@@ -9,7 +9,7 @@ import java.util.List;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import org.symfound.audio.music.song.Song;
-import org.symfound.tools.selection.ModeIterator;
+import org.symfound.tools.iteration.ModeIterator;
 
 /**
  *

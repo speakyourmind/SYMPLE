@@ -8,7 +8,7 @@ package org.symfound.controls.system;
 import java.util.ArrayList;
 import java.util.List;
 import org.symfound.controls.AppableControl;
-import org.symfound.controls.ColourChoices;
+import org.symfound.tools.ui.ColourChoices;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl.ControlType;
 import org.symfound.controls.user.ButtonGrid;
@@ -19,7 +19,7 @@ import org.symfound.controls.user.NavigateButton;
 import org.symfound.controls.user.MinimizeButton;
 import org.symfound.controls.user.SettingsButton;
 import org.symfound.controls.user.VersionUpdateButton;
-import org.symfound.tools.selection.ParallelList;
+import org.symfound.tools.iteration.ParallelList;
 
 /**
  *

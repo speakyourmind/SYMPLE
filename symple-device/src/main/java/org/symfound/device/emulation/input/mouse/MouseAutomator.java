@@ -13,7 +13,7 @@ import javafx.scene.input.MouseEvent;
 import org.apache.log4j.Logger;
 import org.symfound.builder.session.Display;
 import org.symfound.device.emulation.input.InputAutomator;
-import org.symfound.tools.selection.ModeIterator;
+import org.symfound.tools.iteration.ModeIterator;
 
 /**
  *
@@ -76,6 +76,7 @@ public class MouseAutomator extends Robot implements InputAutomator {
      * @param nav
      */
     public void navigate(Point nav) {
+
         mouseMove((int) nav.getX(), (int) nav.getY());
     }
 
@@ -94,7 +95,6 @@ public class MouseAutomator extends Robot implements InputAutomator {
     }
 
     // SELECTION
-
     /**
      *
      * @param nav

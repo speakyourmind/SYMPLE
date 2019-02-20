@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.controls;
+package org.symfound.device.selection;
 
 /**
  *
- * @author Javed
+ * @author Javed Gangjee
  */
-public enum ColourChoices {
-    DARK,
-    BLACK,
-    LIGHT,
-    WHITE,
-    RED,
-    ORANGE,
-    BLUE,
-    PURPLE,
-    GREEN,
-    TRANSPARENT
+public enum SelectionSource {
+
+    /**
+     *
+     */
+    EMULATED,
+
+    /**
+     *
+     */
+    PHYSICAL
 }

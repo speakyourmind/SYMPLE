@@ -59,8 +59,8 @@ import org.symfound.device.hardware.Hardware;
 import org.symfound.main.HomeController;
 import static org.symfound.main.Main.getVersionManager;
 import org.symfound.main.builder.App;
-import org.symfound.tools.selection.ParallelList;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.tools.iteration.ParallelList;
+import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.tools.selection;
+package org.symfound.tools.iteration;
 
 import java.util.ArrayList;
 import java.util.List;

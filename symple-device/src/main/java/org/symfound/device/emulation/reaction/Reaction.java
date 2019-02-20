@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.controls.reaction;
+package org.symfound.device.emulation.reaction;
 
-import org.symfound.tools.selection.SelectionMethod;
-import org.symfound.tools.selection.SelectionSource;
+import org.symfound.builder.user.selection.SelectionMethod;
+import org.symfound.device.selection.SelectionSource;
 
 /**
  *
@@ -22,7 +22,7 @@ public abstract class Reaction {
     /**
      *
      */
-    public SelectionMethod method; // To DO:Change to SelectionMethod
+    public SelectionMethod method; 
 
     /**
      *

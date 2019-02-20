@@ -9,7 +9,7 @@ import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Speech;
-import org.symfound.tools.selection.ModeIterator;
+import org.symfound.tools.iteration.ModeIterator;
 import org.symfound.voice.main.TTSLauncher;
 
 /**

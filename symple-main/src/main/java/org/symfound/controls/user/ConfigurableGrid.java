@@ -26,8 +26,8 @@ import org.symfound.device.hardware.Hardware;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.selection.modes.Scanner;
 import org.symfound.selection.modes.Stepper;
-import org.symfound.tools.selection.ParallelList;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.tools.iteration.ParallelList;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.tools.timing.DelayedEvent;
 import java.util.prefs.Preferences;
 import javafx.beans.property.SimpleStringProperty;
@@ -59,7 +59,7 @@ public class ConfigurableGrid extends ButtonGrid {
 
         setOrder(getGridManager().getOrder());
         orderProperty().addListener((observable, oldValue, newValue) -> {
-            LOGGER.info("Setting order " + newValue);
+            LOGGER.info("Setting order " + newValue.asString());
             getGridManager().setOrder(newValue);
         });
 

@@ -46,10 +46,10 @@ public class SettingsExporter extends SettingsTransporter {
     public void run() {
         DateFormat dateFormat = new SimpleDateFormat("yyMMddHHmmss");
         Date date = new Date();
-        System.out.println(dateFormat.format(date));
         Preferences allprefs = Preferences.userRoot().node("/org/symfound");
         if (fileName == null) {
-            fileName = "/" + Main.getSession().getUser().getProfile().getFullName() + " Settings " + dateFormat.format(date) + ".xml";
+            final String fullName = Main.getSession().getUser().getProfile().getFullName();
+            fileName = "/" + fullName + " Settings " + dateFormat.format(date) + ".xml";
         }
         try {
             LOGGER.debug("Exporting preferences as " + fileName + " in " + folder);

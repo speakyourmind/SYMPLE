@@ -30,8 +30,8 @@ import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.main.FullSession;
 import org.symfound.main.manager.TTSManager;
-import org.symfound.tools.selection.ModeIterator;
-import org.symfound.tools.selection.ParallelList;
+import org.symfound.tools.iteration.ModeIterator;
+import org.symfound.tools.iteration.ParallelList;
 
 /**
  *

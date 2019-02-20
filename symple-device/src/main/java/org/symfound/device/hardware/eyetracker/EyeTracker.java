@@ -30,6 +30,7 @@ import org.symfound.device.hardware.Hardware;
  */
 public abstract class EyeTracker extends Hardware<Eye> {
 
+    //TODO: Replace with enum
     /**
      *
      */
@@ -49,10 +50,6 @@ public abstract class EyeTracker extends Hardware<Eye> {
     /**
      *
      */
-    public Boolean initCalibrationValue;
-    private BooleanProperty calibrated;
-    private final Eye leftEye;
-    private final Eye rightEye;
 
     /**
      *
@@ -65,6 +62,7 @@ public abstract class EyeTracker extends Hardware<Eye> {
         this.leftEye = leftEye;
         this.rightEye = rightEye;
     }
+    private final Eye leftEye;
 
     /**
      *
@@ -73,6 +71,8 @@ public abstract class EyeTracker extends Hardware<Eye> {
     public Eye leftEye() {
         return leftEye;
     }
+    
+    private final Eye rightEye;
 
     /**
      *
@@ -82,6 +82,7 @@ public abstract class EyeTracker extends Hardware<Eye> {
         return rightEye;
     }
 
+    private BooleanProperty calibrated;
     /**
      *
      * @param value

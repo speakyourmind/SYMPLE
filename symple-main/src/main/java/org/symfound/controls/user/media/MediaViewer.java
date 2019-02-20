@@ -19,7 +19,7 @@ import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.FullSession;
 import org.symfound.main.Main;
-import org.symfound.tools.selection.SelectionMethod;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.tools.timing.Hold;
 
 /**

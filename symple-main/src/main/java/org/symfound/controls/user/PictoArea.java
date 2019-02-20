@@ -12,7 +12,7 @@ import javafx.scene.Node;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
-import org.symfound.tools.selection.ParallelList;
+import org.symfound.tools.iteration.ParallelList;
 
 /**
  *
