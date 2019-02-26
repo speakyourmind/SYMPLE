@@ -42,9 +42,8 @@ import javafx.scene.input.MouseEvent;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import org.symfound.builder.user.characteristic.Navigation;
+import org.symfound.builder.user.selection.SelectionMethod;
 import static org.symfound.controls.AppableControl.LOGGER;
-import org.symfound.device.emulation.reaction.EmulatedReaction;
-import org.symfound.device.emulation.reaction.PhysicalReaction;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.device.Device;
@@ -53,14 +52,15 @@ import org.symfound.device.emulation.input.switcher.SwitchDirection;
 import org.symfound.device.emulation.input.switcher.SwitchDirector;
 import static org.symfound.device.emulation.input.switcher.SwitchDirector.*;
 import org.symfound.device.emulation.input.switcher.SwitchListener;
+import org.symfound.device.emulation.reaction.EmulatedReaction;
+import org.symfound.device.emulation.reaction.PhysicalReaction;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.device.processing.Processor;
+import org.symfound.device.selection.SelectionEventType;
 import org.symfound.main.HomeController;
 import org.symfound.main.Main;
 import org.symfound.main.manager.TTSManager;
 import org.symfound.tools.animation.NodeAnimator;
-import org.symfound.device.selection.SelectionEventType;
-import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.tools.timing.transition.ScanTransition;
 import org.symfound.voice.builder.TTSPlayer;
 import org.symfound.voice.main.TTSLauncher;
@@ -626,6 +626,10 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
 
     private BooleanProperty execute;
 
+    /**
+     *
+     * @param value
+     */
     public void setExecuted(Boolean value) {
         executeProperty().setValue(value);
     }
@@ -655,12 +659,26 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
     LOGGER.info(message);
     engine.play(text, true, currentVoiceName);
     }*/
+
+    /**
+     *
+     */
+
     public List<String> DEFAULT_SKIP_CHARS = Arrays.asList("https://");
 
+    /**
+     *
+     * @param text
+     */
     public void speak(String text) {
         speak(text, DEFAULT_SKIP_CHARS);
     }
 
+    /**
+     *
+     * @param text
+     * @param skipChars
+     */
     public void speak(String text, List<String> skipChars) {
         TTSManager ttsManager = getSession().getTTSManager();
         String currentVoiceName = ttsManager.getIterator().get();
@@ -675,6 +693,9 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
         player.play(text, true, currentVoiceName);
     }
 
+    /**
+     *
+     */
     public void stopSpeak() {
         TTSManager ttsManager = getSession().getTTSManager();
         String currentVoiceName = ttsManager.getIterator().get();

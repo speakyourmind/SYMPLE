@@ -7,9 +7,9 @@ package org.symfound.controls.user;
 
 import java.util.Arrays;
 import java.util.List;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.ObjectProperty;
 import java.util.prefs.Preferences;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Tab;
@@ -22,14 +22,36 @@ import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
  */
 public class VolumeGridButton extends VolumeControl {
 
+    /**
+     *
+     */
     public enum VolumeControls {
+
+        /**
+         *
+         */
         UP,
+
+        /**
+         *
+         */
         DOWN,
+
+        /**
+         *
+         */
         MUTE
     }
 
+    /**
+     *
+     */
     public static final String KEY = "Volume";
 
+    /**
+     *
+     * @param index
+     */
     public VolumeGridButton(String index) {
         super("music-volume-up", KEY, "Volume", index);
         initialize();
@@ -78,18 +100,28 @@ public class VolumeGridButton extends VolumeControl {
 
     private ChoiceBox<VolumeControls> volumeControlType;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         setVolumeControl(volumeControlType.getValue());
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         volumeControlType.setValue(getVolumeControl());
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         SettingsRow settingsRowA = createSettingRow("Control Type", "Up, Down or Mute");

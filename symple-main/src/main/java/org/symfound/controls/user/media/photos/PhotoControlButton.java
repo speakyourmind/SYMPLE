@@ -28,9 +28,8 @@ import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.system.dialog.SettingsDialog;
-import org.symfound.controls.user.BuildableGrid;
-import org.symfound.controls.user.media.MediaControlButton;
 import org.symfound.controls.user.ScreenStatus;
+import org.symfound.controls.user.media.MediaControlButton;
 
 /**
  *
@@ -38,10 +37,18 @@ import org.symfound.controls.user.ScreenStatus;
  */
 public class PhotoControlButton extends MediaControlButton<PhotoControl> {
 
+    /**
+     *
+     */
     public static final String KEY = "Photo Control";
 
-    private PhotoViewer viewer;
+    private final PhotoViewer viewer;
 
+    /**
+     *
+     * @param index
+     * @param viewer
+     */
     public PhotoControlButton(String index, PhotoViewer viewer) {
         super("button", KEY, "Photo Control", index);
         this.viewer = viewer;
@@ -78,8 +85,15 @@ public class PhotoControlButton extends MediaControlButton<PhotoControl> {
 
     private TextField folderPathField;
     private ChoiceBox<PhotoControl> controlTypeBox;
+
+    /**
+     *
+     */
     public OnOffButton shuffleButton;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         viewer.setFolderPath(folderPathField.getText());
@@ -88,6 +102,9 @@ public class PhotoControlButton extends MediaControlButton<PhotoControl> {
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         folderPathField.setText(viewer.getFolderPath());
@@ -97,6 +114,10 @@ public class PhotoControlButton extends MediaControlButton<PhotoControl> {
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         SettingsRow settingsRowA = createSettingRow("Folder", "Location of the files");
@@ -154,6 +175,10 @@ public class PhotoControlButton extends MediaControlButton<PhotoControl> {
         return tabs;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
@@ -203,6 +228,10 @@ public class PhotoControlButton extends MediaControlButton<PhotoControl> {
 
     private static final PhotoControl DEFAULT_PHOTO_CONTROL = PhotoControl.NEXT;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public PhotoControl getDefaultControlValue() {
         return PhotoControl.valueOf(getPreferences().get("control", DEFAULT_PHOTO_CONTROL.toString()));

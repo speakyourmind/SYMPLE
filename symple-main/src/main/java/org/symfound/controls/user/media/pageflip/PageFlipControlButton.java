@@ -24,8 +24,8 @@ import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
-import org.symfound.controls.user.media.MediaControlButton;
 import org.symfound.controls.user.ScreenStatus;
+import org.symfound.controls.user.media.MediaControlButton;
 
 /**
  *
@@ -34,11 +34,24 @@ import org.symfound.controls.user.ScreenStatus;
 public class PageFlipControlButton extends MediaControlButton<PageFlipControl> {
 
     private static final String NAME = PageFlipControlButton.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "PageFlip Control";
 
     private PageFlipViewer viewer;
 
+    /**
+     *
+     * @param index
+     * @param viewer
+     */
     public PageFlipControlButton(String index, PageFlipViewer viewer) {
         super("button", KEY, KEY, index);
         this.viewer = viewer;
@@ -74,8 +87,15 @@ public class PageFlipControlButton extends MediaControlButton<PageFlipControl> {
 
     private TextArea sitesField;
     private ChoiceBox<PageFlipControl> controlTypeBox;
+
+    /**
+     *
+     */
     public OnOffButton shuffleButton;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         viewer.getPageFlipManager().setURLs(Arrays.asList(sitesField.getText().split(",")));
@@ -84,6 +104,9 @@ public class PageFlipControlButton extends MediaControlButton<PageFlipControl> {
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         sitesField.setText(viewer.getPageFlipManager().getURLs().toString()
@@ -93,6 +116,10 @@ public class PageFlipControlButton extends MediaControlButton<PageFlipControl> {
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
 
@@ -136,6 +163,10 @@ public class PageFlipControlButton extends MediaControlButton<PageFlipControl> {
         return tabs;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
@@ -185,6 +216,10 @@ public class PageFlipControlButton extends MediaControlButton<PageFlipControl> {
 
     private static final PageFlipControl DEFAULT_REDDIT_CONTROL = PageFlipControl.NEXT;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public PageFlipControl getDefaultControlValue() {
         return PageFlipControl.valueOf(getPreferences().get("control", DEFAULT_REDDIT_CONTROL.toString()));

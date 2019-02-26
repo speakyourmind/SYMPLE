@@ -127,7 +127,7 @@ public class CommonPane extends AnimatedPane {
 
     private void addUserMenu() {
         Dimension dimScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Double menuOffset = (double) dimScreenSize.getWidth() * 0.3;
+        Double menuOffset = dimScreenSize.getWidth() * 0.3;
         AnchorPane.setTopAnchor(getMenuLaunchButton(), 0.0);
         menuUp(getMenuLaunchButton(), menuOffset);
         getMenuLaunchButton().menuVisibleProperty().addListener((observable, oldValue, newValue) -> {

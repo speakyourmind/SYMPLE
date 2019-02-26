@@ -5,7 +5,6 @@
  */
 package org.symfound.controls.user;
 
-import static java.lang.System.load;
 import java.util.prefs.Preferences;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -67,7 +66,7 @@ public class ExecButton extends AppableControl {
         primary.setWrapText(true);
         load(primary);
         setCSS(cssClass, primary);
-        setSelection(primary);;
+        setSelection(primary);
         setConfirmable(false);
         this.initCommand = command;
     }

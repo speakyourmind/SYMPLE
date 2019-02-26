@@ -55,6 +55,9 @@ public final class ClearPictoButton extends AppableControl {
         getPictoArea().setPictoText("");
     }
 
+    /**
+     *
+     */
     public PictoArea picto;
 
     /**

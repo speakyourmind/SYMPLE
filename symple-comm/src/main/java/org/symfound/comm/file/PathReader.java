@@ -142,7 +142,7 @@ public class PathReader {
             //While the line being read is not null
             while ((line = br.readLine()) != null) {
                 //Load each line to the textArea
-                fileText = fileText + line;
+                fileText += line;
             }
 
         }

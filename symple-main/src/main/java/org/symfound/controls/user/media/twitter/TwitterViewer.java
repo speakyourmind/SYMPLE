@@ -9,7 +9,6 @@ import java.util.prefs.Preferences;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.geometry.Pos;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.web.WebView;
@@ -29,9 +28,21 @@ import org.symfound.social.twitter.Tweet;
 public class TwitterViewer extends WebViewer {
 
     private static final String NAME = TwitterViewer.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Twitter Viewer";
 
+    /**
+     *
+     * @param index
+     */
     public TwitterViewer(String index) {
         super(KEY, index);
     }
@@ -71,8 +82,15 @@ public class TwitterViewer extends WebViewer {
         return tweetText;
     }
 
+    /**
+     *
+     */
     public WebView profilePicView;
 
+    /**
+     *
+     * @return
+     */
     public WebView getProfilePicView() {
         if (profilePicView == null) {
             profilePicView = new WebView();
@@ -83,16 +101,17 @@ public class TwitterViewer extends WebViewer {
         return profilePicView;
     }
 
+    /**
+     *
+     */
     @Override
     public void configure() {
 
         if (getIndex().contains("next")) {
-            System.out.println("Index has changed to " + getIndex());
             reload();
         }
         indexProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1.contains("next")) {
-                System.out.println("Index has changed to " + newValue1);
                 reload();
             }
         });
@@ -103,6 +122,9 @@ public class TwitterViewer extends WebViewer {
 
     }
 
+    /**
+     *
+     */
     @Override
     public void play() {
         Platform.runLater(() -> {
@@ -121,7 +143,6 @@ public class TwitterViewer extends WebViewer {
                     // getWebView().getEngine().load(null);
                 }
             }
-            System.out.println(tweet.getText() + ">>>>>>>>>> " + tweet.getURL());
             getLinkTitle().setText(tweet.getText());
             getLinkTitle().toFront();
             setStatus(ScreenStatus.PLAYING);
@@ -130,6 +151,9 @@ public class TwitterViewer extends WebViewer {
         });
     }
 
+    /**
+     *
+     */
     @Override
     public void end() {
         setStatus(ScreenStatus.ENDING);
@@ -139,6 +163,9 @@ public class TwitterViewer extends WebViewer {
 
     }
 
+    /**
+     *
+     */
     @Override
     public void reload() {
         setStatus(ScreenStatus.READY);
@@ -151,6 +178,10 @@ public class TwitterViewer extends WebViewer {
 
     private TwitterManager manager;
 
+    /**
+     *
+     * @return
+     */
     public TwitterManager getTwitterManager() {
         if (manager == null) {
             manager = new TwitterManager();

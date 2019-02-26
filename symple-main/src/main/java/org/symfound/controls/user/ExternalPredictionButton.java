@@ -14,7 +14,6 @@ import static org.symfound.controls.user.IftttButton.KEY;
 import org.symfound.device.Device;
 import org.symfound.device.emulation.input.keyboard.KeyboardAutomator;
 import org.symfound.device.processing.Processor;
-import static org.symfound.main.Main.getSession;
 import org.symfound.text.TextOperator;
 import org.symfound.text.prediction.local.Predictor;
 

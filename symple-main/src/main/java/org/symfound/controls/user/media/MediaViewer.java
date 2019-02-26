@@ -5,7 +5,6 @@
  */
 package org.symfound.controls.user.media;
 
-import org.symfound.controls.user.ScreenStatus;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.beans.property.ObjectProperty;
@@ -14,12 +13,13 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.util.Duration;
 import org.symfound.builder.user.User;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.user.AnimatedLabel;
+import org.symfound.controls.user.ScreenStatus;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.FullSession;
 import org.symfound.main.Main;
-import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.tools.timing.Hold;
 
 /**
@@ -30,13 +30,26 @@ public abstract class MediaViewer extends AppableControl implements Reloadable {
 
     AnimatedLabel label = new AnimatedLabel("Loading...");
 
+    /**
+     *
+     * @param CSSClass
+     * @param key
+     * @param title
+     * @param index
+     */
     public MediaViewer(String CSSClass, String key, String title, String index) {
         super(CSSClass, key, title, index);
         initialize();
     }
 
+    /**
+     *
+     */
     public abstract void play();
 
+    /**
+     *
+     */
     public abstract void end();
 
     private void initialize() {
@@ -105,14 +118,26 @@ public abstract class MediaViewer extends AppableControl implements Reloadable {
 
     private ObjectProperty<ScreenStatus> status;
 
+    /**
+     *
+     * @param value
+     */
     public void setStatus(ScreenStatus value) {
         statusProperty().setValue(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public ScreenStatus getStatus() {
         return statusProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public ObjectProperty<ScreenStatus> statusProperty() {
         if (status == null) {
             status = new SimpleObjectProperty<>(ScreenStatus.CLOSED);

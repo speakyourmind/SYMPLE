@@ -236,6 +236,9 @@ public class FullSession extends Session {
         return fontLoader;
     }
 
+    /**
+     *
+     */
     public Map<String, App> appMap;
 
     /**

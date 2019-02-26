@@ -28,9 +28,8 @@ import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.system.dialog.SettingsDialog;
-import org.symfound.controls.user.BuildableGrid;
-import org.symfound.controls.user.media.MediaControlButton;
 import org.symfound.controls.user.ScreenStatus;
+import org.symfound.controls.user.media.MediaControlButton;
 
 /**
  *
@@ -38,10 +37,18 @@ import org.symfound.controls.user.ScreenStatus;
  */
 public class VideoControlButton extends MediaControlButton<VideoControl> {
 
+    /**
+     *
+     */
     public static final String KEY = "Video Control";
 
     private VideoViewer viewer;
 
+    /**
+     *
+     * @param index
+     * @param viewer
+     */
     public VideoControlButton(String index, VideoViewer viewer) {
         super("button", KEY, "Video Control", index);
         this.viewer = viewer;
@@ -78,8 +85,15 @@ public class VideoControlButton extends MediaControlButton<VideoControl> {
 
     private TextField folderPathField;
     private ChoiceBox<VideoControl> controlTypeBox;
+
+    /**
+     *
+     */
     public OnOffButton shuffleButton;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         viewer.setFolderPath(folderPathField.getText());
@@ -88,6 +102,9 @@ public class VideoControlButton extends MediaControlButton<VideoControl> {
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         folderPathField.setText(viewer.getFolderPath());
@@ -96,6 +113,10 @@ public class VideoControlButton extends MediaControlButton<VideoControl> {
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         SettingsRow settingsRowA = createSettingRow("Folder", "Location of the files");
@@ -154,6 +175,10 @@ public class VideoControlButton extends MediaControlButton<VideoControl> {
         return tabs;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
@@ -203,6 +228,10 @@ public class VideoControlButton extends MediaControlButton<VideoControl> {
 
     private static final VideoControl DEFAULT_VIDEO_CONTROL = VideoControl.NEXT;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public VideoControl getDefaultControlValue() {
         return VideoControl.valueOf(getPreferences().get("control", DEFAULT_VIDEO_CONTROL.toString()));

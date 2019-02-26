@@ -22,7 +22,6 @@ import com.google.api.services.calendar.model.CalendarList;
 import com.google.api.services.calendar.model.CalendarListEntry;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -32,6 +31,10 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ *
+ * @author Administrator
+ */
 public class GoogleCalendar {
 
     private static final String APPLICATION_NAME = "Google Calendar API Java Quickstart";
@@ -66,6 +69,13 @@ public class GoogleCalendar {
         return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
     }
 
+    /**
+     *
+     * @param timeMin
+     * @return
+     * @throws IOException
+     * @throws GeneralSecurityException
+     */
     public static ObservableList<Event> load(DateTime timeMin) throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();

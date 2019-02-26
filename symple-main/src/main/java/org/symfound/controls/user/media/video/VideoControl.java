@@ -12,7 +12,19 @@ import org.symfound.controls.user.media.MediaControl;
  * @author Javed Gangjee <jgangjee@gmail.com>
  */
 public enum VideoControl implements MediaControl {
+
+    /**
+     *
+     */
     NEXT,
+
+    /**
+     *
+     */
     PREVIOUS,
+
+    /**
+     *
+     */
     STOP
 }

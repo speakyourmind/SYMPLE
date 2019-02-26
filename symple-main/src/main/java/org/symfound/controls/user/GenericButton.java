@@ -6,9 +6,7 @@
 package org.symfound.controls.user;
 
 import java.util.prefs.Preferences;
-import javafx.beans.binding.Bindings;
 import org.symfound.controls.AppableControl;
-import static org.symfound.controls.AppableControl.LOGGER;
 
 /**
  *

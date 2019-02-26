@@ -210,21 +210,21 @@ public class ZoomUI extends BaseUI {
         if (posX > screenWidth - rectWidth) {
             int originalPosX = posX;
             posX = (int) (screenWidth - CORNER_OFFSET * rectWidth - rectWidth);
-            x = x - (originalPosX - posX);
+            x -= (originalPosX - posX);
         } else if (posX < rectWidth / 2) {
             int originalPosX = posX;
             posX = (int) (CORNER_OFFSET * rectWidth);
-            x = x - (originalPosX - posX);
+            x -= (originalPosX - posX);
         }
 
         if (posY > screenHeight - rectHeight) {
             int originalPosY = posY;
             posY = (int) (screenHeight - CORNER_OFFSET * rectHeight - rectHeight);
-            y = y - (originalPosY - posY);
+            y -= (originalPosY - posY);
         } else if (posY < rectHeight / 2) {
             int originalPosY = posY;
             posY = (int) (CORNER_OFFSET * rectHeight);
-            y = y - (originalPosY - posY);
+            y -= (originalPosY - posY);
         }
 
         return view;

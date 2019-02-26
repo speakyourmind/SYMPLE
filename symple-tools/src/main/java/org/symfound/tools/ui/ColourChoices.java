@@ -10,14 +10,54 @@ package org.symfound.tools.ui;
  * @author Javed
  */
 public enum ColourChoices {
+
+    /**
+     *
+     */
     DARK,
+
+    /**
+     *
+     */
     BLACK,
+
+    /**
+     *
+     */
     LIGHT,
+
+    /**
+     *
+     */
     WHITE,
+
+    /**
+     *
+     */
     RED,
+
+    /**
+     *
+     */
     ORANGE,
+
+    /**
+     *
+     */
     BLUE,
+
+    /**
+     *
+     */
     PURPLE,
+
+    /**
+     *
+     */
     GREEN,
+
+    /**
+     *
+     */
     TRANSPARENT
 }

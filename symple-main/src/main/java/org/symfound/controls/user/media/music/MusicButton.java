@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
 import org.symfound.comm.file.PathReader;
 import org.symfound.controls.AppableControl;
+import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.settings.SettingsController;
 
 /**
@@ -31,6 +32,14 @@ public abstract class MusicButton extends AppableControl {
     private static final Logger LOGGER = Logger.getLogger(NAME);
     private MusicControl control;
 
+    /**
+     *
+     * @param CSSClass
+     * @param key
+     * @param title
+     * @param index
+     * @param control
+     */
     public MusicButton(String CSSClass, String key, String title, String index, MusicControl control) {
         super(CSSClass, key, title, index);
         this.control = control;
@@ -47,6 +56,25 @@ public abstract class MusicButton extends AppableControl {
 
     }
 
+    /**
+     *
+     */
+    @Override
+    public void configButtons() {
+        boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
+        
+        ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
+            if (newValue1 && !isSettingsControl && isEditable()) {
+                addConfigButtons();
+            } else {
+                removeConfigButtons();
+            }
+        });
+    }
+
+    /**
+     *
+     */
     public void configureAlbumArt() {
         if (showAlbumArt()) {
             addToPane(getAlbumArt());
@@ -61,6 +89,10 @@ public abstract class MusicButton extends AppableControl {
 
     private static MusicPlayer musicView;
 
+    /**
+     *
+     * @return
+     */
     public static MusicPlayer getMusicView() {
         if (musicView == null) {
             musicView = new MusicPlayer();
@@ -70,6 +102,10 @@ public abstract class MusicButton extends AppableControl {
 
     private AlbumArt albumArt;
 
+    /**
+     *
+     * @return
+     */
     public AlbumArt getAlbumArt() {
         if (albumArt == null) {
             albumArt = new AlbumArt();
@@ -248,6 +284,9 @@ public abstract class MusicButton extends AppableControl {
         return showProgress;
     }
 
+    /**
+     *
+     */
     public static final MusicControl DEFAULT_MUSIC_CONTROL = MusicControl.NEXT;
     private ObjectProperty<MusicControl> musicControl;
 
@@ -274,7 +313,12 @@ public abstract class MusicButton extends AppableControl {
      */
     public ObjectProperty<MusicControl> musicControlProperty() {
         if (musicControl == null) {
-            musicControl = new SimpleObjectProperty(MusicControl.valueOf(getPreferences().get("musicControl", control.toString())));
+
+            String controlType = MusicControl.NEXT.toString();
+            if (control != null) {
+                controlType = control.toString();
+            }
+            musicControl = new SimpleObjectProperty(MusicControl.valueOf(getPreferences().get("musicControl", controlType)));
         }
         return musicControl;
     }

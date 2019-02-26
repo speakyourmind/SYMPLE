@@ -162,7 +162,7 @@ public final class Processor implements Runnable {
         request.setClick(clicked);
         request.setPosition(rawPoint);
         request.setKeyPressed("");
-        LOGGER.info("1 - from JSON data package:" + request.getPosition());
+        LOGGER.debug("From JSON data package:" + request.getPosition());
         getEmulationManager().request(request);
 
     }

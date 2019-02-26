@@ -18,7 +18,6 @@
 package org.symfound.tools.iteration;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javafx.beans.property.ObjectProperty;
@@ -98,6 +97,9 @@ public class ModeIterator<T> {
         }
     }
 
+    /**
+     *
+     */
     public void resetIndex() {
         index = 0;
     }
@@ -153,6 +155,10 @@ public class ModeIterator<T> {
         getTypes().remove(mode);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setTypes(List<T> value){
         types = new ArrayList<>(value);
         resetIndex();

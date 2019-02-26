@@ -38,6 +38,10 @@ public final class LockButton extends AppableControl {
 
     private ButtonGrid lockGrid;
 
+    /**
+     *
+     * @param lockGrid
+     */
     public LockButton(ButtonGrid lockGrid) {
         super("type-button", KEY, DEFAULT_TITLE, "default");
         this.lockGrid = lockGrid;

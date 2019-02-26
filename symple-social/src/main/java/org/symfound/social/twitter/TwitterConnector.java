@@ -34,6 +34,11 @@ public class TwitterConnector extends SocialMediaConnector {
     private Twitter twitter;
 
     // SECURITY TO DO: Secure Oath and secret
+
+    /**
+     *
+     * @return
+     */
     public Twitter getTwitterFactory() {
         if (twitter == null) {
             twitter = new TwitterFactory(new ConfigurationBuilder()
@@ -47,14 +52,19 @@ public class TwitterConnector extends SocialMediaConnector {
 
     AccessToken accessToken = null;
 
+    /**
+     *
+     * @throws IOException
+     * @throws TwitterException
+     * @throws URISyntaxException
+     */
     public void connect() throws IOException, TwitterException, URISyntaxException {
         if (getToken().isEmpty() || getTokenSecret().isEmpty()) {
             // The factory instance is re-useable and thread safe.
 
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             //      while (null == accessToken) {
-            System.out.println("Open the following URL and grant access to your account:");
-            System.out.println(getRequestToken().getAuthorizationURL());
+            //      while (null == accessToken) {
             Desktop.getDesktop().browse(new URL(getRequestToken().getAuthorizationURL()).toURI());
 
             //  System.out.print("Enter the PIN(if aviailable) or just hit enter.[PIN]:");
@@ -69,9 +79,7 @@ public class TwitterConnector extends SocialMediaConnector {
                     }
                 } catch (TwitterException te) {
                     if (401 == te.getStatusCode()) {
-                        System.out.println("Unable to get the access token.");
                     } else {
-                        te.printStackTrace();
                     }
                 }
             });
@@ -85,6 +93,10 @@ public class TwitterConnector extends SocialMediaConnector {
     }
     private RequestToken requestToken;
 
+    /**
+     *
+     * @return
+     */
     public RequestToken getRequestToken() {
         if (requestToken == null) {
             try {
@@ -199,6 +211,10 @@ public class TwitterConnector extends SocialMediaConnector {
 
     Preferences preferences;
 
+    /**
+     *
+     * @return
+     */
     public Preferences getPreferences() {
         if (preferences == null) {
             String name = "reader";

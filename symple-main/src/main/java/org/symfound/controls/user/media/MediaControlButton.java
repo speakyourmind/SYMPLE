@@ -5,19 +5,29 @@
  */
 package org.symfound.controls.user.media;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.Interpolator;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
-import javafx.util.Duration;
 import org.symfound.builder.user.characteristic.Interaction;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.user.AnimatedButton;
+import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.tools.timing.DelayedEvent;
 
+/**
+ *
+ * @author Administrator
+ * @param <T>
+ */
 public abstract class MediaControlButton<T extends MediaControl> extends AppableControl {
 
+    /**
+     *
+     * @param CSSClass
+     * @param key
+     * @param title
+     * @param index
+     */
     public MediaControlButton(String CSSClass, String key, String title, String index) {
         super(CSSClass, key, title, index);
         initialize();
@@ -27,6 +37,9 @@ public abstract class MediaControlButton<T extends MediaControl> extends Appable
         configureAutoStyling();
     }
 
+    /**
+     *
+     */
     public void configureAutoStyling() {
         style();
         overrideStyleProperty().addListener((obversable, oldValue, newValue) -> {
@@ -39,6 +52,9 @@ public abstract class MediaControlButton<T extends MediaControl> extends Appable
        
     }
 
+    /**
+     *
+     */
     public void style() {
         if (!getOverrideStyle().isEmpty()) {
             getPrimaryControl().setStyle(getOverrideStyle());
@@ -46,6 +62,25 @@ public abstract class MediaControlButton<T extends MediaControl> extends Appable
             getPrimaryControl().setStyle("");
             setCSS("transparent-" + getControl().toString().toLowerCase(), getPrimaryControl());
         }
+    }
+    
+    
+    //TO DO: Bug- See AppableControl. 
+
+    /**
+     *
+     */
+     @Override
+    public void configButtons() {
+        boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
+        
+        ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
+            if (newValue1 && !isSettingsControl && isEditable()) {
+                addConfigButtons();
+            } else {
+                removeConfigButtons();
+            }
+        });
     }
 
     @Override
@@ -118,6 +153,10 @@ public abstract class MediaControlButton<T extends MediaControl> extends Appable
         return control;
     }
 
+    /**
+     *
+     * @return
+     */
     public abstract T getDefaultControlValue();
 
 }

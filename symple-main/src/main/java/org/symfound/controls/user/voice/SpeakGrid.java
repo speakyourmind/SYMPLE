@@ -19,6 +19,10 @@ public class SpeakGrid extends SubGrid {
      */
     public static final String KEY = "Speak Grid";
 
+    /**
+     *
+     * @param index
+     */
     public SpeakGrid(String index) {
         super(KEY,index);
     }

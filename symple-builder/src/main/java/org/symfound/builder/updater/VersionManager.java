@@ -1,6 +1,5 @@
 package org.symfound.builder.updater;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.util.concurrent.ExecutionException;
 import javafx.beans.property.BooleanProperty;

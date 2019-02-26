@@ -68,7 +68,7 @@ public class PathWriter {
         if (!file.isDirectory()) {
             if (!file.exists()) {
                 file.createNewFile();
-            };
+            }
         }
     }
 

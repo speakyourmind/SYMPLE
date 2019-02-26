@@ -29,6 +29,10 @@ import org.symfound.main.settings.SetResetable;
 public abstract class EditDialog extends OKCancelDialog implements SetResetable {
 
     private static final String NAME = EditDialog.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
     /**
@@ -67,6 +71,11 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         addToStackPane(baseGrid);
     }
 
+    /**
+     *
+     * @param settings
+     * @return
+     */
     public static BuildableGrid buildSettingsGrid(List<SettingsRow> settings) {
         Integer numRows = settings.size();
         BuildableGrid grid = new BuildableGrid();
@@ -86,6 +95,12 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         return grid;
     }
 
+    /**
+     *
+     * @param title
+     * @param caption
+     * @return
+     */
     public static SettingsRow createSettingRow(String title, String caption) {
         SettingsRow settingsRow = new SettingsRow();
         settingsRow.setMaxHeight(220.0);
@@ -122,6 +137,13 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
        // getParentUI().setEditMode(Boolean.FALSE);
     }
 
+    /**
+     *
+     * @param hpos
+     * @param maxWidth
+     * @param maxHeight
+     * @return
+     */
     public AnimatedPane buildActionPane(HPos hpos, Double maxWidth, Double maxHeight) {
         AnimatedPane pane = addActionPane(hpos, maxWidth, maxHeight);
         addOKButton(pane);
@@ -130,6 +152,13 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         return pane;
     }
 
+    /**
+     *
+     * @param hpos
+     * @param maxWidth
+     * @param maxHeight
+     * @return
+     */
     public AnimatedPane addActionPane(HPos hpos, Double maxWidth, Double maxHeight) {
         AnimatedPane pane = new AnimatedPane();
         pane.setStyle("-fx-background-color:-fx-dark;");
@@ -156,6 +185,10 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         pane.getChildren().add(okButton);
     }
 
+    /**
+     *
+     * @param pane
+     */
     public void addCancelButton(AnimatedPane pane) {
         cancelButton = new AnimatedButton();
         cancelButton.getStyleClass().add("toolbar-exit");

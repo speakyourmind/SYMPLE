@@ -7,20 +7,20 @@ package org.symfound.controls.user.media.music;
 
 import java.io.File;
 import java.util.Arrays;
-import javafx.geometry.HPos;
-import javafx.geometry.VPos;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
 import java.util.List;
 import java.util.prefs.Preferences;
 import javafx.collections.FXCollections;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tab;
-import org.symfound.audio.music.song.Song;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.MediaPlayer.Status;
 import javafx.stage.DirectoryChooser;
 import org.apache.log4j.Logger;
+import org.symfound.audio.music.song.Song;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
@@ -39,13 +39,28 @@ public class MusicControlButton extends MusicButton {
     private static final String NAME = MusicControlButton.class.getName();
     private static final Logger LOGGER = Logger.getLogger(NAME);
 
+    /**
+     *
+     */
     public static final String KEY = "Music Control";
 
+    /**
+     *
+     * @param index
+     */
     public MusicControlButton(String index) {
         super("music-app-button", KEY, index, index, DEFAULT_MUSIC_CONTROL);
         initialize();
     }
 
+    /**
+     *
+     * @param CSSClass
+     * @param key
+     * @param title
+     * @param index
+     * @param control
+     */
     public MusicControlButton(String CSSClass, String key, String title, String index, MusicControl control) {
         super(CSSClass, key, title, index, control);
         initialize();
@@ -87,6 +102,9 @@ public class MusicControlButton extends MusicButton {
         getPrimaryControl().toFront();
     }
 
+    /**
+     *
+     */
     public void configureSongUpdate() {
         if (getMusicView().getPlaylistManager().getCurrentSong() != null) {
             setSongInfo(getMusicView().getPlaylistManager().getCurrentSong());
@@ -95,12 +113,18 @@ public class MusicControlButton extends MusicButton {
         }
     }
 
+    /**
+     *
+     */
     public void shuffleContents() {
         if (toShuffle()) {
             getMusicView().getPlaylistManager().shuffle();
         }
     }
 
+    /**
+     *
+     */
     public void configureMusicView() {
         setContents(getFolderPath());
         getMusicView().getPlaylistManager().setPlaylist(getContents());
@@ -152,6 +176,9 @@ public class MusicControlButton extends MusicButton {
     private OnOffButton showAlbumArtButton;
     private OnOffButton shuffleButton;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         setFolderPath(folderName.getText());
@@ -162,6 +189,9 @@ public class MusicControlButton extends MusicButton {
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         folderName.setText(getFolderPath());
@@ -172,6 +202,10 @@ public class MusicControlButton extends MusicButton {
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
 
@@ -253,6 +287,10 @@ public class MusicControlButton extends MusicButton {
 
     private ProgressBar progressBar;
 
+    /**
+     *
+     * @return
+     */
     public ProgressBar getProgressBar() {
         if (progressBar == null) {
             progressBar = new ProgressBar();
@@ -278,6 +316,10 @@ public class MusicControlButton extends MusicButton {
         return progressBar;
     }
 
+    /**
+     *
+     * @param song
+     */
     public void setSongInfo(Song song) {
         if (song != null) {
             final String title = song.getTitle();

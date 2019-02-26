@@ -152,7 +152,7 @@ public abstract class ConfirmableControl extends RunnableControl {
      */
     public BooleanProperty confirmableProperty() {
         if (confirmable == null) {
-            confirmable = new SimpleBooleanProperty(true);
+            confirmable = new SimpleBooleanProperty(Boolean.TRUE);
         }
         return confirmable;
     }

@@ -5,12 +5,20 @@
  */
 package org.symfound.main;
 
+/**
+ *
+ * @author Administrator
+ */
 public class PropertyCodeGenerator {
 
     static String NAME = "DateFormat";
     static String DATA_TYPE = "String";
     static String PROPERTY_TYPE = "String";
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         String string = " private static final " + DATA_TYPE + " " + NAME.toUpperCase() + "_KEY = \"" + NAME.toLowerCase() + "\";\n"
@@ -46,6 +54,5 @@ public class PropertyCodeGenerator {
                 + "        // }\n"
                 + "        return " + NAME.toLowerCase() + ";\n"
                 + "    }";
-        System.out.println(string);
     }
 }

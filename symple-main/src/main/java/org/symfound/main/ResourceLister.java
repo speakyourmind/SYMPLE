@@ -155,7 +155,7 @@ public class ResourceLister {
      */
     public List<String> getFilePaths() {
         Pattern pattern = Pattern.compile(".*");
-        final List<String> resourceList = (List<String>) getResources(pattern);
+        final List<String> resourceList = getResources(pattern);
         return resourceList;
     }
 }

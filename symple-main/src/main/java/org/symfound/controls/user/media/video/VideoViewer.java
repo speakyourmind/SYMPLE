@@ -30,9 +30,21 @@ import org.symfound.main.Main;
 public class VideoViewer extends MediaViewer {
 
     private static final String NAME = VideoViewer.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Video Viewer";
 
+    /**
+     *
+     * @param index
+     */
     public VideoViewer(String index) {
         super("transparent", KEY, "", index);
         initialize();
@@ -42,6 +54,9 @@ public class VideoViewer extends MediaViewer {
         configure();
     }
 
+    /**
+     *
+     */
     public void configure() {
 
         getVideoManager().getIterator().modeProperty().addListener((observable, oldValue, newValue) -> {
@@ -64,6 +79,9 @@ public class VideoViewer extends MediaViewer {
         addToPane(getBorderPane());
     }
 
+    /**
+     *
+     */
     @Override
     public void addConfigButtons() {
         /*addToPane(getKeyRemoveButton(), 20.0, null, null, 0.0);
@@ -81,6 +99,9 @@ public class VideoViewer extends MediaViewer {
         return preferences;
     }
 
+    /**
+     *
+     */
     @Override
     public void play() {
         Platform.runLater(() -> {
@@ -100,7 +121,6 @@ public class VideoViewer extends MediaViewer {
 
             mediaPlayer.volumeProperty().bindBidirectional(Main.getSession().getUser().getInteraction().volumeProperty());
 
-            //  System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             Double startTime = 0.0;
             /*     if (randomizeStartTime()) {
                 Double mediaDuration = media.durationProperty().getValue().toSeconds();
@@ -129,7 +149,6 @@ public class VideoViewer extends MediaViewer {
 //    FullSession.log(message); // TODO: To be removed.
             });
 
-            System.out.println("setting");
             getMediaView().setMediaPlayer(mediaPlayer);
             LOGGER.info("Playing " + media.getSource());
             addHold();
@@ -137,6 +156,9 @@ public class VideoViewer extends MediaViewer {
         });
     }
 
+    /**
+     *
+     */
     @Override
     public void end() {
         setStatus(ScreenStatus.ENDING);
@@ -148,6 +170,9 @@ public class VideoViewer extends MediaViewer {
         setStatus(ScreenStatus.CLOSED);
     }
 
+    /**
+     *
+     */
     @Override
     public void reload() {
         setStatus(ScreenStatus.READY);
@@ -160,6 +185,10 @@ public class VideoViewer extends MediaViewer {
 
     private BorderPane borderPane;
 
+    /**
+     *
+     * @return
+     */
     public BorderPane getBorderPane() {
         if (borderPane == null) {
             borderPane = new BorderPane();
@@ -171,6 +200,10 @@ public class VideoViewer extends MediaViewer {
 
     private MediaView mediaView;
 
+    /**
+     *
+     * @return
+     */
     public MediaView getMediaView() {
         if (mediaView == null) {
             mediaView = new MediaView();
@@ -183,6 +216,10 @@ public class VideoViewer extends MediaViewer {
 
     private VideoManager manager;
 
+    /**
+     *
+     * @return
+     */
     public VideoManager getVideoManager() {
         if (manager == null) {
             manager = new VideoManager();

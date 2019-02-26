@@ -24,9 +24,23 @@ import twitter4j.URLEntity;
  */
 public class TwitterReader extends SocialMediaReader {
 
+    /**
+     *
+     */
     public static final String NAME = TwitterReader.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
+    /**
+     *
+     * @return
+     * @throws IOException
+     * @throws TwitterException
+     * @throws URISyntaxException
+     */
     public List<Tweet> loadHomeTimeline() throws IOException, TwitterException, URISyntaxException {
         List<Tweet> tweets = new ArrayList<>();
        getConnector().connect();
@@ -37,7 +51,6 @@ public class TwitterReader extends SocialMediaReader {
 
             Tweet tweet = new Tweet();
             tweet.setName(rawTweet.getUser().getName());
-            System.out.println(rawTweet.getText());
             tweet.setText(rawTweet.getText());
             tweet.setProfileImageURL(rawTweet.getUser().getOriginalProfileImageURL());
 
@@ -76,6 +89,10 @@ public class TwitterReader extends SocialMediaReader {
 
     private TwitterConnector connector;
 
+    /**
+     *
+     * @return
+     */
     public TwitterConnector getConnector() {
         if (connector == null) {
             connector = new TwitterConnector();

@@ -129,18 +129,20 @@ public class SearchResult {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (!(obj instanceof SearchResult))
-      return false;
+    if (this == obj) {
+        return true;
+      }
+    if (obj == null) {
+        return false;
+      }
+    if (!(obj instanceof SearchResult)) {
+        return false;
+      }
     SearchResult other = (SearchResult) obj;
-    if (!Arrays.equals(phrases, other.phrases))
-      return false;
-    if (status != other.status)
-      return false;
-    return true;
+    if (!Arrays.equals(phrases, other.phrases)) {
+        return false;
+      }
+    return status == other.status;
   }
 
   /**

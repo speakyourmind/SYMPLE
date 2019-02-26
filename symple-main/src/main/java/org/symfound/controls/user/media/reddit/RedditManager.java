@@ -26,8 +26,15 @@ import org.symfound.social.reddit.RedditReader;
 public class RedditManager extends MediaManager<String> {
 
     private static final String NAME = RedditManager.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
+    /**
+     *
+     */
     public RedditManager() {
         super(Arrays.asList(""));
     }
@@ -75,14 +82,26 @@ public class RedditManager extends MediaManager<String> {
 
     private ObjectProperty<Map<String, String>> links;
 
+    /**
+     *
+     * @param value
+     */
     public void setLinks(Map<String, String> value) {
         linksProperty().setValue(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public Map<String, String> getLinks() {
         return linksProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public ObjectProperty<Map<String, String>> linksProperty() {
         if (links == null) {
             links = new SimpleObjectProperty<>();

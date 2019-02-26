@@ -9,8 +9,8 @@ import javafx.event.ActionEvent;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Navigation;
-import org.symfound.controls.RunnableControl;
 import org.symfound.builder.user.selection.SelectionMethod;
+import org.symfound.controls.RunnableControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.selection.Selector;
@@ -31,6 +31,7 @@ public class Stepper extends Selector {
     /**
      *
      * @param grid
+     * @param user
      */
     public Stepper(ConfigurableGrid grid, User user) {
         super(grid, SelectionMethod.STEP, user);
@@ -90,6 +91,10 @@ public class Stepper extends Selector {
 
     }
 
+    /**
+     *
+     * @param currentGrid
+     */
     @Override
     public void invokeSubGrid(SubGrid currentGrid) {
         Stepper stepper = currentGrid.getConfigurableGrid().getStepper();

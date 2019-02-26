@@ -15,5 +15,8 @@ import javafx.scene.text.Font;
  */
 public class FontTracker {
     
+    /**
+     *
+     */
     public ObjectProperty<Font> fontTracking = new SimpleObjectProperty<>();
 }

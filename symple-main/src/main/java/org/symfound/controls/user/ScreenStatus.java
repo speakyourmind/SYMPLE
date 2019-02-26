@@ -10,11 +10,39 @@ package org.symfound.controls.user;
  * @author Javed Gangjee <jgangjee@gmail.com>
  */
 public enum ScreenStatus {
+
+    /**
+     *
+     */
     CLOSED,
+
+    /**
+     *
+     */
     READY,
+
+    /**
+     *
+     */
     REQUESTED,
+
+    /**
+     *
+     */
     LOADING,
+
+    /**
+     *
+     */
     PLAYING,
+
+    /**
+     *
+     */
     STOPPED,
+
+    /**
+     *
+     */
     ENDING
 }

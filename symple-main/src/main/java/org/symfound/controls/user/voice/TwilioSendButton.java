@@ -24,14 +24,28 @@ public class TwilioSendButton extends TextCommunicatorButton {
 
     private static final String NAME = TwilioSendButton.class.getName();
 
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Twilio Send";
 
+    /**
+     *
+     */
     public TwilioSendButton() {
         super("speak-field-button", KEY, "", "default");
         initialize();
     }
 
+    /**
+     *
+     * @param index
+     */
     public TwilioSendButton(String index) {
         super("speak-field-button", KEY, "", index);
         initialize();
@@ -42,6 +56,9 @@ public class TwilioSendButton extends TextCommunicatorButton {
         configureFont();
     }
 
+    /**
+     *
+     */
     @Override
     public void bindToText() {
         setCommText(getUser().getTyping().getActiveText());
@@ -54,9 +71,19 @@ public class TwilioSendButton extends TextCommunicatorButton {
         getTwilioPoster().textMessage(getToNumber(), getFromNumber(), getCommText());
     }
 
+    /**
+     *
+     */
     public TextField fromNumberField;
+
+    /**
+     *
+     */
     public TextField toNumberField;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         setFromNumber(fromNumberField.getText());
@@ -64,6 +91,9 @@ public class TwilioSendButton extends TextCommunicatorButton {
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         fromNumberField.setText(getFromNumber());
@@ -71,6 +101,10 @@ public class TwilioSendButton extends TextCommunicatorButton {
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
 
@@ -99,6 +133,10 @@ public class TwilioSendButton extends TextCommunicatorButton {
     }
     private TwilioPoster poster;
 
+    /**
+     *
+     * @return
+     */
     public TwilioPoster getTwilioPoster() {
         if (poster == null) {
             poster = new TwilioPoster();

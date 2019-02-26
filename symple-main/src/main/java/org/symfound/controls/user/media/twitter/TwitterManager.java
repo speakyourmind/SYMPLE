@@ -23,8 +23,15 @@ import twitter4j.TwitterException;
 public class TwitterManager extends MediaManager<Tweet> {
 
     private static final String NAME = TwitterManager.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
+    /**
+     *
+     */
     public TwitterManager() {
         super(Arrays.asList(new Tweet()));
     }
@@ -43,6 +50,10 @@ public class TwitterManager extends MediaManager<Tweet> {
 
     private TwitterReader reader;
 
+    /**
+     *
+     * @return
+     */
     public TwitterReader getTwitterReader() {
         if (reader == null) {
             reader = new TwitterReader();

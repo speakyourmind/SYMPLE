@@ -23,8 +23,8 @@ import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
-import org.symfound.controls.user.media.MediaControlButton;
 import org.symfound.controls.user.ScreenStatus;
+import org.symfound.controls.user.media.MediaControlButton;
 import static org.symfound.controls.user.media.youtube.YouTubeControl.NEXT;
 import static org.symfound.controls.user.media.youtube.YouTubeControl.PREVIOUS;
 import static org.symfound.controls.user.media.youtube.YouTubeControl.STOP;
@@ -35,10 +35,18 @@ import static org.symfound.controls.user.media.youtube.YouTubeControl.STOP;
  */
 public class YouTubeControlButton extends MediaControlButton<YouTubeControl> {
 
+    /**
+     *
+     */
     public static final String KEY = "YouTube Control";
 
     private YouTubeViewer viewer;
 
+    /**
+     *
+     * @param index
+     * @param viewer
+     */
     public YouTubeControlButton(String index, YouTubeViewer viewer) {
         super("button", KEY, "YouTube Control", index);
         this.viewer = viewer;
@@ -77,8 +85,15 @@ public class YouTubeControlButton extends MediaControlButton<YouTubeControl> {
 
     TextField playlistIDField;
     private ChoiceBox<YouTubeControl> controlTypeBox;
+
+    /**
+     *
+     */
     public OnOffButton shuffleButton;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         viewer.setPlaylistId(playlistIDField.getText());
@@ -87,6 +102,9 @@ public class YouTubeControlButton extends MediaControlButton<YouTubeControl> {
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         playlistIDField.setText(viewer.getPlaylistId());
@@ -95,6 +113,10 @@ public class YouTubeControlButton extends MediaControlButton<YouTubeControl> {
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         SettingsRow settingsRowA = createSettingRow("PlaylistID", "Use the tail end of playlist URL");
@@ -135,6 +157,10 @@ public class YouTubeControlButton extends MediaControlButton<YouTubeControl> {
         return tabs;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
@@ -184,6 +210,10 @@ public class YouTubeControlButton extends MediaControlButton<YouTubeControl> {
 
     private static final YouTubeControl DEFAULT_YOUTUBE_CONTROL = YouTubeControl.NEXT;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public YouTubeControl getDefaultControlValue() {
         return YouTubeControl.valueOf(getPreferences().get("control", DEFAULT_YOUTUBE_CONTROL.toString()));

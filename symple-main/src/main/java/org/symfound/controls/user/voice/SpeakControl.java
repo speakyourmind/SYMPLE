@@ -10,7 +10,19 @@ package org.symfound.controls.user.voice;
  * @author Javed Gangjee <jgangjee@gmail.com>
  */
 public enum SpeakControl {
+
+    /**
+     *
+     */
     SPEAK,
+
+    /**
+     *
+     */
     STOP,
+
+    /**
+     *
+     */
     PAUSE
 }

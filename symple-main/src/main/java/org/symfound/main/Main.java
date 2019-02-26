@@ -5,7 +5,6 @@
  */
 package org.symfound.main;
 
-import java.util.prefs.Preferences;
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -28,7 +27,7 @@ public class Main extends Application {
     /**
      *
      */
-    public static final String VERSION = "v2.2.20";
+    public static final String VERSION = "v2.2.23";
 
     @Override
     public void start(Stage stage) throws Exception {

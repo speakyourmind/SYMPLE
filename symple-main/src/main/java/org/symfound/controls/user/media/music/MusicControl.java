@@ -7,10 +7,34 @@ package org.symfound.controls.user.media.music;
 
 import org.symfound.controls.user.media.MediaControl;
 
+/**
+ *
+ * @author Administrator
+ */
 public enum MusicControl implements MediaControl{
+
+    /**
+     *
+     */
     NEXT,
+
+    /**
+     *
+     */
     PREVIOUS,
+
+    /**
+     *
+     */
     TOGGLE,
+
+    /**
+     *
+     */
     STOP,
+
+    /**
+     *
+     */
     INFO
 }

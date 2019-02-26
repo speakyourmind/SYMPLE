@@ -19,8 +19,8 @@ import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
-import org.symfound.controls.user.media.MediaControlButton;
 import org.symfound.controls.user.ScreenStatus;
+import org.symfound.controls.user.media.MediaControlButton;
 
 /**
  *
@@ -29,11 +29,24 @@ import org.symfound.controls.user.ScreenStatus;
 public class CalendarControlButton extends MediaControlButton<CalendarControl> {
 
     private static final String NAME = CalendarControlButton.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Calendar Control";
 
     private CalendarViewer viewer;
 
+    /**
+     *
+     * @param index
+     * @param viewer
+     */
     public CalendarControlButton(String index, CalendarViewer viewer) {
         super("button", KEY, KEY, index);
         this.viewer = viewer;
@@ -68,14 +81,24 @@ public class CalendarControlButton extends MediaControlButton<CalendarControl> {
     }
 
     private ChoiceBox<CalendarControl> controlTypeBox;
+
+    /**
+     *
+     */
     public OnOffButton shuffleButton;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         setControl(controlTypeBox.getValue());
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
 
@@ -83,6 +106,10 @@ public class CalendarControlButton extends MediaControlButton<CalendarControl> {
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
 
@@ -104,6 +131,10 @@ public class CalendarControlButton extends MediaControlButton<CalendarControl> {
         return tabs;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
@@ -153,6 +184,10 @@ public class CalendarControlButton extends MediaControlButton<CalendarControl> {
 
     private static final CalendarControl DEFAULT_REDDIT_CONTROL = CalendarControl.NEXT;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public CalendarControl getDefaultControlValue() {
         return CalendarControl.valueOf(getPreferences().get("control", DEFAULT_REDDIT_CONTROL.toString()));

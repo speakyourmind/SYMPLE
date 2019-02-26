@@ -11,7 +11,6 @@ import org.symfound.controls.ScreenControl.ControlType;
 import org.symfound.controls.SystemControl;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.main.builder.UI;
-import org.symfound.main.settings.SettingsController;
 
 /**
  *
@@ -51,6 +50,7 @@ public class EditButton extends SystemControl {
         load(primary);
         setCSS(cssClass, primary);
         setSelection(primary);
+        
         initTitleText = "Editing the screen";
         initCaptionText = "Are you sure you want to change this screen?";
         getSession().builtProperty().addListener((observableList1, oldValue1, newValue1) -> {
@@ -75,7 +75,7 @@ public class EditButton extends SystemControl {
         UI ui = (UI) getScene().getWindow();
         // ui.setEditMode(Boolean.TRUE);
         ui.toggleEditMode();
-        LOGGER.info("Edit mode for UI is now" + ui.inEditMode());
+        LOGGER.info("Edit mode for UI is now " + ui.inEditMode());
         
     }
 

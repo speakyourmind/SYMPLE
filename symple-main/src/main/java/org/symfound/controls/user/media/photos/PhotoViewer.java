@@ -28,9 +28,20 @@ public class PhotoViewer extends MediaViewer {
 
     private static final String NAME = PhotoViewer.class.getName();
 
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Photo Viewer";
 
+    /**
+     *
+     * @param index
+     */
     public PhotoViewer(String index) {
         super("transparent", KEY, "", index);
         initialize();
@@ -40,6 +51,9 @@ public class PhotoViewer extends MediaViewer {
         configure();
     }
 
+    /**
+     *
+     */
     public void configure() {
 
         getPhotoManager().getIterator().modeProperty().addListener((observable, oldValue, newValue) -> {
@@ -47,17 +61,18 @@ public class PhotoViewer extends MediaViewer {
         });
 
         if (getIndex().contains("next")) {
-            System.out.println("Index has changed to " + getIndex());
             reload();
         }
         indexProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1.contains("next")) {
-                System.out.println("Index has changed to " + newValue1);
                 reload();
             }
         });
     }
 
+    /**
+     *
+     */
     @Override
     public void reload() {
         setStatus(ScreenStatus.READY);
@@ -68,6 +83,9 @@ public class PhotoViewer extends MediaViewer {
         thread.start();
     }
 
+    /**
+     *
+     */
     @Override
     public void play() {
         String path = getPhotoManager().getIterator().get();
@@ -95,6 +113,9 @@ public class PhotoViewer extends MediaViewer {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void end() {
         setStatus(ScreenStatus.ENDING);
@@ -108,6 +129,9 @@ public class PhotoViewer extends MediaViewer {
         addToPane(getBorderPane());
     }
 
+    /**
+     *
+     */
     @Override
     public void addConfigButtons() {
       /*  addToPane(getKeyRemoveButton(), 20.0, null, null, 0.0);
@@ -118,6 +142,10 @@ public class PhotoViewer extends MediaViewer {
     }
     private PhotoManager manager;
 
+    /**
+     *
+     * @return
+     */
     public PhotoManager getPhotoManager() {
         if (manager == null) {
             manager = new PhotoManager();
@@ -127,6 +155,10 @@ public class PhotoViewer extends MediaViewer {
     }
     private BorderPane borderPane;
 
+    /**
+     *
+     * @return
+     */
     public BorderPane getBorderPane() {
         if (borderPane == null) {
             borderPane = new BorderPane();
@@ -138,6 +170,10 @@ public class PhotoViewer extends MediaViewer {
 
     private ImageView photoView;
 
+    /**
+     *
+     * @return
+     */
     public ImageView getPhotoView() {
         if (photoView == null) {
             photoView = new ImageView();

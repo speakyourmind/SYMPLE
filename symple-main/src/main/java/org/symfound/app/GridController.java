@@ -17,6 +17,9 @@ public abstract class GridController extends CommonController {
 
     private static final String NAME = GridController.class.getName();
 
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
     /**

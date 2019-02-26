@@ -33,6 +33,7 @@ public class AppButton extends AppableControl {
      *
      * @param app
      * @param index
+     * @param title
      * @param screen
      */
     public AppButton(String app, String index, String title, Integer screen) {
@@ -50,6 +51,9 @@ public class AppButton extends AppableControl {
      
     }
 
+    /**
+     *
+     */
     @Override
     public void configureStyle() {
         if (!getOverrideStyle().isEmpty()) {

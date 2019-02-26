@@ -2,10 +2,7 @@ package org.symfound.main;
 
 import java.io.File;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
@@ -58,11 +55,8 @@ public class Test extends Application {
             webengine = webview.getEngine();
             webengine.setJavaScriptEnabled(true);
             File file = new File("d:\\hello.html");
-            System.out.println(file.exists() + " file exitence");
             webengine.load(file.toURI().toURL().toString());
         } catch (Exception ex) {
-            System.err.print("error " + ex.getMessage());
-            ex.printStackTrace();
         }
 
 

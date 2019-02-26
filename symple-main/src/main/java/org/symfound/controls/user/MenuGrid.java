@@ -17,7 +17,6 @@
  */
 package org.symfound.controls.user;
 
-import org.symfound.controls.user.ButtonGrid;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.geometry.Insets;
@@ -72,6 +71,9 @@ public final class MenuGrid extends ButtonGrid {
         });
     }
 
+    /**
+     *
+     */
     public void reload() {
         Double level = getUser().getAbility().getLevel();
         Double updatedSize = (level - 2 <= MIN_SIZE) ? MIN_SIZE : level - 2;

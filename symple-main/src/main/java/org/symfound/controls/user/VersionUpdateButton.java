@@ -11,8 +11,10 @@ import java.util.prefs.Preferences;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.ProgressBar;
+import org.symfound.comm.file.PathWriter;
 import org.symfound.controls.AppableControl;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
+import org.symfound.controls.system.SettingsExporter;
 import org.symfound.controls.system.dialog.OKDialog;
 import org.symfound.controls.system.dialog.ScreenPopup;
 import static org.symfound.main.Main.getVersionManager;
@@ -45,8 +47,19 @@ public class VersionUpdateButton extends AppableControl {
 
     @Override
     public void run() {
-        String destination = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/";
-        getSession().getDeviceManager().exportAllPreferences(destination); // Backup settings on update TO DO: Pick a better folder
+      
+        String backupFolder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Backup";
+        PathWriter backupPathWriter = new PathWriter(backupFolder);
+        backupPathWriter.file.mkdirs();
+        SettingsExporter backupSettingsExporter = new SettingsExporter(backupFolder);
+        LOGGER.info("Backing up settings to folder: " +backupFolder);
+        Thread backupThread = new Thread(backupSettingsExporter);
+        try {
+            backupThread.start();
+            backupThread.join();
+        } catch (InterruptedException ex) {
+            LOGGER.warn("Unable to backup settings file to " + backupFolder, ex);
+        }
 
         getVersionManager().update();
 
@@ -63,6 +76,10 @@ public class VersionUpdateButton extends AppableControl {
 
     ScreenPopup updaterPopup;
 
+    /**
+     *
+     * @return
+     */
     public ScreenPopup<OKDialog> getUpdaterPopup() {
 
         if (updaterPopup == null) {
@@ -72,6 +89,10 @@ public class VersionUpdateButton extends AppableControl {
     }
     ProgressBar progressBar;
 
+    /**
+     *
+     * @return
+     */
     public OKDialog getUpdaterDialog() {
         if (updaterDialog == null) {
             updaterDialog = new OKDialog("Updating...", "SYMPLE will close when the download is complete", "ABORT") {
@@ -90,7 +111,7 @@ public class VersionUpdateButton extends AppableControl {
                     progressBar.setMaxWidth(Double.POSITIVE_INFINITY);
                     progressBar.setPrefHeight(30.0);
                     progressBar.getStylesheets().add(CSS_PATH);
-                    progressBar.setPadding(new Insets(0.0,20.0,0.0,20.0));
+                    progressBar.setPadding(new Insets(0.0, 20.0, 0.0, 20.0));
                     progressBar.getStyleClass().clear();
                     progressBar.getStyleClass().add("progress-bar-dark");
                     progressBar.progressProperty().bindBidirectional(getVersionManager().msiDownloader.getTracker().progressProperty());

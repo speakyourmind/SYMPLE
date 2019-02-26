@@ -111,7 +111,7 @@ public abstract class CommonGrid extends GridPane implements Usable {
         if (observableList != null) {
             observableList.stream().forEach((node) -> {
                 if (node instanceof Node) {
-                    permList.add((Node) node);
+                    permList.add(node);
                 }
             });
         }

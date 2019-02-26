@@ -2,8 +2,6 @@ package org.symfound.controls.user.voice;
 
 import java.util.prefs.Preferences;
 import org.apache.log4j.Logger;
-import org.symfound.controls.user.ScriptButton;
-import static org.symfound.controls.user.ScriptButton.KEY;
 
 /**
  *
@@ -13,17 +11,34 @@ public class SpeakUserButton extends SpeakButton {
 
     private static final String NAME = SpeakUserButton.class.getName();
 
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Speak Main";
 
+    /**
+     *
+     */
     public SpeakUserButton() {
         super("speak-field-button", KEY, "", "default");
     }
 
+    /**
+     *
+     * @param index
+     */
     public SpeakUserButton(String index) {
         super("speak-field-button", KEY, "", index);
     }
 
+    /**
+     *
+     */
     @Override
     public void bindToText() {
         commTextProperty().bindBidirectional(getUser().getTyping().activeTextProperty());

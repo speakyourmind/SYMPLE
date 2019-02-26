@@ -75,20 +75,23 @@ public class SearchOptions {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (!(obj instanceof SearchOptions))
-      return false;
+    if (this == obj) {
+        return true;
+      }
+    if (obj == null) {
+        return false;
+      }
+    if (!(obj instanceof SearchOptions)) {
+        return false;
+      }
     SearchOptions other = (SearchOptions) obj;
-    if (maxPhraseLength != other.maxPhraseLength)
-      return false;
-    if (maxResults != other.maxResults)
-      return false;
-    if (minPhraseLength != other.minPhraseLength)
-      return false;
-    return true;
+    if (maxPhraseLength != other.maxPhraseLength) {
+        return false;
+      }
+    if (maxResults != other.maxResults) {
+        return false;
+      }
+    return minPhraseLength == other.minPhraseLength;
   }
 
   /**

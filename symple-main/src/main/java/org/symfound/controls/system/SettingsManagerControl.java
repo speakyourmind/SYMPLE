@@ -5,6 +5,8 @@
  */
 package org.symfound.controls.system;
 
+import java.io.File;
+import org.apache.log4j.Logger;
 import org.symfound.controls.ConfirmableControl;
 
 /**
@@ -13,11 +15,24 @@ import org.symfound.controls.ConfirmableControl;
  */
 public abstract class SettingsManagerControl extends ConfirmableControl {
 
+    private static final String NAME = SettingsManagerControl.class.getName();
+    private static final Logger LOGGER = Logger.getLogger(NAME);
     /**
      *
      */
     public SettingsManagerControl() {
         super("settings-button");
+    }
+    
+    
+    public void deleteMasterFile() {
+        String masterFile = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Master.xml";
+        File file = new File(masterFile);
+        if (file.delete()) {
+            LOGGER.info("Master file " + masterFile + " deleted successfully");
+        } else {
+            LOGGER.fatal("Failed to delete master file " + masterFile);
+        }
     }
 
 }

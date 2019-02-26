@@ -14,6 +14,9 @@ import org.symfound.tools.animation.NodeAnimator;
  */
 public class VolumeBar extends VolumeControl {
 
+    /**
+     *
+     */
     public static final String KEY ="Volume Progress";
     /**
      *

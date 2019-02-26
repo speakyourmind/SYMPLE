@@ -11,8 +11,8 @@ import javafx.event.ActionEvent;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Navigation;
-import org.symfound.controls.RunnableControl;
 import org.symfound.builder.user.selection.SelectionMethod;
+import org.symfound.controls.RunnableControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.selection.Selector;
@@ -33,6 +33,7 @@ public class Scanner extends Selector {
     /**
      *
      * @param grid
+     * @param user
      */
     public Scanner(ConfigurableGrid grid, User user) {
         super(grid, SelectionMethod.SCAN, user);
@@ -52,6 +53,9 @@ public class Scanner extends Selector {
         getLoopedEvent().play();
     }
 
+    /**
+     *
+     */
     public void loopEvent() {
         getScourer().clearHighlight();
         getScourer().resetPosition();
@@ -71,6 +75,10 @@ public class Scanner extends Selector {
         setInProcess(true);
     }
 
+    /**
+     *
+     * @param currentGrid
+     */
     @Override
     public void invokeSubGrid(SubGrid currentGrid) {
         Scanner scanner = currentGrid.getConfigurableGrid().getScanner();
@@ -83,6 +91,10 @@ public class Scanner extends Selector {
             }
         });
     }
+
+    /**
+     *
+     */
     @Override
     public void onSelected(){
         getScourer().resetPosition();

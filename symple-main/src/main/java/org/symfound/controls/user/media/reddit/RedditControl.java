@@ -12,6 +12,14 @@ import org.symfound.controls.user.media.MediaControl;
  * @author Javed Gangjee <jgangjee@gmail.com>
  */
 public enum RedditControl implements MediaControl{
+
+    /**
+     *
+     */
     NEXT,
+
+    /**
+     *
+     */
     PREVIOUS
 }

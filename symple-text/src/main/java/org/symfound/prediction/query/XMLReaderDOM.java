@@ -43,7 +43,6 @@ public class XMLReaderDOM {
             dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
-            System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
             NodeList nodeList = doc.getElementsByTagName("Scenarios");
             //now XML is loaded as Document in memory, lets convert it to Object List
             List<QueryScenario> empList = new ArrayList<>();
@@ -75,7 +74,7 @@ public class XMLReaderDOM {
 
     private static String getTagValue(String tag, Element element) {
         NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
-        Node node = (Node) nodeList.item(0);
+        Node node = nodeList.item(0);
         return node.getNodeValue();
     }
 

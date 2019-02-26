@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import org.apache.log4j.Logger;
 import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
 import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.SystemControl;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
@@ -32,7 +33,6 @@ import org.symfound.controls.user.FillableGrid.FillMethod;
 import org.symfound.main.Main;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
-import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *
@@ -40,8 +40,19 @@ import org.symfound.builder.user.selection.SelectionMethod;
  */
 public class EditGridButton extends SystemControl {
     
+    /**
+     *
+     */
     public static final String NAME = EditGridButton.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public ButtonGrid buttonGrid;
 
     /**
@@ -75,10 +86,29 @@ public class EditGridButton extends SystemControl {
         return settingsDialog;
     }
     
+    /**
+     *
+     */
     public List<SettingsRow> orderSettings = new ArrayList<>();
+
+    /**
+     *
+     */
     public List<SettingsRow> fillSettings = new ArrayList<>();
+
+    /**
+     *
+     */
     public List<SettingsRow> lookSettings = new ArrayList<>();
+
+    /**
+     *
+     */
     public List<SettingsRow> selectionSettings = new ArrayList<>();
+
+    /**
+     *
+     */
     public List<SettingsRow> gridSettings = new ArrayList<>();
 
     /**

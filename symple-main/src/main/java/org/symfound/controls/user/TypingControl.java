@@ -30,6 +30,9 @@ public abstract class TypingControl extends AppableControl {
         super(cssClass, key, index, index);
     }
 
+    /**
+     *
+     */
     public ActiveTextArea textArea;
     /**
      *
@@ -74,6 +77,9 @@ public abstract class TypingControl extends AppableControl {
         return textAreaID;
     }
 
+    /**
+     *
+     */
     public PictoArea picto;
     /**
      *

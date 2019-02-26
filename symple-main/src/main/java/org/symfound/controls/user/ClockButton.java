@@ -29,6 +29,10 @@ public class ClockButton extends AppableControl {
     private static final String DEFAULT_TIME_FORMAT = "hh:mm";
     private static final String DEFAULT_DATE_FORMAT = "d MMM yy";
 
+    /**
+     *
+     * @param index
+     */
     public ClockButton(String index) {
         super("time-button", KEY, DEFAULT_TITLE, index);
 
@@ -37,18 +41,28 @@ public class ClockButton extends AppableControl {
 
     private TextField formatField;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         setDateFormat(formatField.getText());
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         formatField.setText(getDateFormat());
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         SettingsRow formatRow = createSettingRow("Date Format", "Ex: hh:mm, d MMM 'yy");
@@ -74,7 +88,6 @@ public class ClockButton extends AppableControl {
         date.play();
 
         dateFormatProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("Changed to " + newValue);
             date.setFormat(newValue);
         });
         configureStyle();

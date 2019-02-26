@@ -14,8 +14,20 @@ public final class MinimizeButton extends AppableControl {
      *
      */
     public static final String NAME = MinimizeButton.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Minimize";
+
+    /**
+     *
+     */
     public static final String DEFAULT_TITLE = "Minimize";
 
     /**

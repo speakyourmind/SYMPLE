@@ -5,12 +5,10 @@
  */
 package org.symfound.controls.system;
 
-import java.util.List;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import org.apache.log4j.Logger;
 import org.symfound.builder.characteristic.PreferencesManager;
-import static org.symfound.main.Main.getSession;
 
 /**
  *
@@ -18,15 +16,30 @@ import static org.symfound.main.Main.getSession;
  */
 public class SettingsImporter extends SettingsTransporter {
 
+    /**
+     *
+     */
     public static final String NAME = SettingsImporter.class.getName();
 
     /**
      *
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String ROOT_NODE = "/org/symfound";
+
+    /**
+     *
+     */
     public String fileSelection;
 
+    /**
+     *
+     * @param fileSelection
+     */
     public SettingsImporter(String fileSelection) {
         this.fileSelection = fileSelection;
 

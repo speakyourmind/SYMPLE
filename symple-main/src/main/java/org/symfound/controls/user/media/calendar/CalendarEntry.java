@@ -22,6 +22,13 @@ public class CalendarEntry extends RunnableControl {
     DateTime endTime;
     String text;
 
+    /**
+     *
+     * @param backgroundColour
+     * @param startTime
+     * @param endTime
+     * @param text
+     */
     public CalendarEntry(String backgroundColour,
             DateTime startTime,
             DateTime endTime,

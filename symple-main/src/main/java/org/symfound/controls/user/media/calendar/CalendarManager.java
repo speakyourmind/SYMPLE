@@ -6,6 +6,9 @@
 package org.symfound.controls.user.media.calendar;
 
 import com.google.api.client.util.DateTime;
+import com.google.api.services.calendar.model.Event;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.Arrays;
 import java.util.List;
 import javafx.beans.property.ListProperty;
@@ -13,9 +16,6 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
 import org.symfound.controls.user.media.MediaManager;
-import com.google.api.services.calendar.model.Event;
-import java.io.IOException;
-import java.security.GeneralSecurityException;
 import org.symfound.social.google.calendar.GoogleCalendar;
 
 /**
@@ -25,8 +25,15 @@ import org.symfound.social.google.calendar.GoogleCalendar;
 public class CalendarManager extends MediaManager<Event> {
 
     private static final String NAME = CalendarManager.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
+    /**
+     *
+     */
     public CalendarManager() {
         super(Arrays.asList(new Event()));
     }

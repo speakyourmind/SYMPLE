@@ -5,14 +5,13 @@
  */
 package org.symfound.controls.system.grid.editor;
 
+import java.util.prefs.Preferences;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import org.apache.log4j.Logger;
-import org.symfound.controls.ConfirmableControl;
-import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
-import org.symfound.controls.user.AnimatedButton;
+import org.symfound.controls.SystemControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
@@ -21,29 +20,50 @@ import org.symfound.tools.iteration.ParallelList;
  *
  * @author Javed
  */
-public class KeyRemoveButton extends ConfirmableControl {
+public class KeyRemoveButton extends SystemControl {
 
+    /**
+     *
+     */
     public static final String NAME = KeyRemoveButton.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
-    private Integer orderIndexInit;
-    private ConfigurableGrid configurableGrid;
+    private final Integer orderIndexInit;
+    private final ConfigurableGrid configurableGrid;
 
+    /**
+     *
+     */
+    public static final String KEY = "Remove Key";
+
+    /**
+     *
+     * @param orderIndex
+     * @param configurableGrid
+     */
     public KeyRemoveButton(Integer orderIndex, ConfigurableGrid configurableGrid) {
-        super("toolbar-exit");
+        super("toolbar-exit", KEY, "", "default");
         this.orderIndexInit = orderIndex;
         this.configurableGrid = configurableGrid;
         initialize();
     }
 
     private void initialize() {
-        setControlType(ControlType.SETTING_CONTROL);
-        primary = new AnimatedButton();
-        primary.setWrapText(true);
-        load(primary);
-        setCSS(cssClass, primary);
-        setSelection(primary);
+
         setOrder(configurableGrid.getOrder());
+
+        setConfirmable(Boolean.TRUE);
+      //  setPane("apMain");
+//        initTitleText = "Removing Button";
+  //      initCaptionText = "Are you sure you want to permanently remove this button?";
+       setTitleText("Removing Button");
+       setCaptionText("Are you sure you want to permanently remove this button?");
+        setOkText("CONFIRM");
+        setCancelText("CANCEL");
 
     }
 
@@ -61,7 +81,6 @@ public class KeyRemoveButton extends ConfirmableControl {
         configurableGrid.setOrder(getOrder());
         configurableGrid.getGridManager().setOrder(getOrder());
 
-    //    ConfigurableGrid.setEditMode(false);
         SettingsController.setUpdated(Boolean.TRUE);
     }
     private ObjectProperty<ParallelList<String, String>> order;
@@ -93,6 +112,9 @@ public class KeyRemoveButton extends ConfirmableControl {
         return order;
     }
 
+    /**
+     *
+     */
     public IntegerProperty orderIndex;
 
     /**
@@ -122,4 +144,13 @@ public class KeyRemoveButton extends ConfirmableControl {
         return orderIndex;
     }
 
+    @Override
+    public Preferences getPreferences() {
+        if (preferences == null) {
+            String name = KEY.toLowerCase() + "/" + getIndex().toLowerCase();
+            Class<? extends KeyRemoveButton> aClass = this.getClass();
+            preferences = Preferences.userNodeForPackage(aClass).node(name);
+        }
+        return preferences;
+    }
 }

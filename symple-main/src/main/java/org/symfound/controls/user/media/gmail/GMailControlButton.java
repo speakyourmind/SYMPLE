@@ -24,8 +24,15 @@ import org.symfound.tools.iteration.ModeIterator;
  */
 public class GMailControlButton extends AppableControl {
 
+    /**
+     *
+     */
     public static final String KEY = "GMail Control";
 
+    /**
+     *
+     * @param index
+     */
     public GMailControlButton(String index) {
         super("button", KEY, "GMail Control", index);
         initialize();
@@ -41,6 +48,9 @@ public class GMailControlButton extends AppableControl {
         });
     }
 
+    /**
+     *
+     */
     public void style() {
         if (!getOverrideStyle().isEmpty()) {
             getPrimaryControl().setStyle(getOverrideStyle());
@@ -75,18 +85,28 @@ public class GMailControlButton extends AppableControl {
 
     private ChoiceBox<GMailControl> controlType;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         setControl(controlType.getValue());
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         controlType.setValue(getControl());
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         SettingsRow settingsRowA = createSettingRow("Control Type", "Next or Previous or Toggle");

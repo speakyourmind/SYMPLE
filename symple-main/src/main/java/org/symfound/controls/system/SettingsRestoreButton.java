@@ -30,11 +30,12 @@ public final class SettingsRestoreButton extends SettingsManagerControl {
     @Override
     public void run() {
         getSession().getDeviceManager().clearAllPreferences();
-
+        deleteMasterFile();
         LOGGER.info("Exiting the program");
         getSession().shutdown(Boolean.FALSE);
 
     }
+
 
     /**
      *

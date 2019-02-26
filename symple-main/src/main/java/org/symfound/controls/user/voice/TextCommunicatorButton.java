@@ -15,11 +15,21 @@ import org.symfound.controls.AppableControl;
  */
 public abstract class TextCommunicatorButton extends AppableControl {
 
+    /**
+     *
+     * @param CSSClass
+     * @param key
+     * @param title
+     * @param index
+     */
     public TextCommunicatorButton(String CSSClass, String key, String title, String index) {
         super(CSSClass, key, title, index);
 
     }
 
+    /**
+     *
+     */
     public abstract void bindToText();
 
     private static final String DEFAULT_COMM_TEXT = "";

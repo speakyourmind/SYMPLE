@@ -11,6 +11,13 @@ package org.symfound.controls;
  */
 public abstract class SystemControl extends AppableControl {
 
+    /**
+     *
+     * @param CSSClass
+     * @param key
+     * @param title
+     * @param index
+     */
     public SystemControl(String CSSClass, String key, String title, String index) {
         super(CSSClass, key, title, index);
         initialize();

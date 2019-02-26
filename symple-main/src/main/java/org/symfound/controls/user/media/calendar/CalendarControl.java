@@ -12,7 +12,15 @@ import org.symfound.controls.user.media.MediaControl;
  * @author Javed Gangjee <jgangjee@gmail.com>
  */
 public enum CalendarControl implements MediaControl{
+
+    /**
+     *
+     */
     NEXT,
+
+    /**
+     *
+     */
     PREVIOUS
     
 }

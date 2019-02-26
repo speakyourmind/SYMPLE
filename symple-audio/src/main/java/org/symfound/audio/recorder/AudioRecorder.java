@@ -67,7 +67,6 @@ public class AudioRecorder {
             AudioSystem.write(ais, fileType, wavFile);
 
         } catch (LineUnavailableException | IOException ex) {
-            ex.printStackTrace();
         }
     }
 

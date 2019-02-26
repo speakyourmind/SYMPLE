@@ -10,10 +10,18 @@ import org.symfound.controls.user.AnimatedButton;
 import static org.symfound.controls.user.RootPane.DEFAULT_PREF_HEIGHT;
 import static org.symfound.controls.user.RootPane.DEFAULT_PREF_WIDTH;
 import org.symfound.controls.user.media.MediaViewer;
-import org.symfound.main.Main;
 
+/**
+ *
+ * @author Administrator
+ */
 public abstract class WebViewer extends MediaViewer {
 
+    /**
+     *
+     * @param key
+     * @param index
+     */
     public WebViewer(String key, String index) {
         super("transparent", key, "", index);
         initialize();
@@ -24,6 +32,9 @@ public abstract class WebViewer extends MediaViewer {
         configure();
     }
 
+    /**
+     *
+     */
     public abstract void configure();
 
     @Override
@@ -32,6 +43,9 @@ public abstract class WebViewer extends MediaViewer {
         addToPane(getWebView());
     }
 
+    /**
+     *
+     */
     @Override
     public void addConfigButtons() {
        // addToPane(getEditAppButton(), null, null, getHeight() / 2, getWidth() / 2);
@@ -39,8 +53,15 @@ public abstract class WebViewer extends MediaViewer {
         getPrimaryControl().setDisable(true);
     }
 
+    /**
+     *
+     */
     public WebView webView;
 
+    /**
+     *
+     * @return
+     */
     public WebView getWebView() {
         if (webView == null) {
             webView = new WebView();

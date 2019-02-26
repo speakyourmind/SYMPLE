@@ -72,7 +72,6 @@ public class TestMSIBuilder {
             n4++;
 
         }
-        System.out.println(string4);
 
     }
 

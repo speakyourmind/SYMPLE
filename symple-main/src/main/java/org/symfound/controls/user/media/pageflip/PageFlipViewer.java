@@ -5,23 +5,16 @@
  */
 package org.symfound.controls.user.media.pageflip;
 
-import java.util.List;
 import java.util.prefs.Preferences;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import org.apache.log4j.Logger;
-import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.ScreenStatus;
 import org.symfound.controls.user.media.web.WebViewer;
-import org.symfound.text.TextOperator;
 
 /**
  *
@@ -30,9 +23,21 @@ import org.symfound.text.TextOperator;
 public class PageFlipViewer extends WebViewer {
 
     private static final String NAME = PageFlipViewer.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "PageFlip Viewer";
 
+    /**
+     *
+     * @param index
+     */
     public PageFlipViewer(String index) {
         super(KEY, index);
     }
@@ -56,6 +61,9 @@ public class PageFlipViewer extends WebViewer {
         return linkTitle;
     }
 
+    /**
+     *
+     */
     @Override
     public void configure() {
         getPageFlipManager().getIterator().modeProperty().addListener((observable, oldValue, newValue) -> {
@@ -63,17 +71,18 @@ public class PageFlipViewer extends WebViewer {
         });
 
         if (getIndex().contains("next")) {
-            System.out.println("Index has changed to " + getIndex());
             reload();
         }
         indexProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1.contains("next")) {
-                System.out.println("Index has changed to " + newValue1);
                 reload();
             }
         });
     }
 
+    /**
+     *
+     */
     @Override
     public void play() {
         Platform.runLater(() -> {
@@ -89,6 +98,9 @@ public class PageFlipViewer extends WebViewer {
         });
     }
 
+    /**
+     *
+     */
     @Override
     public void end() {
         setStatus(ScreenStatus.ENDING);
@@ -98,6 +110,9 @@ public class PageFlipViewer extends WebViewer {
 
     }
 
+    /**
+     *
+     */
     @Override
     public void reload() {
         setStatus(ScreenStatus.READY);
@@ -110,6 +125,10 @@ public class PageFlipViewer extends WebViewer {
 
     private PageFlipManager manager;
 
+    /**
+     *
+     * @return
+     */
     public PageFlipManager getPageFlipManager() {
         if (manager == null) {
             manager = new PageFlipManager();

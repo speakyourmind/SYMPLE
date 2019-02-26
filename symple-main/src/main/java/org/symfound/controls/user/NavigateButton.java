@@ -6,6 +6,7 @@ import java.util.prefs.Preferences;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import org.apache.log4j.Logger;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
@@ -14,7 +15,6 @@ import org.symfound.device.emulation.EmulationManager;
 import org.symfound.device.emulation.EmulationRequest;
 import org.symfound.main.HomeController;
 import org.symfound.main.builder.UI;
-import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  * To Be Deprecated
@@ -44,16 +44,28 @@ public class NavigateButton extends AppableControl {
     public static final String DEFAULT_TITLE = "Navigate";
     private String navigateTo = "home";
 
+    /**
+     *
+     */
     public NavigateButton() {
         super("button", KEY, DEFAULT_TITLE, "default");
         initialize();
     }
 
+    /**
+     *
+     * @param index
+     */
     public NavigateButton(String index) {
         super("button", KEY, DEFAULT_TITLE, index);
         initialize();
     }
 
+    /**
+     *
+     * @param navigateTo
+     * @param index
+     */
     public NavigateButton(String navigateTo, String index) {
         super("", KEY, navigateTo, index);
         this.navigateTo = navigateTo;
@@ -97,18 +109,28 @@ public class NavigateButton extends AppableControl {
     }
     private TextField navigateIndexField;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         setNavigateIndex(navigateIndexField.getText());
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         navigateIndexField.setText(getNavigateIndex());
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         SettingsRow settingsRowA = createSettingRow("Navigate", "Text to be displayed on this button");

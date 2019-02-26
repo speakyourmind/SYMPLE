@@ -6,7 +6,6 @@
 package org.symfound.device.emulation.reaction;
 
 import javafx.scene.Node;
-import org.symfound.device.emulation.reaction.Reaction;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.device.selection.SelectionSource;
 

@@ -35,6 +35,9 @@ public class PictoArea extends AppableControl {
      */
     public static final String KEY = "Picto Area";
     
+    /**
+     *
+     */
     public PictoArea() {
         super("", KEY, "picto", "picto");
         initialize();
@@ -59,6 +62,11 @@ public class PictoArea extends AppableControl {
             //speak
         }
     }
+
+    /**
+     *
+     * @param button
+     */
     public void add(ScriptButton button) {
         final ConfigurableGrid configurableGrid = getConfigurableGrid();
         final ParallelList<String, String> order = configurableGrid.getOrder();
@@ -79,6 +87,10 @@ public class PictoArea extends AppableControl {
     
     private ConfigurableGrid pictoGrid;
     
+    /**
+     *
+     * @return
+     */
     public ConfigurableGrid getConfigurableGrid() {
         if (pictoGrid == null) {
             pictoGrid = new ConfigurableGrid();
@@ -96,6 +108,9 @@ public class PictoArea extends AppableControl {
     
     private StringProperty pictoText;
     
+    /**
+     *
+     */
     public void updatePictoText() {
         String text = "";
         final int size = getConfigurableGrid().getChildren().size();
@@ -108,7 +123,7 @@ public class PictoArea extends AppableControl {
             } else {
                 LOGGER.warn("Unreadable item in picto area");
             }
-        };
+        }
         setPictoText(text);
     }
 

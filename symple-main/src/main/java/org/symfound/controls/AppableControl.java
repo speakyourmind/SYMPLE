@@ -5,8 +5,6 @@
  */
 package org.symfound.controls;
 
-import org.symfound.tools.ui.FontTracker;
-import org.symfound.tools.ui.ColourChoices;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -55,15 +53,17 @@ import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
+import org.symfound.controls.system.grid.editor.DeleteKeyButton;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.AnimatedPane;
-import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.BuildableGrid;
-import org.symfound.controls.system.grid.editor.DeleteKeyButton;
+import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
+import org.symfound.tools.ui.ColourChoices;
+import org.symfound.tools.ui.FontTracker;
 
 /**
  *
@@ -97,16 +97,42 @@ public abstract class AppableControl extends ConfirmableControl {
     }
 
     private void initialize() {
-        setConfirmable(false);
+        setConfirmable(Boolean.FALSE);
+        configureFeatures();
+    }
+
+    /**
+     *
+     */
+    public void configureFeatures() {
         configureDrag();
         configurePrimaryDisabled();
         configButtons();
     }
 
+    /**
+     *
+     */
     public static Integer SOURCE_ROW_INDEX = 0;
+
+    /**
+     *
+     */
     public static Integer SOURCE_COLUMN_INDEX = 0;
+
+    /**
+     *
+     */
     public static Integer SOURCE_ROW_SPAN = 0;
+
+    /**
+     *
+     */
     public static Integer SOURCE_COLUMN_SPAN = 0;
+
+    /**
+     *
+     */
     public static Integer GRID_LOCATION = 0;
 
     //TODO: Give credit for code?
@@ -223,6 +249,9 @@ public abstract class AppableControl extends ConfirmableControl {
         }
     }
 
+    /**
+     *
+     */
     public void configurePrimaryDisabled() {
         getPrimaryControl().setDisable(isPrimaryDisabled());
         disablePrimaryProperty().addListener((observable, oldValue, newValue) -> {
@@ -230,13 +259,18 @@ public abstract class AppableControl extends ConfirmableControl {
         });
     }
 
+    /**
+     *
+     */
     public void configButtons() {
         boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
+        
+        // TO DO : CAUSING ISSUES WITH PHOTO AND YOUTUBE. Try when playing?
         if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
             addConfigButtons();
-        } else {
+        } /*else {
             removeConfigButtons();
-        }
+        }*/
 
         ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1 && !isSettingsControl && isEditable()) {
@@ -247,6 +281,9 @@ public abstract class AppableControl extends ConfirmableControl {
         });
     }
 
+    /**
+     *
+     */
     public void configureStyle() {
 
         configureFont();
@@ -279,6 +316,9 @@ public abstract class AppableControl extends ConfirmableControl {
     }
     private ObjectProperty<Font> fontTracking2 = new SimpleObjectProperty<>();
 
+    /**
+     *
+     */
     public void configureFont() {
         setFont();
         getPrimaryControl().setFont(getFontTracker().fontTracking.getValue());
@@ -301,6 +341,9 @@ public abstract class AppableControl extends ConfirmableControl {
         return (3 * getPrimaryControl().getWidth() + getPrimaryControl().getHeight()) * (getFontScale() / 1000);
     }
 
+    /**
+     *
+     */
     public void openHomeScreen() {
         LOGGER.info("Opening Home screen: " + FullSession.HOME);
         getMainUI().getStack().load(FullSession.HOME);
@@ -327,32 +370,88 @@ public abstract class AppableControl extends ConfirmableControl {
      */
     public EditAppButton editAppButton;
 
+    /**
+     *
+     */
     public DeleteKeyButton deleteKeyButton;
+
+    /**
+     *
+     */
     public List<SettingsRow> textSettings = new ArrayList<>();
+
+    /**
+     *
+     */
     public OnOffButton showTitleButton;
+
+    /**
+     *
+     */
     public TextArea titleArea;
     private ChoiceBox<ColourChoices> textColourChoices;
     private Slider fontScaleSlider = new Slider();
 
+    /**
+     *
+     */
     public ChoiceBox<Pos> textAlignment;
     // TODO: Split into font size, color, background image, background size
+
+    /**
+     *
+     */
     public List<SettingsRow> backgroundSettings = new ArrayList<>();
 
+    /**
+     *
+     */
     public TextArea overrideStyleField;
     private ChoiceBox<ColourChoices> backgroundColourChoices;
+
+    /**
+     *
+     */
     public TextField backgroundURLField;
 
+    /**
+     *
+     */
     public OnOffButton selectableButton;
+
+    /**
+     *
+     */
     public OnOffButton disabledPrimaryButton;
 
+    /**
+     *
+     */
     public TextField navigateIndexField;
+
+    /**
+     *
+     */
     public List<SettingsRow> selectionSettings = new ArrayList<>();
 
+    /**
+     *
+     */
     public TextField rowExpandField;
+
+    /**
+     *
+     */
     public TextField columnExpandField;
 
+    /**
+     *
+     */
     public List<SettingsRow> settings = new ArrayList<>();
 
+    /**
+     *
+     */
     public void resetAppableSettings() {
         titleArea.setText(getTitle());
         textAlignment.setValue(Pos.valueOf(getTitlePos()));
@@ -370,6 +469,9 @@ public abstract class AppableControl extends ConfirmableControl {
         SettingsController.setUpdated(Boolean.FALSE);
     }
 
+    /**
+     *
+     */
     public void setAppableSettings() {
         setTitle(titleArea.getText());
         setTitlePos(textAlignment.getValue().toString());
@@ -396,6 +498,10 @@ public abstract class AppableControl extends ConfirmableControl {
         SettingsController.setUpdated(reloadRequired);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Tab> addAppableSettings() {
         SettingsRow deleteKeyRow = createSettingRow("Delete", "Remove this button");
         final Parent parent = this.getParent();
@@ -590,6 +696,12 @@ public abstract class AppableControl extends ConfirmableControl {
         return tabs;
     }
 
+    /**
+     *
+     * @param title
+     * @param rows
+     * @return
+     */
     public Tab buildTab(String title, List<SettingsRow> rows) {
         BuildableGrid grid = EditDialog.buildSettingsGrid(rows);
         ScrollPane scrollPane = buildScrollPane(grid);
@@ -598,6 +710,11 @@ public abstract class AppableControl extends ConfirmableControl {
         return tab;
     }
 
+    /**
+     *
+     * @param textGrid
+     * @return
+     */
     public ScrollPane buildScrollPane(BuildableGrid textGrid) {
         ScrollPane textScrollPane = new ScrollPane();
         textScrollPane.setStyle("-fx-background-color:-fx-light;");
@@ -610,6 +727,10 @@ public abstract class AppableControl extends ConfirmableControl {
         return textScrollPane;
     }
 
+    /**
+     *
+     * @return
+     */
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
             EditDialog editDialog = new EditDialog() {
@@ -648,15 +769,17 @@ public abstract class AppableControl extends ConfirmableControl {
                                     overrideStyleField.textProperty()));
 
                     baseGrid.add(animatedButton, 0, 1);
+                    
                     animatedButton.fontProperty().bind(fontTracking2);
-                    fontTracking2.setValue(AppableControl.this.getPrimaryControl().getFont());
+                    fontTracking2.setValue(Font.font("Roboto", getFontWeight(), null,getFontScale()));
                     fontScaleSlider.valueProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) -> {
-
                         final double name = (3 * AppableControl.this.getPrimaryControl().getWidth() + AppableControl.this.getPrimaryControl().getHeight()) * fontScaleSlider.getValue() / 1000;
                         fontTracking2.setValue(Font.font("Roboto", getFontWeight(), null, name));
                     });
 
                     addToStackPane(baseGrid);
+                    
+                    
                 }
 
                 @Override
@@ -687,12 +810,18 @@ public abstract class AppableControl extends ConfirmableControl {
         return editAppButton;
     }
 
+    /**
+     *
+     */
     public void addConfigButtons() {
         addToPane(getEditAppButton(), null, null, 0.0, 0.0);
         getEditAppButton().toFront();
         getPrimaryControl().setDisable(true);
     }
 
+    /**
+     *
+     */
     public void removeConfigButtons() {
         getEditAppButton().removeFromParent();
         getPrimaryControl().setDisable(isPrimaryDisabled());
@@ -1200,6 +1329,9 @@ public abstract class AppableControl extends ConfirmableControl {
         return key;
     }
 
+    /**
+     *
+     */
     public String initIndex;
     private StringProperty index;
 
@@ -1236,6 +1368,11 @@ public abstract class AppableControl extends ConfirmableControl {
         return index;
     }
 
+    /**
+     *
+     * @param value
+     * @param dimension
+     */
     public void setExpandByDimension(Integer value, String dimension) {
         switch (dimension) {
             case "row":
@@ -1249,6 +1386,11 @@ public abstract class AppableControl extends ConfirmableControl {
         }
     }
 
+    /**
+     *
+     * @param dimension
+     * @return
+     */
     public Integer getExpandByDimension(String dimension) {
         Integer expand = -1;
         switch (dimension) {

@@ -22,8 +22,15 @@ import org.symfound.controls.user.media.MediaManager;
 public class VideoManager extends MediaManager<String> {
 
     private static final String NAME = VideoManager.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
+    /**
+     *
+     */
     public VideoManager() {
         super(Arrays.asList(""));
     }

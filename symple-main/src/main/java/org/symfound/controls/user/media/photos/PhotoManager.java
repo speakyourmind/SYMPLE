@@ -22,8 +22,15 @@ import org.symfound.controls.user.media.MediaManager;
 public class PhotoManager extends MediaManager<String> {
 
     private static final String NAME = PhotoManager.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
+    /**
+     *
+     */
     public PhotoManager() {
         super(Arrays.asList(""));
     }

@@ -11,5 +11,8 @@ package org.symfound.controls.user.media;
  */
 public interface Reloadable {
 
+    /**
+     *
+     */
     public void reload();
 }

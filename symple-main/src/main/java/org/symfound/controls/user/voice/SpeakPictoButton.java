@@ -14,13 +14,27 @@ public class SpeakPictoButton extends SpeakButton {
 
     private static final String NAME = SpeakPictoButton.class.getName();
 
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Speak Picto";
 
+    /**
+     *
+     * @param index
+     */
     public SpeakPictoButton(String index) {
         super("", KEY, "", index);
     }
 
+    /**
+     *
+     */
     @Override
     public void bindToText() {
         //      speakTextProperty().bindBidirectional(getPictoArea().pictoTextProperty());
@@ -48,6 +62,10 @@ public class SpeakPictoButton extends SpeakButton {
         }
         return preferences;
     }
+
+    /**
+     *
+     */
     public PictoArea picto;
 
     /**

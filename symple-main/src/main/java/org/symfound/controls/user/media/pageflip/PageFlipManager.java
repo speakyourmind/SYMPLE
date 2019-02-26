@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
 import org.symfound.comm.file.PathReader;
 import org.symfound.comm.file.PathWriter;
@@ -25,8 +23,15 @@ import org.symfound.main.Main;
 public class PageFlipManager extends MediaManager<String> {
 
     private static final String NAME = PageFlipManager.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
+    /**
+     *
+     */
     public PageFlipManager() {
         super(Arrays.asList(""));
     }
@@ -40,6 +45,10 @@ public class PageFlipManager extends MediaManager<String> {
             = Arrays.asList("http://speakyourmindfoundation.org/",
                     "https://www.braingate.org/",
                     "https://www.brown.edu/");
+
+    /**
+     *
+     */
     public String saveLocation;
     private List<String> urls = new ArrayList<>();
 

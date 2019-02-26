@@ -399,15 +399,27 @@ public class Navigation extends Characteristic {
     private static final String FULL_SCREEN_KEY = "app.navigation.fullScreen";
     private BooleanProperty fullScreen;
 
+    /**
+     *
+     * @param value
+     */
     public void setFullScreen(Boolean value) {
         fullScreenProperty().setValue(value);
         getPreferences().put(FULL_SCREEN_KEY, value.toString());
     }
 
+    /**
+     *
+     * @return
+     */
     public Boolean fullScreen() {
         return fullScreenProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public BooleanProperty fullScreenProperty() {
         if (fullScreen == null) {
             Boolean initValue = Boolean.parseBoolean(getPreference(FULL_SCREEN_KEY));
@@ -419,15 +431,27 @@ public class Navigation extends Characteristic {
     private static final String HIGHLIGHT_BORDER_KEY = "app.navigation.highlightBorder";
     private BooleanProperty highlightBorder;
 
+    /**
+     *
+     * @param value
+     */
     public void setHighlightBorder(Boolean value) {
         highlightBorderProperty().setValue(value);
         getPreferences().put(HIGHLIGHT_BORDER_KEY, value.toString());
     }
 
+    /**
+     *
+     * @return
+     */
     public Boolean highlightBorder() {
         return highlightBorderProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public BooleanProperty highlightBorderProperty() {
         if (highlightBorder == null) {
             Boolean initValue = Boolean.parseBoolean(getPreference(HIGHLIGHT_BORDER_KEY));

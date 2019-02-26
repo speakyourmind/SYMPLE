@@ -7,14 +7,12 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
-
+import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.YouTubeScopes;
 import com.google.api.services.youtube.model.*;
-import com.google.api.services.youtube.YouTube;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -31,9 +29,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
 
+/**
+ *
+ * @author Administrator
+ */
 public class YouTubePlaylistLoader {
 
     private static final String NAME = YouTubePlaylistLoader.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
     /**
@@ -120,6 +126,12 @@ public class YouTubePlaylistLoader {
                 .build();
     }
 
+    /**
+     *
+     * @param playlistId
+     * @return
+     * @throws IOException
+     */
     public static List<String> load(String playlistId) throws IOException {
 
         YouTube youtube = getYouTubeService();
@@ -162,6 +174,9 @@ public class YouTubePlaylistLoader {
         return playlist;
     }
 
+    /**
+     *
+     */
     public void start() {
         try {
             List<String> load = load(getPlaylistID());

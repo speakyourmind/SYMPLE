@@ -18,6 +18,9 @@ import org.symfound.voice.player.AudioPlayer;
  */
 public abstract class TTSEngine extends AudioPlayer {
 
+    /**
+     *
+     */
     public AdvancedPlayer player;
     private final String initName;
 

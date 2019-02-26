@@ -10,25 +10,21 @@ import java.util.List;
 import java.util.prefs.Preferences;
 import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
-import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import org.apache.log4j.Logger;
 import org.symfound.controls.system.EditAppButton;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
-import org.symfound.controls.user.BuildableGrid;
-import org.symfound.controls.user.media.MediaControlButton;
 import org.symfound.controls.user.ScreenStatus;
+import org.symfound.controls.user.media.MediaControlButton;
 import org.symfound.social.twitter.TwitterReader;
 
 /**
@@ -38,11 +34,24 @@ import org.symfound.social.twitter.TwitterReader;
 public class TwitterControlButton extends MediaControlButton<TwitterControl> {
 
     private static final String NAME = TwitterControlButton.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Twitter Control";
 
     private TwitterViewer viewer;
 
+    /**
+     *
+     * @param index
+     * @param viewer
+     */
     public TwitterControlButton(String index, TwitterViewer viewer) {
         super("button", KEY, KEY, index);
         this.viewer = viewer;
@@ -80,8 +89,15 @@ public class TwitterControlButton extends MediaControlButton<TwitterControl> {
 
     private TextField pinField;
     private ChoiceBox<TwitterControl> controlTypeBox;
+
+    /**
+     *
+     */
     public OnOffButton shuffleButton;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         final TwitterReader twitterReader = viewer.getTwitterManager().getTwitterReader();
@@ -95,6 +111,9 @@ public class TwitterControlButton extends MediaControlButton<TwitterControl> {
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         controlTypeBox.setValue(getControl());
@@ -102,6 +121,10 @@ public class TwitterControlButton extends MediaControlButton<TwitterControl> {
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         final TwitterReader twitterReader = viewer.getTwitterManager().getTwitterReader();
@@ -146,6 +169,10 @@ public class TwitterControlButton extends MediaControlButton<TwitterControl> {
         return tabs;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
@@ -195,6 +222,10 @@ public class TwitterControlButton extends MediaControlButton<TwitterControl> {
 
     private static final TwitterControl DEFAULT_TWITTER_CONTROL = TwitterControl.NEXT;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public TwitterControl getDefaultControlValue() {
         return TwitterControl.valueOf(getPreferences().get("control", DEFAULT_TWITTER_CONTROL.toString()));

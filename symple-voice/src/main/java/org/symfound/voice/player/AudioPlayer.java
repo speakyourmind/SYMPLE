@@ -87,8 +87,12 @@ public class AudioPlayer {
         }
     }
     
-    
-  
+    /**
+     *
+     * @param speechStream
+     * @return
+     * @throws JavaLayerException
+     */
     public AdvancedPlayer playInputStream(InputStream speechStream) throws JavaLayerException {
         FactoryRegistry systemRegistry = systemRegistry();
         AudioDevice audioDevice = systemRegistry.createAudioDevice();

@@ -19,15 +19,38 @@ import org.symfound.tools.iteration.ParallelList;
  */
 public class DeleteKeyButton extends SystemControl {
 
+    /**
+     *
+     */
     public static final String NAME = EditGridButton.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public ConfigurableGrid configurableGrid;
+
+    /**
+     *
+     */
     public AppableControl control;
 
+    /**
+     *
+     */
     public static final String KEY = "Delete Key";
 
+    /**
+     *
+     * @param control
+     * @param configurableGrid
+     */
     public DeleteKeyButton(AppableControl control, ConfigurableGrid configurableGrid) {
-        super("word-2", KEY, "Delete", "def");
+        super("word-2", KEY, "Delete", "default");
         this.setText("Delete");
         this.configurableGrid = configurableGrid;
         this.control = control;

@@ -5,7 +5,6 @@
  */
 package org.symfound.controls.user.media.reddit;
 
-import com.sun.javafx.iio.ImageStorage;
 import java.util.Map;
 import java.util.prefs.Preferences;
 import javafx.application.Platform;
@@ -14,7 +13,6 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.Pos;
-import javafx.scene.layout.Pane;
 import org.apache.log4j.Logger;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.AnimatedLabel;
@@ -28,9 +26,21 @@ import org.symfound.controls.user.media.web.WebViewer;
 public class RedditViewer extends WebViewer {
 
     private static final String NAME = RedditViewer.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Reddit Viewer";
 
+    /**
+     *
+     * @param index
+     */
     public RedditViewer(String index) {
         super(KEY, index);
     }
@@ -54,6 +64,9 @@ public class RedditViewer extends WebViewer {
         return linkTitle;
     }
 
+    /**
+     *
+     */
     @Override
     public void configure() {
         getRedditManager().getIterator().modeProperty().addListener((observable, oldValue, newValue) -> {
@@ -61,17 +74,18 @@ public class RedditViewer extends WebViewer {
         });
 
         if (getIndex().contains("next")) {
-            System.out.println("Index has changed to " + getIndex());
             reload();
         }
         indexProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1.contains("next")) {
-                System.out.println("Index has changed to " + newValue1);
                 reload();
             }
         });
     }
 
+    /**
+     *
+     */
     @Override
     public void play() {
         Platform.runLater(() -> {
@@ -97,6 +111,9 @@ public class RedditViewer extends WebViewer {
         });
     }
 
+    /**
+     *
+     */
     @Override
     public void end() {
         setStatus(ScreenStatus.ENDING);
@@ -106,6 +123,9 @@ public class RedditViewer extends WebViewer {
 
     }
 
+    /**
+     *
+     */
     @Override
     public void reload() {
         setStatus(ScreenStatus.READY);
@@ -119,6 +139,10 @@ public class RedditViewer extends WebViewer {
 
     private RedditManager manager;
 
+    /**
+     *
+     * @return
+     */
     public RedditManager getRedditManager() {
         if (manager == null) {
             manager = new RedditManager();

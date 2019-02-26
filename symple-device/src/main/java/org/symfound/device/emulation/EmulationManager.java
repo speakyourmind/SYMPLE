@@ -26,6 +26,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.device.emulation.input.InputListener;
 import org.symfound.device.emulation.input.keyboard.KeyboardEmulator;
 import org.symfound.device.emulation.input.mouse.MouseEmulator;
@@ -34,7 +35,6 @@ import org.symfound.device.emulation.input.mouse.NativeMouseListener;
 import org.symfound.device.emulation.input.switcher.SwitchEmulator;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.device.hardware.characteristic.Movability;
-import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.tools.timing.DelayedEvent;
 
 /**
@@ -95,7 +95,7 @@ public final class EmulationManager {
                 MousePositionLog positionLogger = getMouse().getListener().positionLog;
 
                 positionLogger.log(position, sampleSize);
-                LOGGER.info("2 - Mouse position log size: " + positionLogger.size() + ". Position recorded:" + position);
+                LOGGER.debug("Mouse position log size: " + positionLogger.size() + ". Position recorded:" + position);
             }
         });
     }

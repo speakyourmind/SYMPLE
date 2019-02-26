@@ -5,23 +5,22 @@
  */
 package org.symfound.controls.user;
 
-import static org.symfound.app.GridController.LOGGER;
-
+import java.util.prefs.Preferences;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import static org.symfound.app.GridController.LOGGER;
 import org.symfound.builder.controller.Editable;
 import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
 import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
+import org.symfound.builder.user.selection.SelectionMethod;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
 import org.symfound.tools.iteration.ParallelList;
-import java.util.prefs.Preferences;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *
@@ -29,6 +28,11 @@ import org.symfound.builder.user.selection.SelectionMethod;
  */
 public abstract class GridManager implements Editable {
 
+    /**
+     *
+     * @param index
+     * @return
+     */
     public Preferences getPrefs(String index) {
         String name = "subgrid/" + index.toLowerCase();
         Class<? extends GridManager> aClass = this.getClass();
@@ -181,6 +185,10 @@ public abstract class GridManager implements Editable {
 
     private DoubleProperty maxDifficulty;
 
+    /**
+     *
+     * @param value
+     */
     public void setMaxDifficulty(Double value) {
         maxDifficultyProperty().setValue(value);
         getPreferences().put("maxDifficulty", value.toString());
@@ -195,6 +203,10 @@ public abstract class GridManager implements Editable {
         return maxDifficultyProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public DoubleProperty maxDifficultyProperty() {
         String value = getPreferences().get("maxDifficulty", "10.0");
         maxDifficulty = new SimpleDoubleProperty(Double.valueOf(value));
@@ -203,6 +215,10 @@ public abstract class GridManager implements Editable {
 
     private DoubleProperty minDifficulty;
 
+    /**
+     *
+     * @param value
+     */
     public void setMinDifficulty(Double value) {
         minDifficultyProperty().setValue(value);
         getPreferences().put("minDifficulty", value.toString());
@@ -217,6 +233,10 @@ public abstract class GridManager implements Editable {
         return minDifficultyProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public DoubleProperty minDifficultyProperty() {
         String value = getPreferences().get("minDifficulty", "0.0");
         minDifficulty = new SimpleDoubleProperty(Double.valueOf(value));
@@ -225,16 +245,28 @@ public abstract class GridManager implements Editable {
 
     private DoubleProperty overrideRow;
 
+    /**
+     *
+     * @param value
+     */
     public void setOverrideRow(Double value) {
         overrideRowProperty().set(value);
         getPreferences().put("overrideRow", value.toString());
         LOGGER.info("Override Row set to: " + value);
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getOverrideRow() {
         return overrideRowProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public DoubleProperty overrideRowProperty() {
         // if (overrideRow == null) {
         String value = getPreferences().get("overrideRow", "0.0");
@@ -245,16 +277,28 @@ public abstract class GridManager implements Editable {
 
     private DoubleProperty overrideColumn;
 
+    /**
+     *
+     * @param value
+     */
     public void setOverrideColumn(Double value) {
         overrideColumnProperty().set(value);
         getPreferences().put("overrideColumn", value.toString());
         LOGGER.info("Override Column set to: " + value);
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getOverrideColumn() {
         return overrideColumnProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public DoubleProperty overrideColumnProperty() {
         //  if (overrideColumn == null) {
         overrideColumn = new SimpleDoubleProperty(Double.valueOf(getPreferences().get("overrideColumn", "0.0")));

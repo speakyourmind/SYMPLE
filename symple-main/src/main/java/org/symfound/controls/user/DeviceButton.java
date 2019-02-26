@@ -9,15 +9,15 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.device.DeviceSettings;
+import org.symfound.controls.device.EyeTrackerSettings;
 import org.symfound.controls.device.GenericDeviceSettings;
 import org.symfound.controls.device.SwiftySettings;
-import org.symfound.controls.device.EyeTrackerSettings;
 import org.symfound.controls.system.dialog.ScreenPopup;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.manager.DeviceManager;
-import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *

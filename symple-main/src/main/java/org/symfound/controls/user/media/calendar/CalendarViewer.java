@@ -6,17 +6,16 @@
 package org.symfound.controls.user.media.calendar;
 
 import com.google.api.client.util.DateTime;
+import com.google.api.services.calendar.model.Event;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.prefs.Preferences;
 import javafx.application.Platform;
 import org.apache.log4j.Logger;
 import org.symfound.controls.user.AnimatedButton;
+import org.symfound.controls.user.FillableGrid;
 import org.symfound.controls.user.ScreenStatus;
 import org.symfound.controls.user.media.web.WebViewer;
-
-import com.google.api.services.calendar.model.Event;
-import java.util.ArrayList;
-import java.util.List;
-import org.symfound.controls.user.FillableGrid;
 
 /**
  *
@@ -25,9 +24,21 @@ import org.symfound.controls.user.FillableGrid;
 public class CalendarViewer extends WebViewer {
 
     private static final String NAME = CalendarViewer.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Calendar Viewer";
 
+    /**
+     *
+     * @param index
+     */
     public CalendarViewer(String index) {
         super(KEY, index);
     }
@@ -49,6 +60,9 @@ public class CalendarViewer extends WebViewer {
         return calendarGrid;
     }
 
+    /**
+     *
+     */
     @Override
     public void configure() {
         getCalendarManager().getIterator().modeProperty().addListener((observable, oldValue, newValue) -> {
@@ -56,18 +70,19 @@ public class CalendarViewer extends WebViewer {
         });
 
         if (getIndex().contains("next")) {
-            System.out.println("Index has changed to " + getIndex());
             reload();
         }
         indexProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1.contains("next")) {
-                System.out.println("Index has changed to " + newValue1);
                 reload();
             }
         });
     }
     List<CalendarEntry> entries = new ArrayList<>();
 
+    /**
+     *
+     */
     @Override
     public void play() {
         Platform.runLater(() -> {
@@ -76,9 +91,7 @@ public class CalendarViewer extends WebViewer {
             // Event event = getCalendarManager().getIterator().get();
             List<Event> events = getCalendarManager().getEvents();
             if (events.isEmpty()) {
-                System.out.println("No upcoming events found.");
             } else {
-                System.out.println("Upcoming events");
                 events.forEach((event) -> {
                     DateTime start = event.getStart().getDateTime();
                     DateTime end = event.getEnd().getDateTime();
@@ -92,7 +105,6 @@ public class CalendarViewer extends WebViewer {
                             end, event.getSummary());
                     entries.add(entry);
                     addToPane(entry);
-                    System.out.printf("%s : %s to %s\n", event.getSummary(), start, end);
                 });
             }
             setStatus(ScreenStatus.PLAYING);
@@ -101,6 +113,9 @@ public class CalendarViewer extends WebViewer {
         });
     }
 
+    /**
+     *
+     */
     @Override
     public void end() {
         setStatus(ScreenStatus.ENDING);
@@ -110,6 +125,9 @@ public class CalendarViewer extends WebViewer {
 
     }
 
+    /**
+     *
+     */
     @Override
     public void reload() {
         setStatus(ScreenStatus.READY);
@@ -120,6 +138,10 @@ public class CalendarViewer extends WebViewer {
 
     private CalendarManager manager;
 
+    /**
+     *
+     * @return
+     */
     public CalendarManager getCalendarManager() {
         if (manager == null) {
             manager = new CalendarManager();

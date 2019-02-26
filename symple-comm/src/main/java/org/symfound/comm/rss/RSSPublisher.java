@@ -56,7 +56,6 @@ public class RSSPublisher {
         }
         Map<String, String> links = Collections.unmodifiableMap(map);
 
-        System.out.println(links);
 
     }
 

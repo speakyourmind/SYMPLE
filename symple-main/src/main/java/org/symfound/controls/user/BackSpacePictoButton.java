@@ -50,7 +50,6 @@ public final class BackSpacePictoButton extends AppableControl {
         final ConfigurableGrid configurableGrid = getPictoArea().getConfigurableGrid();
         final ParallelList<String, String> order = configurableGrid.getOrder();
         final int name = configurableGrid.getOrder().size();
-        System.out.println(name);
         if (name > 1) {
             order.getFirstList().remove(name - 1);
             order.getSecondList().remove(name - 1);
@@ -66,6 +65,9 @@ public final class BackSpacePictoButton extends AppableControl {
             configurableGrid.triggerReload();
     }
 
+    /**
+     *
+     */
     public PictoArea picto;
 
     /**

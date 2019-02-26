@@ -12,10 +12,30 @@ import org.symfound.controls.user.media.MediaControl;
  * @author Javed Gangjee <jgangjee@gmail.com>
  */
 public enum TwitterControl implements MediaControl {
+
+    /**
+     *
+     */
     NEXT,
+
+    /**
+     *
+     */
     PREVIOUS,
+
+    /**
+     *
+     */
     RETWEET, //TODO
+
+    /**
+     *
+     */
     LIKE, //TODO
+
+    /**
+     *
+     */
     COMMENT, //TODO
     
 }

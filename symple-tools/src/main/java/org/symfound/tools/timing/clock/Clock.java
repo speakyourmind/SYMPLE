@@ -46,6 +46,10 @@ public class Clock extends ClockBase {
         setup();
     }
 
+    /**
+     *
+     * @param format
+     */
     public void setFormat(String format) {
         this.format = format;
         this.end();

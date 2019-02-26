@@ -33,8 +33,19 @@ import org.symfound.tools.iteration.ParallelList;
  */
 public class ReplaceKeyButton extends SystemControl {
 
+    /**
+     *
+     */
     public static final String NAME = EditGridButton.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public ButtonGrid buttonGrid;
 
     /**
@@ -68,6 +79,9 @@ public class ReplaceKeyButton extends SystemControl {
         return settingsDialog;
     }
 
+    /**
+     *
+     */
     public List<SettingsRow> orderSettings = new ArrayList<>();
 
     /**

@@ -12,7 +12,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import org.apache.log4j.Logger;
@@ -189,6 +188,7 @@ public class DeviceManager extends UsableManager<Device> implements Runnable {
             Preferences prefs = Preferences.userNodeForPackage(Main.class).parent();
             LOGGER.info("Clearing settings from node "+ prefs.absolutePath());
             prefs.removeNode();
+            
         } catch (BackingStoreException ex) {
             LOGGER.fatal(ex);
         }

@@ -11,7 +11,6 @@ import javafx.geometry.Pos;
 import org.symfound.controls.ScreenControl;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
 import org.symfound.device.emulation.input.mouse.MouseSelectionType;
-import static org.symfound.main.FullSession.SCREENS_FOLDER;
 
 /**
  *

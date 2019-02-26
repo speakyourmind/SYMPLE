@@ -197,8 +197,8 @@ public class DiagnosticController extends TestControllerBase {
             nextTarget.completeProperty().addListener((observable, oldValue, newValue) -> {
                 nextTarget.hide();
                 // Add to total number of tries
-                totalTries = totalTries + nextTarget.getTries();
-                totalTravelTime = totalTravelTime + nextTarget.getTravelTime().toSeconds();
+                totalTries += nextTarget.getTries();
+                totalTravelTime += nextTarget.getTravelTime().toSeconds();
                 getNextTarget();
             });
             gpDiag.toFront();

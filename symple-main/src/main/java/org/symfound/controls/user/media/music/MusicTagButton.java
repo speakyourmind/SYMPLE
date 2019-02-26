@@ -20,8 +20,15 @@ public class MusicTagButton extends MusicControlButton {
     private static final String NAME = MusicTagButton.class.getName();
     private static final Logger LOGGER = Logger.getLogger(NAME);
 
+    /**
+     *
+     */
     public static final String KEY = "Music Info";
 
+    /**
+     *
+     * @param index
+     */
     public MusicTagButton(String index) {
         super("transparent", KEY, "", index, MusicControl.INFO);
      }
@@ -44,6 +51,10 @@ public class MusicTagButton extends MusicControlButton {
 
     private VBox vBox;
 
+    /**
+     *
+     * @return
+     */
     public VBox getVBox() {
         if (vBox == null) {
             vBox = new VBox();
@@ -55,6 +66,10 @@ public class MusicTagButton extends MusicControlButton {
         return vBox;
     }
 
+    /**
+     *
+     * @param song
+     */
     @Override
     public void setSongInfo(Song song) {
         getSongNameLabel().setText(song.getTitle());
@@ -67,6 +82,10 @@ public class MusicTagButton extends MusicControlButton {
 
     private Label lblSong;
 
+    /**
+     *
+     * @return
+     */
     public Label getSongNameLabel() {
         if (lblSong == null) {
             lblSong = new Label("Ready...");
@@ -77,6 +96,10 @@ public class MusicTagButton extends MusicControlButton {
     }
     private Label lblArtist;
 
+    /**
+     *
+     * @return
+     */
     public Label getArtistNameLabel() {
         if (lblArtist == null) {
             lblArtist = new Label("");
@@ -88,6 +111,10 @@ public class MusicTagButton extends MusicControlButton {
 
     private Label lblAlbum;
 
+    /**
+     *
+     * @return
+     */
     public Label getAlbumNameLabel() {
         if (lblAlbum == null) {
             lblAlbum = new Label("");

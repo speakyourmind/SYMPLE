@@ -26,8 +26,8 @@ import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
-import org.symfound.controls.user.media.MediaControlButton;
 import org.symfound.controls.user.ScreenStatus;
+import org.symfound.controls.user.media.MediaControlButton;
 
 /**
  *
@@ -36,11 +36,24 @@ import org.symfound.controls.user.ScreenStatus;
 public class RedditControlButton extends MediaControlButton<RedditControl> {
 
     private static final String NAME = RedditControlButton.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "Reddit Control";
 
     private RedditViewer viewer;
 
+    /**
+     *
+     * @param index
+     * @param viewer
+     */
     public RedditControlButton(String index, RedditViewer viewer) {
         super("button", KEY, KEY, index);
         this.viewer = viewer;
@@ -77,8 +90,15 @@ public class RedditControlButton extends MediaControlButton<RedditControl> {
     private TextField subredditField;
     private ChoiceBox<String> sublist;
     private ChoiceBox<RedditControl> controlTypeBox;
+
+    /**
+     *
+     */
     public OnOffButton shuffleButton;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         viewer.setSubreddit(subredditField.getText());
@@ -88,6 +108,9 @@ public class RedditControlButton extends MediaControlButton<RedditControl> {
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         subredditField.setText(viewer.getSubreddit());
@@ -97,6 +120,10 @@ public class RedditControlButton extends MediaControlButton<RedditControl> {
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         SettingsRow settingsRowA = createSettingRow("Subreddit", "URL");
@@ -158,6 +185,10 @@ public class RedditControlButton extends MediaControlButton<RedditControl> {
         return tabs;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
@@ -207,6 +238,10 @@ public class RedditControlButton extends MediaControlButton<RedditControl> {
 
     private static final RedditControl DEFAULT_REDDIT_CONTROL = RedditControl.NEXT;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public RedditControl getDefaultControlValue() {
         return RedditControl.valueOf(getPreferences().get("control", DEFAULT_REDDIT_CONTROL.toString()));

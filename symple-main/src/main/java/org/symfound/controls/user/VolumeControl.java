@@ -46,6 +46,13 @@ public abstract class VolumeControl extends AppableControl {
     public Double initVolume;
     private static DoubleProperty volume;
 
+    /**
+     *
+     * @param CSSClass
+     * @param key
+     * @param title
+     * @param index
+     */
     public VolumeControl(String CSSClass, String key, String title, String index) {
         super(CSSClass, key, title, index);
     }

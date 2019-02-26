@@ -7,14 +7,11 @@ package org.symfound.controls.user.voice;
 
 import java.util.Arrays;
 import java.util.List;
-import javafx.scene.control.ChoiceBox;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Tab;
-import org.symfound.controls.AppableControl;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 
@@ -24,6 +21,13 @@ import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
  */
 public abstract class SpeakButton extends TextCommunicatorButton {
 
+    /**
+     *
+     * @param CSSClass
+     * @param key
+     * @param title
+     * @param index
+     */
     public SpeakButton(String CSSClass, String key, String title, String index) {
         super(CSSClass, key, title, index);
         initialize();
@@ -41,6 +45,9 @@ public abstract class SpeakButton extends TextCommunicatorButton {
         });
     }
 
+    /**
+     *
+     */
     public void style() {
         if (!getConcatStyle().isEmpty()) {
             this.setSymStyle("");
@@ -65,22 +72,36 @@ public abstract class SpeakButton extends TextCommunicatorButton {
                 break;
         }
     }
+
+    /**
+     *
+     */
     public List<String> GMAIL_SKIP_CHARS = Arrays.asList("\\-\\-", "\\+\\+", ">", "<", "https://");
 
     private ChoiceBox<SpeakControl> speakControlType;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         setSpeakControl(speakControlType.getValue());
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         speakControlType.setValue(getSpeakControl());
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         SettingsRow settingsRow = createSettingRow("Control Type", "Next or Previous or Toggle");
@@ -100,12 +121,24 @@ public abstract class SpeakButton extends TextCommunicatorButton {
         return tabs;
     }
 
+    /**
+     *
+     */
     public static final int MAX_SPEAK_CHARS = 1000;
 
+    /**
+     *
+     * @param fullText
+     */
     public void setTrimmedSpeakText(String fullText) {
         trimSpeakText(fullText, MAX_SPEAK_CHARS);
     }
 
+    /**
+     *
+     * @param fullText
+     * @param maxChars
+     */
     public void trimSpeakText(String fullText, Integer maxChars) {
         // speakTextProperty().bindBidirectional(getIterator().modeProperty());
         if (fullText.length() > MAX_SPEAK_CHARS) {

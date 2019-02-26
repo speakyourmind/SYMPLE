@@ -9,9 +9,7 @@ import java.util.prefs.Preferences;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import org.apache.log4j.Logger;
-import org.symfound.builder.characteristic.PreferencesManager;
 import org.symfound.controls.user.AnimatedButton;
-import static org.symfound.main.Main.getSession;
 import org.symfound.main.builder.UI;
 
 /**
@@ -54,13 +52,7 @@ public final class SettingsImportButton extends SettingsManagerControl {
         } catch (InterruptedException ex) {
             LOGGER.fatal(ex);
         }
-        String masterFile = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Master.xml";
-        File file = new File(masterFile);
-        if (file.delete()) {
-            LOGGER.info("Master file " + masterFile + " deleted successfully");
-        } else {
-            LOGGER.fatal("Failed to delete master file " + masterFile);
-        }
+        deleteMasterFile();
         getSession().shutdown(Boolean.FALSE);
 
     }

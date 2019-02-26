@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
@@ -92,10 +91,18 @@ public class AppSettingsController extends SettingsControllerBase {
     private OnOffButton btnFullScreen;
     @FXML
     private OnOffButton btnPlayScourSound;
+
+    /**
+     *
+     */
     @FXML
     public TextField playScourField;
     @FXML
     private OnOffButton btnPlaySelectSound;
+
+    /**
+     *
+     */
     @FXML
     public TextField playSelectionField;
 

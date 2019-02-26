@@ -17,10 +17,20 @@ public class GMailSpeakButton extends SpeakButton {
 
     private static final String NAME = GMailSpeakButton.class.getName();
 
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "GMail Speak";
 
-
+    /**
+     *
+     * @param index
+     */
     public GMailSpeakButton(String index) {
         super("speak-field-button", KEY, "", index);
         initialize();
@@ -30,6 +40,9 @@ public class GMailSpeakButton extends SpeakButton {
 
     }
 
+    /**
+     *
+     */
     @Override
     public void bindToText() {
         setTrimmedSpeakText(GMailViewer.getGMailManager().getIterator().get());

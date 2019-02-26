@@ -34,17 +34,17 @@ import org.apache.log4j.Logger;
 import static org.symfound.app.DiagnosticController.MAX_LEVEL;
 import org.symfound.builder.user.characteristic.Interaction;
 import org.symfound.builder.user.characteristic.Profile;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.user.DiagnosticTestButton;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.device.hardware.characteristic.Movability;
 import org.symfound.device.hardware.characteristic.Selectability;
 import org.symfound.device.hardware.eyetracker.EyeTracker;
+import org.symfound.device.selection.SelectionEventType;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.*;
 import org.symfound.tools.iteration.ModeIterator;
-import org.symfound.device.selection.SelectionEventType;
-import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *

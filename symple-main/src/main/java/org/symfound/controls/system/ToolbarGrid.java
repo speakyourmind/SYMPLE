@@ -8,18 +8,18 @@ package org.symfound.controls.system;
 import java.util.ArrayList;
 import java.util.List;
 import org.symfound.controls.AppableControl;
-import org.symfound.tools.ui.ColourChoices;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl.ControlType;
 import org.symfound.controls.user.ButtonGrid;
 import static org.symfound.controls.user.ButtonGrid.LOGGER;
 import org.symfound.controls.user.ExecButton;
 import org.symfound.controls.user.ExitButton;
-import org.symfound.controls.user.NavigateButton;
 import org.symfound.controls.user.MinimizeButton;
+import org.symfound.controls.user.NavigateButton;
 import org.symfound.controls.user.SettingsButton;
 import org.symfound.controls.user.VersionUpdateButton;
 import org.symfound.tools.iteration.ParallelList;
+import org.symfound.tools.ui.ColourChoices;
 
 /**
  *
@@ -43,6 +43,7 @@ public class ToolbarGrid extends ButtonGrid {
      * @param buildOrder
      * @param method
      * @param direction
+     * @param size
      */
     @Override
     public void build(ParallelList<String, String> buildOrder, FillMethod method, FillDirection direction, Double size) {
@@ -95,6 +96,11 @@ public class ToolbarGrid extends ButtonGrid {
         }
     }
 
+    /**
+     *
+     * @param buildOrder
+     * @param size
+     */
     @Override
     public void fill(ParallelList<String, String> buildOrder, Integer size) {
         List<AppableControl> requestedControls = new ArrayList<>();

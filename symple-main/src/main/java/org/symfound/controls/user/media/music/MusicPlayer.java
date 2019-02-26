@@ -131,6 +131,10 @@ public class MusicPlayer extends AnimatedMediaView {
 
     private Preferences preferences;
 
+    /**
+     *
+     * @return
+     */
     public final Preferences getPreferences() {
         if (preferences == null) {
             preferences = Preferences.userNodeForPackage(this.getClass());

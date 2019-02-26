@@ -1,8 +1,7 @@
 package org.symfound.controls.user;
 
-import java.util.List;
 import java.io.IOException;
-import java.util.logging.Level;
+import java.util.List;
 import java.util.prefs.Preferences;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -172,10 +171,24 @@ public final class IftttButton extends AppableControl {
         return webhookEventEnd;
     }
 
+    /**
+     *
+     */
     public TextField webhookKeyField;
+
+    /**
+     *
+     */
     public TextField webhookEventStartField;
+
+    /**
+     *
+     */
     public TextField webhookEventEndField;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         setWebhookKey(webhookKeyField.getText());
@@ -184,6 +197,9 @@ public final class IftttButton extends AppableControl {
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         webhookKeyField.setText(getWebhookKey());
@@ -192,6 +208,10 @@ public final class IftttButton extends AppableControl {
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
 

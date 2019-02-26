@@ -18,8 +18,19 @@ import org.symfound.tools.iteration.ParallelList;
  */
 public class AddKeyButton extends SystemControl {
 
+    /**
+     *
+     */
     public static final String NAME = EditGridButton.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public ConfigurableGrid configurableGrid;
 
     /**
@@ -49,8 +60,7 @@ public class AddKeyButton extends SystemControl {
         order1.put(ReplaceKeyButton.KEY, getIndex().toLowerCase());
         configurableGrid.setOrder(order1);
         configurableGrid.getGridManager().setOrder(configurableGrid.getOrder());
-       // ConfigurableGrid.setEditMode(false);
-        SettingsController.setUpdated(true);
+       SettingsController.setUpdated(true);
     }
 
     @Override

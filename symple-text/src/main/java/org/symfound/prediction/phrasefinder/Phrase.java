@@ -90,12 +90,15 @@ public class Phrase {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (!(obj instanceof Phrase))
-      return false;
+    if (this == obj) {
+        return true;
+    }
+    if (obj == null) {
+        return false;
+    }
+    if (!(obj instanceof Phrase)) {
+        return false;
+    }
     Phrase other = (Phrase) obj;
     // Since instances of this class are immutable and can only be created by this library and not
     // by the user, it is guaranteed that the id of a phrase sent by the server is always unique.

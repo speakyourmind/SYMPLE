@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.apache.log4j.Logger;
-import org.symfound.social.google.gmail.GmailReader;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import org.apache.log4j.Logger;
 import org.symfound.controls.user.media.MediaManager;
+import org.symfound.social.google.gmail.GmailReader;
 
 /**
  *
@@ -23,8 +23,14 @@ public class GMailManager extends MediaManager<String> {
 
     private static final String NAME = GMailManager.class.getName();
 
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
+    /**
+     *
+     */
     public GMailManager() {
         super(Arrays.asList(""));
     }
@@ -36,6 +42,12 @@ public class GMailManager extends MediaManager<String> {
         getIterator().setTypes(messages);
     }
 
+    /**
+     *
+     * @param filter
+     * @param max
+     * @return
+     */
     public List<String> retrieveMessages(String filter, Integer max) {
         List<String> messages = new ArrayList<>();
         try {

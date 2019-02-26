@@ -23,25 +23,39 @@ public class YouTubeViewer extends WebViewer {
 
     private static final String NAME = YouTubeViewer.class.getName();
 
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    /**
+     *
+     */
     public static final String KEY = "YouTube Viewer";
 
+    /**
+     *
+     * @param index
+     */
     public YouTubeViewer(String index) {
         super(KEY, index);
     }
 
+    /**
+     *
+     */
     @Override
     public void configure() {
         getYouTubeManager().getIterator().modeProperty().addListener((observable, oldValue, newValue) -> {
             play();
         });
-        
+
         if (getIndex().contains("next")) {
-            System.out.println("Index has changed to " + getIndex());
+            //  System.out.println("Index has changed to " + getIndex());
             reload();
         }
         indexProperty().addListener((observable1, oldValue1, newValue1) -> {
-            System.out.println("Index has changed to " + newValue1);
+            //System.out.println("Index has changed to " + newValue1);
             if (getIndex().contains("next")) {
                 reload();
             }
@@ -49,10 +63,13 @@ public class YouTubeViewer extends WebViewer {
 
     }
 
+    /**
+     *
+     */
     @Override
     public void play() {
-        String videoId=getYouTubeManager().getIterator().get();
-         Platform.runLater(() -> {
+        String videoId = getYouTubeManager().getIterator().get();
+        Platform.runLater(() -> {
             if (!videoId.isEmpty()) {
                 setStatus(ScreenStatus.LOADING);
                 String url = "https://www.youtube.com/embed/" + videoId
@@ -73,6 +90,9 @@ public class YouTubeViewer extends WebViewer {
         });
     }
 
+    /**
+     *
+     */
     @Override
     public void end() {
         setStatus(ScreenStatus.ENDING);
@@ -82,6 +102,9 @@ public class YouTubeViewer extends WebViewer {
         setStatus(ScreenStatus.CLOSED);
     }
 
+    /**
+     *
+     */
     @Override
     public void reload() {
         setStatus(ScreenStatus.READY);
@@ -104,6 +127,10 @@ public class YouTubeViewer extends WebViewer {
 
     private YouTubeManager manager;
 
+    /**
+     *
+     * @return
+     */
     public YouTubeManager getYouTubeManager() {
         if (manager == null) {
             manager = new YouTubeManager();
@@ -141,8 +168,8 @@ public class YouTubeViewer extends WebViewer {
         // }
         return playlistId;
     }
-    
-     /**
+
+    /**
      *
      */
     public BooleanProperty shuffle;

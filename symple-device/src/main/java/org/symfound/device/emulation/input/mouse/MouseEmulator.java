@@ -80,7 +80,7 @@ public class MouseEmulator extends InputEmulator<MouseAutomator, NativeMouseList
                     getAutomator().navigate(newValue);
                     
                     }*/
-                    LOGGER.info("3 - Requesting mouse to position: " + newValue);
+                    LOGGER.debug("Requesting mouse to position: " + newValue);
                     getAutomator().navigate(newValue);
                 }
             } catch (NullPointerException ex) {

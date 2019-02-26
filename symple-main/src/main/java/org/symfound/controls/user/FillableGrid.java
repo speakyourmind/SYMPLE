@@ -23,7 +23,6 @@ import javafx.scene.Node;
 import static org.symfound.builder.user.characteristic.Ability.MAX_LEVEL;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
-import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *
@@ -35,7 +34,15 @@ public class FillableGrid extends BuildableGrid {
      *
      */
     public static enum FillMethod {
+
+        /**
+         *
+         */
         ROW_WISE,
+
+        /**
+         *
+         */
         COLUMN_WISE
     }
 
@@ -43,11 +50,26 @@ public class FillableGrid extends BuildableGrid {
      *
      */
     public static enum FillDirection {
+
+        /**
+         *
+         */
         FORWARD,
+
+        /**
+         *
+         */
         REVERSE
     }
 
+    /**
+     *
+     */
     public static final int DEFAULT_COLUMN_SPAN = 1;
+
+    /**
+     *
+     */
     public static final int DEFAULT_ROW_SPAN = 1;
 
     /**
@@ -88,6 +110,10 @@ public class FillableGrid extends BuildableGrid {
         Platform.runLater(runnable);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void disableAll(Boolean value) {
         getChildren().forEach((child) -> {
             if (child instanceof AppableControl) {
@@ -109,6 +135,10 @@ public class FillableGrid extends BuildableGrid {
         setPaused(!isPaused());
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setPaused(Boolean value) {
         pausedProperty().setValue(value);
     }
@@ -134,6 +164,11 @@ public class FillableGrid extends BuildableGrid {
         return paused;
     }
 
+    /**
+     *
+     * @param dimension
+     * @throws IllegalArgumentException
+     */
     public void expand(String dimension) throws IllegalArgumentException {
         //Originally by row
         String dimension1;
@@ -208,6 +243,10 @@ public class FillableGrid extends BuildableGrid {
 
     }
 
+    /**
+     *
+     * @param method
+     */
     public void populate(FillMethod method) {
         // Add the populated list of buttons to the grid
         //System.out.println(" Adding controls to grid of size (" + getSpecRows() + "," + getSpecColumns() + ")");
@@ -301,7 +340,7 @@ public class FillableGrid extends BuildableGrid {
                     if (i < getControlsQueue().size() - 1) {
                         // Increment it by one
 
-                        span1 = span1 + 1;
+                        span1 += 1;
                         //System.out.println("Span " + dimension + " for " + currentNode.getText() + " at " + index1 + index2 + " set to " + span1);
 
                     } else {
@@ -320,13 +359,13 @@ public class FillableGrid extends BuildableGrid {
                             Integer nextIndex2 = getDimensionIndex(nextNode, dimension2);
 
                             // Increment the row index
-                            nextIndex1 = nextIndex1 + 1;
+                            nextIndex1 += 1;
                             //System.out.println(dimension1 + " for " + nextNode.getText() + " set to " + nextIndex1);
                             // If the incremented index is beyond the last row...
                             if (nextIndex1 > spec1 - 1) {
                                 // Move the button over to the first row in the next column
                                 nextIndex1 = 0;
-                                nextIndex2 = nextIndex2 + 1;
+                                nextIndex2 += 1;
                                 /* if (nextIndex2 > spec2) {
                              nextNode.removeFromParent();
                                      }*/
@@ -439,6 +478,9 @@ public class FillableGrid extends BuildableGrid {
         return columnSize;
     }
 
+    /**
+     *
+     */
     public DoubleProperty overrideRow;
 
     /**
@@ -457,6 +499,10 @@ public class FillableGrid extends BuildableGrid {
         return overrideRowProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public DoubleProperty overrideRowProperty() {
         if (overrideRow == null) {
             overrideRow = new SimpleDoubleProperty();
@@ -464,6 +510,9 @@ public class FillableGrid extends BuildableGrid {
         return overrideRow;
     }
 
+    /**
+     *
+     */
     public DoubleProperty overrideColumn;
 
     /**
@@ -482,6 +531,10 @@ public class FillableGrid extends BuildableGrid {
         return overrideColumnProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public DoubleProperty overrideColumnProperty() {
         if (overrideColumn == null) {
             overrideColumn = new SimpleDoubleProperty();
@@ -602,14 +655,26 @@ public class FillableGrid extends BuildableGrid {
 
     private ObjectProperty<ScreenStatus> status;
 
+    /**
+     *
+     * @param value
+     */
     public void setStatus(ScreenStatus value) {
         statusProperty().setValue(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public ScreenStatus getStatus() {
         return statusProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public ObjectProperty<ScreenStatus> statusProperty() {
         if (status == null) {
             status = new SimpleObjectProperty<>(ScreenStatus.CLOSED);

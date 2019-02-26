@@ -7,10 +7,10 @@ package org.symfound.controls.user;
 
 import javafx.scene.media.MediaView;
 import org.symfound.builder.user.User;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.FullSession;
 import org.symfound.main.Main;
-import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.tools.timing.Hold;
 
 /**

@@ -5,7 +5,6 @@
  */
 package org.symfound.device.emulation.reaction;
 
-import org.symfound.device.emulation.reaction.Reaction;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.device.selection.SelectionSource;
 

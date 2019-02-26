@@ -4,8 +4,18 @@ import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import org.symfound.social.SocialMediaPoster;
 
+/**
+ *
+ * @author Administrator
+ */
 public class TwilioPoster extends SocialMediaPoster {
 
+    /**
+     *
+     * @param to
+     * @param from
+     * @param message
+     */
     public void textMessage(String to, String from, String message) {
         getConnector().connect();
 
@@ -13,11 +23,14 @@ public class TwilioPoster extends SocialMediaPoster {
                 new PhoneNumber(from),
                 message).create();
 
-        System.out.println(sms.getSid());
     }
 
     private TwilioConnector connector;
 
+    /**
+     *
+     * @return
+     */
     public TwilioConnector getConnector() {
         if (connector == null) {
             connector = new TwilioConnector();

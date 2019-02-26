@@ -22,12 +22,11 @@ import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Screen;
 import org.apache.log4j.Logger;
 import org.symfound.app.GridController;
 import org.symfound.controls.user.AnimatedLabel;
-import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.BuildableGrid;
+import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
 
 /**
@@ -37,7 +36,15 @@ import org.symfound.controls.user.SubGrid;
 public class HomeController extends GridController {
 
     private static final String NAME = HomeController.class.getName();
+
+    /**
+     *
+     */
     public static final String KEY = "Screen";
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
     @FXML
@@ -102,6 +109,10 @@ public class HomeController extends GridController {
 
     private static SubGrid grid;
 
+    /**
+     *
+     * @return
+     */
     public static SubGrid getGrid() {
         if (grid == null) {
             grid = new SubGrid("home");

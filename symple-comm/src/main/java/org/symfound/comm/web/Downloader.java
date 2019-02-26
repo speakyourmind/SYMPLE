@@ -35,6 +35,10 @@ public class Downloader implements Runnable {
      *
      */
     public String fileName = "";
+
+    /**
+     *
+     */
     public String saveDirectory="";
 
     /**
@@ -86,7 +90,6 @@ public class Downloader implements Runnable {
                             outputStream.write(buffer, 0, bytesRead);
                             byteCounter += bytesRead;
                             Double progress = (double) byteCounter / httpConn.getContentLength();
-                            System.out.println("progress:"+ progress);
                             getTracker().setProgress(progress);
                         }
                         outputStream.close();

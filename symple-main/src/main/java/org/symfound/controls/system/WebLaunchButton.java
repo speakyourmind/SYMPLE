@@ -28,7 +28,7 @@ public final class WebLaunchButton extends ConfirmableControl {
         primary.setWrapText(true);
         load(primary);
         setCSS(cssClass, primary);
-        setSelection(primary);;
+        setSelection(primary);
     }
 
     // TODO: Create new WebPageLauncher class. 

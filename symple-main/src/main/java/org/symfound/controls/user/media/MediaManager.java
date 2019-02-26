@@ -6,7 +6,6 @@
 package org.symfound.controls.user.media;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javafx.beans.property.BooleanProperty;
@@ -17,18 +16,32 @@ import org.symfound.tools.iteration.ModeIterator;
 /**
  *
  * @author Javed Gangjee <jgangjee@gmail.com>
+ * @param <K>
  */
 public abstract class MediaManager<K> implements Runnable {
 
     private static final String NAME = MediaManager.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
     private List<K> defaultValues;
 
+    /**
+     *
+     * @param defaultValues
+     */
     public MediaManager(List<K> defaultValues) {
         this.defaultValues = defaultValues;
     }
 
+    /**
+     *
+     * @param files
+     * @param max
+     */
     public void setItems(List<K> files, Integer max) {
         List<K> iteratableFiles;
 
@@ -64,6 +77,10 @@ public abstract class MediaManager<K> implements Runnable {
         return shuffleProperty().get();
     }
 
+    /**
+     *
+     * @return
+     */
     public BooleanProperty shuffleProperty() {
         if (shuffle == null) {
             shuffle = new SimpleBooleanProperty();
@@ -73,6 +90,10 @@ public abstract class MediaManager<K> implements Runnable {
 
     private ModeIterator<K> iterator;
 
+    /**
+     *
+     * @return
+     */
     public ModeIterator<K> getIterator() {
         if (iterator == null) {
             iterator = new ModeIterator<>(defaultValues);

@@ -74,6 +74,10 @@ public class ScriptButton extends TypingControl {
 
     }
 
+    /**
+     *
+     * @param text
+     */
     public void type(String text) {
         if (getTextArea() != null) {
             getTextArea().handle(getActionKey(), text);
@@ -88,6 +92,9 @@ public class ScriptButton extends TypingControl {
     private TextArea speakTextArea;
     private OnOffButton typableButton;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         setKeyCodeConfig(Integer.valueOf(keyCodeField.getText()));
@@ -97,6 +104,9 @@ public class ScriptButton extends TypingControl {
         super.setAppableSettings();
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         keyCodeField.setText(getKeyCodeConfig().toString());
@@ -106,6 +116,10 @@ public class ScriptButton extends TypingControl {
         super.resetAppableSettings();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         SettingsRow settingsRowA = createSettingRow("Key Code", "Code for Key Action");

@@ -1,7 +1,5 @@
 package org.symfound.controls.user;
 
-import org.symfound.controls.system.grid.editor.EditGridButton;
-import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,12 +23,11 @@ import static javafx.scene.layout.AnchorPane.setTopAnchor;
 import javafx.scene.media.MediaPlayer.Status;
 import org.apache.log4j.Logger;
 import org.symfound.app.DesktopController;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.AppableControl;
-import org.symfound.controls.RunnableControl;
 import org.symfound.controls.system.EditButton;
-import org.symfound.controls.user.media.music.MusicControlButton;
-import org.symfound.controls.user.media.music.MusicTagButton;
-import org.symfound.controls.user.voice.SpeakUserButton;
+import org.symfound.controls.system.grid.editor.EditGridButton;
+import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
 import org.symfound.controls.user.media.MediaViewer;
 import org.symfound.controls.user.media.calendar.CalendarControlButton;
@@ -39,7 +36,9 @@ import org.symfound.controls.user.media.gmail.GMailControlButton;
 import org.symfound.controls.user.media.gmail.GMailSpeakButton;
 import org.symfound.controls.user.media.gmail.GMailViewer;
 import org.symfound.controls.user.media.music.MusicButton;
+import org.symfound.controls.user.media.music.MusicControlButton;
 import org.symfound.controls.user.media.music.MusicPlayer;
+import org.symfound.controls.user.media.music.MusicTagButton;
 import org.symfound.controls.user.media.pageflip.PageFlipControlButton;
 import org.symfound.controls.user.media.pageflip.PageFlipViewer;
 import org.symfound.controls.user.media.photos.PhotoControlButton;
@@ -54,13 +53,13 @@ import org.symfound.controls.user.media.youtube.YouTubeControlButton;
 import org.symfound.controls.user.media.youtube.YouTubeViewer;
 import org.symfound.controls.user.voice.SpeakGrid;
 import org.symfound.controls.user.voice.SpeakPictoButton;
+import org.symfound.controls.user.voice.SpeakUserButton;
 import org.symfound.controls.user.voice.TwilioSendButton;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.HomeController;
 import static org.symfound.main.Main.getVersionManager;
 import org.symfound.main.builder.App;
 import org.symfound.tools.iteration.ParallelList;
-import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *
@@ -248,6 +247,13 @@ public abstract class ButtonGrid extends FillableGrid {
         return availableKeys;
     }
 
+    /**
+     *
+     * @param buildOrder
+     * @param method
+     * @param direction
+     * @param size
+     */
     public void build(ParallelList<String, String> buildOrder,
             FillMethod method, FillDirection direction, Double size) {
         setStatus(ScreenStatus.ENDING);
@@ -268,8 +274,6 @@ public abstract class ButtonGrid extends FillableGrid {
         /*        if (!AppGrid.inEditMode()) {
         launchAnimation();
         }*/
-
-
         toBack();
 
     }
@@ -281,6 +285,13 @@ public abstract class ButtonGrid extends FillableGrid {
         getColumnConstraints().clear();
     }
 
+    /**
+     *
+     * @param buildOrder
+     * @param method
+     * @param direction
+     * @param size
+     */
     public void reload(ParallelList<String, String> buildOrder, FillMethod method, FillDirection direction, Double size) {
         Platform.runLater(() -> {
             if (!mutex) {
@@ -298,8 +309,18 @@ public abstract class ButtonGrid extends FillableGrid {
     appableControl.getKeyRemoveButton().orderProperty().bindBidirectional(this.orderProperty());
     }
     }*/
+
+    /**
+     *
+     */
+
     public List<AppableControl> requestedControls = new ArrayList<>();
 
+    /**
+     *
+     * @param buildOrder
+     * @param size
+     */
     public void fill(ParallelList<String, String> buildOrder, Integer size) {
         if (buildOrder.getFirstList().size() > 0) {
             getAvailableKeys().clear();
@@ -332,6 +353,8 @@ public abstract class ButtonGrid extends FillableGrid {
             for (int i = 0; i < buildSize; i++) {
                 String toBuild = buildOrder.getFirstList().get(i);
                 String index = buildOrder.getSecondList().get(i);
+                LOGGER.info("Attempting to add " + toBuild.trim()
+                        + " with index " + index);
                 switch (toBuild.trim()) {
                     case ScriptButton.KEY:
                         ScriptButton scriptButton = new ScriptButton(index);
@@ -404,6 +427,7 @@ public abstract class ButtonGrid extends FillableGrid {
                         requestedControls.add(volumeGridButton);
                         break;
                     case PhotoControlButton.KEY:
+                        
                         PhotoControlButton photoControl = new PhotoControlButton(index, getPhotoViewer(index));
                         configureItem(photoControl);
                         photoControl.setGridLocation(i);
@@ -537,7 +561,6 @@ public abstract class ButtonGrid extends FillableGrid {
                         break;
                     case GenericButton.KEY:
                         GenericButton blankButton = new GenericButton(index);
-
                         blankButton.setGridLocation(i);
                         configureItem(blankButton);
                         requestedControls.add(blankButton);
@@ -580,10 +603,8 @@ public abstract class ButtonGrid extends FillableGrid {
 
                     default:
                         if (toBuild.length() > 0) {
-                            System.out.println(getSession().appMap.keySet());
                             App appToBuild = getSession().appMap.get("Desktop");
                             String appString = appToBuild.getValue();
-                            System.out.println(appString);
                             int usablesSize = appToBuild.getUsables().size();
                             Integer maxNumApps = getUser().getNavigation().getButtonMap().get(appString);
                             Integer numOfApps;
@@ -701,7 +722,6 @@ public abstract class ButtonGrid extends FillableGrid {
     private YouTubeViewer getYouTubeViewer(String index) {
         if (youtubeViewer == null) {
             youtubeViewer = new YouTubeViewer(index);
-
         }
         youtubeViewer.setIndex(index);
         addToParent(youtubeViewer);
@@ -733,6 +753,10 @@ public abstract class ButtonGrid extends FillableGrid {
         return redditViewer;
     }
 
+    /**
+     *
+     * @param button
+     */
     public void configureItem(AppableControl button) {
         button.configureTitle();
     }
@@ -801,6 +825,10 @@ public abstract class ButtonGrid extends FillableGrid {
         }
         return gap;
     }
+
+    /**
+     *
+     */
     public ObjectProperty<ParallelList<String, String>> order;
 
     /**
@@ -925,6 +953,9 @@ public abstract class ButtonGrid extends FillableGrid {
         return fillDirection;
     }
 
+    /**
+     *
+     */
     public DoubleProperty maxDifficulty;
 
     /**
@@ -943,6 +974,10 @@ public abstract class ButtonGrid extends FillableGrid {
         return maxDifficultyProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public DoubleProperty maxDifficultyProperty() {
         if (maxDifficulty == null) {
             maxDifficulty = new SimpleDoubleProperty();
@@ -950,6 +985,9 @@ public abstract class ButtonGrid extends FillableGrid {
         return maxDifficulty;
     }
 
+    /**
+     *
+     */
     public DoubleProperty minDifficulty;
 
     /**
@@ -968,6 +1006,10 @@ public abstract class ButtonGrid extends FillableGrid {
         return minDifficultyProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public DoubleProperty minDifficultyProperty() {
         if (minDifficulty == null) {
             minDifficulty = new SimpleDoubleProperty();
@@ -975,6 +1017,9 @@ public abstract class ButtonGrid extends FillableGrid {
         return minDifficulty;
     }
 
+    /**
+     *
+     */
     public ObjectProperty<SelectionMethod> selectionMethod;
 
     /**
@@ -993,13 +1038,15 @@ public abstract class ButtonGrid extends FillableGrid {
         return selectionMethodProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public ObjectProperty<SelectionMethod> selectionMethodProperty() {
         if (selectionMethod == null) {
             selectionMethod = new SimpleObjectProperty<>();
         }
         return selectionMethod;
     }
-
-   
 
 }

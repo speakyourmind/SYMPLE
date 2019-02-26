@@ -19,9 +19,15 @@ import static org.symfound.controls.user.media.youtube.YouTubePlaylistLoader.loa
 public class YouTubeManager extends MediaManager<String> {
 
     private static final String NAME = YouTubeManager.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
-   
+    /**
+     *
+     */
     public YouTubeManager() {
         super(Arrays.asList(""));
     }
@@ -40,6 +46,10 @@ public class YouTubeManager extends MediaManager<String> {
 
     private YouTubePlaylistLoader playlistLoader;
 
+    /**
+     *
+     * @return
+     */
     public YouTubePlaylistLoader getPlaylistLoader() {
         if (playlistLoader == null) {
             playlistLoader = new YouTubePlaylistLoader();

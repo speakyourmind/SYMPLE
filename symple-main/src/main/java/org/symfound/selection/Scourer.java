@@ -20,7 +20,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.characteristic.Navigation;
 import org.symfound.controls.AppableControl;
-import org.symfound.controls.user.AnimatedPane;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.main.Main;
@@ -33,14 +32,25 @@ import org.symfound.voice.player.AudioPlayer;
 public class Scourer {
 
     private static final String NAME = Scourer.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
     private final ConfigurableGrid grid;
 
+    /**
+     *
+     * @param grid
+     */
     public Scourer(ConfigurableGrid grid) {
         this.grid = grid;
     }
 
+    /**
+     *
+     */
     public void clearHighlight() {
         for (int i = 0; i < grid.getChildren().size(); i++) {
             Node get = grid.getChildren().get(i);
@@ -48,13 +58,16 @@ public class Scourer {
                 AppableControl node = (AppableControl) get;
                 node.getPrimaryControl().getStyleClass().remove("highlight");
                 if (node instanceof SubGrid) {
-                    ((SubGrid) get).getStyleClass().remove("highlight");
+                    get.getStyleClass().remove("highlight");
                 }
             }
 
         }
     }
 
+    /**
+     *
+     */
     public void resetPosition() {
         if (getCurrentControl() != null) {
             GridPane.setColumnIndex(getCurrentControl(), columnIndex);
@@ -64,6 +77,10 @@ public class Scourer {
         }
     }
 
+    /**
+     *
+     * @param navigation
+     */
     public void highlightNext(Navigation navigation) {
         LOGGER.info("Searching for next control in grid " + grid.getIndex());
         AppableControl next = null;
@@ -88,6 +105,11 @@ public class Scourer {
     Integer rowIndex;
     Integer rowSpan;
 
+    /**
+     *
+     * @param next
+     * @param navigation
+     */
     public void highlightAction(AppableControl next, Navigation navigation) {
         if (next != null) {
             if (next.isSelectable()) {
@@ -228,6 +250,9 @@ public class Scourer {
         return currentControl;
     }
 
+    /**
+     *
+     */
     public static final int DEFAULT_DIMENSION = -1;
     /**
      *

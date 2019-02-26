@@ -31,8 +31,15 @@ import org.symfound.controls.user.media.MediaViewer;
  */
 public class GMailViewer extends MediaViewer {
 
+    /**
+     *
+     */
     public static final String KEY = "GMail";
 
+    /**
+     *
+     * @param index
+     */
     public GMailViewer(String index) {
         super("background", KEY, "", index);
         initialize();
@@ -53,6 +60,9 @@ public class GMailViewer extends MediaViewer {
         configureStyle();
     }
 
+    /**
+     *
+     */
     @Override
     public void reload() {
         setStatus(ScreenStatus.READY);
@@ -69,6 +79,9 @@ public class GMailViewer extends MediaViewer {
         addToPane(getTextArea());
     }
 
+    /**
+     *
+     */
     @Override
     public void configureStyle() {
         updateStyle();
@@ -77,6 +90,9 @@ public class GMailViewer extends MediaViewer {
         });
     }
 
+    /**
+     *
+     */
     public void updateStyle() {
         if (!getOverrideStyle().isEmpty()) {
             LOGGER.info("Setting style for " + getKey() + "." + getIndex() + " to " + getOverrideStyle());
@@ -101,6 +117,10 @@ public class GMailViewer extends MediaViewer {
 
     private TextArea text;
 
+    /**
+     *
+     * @return
+     */
     public TextArea getTextArea() {
         if (text == null) {
             text = new TextArea();
@@ -115,6 +135,9 @@ public class GMailViewer extends MediaViewer {
     // TODO: Commonize
     private TextArea filterField;
 
+    /**
+     *
+     */
     @Override
     public void setAppableSettings() {
         setFilter(filterField.getText());
@@ -124,6 +147,9 @@ public class GMailViewer extends MediaViewer {
         setColumnExpand(Integer.valueOf(columnExpandField.getText()));
     }
 
+    /**
+     *
+     */
     @Override
     public void resetAppableSettings() {
         filterField.setText(getFilter());
@@ -133,6 +159,10 @@ public class GMailViewer extends MediaViewer {
         columnExpandField.setText(String.valueOf(getColumnExpand()));
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tab> addAppableSettings() {
         SettingsRow settingsRow = createSettingRow("Filter", "Mail to be loaded");
@@ -193,6 +223,10 @@ public class GMailViewer extends MediaViewer {
 
     private static GMailManager manager;
 
+    /**
+     *
+     * @return
+     */
     public static GMailManager getGMailManager() {
         if (manager == null) {
             manager = new GMailManager();
@@ -231,6 +265,9 @@ public class GMailViewer extends MediaViewer {
         return filter;
     }
 
+    /**
+     *
+     */
     @Override
     public void play() {
         setStatus(ScreenStatus.LOADING);
@@ -253,6 +290,9 @@ public class GMailViewer extends MediaViewer {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void end() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

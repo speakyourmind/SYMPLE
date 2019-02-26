@@ -5,7 +5,6 @@
  */
 package org.symfound.builder.user.characteristic;
 
-import org.symfound.builder.user.selection.SelectionMethod;
 import java.util.Properties;
 import java.util.prefs.Preferences;
 import javafx.beans.property.BooleanProperty;
@@ -17,6 +16,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.symfound.builder.characteristic.Characteristic;
+import org.symfound.builder.user.selection.SelectionMethod;
 
 /**
  *

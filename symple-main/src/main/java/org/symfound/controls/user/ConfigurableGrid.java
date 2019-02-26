@@ -17,22 +17,22 @@
  */
 package org.symfound.controls.user;
 
+import java.util.prefs.Preferences;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import org.apache.log4j.Logger;
+import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.device.hardware.Hardware;
+import org.symfound.main.Main;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.selection.modes.Scanner;
 import org.symfound.selection.modes.Stepper;
 import org.symfound.tools.iteration.ParallelList;
-import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.tools.timing.DelayedEvent;
-import java.util.prefs.Preferences;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import org.symfound.main.Main;
 
 /**
  * Builds the home page grid of the program based on current user preferences
@@ -43,6 +43,10 @@ import org.symfound.main.Main;
 public class ConfigurableGrid extends ButtonGrid {
 
     private static final String NAME = ConfigurableGrid.class.getName();
+
+    /**
+     *
+     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
     /**
@@ -169,6 +173,9 @@ public class ConfigurableGrid extends ButtonGrid {
 
     }
 
+    /**
+     *
+     */
     public void reload() {
         Double level = getUser().getAbility().getLevel();
         Double max = getMaxDifficulty();
@@ -242,6 +249,13 @@ public class ConfigurableGrid extends ButtonGrid {
         }
     }
 
+    /**
+     *
+     * @param buildOrder
+     * @param method
+     * @param direction
+     * @param size
+     */
     @Override
     public void reload(ParallelList<String, String> buildOrder, FillMethod method, FillDirection direction, Double size) {
         Platform.runLater(() -> {
@@ -300,8 +314,15 @@ public class ConfigurableGrid extends ButtonGrid {
         return index;
     }
 
+    /**
+     *
+     */
     public GridManager manager;
 
+    /**
+     *
+     * @return
+     */
     public GridManager getGridManager() {
         if (manager == null) {
             manager = new GridManager() {
@@ -384,6 +405,9 @@ public class ConfigurableGrid extends ButtonGrid {
         return editMode;
     }
 
+    /**
+     *
+     */
     public Scanner scanner;
 
     /**
@@ -397,6 +421,9 @@ public class ConfigurableGrid extends ButtonGrid {
         return scanner;
     }
 
+    /**
+     *
+     */
     public Stepper stepper;
 
     /**

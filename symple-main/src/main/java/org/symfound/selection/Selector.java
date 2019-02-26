@@ -5,15 +5,15 @@
  */
 package org.symfound.selection;
 
-import org.symfound.builder.user.selection.Chooser;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
-import org.symfound.controls.RunnableControl;
+import org.symfound.builder.user.selection.Chooser;
 import org.symfound.builder.user.selection.SelectionMethod;
+import org.symfound.controls.RunnableControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import static org.symfound.controls.user.ConfigurableGrid.editModeProperty;
 import static org.symfound.controls.user.ConfigurableGrid.inEditMode;
@@ -40,16 +40,29 @@ public abstract class Selector {
     public final ConfigurableGrid grid;
     private User user;
 
+    /**
+     *
+     * @return
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     *
+     * @param grid
+     * @param method
+     * @param user
+     */
     public Selector(ConfigurableGrid grid, SelectionMethod method, User user) {
         this.grid = grid;
         this.method = method;
         this.user = user;
     }
 
+    /**
+     *
+     */
     public void configure() {
         Main.getSession().playingProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
@@ -59,6 +72,9 @@ public abstract class Selector {
 
     }
 
+    /**
+     *
+     */
     public void configureStartStop() {
         startStop();
         getUser().getInteraction().overrideSelectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
@@ -86,6 +102,9 @@ public abstract class Selector {
 
     }
 
+    /**
+     *
+     */
     public void startStop() {
         SelectionMethod userMethod = getUser().getInteraction().getSelectionMethod();
         SelectionMethod gridMethod = grid.getSelectionMethod();
@@ -116,12 +135,22 @@ public abstract class Selector {
 
     private final SelectionMethod method;
 
+    /**
+     *
+     * @return
+     */
     public SelectionMethod getSelectionMethod() {
         return method;
     }
 
+    /**
+     *
+     */
     public abstract void start();
 
+    /**
+     *
+     */
     public void stop() {
         removeSelectorButton();
         getLoopedEvent().end();
@@ -130,6 +159,9 @@ public abstract class Selector {
         getScourer().clearHighlight();
     }
 
+    /**
+     *
+     */
     public abstract void reset();
 
     private RunnableControl selectorButton;
@@ -154,10 +186,18 @@ public abstract class Selector {
         return selectorButton;
     }
 
+    /**
+     *
+     */
     public void onSelected() {
         runSelection();
     }
 
+    /**
+     *
+     * @param configGrid
+     * @param selectorButton
+     */
     public void addSelectorButton(ConfigurableGrid configGrid, RunnableControl selectorButton) {
         Parent parent = configGrid.getParent();
         if (parent instanceof SubGrid) {
@@ -171,11 +211,17 @@ public abstract class Selector {
         }
     }
 
+    /**
+     *
+     */
     public void removeSelectorButton() {
         LOGGER.info("Removing selector button");
         getSelectorButton().removeFromParent();
     }
 
+    /**
+     *
+     */
     public void runSelection() {
         Integer currentRow = getScourer().getCurrentRow();
         Integer currentColumn = getScourer().getCurrentColumn();
@@ -208,10 +254,18 @@ public abstract class Selector {
 
     }
 
+    /**
+     *
+     * @param currentGrid
+     */
     public abstract void invokeSubGrid(SubGrid currentGrid);
 
     private Scourer scourer;
 
+    /**
+     *
+     * @return
+     */
     public Scourer getScourer() {
         if (scourer == null) {
             scourer = new Scourer(grid);
@@ -220,6 +274,10 @@ public abstract class Selector {
     }
     private Chooser chooser;
 
+    /**
+     *
+     * @return
+     */
     public Chooser getChooser() {
         if (chooser == null) {
             chooser = new Chooser();
@@ -231,6 +289,10 @@ public abstract class Selector {
      */
     private LoopedEvent loopedEvent;
 
+    /**
+     *
+     * @return
+     */
     public LoopedEvent getLoopedEvent() {
         if (loopedEvent == null) {
             loopedEvent = new LoopedEvent();
@@ -273,6 +335,10 @@ public abstract class Selector {
 
     private BooleanProperty execute;
 
+    /**
+     *
+     * @param value
+     */
     public void setExecuted(Boolean value) {
         executeProperty().setValue(value);
     }

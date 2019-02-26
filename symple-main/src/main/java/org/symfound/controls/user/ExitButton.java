@@ -1,13 +1,8 @@
 package org.symfound.controls.user;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import org.apache.log4j.Logger;
-import org.symfound.builder.characteristic.PreferencesManager;
 import org.symfound.controls.AppableControl;
-import static org.symfound.controls.system.SettingsExportButton.LOGGER;
 
 /**
  *
@@ -48,20 +43,6 @@ public final class ExitButton extends AppableControl {
 
     @Override
     public void run() {
-        /*    LOGGER.info("Backing up current settings");
-        String folder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/";
-        Preferences allprefs = Preferences.userRoot().node("/org/symfound");
-        final String fileName = "\\" + getUser().getProfile().getFullName() + " All Settings.xml";
-        LOGGER.debug("Exporting preferences to " + fileName);
-        final String destination = folder + fileName;
-        try {
-            PreferencesManager.exportTo(destination, allprefs);
-        } catch (BackingStoreException ex) {
-            java.util.logging.Logger.getLogger(ExitButton.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(ExitButton.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-
         LOGGER.info("Exiting the program");
         getSession().shutdown(BACKUP_ON_EXIT);
     }

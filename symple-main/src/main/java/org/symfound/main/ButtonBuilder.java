@@ -6,7 +6,6 @@
 package org.symfound.main;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.lang.WordUtils;
 import org.symfound.comm.file.PathReader;
@@ -18,6 +17,10 @@ import org.symfound.comm.file.PathWriter;
  */
 public class ButtonBuilder {
 
+    /**
+     *
+     * @param args
+     */
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
         PathReader reader = new PathReader("D:\\AAC\\BW\\EN_BW_Pictograms");
@@ -45,7 +48,6 @@ public class ButtonBuilder {
                     + "                    <entry key=\"columnExpand\" value=\"0\"/>"
                     + "                </map>\n"
                     + "              </node>\n";
-            System.out.println(fileName);
         };
 
         PathWriter writer = new PathWriter(System.getProperty("user.home") + "/Documents/SYMPLE/Phrases.xml");

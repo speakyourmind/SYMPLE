@@ -6,7 +6,6 @@
 package org.symfound.voice.engine.awspolly;
 
 import com.amazonaws.ClientConfiguration;
-import com.amazonaws.SdkClientException;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.services.polly.AmazonPolly;
 import static com.amazonaws.services.polly.AmazonPollyClient.builder;

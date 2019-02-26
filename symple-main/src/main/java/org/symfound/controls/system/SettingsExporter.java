@@ -33,11 +33,20 @@ public class SettingsExporter extends SettingsTransporter {
     private final String folder;
     private String fileName;
 
+    /**
+     *
+     * @param folder
+     * @param fileName
+     */
     public SettingsExporter(String folder, String fileName) {
         this.fileName = fileName;
         this.folder = folder;
     }
 
+    /**
+     *
+     * @param folder
+     */
     public SettingsExporter(String folder) {
         this.folder = folder;
     }

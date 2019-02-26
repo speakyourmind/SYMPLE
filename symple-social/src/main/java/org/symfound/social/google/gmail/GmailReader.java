@@ -97,8 +97,6 @@ public class GmailReader {
                 .build();
         Credential credential = new AuthorizationCodeInstalledApp(
                 flow, new LocalServerReceiver()).authorize("user");
-        System.out.println(
-                "Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
         return credential;
     }
 
@@ -115,6 +113,13 @@ public class GmailReader {
                 .build();
     }
 
+    /**
+     *
+     * @param query
+     * @param max
+     * @return
+     * @throws IOException
+     */
     public static List<String> getMessages(String query, Integer max) throws IOException {
 
         // Build a new authorized API client service.
@@ -136,11 +141,9 @@ public class GmailReader {
                 break;
             }
         }
-        System.out.println(messagesList.size() + " messages available");
         List<String> messagesAsString = new ArrayList<>();
         List<Message> retrieveMessages;
         if (messagesList.size() > max) {
-            System.out.println("More than " + max + " messages found.");
             retrieveMessages = new ArrayList<>(messagesList.subList(0, max));
         } else{
             retrieveMessages = new ArrayList<>(messagesList);
@@ -159,15 +162,27 @@ public class GmailReader {
 
     private ListProperty<String> mail;
 
+    /**
+     *
+     * @param value
+     */
     public void setMail(List<String> value) {
         ObservableList<String> list = FXCollections.observableArrayList(value);
         mailProperty().setValue(list);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<String> getMail() {
         return mailProperty().getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public ListProperty<String> mailProperty() {
         if (mail == null) {
             mail = new SimpleListProperty<>();

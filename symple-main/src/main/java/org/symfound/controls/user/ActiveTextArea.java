@@ -283,6 +283,10 @@ public class ActiveTextArea extends AppableControl {
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
@@ -357,6 +361,9 @@ public class ActiveTextArea extends AppableControl {
         return preferences;
     }
 
+    /**
+     *
+     */
     @Override
     public void configureStyle() {
         updateStyle();
@@ -365,6 +372,9 @@ public class ActiveTextArea extends AppableControl {
         });
     }
 
+    /**
+     *
+     */
     public void updateStyle() {
         if (!getOverrideStyle().isEmpty()) {
             LOGGER.info("Setting style for " + getKey() + "." + getIndex() + " to " + getOverrideStyle());
