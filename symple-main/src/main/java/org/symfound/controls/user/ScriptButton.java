@@ -65,9 +65,7 @@ public class ScriptButton extends TypingControl {
 
     @Override
     public void run() {
-        if (isSpeakable()) {
-            speak(getSpeakText());
-        }
+        super.run();
         if (isTypable()) {
             type(getPrimaryControl().getText());
         }
@@ -88,8 +86,6 @@ public class ScriptButton extends TypingControl {
     }
 
     private TextField keyCodeField;
-    private OnOffButton speakableButton;
-    private TextArea speakTextArea;
     private OnOffButton typableButton;
 
     /**
@@ -98,8 +94,7 @@ public class ScriptButton extends TypingControl {
     @Override
     public void setAppableSettings() {
         setKeyCodeConfig(Integer.valueOf(keyCodeField.getText()));
-        setSpeakable(speakableButton.getValue());
-        setSpeakText(speakTextArea.getText());
+       
         setTypable(typableButton.getValue());
         super.setAppableSettings();
     }
@@ -110,8 +105,7 @@ public class ScriptButton extends TypingControl {
     @Override
     public void resetAppableSettings() {
         keyCodeField.setText(getKeyCodeConfig().toString());
-        speakableButton.setValue(isSpeakable());
-        speakTextArea.setText(getSpeakText());
+        
         typableButton.setValue(isTypable());
         super.resetAppableSettings();
     }
@@ -131,23 +125,7 @@ public class ScriptButton extends TypingControl {
         keyCodeField.getStyleClass().add("settings-text-area");
         settingsRowA.add(keyCodeField, 1, 0, 2, 1);
 
-        SettingsRow speakableRow = createSettingRow("Speakable", "Say the phrase on the button");
-        speakableButton = new OnOffButton("YES", "NO");
-        speakableButton.setMaxSize(180.0, 60.0);
-        speakableButton.setValue(isSpeakable());
-        GridPane.setHalignment(speakableButton, HPos.LEFT);
-        GridPane.setValignment(speakableButton, VPos.CENTER);
-        speakableRow.add(speakableButton, 1, 0, 1, 1);
-
-        speakTextArea = new TextArea();
-        speakTextArea.disableProperty().bind(Bindings.not(speakableButton.valueProperty()));
-        speakTextArea.setText(getSpeakText());
-        GridPane.setMargin(speakTextArea, new Insets(10.0));
-        speakTextArea.prefHeight(80.0);
-        speakTextArea.prefWidth(360.0);
-        speakTextArea.getStyleClass().add("settings-text-area");
-        speakableRow.add(speakTextArea, 2, 0, 1, 1);
-
+        
         SettingsRow settingsRowC = createSettingRow("Typable", "Type the phrase on the button");
         typableButton = new OnOffButton("YES", "NO");
         typableButton.setMaxSize(180.0, 60.0);
@@ -157,7 +135,7 @@ public class ScriptButton extends TypingControl {
         settingsRowC.add(typableButton, 1, 0, 1, 1);
 
         settings.add(settingsRowA);
-        settings.add(speakableRow);
+      
         settings.add(settingsRowC);
         List<Tab> tabs = super.addAppableSettings();
         return tabs;
@@ -242,33 +220,4 @@ public class ScriptButton extends TypingControl {
         return typable;
     }
 
-    private StringProperty speakText;
-
-    /**
-     *
-     * @param value
-     */
-    public void setSpeakText(String value) {
-        speakTextProperty().set(value);
-        getPreferences().put("speakText", value);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getSpeakText() {
-        return speakTextProperty().get();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public StringProperty speakTextProperty() {
-        if (speakText == null) {
-            speakText = new SimpleStringProperty(getPreferences().get("speakText", getText()));
-        }
-        return speakText;
-    }
 }

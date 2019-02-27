@@ -211,7 +211,7 @@ public abstract class ButtonGrid extends FillableGrid {
         for (int i = 0; i < requestedOrder.size(); i++) {
             String requestedKey = requestedOrder.getFirstList().get(i);
             if (validateKey(requestedKey)) {
-                validatedOrder.put(requestedKey, requestedOrder.getSecondList().get(i));
+                validatedOrder.add(requestedKey, requestedOrder.getSecondList().get(i));
             } else {
                 LOGGER.fatal("Key " + requestedKey + " is not available in Master Key list: " + masterKeys.toString());
             }
@@ -309,12 +309,11 @@ public abstract class ButtonGrid extends FillableGrid {
     appableControl.getKeyRemoveButton().orderProperty().bindBidirectional(this.orderProperty());
     }
     }*/
-
     /**
      *
      */
-
     public List<AppableControl> requestedControls = new ArrayList<>();
+    
 
     /**
      *
@@ -322,12 +321,42 @@ public abstract class ButtonGrid extends FillableGrid {
      * @param size
      */
     public void fill(ParallelList<String, String> buildOrder, Integer size) {
+        final ParallelList<String,String> paginationList = new ParallelList<>();
         if (buildOrder.getFirstList().size() > 0) {
             getAvailableKeys().clear();
             requestedControls = new ArrayList<>();
             getAvailableKeys().addAll(masterKeys);
             Integer requestedSize = buildOrder.getFirstList().size();
-            Integer buildSize = (size < requestedSize) ? size : requestedSize;
+            Integer buildSize;
+            if (size < requestedSize) {
+                LOGGER.info("The grid size " + size
+                        + " is LESS than the size of the requested order " + requestedSize);
+                buildSize = size;
+                LOGGER.warn("Pagination is required to fit all the buttons"); //TODO: Add pagination
+/*
+                List<String> paginationFirst = buildOrder.getFirstList().subList(buildSize - 1, buildOrder.getFirstList().size());
+                List<String> paginationSecond = buildOrder.getSecondList().subList(buildSize - 1, buildOrder.getSecondList().size());
+
+               // ParallelList<String, String> paginationList = new ParallelList<>();
+                paginationList.setFirstList(paginationFirst);
+                paginationList.setSecondList(paginationSecond);
+                paginationList.add(0,"Pagination","pg0");
+
+                System.out.println(paginationList.asString());
+
+                buildOrder.add(buildSize - 1, "Pagination", "pg1");
+                buildOrder.setFirstList(buildOrder.getFirstList().subList(0, buildSize));
+                buildOrder.setSecondList(buildOrder.getSecondList().subList(0, buildSize));
+
+                System.out.println(buildOrder.asString());*/
+
+            } else {
+                LOGGER.info("The grid size " + size
+                        + " is GREATER than the size of the requested order" + requestedSize);
+                buildSize = requestedSize;
+
+            }
+            LOGGER.info("Build size set to " + buildSize);
 
             if (!buildOrder.getFirstList().contains(MusicControlButton.KEY)
                     && !buildOrder.getFirstList().contains(MusicTagButton.KEY)) {
@@ -427,7 +456,7 @@ public abstract class ButtonGrid extends FillableGrid {
                         requestedControls.add(volumeGridButton);
                         break;
                     case PhotoControlButton.KEY:
-                        
+
                         PhotoControlButton photoControl = new PhotoControlButton(index, getPhotoViewer(index));
                         configureItem(photoControl);
                         photoControl.setGridLocation(i);
@@ -581,6 +610,24 @@ public abstract class ButtonGrid extends FillableGrid {
                         configureItem(clockButton);
                         requestedControls.add(clockButton);
                         break;
+                 /*   case "Pagination":
+                        final String currentIndex1 = index;
+                        ConfigurableGrid homeGrid1 = HomeController.getGrid().getConfigurableGrid();
+                        GenericButton pageButton = new GenericButton(currentIndex1) {
+                            @Override
+                            public void run() {
+                                LOGGER.info("Setting index to " + currentIndex1);
+                                homeGrid1.setIndex(currentIndex1);
+                                super.run();
+                            }
+                        };
+                        pageButton.setKey(HomeController.KEY);
+                        configureItem(pageButton);
+                        pageButton.setGridLocation(i);
+                        pageButton.setVisible(true);
+                            requestedControls.add(pageButton);
+                     
+                        break;*/
                     case HomeController.KEY:
                         final String currentIndex = index;
                         ConfigurableGrid homeGrid = HomeController.getGrid().getConfigurableGrid();
@@ -635,7 +682,7 @@ public abstract class ButtonGrid extends FillableGrid {
             } else {
                 LOGGER.warn("No controls available!");
                 ParallelList<String, String> defaultList = new ParallelList<>();
-                defaultList.put(GenericButton.KEY, "default");
+                defaultList.add(GenericButton.KEY, "default");
                 fill(defaultList, size);
             }
         }

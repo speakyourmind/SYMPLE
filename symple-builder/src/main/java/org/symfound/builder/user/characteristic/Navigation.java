@@ -132,7 +132,7 @@ public class Navigation extends Characteristic {
         String[] pairs = menuConfig.split(BUTTON_DELIMITER);
         for (String pair : pairs) {
             String[] keyValue = pair.split(KEY_DELIMITER);
-            parallelList.put(keyValue[0], keyValue[1]);
+            parallelList.add(keyValue[0], keyValue[1]);
         }
 
         return parallelList;

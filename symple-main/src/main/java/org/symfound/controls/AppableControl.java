@@ -264,11 +264,12 @@ public abstract class AppableControl extends ConfirmableControl {
      */
     public void configButtons() {
         boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
-        
+
         // TO DO : CAUSING ISSUES WITH PHOTO AND YOUTUBE. Try when playing?
         if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
             addConfigButtons();
-        } /*else {
+        }
+        /*else {
             removeConfigButtons();
         }*/
 
@@ -314,7 +315,7 @@ public abstract class AppableControl extends ConfirmableControl {
         }
         return fontTracker;
     }
-    private ObjectProperty<Font> fontTracking2 = new SimpleObjectProperty<>();
+    private final ObjectProperty<Font> fontTracking2 = new SimpleObjectProperty<>();
 
     /**
      *
@@ -397,6 +398,8 @@ public abstract class AppableControl extends ConfirmableControl {
      */
     public ChoiceBox<Pos> textAlignment;
     // TODO: Split into font size, color, background image, background size
+    private OnOffButton speakableButton;
+    private TextArea speakTextArea;
 
     /**
      *
@@ -456,6 +459,8 @@ public abstract class AppableControl extends ConfirmableControl {
         titleArea.setText(getTitle());
         textAlignment.setValue(Pos.valueOf(getTitlePos()));
         textColourChoices.setValue(getTextColour());
+        speakableButton.setValue(isSpeakable());
+        speakTextArea.setText(getSpeakText());
         fontScaleSlider.setValue(getFontScale());
         overrideStyleField.setText(getOverrideStyle());
         backgroundColourChoices.setValue(getBackgroundColour());
@@ -477,6 +482,8 @@ public abstract class AppableControl extends ConfirmableControl {
         setTitlePos(textAlignment.getValue().toString());
         setTextColour(textColourChoices.getValue());
         setFontScale(fontScaleSlider.getValue());
+        setSpeakable(speakableButton.getValue());
+        setSpeakText(speakTextArea.getText());
         setAlignment(textAlignment.getValue());
         setOverrideStyle(overrideStyleField.getText());
         setBackgroundColour(backgroundColourChoices.getValue());
@@ -530,6 +537,22 @@ public abstract class AppableControl extends ConfirmableControl {
         titleArea.prefWidth(360.0);
         titleArea.getStyleClass().add("settings-text-area");
         showTitleRow.add(titleArea, 2, 0, 1, 1);
+        SettingsRow speakableRow = createSettingRow("Speakable", "Say the phrase on the button");
+        speakableButton = new OnOffButton("YES", "NO");
+        speakableButton.setMaxSize(180.0, 60.0);
+        speakableButton.setValue(isSpeakable());
+        GridPane.setHalignment(speakableButton, HPos.LEFT);
+        GridPane.setValignment(speakableButton, VPos.CENTER);
+        speakableRow.add(speakableButton, 1, 0, 1, 1);
+
+        speakTextArea = new TextArea();
+        speakTextArea.disableProperty().bind(Bindings.not(speakableButton.valueProperty()));
+        speakTextArea.setText(getSpeakText());
+        GridPane.setMargin(speakTextArea, new Insets(10.0));
+        speakTextArea.prefHeight(80.0);
+        speakTextArea.prefWidth(360.0);
+        speakTextArea.getStyleClass().add("settings-text-area");
+        speakableRow.add(speakTextArea, 2, 0, 1, 1);
 
         SettingsRow textColourRow = createSettingRow("Colour", "Change the colour of the text");
         textColourChoices = new ChoiceBox<>(FXCollections.observableArrayList(
@@ -677,6 +700,7 @@ public abstract class AppableControl extends ConfirmableControl {
         Tab selectionTab = buildTab("SELECTION", selectionSettings);
 
         textSettings.add(showTitleRow);
+        textSettings.add(speakableRow);
         textSettings.add(textColourRow);
         textSettings.add(fontScaleRow);
         textSettings.add(textAlignmentRow);
@@ -769,17 +793,16 @@ public abstract class AppableControl extends ConfirmableControl {
                                     overrideStyleField.textProperty()));
 
                     baseGrid.add(animatedButton, 0, 1);
-                    
+
                     animatedButton.fontProperty().bind(fontTracking2);
-                    fontTracking2.setValue(Font.font("Roboto", getFontWeight(), null,getFontScale()));
+                    fontTracking2.setValue(Font.font("Roboto", getFontWeight(), null, getFontScale()));
                     fontScaleSlider.valueProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) -> {
                         final double name = (3 * AppableControl.this.getPrimaryControl().getWidth() + AppableControl.this.getPrimaryControl().getHeight()) * fontScaleSlider.getValue() / 1000;
                         fontTracking2.setValue(Font.font("Roboto", getFontWeight(), null, name));
                     });
 
                     addToStackPane(baseGrid);
-                    
-                    
+
                 }
 
                 @Override
@@ -851,6 +874,13 @@ public abstract class AppableControl extends ConfirmableControl {
 
         } else {
             setText("");
+        }
+    }
+
+    @Override
+    public void run() {
+        if (isSpeakable()) {
+            speak(getSpeakText());
         }
     }
 
@@ -1269,7 +1299,37 @@ public abstract class AppableControl extends ConfirmableControl {
         return speakable;
     }
 
-    private String navigateTo = "";
+    private StringProperty speakText;
+
+    /**
+     *
+     * @param value
+     */
+    public void setSpeakText(String value) {
+        speakTextProperty().set(value);
+        getPreferences().put("speakText", value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getSpeakText() {
+        return speakTextProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty speakTextProperty() {
+        if (speakText == null) {
+            speakText = new SimpleStringProperty(getPreferences().get("speakText", getText()));
+        }
+        return speakText;
+    }
+
+    private final String navigateTo = "";
     private StringProperty navigateIndex;
 
     /**

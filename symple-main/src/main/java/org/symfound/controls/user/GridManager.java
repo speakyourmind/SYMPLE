@@ -73,7 +73,7 @@ public abstract class GridManager implements Editable {
         String[] pairs = value.split(BUTTON_DELIMITER);
         for (String pair : pairs) {
             String[] keyValue = pair.split(KEY_DELIMITER);
-            parallelList.put(keyValue[0], keyValue[1]);
+            parallelList.add(keyValue[0], keyValue[1]);
         }
         order = new SimpleObjectProperty<>(parallelList);
         return order;

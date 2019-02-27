@@ -45,7 +45,7 @@ public class TwitterControlButton extends MediaControlButton<TwitterControl> {
      */
     public static final String KEY = "Twitter Control";
 
-    private TwitterViewer viewer;
+    private final TwitterViewer viewer;
 
     /**
      *

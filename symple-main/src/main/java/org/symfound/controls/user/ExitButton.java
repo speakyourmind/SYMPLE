@@ -39,6 +39,7 @@ public final class ExitButton extends AppableControl {
         super("exit-button", KEY, DEFAULT_TITLE, "default");
         initTitleText = "Exit";
         initCaptionText = "Are you sure you want to close the program?";
+        setSpeakText(DEFAULT_TITLE);
     }
 
     @Override

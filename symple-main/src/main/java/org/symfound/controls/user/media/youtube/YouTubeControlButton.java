@@ -40,7 +40,7 @@ public class YouTubeControlButton extends MediaControlButton<YouTubeControl> {
      */
     public static final String KEY = "YouTube Control";
 
-    private YouTubeViewer viewer;
+    private final YouTubeViewer viewer;
 
     /**
      *

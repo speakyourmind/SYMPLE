@@ -39,6 +39,7 @@ public final class SettingsButton extends AppableControl {
      */
     public SettingsButton() {
         super("setting-button", KEY, DEFAULT_TITLE,"default");
+        setSpeakText(DEFAULT_TITLE);
     }
 
     /**

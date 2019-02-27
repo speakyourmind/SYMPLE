@@ -30,7 +30,7 @@ public abstract class MusicButton extends AppableControl {
 
     private static final String NAME = MusicButton.class.getName();
     private static final Logger LOGGER = Logger.getLogger(NAME);
-    private MusicControl control;
+    private final MusicControl control;
 
     /**
      *

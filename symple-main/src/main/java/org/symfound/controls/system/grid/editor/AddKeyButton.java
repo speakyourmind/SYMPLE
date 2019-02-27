@@ -57,7 +57,7 @@ public class AddKeyButton extends SystemControl {
     public void run() {
         LOGGER.info("Add Key button clicked");
         final ParallelList<String, String> order1 = configurableGrid.getOrder();
-        order1.put(ReplaceKeyButton.KEY, getIndex().toLowerCase());
+        order1.add(ReplaceKeyButton.KEY, getIndex().toLowerCase());
         configurableGrid.setOrder(order1);
         configurableGrid.getGridManager().setOrder(configurableGrid.getOrder());
        SettingsController.setUpdated(true);

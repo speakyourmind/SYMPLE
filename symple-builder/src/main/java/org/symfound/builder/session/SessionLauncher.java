@@ -12,7 +12,7 @@ package org.symfound.builder.session;
  */
 public class SessionLauncher<T extends Session> {
 
-    private T t;
+    private final T t;
 
     /**
      *

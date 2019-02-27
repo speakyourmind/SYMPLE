@@ -45,7 +45,7 @@ public class PageFlipControlButton extends MediaControlButton<PageFlipControl> {
      */
     public static final String KEY = "PageFlip Control";
 
-    private PageFlipViewer viewer;
+    private final PageFlipViewer viewer;
 
     /**
      *

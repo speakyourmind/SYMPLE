@@ -36,7 +36,7 @@ public final class LockButton extends AppableControl {
      */
     public static final String DEFAULT_TITLE = "Lock";
 
-    private ButtonGrid lockGrid;
+    private final ButtonGrid lockGrid;
 
     /**
      *

@@ -19,7 +19,7 @@ public class WeatherService {
 
     private static final String NAME = WeatherService.class.getName();
     private static final Logger LOGGER = Logger.getLogger(NAME);
-    private JSONReader jsonReader = new JSONReader();
+    private final JSONReader jsonReader = new JSONReader();
 
     /**
      *

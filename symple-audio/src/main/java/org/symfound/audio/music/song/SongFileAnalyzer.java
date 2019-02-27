@@ -15,7 +15,7 @@ import org.symfound.comm.file.ExtensionAnalyzer;
  */
 public class SongFileAnalyzer {
 
-    private String path;
+    private final String path;
 
     /**
      *

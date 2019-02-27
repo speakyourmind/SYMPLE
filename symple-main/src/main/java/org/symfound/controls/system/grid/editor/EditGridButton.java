@@ -295,7 +295,7 @@ public class EditGridButton extends SystemControl {
                 String[] pairs = buttonOrderField.getText().split(BUTTON_DELIMITER);
                 for (String pair : pairs) {
                     String[] keyValue = pair.split(KEY_DELIMITER);
-                    parallelList.put(keyValue[0], keyValue[1]);
+                    parallelList.add(keyValue[0], keyValue[1]);
                 }
                 buttonGrid.setOrder(parallelList);
                 buttonGrid.setFillMethod(fillMethodChoices.getValue());

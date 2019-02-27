@@ -27,7 +27,7 @@ import org.symfound.text.prediction.local.trie.Trie;
  */
 public class WordSplittingGenerator implements Generator {
 
-    private Trie _trie;
+    private final Trie _trie;
 
     /**
      *

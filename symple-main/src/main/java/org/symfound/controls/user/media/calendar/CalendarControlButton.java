@@ -40,7 +40,7 @@ public class CalendarControlButton extends MediaControlButton<CalendarControl> {
      */
     public static final String KEY = "Calendar Control";
 
-    private CalendarViewer viewer;
+    private final CalendarViewer viewer;
 
     /**
      *

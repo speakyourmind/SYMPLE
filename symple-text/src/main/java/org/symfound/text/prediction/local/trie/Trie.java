@@ -33,7 +33,7 @@ public class Trie {
      */
     public ArrayList<String> corpus;
 
-    private TrieNode _rootNode;
+    private final TrieNode _rootNode;
     //Starts at root
     private TrieNode _currNode;
 

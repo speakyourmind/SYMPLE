@@ -40,7 +40,7 @@ public class TrieNode {
     private TrieNode _parent;
 
     //Each node keeps track of its direct children in Hash 
-    private HashMap<Character, TrieNode> _children;
+    private final HashMap<Character, TrieNode> _children;
 
     //Whether or not a word ends at this node
     private boolean _hasWordFlag;

@@ -35,7 +35,12 @@ public final class MinimizeButton extends AppableControl {
      */
     public MinimizeButton() {
         super("minimize-button", KEY, DEFAULT_TITLE, "default");
+        initialize();
+    }
+
+    private void initialize() {
         setText("_");
+        setSpeakText(DEFAULT_TITLE);
     }
 
     /**

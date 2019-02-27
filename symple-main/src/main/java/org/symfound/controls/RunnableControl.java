@@ -198,7 +198,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
      * @param e
      */
     public void mouseExit(MouseEvent e) {
-           SelectionMethod deducedMethod = getDeducedSelectionMethod();
+        SelectionMethod deducedMethod = getDeducedSelectionMethod();
         if (deducedMethod.equals(SelectionMethod.DWELL)) {
             exit();
         }
@@ -211,7 +211,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
         if (this.getParent() instanceof ConfigurableGrid) {
             ConfigurableGrid grid = (ConfigurableGrid) this.getParent();
             SelectionMethod gridMethod = grid.getSelectionMethod();
-            deducedMethod = (overrideSelectionMethod) ? gridMethod:userMethod;
+            deducedMethod = (overrideSelectionMethod) ? gridMethod : userMethod;
         } else {
             deducedMethod = userMethod;
         }
@@ -234,14 +234,14 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
         final Navigation navigation = Main.getSession().getUser().getNavigation();
         if (this instanceof AppableControl) {
             AppableControl appable = (AppableControl) this;
-            if (navigation.speakSelection()) {
+           /* if (navigation.speakSelection()) {
                 if (appable.isSpeakable()) {
-                    appable.speak(getText());
+                    appable.speak(getSpeakText());
                 }
-            }
+            }*/
 
             if (!appable.getNavigateIndex().isEmpty()) {
-                LOGGER.info("Post click navigation requested by "+this.getText());
+                LOGGER.info("Post click navigation requested by " + this.getText());
                 appable.openHomeScreen();
                 ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
                 configurableGrid.setIndex(appable.getNavigateIndex());
@@ -659,11 +659,9 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
     LOGGER.info(message);
     engine.play(text, true, currentVoiceName);
     }*/
-
     /**
      *
      */
-
     public List<String> DEFAULT_SKIP_CHARS = Arrays.asList("https://");
 
     /**
@@ -685,12 +683,17 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
         TTSLauncher launcher = ttsManager.getLauncher();
         String currentEngine = TTSLauncher.getVoiceMap().get(currentVoiceName);
         TTSPlayer player = launcher.getPlayerMap().get(currentEngine);
-        for (String skipChar : skipChars) {
-            text = text.replaceAll(skipChar, "");
+
+        if (text != null) {
+            for (String skipChar : skipChars) {
+                text = text.replaceAll(skipChar, "");
+            }
+            String message = "Speak Button Clicked. Playing the text: " + text + "; using voice:" + currentVoiceName;
+            LOGGER.info(message);
+            player.play(text, true, currentVoiceName);
+        } else {
+            LOGGER.warn("Text is null");
         }
-        String message = "Speak Button Clicked. Playing the text: " + text + "; using voice:" + currentVoiceName;
-        LOGGER.info(message);
-        player.play(text, true, currentVoiceName);
     }
 
     /**

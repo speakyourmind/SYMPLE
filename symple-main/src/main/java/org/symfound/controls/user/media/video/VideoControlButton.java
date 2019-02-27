@@ -42,7 +42,7 @@ public class VideoControlButton extends MediaControlButton<VideoControl> {
      */
     public static final String KEY = "Video Control";
 
-    private VideoViewer viewer;
+    private final VideoViewer viewer;
 
     /**
      *

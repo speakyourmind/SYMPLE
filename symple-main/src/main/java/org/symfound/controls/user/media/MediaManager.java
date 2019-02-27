@@ -27,7 +27,7 @@ public abstract class MediaManager<K> implements Runnable {
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
-    private List<K> defaultValues;
+    private final List<K> defaultValues;
 
     /**
      *

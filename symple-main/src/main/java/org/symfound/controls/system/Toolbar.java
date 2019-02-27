@@ -91,7 +91,7 @@ public class Toolbar extends ScreenControl<AnimatedButton> {
         String[] pairs = getButtonOrder().split(BUTTON_DELIMITER);
         for (String pair : pairs) {
             String[] keyValue = pair.split(KEY_DELIMITER);
-            parallelList.put(keyValue[0], keyValue[1]);
+            parallelList.add(keyValue[0], keyValue[1]);
         }
         return parallelList;
     }

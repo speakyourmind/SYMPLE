@@ -38,7 +38,7 @@ public abstract class Selector {
      *
      */
     public final ConfigurableGrid grid;
-    private User user;
+    private final User user;
 
     /**
      *

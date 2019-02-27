@@ -29,6 +29,10 @@ public class ParallelList<K extends Object, V extends Object> {
         return first;
     }
 
+    public void setFirstList(List<K> value) {
+        first = value;
+    }
+
     private List<V> second;
 
     /**
@@ -40,6 +44,10 @@ public class ParallelList<K extends Object, V extends Object> {
             second = new ArrayList<>();
         }
         return second;
+    }
+
+    public void setSecondList(List<V> value) {
+        second = value;
     }
 
     /**
@@ -55,9 +63,15 @@ public class ParallelList<K extends Object, V extends Object> {
      * @param firstValue
      * @param secondValue
      */
-    public void put(K firstValue, V secondValue) {
+    public void add(K firstValue, V secondValue) {
         getFirstList().add(firstValue);
         getSecondList().add(secondValue);
+
+    }
+
+    public void add(Integer index, K firstValue, V secondValue) {
+        getFirstList().add(index, firstValue);
+        getSecondList().add(index, secondValue);
     }
 
     /**
@@ -68,8 +82,6 @@ public class ParallelList<K extends Object, V extends Object> {
         Integer index = getFirstList().indexOf(firstValue);
         remove(index);
     }
-
-
 
     /**
      *

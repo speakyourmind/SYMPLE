@@ -121,7 +121,7 @@ public class DiagnosticController extends TestControllerBase {
      *
      */
     public int finishAnimTime;
-    private DelayedEvent resetEvent = new DelayedEvent();
+    private final DelayedEvent resetEvent = new DelayedEvent();
 
     // Tries
 

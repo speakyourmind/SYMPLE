@@ -47,7 +47,7 @@ public class RedditControlButton extends MediaControlButton<RedditControl> {
      */
     public static final String KEY = "Reddit Control";
 
-    private RedditViewer viewer;
+    private final RedditViewer viewer;
 
     /**
      *
