@@ -16,7 +16,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import org.apache.log4j.Logger;
+import org.symfound.audio.music.song.SongFileAnalyzer;
 import org.symfound.comm.file.PathReader;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.user.ConfigurableGrid;
@@ -62,7 +65,7 @@ public abstract class MusicButton extends AppableControl {
     @Override
     public void configButtons() {
         boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
-        
+
         ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1 && !isSettingsControl && isEditable()) {
                 addConfigButtons();
@@ -121,8 +124,9 @@ public abstract class MusicButton extends AppableControl {
      */
     public void setContents(List<String> value) {
         ObservableList<String> list = FXCollections.observableArrayList(value);
-        LOGGER.info("Contents are " + list);
+        LOGGER.info("Contents are " + list.toString());
         contentProperty().setValue(list);
+
     }
 
     /**

@@ -7,6 +7,7 @@ package org.symfound.audio.music.song;
 
 import java.util.Arrays;
 import java.util.List;
+import org.apache.log4j.Logger;
 import org.symfound.comm.file.ExtensionAnalyzer;
 
 /**
@@ -14,6 +15,8 @@ import org.symfound.comm.file.ExtensionAnalyzer;
  * @author Javed Gangjee
  */
 public class SongFileAnalyzer {
+    private static final String NAME = SongFileAnalyzer.class.getName();
+    private static final Logger LOGGER = Logger.getLogger(NAME);
 
     private final String path;
 
@@ -63,7 +66,14 @@ public class SongFileAnalyzer {
      * @return
      */
     public Boolean isPlayable() {
-        return getExtensionAnalyzer().isExtension(SONG_EXTENSIONS);
+        final Boolean extension = getExtensionAnalyzer().isExtension(SONG_EXTENSIONS);
+        if (extension){
+            LOGGER.info("File is a playable song: "+ path);
+        } else {
+            LOGGER.warn("File is NOT a playable song: "+path);
+        }
+        
+        return extension;
     }
     
     

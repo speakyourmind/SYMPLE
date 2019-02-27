@@ -15,9 +15,9 @@ import org.symfound.audio.music.song.Song;
  *
  * @author Javed Gangjee <jgangjee@gmail.com>
  */
-public class MusicTagButton extends MusicControlButton {
+public class MusicInfoButton extends MusicControlButton {
 
-    private static final String NAME = MusicTagButton.class.getName();
+    private static final String NAME = MusicInfoButton.class.getName();
     private static final Logger LOGGER = Logger.getLogger(NAME);
 
     /**
@@ -29,7 +29,7 @@ public class MusicTagButton extends MusicControlButton {
      *
      * @param index
      */
-    public MusicTagButton(String index) {
+    public MusicInfoButton(String index) {
         super("transparent", KEY, "", index, MusicControl.INFO);
      }
 
@@ -43,7 +43,7 @@ public class MusicTagButton extends MusicControlButton {
     public Preferences getPreferences() {
         if (preferences == null) {
             String name = KEY.toLowerCase() + "/" + getIndex().toLowerCase();
-            Class<? extends MusicTagButton> aClass = this.getClass();
+            Class<? extends MusicInfoButton> aClass = this.getClass();
             preferences = Preferences.userNodeForPackage(aClass).node(name);
         }
         return preferences;
@@ -74,54 +74,55 @@ public class MusicTagButton extends MusicControlButton {
     public void setSongInfo(Song song) {
         getSongNameLabel().setText(song.getTitle());
         getArtistNameLabel().setText(song.getArtist());
-        getAlbumNameLabel().setText(song.getAlbum());LOGGER.info("Updating song information and album art: " + song.getTitle() + "-" + song.getArtist());
+        getAlbumNameLabel().setText(song.getAlbum());
+        LOGGER.info("Updating song information and album art: " + 
+                song.getTitle() + "-" + song.getArtist());
        if (getAlbumArt() != null) {
             getAlbumArt().set(song);
         }
     }
 
-    private Label lblSong;
+    private Label songLabel;
 
     /**
      *
      * @return
      */
     public Label getSongNameLabel() {
-        if (lblSong == null) {
-            lblSong = new Label("Ready...");
-            this.setCSS("music-song", lblSong);
+        if (songLabel == null) {
+            songLabel = new Label("Ready...");
+            this.setCSS("music-song", songLabel);
          //   lblSong.setWrapText(true);
         }
-        return lblSong;
+        return songLabel;
     }
-    private Label lblArtist;
+    private Label artistLabel;
 
     /**
      *
      * @return
      */
     public Label getArtistNameLabel() {
-        if (lblArtist == null) {
-            lblArtist = new Label("");
-            this.setCSS("music-artist", lblArtist);
-         //   lblArtist.setWrapText(true);
+        if (artistLabel == null) {
+            artistLabel = new Label("");
+            this.setCSS("music-artist", artistLabel);
         }
-        return lblArtist;
+        return artistLabel;
     }
 
-    private Label lblAlbum;
+    private Label albumLabel;
 
     /**
      *
      * @return
      */
     public Label getAlbumNameLabel() {
-        if (lblAlbum == null) {
-            lblAlbum = new Label("");
-            this.setCSS("music-album", lblAlbum);
+        if (albumLabel == null) {
+            albumLabel = new Label("");
+            this.setCSS("music-album", albumLabel);
           //  lblAlbum.setWrapText(true);
         }
-        return lblAlbum;
+        return albumLabel;
     }
 
 }

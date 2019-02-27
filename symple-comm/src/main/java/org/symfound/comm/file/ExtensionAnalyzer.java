@@ -150,6 +150,9 @@ public class ExtensionAnalyzer {
 
     }
 
+    /*
+    
+    */
     private String replaceLast(String string, String fromValue, String toValue) {
         int lastIndex = string.lastIndexOf(fromValue);
         if (lastIndex < 0) {

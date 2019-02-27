@@ -43,7 +43,11 @@ public class VersionUpdateButton extends AppableControl {
         getPrimaryControl().visibleProperty().bind(getVersionManager().needsUpdateProperty());
         initTitleText = "Update";
         initCaptionText = "The program will download and automatically install the new version.";
-        setSpeakText(DEFAULT_TITLE);
+        initialize();
+    }
+
+    private void initialize() {
+        setSpeakText("Updating SYMPLE.The program will download and automatically install the new version.");
     }
 
     @Override

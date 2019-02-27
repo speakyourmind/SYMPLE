@@ -17,7 +17,7 @@
  */
 package org.symfound.audio.music.song;
 
-import com.mpatric.mp3agic.ID3v1;
+import com.mpatric.mp3agic.ID3v1; //Give credit
 import com.mpatric.mp3agic.ID3v2;
 import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.Mp3File;
@@ -195,15 +195,18 @@ public final class Song extends PathReader {
     }
 
     /**
-     * 
+     *
      * @param repeat
      * @param position
      * @param size
      * @return
-     * @throws IOException 
+     * @throws IOException
      */
     public String getAlbumArtStyle(String repeat, String position, String size) throws IOException {
-        byte[] imageData = id3v2Tag.getAlbumImage();
+        String albumArtStyle;
+        if (id3v2Tag != null) {
+            byte[] imageData = id3v2Tag.getAlbumImage();
+        
         if (imageData != null) {
             String mimeType = id3v2Tag.getAlbumImageMimeType();
             try (
@@ -223,11 +226,20 @@ public final class Song extends PathReader {
             });
         }
 
-        String albumArtStyle = "-fx-background color:-fx-dark;"
+       albumArtStyle = "-fx-background color:-fx-dark;"
                 + "-fx-background-image: url(\"" + albumArtPath + "\");"
                 + "-fx-background-size: " + size + ";\n"
                 + "-fx-background-repeat: " + repeat + ";\n"
                 + "-fx-background-position: " + position + "";
+        } else {
+            LOGGER.info("No album art available");
+            albumArtStyle="-fx-background color:-fx-light;"
+                + "-fx-background-size: " + size + ";\n"
+                + "-fx-background-repeat: " + repeat + ";\n"
+                + "-fx-background-position: " + position + "";
+        }
         return albumArtStyle;
+        
+        
     }
 }

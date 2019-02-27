@@ -180,7 +180,7 @@ public class ModeIterator<T> {
      */
     public void next() {
         if (!hasNext()) {
-            set(0);
+            set(0);        
         } else {
             set(getCurrentIndex() + 1);
         }
@@ -193,7 +193,6 @@ public class ModeIterator<T> {
         if (!hasPrevious()) {
             set(getTypes().size() - 1);
         } else {
-
             set(getCurrentIndex() - 1);
         }
     }

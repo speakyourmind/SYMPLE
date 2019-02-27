@@ -21,14 +21,21 @@ import javafx.scene.media.MediaPlayer.Status;
 import javafx.stage.DirectoryChooser;
 import org.apache.log4j.Logger;
 import org.symfound.audio.music.song.Song;
+import org.symfound.audio.music.song.SongFileAnalyzer;
+import org.symfound.comm.file.PathReader;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
+import org.symfound.controls.system.dialog.OKCancelDialog;
+import org.symfound.controls.system.dialog.OKDialog;
+import org.symfound.controls.system.dialog.ScreenPopup;
 import org.symfound.controls.system.dialog.SettingsDialog;
 import org.symfound.controls.user.AnimatedButton;
+import org.symfound.controls.user.ConfigurableGrid;
+import org.symfound.main.HomeController;
 
 /**
  *
@@ -126,9 +133,72 @@ public class MusicControlButton extends MusicButton {
      *
      */
     public void configureMusicView() {
-        setContents(getFolderPath());
-        getMusicView().getPlaylistManager().setPlaylist(getContents());
-        shuffleContents();
+        PathReader pathReader = new PathReader(getFolderPath());
+        List<String> folderFilePaths = pathReader.getFolderFilePaths();
+        Boolean validFolder = Boolean.FALSE;
+        for (String path : folderFilePaths) {
+            SongFileAnalyzer analyze = new SongFileAnalyzer(path);
+            if (analyze.isPlayable()) {
+                LOGGER.info("At least one playable file found: " + path);
+                validFolder = Boolean.TRUE;
+                break;
+            }
+        }
+        if (validFolder) {
+            setContents(folderFilePaths);
+            getMusicView().getPlaylistManager().setPlaylist(getContents());
+            shuffleContents();
+        } else {
+            HomeController.getGrid().getChildren().add(getErrorPopup());
+        }
+
+    }
+
+    private ScreenPopup errorPopup;
+
+    /**
+     *
+     * @return
+     */
+    public ScreenPopup<OKDialog> getErrorPopup() {
+
+        if (errorPopup == null) {
+            errorPopup = new ScreenPopup<>(getErrorDialog());
+        }
+        return errorPopup;
+    }
+
+    /**
+     *
+     */
+    private OKCancelDialog errorDialog;
+
+    /**
+     *
+     * @return
+     */
+    public OKCancelDialog getErrorDialog() {
+        if (errorDialog == null) {
+            errorDialog = new OKCancelDialog("ERROR", "No playable song files found in folder " + getFolderPath(), "EDIT", "BACK") {
+                @Override
+                public void onOk() {
+                    HomeController.getGrid().getChildren().add(MusicControlButton.this.getEditAppButton().getPopup());
+                    final Double selectionTime = getSession().getUser().getInteraction().getSelectionTime();
+                    getDialog().animate().startScale(selectionTime, 0.8, 1.0);
+                    
+                }
+
+                @Override
+                public void onCancel() {
+                    openHomeScreen();
+                    ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
+                    configurableGrid.setIndex("home");
+                    getSession().setPlaying(false);
+                }
+
+            };
+        }
+        return errorDialog;
     }
 
     @Override

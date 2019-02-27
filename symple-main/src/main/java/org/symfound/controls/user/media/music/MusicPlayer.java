@@ -39,7 +39,7 @@ public class MusicPlayer extends AnimatedMediaView {
         if (getMediaPlayer() != null) {
             LOGGER.info("Stopping Music Player");
             getMediaPlayer().stop();
-            
+
         }
     }
 
@@ -78,7 +78,7 @@ public class MusicPlayer extends AnimatedMediaView {
      */
     public void play(Song song, Boolean autoNext) {
         getPlaylistManager().setCurrentSong(song);
-       // log(song);
+        // log(song);
         play(autoNext);
     }
 
@@ -90,6 +90,7 @@ public class MusicPlayer extends AnimatedMediaView {
     public void play(Boolean autoNext) {
         addHold();
         String currentSong = getPlaylistManager().getCurrentSong().getFile().toURI().toString();
+        LOGGER.info("Loading current song file: " + currentSong);
         Media media = new Media(currentSong);
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         setMediaPlayer(mediaPlayer);
@@ -97,8 +98,8 @@ public class MusicPlayer extends AnimatedMediaView {
         getMediaPlayer().setVolume(interaction.getVolume());
         getMediaPlayer().volumeProperty().bindBidirectional(interaction.volumeProperty());
         getMediaPlayer().setOnReady(() -> {
+            LOGGER.info("Playing song file: " + currentSong);
             getMediaPlayer().play();
-            
         });
 
         setVisible(true);
@@ -110,12 +111,7 @@ public class MusicPlayer extends AnimatedMediaView {
         }
 
     }
-    /*
-    private void log(Song song) {
-    String message = "Playing " + song.getTitle() + " - " + song.getArtist();
-    LOGGER.info(message);
-    FullSession.log(message); // TODO: To be removed.
-    }*/
+    
     private PlaylistManager playlistManager;
 
     /**

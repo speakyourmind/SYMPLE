@@ -38,7 +38,7 @@ import org.symfound.controls.user.media.gmail.GMailViewer;
 import org.symfound.controls.user.media.music.MusicButton;
 import org.symfound.controls.user.media.music.MusicControlButton;
 import org.symfound.controls.user.media.music.MusicPlayer;
-import org.symfound.controls.user.media.music.MusicTagButton;
+import org.symfound.controls.user.media.music.MusicInfoButton;
 import org.symfound.controls.user.media.pageflip.PageFlipControlButton;
 import org.symfound.controls.user.media.pageflip.PageFlipViewer;
 import org.symfound.controls.user.media.photos.PhotoControlButton;
@@ -105,7 +105,7 @@ public abstract class ButtonGrid extends FillableGrid {
             BackSpacePictoButton.KEY,
             ClearPictoButton.KEY,
             PhotoControlButton.KEY,
-            MusicTagButton.KEY,
+            MusicInfoButton.KEY,
             MusicControlButton.KEY,
             VideoControlButton.KEY,
             CalendarControlButton.KEY,
@@ -359,7 +359,7 @@ public abstract class ButtonGrid extends FillableGrid {
             LOGGER.info("Build size set to " + buildSize);
 
             if (!buildOrder.getFirstList().contains(MusicControlButton.KEY)
-                    && !buildOrder.getFirstList().contains(MusicTagButton.KEY)) {
+                    && !buildOrder.getFirstList().contains(MusicInfoButton.KEY)) {
                 MusicPlayer view = MusicButton.getMusicView();
                 if (view.getMediaPlayer() != null) {
                     if (view.getMediaPlayer().getStatus().equals(Status.PLAYING)) {
@@ -520,8 +520,8 @@ public abstract class ButtonGrid extends FillableGrid {
                         gmailControl.setGridLocation(i);
                         requestedControls.add(gmailControl);
                         break;
-                    case MusicTagButton.KEY:
-                        MusicTagButton musicTagButton = new MusicTagButton(index);
+                    case MusicInfoButton.KEY:
+                        MusicInfoButton musicTagButton = new MusicInfoButton(index);
                         musicTagButton.setGridLocation(i);
                         requestedControls.add(musicTagButton);
                         break;
