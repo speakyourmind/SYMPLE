@@ -75,7 +75,7 @@ public class GMailViewer extends MediaViewer {
 
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         addToPane(getTextArea());
     }
 

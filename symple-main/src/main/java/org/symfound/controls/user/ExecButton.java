@@ -62,7 +62,7 @@ public class ExecButton extends AppableControl {
      */
     public ExecButton(String CSSClass, String command) {
         super(CSSClass, "Execute", command, "default");
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         primary.setWrapText(true);
         load(primary);
         setCSS(cssClass, primary);

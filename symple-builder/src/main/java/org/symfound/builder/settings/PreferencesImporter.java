@@ -3,23 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.controls.system;
+package org.symfound.builder.settings;
 
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import org.apache.log4j.Logger;
-import org.symfound.builder.characteristic.PreferencesManager;
 
 /**
  *
  * @author Javed Gangjee <javed@speakyourmindfoundation.org>
  */
-public class SettingsImporter extends SettingsTransporter {
+public class PreferencesImporter extends PreferencesTransporter {
 
     /**
      *
      */
-    public static final String NAME = SettingsImporter.class.getName();
+    public static final String NAME = PreferencesImporter.class.getName();
 
     /**
      *
@@ -40,7 +39,7 @@ public class SettingsImporter extends SettingsTransporter {
      *
      * @param fileSelection
      */
-    public SettingsImporter(String fileSelection) {
+    public PreferencesImporter(String fileSelection) {
         this.fileSelection = fileSelection;
 
     }

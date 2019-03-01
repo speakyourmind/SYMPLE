@@ -75,7 +75,7 @@ public class VideoViewer extends MediaViewer {
 
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         addToPane(getBorderPane());
     }
 

@@ -5,6 +5,7 @@
  */
 package org.symfound.controls.user;
 
+import org.symfound.media.Playlistable;
 import javafx.scene.media.MediaView;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.selection.SelectionMethod;

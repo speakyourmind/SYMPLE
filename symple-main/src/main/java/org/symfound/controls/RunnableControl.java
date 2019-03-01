@@ -59,7 +59,7 @@ import org.symfound.device.processing.Processor;
 import org.symfound.device.selection.SelectionEventType;
 import org.symfound.main.HomeController;
 import org.symfound.main.Main;
-import org.symfound.main.manager.TTSManager;
+import org.symfound.controls.user.voice.TTSManager;
 import org.symfound.tools.animation.NodeAnimator;
 import org.symfound.tools.timing.transition.ScanTransition;
 import org.symfound.voice.builder.TTSPlayer;
@@ -468,7 +468,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
      */
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         primary.setWrapText(Boolean.TRUE);
         load(primary);
         setCSS(cssClass, primary);

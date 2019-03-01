@@ -96,7 +96,7 @@ public class ScreenDialog extends ScreenControl<AnimatedButton> {
         return grid;
     }
 
-    private TitledLabel buildTitledLabel() {
+    public TitledLabel buildTitledLabel() {
         TitledLabel label = new TitledLabel();
         label.titleTextProperty().bindBidirectional(titleTextProperty());
         label.captionTextProperty().bindBidirectional(captionTextProperty());

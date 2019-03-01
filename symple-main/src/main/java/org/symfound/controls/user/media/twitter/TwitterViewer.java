@@ -49,7 +49,7 @@ public class TwitterViewer extends WebViewer {
 
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         BuildableGrid grid = new BuildableGrid();
         grid.setHgap(BuildableGrid.DEFAULT_GRID_GAP);
         grid.setVgap(BuildableGrid.DEFAULT_GRID_GAP);

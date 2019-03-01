@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.prefs.Preferences;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import org.apache.log4j.Logger;
@@ -78,7 +80,7 @@ public class SubGrid extends AppableControl {
 
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
     }
 
     List<KeyRemoveButton> removeButtons;
@@ -203,6 +205,39 @@ public class SubGrid extends AppableControl {
             removeButtons = new ArrayList<>(Arrays.asList(new KeyRemoveButton(null, getConfigurableGrid())));// TO DO: Make cleaner
         }
         return removeButtons;
+    }
+    
+        /**
+     *
+     */
+    public static final Boolean DEFAULT_INERROR_VALUE = Boolean.FALSE;
+    private BooleanProperty inError;
+
+    /**
+     *
+     * @return
+     */
+    public Boolean isInError() {
+        return inErrorProperty().getValue();
+    }
+
+    /**
+     *
+     * @param value
+     */
+    public void setInError(Boolean value) {
+        inErrorProperty().setValue(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty inErrorProperty() {
+        if (inError == null) {
+            inError = new SimpleBooleanProperty(DEFAULT_INERROR_VALUE);
+        }
+        return inError;
     }
 
     @Override

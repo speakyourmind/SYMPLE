@@ -53,13 +53,18 @@ import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
+import org.symfound.controls.system.dialog.FixableErrorDialog;
+import org.symfound.controls.system.dialog.ScreenDialog;
+import org.symfound.controls.system.dialog.ScreenPopup;
 import org.symfound.controls.system.grid.editor.DeleteKeyButton;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.AnimatedPane;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ConfigurableGrid;
+import org.symfound.controls.user.SubGrid;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
+import org.symfound.main.HomeController;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 import org.symfound.tools.ui.ColourChoices;
@@ -770,7 +775,7 @@ public abstract class AppableControl extends ConfirmableControl {
                     AnimatedPane actionPane = buildActionPane(HPos.CENTER, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
                     baseGrid.add(actionPane, 0, 0);
 
-                    final AnimatedButton animatedButton = new AnimatedButton();
+                    final AnimatedButton animatedButton = new AnimatedButton("");
                     animatedButton.setMaxWidth(540.0);
                     animatedButton.maxHeightProperty().bind(Bindings.multiply(0.325, baseGrid.heightProperty()));
                     //animatedButton.setPrefSize(540.0, 360.0);
@@ -848,6 +853,54 @@ public abstract class AppableControl extends ConfirmableControl {
     public void removeConfigButtons() {
         getEditAppButton().removeFromParent();
         getPrimaryControl().setDisable(isPrimaryDisabled());
+    }
+    /**
+     *
+     */
+    private FixableErrorDialog errorDialog;
+
+    /**
+     *
+     * @param message
+     * @return
+     */
+    public FixableErrorDialog getFixableErrorDialog(String message) {
+        if (errorDialog == null) {
+            errorDialog = new FixableErrorDialog("ERROR", message, "EDIT", "BACK") {
+                @Override
+                public void onOk() {
+                    final EditAppButton thisEditButton = getEditAppButton();
+                    HomeController.getGrid().getChildren().add(thisEditButton.getPopup(thisEditButton.getDialog()));
+                    final Double selectionTime = getSession().getUser().getInteraction().getSelectionTime();
+                    getDialog().animate().startScale(selectionTime, 0.8, 1.0);
+                    final SubGrid homeGrid = HomeController.getGrid();
+                    homeGrid.setInError(Boolean.FALSE);
+                }
+
+                @Override
+                public void onCancel() {
+                    openHomeScreen();
+                    ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
+                    configurableGrid.setIndex("home");
+                    getSession().setPlaying(false);
+                    final SubGrid homeGrid = HomeController.getGrid();
+                    homeGrid.setInError(Boolean.FALSE);
+                }
+            };
+        }
+        return errorDialog;
+    }
+
+    public void generateFixableError(String message) {
+        final SubGrid homeGrid = HomeController.getGrid();
+        if (!homeGrid.isInError()) {
+            homeGrid.setInError(Boolean.TRUE);
+            final FixableErrorDialog errDialog = getFixableErrorDialog(message);
+            final ScreenPopup<ScreenDialog> errorPopup = getPopup(errDialog);
+            homeGrid.getChildren().add(errorPopup);
+
+        }
+
     }
 
     /**

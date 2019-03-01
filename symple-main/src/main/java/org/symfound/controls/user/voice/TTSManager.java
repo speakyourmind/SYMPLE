@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.main.manager;
+package org.symfound.controls.user.voice;
 
 import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Speech;
+import org.symfound.controls.device.DeviceManager;
+import org.symfound.controls.device.DeviceManager;
 import org.symfound.tools.iteration.ModeIterator;
 import org.symfound.voice.main.TTSLauncher;
 

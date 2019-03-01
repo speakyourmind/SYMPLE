@@ -29,12 +29,8 @@ import static org.symfound.controls.ScreenControl.CSS_PATH;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
-import org.symfound.controls.system.dialog.OKCancelDialog;
-import org.symfound.controls.system.dialog.OKDialog;
-import org.symfound.controls.system.dialog.ScreenPopup;
 import org.symfound.controls.system.dialog.SettingsDialog;
 import org.symfound.controls.user.AnimatedButton;
-import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.HomeController;
 
 /**
@@ -149,56 +145,13 @@ public class MusicControlButton extends MusicButton {
             getMusicView().getPlaylistManager().setPlaylist(getContents());
             shuffleContents();
         } else {
-            HomeController.getGrid().getChildren().add(getErrorPopup());
+            String message = "Uh-oh! Items in the folder " 
+                    + getFolderPath() + "are not playable music files.";
+            LOGGER.fatal(message);
+            
+            generateFixableError(message);
         }
 
-    }
-
-    private ScreenPopup errorPopup;
-
-    /**
-     *
-     * @return
-     */
-    public ScreenPopup<OKDialog> getErrorPopup() {
-
-        if (errorPopup == null) {
-            errorPopup = new ScreenPopup<>(getErrorDialog());
-        }
-        return errorPopup;
-    }
-
-    /**
-     *
-     */
-    private OKCancelDialog errorDialog;
-
-    /**
-     *
-     * @return
-     */
-    public OKCancelDialog getErrorDialog() {
-        if (errorDialog == null) {
-            errorDialog = new OKCancelDialog("ERROR", "No playable song files found in folder " + getFolderPath(), "EDIT", "BACK") {
-                @Override
-                public void onOk() {
-                    HomeController.getGrid().getChildren().add(MusicControlButton.this.getEditAppButton().getPopup());
-                    final Double selectionTime = getSession().getUser().getInteraction().getSelectionTime();
-                    getDialog().animate().startScale(selectionTime, 0.8, 1.0);
-                    
-                }
-
-                @Override
-                public void onCancel() {
-                    openHomeScreen();
-                    ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
-                    configurableGrid.setIndex("home");
-                    getSession().setPlaying(false);
-                }
-
-            };
-        }
-        return errorDialog;
     }
 
     @Override
@@ -419,7 +372,7 @@ public class MusicControlButton extends MusicButton {
      */
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton() {
+        primary = new AnimatedButton("") {
             @Override
             public void revert(String originalText, String originalStyle) {
                 //Original Size X

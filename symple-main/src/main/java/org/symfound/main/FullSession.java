@@ -17,13 +17,17 @@
  */
 package org.symfound.main;
 
+import org.symfound.text.font.FontLoader;
 import com.sun.javafx.stage.StageHelper;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,13 +38,15 @@ import org.symfound.builder.loader.UIPath;
 import org.symfound.builder.session.Session;
 import org.symfound.builder.user.User;
 import org.symfound.comm.file.PathWriter;
-import org.symfound.controls.system.SettingsExporter;
-import org.symfound.controls.system.SettingsImporter;
+import org.symfound.builder.settings.PreferencesExporter;
+import org.symfound.builder.settings.PreferencesImporter;
 import org.symfound.device.emulation.input.InputListener;
+
 import org.symfound.main.builder.App;
 import org.symfound.main.builder.StackedUI;
-import org.symfound.main.manager.DeviceManager;
-import org.symfound.main.manager.TTSManager;
+import org.symfound.controls.device.DeviceManager;
+import org.symfound.controls.user.voice.TTSManager;
+
 import static org.symfound.text.TextOperator.EOL;
 import org.symfound.tools.timing.clock.Clock;
 
@@ -138,7 +144,7 @@ public class FullSession extends Session {
         String masterFile = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Master.xml";
         File file = new File(masterFile);
         if (file.exists()) {
-            SettingsImporter settingsImporter = new SettingsImporter(masterFile);
+            PreferencesImporter settingsImporter = new PreferencesImporter(masterFile);
             final Thread thread = new Thread(settingsImporter);
             thread.start();
             try {
@@ -330,7 +336,7 @@ public class FullSession extends Session {
             String backupFolder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Backup";
             PathWriter backupPathWriter = new PathWriter(backupFolder);
             backupPathWriter.file.mkdirs();
-            SettingsExporter backupSettingsExporter = new SettingsExporter(backupFolder);
+            PreferencesExporter backupSettingsExporter = new PreferencesExporter(backupFolder, getSettingsFileName());
             LOGGER.info("Backing up settings");
             Thread backupThread = new Thread(backupSettingsExporter);
             try {
@@ -346,7 +352,7 @@ public class FullSession extends Session {
         String folder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings";
         PathWriter savePathWriter = new PathWriter(folder);
         savePathWriter.file.mkdirs();
-        SettingsExporter settingsExporter = new SettingsExporter(folder, "/Master.xml");
+        PreferencesExporter settingsExporter = new PreferencesExporter(folder, "/Master.xml");
 
         LOGGER.info("Backing up master settings");
         Thread thread = new Thread(settingsExporter);
@@ -424,4 +430,11 @@ public class FullSession extends Session {
         return uiMain;
     }
 
+    public static String getSettingsFileName() {
+        DateFormat dateFormat = new SimpleDateFormat("yyMMddHHmmss");
+        Date date = new Date();
+        final String fullName = Main.getSession().getUser().getProfile().getFullName();
+        String fileName = "/" + fullName + " Settings " + dateFormat.format(date) + ".xml";
+        return fileName;
+    }
 }

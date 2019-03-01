@@ -12,7 +12,7 @@ import org.symfound.device.hardware.Hardware;
 import org.symfound.main.FullSession;
 import org.symfound.main.Main;
 import org.symfound.main.builder.UI;
-import org.symfound.main.manager.DeviceManager;
+import org.symfound.controls.device.DeviceManager;
 
 /**
  *

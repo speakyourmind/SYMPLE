@@ -122,6 +122,7 @@ public abstract class Session implements Buildable {
         return mutex;
     }
 
+
     private BooleanProperty built = new SimpleBooleanProperty();
 
     /**

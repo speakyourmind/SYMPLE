@@ -64,7 +64,7 @@ public abstract class UI extends BaseUI {
      * @param file
      * @param hasMenu
      */
-    public UI(String file, Boolean hasMenu) {
+    public UI(String file) {
         super();
         this.file = new UIPath(file);
     }

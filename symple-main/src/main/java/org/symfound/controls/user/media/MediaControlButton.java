@@ -5,6 +5,7 @@
  */
 package org.symfound.controls.user.media;
 
+import org.symfound.media.MediaControl;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
@@ -85,7 +86,7 @@ public abstract class MediaControlButton<T extends MediaControl> extends Appable
 
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton() {
+        primary = new AnimatedButton("") {
 
             @Override
             public DelayedEvent setOnFinished(String originalText, String originalStyle) {

@@ -217,7 +217,7 @@ public class TrackBox extends ScreenControl<AnimatedButton> {
      */
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         load(primary);
     }
 

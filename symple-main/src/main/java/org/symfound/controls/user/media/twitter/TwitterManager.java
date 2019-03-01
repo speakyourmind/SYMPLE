@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.log4j.Logger;
-import org.symfound.controls.user.media.MediaManager;
+import org.symfound.media.MediaManager;
 import org.symfound.social.twitter.Tweet;
 import org.symfound.social.twitter.TwitterReader;
 import twitter4j.TwitterException;

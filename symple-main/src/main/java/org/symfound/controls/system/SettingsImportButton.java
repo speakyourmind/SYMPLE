@@ -1,5 +1,6 @@
 package org.symfound.controls.system;
 
+import org.symfound.builder.settings.PreferencesImporter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public final class SettingsImportButton extends SettingsManagerControl {
             java.util.logging.Logger.getLogger(SettingsImportButton.class.getName()).log(Level.SEVERE, null, ex);
         }
         final String fileSelection = getSelectedFile();
-        SettingsImporter settingsImporter = new SettingsImporter(fileSelection);
+        PreferencesImporter settingsImporter = new PreferencesImporter(fileSelection);
         final Thread thread = new Thread(settingsImporter);
         thread.start();
         try {
@@ -93,7 +94,7 @@ public final class SettingsImportButton extends SettingsManagerControl {
      */
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         primary.setWrapText(true);
         load(primary);
         setCSS(cssClass, primary);

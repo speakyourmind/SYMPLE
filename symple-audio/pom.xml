@@ -119,4 +119,5 @@
             </plugin>
         </plugins>
     </build>
+    <name>symple-audio</name>
 </project>

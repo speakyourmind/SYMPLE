@@ -23,7 +23,7 @@ import org.symfound.controls.user.AnimatedPane;
 import org.symfound.device.Device;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.FullSession;
-import org.symfound.main.manager.DeviceManager;
+import org.symfound.controls.device.DeviceManager;
 
 /**
  *

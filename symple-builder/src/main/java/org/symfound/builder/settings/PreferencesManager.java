@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.builder.characteristic;
+package org.symfound.builder.settings;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

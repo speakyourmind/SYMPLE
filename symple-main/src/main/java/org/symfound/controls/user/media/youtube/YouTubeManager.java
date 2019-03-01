@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.log4j.Logger;
-import org.symfound.controls.user.media.MediaManager;
+import org.symfound.media.MediaManager;
 import static org.symfound.controls.user.media.youtube.YouTubePlaylistLoader.load;
 
 /**

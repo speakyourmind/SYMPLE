@@ -14,9 +14,10 @@ import javafx.scene.control.ProgressBar;
 import org.symfound.comm.file.PathWriter;
 import org.symfound.controls.AppableControl;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
-import org.symfound.controls.system.SettingsExporter;
+import org.symfound.builder.settings.PreferencesExporter;
 import org.symfound.controls.system.dialog.OKDialog;
 import org.symfound.controls.system.dialog.ScreenPopup;
+import org.symfound.main.FullSession;
 import static org.symfound.main.Main.getVersionManager;
 
 /**
@@ -56,7 +57,8 @@ public class VersionUpdateButton extends AppableControl {
         String backupFolder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Backup";
         PathWriter backupPathWriter = new PathWriter(backupFolder);
         backupPathWriter.file.mkdirs();
-        SettingsExporter backupSettingsExporter = new SettingsExporter(backupFolder);
+        
+        PreferencesExporter backupSettingsExporter = new PreferencesExporter(backupFolder, FullSession.getSettingsFileName());
         LOGGER.info("Backing up settings to folder: " +backupFolder);
         Thread backupThread = new Thread(backupSettingsExporter);
         try {

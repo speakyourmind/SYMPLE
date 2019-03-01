@@ -163,7 +163,7 @@
                                             <children>
                                                 <SettingsRow helpText="Main Folder that contains all media and saved text" titleText="Home Folder" GridPane.columnSpan="3" GridPane.rowIndex="0">
                                                     <TextField fx:id="homeFolderField" maxHeight="60.0" styleClass="settings-text-area" GridPane.columnIndex="2" />
-                                                    <AnimatedButton fx:id="btnHomeFolder" maxHeight="60.0" maxWidth="180.0" mnemonicParsing="false" onMouseReleased="#changeDirectory" styleClass="settings-button" text="CHANGE" GridPane.columnIndex="1" GridPane.halignment="CENTER"/>
+                                                    <Button fx:id="btnHomeFolder" maxHeight="60.0" maxWidth="180.0" mnemonicParsing="false" onMouseReleased="#changeDirectory" styleClass="settings-button" text="CHANGE" GridPane.columnIndex="1" GridPane.halignment="CENTER"/>
                                                 </SettingsRow> 
                                                 <SettingsRow helpText="Sets the internal program volume" titleText="Volume" GridPane.columnSpan="3" GridPane.rowIndex="1">
                                                     <Slider fx:id="volumeField" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minorTickCount="1" showTickLabels="true" snapToTicks="true" value="8.0" GridPane.columnIndex="2" />

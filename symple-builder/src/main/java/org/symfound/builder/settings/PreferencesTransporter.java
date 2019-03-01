@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.controls.system;
+package org.symfound.builder.settings;
 
 /**
  *
  * @author Javed Gangjee <javed@speakyourmindfoundation.org>
  */
-public abstract class SettingsTransporter implements Runnable {
+public abstract class PreferencesTransporter implements Runnable {
 
     
 }

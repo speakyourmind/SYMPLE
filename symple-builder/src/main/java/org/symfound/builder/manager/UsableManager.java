@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.main.manager;
+package org.symfound.builder.manager;
 
+import org.symfound.builder.manager.Manager;
 import java.util.List;
 import java.util.Map;
 import org.symfound.builder.user.Usable;

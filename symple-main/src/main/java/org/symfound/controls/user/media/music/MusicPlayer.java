@@ -9,7 +9,7 @@ import java.util.prefs.Preferences;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import org.apache.log4j.Logger;
-import org.symfound.audio.music.PlaylistManager;
+import org.symfound.audio.music.playlist.PlaylistManager;
 import org.symfound.audio.music.song.Song;
 import org.symfound.builder.user.characteristic.Interaction;
 import org.symfound.controls.user.AnimatedMediaView;

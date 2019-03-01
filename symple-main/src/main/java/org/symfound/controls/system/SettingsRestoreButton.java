@@ -42,7 +42,7 @@ public final class SettingsRestoreButton extends SettingsManagerControl {
      */
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         primary.setWrapText(true);
         load(primary);
         setCSS(cssClass, primary);

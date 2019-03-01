@@ -50,7 +50,7 @@ public final class OnOffButton extends RunnableControl {
     }
 
     private void initialize() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         load(primary);
         setCSS(cssClass, primary);
 

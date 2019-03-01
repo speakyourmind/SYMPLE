@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.main.manager;
+package org.symfound.controls.device;
 
+import org.symfound.builder.manager.UsableManager;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.Map;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import org.apache.log4j.Logger;
-import org.symfound.builder.characteristic.PreferencesManager;
+import org.symfound.builder.settings.PreferencesManager;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Physical;
 import org.symfound.builder.user.feature.Eye;

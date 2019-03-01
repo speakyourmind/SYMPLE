@@ -24,7 +24,7 @@ public final class WebLaunchButton extends ConfirmableControl {
         super("settings-button");
         initTitleText = "Leaving SYMPLE";
         initCaptionText = "You are about to leave the program. Are you sure you want to continue?";
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         primary.setWrapText(true);
         load(primary);
         setCSS(cssClass, primary);

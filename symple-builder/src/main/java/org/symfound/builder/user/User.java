@@ -26,7 +26,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.apache.log4j.Logger;
 import org.symfound.builder.characteristic.CharacteristicManager;
-import org.symfound.builder.characteristic.PreferencesManager;
+import org.symfound.builder.settings.PreferencesManager;
 import org.symfound.builder.user.characteristic.Ability;
 import org.symfound.builder.user.characteristic.Content;
 import org.symfound.builder.user.characteristic.Interaction;

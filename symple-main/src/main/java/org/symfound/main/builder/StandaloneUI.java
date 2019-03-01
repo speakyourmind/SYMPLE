@@ -24,8 +24,8 @@ public class StandaloneUI extends UI {
      * @param file
      * @param hasMenu
      */
-    public StandaloneUI(String file, Boolean hasMenu) {
-        super(file, hasMenu);
+    public StandaloneUI(String file) {
+        super(file);
     }
 
     /**

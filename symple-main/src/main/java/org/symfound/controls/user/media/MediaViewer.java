@@ -5,6 +5,7 @@
  */
 package org.symfound.controls.user.media;
 
+import org.symfound.media.Reloadable;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.beans.property.ObjectProperty;

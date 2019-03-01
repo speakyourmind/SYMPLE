@@ -41,13 +41,17 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Window;
 import javafx.util.Duration;
+import org.symfound.builder.session.Session;
 import org.symfound.builder.user.Usable;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Interaction;
 import org.symfound.builder.user.selection.SelectionMethod;
-import org.symfound.main.FullSession;
-import org.symfound.main.Main;
-import org.symfound.main.builder.UI;
+
+//import org.symfound.main.FullSession;//
+
+import org.symfound.main.Main;//
+import org.symfound.main.builder.UI;//
+
 import org.symfound.tools.animation.Animated;
 import org.symfound.tools.animation.NodeAnimator;
 import org.symfound.tools.timing.DelayedEvent;
@@ -76,15 +80,11 @@ public class AnimatedButton extends Button implements Animated, Usable {
      */
     public NodeAnimator nodeAnimator;
 
-    private FullSession session;
+    private Session session;
     private User user;
-
-    /**
-     *
-     */
-    public AnimatedButton() {
+/* public AnimatedButton("") {
         this("");
-    }
+    }*/
 
     /**
      *
@@ -111,7 +111,7 @@ public class AnimatedButton extends Button implements Animated, Usable {
      *
      * @return
      */
-    public FullSession getSession() {
+    public Session getSession() {
         return session;
     }
 

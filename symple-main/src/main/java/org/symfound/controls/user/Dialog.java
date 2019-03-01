@@ -173,7 +173,7 @@ public class Dialog extends ScreenControl<AnimatedButton> {
      */
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         primary.setText(initTrueText);
         setSizeMax(primary);
         setCSS(cssClass, primary);

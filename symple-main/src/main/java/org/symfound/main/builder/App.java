@@ -92,7 +92,7 @@ public class App implements Buildable, Usable {
         for (String UI : buildList) {
             String file = fxmlFolder + UI;
             file = file.replace(".fxml", "");
-            StandaloneUI ui = new StandaloneUI(file, true);
+            StandaloneUI ui = new StandaloneUI(file);
             getUIs().add(ui);
             ui.build(builder);
             ui.builtProperty().addListener((observable, oldValue, newValue) -> {

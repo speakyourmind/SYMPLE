@@ -12,7 +12,7 @@ import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.apache.log4j.Logger;
-import org.symfound.controls.user.media.MediaManager;
+import org.symfound.media.MediaManager;
 import org.symfound.social.google.gmail.GmailReader;
 
 /**

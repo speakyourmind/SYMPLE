@@ -102,7 +102,7 @@ public abstract class OKDialog extends ScreenDialog {
     }
 
     private void addOKButton(BuildableGrid grid) {
-        okButton = new AnimatedButton();
+        okButton = new AnimatedButton("");
         okButton.getStyleClass().add("settings-button");
         okButton.setMaxWidth(Double.POSITIVE_INFINITY);
         okButton.setMaxHeight(Double.POSITIVE_INFINITY);

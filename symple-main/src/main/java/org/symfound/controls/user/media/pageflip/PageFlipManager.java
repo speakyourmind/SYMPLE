@@ -13,7 +13,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.symfound.comm.file.PathReader;
 import org.symfound.comm.file.PathWriter;
-import org.symfound.controls.user.media.MediaManager;
+import org.symfound.media.MediaManager;
 import org.symfound.main.Main;
 
 /**

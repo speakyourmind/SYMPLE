@@ -137,7 +137,7 @@ public final class MenuLaunchButton extends RunnableControl {
             }
         });
 
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         setCSS("main-menu-button", primary);
         setText("...");
         setSizeMax(primary);

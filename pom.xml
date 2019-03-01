@@ -13,7 +13,6 @@
     </ciManagement>-->
     <modules>
         <module>symple-main</module>
-        <module>symple-audio</module>
         <module>symple-builder</module>
         <module>symple-comm</module>
         <module>symple-device</module>
@@ -21,6 +20,8 @@
         <module>symple-tools</module>
         <module>symple-social</module>
         <module>symple-voice</module>
+        <module>symple-audio</module>
+        <module>symple-media</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

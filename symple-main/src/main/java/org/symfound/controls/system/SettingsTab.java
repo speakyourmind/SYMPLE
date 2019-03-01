@@ -2,6 +2,8 @@ package org.symfound.controls.system;
 
 import java.util.List;
 import javafx.scene.control.Tab;
+import org.symfound.controls.system.SettingsGrid;
+import org.symfound.controls.system.SettingsRow;
 
 /**
  *

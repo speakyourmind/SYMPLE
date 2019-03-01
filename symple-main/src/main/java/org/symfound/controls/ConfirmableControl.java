@@ -12,6 +12,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.layout.Pane;
 import org.symfound.controls.system.dialog.OKCancelDialog;
+import org.symfound.controls.system.dialog.ScreenDialog;
 import org.symfound.controls.system.dialog.ScreenPopup;
 
 /**
@@ -19,11 +20,6 @@ import org.symfound.controls.system.dialog.ScreenPopup;
  * @author Javed Gangjee
  */
 public abstract class ConfirmableControl extends RunnableControl {
-
-    /**
-     *
-     */
-    public ScreenPopup<OKCancelDialog> popup;
 
     /**
      *
@@ -65,7 +61,7 @@ public abstract class ConfirmableControl extends RunnableControl {
     public void execute() {
         if (isConfirmable()) {
             if (getSession().isBuilt()) {
-                getParentPane().getChildren().add(getPopup());
+                getParentPane().getChildren().add(getPopup(getDialog()));
                 final Double selectionTime = getSession().getUser().getInteraction().getSelectionTime();
                 getDialog().animate().startScale(selectionTime, 0.8, 1.0);
             }
@@ -119,11 +115,16 @@ public abstract class ConfirmableControl extends RunnableControl {
 
     /**
      *
+     */
+    public ScreenPopup<ScreenDialog> popup;
+
+    /**
+     *
      * @return
      */
-    public ScreenPopup<OKCancelDialog> getPopup() {
+    public ScreenPopup<ScreenDialog> getPopup(ScreenDialog dialog) {
         if (popup == null) {
-            popup = new ScreenPopup<>(getDialog());
+            popup = new ScreenPopup<>(dialog);
         }
         return popup;
     }

@@ -5,7 +5,7 @@
  */
 package org.symfound.controls.user.media.calendar;
 
-import org.symfound.controls.user.media.MediaControl;
+import org.symfound.media.MediaControl;
 
 /**
  *

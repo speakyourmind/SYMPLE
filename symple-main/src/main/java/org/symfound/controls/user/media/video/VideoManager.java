@@ -13,7 +13,7 @@ import javafx.beans.property.StringProperty;
 import org.apache.log4j.Logger;
 import org.symfound.comm.file.ExtensionAnalyzer;
 import org.symfound.comm.file.PathReader;
-import org.symfound.controls.user.media.MediaManager;
+import org.symfound.media.MediaManager;
 
 /**
  *

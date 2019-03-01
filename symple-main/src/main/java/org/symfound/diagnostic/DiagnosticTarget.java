@@ -352,7 +352,7 @@ public final class DiagnosticTarget extends Target {
     @Override
     public void loadPrimaryControl() {
 
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         load(primary);
         setCSS(CSS_CLASS, primary);
         setSelection(primary);

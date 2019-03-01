@@ -82,7 +82,7 @@ public abstract class OKCancelDialog extends OKDialog {
      * @param grid
      */
     public void addOKButton(BuildableGrid grid) {
-        okButton = new AnimatedButton();
+        okButton = new AnimatedButton("");
         okButton.getStyleClass().add("settings-button");
         okButton.setMaxWidth(Double.POSITIVE_INFINITY);
         okButton.setMaxHeight(Double.POSITIVE_INFINITY);
@@ -97,7 +97,7 @@ public abstract class OKCancelDialog extends OKDialog {
      * @param grid
      */
     public void addCancelButton(BuildableGrid grid) {
-        cancelButton = new AnimatedButton();
+        cancelButton = new AnimatedButton("");
         cancelButton.getStyleClass().add("settings-button");
         cancelButton.setMaxWidth(Double.POSITIVE_INFINITY);
         cancelButton.setMaxHeight(Double.POSITIVE_INFINITY);

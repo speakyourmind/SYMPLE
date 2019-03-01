@@ -45,7 +45,7 @@ public class EditButton extends SystemControl {
 
     private void initialize() {
         setControlType(ControlType.SETTING_CONTROL);
-       /*primary = new AnimatedButton();
+       /*primary = new AnimatedButton("");
         primary.setWrapText(true);
         load(primary);
         setCSS(cssClass, primary);

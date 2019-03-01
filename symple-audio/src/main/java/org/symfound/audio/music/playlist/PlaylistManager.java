@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.audio.music;
+package org.symfound.audio.music.playlist;
 
 import java.util.List;
 import javafx.beans.property.ObjectProperty;

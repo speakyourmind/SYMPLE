@@ -173,7 +173,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
      * @param pane
      */
     public void addOKButton(AnimatedPane pane) {
-        okButton = new AnimatedButton();
+        okButton = new AnimatedButton("");
         okButton.getStyleClass().add("toolbar-back");
         okButton.setMaxWidth(Double.POSITIVE_INFINITY);
         okButton.setMaxHeight(Double.POSITIVE_INFINITY);
@@ -190,7 +190,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
      * @param pane
      */
     public void addCancelButton(AnimatedPane pane) {
-        cancelButton = new AnimatedButton();
+        cancelButton = new AnimatedButton("");
         cancelButton.getStyleClass().add("toolbar-exit");
         cancelButton.setMaxWidth(Double.POSITIVE_INFINITY);
         cancelButton.setMaxHeight(Double.POSITIVE_INFINITY);

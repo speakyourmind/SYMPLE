@@ -258,7 +258,7 @@ public class ActiveTextArea extends AppableControl {
      */
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         addToPane(get());
     }
 

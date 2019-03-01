@@ -1,9 +1,15 @@
 package org.symfound.controls.system;
 
+import org.symfound.builder.settings.PreferencesExporter;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javafx.stage.DirectoryChooser;
 import org.apache.log4j.Logger;
 import org.symfound.controls.user.AnimatedButton;
+import static org.symfound.main.FullSession.getSettingsFileName;
+import org.symfound.main.Main;
 
 /**
  *
@@ -36,10 +42,14 @@ public final class SettingsExportButton extends SettingsManagerControl {
     @Override
     public void run() {
         String folder = getFolderSelection();
-        SettingsExporter settingsExporter = new SettingsExporter(folder);
+        
+        String fileName = getSettingsFileName();
+
+        PreferencesExporter settingsExporter = new PreferencesExporter(folder, fileName);
         settingsExporter.run();
     }
-    
+
+
     private String getFolderSelection() {
         String folder = null;
         DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -59,10 +69,10 @@ public final class SettingsExportButton extends SettingsManagerControl {
      */
     @Override
     public void loadPrimaryControl() {
-        primary = new AnimatedButton();
+        primary = new AnimatedButton("");
         primary.setWrapText(true);
         load(primary);
         setCSS(cssClass, primary);
     }
-    
+
 }

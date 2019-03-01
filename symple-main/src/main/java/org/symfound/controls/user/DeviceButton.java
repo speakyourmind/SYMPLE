@@ -17,7 +17,7 @@ import org.symfound.controls.device.GenericDeviceSettings;
 import org.symfound.controls.device.SwiftySettings;
 import org.symfound.controls.system.dialog.ScreenPopup;
 import org.symfound.device.hardware.Hardware;
-import org.symfound.main.manager.DeviceManager;
+import org.symfound.controls.device.DeviceManager;
 
 /**
  *
@@ -68,7 +68,7 @@ public final class DeviceButton extends AppableControl {
     public void execute() {
         if (isConfirmable() && !getSession().getDeviceManager().isSelectedCurrent()) {
             if (getSession().isBuilt()) {
-                getParentPane().getChildren().add(getPopup());
+                getParentPane().getChildren().add(getPopup(getDialog()));
                 final Double selectionTime = getSession().getUser().getInteraction().getSelectionTime();
                 getDialog().animate().startScale(selectionTime, 0.8, 1.0);
             }

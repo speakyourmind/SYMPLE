@@ -15,7 +15,7 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
-import org.symfound.controls.user.media.MediaManager;
+import org.symfound.media.MediaManager;
 import org.symfound.social.google.calendar.GoogleCalendar;
 
 /**
