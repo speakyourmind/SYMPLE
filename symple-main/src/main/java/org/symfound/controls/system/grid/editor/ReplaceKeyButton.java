@@ -115,32 +115,6 @@ public class ReplaceKeyButton extends SystemControl {
                 tabPane.setPadding(new Insets(5));
                 tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
                 tabPane.getTabs().add(orderTab);
-
-
-                /*    ParallelList<String, String> list = new ParallelList<>();
-                
-                ButtonGrid.KEY_CATALOGUE.forEach((key) -> {
-                    list.put("Script", "picker/"+key);
-                });
-
-                appGrid = new ConfigurableGrid();
-                appGrid.getGridManager().setOrder(list);
-                appGrid.setOverrideColumn(3.0);
-                appGrid.setOverrideRow(10.0);
-                
-                appGrid.configure();
-                
-                ScrollPane scrollPane = new ScrollPane();
-                scrollPane.setFitToWidth(Boolean.TRUE);
-                scrollPane.setFitToHeight(Boolean.TRUE);
-                scrollPane.setContent(appGrid);
-
-                Tab orderTab = new Tab("SELECT APP");
-                orderTab.setContent(scrollPane);
-                TabPane tabPane = new TabPane();
-                tabPane.setPadding(new Insets(5));
-                tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-                tabPane.getTabs().add(orderTab);*/
                 return tabPane;
             }
 

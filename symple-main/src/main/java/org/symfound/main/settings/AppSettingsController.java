@@ -26,9 +26,9 @@ import org.symfound.comm.file.ExtensionAnalyzer;
 import org.symfound.comm.file.PathReader;
 import org.symfound.comm.file.PathWriter;
 import org.symfound.controls.system.OnOffButton;
-import org.symfound.controls.user.AnimatedButton;
 import org.symfound.main.FullSession;
 import org.symfound.controls.user.voice.TTSManager;
+import org.symfound.main.builder.UI;
 import org.symfound.tools.iteration.ModeIterator;
 import org.symfound.tools.iteration.ParallelList;
 
@@ -54,7 +54,7 @@ public class AppSettingsController extends SettingsControllerBase {
      *
      */
     @FXML
-    public AnimatedButton btnHomeFolder;
+    public Button btnHomeFolder;
 
     /**
      *
@@ -143,7 +143,8 @@ public class AppSettingsController extends SettingsControllerBase {
     @FXML
     private void changeDirectory(MouseEvent e) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedDirectory = directoryChooser.showDialog(btnHomeFolder.getParentUI());
+
+        File selectedDirectory = directoryChooser.showDialog(btnHomeFolder.getScene().getWindow());
         if (selectedDirectory == null) {
             homeFolderField.setText(getUser().getContent().getHomeFolder());
         } else {
@@ -174,8 +175,8 @@ public class AppSettingsController extends SettingsControllerBase {
         timeoutField.setValue(navigation.getTimeout());
         appBuildOrderField.setText(navigation.getAppBuildOrder().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll(" ", ""));
         ttsBuildOrderField.setText(navigation.getTTSBuildOrder().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll(" ", ""));
-      
-  //      menuOrderField.setText(navigation.getMenuOrder().asString());
+
+        //      menuOrderField.setText(navigation.getMenuOrder().asString());
         buttonMapField.setText(navigation.getButtonMap().toString().replaceAll("\\{", "").replaceAll("\\}", "").replaceAll(" ", ""));
 
         btnOnFirstClick.setValue(navigation.onFirstClick());
@@ -208,7 +209,6 @@ public class AppSettingsController extends SettingsControllerBase {
 
     }
 
-
     /**
      *
      */
@@ -222,7 +222,7 @@ public class AppSettingsController extends SettingsControllerBase {
         navigation.setTTSBuildOrder(FXCollections.observableArrayList(Arrays.asList(ttsBuildOrderField.getText().split(BUTTON_DELIMITER))));
         //navigation.setButtonOrder(FXCollections.observableArrayList(Arrays.asList(buttonOrderField.getText().split(BUILD_DELIMITER))));
         ParallelList<String, String> parallelList = new ParallelList<>();
-/*        String[] menuPairs = menuOrderField.getText().split(BUTTON_DELIMITER);
+        /*        String[] menuPairs = menuOrderField.getText().split(BUTTON_DELIMITER);
         for (String pair : menuPairs) {
             String[] keyValue = pair.split(KEY_DELIMITER);
             parallelList.put(keyValue[0], keyValue[1]);
@@ -243,13 +243,12 @@ public class AppSettingsController extends SettingsControllerBase {
         navigation.setPlayScourSound(btnPlayScourSound.getValue());
         navigation.setScourSound(playScourField.getText());
         navigation.setPlaySelectSound(btnPlaySelectSound.getValue());
-      
+
         navigation.setSelectionSound(playSelectionField.getText());
         // SPEAKING
         final Speech speech = getUser().getSpeech();
         speech.setSpeakingVoice(cbVoice.getValue());
         LOGGER.info("Voice set to " + getUser().getSpeech().getSpeakingVoice());
-
 
         // TYPING
         final Typing communication = getUser().getTyping();

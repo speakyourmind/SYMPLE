@@ -120,8 +120,7 @@ public class ScriptButton extends TypingControl {
 
         keyCodeField = new TextField();
         keyCodeField.setText(getKeyCodeConfig().toString());
-        keyCodeField.prefHeight(80.0);
-        keyCodeField.prefWidth(360.0);
+        keyCodeField.setMaxSize(180.0, 60.0);
         keyCodeField.getStyleClass().add("settings-text-area");
         settingsRowA.add(keyCodeField, 1, 0, 2, 1);
 

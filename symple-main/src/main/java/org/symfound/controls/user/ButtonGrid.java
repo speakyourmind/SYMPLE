@@ -546,7 +546,6 @@ public abstract class ButtonGrid extends FillableGrid {
                         LockButton lockButton = new LockButton(this);
                         configureItem(lockButton);
                         lockButton.setGridLocation(i);
-                        // lockButton.setPane("agApp"); // Change to apMain for Menu Grid
                         requestedControls.add(lockButton);
                         break;
                     case EditGridButton.KEY:

@@ -27,6 +27,7 @@ import org.symfound.text.TextOperator;
 import static org.symfound.text.TextOperator.EOL;
 import org.symfound.text.prediction.local.Predictor;
 import static org.symfound.text.prediction.local.Predictor.SPACE;
+
 import org.symfound.voice.main.TTSLauncher;
 
 /**

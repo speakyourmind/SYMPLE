@@ -37,7 +37,7 @@ public class AnimatedLabel extends Label implements Animated {
     public NodeAnimator nodeAnimator;
 
     private FullSession session;
-    private User user;
+   // private User user;
 
     /**
      *
@@ -45,7 +45,7 @@ public class AnimatedLabel extends Label implements Animated {
     public AnimatedLabel() {
         super();
         session = Main.getSession();
-        user = session.getUser();
+     //   user = session.getUser();
     }
 
     /**

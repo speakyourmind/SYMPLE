@@ -70,38 +70,6 @@ public class HomeController extends GridController {
                 GridPane.setRowIndex(getGrid(), 1);
                 getGrid().maxHeightProperty().bind(Bindings.multiply(0.96,gpMain.heightProperty()));
                 gpMain.getChildren().add(getGrid());
-                
-             /*   FullSession.getMainUI().getStack().currentProperty().addListener((observable1, oldValue1, newValue1) -> {
-                    if (newValue1.get().equalsIgnoreCase(FullSession.HOME)) {
-                        if (getUser().getProfile().isFirstUse()) {
-                            gpWizard.toFront();
-                            // TO DO : Use Sequential Transition
-                            DelayedEvent delayedEvent1 = new DelayedEvent();
-                            delayedEvent1.setup(1.0, (ActionEvent e) -> {
-                                lblCongratulations.animate().startFade(1.0, 0.0, 1.0);
-
-                            });
-                            DelayedEvent delayedEvent2 = new DelayedEvent();
-                            delayedEvent2.setup(3.0, (ActionEvent e) -> {
-                                lblReady.animate().startFade(1.0, 0.0, 1.0);
-
-                            });
-                            DelayedEvent delayedEvent3 = new DelayedEvent();
-                            delayedEvent3.setup(5.0, (ActionEvent e) -> {
-                                gpWizard.animate().startFade(1.0, 1.0, 0.0);
-                                gpWizard.animate().setOnFadeFinished((ActionEvent f) -> {
-                                    apMain.getChildren().remove(gpWizard);
-                                    getUser().getProfile().setFirstUse(false);
-                                });
-                            });
-                            delayedEvent1.play();
-                            delayedEvent2.play();
-                            delayedEvent3.play();
-                        } else {
-                            apMain.getChildren().remove(gpWizard);
-                        }
-                    }
-                });*/
             }
 
         });

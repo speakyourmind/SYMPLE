@@ -234,7 +234,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
         final Navigation navigation = Main.getSession().getUser().getNavigation();
         if (this instanceof AppableControl) {
             AppableControl appable = (AppableControl) this;
-           /* if (navigation.speakSelection()) {
+            /* if (navigation.speakSelection()) {
                 if (appable.isSpeakable()) {
                     appable.speak(getSpeakText());
                 }
@@ -685,12 +685,17 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
         TTSPlayer player = launcher.getPlayerMap().get(currentEngine);
 
         if (text != null) {
-            for (String skipChar : skipChars) {
-                text = text.replaceAll(skipChar, "");
+            if (!text.trim().isEmpty()) {
+                for (String skipChar : skipChars) {
+                    text = text.replaceAll(skipChar, "");
+                }
+                String message = "Playing the text: " + text + "; using voice:" + currentVoiceName;
+                LOGGER.info(message);
+                player.play(text, true, currentVoiceName);
+            } else {
+                LOGGER.warn("There is no text available to play");
             }
-            String message = "Speak Button Clicked. Playing the text: " + text + "; using voice:" + currentVoiceName;
-            LOGGER.info(message);
-            player.play(text, true, currentVoiceName);
+
         } else {
             LOGGER.warn("Text is null");
         }

@@ -254,6 +254,7 @@ public final class IftttButton extends AppableControl {
             String name = KEY.toLowerCase() + "/" + getIndex().toLowerCase();
             Class<? extends IftttButton> aClass = this.getClass();
             preferences = Preferences.userNodeForPackage(aClass).node(name);
+            
         }
         return preferences;
     }

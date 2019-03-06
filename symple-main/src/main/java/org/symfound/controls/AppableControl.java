@@ -8,6 +8,8 @@ package org.symfound.controls;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringExpression;
@@ -435,7 +437,7 @@ public abstract class AppableControl extends ConfirmableControl {
     /**
      *
      */
-    public TextField navigateIndexField;
+    public ChoiceBox<String> navigateIndexChoices;
 
     /**
      *
@@ -475,7 +477,7 @@ public abstract class AppableControl extends ConfirmableControl {
         disabledPrimaryButton.setValue(isPrimaryDisabled());
         rowExpandField.setText(String.valueOf(getRowExpand()));
         columnExpandField.setText(String.valueOf(getColumnExpand()));
-        navigateIndexField.setText(getNavigateIndex());
+        navigateIndexChoices.setValue(getNavigateIndex());
         SettingsController.setUpdated(Boolean.FALSE);
     }
 
@@ -488,7 +490,21 @@ public abstract class AppableControl extends ConfirmableControl {
         setTextColour(textColourChoices.getValue());
         setFontScale(fontScaleSlider.getValue());
         setSpeakable(speakableButton.getValue());
-        setSpeakText(speakTextArea.getText());
+
+        String speakTextValue = " ";
+        if (!speakTextArea.getText().isEmpty()) {
+            speakTextValue = speakTextArea.getText();
+        } else {
+            if (!titleArea.getText().isEmpty()) {
+                LOGGER.info("Speak Text field is empty. "
+                        + "Setting value to Title: " + titleArea.getText());
+                speakTextValue = titleArea.getText();
+            } else {
+                LOGGER.warn("No value entered in Speak Text field");
+            }
+        }
+
+        setSpeakText(speakTextValue);
         setAlignment(textAlignment.getValue());
         setOverrideStyle(overrideStyleField.getText());
         setBackgroundColour(backgroundColourChoices.getValue());
@@ -496,7 +512,7 @@ public abstract class AppableControl extends ConfirmableControl {
         setShowTitle(showTitleButton.getValue());
         setSelectable(selectableButton.getValue());
         setDisablePrimary(disabledPrimaryButton.getValue());
-        setNavigateIndex(navigateIndexField.getText());
+        setNavigateIndex(navigateIndexChoices.getValue());
         Boolean reloadRequired = Boolean.FALSE;
         if (!rowExpandField.getText().equals(getRowExpand().toString())) {
             setRowExpand(Integer.valueOf(rowExpandField.getText()));
@@ -573,11 +589,9 @@ public abstract class AppableControl extends ConfirmableControl {
                         ColourChoices.GREEN
                 )));
         textColourChoices.setValue(getTextColour());
-        textColourChoices.maxHeight(80.0);
-        textColourChoices.maxWidth(360.0);
+        textColourChoices.setMaxSize(180.0, 60.0);
         textColourChoices.getStyleClass().add("settings-text-area");
         textColourRow.add(textColourChoices, 1, 0, 2, 1);
-
         SettingsRow fontScaleRow = EditDialog.createSettingRow("Scale", "Font scale");
 
         fontScaleSlider = new Slider(5, 100, getFontScale());
@@ -601,8 +615,8 @@ public abstract class AppableControl extends ConfirmableControl {
                 Pos.TOP_RIGHT
         )));
         textAlignment.setValue(Pos.valueOf(getTitlePos()));
-        textAlignment.prefHeight(80.0);
-        textAlignment.prefWidth(360.0);
+        textAlignment.setMaxSize(180.0, 60.0);
+        
         textAlignment.getStyleClass().add("settings-text-area");
         textAlignmentRow.add(textAlignment, 1, 0, 2, 1);
 
@@ -631,8 +645,7 @@ public abstract class AppableControl extends ConfirmableControl {
                         ColourChoices.TRANSPARENT
                 )));
         backgroundColourChoices.setValue(getBackgroundColour());
-        backgroundColourChoices.maxHeight(80.0);
-        backgroundColourChoices.maxWidth(360.0);
+        backgroundColourChoices.setMaxSize(180.0, 60.0);
         backgroundColourChoices.getStyleClass().add("settings-text-area");
         settingsRowB.add(backgroundColourChoices, 1, 0, 2, 1);
 
@@ -640,8 +653,7 @@ public abstract class AppableControl extends ConfirmableControl {
 
         backgroundURLField = new TextField();
         backgroundURLField.setText(getBackgroundURL());
-        backgroundURLField.prefHeight(80.0);
-        backgroundURLField.prefWidth(360.0);
+        backgroundURLField.setPrefSize(360.0, 80.0);
         backgroundURLField.getStyleClass().add("settings-text-area");
         settingsRowU.add(backgroundURLField, 1, 0, 2, 1);
 
@@ -667,14 +679,12 @@ public abstract class AppableControl extends ConfirmableControl {
 
         rowExpandField = new TextField();
         rowExpandField.setText(getRowExpand().toString());
-        rowExpandField.prefHeight(80.0);
-        rowExpandField.prefWidth(360.0);
+        rowExpandField.setMaxSize(180.0, 60.0);
         rowExpandField.getStyleClass().add("settings-text-area");
 
         columnExpandField = new TextField();
         columnExpandField.setText(getColumnExpand().toString());
-        columnExpandField.prefHeight(80.0);
-        columnExpandField.prefWidth(360.0);
+        columnExpandField.setMaxSize(180.0, 60.0);
         columnExpandField.getStyleClass().add("settings-text-area");
         HBox expandHBox = new HBox();
         expandHBox.setSpacing(10.0);
@@ -689,12 +699,18 @@ public abstract class AppableControl extends ConfirmableControl {
         settingsRow5.add(expandHBox, 1, 0, 2, 1);
 
         SettingsRow settingsRowA = createSettingRow("Navigate", "Screen to navigate to after click");
-        navigateIndexField = new TextField();
-        navigateIndexField.setText(getNavigateIndex());
-        navigateIndexField.maxHeight(80.0);
-        navigateIndexField.maxWidth(60.0);
-        navigateIndexField.getStyleClass().add("settings-text-area");
-        settingsRowA.add(navigateIndexField, 1, 0, 1, 1);
+        List<String> navigatableScreens=new ArrayList<>();
+        try {
+            navigatableScreens = getNavigatableScreens("subgrid");
+        } catch (BackingStoreException ex) {
+            LOGGER.fatal("Unable to load Preferences" + ex.getMessage());
+        }
+        
+        navigateIndexChoices = new ChoiceBox<>(FXCollections.observableArrayList(navigatableScreens));
+        navigateIndexChoices.setValue(getNavigateIndex());
+        navigateIndexChoices.setMaxSize(180.0, 60.0);
+        navigateIndexChoices.getStyleClass().add("settings-text-area");
+        settingsRowA.add(navigateIndexChoices, 1, 0, 2, 1);
 
         settings.add(settingsRow5);
         Tab actionTab = buildTab("ACTION", settings);
@@ -723,6 +739,20 @@ public abstract class AppableControl extends ConfirmableControl {
         tabs.add(selectionTab);
 
         return tabs;
+    }
+
+    private List<String> getNavigatableScreens(String node) throws BackingStoreException {
+        List<String> screenNames = new ArrayList<>();
+        List<String> childrenNames = Arrays.asList(Preferences.userNodeForPackage(this.getClass()).node(node).childrenNames());
+        if (childrenNames.size() > 0) {
+            for (String child : childrenNames) {
+                final String name = node + "/" + child;
+                screenNames.add(name.replaceAll("subgrid/", ""));
+                screenNames.addAll(getNavigatableScreens(name));
+            }
+        }
+
+        return screenNames;
     }
 
     /**
