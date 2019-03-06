@@ -8,7 +8,6 @@ package org.symfound.controls;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import javafx.beans.binding.Bindings;
@@ -60,6 +59,7 @@ import org.symfound.controls.system.dialog.ScreenDialog;
 import org.symfound.controls.system.dialog.ScreenPopup;
 import org.symfound.controls.system.grid.editor.DeleteKeyButton;
 import org.symfound.controls.user.AnimatedButton;
+import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.AnimatedPane;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ConfigurableGrid;
@@ -412,6 +412,7 @@ public abstract class AppableControl extends ConfirmableControl {
      *
      */
     public List<SettingsRow> backgroundSettings = new ArrayList<>();
+    public List<SettingsRow> usageSettings = new ArrayList<>();
 
     /**
      *
@@ -454,6 +455,9 @@ public abstract class AppableControl extends ConfirmableControl {
      */
     public TextField columnExpandField;
 
+    public RunnableControl resetUsageButton;
+    public AnimatedLabel totalUsageLabel;
+
     /**
      *
      */
@@ -478,6 +482,7 @@ public abstract class AppableControl extends ConfirmableControl {
         rowExpandField.setText(String.valueOf(getRowExpand()));
         columnExpandField.setText(String.valueOf(getColumnExpand()));
         navigateIndexChoices.setValue(getNavigateIndex());
+        totalUsageLabel.setText(getTotalUsageCount().toString());
         SettingsController.setUpdated(Boolean.FALSE);
     }
 
@@ -616,7 +621,7 @@ public abstract class AppableControl extends ConfirmableControl {
         )));
         textAlignment.setValue(Pos.valueOf(getTitlePos()));
         textAlignment.setMaxSize(180.0, 60.0);
-        
+
         textAlignment.getStyleClass().add("settings-text-area");
         textAlignmentRow.add(textAlignment, 1, 0, 2, 1);
 
@@ -699,18 +704,41 @@ public abstract class AppableControl extends ConfirmableControl {
         settingsRow5.add(expandHBox, 1, 0, 2, 1);
 
         SettingsRow settingsRowA = createSettingRow("Navigate", "Screen to navigate to after click");
-        List<String> navigatableScreens=new ArrayList<>();
+        List<String> navigatableScreens = new ArrayList<>();
         try {
             navigatableScreens = getNavigatableScreens("subgrid");
         } catch (BackingStoreException ex) {
             LOGGER.fatal("Unable to load Preferences" + ex.getMessage());
         }
-        
+
         navigateIndexChoices = new ChoiceBox<>(FXCollections.observableArrayList(navigatableScreens));
         navigateIndexChoices.setValue(getNavigateIndex());
         navigateIndexChoices.setMaxSize(180.0, 60.0);
         navigateIndexChoices.getStyleClass().add("settings-text-area");
         settingsRowA.add(navigateIndexChoices, 1, 0, 2, 1);
+
+        SettingsRow totalUsageRow = EditDialog.createSettingRow("Usage Count", "Number of times this button has been clicked");
+
+        totalUsageLabel = new AnimatedLabel();
+        totalUsageLabel.setStyle("-fx-font-size:3em;");
+
+        totalUsageLabel.setText(getTotalUsageCount().toString());
+        totalUsageRow.add(totalUsageLabel, 2, 0, 1, 1);
+
+        resetUsageButton = new RunnableControl("settings-button") {
+            @Override
+            public void run() {
+                resetTotalUsageCount();
+                totalUsageLabel.setText(getTotalUsageCount().toString());
+            }
+        };
+        resetUsageButton.setVisible(getTotalUsageCount() > 0);
+        totalUsageCountProperty().addListener((observable, oldValue, newValue) -> {
+            resetUsageButton.setVisible(newValue.intValue() > 0);
+        });
+        resetUsageButton.setText("RESET");
+        resetUsageButton.setMaxSize(180.0, 60.0);
+        totalUsageRow.add(resetUsageButton, 1, 0, 1, 1);
 
         settings.add(settingsRow5);
         Tab actionTab = buildTab("ACTION", settings);
@@ -732,11 +760,15 @@ public abstract class AppableControl extends ConfirmableControl {
         backgroundSettings.add(overrideStyleRow);
         Tab backgroundTab = buildTab("BACKGROUND", backgroundSettings);
 
+        usageSettings.add(totalUsageRow);
+        Tab usageTab = buildTab("STATS", usageSettings);
+
         List<Tab> tabs = new ArrayList<>();
         tabs.add(actionTab);
         tabs.add(textTab);
         tabs.add(backgroundTab);
         tabs.add(selectionTab);
+        tabs.add(usageTab);
 
         return tabs;
     }
@@ -965,6 +997,7 @@ public abstract class AppableControl extends ConfirmableControl {
         if (isSpeakable()) {
             speak(getSpeakText());
         }
+        incrementTotalUsageCount();
     }
 
     private StringProperty title;
@@ -1441,6 +1474,44 @@ public abstract class AppableControl extends ConfirmableControl {
             navigateIndex = new SimpleStringProperty(getPreferences().get("navigateIndex", navigateTo));
         }
         return navigateIndex;
+    }
+
+    private IntegerProperty totalUsageCount;
+
+    /**
+     *
+     * @param value
+     */
+    public void setTotalUsageCount(Integer value) {
+        totalUsageCountProperty().set(value);
+        getPreferences().put("usage.count", value.toString());
+    }
+
+    public void incrementTotalUsageCount() {
+        setTotalUsageCount(getTotalUsageCount() + 1);
+    }
+
+    public void resetTotalUsageCount() {
+        setTotalUsageCount(0);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Integer getTotalUsageCount() {
+        return totalUsageCountProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public IntegerProperty totalUsageCountProperty() {
+        if (totalUsageCount == null) {
+            totalUsageCount = new SimpleIntegerProperty(Integer.valueOf(getPreferences().get("usage.count", "0")));
+        }
+        return totalUsageCount;
     }
 
     private StringProperty key;

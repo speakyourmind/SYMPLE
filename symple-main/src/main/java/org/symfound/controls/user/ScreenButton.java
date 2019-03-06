@@ -5,11 +5,19 @@
  */
 package org.symfound.controls.user;
 
+import java.util.prefs.Preferences;
+
 /**
  *
  * @author Javed Gangjee <javed@speakyourmindfoundation.org>
  */
 public class ScreenButton extends GenericButton{
+    
+    /**
+     *
+     */
+    public static final String KEY = "Screen";
+    
     
     public ScreenButton(String index) {
         super(index);

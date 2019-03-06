@@ -30,7 +30,6 @@ public class GenericButton extends AppableControl {
 
     private void initialize() {
         configureStyle();
-
     }
 
     @Override

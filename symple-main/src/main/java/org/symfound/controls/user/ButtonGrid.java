@@ -136,7 +136,7 @@ public abstract class ButtonGrid extends FillableGrid {
             DeviceButton.KEY,
             VersionUpdateButton.KEY,
             ClockButton.KEY,
-            HomeController.KEY,
+            ScreenButton.KEY,
             DesktopController.KEY);
 
     /**
@@ -627,10 +627,10 @@ public abstract class ButtonGrid extends FillableGrid {
                             requestedControls.add(pageButton);
                      
                         break;*/
-                    case HomeController.KEY:
+                    case ScreenButton.KEY:
                         final String currentIndex = index;
                         ConfigurableGrid homeGrid = HomeController.getGrid().getConfigurableGrid();
-                        GenericButton screenButton = new GenericButton(currentIndex) {
+                        ScreenButton screenButton = new ScreenButton(currentIndex) {
                             @Override
                             public void run() {
                                 LOGGER.info("Setting index to " + currentIndex);
