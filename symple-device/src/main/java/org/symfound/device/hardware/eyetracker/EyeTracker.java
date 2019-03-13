@@ -68,7 +68,7 @@ public abstract class EyeTracker extends Hardware<Eye> {
      *
      * @return
      */
-    public Eye leftEye() {
+    public Eye getLeftEye() {
         return leftEye;
     }
     
@@ -78,7 +78,7 @@ public abstract class EyeTracker extends Hardware<Eye> {
      *
      * @return
      */
-    public Eye rightEye() {
+    public Eye getRightEye() {
         return rightEye;
     }
 

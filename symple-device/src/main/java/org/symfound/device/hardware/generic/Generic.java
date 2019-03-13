@@ -51,6 +51,7 @@ public class Generic extends Hardware<Unknown> {
      *
      */
     public Double mouseY;
+    public Double mouseZ;
 
     private LoopedEvent loopedEvent;
     
@@ -95,8 +96,10 @@ public class Generic extends Hardware<Unknown> {
     public void record() {
         mouseX = MouseInfo.getPointerInfo().getLocation().getX();
         mouseY = MouseInfo.getPointerInfo().getLocation().getY();
+        mouseZ = 0.0;// Unused
         feature.setPosX(mouseX);
         feature.setPosY(mouseY);
+        feature.setPosZ(mouseZ);
     }
 
     /**
@@ -113,8 +116,10 @@ public class Generic extends Hardware<Unknown> {
         dataMap.put(processability.getClickedKey(), false);
         dataMap.put(processability.getRawXKey(), mouseX.toString());
         dataMap.put(processability.getRawYKey(), mouseY.toString());
+        dataMap.put(processability.getRawZKey(), mouseZ.toString());
         dataMap.put(processability.getSmoothXKey(), feature.getPosX().toString());
         dataMap.put(processability.getSmoothYKey(), feature.getPosY().toString());
+        dataMap.put(processability.getSmoothZKey(), feature.getPosZ().toString());
         setDataPackage(new JSONObject(dataMap));
         setBundled(true);
     }

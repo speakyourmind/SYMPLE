@@ -34,7 +34,6 @@ public class DesktopGrid extends BuildableGrid {
             MouseSelectionType.DRAG,
             MouseSelectionType.ZOOM,
             MouseSelectionType.OFF,
-            NavigateButton.KEY,
             SettingsButton.KEY,
             OSK_KEY);
 
@@ -71,7 +70,9 @@ public class DesktopGrid extends BuildableGrid {
         osk.setAlignment(Pos.BOTTOM_CENTER);
         osk.setText("Keyboard");
         add(osk, 0, 3);*/
-        NavigateButton homeButton = new NavigateButton("default");
+        //NavigateButton homeButton = new NavigateButton("default");
+        ScriptButton homeButton = new ScriptButton("home");
+        homeButton.setNavigateIndex("home");
         //homeButton.setSymStyle("home-button");
         //homeButton.setConfirmable(false);
         homeButton.setText("Home");

@@ -86,7 +86,7 @@ public class DeviceManager extends UsableManager<Device> implements Runnable {
     public final Map<String, Device> buildMap(User user) {
         Map<String, Device> buildMap;
         HashMap<String, Device> hashMap = new HashMap<>();
-        hashMap.put(Hardware.EYE_TRACKER, getTobii(user));
+        hashMap.put(Hardware.EYE_TRACKER, getGamingEyeTracker(user));
         hashMap.put(Hardware.SWIFTY, getSwifty(user));
         hashMap.put(Hardware.GENERIC, getGenericDevice(user));
         buildMap = Collections.unmodifiableMap(hashMap);
@@ -140,12 +140,12 @@ public class DeviceManager extends UsableManager<Device> implements Runnable {
      * @param user
      * @return
      */
-    public Device<GamingEyeTracker> getTobii(User user) {
+    public Device<GamingEyeTracker> getGamingEyeTracker(User user) {
         if (tobii == null) {
             Physical physical = user.getPhysical();
             Eye leftEye = physical.getLeftEye();
             Eye rightEye = physical.getRightEye();
-            LOGGER.info("Initializing Tobii...");
+            LOGGER.info("Initializing Eye Tracker...");
             tobii = new Device<>(new GamingEyeTracker(leftEye, rightEye), user);
         }
         return tobii;
@@ -200,7 +200,7 @@ public class DeviceManager extends UsableManager<Device> implements Runnable {
      *
      * @param folder
      */
-    public void exportAllPreferences(String folder) {
+   /* public void exportAllPreferences(String folder) {
         File folderDestination = new File(folder);
         folderDestination.mkdirs(); // Create the folder if it doesn't exist.
         devices.stream().forEach((device) -> {
@@ -216,6 +216,6 @@ public class DeviceManager extends UsableManager<Device> implements Runnable {
                 LOGGER.fatal("Unable to export " + hardwareName + " settings");
             }
         });
-    }
+    }*/
 
 }

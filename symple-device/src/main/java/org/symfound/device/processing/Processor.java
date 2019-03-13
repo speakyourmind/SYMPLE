@@ -153,18 +153,26 @@ public final class Processor implements Runnable {
         Boolean clicked = (Boolean) data.get(processability.getClickedKey());
         Double rawX = Double.valueOf((String) data.get(processability.getRawXKey()));
         Double rawY = Double.valueOf((String) data.get(processability.getRawYKey()));
+        Double rawZ = Double.valueOf((String) data.get(processability.getRawZKey()));
         Double smoothX = Double.valueOf((String) data.get(processability.getSmoothXKey()));
         Double smoothY = Double.valueOf((String) data.get(processability.getSmoothYKey()));
+        Double smoothZ = Double.valueOf((String) data.get(processability.getSmoothZKey()));
         Point smoothPoint = new Point(smoothX.intValue(), smoothY.intValue());
         Point rawPoint = new Point(rawX.intValue(), rawY.intValue());
 
-        request = new EmulationRequest();
-        request.setClick(clicked);
-        request.setPosition(rawPoint);
-        request.setKeyPressed("");
-        LOGGER.debug("From JSON data package:" + request.getPosition());
+        request = requestEmulation(clicked, rawPoint);
         getEmulationManager().request(request);
 
+
+    }
+
+    private EmulationRequest requestEmulation(Boolean clicked, Point rawPoint) {
+        EmulationRequest emulationRequest = new EmulationRequest();
+        emulationRequest.setClick(clicked);
+        emulationRequest.setPosition(rawPoint);
+        emulationRequest.setKeyPressed("");
+        LOGGER.debug("From JSON data package:" + emulationRequest.getPosition());
+        return emulationRequest;
     }
 
     /**
@@ -190,5 +198,4 @@ public final class Processor implements Runnable {
         }
         return emulationManager;
     }
-
 }

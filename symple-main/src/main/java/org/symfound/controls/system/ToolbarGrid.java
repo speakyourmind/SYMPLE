@@ -15,7 +15,7 @@ import static org.symfound.controls.user.ButtonGrid.LOGGER;
 import org.symfound.controls.user.ExecButton;
 import org.symfound.controls.user.ExitButton;
 import org.symfound.controls.user.MinimizeButton;
-import org.symfound.controls.user.NavigateButton;
+import org.symfound.controls.user.ScriptButton;
 import org.symfound.controls.user.SettingsButton;
 import org.symfound.controls.user.VersionUpdateButton;
 import org.symfound.tools.iteration.ParallelList;
@@ -116,8 +116,8 @@ public class ToolbarGrid extends ButtonGrid {
                     edit.setCancelText("CANCEL");
                     requestedControls.add(edit);
                     break;
-                case NavigateButton.KEY:
-                    NavigateButton homeButton = new NavigateButton("home", "toolbar.home");
+                case ScriptButton.KEY:
+                    ScriptButton homeButton = new ScriptButton("toolbar/home");
                     homeButton.setControlType(ControlType.SETTING_CONTROL);
                     homeButton.setEditable(Boolean.FALSE);
                     homeButton.getStyleClass().clear();

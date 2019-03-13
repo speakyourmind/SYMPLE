@@ -98,6 +98,9 @@ public abstract class ButtonGrid extends FillableGrid {
      *
      */
     public static final List<String> KEY_CATALOGUE = Arrays.asList(SubGrid.KEY,
+            ReplaceKeyButton.KEY,
+            ScreenButton.KEY,
+            ScriptButton.KEY,
             SpeakGrid.KEY,
             SpeakUserButton.KEY,
             SpeakPictoButton.KEY,
@@ -121,7 +124,6 @@ public abstract class ButtonGrid extends FillableGrid {
             GMailSpeakButton.KEY,
             GMailControlButton.KEY,
             EditButton.KEY,
-            NavigateButton.KEY,
             MinimizeButton.KEY,
             ScriptButton.KEY,
             ActiveTextArea.KEY,
@@ -131,12 +133,45 @@ public abstract class ButtonGrid extends FillableGrid {
             SettingsButton.KEY,
             IftttButton.KEY,
             LockButton.KEY,
-            ReplaceKeyButton.KEY,
             EditGridButton.KEY,
             DeviceButton.KEY,
             VersionUpdateButton.KEY,
             ClockButton.KEY,
+            DesktopController.KEY);
+
+    
+    public static final List<String> USABLE_KEY_CATALOGUE = Arrays.asList(SubGrid.KEY,
+            ReplaceKeyButton.KEY,
             ScreenButton.KEY,
+            ScriptButton.KEY,
+            GenericButton.KEY,
+            SpeakGrid.KEY,
+            SpeakUserButton.KEY,
+            TwilioSendButton.KEY,
+            PhotoControlButton.KEY,
+            MusicInfoButton.KEY,
+            MusicControlButton.KEY,
+            VideoControlButton.KEY,
+            RedditControlButton.KEY,
+            PageFlipControlButton.KEY,
+            TwitterControlButton.KEY,
+            YouTubeViewer.KEY,
+            YouTubeControlButton.KEY,
+            VolumeGridButton.KEY,
+            GMailSpeakButton.KEY,
+            MinimizeButton.KEY,
+            ActiveTextArea.KEY,
+            SpeakPictoButton.KEY,
+            BackSpacePictoButton.KEY,
+            ClearPictoButton.KEY,
+            PictoArea.KEY,
+            ExitButton.KEY,
+            SettingsButton.KEY,
+            IftttButton.KEY,
+            LockButton.KEY,
+            DeviceButton.KEY,
+            VersionUpdateButton.KEY,
+            ClockButton.KEY,
             DesktopController.KEY);
 
     /**
@@ -559,13 +594,6 @@ public abstract class ButtonGrid extends FillableGrid {
                         addKeyButton.setPane("apMain"); // Change to apMain for Menu Grid
                         addKeyButton.setGridLocation(i);
                         requestedControls.add(addKeyButton);
-                        break;
-
-                    case NavigateButton.KEY:
-                        NavigateButton navigateButton = new NavigateButton(index);
-                        configureItem(navigateButton);
-                        navigateButton.setGridLocation(i);
-                        requestedControls.add(navigateButton);
                         break;
                     case DeviceButton.KEY:
                         DeviceButton deviceButton = new DeviceButton();

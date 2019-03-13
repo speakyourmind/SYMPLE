@@ -416,6 +416,44 @@ public class Processability extends Characteristic {
         return rawYKey;
     }
 
+    
+    /**
+     *
+     */
+    public static final String DEFAULT_RAW_Z_KEY_VALUE = "rawZ";
+    private static final String RAW_Z_KEY = "processability.keys.rawZ";
+    private StringProperty rawZKey;
+
+    /**
+     *
+     * @param value
+     */
+    public void setRawZKey(String value) {
+        rawZKeyProperty().setValue(value);
+        getPreferences().put(RAW_Z_KEY, value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getRawZKey() {
+        return rawZKeyProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty rawZKeyProperty() {
+        if (rawZKey == null) {
+            String initValue = getPreference(RAW_Z_KEY, DEFAULT_RAW_Z_KEY_VALUE);
+            rawZKey = new SimpleStringProperty(initValue);
+        }
+        return rawZKey;
+    }
+    
+    
     /**
      *
      */
@@ -486,5 +524,40 @@ public class Processability extends Characteristic {
             smoothYKey = new SimpleStringProperty(initValue);
         }
         return smoothYKey;
+    }
+        /**
+     *
+     */
+    public static final String DEFAULT_SMOOTH_Z_KEY_VALUE = "smoothZ";
+    private static final String SMOOTH_Z_KEY = "processability.keys.smoothZ";
+    private StringProperty smoothZKey;
+
+    /**
+     *
+     * @param value
+     */
+    public void setSmoothZKey(String value) {
+        smoothZKeyProperty().setValue(value);
+        getPreferences().put(SMOOTH_Z_KEY, value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getSmoothZKey() {
+        return smoothZKeyProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty smoothZKeyProperty() {
+        if (smoothZKey == null) {
+            String initValue = getPreference(SMOOTH_Z_KEY, DEFAULT_SMOOTH_Z_KEY_VALUE);
+            smoothZKey = new SimpleStringProperty(initValue);
+        }
+        return smoothZKey;
     }
 }

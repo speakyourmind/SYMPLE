@@ -16,7 +16,7 @@ import org.symfound.tools.timing.LoopedEvent;
  *
  * @author Javed Gangjee
  */
-public class GamingEyeTracker extends EyeTracker implements Calibratable{
+public class GamingEyeTracker extends EyeTracker implements Calibratable {
 
     private static final String NAME = GamingEyeTracker.class.getName();
 
@@ -33,11 +33,11 @@ public class GamingEyeTracker extends EyeTracker implements Calibratable{
     /**
      *
      */
-    public static final String EXE_FILE = "MinimalGazeDataStream.exe"; // TO DO: Make a setting. TO DO: Change Name
-
+    public static final String DATA_STREAM_EXE_FILE = "MinimalGazeDataStream.exe"; // TO DO: Make a setting. TO DO: Change Name
+   
     private RuntimeExecutor runtimeExecutor;
 
-    private LoopedEvent loopedEvent;
+    private LoopedEvent positionEvent;
 
     /**
      *
@@ -65,17 +65,20 @@ public class GamingEyeTracker extends EyeTracker implements Calibratable{
     public void launch() {
         if (isEnabled()) {
             String userDirectory = System.getProperty("user.dir");
-            String command = userDirectory + EXE_LOCATION + EXE_FILE;
+            String command = userDirectory + EXE_LOCATION + DATA_STREAM_EXE_FILE;
             String readFile = getProcessability().getReadFile();
             LOGGER.info("Launching Eye Tracker exe from: " + command + " and reading its data from " + readFile);
             getRuntimeExecutor().execute(command);
             setLaunched(true);
+
             loopedEvent = createScanningEvent();
             loopedEvent.play();
+
         } else {
             LOGGER.warn("Eye Tracker is not Enabled");
         }
 
+        // Create another looped event
     }
 
     /**
@@ -83,7 +86,8 @@ public class GamingEyeTracker extends EyeTracker implements Calibratable{
      */
     @Override
     public void record() {
-        //     throw new UnsupportedOperationException("Not supported locally.");
+        
+        
     }
 
     /**
@@ -99,7 +103,7 @@ public class GamingEyeTracker extends EyeTracker implements Calibratable{
     @Override
     public void close() {
         if (isLaunched()) {
-            LOGGER.info("Closing Eye Tracker program: " + EXE_FILE);
+            LOGGER.info("Closing Eye Tracker program: " + DATA_STREAM_EXE_FILE);
             loopedEvent.end();
             getRuntimeExecutor().destroy();
             setLaunched(false);
@@ -112,11 +116,11 @@ public class GamingEyeTracker extends EyeTracker implements Calibratable{
     @Override
     public void calibrate() {
         // close();
-        String userDirectory = System.getProperty("user.dir");
+        /* String userDirectory = System.getProperty("user.dir");
         String command = userDirectory + EXE_LOCATION + "MinimalConfigurationTool.exe";
         LOGGER.info("Launching Eye Tracker calibration from: " + command);
         RuntimeExecutor executor = new RuntimeExecutor();
-        executor.execute(command);
+        executor.execute(command);*/
 
     }
 
