@@ -90,7 +90,7 @@ public class EditGridButton extends SystemControl {
     /**
      *
      */
-    public List<SettingsRow> orderSettings = new ArrayList<>();
+    public List<SettingsRow> advancedSettings = new ArrayList<>();
 
     /**
      *
@@ -205,7 +205,7 @@ public class EditGridButton extends SystemControl {
         gapField.maxHeight(80.0);
         gapField.maxWidth(360.0);
         gapField.getStyleClass().add("settings-text-area");*/
-                gridGapRow.add(gapField, 1, 0, 2, 1);
+//                gridGapRow.add(gapField, 1, 0, 2, 1);
 
                 SettingsRow difficultyRow = createSettingRow("Difficulty", "Controls size of grid");
 
@@ -250,7 +250,7 @@ public class EditGridButton extends SystemControl {
                 overrideStyleField.getStyleClass().add("settings-text-area");
                 styleRow.add(overrideStyleField, 1, 0, 2, 1);
 
-                SettingsRow selectionMethodRow = createSettingRow("Selection Method", "Only available in caregiver mode");
+                SettingsRow selectionMethodRow = createSettingRow("Selection Method", "Only available in assisted mode");
                 selectionMethodChoices = new ChoiceBox<>(FXCollections.observableArrayList(
                         Arrays.asList(
                                 SelectionMethod.CLICK,
@@ -265,9 +265,9 @@ public class EditGridButton extends SystemControl {
                 selectionMethodChoices.getStyleClass().add("settings-text-area");
                 selectionMethodRow.add(selectionMethodChoices, 1, 0, 2, 1);
 
-                orderSettings.add(buttonOrderRow);
+                advancedSettings.add(buttonOrderRow);
                 //  orderSettings.add(buttonOrderTestRow2);
-                Tab orderTab = buildTab("ORDER", orderSettings);
+                Tab advancedTab = buildTab("ADVANCED", advancedSettings);
 
                 fillSettings.add(fillMethodRow);
                 fillSettings.add(fillDirectionRow);
@@ -287,11 +287,11 @@ public class EditGridButton extends SystemControl {
                 TabPane tabPane = new TabPane();
                 tabPane.setPadding(new Insets(5));
                 tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-                tabPane.getTabs().add(orderTab);
                 tabPane.getTabs().add(fillTab);
                 tabPane.getTabs().add(gridTab);
                 tabPane.getTabs().add(lookTab);
                 tabPane.getTabs().add(selectionTab);
+                tabPane.getTabs().add(advancedTab);
                 return tabPane;
             }
 

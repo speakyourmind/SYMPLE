@@ -6,8 +6,11 @@
 package org.symfound.controls.system.grid.editor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -18,14 +21,12 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.apache.log4j.Logger;
-import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
-import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
 import org.symfound.controls.SystemControl;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.system.dialog.OKCancelDialog;
-import org.symfound.controls.user.BuildableGrid;
+import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.ButtonGrid;
 import static org.symfound.controls.user.ButtonGrid.USABLE_KEY_CATALOGUE;
 import org.symfound.controls.user.ConfigurableGrid;
@@ -98,13 +99,12 @@ public class ReplaceKeyButton extends SystemControl {
             TextArea buttonOrderField;
             ChoiceBox<String> buttonTypeChoices;
             TextField buttonTitleField;
-            BuildableGrid buttonOrderGrid;
+            ChoiceBox<String> existingButtonChoiceBox;
             ConfigurableGrid appGrid;
             DeleteKeyButton deleteKeyButton;
 
             @Override
             public Node addSettingControls() {
-
                 SettingsRow buttonTypeRow = createSettingRow("Type", "Select the type of button you would like to add");
                 buttonTypeChoices = new ChoiceBox<>(FXCollections.observableArrayList(USABLE_KEY_CATALOGUE));
                 buttonTypeChoices.setValue(KEY);
@@ -114,22 +114,36 @@ public class ReplaceKeyButton extends SystemControl {
 
                 SettingsRow buttonTitleRow = EditDialog.createSettingRow("Title", "Use an existing button or pick a unique title to create a new button");
                 buttonTitleField = new TextField();
-                buttonTitleField.setText(getIndex().toLowerCase());
-                buttonTitleField.setPrefSize(360.0, 80.0);
+                buttonTitleField.setText("");
+                buttonTitleField.setPrefSize(180.0, 60.0);
                 buttonTitleField.getStyleClass().add("settings-text-area");
-                buttonTitleRow.add(buttonTitleField, 1, 0, 2, 1);
-                /*
-                SettingsRow buttonOrderRow = createSettingRow("Button Order", "Placeholder method to change app order");
-                buttonOrderField = new TextArea();
-                buttonOrderField.setStyle("-fx-font-size:1.6em;");
-                buttonOrderField.setWrapText(true);
-                buttonOrderField.setText(KEY + "=" + getIndex().toLowerCase());
-                buttonOrderField.maxHeight(80.0);
-                buttonOrderField.maxWidth(360.0);
-                buttonOrderField.getStyleClass().add("settings-text-area");
-                buttonOrderRow.add(buttonOrderField, 1, 0, 2, 1);*/
+                buttonTitleRow.add(buttonTitleField, 2, 0, 1, 1);
 
-                //orderSettings.add(buttonOrderRow);
+                //  SettingsRow settingsRowA = createSettingRow("Navigate", "Screen to navigate to after click");
+                List<String> nodes = new ArrayList<>();
+                try {
+                    nodes = getButtons(buttonTypeChoices.getValue(), buttonTypeChoices.getValue());
+                } catch (BackingStoreException ex) {
+                    LOGGER.fatal("Unable to load Preferences" + ex.getMessage());
+                }
+                existingButtonChoiceBox = new ChoiceBox<>(FXCollections.observableArrayList(nodes));
+                
+                existingButtonChoiceBox.disableProperty().bind(Bindings.notEqual(buttonTitleField.textProperty(), ""));
+               
+                buttonTypeChoices.valueProperty().addListener((observable, oldValue, newValue) -> {
+                    try {
+                        System.out.println(newValue.toLowerCase());
+                        final List<String> buttons = getButtons(newValue.toLowerCase(), newValue.toLowerCase());
+                        System.out.println(buttons);
+                        existingButtonChoiceBox.setItems(FXCollections.observableArrayList(buttons));
+                    } catch (BackingStoreException ex) {
+                        LOGGER.warn(ex);
+                    }
+                });
+                existingButtonChoiceBox.setMaxSize(180.0, 60.0);
+                existingButtonChoiceBox.getStyleClass().add("settings-text-area");
+                buttonTitleRow.add(existingButtonChoiceBox, 1, 0, 1, 1);
+
                 orderSettings.add(buttonTypeRow);
                 orderSettings.add(buttonTitleRow);
                 Tab orderTab = buildTab("ORDER", orderSettings);
@@ -143,18 +157,16 @@ public class ReplaceKeyButton extends SystemControl {
 
             @Override
             public void setSettings() {
-                /* 
-                final ParallelList<String, String> order1 = buttonGrid.getOrder();
-                String[] pairs = buttonOrderField.getText().split(BUTTON_DELIMITER);
-                for (String pair : pairs) {
-                    String[] keyValue = pair.split(KEY_DELIMITER);
-                    order1.getFirstList().set(getGridLocation(), keyValue[0]);
-                    order1.getSecondList().set(getGridLocation(), keyValue[1]);
-                }*/
 
                 final ParallelList<String, String> order1 = buttonGrid.getOrder();
                 order1.getFirstList().set(getGridLocation(), buttonTypeChoices.getValue());
-                order1.getSecondList().set(getGridLocation(), buttonTitleField.getText());
+                String index;
+                if (!buttonTitleField.getText().isEmpty()) {
+                    index = buttonTitleField.getText();
+                } else {
+                    index = existingButtonChoiceBox.getValue();
+                }
+                order1.getSecondList().set(getGridLocation(), index);
                 final Parent parent = ReplaceKeyButton.this.getParent();
                 ConfigurableGrid configurableGrid;
                 if (parent instanceof ConfigurableGrid) {
@@ -170,11 +182,29 @@ public class ReplaceKeyButton extends SystemControl {
             public void resetSettings() {
                 buttonTypeChoices.setValue(KEY);
                 buttonTitleField.setText(getIndex().toLowerCase());
-              //  buttonOrderField.setText(KEY + "=" + getIndex().toLowerCase());
+                //  buttonOrderField.setText(KEY + "=" + getIndex().toLowerCase());
                 SettingsController.setUpdated(false);
             }
         };
         return editDialog;
+    }
+
+    private List<String> getButtons(String node, String alt) throws BackingStoreException {
+        System.out.println("Node:" + node);
+        List<String> screenNames = new ArrayList<>();
+        final Preferences userNodeForPackage = Preferences.userNodeForPackage(AnimatedButton.class);
+        System.out.println(userNodeForPackage.name());
+        List<String> childrenNames = Arrays.asList(userNodeForPackage.node(node).childrenNames());
+        System.out.println(childrenNames);
+        if (childrenNames.size() > 0) {
+            for (String child : childrenNames) {
+                final String name = node + "/" + child;
+                screenNames.add(name.replaceAll(alt + "/", ""));
+                screenNames.addAll(getButtons(name, alt));
+            }
+        }
+
+        return screenNames;
     }
 
     @Override

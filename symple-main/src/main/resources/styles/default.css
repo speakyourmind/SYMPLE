@@ -1085,7 +1085,7 @@
 .highlight,.highlight:disabled{
     -fx-border-color: -fx-dark;
     -fx-border-insets: 0;
-    -fx-border-width: 5;
+    -fx-border-width: 15;
 }
 
 .selector{

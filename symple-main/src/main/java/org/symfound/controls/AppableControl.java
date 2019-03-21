@@ -637,7 +637,7 @@ public abstract class AppableControl extends ConfirmableControl {
         overrideStyleField.getStyleClass().add("settings-text-area");
         overrideStyleRow.add(overrideStyleField, 1, 0, 2, 1);
 
-        SettingsRow settingsRowB = createSettingRow("Colour", "Colour of the button background");
+        SettingsRow backgroundColourRow = createSettingRow("Colour", "Colour of the button background");
         backgroundColourChoices = new ChoiceBox<>(FXCollections.observableArrayList(
                 Arrays.asList(
                         ColourChoices.DARK,
@@ -654,7 +654,7 @@ public abstract class AppableControl extends ConfirmableControl {
         backgroundColourChoices.setValue(getBackgroundColour());
         backgroundColourChoices.setMaxSize(180.0, 60.0);
         backgroundColourChoices.getStyleClass().add("settings-text-area");
-        settingsRowB.add(backgroundColourChoices, 1, 0, 2, 1);
+        backgroundColourRow.add(backgroundColourChoices, 1, 0, 2, 1);
 
         SettingsRow backgroundSizeRow = EditDialog.createSettingRow("Size", "Size of the background image");
 
@@ -726,7 +726,7 @@ public abstract class AppableControl extends ConfirmableControl {
         expandHBox.setAlignment(Pos.CENTER);
         settingsRow5.add(expandHBox, 1, 0, 2, 1);
 
-        SettingsRow settingsRowA = createSettingRow("Navigate", "Screen to navigate to after click");
+        SettingsRow navigateRow = createSettingRow("Navigate", "Screen to navigate to after click");
         List<String> navigatableScreens = new ArrayList<>();
         try {
             navigatableScreens = getNavigatableScreens("subgrid");
@@ -738,7 +738,7 @@ public abstract class AppableControl extends ConfirmableControl {
         navigateIndexChoices.setValue(getNavigateIndex());
         navigateIndexChoices.setMaxSize(180.0, 60.0);
         navigateIndexChoices.getStyleClass().add("settings-text-area");
-        settingsRowA.add(navigateIndexChoices, 1, 0, 2, 1);
+        navigateRow.add(navigateIndexChoices, 1, 0, 2, 1);
 
         SettingsRow totalUsageRow = EditDialog.createSettingRow("Usage Count", "Number of times this button has been clicked");
 
@@ -768,7 +768,7 @@ public abstract class AppableControl extends ConfirmableControl {
 
         selectionSettings.add(settingsRow4);
         selectionSettings.add(settingsRow45);
-        selectionSettings.add(settingsRowA);
+        selectionSettings.add(navigateRow);
         Tab selectionTab = buildTab("SELECTION", selectionSettings);
 
         textSettings.add(showTitleRow);
@@ -778,7 +778,7 @@ public abstract class AppableControl extends ConfirmableControl {
         textSettings.add(textAlignmentRow);
         Tab textTab = buildTab("TEXT", textSettings);
 
-        backgroundSettings.add(settingsRowB);
+        backgroundSettings.add(backgroundColourRow);
         //backgroundSettings.add(backgroundSizeRow);
         backgroundSettings.add(backgroundURLRow);
         backgroundSettings.add(overrideStyleRow);
@@ -984,9 +984,7 @@ public abstract class AppableControl extends ConfirmableControl {
             final FixableErrorDialog errDialog = getFixableErrorDialog(message);
             final ScreenPopup<ScreenDialog> errorPopup = getPopup(errDialog);
             homeGrid.getChildren().add(errorPopup);
-
         }
-
     }
 
     /**

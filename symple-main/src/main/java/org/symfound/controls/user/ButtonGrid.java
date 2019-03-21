@@ -124,6 +124,7 @@ public abstract class ButtonGrid extends FillableGrid {
             GMailSpeakButton.KEY,
             GMailControlButton.KEY,
             EditButton.KEY,
+            
             MinimizeButton.KEY,
             ScriptButton.KEY,
             ActiveTextArea.KEY,
@@ -140,7 +141,8 @@ public abstract class ButtonGrid extends FillableGrid {
             DesktopController.KEY);
 
     
-    public static final List<String> USABLE_KEY_CATALOGUE = Arrays.asList(SubGrid.KEY,
+    public static final List<String> USABLE_KEY_CATALOGUE = Arrays.asList(
+            SubGrid.KEY,
             ReplaceKeyButton.KEY,
             ScreenButton.KEY,
             ScriptButton.KEY,
@@ -155,7 +157,6 @@ public abstract class ButtonGrid extends FillableGrid {
             RedditControlButton.KEY,
             PageFlipControlButton.KEY,
             TwitterControlButton.KEY,
-            YouTubeViewer.KEY,
             YouTubeControlButton.KEY,
             VolumeGridButton.KEY,
             GMailSpeakButton.KEY,
@@ -491,7 +492,6 @@ public abstract class ButtonGrid extends FillableGrid {
                         requestedControls.add(volumeGridButton);
                         break;
                     case PhotoControlButton.KEY:
-
                         PhotoControlButton photoControl = new PhotoControlButton(index, getPhotoViewer(index));
                         configureItem(photoControl);
                         photoControl.setGridLocation(i);
