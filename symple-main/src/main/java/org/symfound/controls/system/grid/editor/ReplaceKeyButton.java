@@ -30,6 +30,8 @@ import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.ButtonGrid;
 import static org.symfound.controls.user.ButtonGrid.USABLE_KEY_CATALOGUE;
 import org.symfound.controls.user.ConfigurableGrid;
+import org.symfound.controls.user.ScreenButton;
+import org.symfound.controls.user.SubGrid;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 
@@ -115,6 +117,7 @@ public class ReplaceKeyButton extends SystemControl {
                 SettingsRow buttonTitleRow = EditDialog.createSettingRow("Title", "Use an existing button or pick a unique title to create a new button");
                 buttonTitleField = new TextField();
                 buttonTitleField.setText("");
+                buttonTitleField.setPromptText("Enter a name here");
                 buttonTitleField.setPrefSize(180.0, 60.0);
                 buttonTitleField.getStyleClass().add("settings-text-area");
                 buttonTitleRow.add(buttonTitleField, 2, 0, 1, 1);
@@ -122,18 +125,23 @@ public class ReplaceKeyButton extends SystemControl {
                 //  SettingsRow settingsRowA = createSettingRow("Navigate", "Screen to navigate to after click");
                 List<String> nodes = new ArrayList<>();
                 try {
-                    nodes = getButtons(buttonTypeChoices.getValue(), buttonTypeChoices.getValue());
+                    final String buttonType = buttonTypeChoices.getValue();
+                    nodes = getButtons(buttonType, buttonType);
                 } catch (BackingStoreException ex) {
                     LOGGER.fatal("Unable to load Preferences" + ex.getMessage());
                 }
                 existingButtonChoiceBox = new ChoiceBox<>(FXCollections.observableArrayList(nodes));
-                
+
                 existingButtonChoiceBox.disableProperty().bind(Bindings.notEqual(buttonTitleField.textProperty(), ""));
-               
+
                 buttonTypeChoices.valueProperty().addListener((observable, oldValue, newValue) -> {
                     try {
-                        System.out.println(newValue.toLowerCase());
-                        final List<String> buttons = getButtons(newValue.toLowerCase(), newValue.toLowerCase());
+                        String buttonType = newValue.toLowerCase();
+                        if (buttonType.equals(ScreenButton.KEY.toLowerCase())) {
+                            buttonType = SubGrid.KEY.toLowerCase();
+                        }
+                        System.out.println(buttonType);
+                        final List<String> buttons = getButtons(buttonType, buttonType);
                         System.out.println(buttons);
                         existingButtonChoiceBox.setItems(FXCollections.observableArrayList(buttons));
                     } catch (BackingStoreException ex) {
@@ -164,7 +172,12 @@ public class ReplaceKeyButton extends SystemControl {
                 if (!buttonTitleField.getText().isEmpty()) {
                     index = buttonTitleField.getText();
                 } else {
-                    index = existingButtonChoiceBox.getValue();
+                    // TO DO - Set to default if choice box is also empty
+                    if (existingButtonChoiceBox.getValue() != null) {
+                        index = existingButtonChoiceBox.getValue();
+                    } else {
+                        index = "default";
+                    }
                 }
                 order1.getSecondList().set(getGridLocation(), index);
                 final Parent parent = ReplaceKeyButton.this.getParent();
@@ -190,6 +203,7 @@ public class ReplaceKeyButton extends SystemControl {
     }
 
     private List<String> getButtons(String node, String alt) throws BackingStoreException {
+
         System.out.println("Node:" + node);
         List<String> screenNames = new ArrayList<>();
         final Preferences userNodeForPackage = Preferences.userNodeForPackage(AnimatedButton.class);
