@@ -164,7 +164,7 @@ public class YouTubeControlButton extends MediaControlButton<YouTubeControl> {
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
-            EditDialog editDialog = new EditDialog() {
+            EditDialog editDialog = new EditDialog("Edit YouTube Control") {
 
                 @Override
                 public void onOk() {

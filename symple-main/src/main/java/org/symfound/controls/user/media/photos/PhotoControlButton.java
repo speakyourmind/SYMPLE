@@ -182,7 +182,7 @@ public class PhotoControlButton extends MediaControlButton<PhotoControl> {
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
-            EditDialog editDialog = new EditDialog() {
+            EditDialog editDialog = new EditDialog("Ediit Photo Control") {
 
                 @Override
                 public void onOk() {

@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+ 
 package org.symfound.main;
 
 import javafx.application.Application;
@@ -27,7 +24,7 @@ public class Main extends Application {
     /**
      *
      */
-    public static final String VERSION = "v2.3.2";
+    public static final String VERSION = "v2.3.3";
 
     @Override
     public void start(Stage stage) throws Exception {

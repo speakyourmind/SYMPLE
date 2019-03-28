@@ -182,7 +182,7 @@ public class VideoControlButton extends MediaControlButton<VideoControl> {
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
-            EditDialog editDialog = new EditDialog() {
+            EditDialog editDialog = new EditDialog("Edit Video Control") {
 
                 @Override
                 public void onOk() {

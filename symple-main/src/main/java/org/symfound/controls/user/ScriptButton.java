@@ -7,24 +7,20 @@ package org.symfound.controls.user;
 
 import java.util.List;
 import java.util.prefs.Preferences;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.device.emulation.input.keyboard.ActionKeyCode;
+import org.symfound.main.builder.UI;
 
 /**
  *
@@ -69,7 +65,12 @@ public class ScriptButton extends TypingControl {
         if (isTypable()) {
             type(getPrimaryControl().getText());
         }
-
+    
+        UI ui = (UI) getScene().getWindow();
+        if (ui.inEditMode()) {
+            LOGGER.info("Exiting edit mode before navigating");
+            ui.setEditMode(Boolean.FALSE);
+        }
     }
 
     /**

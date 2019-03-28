@@ -170,7 +170,7 @@ public class PageFlipControlButton extends MediaControlButton<PageFlipControl> {
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
-            EditDialog editDialog = new EditDialog() {
+            EditDialog editDialog = new EditDialog("Edit Page Flip Button") {
 
                 @Override
                 public void onOk() {

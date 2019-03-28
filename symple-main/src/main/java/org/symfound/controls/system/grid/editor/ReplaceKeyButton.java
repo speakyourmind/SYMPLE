@@ -97,7 +97,7 @@ public class ReplaceKeyButton extends SystemControl {
      * @return
      */
     public EditDialog configureEditDialog() {
-        EditDialog editDialog = new EditDialog() {
+        EditDialog editDialog = new EditDialog("Add Button") {
             TextArea buttonOrderField;
             ChoiceBox<String> buttonTypeChoices;
             TextField buttonTitleField;
@@ -117,7 +117,7 @@ public class ReplaceKeyButton extends SystemControl {
                 SettingsRow buttonTitleRow = EditDialog.createSettingRow("Title", "Use an existing button or pick a unique title to create a new button");
                 buttonTitleField = new TextField();
                 buttonTitleField.setText("");
-                buttonTitleField.setPromptText("Enter a name here");
+                buttonTitleField.setPromptText("Enter a name to create a new screen");
                 buttonTitleField.setPrefSize(180.0, 60.0);
                 buttonTitleField.getStyleClass().add("settings-text-area");
                 buttonTitleRow.add(buttonTitleField, 2, 0, 1, 1);

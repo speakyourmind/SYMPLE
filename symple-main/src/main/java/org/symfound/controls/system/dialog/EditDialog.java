@@ -7,6 +7,8 @@ package org.symfound.controls.system.dialog;
 
 import java.util.Arrays;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -18,6 +20,7 @@ import org.symfound.builder.session.Display;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.user.AnimatedButton;
+import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.AnimatedPane;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.main.settings.SetResetable;
@@ -34,12 +37,11 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
      *
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+    private String defaultTitle;
 
-    /**
-     *
-     */
-    public EditDialog() {
+    public EditDialog(String defaultTitle) {
         super("N/A", "This configuration is not available", "UPDATE", "CANCEL");
+        this.defaultTitle = defaultTitle;
         initialize();
 
     }
@@ -51,6 +53,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         baseGrid.setMaxWidth(width);
         Double height = getScreenFactor() * display.getScreenHeight();
         baseGrid.setMaxHeight(height);
+        setTitle(defaultTitle);
     }
 
     /**
@@ -60,14 +63,16 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
     public void buildDialog() {
         getStylesheets().add(CSS_PATH);
         baseGrid.getStyleClass().add("border-background");
-        List<Double> rowPercentages = Arrays.asList(7.5, 92.5);
+        List<Double> rowPercentages = Arrays.asList(8.0, 92.0);
+
         buildBaseGrid(2, 1, rowPercentages);
         baseGrid.add(addSettingControls(), 0, 1);
-
         baseGrid.setVgap(0);
         AnimatedPane actionPane = buildActionPane(HPos.CENTER, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
         baseGrid.add(actionPane, 0, 0);
-        
+
+        // titleLabel.toFront();
+        // baseGrid.add(titleLabel, 0, 0);
         addToStackPane(baseGrid);
     }
 
@@ -123,7 +128,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         LOGGER.info("OK Clicked on Edit Dialog. "
                 + "Setting all settings to updated values");
         setSettings();
-       // getParentUI().setEditMode(Boolean.FALSE);
+        // getParentUI().setEditMode(Boolean.FALSE);
     }
 
     /**
@@ -134,7 +139,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         LOGGER.info("CANCEL Clicked on Edit Dialog"
                 + "Resetting settings to default values");
         resetSettings();
-       // getParentUI().setEditMode(Boolean.FALSE);
+        // getParentUI().setEditMode(Boolean.FALSE);
     }
 
     /**
@@ -146,6 +151,19 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
      */
     public AnimatedPane buildActionPane(HPos hpos, Double maxWidth, Double maxHeight) {
         AnimatedPane pane = addActionPane(hpos, maxWidth, maxHeight);
+        final AnimatedLabel titleLabel = new AnimatedLabel("Edit");
+
+        titleLabel.textProperty().bind(this.titleProperty());
+        titleLabel.setStyle(" -fx-text-fill: -fx-light;\n"
+                + "    -fx-font-size: 3em;\n"
+                + "    -fx-padding: 0 0 0 80;");
+
+        titleLabel.setAlignment(Pos.CENTER_LEFT);
+        setTopAnchor(titleLabel, 0.0);
+        setLeftAnchor(titleLabel, 0.0);
+        setBottomAnchor(titleLabel, 0.0);
+        titleLabel.setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+        pane.getChildren().add(titleLabel);
         addOKButton(pane);
         addCancelButton(pane);
         configureActions();
@@ -197,9 +215,39 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         GridPane.setValignment(cancelButton, VPos.TOP);
         GridPane.setHalignment(cancelButton, HPos.RIGHT);
         setRightAnchor(cancelButton, 0.0);
-        setTopAnchor(cancelButton, 0.0);        
+        setTopAnchor(cancelButton, 0.0);
         setBottomAnchor(cancelButton, 0.0);
 
         pane.getChildren().add(cancelButton);
+    }
+
+    private StringProperty title;
+
+    /**
+     *
+     * @param value
+     */
+    public void setTitle(String value) {
+        titleProperty().set(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getTitle() {
+        return titleProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty titleProperty() {
+        if (title == null) {
+            title = new SimpleStringProperty(defaultTitle);
+
+        }
+        return title;
     }
 }

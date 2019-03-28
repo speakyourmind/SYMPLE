@@ -117,7 +117,7 @@ public class EditGridButton extends SystemControl {
      * @return
      */
     public EditDialog configureEditDialog() {
-        EditDialog editDialog = new EditDialog() {
+        EditDialog editDialog = new EditDialog("Edit Grid") {
             TextArea buttonOrderField;
             BuildableGrid buttonOrderGrid;
             ChoiceBox<FillMethod> fillMethodChoices;
@@ -142,32 +142,6 @@ public class EditGridButton extends SystemControl {
                 buttonOrderField.getStyleClass().add("settings-text-area");
                 buttonOrderRow.add(buttonOrderField, 1, 0, 2, 1);
 
-                /*  SettingsRow buttonOrderTestRow2 = createSettingRow("Button Order Test", "Placeholder method to change app order");
-                buttonOrderGrid = new BuildableGrid();
-                List<String> firstList2 = buttonGrid.getOrder().getFirstList();
-                buttonOrderGrid.setSpecRows(firstList2.size());
-                buttonOrderGrid.setSpecColumns(2);
-                buttonOrderGrid.build();
-                for (int i = 0; i < firstList2.size(); i++) {
-                    ChoiceBox field = new ChoiceBox<>(FXCollections.observableArrayList(KEY_CATALOGUE));
-                    field.setValue(firstList2.get(i));
-                    field.getStyleClass().add("settings-text-area");
-                    field.minWidth(360.0);
-                    GridPane.setRowIndex(field, i);
-                    GridPane.setColumnIndex(field, 0);
-                    GridPane.setHalignment(field, HPos.CENTER);
-                    buttonOrderGrid.getChildren().add(field);
-                }
-
-                List<String> secondList2 = buttonGrid.getOrder().getSecondList();
-                for (int i = 0; i < secondList2.size(); i++) {
-                    TextField field = new TextField(secondList2.get(i));
-                    field.getStyleClass().add("settings-text-area");
-                    GridPane.setRowIndex(field, i);
-                    GridPane.setColumnIndex(field, 1);
-                    buttonOrderGrid.getChildren().add(field);
-                }
-                buttonOrderTestRow2.add(buttonOrderGrid, 1, 0, 2, 1);*/
                 SettingsRow fillMethodRow = createSettingRow("Fill Method", "How the grid is populated");
 
                 fillMethodChoices = new ChoiceBox<>(FXCollections.observableArrayList(Arrays.asList(

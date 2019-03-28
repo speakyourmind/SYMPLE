@@ -192,7 +192,7 @@ public class RedditControlButton extends MediaControlButton<RedditControl> {
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
-            EditDialog editDialog = new EditDialog() {
+            EditDialog editDialog = new EditDialog("Edit Reddit Control") {
 
                 @Override
                 public void onOk() {

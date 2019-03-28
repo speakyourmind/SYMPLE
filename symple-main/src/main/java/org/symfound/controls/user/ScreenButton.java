@@ -21,6 +21,12 @@ public class ScreenButton extends GenericButton{
     
     public ScreenButton(String index) {
         super(index);
+         initialize(index);
+    }
+
+    private void initialize(String index) {
+        defaultTitle=index;
+        configureTitle();
     }
     
     

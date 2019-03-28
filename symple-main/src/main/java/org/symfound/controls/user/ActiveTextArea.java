@@ -291,7 +291,7 @@ public class ActiveTextArea extends AppableControl {
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
-            EditDialog editDialog = new EditDialog() {
+            EditDialog editDialog = new EditDialog("Edit Text Area") {
                 private TextArea overrideStyleField;
                 private TextField rowExpand;
                 private TextField columnExpand;

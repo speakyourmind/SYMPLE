@@ -176,7 +176,7 @@ public class TwitterControlButton extends MediaControlButton<TwitterControl> {
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
-            EditDialog editDialog = new EditDialog() {
+            EditDialog editDialog = new EditDialog("Edit Twitter Control") {
 
                 @Override
                 public void onOk() {

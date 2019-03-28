@@ -138,7 +138,7 @@ public class CalendarControlButton extends MediaControlButton<CalendarControl> {
     @Override
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
-            EditDialog editDialog = new EditDialog() {
+            EditDialog editDialog = new EditDialog("Edit Calendar Button") {
 
                 @Override
                 public void onOk() {

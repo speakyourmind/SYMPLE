@@ -85,7 +85,7 @@ public abstract class AppableControl extends ConfirmableControl {
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
-    private String defaultTitle = "";
+    public String defaultTitle = "";
     private String initKey = "";
 
     /**
@@ -499,8 +499,10 @@ public abstract class AppableControl extends ConfirmableControl {
         setSpeakable(speakableButton.getValue());
 
         String speakTextValue = " ";
-        if (!speakTextArea.getText().isEmpty()) {
+
+        if (speakTextArea.getText() != null && !speakTextArea.getText().isEmpty()) {
             speakTextValue = speakTextArea.getText();
+
         } else {
             if (!titleArea.getText().isEmpty()) {
                 LOGGER.info("Speak Text field is empty. "
@@ -848,7 +850,7 @@ public abstract class AppableControl extends ConfirmableControl {
      */
     public EditAppButton getEditAppButton() {
         if (editAppButton == null) {
-            EditDialog editDialog = new EditDialog() {
+            EditDialog editDialog = new EditDialog("Edit " + defaultTitle + " Button") {
                 @Override
                 public void buildDialog() {
                     getStylesheets().add(CSS_PATH);
@@ -1008,7 +1010,6 @@ public abstract class AppableControl extends ConfirmableControl {
         if (showTitle()) {
             setAlignment(Pos.valueOf(getTitlePos()));
             setText(getTitle());
-
         } else {
             setText("");
         }
