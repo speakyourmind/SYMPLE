@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import javafx.beans.binding.Bindings;
+import javafx.beans.binding.StringBinding;
 import javafx.beans.binding.StringExpression;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
@@ -300,7 +301,8 @@ public abstract class AppableControl extends ConfirmableControl {
                 "-fx-text-fill:-fx-", textColourProperty().asString(), "; \n",
                 "-fx-background-image:url(\"", backgroundURLProperty(), "\"); \n"
                 + "-fx-background-repeat:no-repeat;\n"
-                + "-fx-background-position:center;\n",
+                + "-fx-background-position:center;\n"
+                + "-fx-background-size:", backgroundSizeProperty(), "; \n",
                 overrideStyleProperty());
         setConcatStyle(concat.getValue());
         concatStyleProperty().bind(concat);
@@ -405,7 +407,7 @@ public abstract class AppableControl extends ConfirmableControl {
      */
     public ChoiceBox<Pos> textAlignment;
     // TODO: Split into font size, color, background image, background size
-    private ChoiceBox<String> backgroundSizeChoices;
+    //  private ChoiceBox<String> backgroundSizeChoices;
     private Slider backgroundSizeSlider;
     private OnOffButton speakableButton;
     private TextArea speakTextArea;
@@ -421,6 +423,7 @@ public abstract class AppableControl extends ConfirmableControl {
      */
     public TextArea overrideStyleField;
     private ChoiceBox<ColourChoices> backgroundColourChoices;
+    private ChoiceBox<BackgroundSizeChoices> backgroundSizeChoices;
 
     /**
      *
@@ -485,6 +488,14 @@ public abstract class AppableControl extends ConfirmableControl {
         columnExpandField.setText(String.valueOf(getColumnExpand()));
         navigateIndexChoices.setValue(getNavigateIndex());
         totalUsageLabel.setText(getTotalUsageCount().toString());
+        if (getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.CONTAIN.toString())
+                || getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.COVER.toString())
+                || getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.STRETCH.toString())) {
+            backgroundSizeChoices.setValue(BackgroundSizeChoices.valueOf(getBackgroundSize()));
+        } else {
+            backgroundSizeChoices.setValue(BackgroundSizeChoices.CUSTOM);
+            backgroundSizeSlider.setValue(Double.valueOf(getBackgroundSize()));
+        }
         SettingsController.setUpdated(Boolean.FALSE);
     }
 
@@ -517,6 +528,15 @@ public abstract class AppableControl extends ConfirmableControl {
         setAlignment(textAlignment.getValue());
         setOverrideStyle(overrideStyleField.getText());
         setBackgroundColour(backgroundColourChoices.getValue());
+
+        if (backgroundSizeChoices.getValue().equals(BackgroundSizeChoices.CONTAIN)
+                || backgroundSizeChoices.getValue().equals(BackgroundSizeChoices.COVER)
+                || backgroundSizeChoices.getValue().equals(BackgroundSizeChoices.STRETCH)) {
+            setBackgroundSize(backgroundSizeChoices.getValue().toString().toLowerCase());
+        } else {
+            setBackgroundSize(String.valueOf(backgroundSizeSlider.getValue()));
+        }
+
         setBackgroundURL(backgroundURLField.getText());
         setShowTitle(showTitleButton.getValue());
         setSelectable(selectableButton.getValue());
@@ -662,21 +682,30 @@ public abstract class AppableControl extends ConfirmableControl {
 
         backgroundSizeChoices = new ChoiceBox<>(FXCollections.observableArrayList(
                 Arrays.asList(
-                        "",
-                        "contain",
-                        "cover",
-                        "stretch"
+                        BackgroundSizeChoices.CUSTOM,
+                        BackgroundSizeChoices.CONTAIN,
+                        BackgroundSizeChoices.COVER,
+                        BackgroundSizeChoices.STRETCH
                 )));
-        backgroundSizeChoices.setValue("");
         backgroundSizeChoices.setMaxSize(180.0, 60.0);
         backgroundSizeChoices.getStyleClass().add("settings-text-area");
         backgroundSizeRow.add(backgroundSizeChoices, 1, 0, 1, 1);
-        backgroundSizeSlider = new Slider(1, 1000, getFontScale());
-        backgroundSizeSlider.visibleProperty().bind(Bindings.equal(backgroundSizeChoices.valueProperty(), ""));
+        backgroundSizeSlider = new Slider(1, 1000, 120);
+        backgroundSizeSlider.visibleProperty().bind(Bindings.equal(backgroundSizeChoices.valueProperty(), BackgroundSizeChoices.CUSTOM));
+
         backgroundSizeSlider.setMajorTickUnit(50);
         backgroundSizeSlider.setMinorTickCount(5);
         backgroundSizeSlider.setShowTickLabels(true);
         backgroundSizeSlider.setShowTickMarks(true);
+
+        if (getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.CONTAIN.toString())
+                || getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.COVER.toString())
+                || getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.STRETCH.toString())) {
+            backgroundSizeChoices.setValue(BackgroundSizeChoices.valueOf(getBackgroundSize().toUpperCase()));
+        } else {
+            backgroundSizeChoices.setValue(BackgroundSizeChoices.CUSTOM);
+            backgroundSizeSlider.setValue(Double.valueOf(getBackgroundSize()));
+        }
         backgroundSizeRow.add(backgroundSizeSlider, 2, 0, 1, 1);
 
         SettingsRow backgroundURLRow = EditDialog.createSettingRow("Image", "Background URL");
@@ -781,7 +810,7 @@ public abstract class AppableControl extends ConfirmableControl {
         Tab textTab = buildTab("TEXT", textSettings);
 
         backgroundSettings.add(backgroundColourRow);
-        //backgroundSettings.add(backgroundSizeRow);
+        backgroundSettings.add(backgroundSizeRow);
         backgroundSettings.add(backgroundURLRow);
         backgroundSettings.add(overrideStyleRow);
         Tab backgroundTab = buildTab("BACKGROUND", backgroundSettings);
@@ -874,16 +903,16 @@ public abstract class AppableControl extends ConfirmableControl {
 
                     animatedButton.alignmentProperty().bind(textAlignment.valueProperty());
 
-                    animatedButton.styleProperty().bind(
-                            Bindings.concat("-fx-background-color:-fx-", backgroundColourChoices.valueProperty().asString(), "; \n",
-                                    "-fx-text-fill:-fx-", textColourChoices.valueProperty().asString(), "; \n",
-                                    "-fx-background-image:url(\"", backgroundURLField.textProperty(), "\");  "
-                                    + "-fx-border-color: -fx-dark;\n"
-                                    + "    -fx-border-insets: 0;\n"
-                                    + "    -fx-border-width: 5;\n"
-                                    + "-fx-background-repeat:no-repeat;\n"
-                                    + "-fx-background-position:center;",
-                                    overrideStyleField.textProperty()));
+                    animatedButton.styleProperty().bind(Bindings.concat("-fx-background-color:-fx-", backgroundColourChoices.valueProperty().asString(), "; \n",
+                            "-fx-text-fill:-fx-", textColourChoices.valueProperty().asString(), "; \n",
+                            "-fx-background-image:url(\"", backgroundURLField.textProperty(), "\"); \n",
+                            "-fx-border-color: -fx-dark;\n",
+                            "-fx-border-insets: 0;\n",
+                            "-fx-border-width: 5;\n",
+                            "-fx-background-size:", backgroundSizeSlider.valueProperty().asString(), "; \n",
+                            "-fx-background-repeat:no-repeat;\n",
+                            "-fx-background-position:center;", overrideStyleField.textProperty()
+                    ));
 
                     baseGrid.add(animatedButton, 0, 1);
 
@@ -925,6 +954,7 @@ public abstract class AppableControl extends ConfirmableControl {
         }
         return editAppButton;
     }
+    StringBinding backgroundSizeActive;
 
     /**
      *
@@ -1320,6 +1350,36 @@ public abstract class AppableControl extends ConfirmableControl {
             backgroundColour = new SimpleObjectProperty(ColourChoices.valueOf(getPreferences().get("backgroundColour", "LIGHT").toUpperCase()));
         }
         return backgroundColour;
+    }
+
+    private StringProperty backgroundSize;
+
+    /**
+     *
+     * @param value
+     */
+    public void setBackgroundSize(String value) {
+        backgroundSizeProperty().setValue(value);
+        getPreferences().put("backgroundSize", value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getBackgroundSize() {
+        return backgroundSizeProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty backgroundSizeProperty() {
+        if (backgroundSize == null) {
+            backgroundSize = new SimpleStringProperty(getPreferences().get("backgroundSize", "contain"));
+        }
+        return backgroundSize;
     }
 
     private StringProperty concatStyle;

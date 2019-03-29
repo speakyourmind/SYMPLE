@@ -104,10 +104,8 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public DoubleProperty gapProperty() {
-      //  if (gap == null) {
-            Double value = Double.valueOf(getPreferences().get("gap", DEFAULT_GRID_GAP.toString()));
-            gap = new SimpleDoubleProperty(value);
-        //}
+        Double value = Double.valueOf(getPreferences().get("gap", DEFAULT_GRID_GAP.toString()));
+        gap = new SimpleDoubleProperty(value);
         return gap;
     }
 
@@ -140,10 +138,9 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public ObjectProperty<FillableGrid.FillMethod> fillMethodProperty() {
-        //  if (fillMethod == null) {
         String value = getPreferences().get("fillMethod", FillableGrid.FillMethod.COLUMN_WISE.toString());
         fillMethod = new SimpleObjectProperty<>(FillableGrid.FillMethod.valueOf(value));
-        //}
+        
         return fillMethod;
     }
 
@@ -176,10 +173,9 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public ObjectProperty<FillableGrid.FillDirection> fillDirectionProperty() {
-        //if (fillDirection == null) {
+
         String value = getPreferences().get("fillDirection", FillableGrid.FillDirection.FORWARD.toString());
         fillDirection = new SimpleObjectProperty<>(FillableGrid.FillDirection.valueOf(value));
-        //}
         return fillDirection;
     }
 
@@ -330,9 +326,9 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public StringProperty overrideStyleProperty() {
-    //    if (overrideStyle == null) {
-            overrideStyle = new SimpleStringProperty(getPreferences().get("overrideStyle", ""));
-      //  }
+        //    if (overrideStyle == null) {
+        overrideStyle = new SimpleStringProperty(getPreferences().get("overrideStyle", ""));
+        //  }
         return overrideStyle;
     }
 
@@ -396,8 +392,8 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public BooleanProperty pausedProperty() {
-      //  if (paused == null) {
-            paused = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("paused", "false")));
+        //  if (paused == null) {
+        paused = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("paused", "false")));
         //}
         return paused;
     }

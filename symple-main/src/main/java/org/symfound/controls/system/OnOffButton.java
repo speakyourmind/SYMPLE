@@ -10,7 +10,7 @@ import org.symfound.controls.user.AnimatedButton;
  *
  * @author Javed Gangjee
  */
-public final class OnOffButton extends RunnableControl {
+public class OnOffButton extends RunnableControl {
 
     /**
      *

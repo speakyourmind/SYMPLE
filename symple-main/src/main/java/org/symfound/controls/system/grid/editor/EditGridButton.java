@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.prefs.Preferences;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
@@ -18,11 +21,13 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
 import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.SystemControl;
+import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
@@ -118,15 +123,17 @@ public class EditGridButton extends SystemControl {
      */
     public EditDialog configureEditDialog() {
         EditDialog editDialog = new EditDialog("Edit Grid") {
-            TextArea buttonOrderField;
-            BuildableGrid buttonOrderGrid;
-            ChoiceBox<FillMethod> fillMethodChoices;
-            ChoiceBox<FillDirection> fillDirectionChoices;
-            Slider gapField;//TODO:Change to slider;
-            TextField maxDifficultyField;//TODO:Change to slider;
-            TextField minDifficultyField;//TODO:Change to slider;
-            TextField overrideRowField;//TODO:Change to slider;
-            TextField overrideColumnField;//TODO:Change to slider;
+            private TextArea buttonOrderField;
+            private BuildableGrid buttonOrderGrid;
+            private ChoiceBox<FillMethod> fillMethodChoices;
+            private ChoiceBox<FillDirection> fillDirectionChoices;
+            private Slider gapSlider;
+            private TextField maxDifficultyField;//TODO:Change to slider;
+            private TextField minDifficultyField;//TODO:Change to slider;
+            private Slider overrideRowSlider;
+            private OnOffButton overrideRowButton;
+            private Slider overrideColumnSlider;
+            private OnOffButton overrideColumnButton;
             private TextArea overrideStyleField;
             private ChoiceBox<SelectionMethod> selectionMethodChoices;
 
@@ -168,18 +175,12 @@ public class EditGridButton extends SystemControl {
                 fillDirectionRow.add(fillDirectionChoices, 1, 0, 2, 1);
 
                 SettingsRow gridGapRow = createSettingRow("Grid gap", "Adjust gaps between cells");
-                gapField = new Slider(0.0, 100.0, buttonGrid.getGap());
-                gapField.setMajorTickUnit(10);
-                gapField.setMinorTickCount(5);
-                gapField.setShowTickLabels(true);
-                gapField.setShowTickMarks(true);
-                gridGapRow.add(gapField, 1, 0, 2, 1);
-                /* gapField = new TextField();
-        gapField.setText(String.valueOf(buttonGrid.getGap()));
-        gapField.maxHeight(80.0);
-        gapField.maxWidth(360.0);
-        gapField.getStyleClass().add("settings-text-area");*/
-//                gridGapRow.add(gapField, 1, 0, 2, 1);
+                gapSlider = new Slider(0.0, 100.0, buttonGrid.getGap());
+                gapSlider.setMajorTickUnit(10);
+                gapSlider.setMinorTickCount(5);
+                gapSlider.setShowTickLabels(true);
+                gapSlider.setShowTickMarks(true);
+                gridGapRow.add(gapSlider, 1, 0, 2, 1);
 
                 SettingsRow difficultyRow = createSettingRow("Difficulty", "Controls size of grid");
 
@@ -197,22 +198,43 @@ public class EditGridButton extends SystemControl {
                 minDifficultyField.getStyleClass().add("settings-text-area");
                 difficultyRow.add(minDifficultyField, 1, 0, 1, 1);
 
-                SettingsRow overrideSizeRow = createSettingRow("Grid Size", "Row x Column size overrides automation");
+                SettingsRow overrideRowRow = createSettingRow("Row Size", "Row size overrides automation");
 
-                overrideRowField = new TextField();
+                overrideRowSlider = new Slider(1.0, 10.0, buttonGrid.getOverrideRow());
+                overrideRowSlider.setMajorTickUnit(1);
+                overrideRowSlider.setMinorTickCount(0);
+                overrideRowSlider.setShowTickLabels(true);
+                overrideRowSlider.setShowTickMarks(true);
+                overrideRowSlider.setSnapToTicks(true);
 
-                overrideRowField.setText(buttonGrid.getOverrideRow().toString());
-                overrideRowField.maxHeight(80.0);
-                overrideRowField.maxWidth(360.0);
-                overrideRowField.getStyleClass().add("settings-text-area");
-                overrideSizeRow.add(overrideRowField, 1, 0, 1, 1);
+                overrideRowRow.add(overrideRowSlider, 2, 0, 1, 1);
 
-                overrideColumnField = new TextField();
-                overrideColumnField.setText(buttonGrid.getOverrideColumn().toString());
-                overrideColumnField.maxHeight(80.0);
-                overrideColumnField.maxWidth(360.0);
-                overrideColumnField.getStyleClass().add("settings-text-area");
-                overrideSizeRow.add(overrideColumnField, 2, 0, 1, 1);
+                overrideRowButton = new OnOffButton("AUTO", "MANUAL");
+                overrideRowButton.setValue(buttonGrid.getOverrideRow() == 0);
+                overrideRowSlider.visibleProperty().bind(Bindings.not(overrideRowButton.valueProperty()));
+                overrideRowButton.setMaxSize(180.0, 60.0);
+                GridPane.setHalignment(overrideRowButton, HPos.LEFT);
+                GridPane.setValignment(overrideRowButton, VPos.CENTER);
+                overrideRowRow.add(overrideRowButton, 1, 0, 1, 1);
+
+                SettingsRow overrideColumnRow = createSettingRow("Column Size", "Column size overrides automation");
+
+                overrideColumnSlider = new Slider(1.0, 10.0, buttonGrid.getOverrideColumn());
+                overrideColumnSlider.setMajorTickUnit(1);
+                overrideColumnSlider.setMinorTickCount(0);
+                overrideColumnSlider.setShowTickLabels(true);
+                overrideColumnSlider.setShowTickMarks(true);
+                overrideColumnSlider.setSnapToTicks(true);
+
+                overrideColumnRow.add(overrideColumnSlider, 2, 0, 1, 1);
+
+                overrideColumnButton = new OnOffButton("AUTO", "MANUAL");
+                overrideColumnButton.setValue(buttonGrid.getOverrideColumn() == 0);
+                overrideColumnSlider.visibleProperty().bind(Bindings.not(overrideColumnButton.valueProperty()));
+                overrideColumnButton.setMaxSize(180.0, 60.0);
+                GridPane.setHalignment(overrideColumnButton, HPos.LEFT);
+                GridPane.setValignment(overrideColumnButton, VPos.CENTER);
+                overrideColumnRow.add(overrideColumnButton, 1, 0, 1, 1);
 
                 SettingsRow styleRow = createSettingRow("Style", "CSS Style code");
 
@@ -240,15 +262,15 @@ public class EditGridButton extends SystemControl {
                 selectionMethodRow.add(selectionMethodChoices, 1, 0, 2, 1);
 
                 advancedSettings.add(buttonOrderRow);
-                //  orderSettings.add(buttonOrderTestRow2);
                 Tab advancedTab = buildTab("ADVANCED", advancedSettings);
 
                 fillSettings.add(fillMethodRow);
                 fillSettings.add(fillDirectionRow);
                 Tab fillTab = buildTab("FILL", fillSettings);
 
+                gridSettings.add(overrideRowRow);
+                gridSettings.add(overrideColumnRow);
                 gridSettings.add(difficultyRow);
-                gridSettings.add(overrideSizeRow);
                 Tab gridTab = buildTab("SIZE", gridSettings);
 
                 lookSettings.add(styleRow);
@@ -261,8 +283,8 @@ public class EditGridButton extends SystemControl {
                 TabPane tabPane = new TabPane();
                 tabPane.setPadding(new Insets(5));
                 tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-                tabPane.getTabs().add(fillTab);
                 tabPane.getTabs().add(gridTab);
+                tabPane.getTabs().add(fillTab);
                 tabPane.getTabs().add(lookTab);
                 tabPane.getTabs().add(selectionTab);
                 tabPane.getTabs().add(advancedTab);
@@ -280,12 +302,23 @@ public class EditGridButton extends SystemControl {
                 buttonGrid.setOrder(parallelList);
                 buttonGrid.setFillMethod(fillMethodChoices.getValue());
                 buttonGrid.setFillDirection(fillDirectionChoices.getValue());
-                buttonGrid.setGap(gapField.getValue());
+                buttonGrid.setGap(gapSlider.getValue());
                 buttonGrid.setMaxDifficulty(Double.valueOf(maxDifficultyField.getText()));
                 buttonGrid.setMinDifficulty(Double.valueOf(minDifficultyField.getText()));
 
-                buttonGrid.setOverrideRow(Double.valueOf(overrideRowField.getText()));
-                buttonGrid.setOverrideColumn(Double.valueOf(overrideColumnField.getText()));
+                if (overrideRowButton.getValue()) {
+                    buttonGrid.setOverrideRow(0.0);
+                    
+                } else {
+                    buttonGrid.setOverrideRow(overrideRowSlider.getValue());
+                }
+
+                if (overrideColumnButton.getValue()) {
+                    buttonGrid.setOverrideColumn(0.0);
+                } else {
+                    buttonGrid.setOverrideColumn(overrideColumnSlider.getValue());
+                }
+
                 buttonGrid.setOverrideStyle(overrideStyleField.getText());
                 buttonGrid.setSelectionMethod(selectionMethodChoices.getValue());
                 SettingsController.setUpdated(true);
@@ -297,11 +330,13 @@ public class EditGridButton extends SystemControl {
                 buttonOrderField.setText(buttonGrid.getOrder().asString());
                 fillMethodChoices.setValue(buttonGrid.getFillMethod());
                 fillDirectionChoices.setValue(buttonGrid.getFillDirection());
-                gapField.setValue(buttonGrid.getGap());
+                gapSlider.setValue(buttonGrid.getGap());
                 maxDifficultyField.setText(String.valueOf(buttonGrid.getMaxDifficulty()));
                 minDifficultyField.setText(String.valueOf(buttonGrid.getMinDifficulty()));
-                overrideRowField.setText(String.valueOf(buttonGrid.getOverrideRow()));
-                overrideColumnField.setText(String.valueOf(buttonGrid.getOverrideColumn()));
+                overrideRowSlider.setValue(buttonGrid.getOverrideRow());
+                overrideRowButton.setValue(buttonGrid.getOverrideRow() == 0);
+                overrideColumnSlider.setValue(buttonGrid.getOverrideColumn());
+                overrideColumnButton.setValue(buttonGrid.getOverrideColumn() == 0);
                 overrideStyleField.setText(buttonGrid.getOverrideStyle());
                 selectionMethodChoices.setValue(buttonGrid.getSelectionMethod());
                 SettingsController.setUpdated(false);

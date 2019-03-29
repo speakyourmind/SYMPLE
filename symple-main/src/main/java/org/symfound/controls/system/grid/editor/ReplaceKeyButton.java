@@ -73,6 +73,7 @@ public class ReplaceKeyButton extends SystemControl {
 
     private void initialize() {
         setConfirmable(Boolean.TRUE);
+        setSelectable(Boolean.FALSE);
     }
 
     /**
