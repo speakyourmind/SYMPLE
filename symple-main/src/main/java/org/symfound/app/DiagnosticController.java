@@ -99,7 +99,7 @@ public class DiagnosticController extends TestControllerBase {
     /**
      *
      */
-    public static final Integer MAX_LEVEL = 6;
+    public static final Integer MAX_LEVEL = 10;
 
     /**
      *

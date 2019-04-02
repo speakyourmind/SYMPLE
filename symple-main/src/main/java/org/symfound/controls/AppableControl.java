@@ -77,7 +77,7 @@ import org.symfound.tools.ui.FontTracker;
  *
  * @author Javed Gangjee
  */
-public abstract class AppableControl extends ConfirmableControl {
+public abstract class AppableControl extends ConfirmableControl implements Cloneable {
 
     private static final String NAME = AppableControl.class.getName();
 
@@ -622,12 +622,13 @@ public abstract class AppableControl extends ConfirmableControl {
         textColourChoices.setMaxSize(180.0, 60.0);
         textColourChoices.getStyleClass().add("settings-text-area");
         textColourRow.add(textColourChoices, 1, 0, 2, 1);
-        SettingsRow fontScaleRow = EditDialog.createSettingRow("Scale", "Font scale");
+        SettingsRow fontScaleRow = EditDialog.createSettingRow("Scale", "Set the size of text");
         fontScaleSlider = new Slider(5, 100, getFontScale());
         fontScaleSlider.setMajorTickUnit(5);
         fontScaleSlider.setMinorTickCount(1);
         fontScaleSlider.setShowTickLabels(true);
         fontScaleSlider.setShowTickMarks(true);
+        fontScaleSlider.setSnapToTicks(true);
         fontScaleRow.add(fontScaleSlider, 1, 0, 2, 1);
 
         SettingsRow textAlignmentRow = EditDialog.createSettingRow("Text Alignment", "Location of text on this button");
@@ -891,7 +892,6 @@ public abstract class AppableControl extends ConfirmableControl {
                     baseGrid.setVgap(0);
                     AnimatedPane actionPane = buildActionPane(HPos.CENTER, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
                     baseGrid.add(actionPane, 0, 0);
-
                     final AnimatedButton animatedButton = new AnimatedButton("");
                     animatedButton.setMaxWidth(540.0);
                     animatedButton.maxHeightProperty().bind(Bindings.multiply(0.325, baseGrid.heightProperty()));
@@ -910,13 +910,14 @@ public abstract class AppableControl extends ConfirmableControl {
                             "-fx-border-insets: 0;\n",
                             "-fx-border-width: 5;\n",
                             "-fx-background-size:", backgroundSizeSlider.valueProperty().asString(), "; \n",
+                            "-fx-background-size:", backgroundSizeChoices.valueProperty().asString(), "; \n", //TODO:Blank if custom
                             "-fx-background-repeat:no-repeat;\n",
                             "-fx-background-position:center;", overrideStyleField.textProperty()
                     ));
 
                     baseGrid.add(animatedButton, 0, 1);
 
-                    animatedButton.fontProperty().bind(fontTracking2);
+                    //animatedButton.fontProperty().bind(fontTracking2);
                     fontTracking2.setValue(Font.font("Roboto", getFontWeight(), null, getFontScale()));
                     fontScaleSlider.valueProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) -> {
                         final double name = (3 * AppableControl.this.getPrimaryControl().getWidth() + AppableControl.this.getPrimaryControl().getHeight()) * fontScaleSlider.getValue() / 1000;

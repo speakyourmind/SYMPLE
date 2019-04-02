@@ -160,16 +160,16 @@ public class ConfigurableGrid extends ButtonGrid {
         getStepper().configure();
 
         triggerReload();
-        /* getSession().playingProperty().addListener((observable, oldValue, newValue) -> {
-        if (newValue) {
-        //startSelector(getUser().getInteraction().getSelectionMethod());
-        getUser().getInteraction().selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
-        LOGGER.info("User selection method changed from "
-        + oldValue1.toString() + " to " + newValue1.toString());
-        //  startSelector(newValue1);
+        getSession().playingProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                //startSelector(getUser().getInteraction().getSelectionMethod());
+                getUser().getInteraction().selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
+                    LOGGER.info("User selection method changed from "
+                            + oldValue1.toString() + " to " + newValue1.toString());
+                    //  startSelector(newValue1);
+                });
+            }
         });
-        }
-        });*/
 
     }
 

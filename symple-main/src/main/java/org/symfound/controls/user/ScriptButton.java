@@ -65,7 +65,7 @@ public class ScriptButton extends TypingControl {
         if (isTypable()) {
             type(getPrimaryControl().getText());
         }
-    
+
         UI ui = (UI) getScene().getWindow();
         if (ui.inEditMode()) {
             LOGGER.info("Exiting edit mode before navigating");
@@ -95,7 +95,7 @@ public class ScriptButton extends TypingControl {
     @Override
     public void setAppableSettings() {
         setKeyCodeConfig(Integer.valueOf(keyCodeField.getText()));
-       
+
         setTypable(typableButton.getValue());
         super.setAppableSettings();
     }
@@ -106,7 +106,7 @@ public class ScriptButton extends TypingControl {
     @Override
     public void resetAppableSettings() {
         keyCodeField.setText(getKeyCodeConfig().toString());
-        
+
         typableButton.setValue(isTypable());
         super.resetAppableSettings();
     }
@@ -117,26 +117,23 @@ public class ScriptButton extends TypingControl {
      */
     @Override
     public List<Tab> addAppableSettings() {
-        SettingsRow settingsRowA = createSettingRow("Key Code", "Code for Key Action");
 
-        keyCodeField = new TextField();
-        keyCodeField.setText(getKeyCodeConfig().toString());
-        keyCodeField.setMaxSize(180.0, 60.0);
-        keyCodeField.getStyleClass().add("settings-text-area");
-        settingsRowA.add(keyCodeField, 1, 0, 2, 1);
-
-        
-        SettingsRow settingsRowC = createSettingRow("Typable", "Type the phrase on the button");
+        SettingsRow typableRow = createSettingRow("Typable", "Type the phrase on the button");
         typableButton = new OnOffButton("YES", "NO");
         typableButton.setMaxSize(180.0, 60.0);
         typableButton.setValue(isTypable());
         GridPane.setHalignment(typableButton, HPos.LEFT);
         GridPane.setValignment(typableButton, VPos.CENTER);
-        settingsRowC.add(typableButton, 1, 0, 1, 1);
 
-        settings.add(settingsRowA);
-      
-        settings.add(settingsRowC);
+        typableRow.add(typableButton, 1, 0, 1, 1);
+
+        keyCodeField = new TextField();
+        keyCodeField.setText(getKeyCodeConfig().toString());
+        keyCodeField.setMaxSize(180.0, 60.0);
+        keyCodeField.getStyleClass().add("settings-text-area");
+        typableRow.add(keyCodeField, 2, 0, 1, 1);
+
+        settings.add(typableRow);
         List<Tab> tabs = super.addAppableSettings();
         return tabs;
     }

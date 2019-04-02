@@ -80,7 +80,6 @@ public class ClockButton extends AppableControl {
     }
 
     private void initialize() {
-
         Clock date = new Clock(getDateFormat());
         date.textProperty().addListener((observable,oldValue,newValue)->{
             getPrimaryControl().setText(newValue);
