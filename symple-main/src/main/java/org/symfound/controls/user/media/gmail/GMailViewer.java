@@ -134,6 +134,8 @@ public class GMailViewer extends MediaViewer {
 
     // TODO: Commonize
     private TextArea filterField;
+    private TextField rowExpandField;
+    private TextField columnExpandField;
 
     /**
      *

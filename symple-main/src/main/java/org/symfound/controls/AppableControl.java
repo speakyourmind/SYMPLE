@@ -285,7 +285,6 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             removeConfigButtons();
         }*/
 
-        
         ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1 && !isSettingsControl && isEditable()) {
                 addConfigButtons();
@@ -455,15 +454,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      */
     public List<SettingsRow> selectionSettings = new ArrayList<>();
 
-    /**
-     *
-     */
-    public TextField rowExpandField;
-
-    /**
-     *
-     */
-    public TextField columnExpandField;
+    private Slider rowExpandSlider;
+    private Slider columnExpandSlider;
 
     public RunnableControl resetUsageButton;
     public AnimatedLabel totalUsageLabel;
@@ -489,8 +481,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         showTitleButton.setValue(showTitle());
         selectableButton.setValue(isSelectable());
         disabledPrimaryButton.setValue(isPrimaryDisabled());
-        rowExpandField.setText(String.valueOf(getRowExpand()));
-        columnExpandField.setText(String.valueOf(getColumnExpand()));
+        rowExpandSlider.setValue(getRowExpand());
+        columnExpandSlider.setValue(getColumnExpand());
         if (navigatePostClick()) {
             navigateIndexChoices.setValue(getNavigateIndex());
         }
@@ -552,12 +544,14 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             setNavigateIndex(navigateIndexChoices.getValue());
         }
         Boolean reloadRequired = Boolean.FALSE;
-        if (!rowExpandField.getText().equals(getRowExpand().toString())) {
-            setRowExpand(Integer.valueOf(rowExpandField.getText()));
+
+        if (rowExpandSlider.getValue() != Double.valueOf(getRowExpand())) {
+            setRowExpand(Double.valueOf(rowExpandSlider.getValue()).intValue());
             reloadRequired = Boolean.TRUE;
         }
-        if (!columnExpandField.getText().equals(getColumnExpand().toString())) {
-            setColumnExpand(Integer.valueOf(columnExpandField.getText()));
+
+        if (columnExpandSlider.getValue() != Double.valueOf(getColumnExpand())) {
+            setColumnExpand(Double.valueOf(columnExpandSlider.getValue()).intValue());
             reloadRequired = Boolean.TRUE;
         }
 
@@ -744,28 +738,26 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         GridPane.setValignment(disabledPrimaryButton, VPos.CENTER);
         primaryDisabledRow.add(disabledPrimaryButton, 1, 0, 1, 1);
 
-        SettingsRow settingsRow5 = EditDialog.createSettingRow("Expand button", "Row x Column");
+        SettingsRow rowExpandRow = createSettingRow("Row Expand", "Number of grid rows to expand.");
 
-        rowExpandField = new TextField();
-        rowExpandField.setText(getRowExpand().toString());
-        rowExpandField.setMaxSize(180.0, 60.0);
-        rowExpandField.getStyleClass().add("settings-text-area");
+        rowExpandSlider = new Slider(0.0, 10.0, getRowExpand());
+        rowExpandSlider.setMajorTickUnit(1);
+        rowExpandSlider.setMinorTickCount(0);
+        rowExpandSlider.setShowTickLabels(true);
+        rowExpandSlider.setShowTickMarks(true);
+        rowExpandSlider.setSnapToTicks(true);
 
-        columnExpandField = new TextField();
-        columnExpandField.setText(getColumnExpand().toString());
-        columnExpandField.setMaxSize(180.0, 60.0);
-        columnExpandField.getStyleClass().add("settings-text-area");
-        HBox expandHBox = new HBox();
-        expandHBox.setSpacing(10.0);
-        expandHBox.setPrefHeight(Double.POSITIVE_INFINITY);
-        expandHBox.setPrefWidth(Double.POSITIVE_INFINITY);
-        expandHBox.getChildren().add(new Label("Row:"));
-        expandHBox.getChildren().add(rowExpandField);
-        expandHBox.getChildren().add(new Label("Column:"));
-        expandHBox.getChildren().add(columnExpandField);
+        rowExpandRow.add(rowExpandSlider, 1, 0, 2, 1);
+        SettingsRow columnExpandRow = createSettingRow("Column Expand", "Number of grid column to expand.");
 
-        expandHBox.setAlignment(Pos.CENTER);
-        settingsRow5.add(expandHBox, 1, 0, 2, 1);
+        columnExpandSlider = new Slider(0.0, 10.0, getColumnExpand());
+        columnExpandSlider.setMajorTickUnit(1);
+        columnExpandSlider.setMinorTickCount(0);
+        columnExpandSlider.setShowTickLabels(true);
+        columnExpandSlider.setShowTickMarks(true);
+        columnExpandSlider.setSnapToTicks(true);
+
+        columnExpandRow.add(columnExpandSlider, 1, 0, 2, 1);
 
         if (navigatePostClick()) {
             SettingsRow navigateRow = createSettingRow("Navigate", "Screen to navigate to after click");
@@ -807,7 +799,9 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         resetUsageButton.setMaxSize(180.0, 60.0);
         totalUsageRow.add(resetUsageButton, 1, 0, 1, 1);
 
-        settings.add(settingsRow5);
+        settings.add(rowExpandRow);
+
+        settings.add(columnExpandRow);
         Tab actionTab = buildTab("ACTION", settings);
 
         selectionSettings.add(selectableRow);
