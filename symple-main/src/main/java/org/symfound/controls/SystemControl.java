@@ -24,8 +24,6 @@ public abstract class SystemControl extends AppableControl {
     }
 
     private void initialize() {
-        setEditable(Boolean.FALSE);
-        setControlType(ControlType.SETTING_CONTROL);
     }
 
 }

@@ -45,11 +45,13 @@ public class AddKeyButton extends SystemControl {
     public AddKeyButton(ConfigurableGrid configurableGrid) {
         super("toolbar-add", KEY, "", "default");
         this.configurableGrid = configurableGrid;
-        initialize();
+      
     }
 
-    private void initialize() {
+    @Override
+    public void defineButton() {
         setEditable(Boolean.FALSE);
+        setControlType(ControlType.SETTING_CONTROL);
         setConfirmable(Boolean.FALSE);
     }
 
@@ -60,7 +62,7 @@ public class AddKeyButton extends SystemControl {
         order1.add(ReplaceKeyButton.KEY, getIndex().toLowerCase());
         configurableGrid.setOrder(order1);
         configurableGrid.getGridManager().setOrder(configurableGrid.getOrder());
-       SettingsController.setUpdated(true);
+        SettingsController.setUpdated(true);
     }
 
     @Override

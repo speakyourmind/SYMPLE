@@ -72,8 +72,11 @@ public class ReplaceKeyButton extends SystemControl {
     }
 
     private void initialize() {
+        setEditable(Boolean.FALSE);
+        setControlType(ControlType.SETTING_CONTROL);
         setConfirmable(Boolean.TRUE);
         setSelectable(Boolean.FALSE);
+        setNavigatePostClick(Boolean.FALSE);
     }
 
     /**

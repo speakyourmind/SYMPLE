@@ -53,6 +53,8 @@ public class KeyRemoveButton extends SystemControl {
     }
 
     private void initialize() {
+        setEditable(Boolean.FALSE);
+        setControlType(ControlType.SETTING_CONTROL);
 
         setOrder(configurableGrid.getOrder());
 

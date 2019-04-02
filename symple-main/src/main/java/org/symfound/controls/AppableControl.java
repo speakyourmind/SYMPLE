@@ -105,8 +105,12 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     }
 
     private void initialize() {
-        setConfirmable(Boolean.FALSE);
+        defineButton();
         configureFeatures();
+    }
+
+    public void defineButton() {
+        setConfirmable(Boolean.FALSE);
     }
 
     /**
@@ -281,6 +285,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             removeConfigButtons();
         }*/
 
+        
         ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1 && !isSettingsControl && isEditable()) {
                 addConfigButtons();
