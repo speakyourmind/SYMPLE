@@ -5,8 +5,6 @@
  */
 package org.symfound.controls.user;
 
-import java.util.prefs.Preferences;
-
 /**
  *
  * @author Javed Gangjee <javed@speakyourmindfoundation.org>
@@ -26,6 +24,7 @@ public class ScreenButton extends GenericButton{
 
     private void initialize(String index) {
         defaultTitle=index;
+        setNavigatePostClick(Boolean.FALSE);
         configureTitle();
     }
     

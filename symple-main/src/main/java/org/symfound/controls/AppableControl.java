@@ -486,7 +486,9 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         disabledPrimaryButton.setValue(isPrimaryDisabled());
         rowExpandField.setText(String.valueOf(getRowExpand()));
         columnExpandField.setText(String.valueOf(getColumnExpand()));
-        navigateIndexChoices.setValue(getNavigateIndex());
+        if (navigatePostClick()) {
+            navigateIndexChoices.setValue(getNavigateIndex());
+        }
         totalUsageLabel.setText(getTotalUsageCount().toString());
         if (getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.CONTAIN.toString())
                 || getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.COVER.toString())
@@ -541,7 +543,9 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         setShowTitle(showTitleButton.getValue());
         setSelectable(selectableButton.getValue());
         setDisablePrimary(disabledPrimaryButton.getValue());
-        setNavigateIndex(navigateIndexChoices.getValue());
+        if (navigatePostClick()) {
+            setNavigateIndex(navigateIndexChoices.getValue());
+        }
         Boolean reloadRequired = Boolean.FALSE;
         if (!rowExpandField.getText().equals(getRowExpand().toString())) {
             setRowExpand(Integer.valueOf(rowExpandField.getText()));
@@ -717,23 +721,23 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         backgroundURLField.getStyleClass().add("settings-text-area");
         backgroundURLRow.add(backgroundURLField, 1, 0, 2, 1);
 
-        SettingsRow settingsRow4 = EditDialog.createSettingRow("Selectable", "Able to select?");
+        SettingsRow selectableRow = EditDialog.createSettingRow("Selectable", "Able to select?");
 
         selectableButton = new OnOffButton("YES", "NO");
         selectableButton.setMaxSize(180.0, 60.0);
         selectableButton.setValue(isSelectable());
         GridPane.setHalignment(selectableButton, HPos.LEFT);
         GridPane.setValignment(selectableButton, VPos.CENTER);
-        settingsRow4.add(selectableButton, 1, 0, 1, 1);
+        selectableRow.add(selectableButton, 1, 0, 1, 1);
 
-        SettingsRow settingsRow45 = EditDialog.createSettingRow("Primary Disabled", "Lock this button");
+        SettingsRow primaryDisabledRow = EditDialog.createSettingRow("Disable", "Lock this button");
 
         disabledPrimaryButton = new OnOffButton("YES", "NO");
         disabledPrimaryButton.setMaxSize(180.0, 60.0);
         disabledPrimaryButton.setValue(isPrimaryDisabled());
         GridPane.setHalignment(disabledPrimaryButton, HPos.LEFT);
         GridPane.setValignment(disabledPrimaryButton, VPos.CENTER);
-        settingsRow45.add(disabledPrimaryButton, 1, 0, 1, 1);
+        primaryDisabledRow.add(disabledPrimaryButton, 1, 0, 1, 1);
 
         SettingsRow settingsRow5 = EditDialog.createSettingRow("Expand button", "Row x Column");
 
@@ -758,19 +762,22 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         expandHBox.setAlignment(Pos.CENTER);
         settingsRow5.add(expandHBox, 1, 0, 2, 1);
 
-        SettingsRow navigateRow = createSettingRow("Navigate", "Screen to navigate to after click");
-        List<String> navigatableScreens = new ArrayList<>();
-        try {
-            navigatableScreens = getNavigatableScreens("subgrid");
-        } catch (BackingStoreException ex) {
-            LOGGER.fatal("Unable to load Preferences" + ex.getMessage());
-        }
+        if (navigatePostClick()) {
+            SettingsRow navigateRow = createSettingRow("Navigate", "Screen to navigate to after click");
+            List<String> navigatableScreens = new ArrayList<>();
+            try {
+                navigatableScreens = getNavigatableScreens("subgrid");
+            } catch (BackingStoreException ex) {
+                LOGGER.fatal("Unable to load Preferences" + ex.getMessage());
+            }
 
-        navigateIndexChoices = new ChoiceBox<>(FXCollections.observableArrayList(navigatableScreens));
-        navigateIndexChoices.setValue(getNavigateIndex());
-        navigateIndexChoices.setMaxSize(180.0, 60.0);
-        navigateIndexChoices.getStyleClass().add("settings-text-area");
-        navigateRow.add(navigateIndexChoices, 1, 0, 2, 1);
+            navigateIndexChoices = new ChoiceBox<>(FXCollections.observableArrayList(navigatableScreens));
+            navigateIndexChoices.setValue(getNavigateIndex());
+            navigateIndexChoices.setMaxSize(180.0, 60.0);
+            navigateIndexChoices.getStyleClass().add("settings-text-area");
+            navigateRow.add(navigateIndexChoices, 1, 0, 2, 1);
+            selectionSettings.add(navigateRow);
+        }
 
         SettingsRow totalUsageRow = EditDialog.createSettingRow("Usage Count", "Number of times this button has been clicked");
 
@@ -798,9 +805,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         settings.add(settingsRow5);
         Tab actionTab = buildTab("ACTION", settings);
 
-        selectionSettings.add(settingsRow4);
-        selectionSettings.add(settingsRow45);
-        selectionSettings.add(navigateRow);
+        selectionSettings.add(selectableRow);
+        selectionSettings.add(primaryDisabledRow);
         Tab selectionTab = buildTab("SELECTION", selectionSettings);
 
         textSettings.add(showTitleRow);
@@ -1529,6 +1535,36 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             speakText = new SimpleStringProperty(getPreferences().get("speakText", getText()));
         }
         return speakText;
+    }
+
+    private BooleanProperty navigatePostClick;
+
+    /**
+     *
+     * @param value
+     */
+    public void setNavigatePostClick(Boolean value) {
+        navigatePostClickProperty().set(value);
+        getPreferences().put("navigatePostClick", value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean navigatePostClick() {
+        return navigatePostClickProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty navigatePostClickProperty() {
+        if (navigatePostClick == null) {
+            navigatePostClick = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("navigatePostClick", "true")));
+        }
+        return navigatePostClick;
     }
 
     private final String navigateTo = "";
