@@ -52,18 +52,22 @@ public class KeyRemoveButton extends SystemControl {
         initialize();
     }
 
-    private void initialize() {
+    @Override
+    public void defineButton() {
         setEditable(Boolean.FALSE);
         setControlType(ControlType.SETTING_CONTROL);
+        setNavigatePostClick(Boolean.FALSE);
+    }
 
+    private void initialize() {
         setOrder(configurableGrid.getOrder());
 
         setConfirmable(Boolean.TRUE);
-      //  setPane("apMain");
+        //  setPane("apMain");
 //        initTitleText = "Removing Button";
-  //      initCaptionText = "Are you sure you want to permanently remove this button?";
-       setTitleText("Removing Button");
-       setCaptionText("Are you sure you want to permanently remove this button?");
+        //      initCaptionText = "Are you sure you want to permanently remove this button?";
+        setTitleText("Removing Button");
+        setCaptionText("Are you sure you want to permanently remove this button?");
         setOkText("CONFIRM");
         setCancelText("CANCEL");
 

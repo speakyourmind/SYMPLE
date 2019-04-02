@@ -68,13 +68,14 @@ public class ReplaceKeyButton extends SystemControl {
     public ReplaceKeyButton(ButtonGrid buttonGrid) {
         super("toolbar-add", KEY, "", "default");
         this.buttonGrid = buttonGrid;
-        initialize();
+   
     }
 
-    private void initialize() {
+    @Override
+    public void defineButton() {
         setEditable(Boolean.FALSE);
         setControlType(ControlType.SETTING_CONTROL);
-        setConfirmable(Boolean.TRUE);
+        setConfirmable(Boolean.FALSE);
         setSelectable(Boolean.FALSE);
         setNavigatePostClick(Boolean.FALSE);
     }

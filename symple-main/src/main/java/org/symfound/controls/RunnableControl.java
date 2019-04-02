@@ -239,13 +239,14 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
                     appable.speak(getSpeakText());
                 }
             }*/
-
-            if (!appable.getNavigateIndex().isEmpty()) {
-                LOGGER.info("Post click navigation requested by " + this.getText());
-                appable.openHomeScreen();
-                ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
-                configurableGrid.setIndex(appable.getNavigateIndex());
-                getSession().setPlaying(false);
+            if (appable.navigatePostClick()) {
+                if (!appable.getNavigateIndex().isEmpty()) {
+                    LOGGER.info("Post click navigation requested by " + this.getText());
+                    appable.openHomeScreen();
+                    ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
+                    configurableGrid.setIndex(appable.getNavigateIndex());
+                    getSession().setPlaying(false);
+                }
             }
         }
 

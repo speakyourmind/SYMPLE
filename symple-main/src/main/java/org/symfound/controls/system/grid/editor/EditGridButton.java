@@ -73,13 +73,14 @@ public class EditGridButton extends SystemControl {
     public EditGridButton(ButtonGrid buttonGrid) {
         super("toolbar-edit", KEY, "", "default");
         this.buttonGrid = buttonGrid;
-        initialize();
     }
 
-    private void initialize() {
+    @Override
+    public void defineButton() {
         setEditable(Boolean.FALSE);
         setControlType(ControlType.SETTING_CONTROL);
-        setConfirmable(Boolean.TRUE);
+        setConfirmable(Boolean.FALSE);
+        setNavigatePostClick(Boolean.FALSE);
     }
 
     /**
@@ -310,7 +311,7 @@ public class EditGridButton extends SystemControl {
 
                 if (overrideRowButton.getValue()) {
                     buttonGrid.setOverrideRow(0.0);
-                    
+
                 } else {
                     buttonGrid.setOverrideRow(overrideRowSlider.getValue());
                 }

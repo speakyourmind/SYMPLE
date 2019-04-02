@@ -53,6 +53,7 @@ public class AddKeyButton extends SystemControl {
         setEditable(Boolean.FALSE);
         setControlType(ControlType.SETTING_CONTROL);
         setConfirmable(Boolean.FALSE);
+        setNavigatePostClick(Boolean.FALSE);
     }
 
     @Override
