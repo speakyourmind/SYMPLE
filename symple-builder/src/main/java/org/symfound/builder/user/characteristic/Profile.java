@@ -8,7 +8,9 @@ package org.symfound.builder.user.characteristic;
 import java.util.Properties;
 import java.util.prefs.Preferences;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.symfound.builder.characteristic.Characteristic;
@@ -33,9 +35,9 @@ public class Profile extends Characteristic {
      * @return
      */
     public String getFullName() {
-        final String lastName = getLastName();
-        final String firstName = getFirstName();
-        final String name = firstName + " " + lastName;
+        final String userLastName = getLastName();
+        final String userFirstName = getFirstName();
+        final String name = userFirstName + " " + userLastName;
         return name;
     }
 
@@ -260,50 +262,40 @@ public class Profile extends Characteristic {
         return lastName;
     }
 
-    /**
-     *
-     */
-    public static final String GENDER_MALE = "Male";
-
-    /**
-     *
-     */
-    public static final String GENDER_FEMALE = "Female";
-
-    /**
-     *
-     */
-    public static final String GENDER_NEUTRAL = "Neutral";
-    private static final String GENDER_KEY = "profile.gender";
-    private StringProperty gender;
+    
+    private static final String USER_ID_KEY = "profile.id";
+    private StringProperty userID;
 
     /**
      *
      * @param value
      */
-    public void setGender(String value) {
-        genderProperty().setValue(value);
-        getPreferences().put(GENDER_KEY, value);
+    public void setUserID(String value) {
+        userIDProperty().setValue(value);
+        getPreferences().put(USER_ID_KEY, value);
+
     }
 
     /**
      *
      * @return
      */
-    public String getGender() {
-        return genderProperty().getValue();
+    public String getUserID() {
+        return userIDProperty().getValue();
     }
 
     /**
      *
      * @return
      */
-    public StringProperty genderProperty() {
-        if (gender == null) {
-            String initValue = getPreference(GENDER_NEUTRAL);
-            gender = new SimpleStringProperty(initValue);
+    public StringProperty userIDProperty() {
+        if (userID == null) {
+            String initValue = getPreference(USER_ID_KEY);
+            userID = new SimpleStringProperty(initValue);
         }
-        return gender;
+        return userID;
     }
 
+    
+    
 }
