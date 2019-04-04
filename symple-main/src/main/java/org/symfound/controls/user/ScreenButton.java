@@ -15,6 +15,7 @@ public class ScreenButton extends GenericButton{
      *
      */
     public static final String KEY = "Screen";
+    public static final String DESCRIPTION ="Screen";
     
     
     public ScreenButton(String index) {

@@ -62,6 +62,7 @@ public class ActiveTextArea extends AppableControl {
      *
      */
     public static final String KEY = "Main Text";
+    public static final String DESCRIPTION="Typing Area";
 
     /**
      *

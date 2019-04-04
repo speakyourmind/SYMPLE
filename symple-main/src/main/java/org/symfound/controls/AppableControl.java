@@ -7,6 +7,7 @@ package org.symfound.controls;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
@@ -32,7 +33,6 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Tab;
@@ -45,7 +45,6 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import org.apache.log4j.Logger;
@@ -72,6 +71,7 @@ import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 import org.symfound.tools.ui.ColourChoices;
 import org.symfound.tools.ui.FontTracker;
+import software.amazon.ion.Timestamp;
 
 /**
  *

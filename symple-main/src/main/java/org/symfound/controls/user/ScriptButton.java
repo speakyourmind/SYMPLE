@@ -32,6 +32,7 @@ public class ScriptButton extends TypingControl {
      *
      */
     public static final String KEY = "Script";
+    public static final String DESCRIPTION = "Talk or Type Button";
 
     /**
      *

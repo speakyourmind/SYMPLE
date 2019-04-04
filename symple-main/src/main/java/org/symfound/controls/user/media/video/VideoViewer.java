@@ -146,7 +146,6 @@ public class VideoViewer extends MediaViewer {
 
                 mediaPlayer.play();
                 setStatus(ScreenStatus.PLAYING);
-//    FullSession.log(message); // TODO: To be removed.
             });
 
             getMediaView().setMediaPlayer(mediaPlayer);

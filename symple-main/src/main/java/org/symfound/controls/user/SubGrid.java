@@ -36,6 +36,7 @@ public class SubGrid extends AppableControl {
      *
      */
     public static final String KEY = "SubGrid";
+    public static final String DESCRIPTION="Button Group";
 
     /**
      *

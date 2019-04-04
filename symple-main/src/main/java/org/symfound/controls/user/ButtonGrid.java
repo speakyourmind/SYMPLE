@@ -2,7 +2,10 @@ package org.symfound.controls.user;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
@@ -56,6 +59,12 @@ import org.symfound.controls.user.voice.SpeakPictoButton;
 import org.symfound.controls.user.voice.SpeakUserButton;
 import org.symfound.controls.user.voice.TwilioSendButton;
 import org.symfound.device.hardware.Hardware;
+import static org.symfound.diagnostic.DiagnosticTarget.CRITICAL_CONSENSUS;
+import static org.symfound.diagnostic.DiagnosticTarget.CRITICAL_TEXT;
+import static org.symfound.diagnostic.DiagnosticTarget.SUCCESS_CONSENSUS;
+import static org.symfound.diagnostic.DiagnosticTarget.SUCCESS_TEXT;
+import static org.symfound.diagnostic.DiagnosticTarget.WARNING_CONSENSUS;
+import static org.symfound.diagnostic.DiagnosticTarget.WARNING_TEXT;
 import org.symfound.main.HomeController;
 import static org.symfound.main.Main.getVersionManager;
 import org.symfound.main.builder.App;
@@ -124,7 +133,6 @@ public abstract class ButtonGrid extends FillableGrid {
             GMailSpeakButton.KEY,
             GMailControlButton.KEY,
             EditButton.KEY,
-            
             MinimizeButton.KEY,
             ScriptButton.KEY,
             ActiveTextArea.KEY,
@@ -140,40 +148,59 @@ public abstract class ButtonGrid extends FillableGrid {
             ClockButton.KEY,
             DesktopController.KEY);
 
-    
     public static final List<String> USABLE_KEY_CATALOGUE = Arrays.asList(
-            SubGrid.KEY,
-            ReplaceKeyButton.KEY,
-            ScreenButton.KEY,
-            ScriptButton.KEY,
-            GenericButton.KEY,
             SpeakGrid.KEY,
             SpeakUserButton.KEY,
             TwilioSendButton.KEY,
+            
             PhotoControlButton.KEY,
+            
             MusicInfoButton.KEY,
             MusicControlButton.KEY,
-            VideoControlButton.KEY,
-            RedditControlButton.KEY,
-            PageFlipControlButton.KEY,
-            TwitterControlButton.KEY,
-            YouTubeControlButton.KEY,
             VolumeGridButton.KEY,
+            
+            VideoControlButton.KEY,
+            
+            RedditControlButton.KEY,
+            
+            PageFlipControlButton.KEY,
+            
+            TwitterControlButton.KEY,
+            
+            YouTubeControlButton.KEY,
+            
             GMailSpeakButton.KEY,
-            MinimizeButton.KEY,
-            ActiveTextArea.KEY,
+            
             SpeakPictoButton.KEY,
             BackSpacePictoButton.KEY,
             ClearPictoButton.KEY,
             PictoArea.KEY,
-            ExitButton.KEY,
-            SettingsButton.KEY,
-            IftttButton.KEY,
-            LockButton.KEY,
-            DeviceButton.KEY,
-            VersionUpdateButton.KEY,
+            
             ClockButton.KEY,
+            IftttButton.KEY,
+            ExitButton.KEY,
+            MinimizeButton.KEY,
+            SettingsButton.KEY,
+            LockButton.KEY,
+            VersionUpdateButton.KEY,
             DesktopController.KEY);
+
+    /**
+     *
+     */
+    public static final Map<String, String> USABLE_OPTIONS_MAP;
+    public static final String OTHER_BUTTON = "Other";
+
+    static {
+        HashMap<String, String> map = new HashMap<>();
+        map.put(ReplaceKeyButton.DESCRIPTION, ReplaceKeyButton.KEY);
+        map.put(ScriptButton.DESCRIPTION, ScriptButton.KEY);
+        map.put(ScreenButton.DESCRIPTION, ScreenButton.KEY);
+        map.put(SubGrid.DESCRIPTION, SubGrid.KEY);
+        map.put(OTHER_BUTTON, OTHER_BUTTON);
+
+        USABLE_OPTIONS_MAP = Collections.unmodifiableMap(map);
+    }
 
     /**
      *
@@ -349,7 +376,6 @@ public abstract class ButtonGrid extends FillableGrid {
      *
      */
     public List<AppableControl> requestedControls = new ArrayList<>();
-    
 
     /**
      *
@@ -357,7 +383,7 @@ public abstract class ButtonGrid extends FillableGrid {
      * @param size
      */
     public void fill(ParallelList<String, String> buildOrder, Integer size) {
-        final ParallelList<String,String> paginationList = new ParallelList<>();
+        final ParallelList<String, String> paginationList = new ParallelList<>();
         if (buildOrder.getFirstList().size() > 0) {
             getAvailableKeys().clear();
             requestedControls = new ArrayList<>();
@@ -637,7 +663,7 @@ public abstract class ButtonGrid extends FillableGrid {
                         configureItem(clockButton);
                         requestedControls.add(clockButton);
                         break;
-                 /*   case "Pagination":
+                    /*   case "Pagination":
                         final String currentIndex1 = index;
                         ConfigurableGrid homeGrid1 = HomeController.getGrid().getConfigurableGrid();
                         GenericButton pageButton = new GenericButton(currentIndex1) {

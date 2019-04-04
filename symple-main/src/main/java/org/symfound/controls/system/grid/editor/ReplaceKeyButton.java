@@ -28,8 +28,10 @@ import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.system.dialog.OKCancelDialog;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.ButtonGrid;
-import static org.symfound.controls.user.ButtonGrid.USABLE_KEY_CATALOGUE;
+import static org.symfound.controls.user.ButtonGrid.OTHER_BUTTON;
+import static org.symfound.controls.user.ButtonGrid.USABLE_OPTIONS_MAP;
 import org.symfound.controls.user.ConfigurableGrid;
+import org.symfound.controls.user.GenericButton;
 import org.symfound.controls.user.ScreenButton;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.main.settings.SettingsController;
@@ -60,6 +62,7 @@ public class ReplaceKeyButton extends SystemControl {
      *
      */
     public static final String KEY = "Replace Key";
+    public static final String DESCRIPTION = "";
 
     /**
      *
@@ -68,14 +71,14 @@ public class ReplaceKeyButton extends SystemControl {
     public ReplaceKeyButton(ButtonGrid buttonGrid) {
         super("toolbar-add", KEY, "", "default");
         this.buttonGrid = buttonGrid;
-   
+
     }
 
     @Override
     public void defineButton() {
         setEditable(Boolean.FALSE);
         setControlType(ControlType.SETTING_CONTROL);
-        setConfirmable(Boolean.FALSE);
+        //  setConfirmable(Boolean.FALSE);
         setSelectable(Boolean.FALSE);
         setNavigatePostClick(Boolean.FALSE);
     }
@@ -105,6 +108,7 @@ public class ReplaceKeyButton extends SystemControl {
         EditDialog editDialog = new EditDialog("Add Button") {
             TextArea buttonOrderField;
             ChoiceBox<String> buttonTypeChoices;
+            ChoiceBox<String> otherTypeChoices;
             TextField buttonTitleField;
             ChoiceBox<String> existingButtonChoiceBox;
             ConfigurableGrid appGrid;
@@ -113,11 +117,19 @@ public class ReplaceKeyButton extends SystemControl {
             @Override
             public Node addSettingControls() {
                 SettingsRow buttonTypeRow = createSettingRow("Type", "Select the type of button you would like to add");
-                buttonTypeChoices = new ChoiceBox<>(FXCollections.observableArrayList(USABLE_KEY_CATALOGUE));
-                buttonTypeChoices.setValue(KEY);
+                buttonTypeChoices = new ChoiceBox<>(FXCollections.observableArrayList(new ArrayList<>(USABLE_OPTIONS_MAP.keySet())));
+                buttonTypeChoices.setValue(DESCRIPTION);
                 buttonTypeChoices.setMaxSize(180.0, 60.0);
                 buttonTypeChoices.getStyleClass().add("settings-text-area");
-                buttonTypeRow.add(buttonTypeChoices, 1, 0, 2, 1);
+                buttonTypeRow.add(buttonTypeChoices, 1, 0, 1, 1);
+
+                otherTypeChoices = new ChoiceBox<>(FXCollections.observableArrayList(ButtonGrid.USABLE_KEY_CATALOGUE));
+                otherTypeChoices.setValue(GenericButton.KEY);
+                otherTypeChoices.setMaxSize(180.0, 60.0);
+                otherTypeChoices.getStyleClass().add("settings-text-area");
+                otherTypeChoices.visibleProperty().bind(Bindings.equal(buttonTypeChoices.valueProperty(), ButtonGrid.OTHER_BUTTON));
+
+                buttonTypeRow.add(otherTypeChoices, 2, 0, 1, 1);
 
                 SettingsRow buttonTitleRow = EditDialog.createSettingRow("Title", "Use an existing button or pick a unique title to create a new button");
                 buttonTitleField = new TextField();
@@ -141,13 +153,21 @@ public class ReplaceKeyButton extends SystemControl {
 
                 buttonTypeChoices.valueProperty().addListener((observable, oldValue, newValue) -> {
                     try {
-                        String buttonType = newValue.toLowerCase();
+                        String buttonType = (buttonTypeChoices.getValue().equals(OTHER_BUTTON)) ? otherTypeChoices.getValue().toLowerCase() : USABLE_OPTIONS_MAP.get(buttonTypeChoices.getValue()).toLowerCase();
                         if (buttonType.equals(ScreenButton.KEY.toLowerCase())) {
                             buttonType = SubGrid.KEY.toLowerCase();
                         }
-                        System.out.println(buttonType);
                         final List<String> buttons = getButtons(buttonType, buttonType);
-                        System.out.println(buttons);
+                        existingButtonChoiceBox.setItems(FXCollections.observableArrayList(buttons));
+                    } catch (BackingStoreException ex) {
+                        LOGGER.warn(ex);
+                    }
+                });
+
+                otherTypeChoices.valueProperty().addListener((observable, oldValue, newValue) -> {
+                    try {
+                        String buttonType = (buttonTypeChoices.getValue().equals(OTHER_BUTTON)) ? otherTypeChoices.getValue().toLowerCase() : USABLE_OPTIONS_MAP.get(buttonTypeChoices.getValue()).toLowerCase();
+                        final List<String> buttons = getButtons(buttonType, buttonType);
                         existingButtonChoiceBox.setItems(FXCollections.observableArrayList(buttons));
                     } catch (BackingStoreException ex) {
                         LOGGER.warn(ex);
@@ -172,7 +192,9 @@ public class ReplaceKeyButton extends SystemControl {
             public void setSettings() {
 
                 final ParallelList<String, String> order1 = buttonGrid.getOrder();
-                order1.getFirstList().set(getGridLocation(), buttonTypeChoices.getValue());
+
+                final String buttonType = (buttonTypeChoices.getValue().equals(OTHER_BUTTON)) ? otherTypeChoices.getValue() : USABLE_OPTIONS_MAP.get(buttonTypeChoices.getValue());
+                order1.getFirstList().set(getGridLocation(), buttonType);
                 String index;
                 if (!buttonTitleField.getText().isEmpty()) {
                     index = buttonTitleField.getText();
@@ -198,7 +220,7 @@ public class ReplaceKeyButton extends SystemControl {
 
             @Override
             public void resetSettings() {
-                buttonTypeChoices.setValue(KEY);
+                buttonTypeChoices.setValue(DESCRIPTION);
                 buttonTitleField.setText(getIndex().toLowerCase());
                 //  buttonOrderField.setText(KEY + "=" + getIndex().toLowerCase());
                 SettingsController.setUpdated(false);
@@ -228,7 +250,7 @@ public class ReplaceKeyButton extends SystemControl {
 
     @Override
     public void run() {
-        LOGGER.info("Add Keys button clicked");
+        LOGGER.info("Replace Keys button clicked");
     }
 
     @Override
