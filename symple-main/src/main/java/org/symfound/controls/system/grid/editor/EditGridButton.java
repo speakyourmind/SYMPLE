@@ -34,6 +34,7 @@ import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.system.dialog.OKCancelDialog;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ButtonGrid;
+import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.FillableGrid.FillDirection;
 import org.symfound.controls.user.FillableGrid.FillMethod;
 import org.symfound.main.Main;
@@ -79,7 +80,6 @@ public class EditGridButton extends SystemControl {
     public void defineButton() {
         setEditable(Boolean.FALSE);
         setControlType(ControlType.SETTING_CONTROL);
-        setConfirmable(Boolean.FALSE);
         setNavigatePostClick(Boolean.FALSE);
     }
 
@@ -324,6 +324,7 @@ public class EditGridButton extends SystemControl {
 
                 buttonGrid.setOverrideStyle(overrideStyleField.getText());
                 buttonGrid.setSelectionMethod(selectionMethodChoices.getValue());
+
                 SettingsController.setUpdated(true);
 
             }
@@ -342,6 +343,7 @@ public class EditGridButton extends SystemControl {
                 overrideColumnButton.setValue(buttonGrid.getOverrideColumn() == 0);
                 overrideStyleField.setText(buttonGrid.getOverrideStyle());
                 selectionMethodChoices.setValue(buttonGrid.getSelectionMethod());
+
                 SettingsController.setUpdated(false);
             }
         };

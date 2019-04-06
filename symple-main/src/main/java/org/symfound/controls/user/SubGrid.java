@@ -36,7 +36,7 @@ public class SubGrid extends AppableControl {
      *
      */
     public static final String KEY = "SubGrid";
-    public static final String DESCRIPTION="Button Group";
+    public static final String DESCRIPTION = "Button Group";
 
     /**
      *
@@ -98,6 +98,13 @@ public class SubGrid extends AppableControl {
                 if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
                     final ObservableList<Node> children = this.getConfigurableGrid().getChildren();
                     addKeyRemoveButtons();
+
+                    if (!this.getChildren().contains(getAddKeyButton())) {
+                        addToPane(getAddKeyButton(), null, 0.0, 80.0, null);
+                    }
+                    if (!this.getChildren().contains(getEditGridButton())) {
+                        addToPane(getEditGridButton(), null, 0.0, 0.0, null);
+                    }
                 }
             }
         });
@@ -207,8 +214,8 @@ public class SubGrid extends AppableControl {
         }
         return removeButtons;
     }
-    
-        /**
+
+    /**
      *
      */
     public static final Boolean DEFAULT_INERROR_VALUE = Boolean.FALSE;

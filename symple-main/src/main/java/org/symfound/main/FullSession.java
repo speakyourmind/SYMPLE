@@ -173,8 +173,7 @@ public class FullSession extends Session {
 
         buildSystemUIs();
 
-        buildApps();
-
+        //   buildApps();
         try {
             getBuilder().stop();
         } catch (InterruptedException ex) {
@@ -245,14 +244,9 @@ public class FullSession extends Session {
     /**
      *
      */
-    public Map<String, App> appMap;
+    /*   public Map<String, App> appMap;
 
-    /**
-     *
-     * @param name
-     * @return
-     */
-    public App getApp(String name) {
+   public App getApp(String name) {
         return appMap.get(name);
     }
 
@@ -271,7 +265,7 @@ public class FullSession extends Session {
             appMap = Collections.unmodifiableMap(map);
         }
     }
-
+     */
     private void buildSystemUIs() {
         addWizard();
         addMainScreens();
@@ -293,8 +287,8 @@ public class FullSession extends Session {
     public void checkCompletion() {
         getBuilder().incrementProgress();
         Boolean mainReady = getMainUI().isBuilt();
-        Boolean appsReady = Boolean.TRUE;
-        for (String appName : getUser().getNavigation().getAppBuildOrder()) {
+        //    Boolean appsReady = Boolean.TRUE;
+        /*    for (String appName : getUser().getNavigation().getAppBuildOrder()) {
             appsReady = appsReady && getApp(appName).isBuilt();
             if (!getApp(appName).isBuilt()) {
                 LOGGER.info("Build for App " + appName + " is pending");
@@ -303,9 +297,8 @@ public class FullSession extends Session {
 
         if (appsReady) {
             LOGGER.info("All apps have been built");
-        }
-        Boolean ready = mainReady && appsReady
-                && !isBuilt();
+        }*/
+        Boolean ready = mainReady && !isBuilt();
         setBuilt(ready);
 
     }
@@ -364,7 +357,7 @@ public class FullSession extends Session {
         }
 
         LOGGER.info("Closing hardware");
-        Main.getSession().getDeviceManager().getCurrent().getHardware().close();
+        getDeviceManager().getCurrent().getHardware().close();
         LOGGER.info("Stopping Input Listener");
         InputListener.stop();
         Platform.exit();

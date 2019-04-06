@@ -179,12 +179,14 @@ public class ReplaceKeyButton extends SystemControl {
 
                 orderSettings.add(buttonTypeRow);
                 orderSettings.add(buttonTitleRow);
-                Tab orderTab = buildTab("ORDER", orderSettings);
+                Tab orderTab = buildTab("ADD", orderSettings);
 
                 TabPane tabPane = new TabPane();
                 tabPane.setPadding(new Insets(5));
                 tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
+
                 tabPane.getTabs().add(orderTab);
+
                 return tabPane;
             }
 
@@ -214,6 +216,7 @@ public class ReplaceKeyButton extends SystemControl {
                     configurableGrid.setOrder(order1);
                     configurableGrid.getGridManager().setOrder(configurableGrid.getOrder());
                 }
+
                 SettingsController.setUpdated(true);
 
             }
@@ -223,6 +226,7 @@ public class ReplaceKeyButton extends SystemControl {
                 buttonTypeChoices.setValue(DESCRIPTION);
                 buttonTitleField.setText(getIndex().toLowerCase());
                 //  buttonOrderField.setText(KEY + "=" + getIndex().toLowerCase());
+
                 SettingsController.setUpdated(false);
             }
         };
@@ -231,12 +235,12 @@ public class ReplaceKeyButton extends SystemControl {
 
     private List<String> getButtons(String node, String alt) throws BackingStoreException {
 
-        System.out.println("Node:" + node);
+       // System.out.println("Node:" + node);
         List<String> screenNames = new ArrayList<>();
         final Preferences userNodeForPackage = Preferences.userNodeForPackage(AnimatedButton.class);
-        System.out.println(userNodeForPackage.name());
+        //System.out.println(userNodeForPackage.name());
         List<String> childrenNames = Arrays.asList(userNodeForPackage.node(node).childrenNames());
-        System.out.println(childrenNames);
+        //System.out.println(childrenNames);
         if (childrenNames.size() > 0) {
             for (String child : childrenNames) {
                 final String name = node + "/" + child;

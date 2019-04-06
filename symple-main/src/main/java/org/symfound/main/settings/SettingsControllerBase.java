@@ -22,11 +22,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import org.symfound.app.CommonController;
-import org.symfound.app.DesktopController;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
-import org.symfound.main.builder.App;
-import org.symfound.main.builder.StandaloneUI;
 
 /**
  *
@@ -51,13 +48,13 @@ public abstract class SettingsControllerBase extends CommonController implements
             getMainUI().getStack().load(FullSession.MAIN_SETTINGS);
             getMainUI().setCurrentProperties();
         }
-        App app = getSession().getApp(DesktopController.KEY);
+/*        App app = getSession().getApp(DesktopController.KEY);
         if (app != null) {
             StandaloneUI get = app.getUIs().get(0);
             if (get.isShowing()) {
                 get.setCurrentProperties();
             }
-        }
+        }*/
     }
 
     /**

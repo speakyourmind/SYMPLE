@@ -32,6 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import static org.symfound.app.DiagnosticController.MAX_LEVEL;
+import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Interaction;
 import org.symfound.builder.user.characteristic.Profile;
 import org.symfound.builder.user.selection.SelectionMethod;
@@ -163,6 +164,8 @@ public class SettingsController extends SettingsControllerBase {
         setSettings();
         getMainUI().getStack().load(HOME);
         getMainUI().open();
+
+        System.out.println("++++++++++++++" + selectionMode.get());
         getUser().getInteraction().setSelectionMethod(selectionMode.get()); // TO DO: REMOVE
         setUpdated(true);
 
@@ -176,16 +179,17 @@ public class SettingsController extends SettingsControllerBase {
     @Override
     public void setSettings() {
         LOGGER.info("Setting Main Settings");
+        final User user = getUser();
         //APPLICATION
-        getUser().getTiming().setDwellTime(slDwellTime.getValue());
-        getUser().getTiming().setScanTime(slScanTime.getValue());
-        getUser().getTiming().setStepTime(slStepTime.getValue());
-        getUser().getAbility().setLevel(slLevel.getValue());
-        getUser().getInteraction().setOverrideSelectionMethod(btnAssistedMode.getValue());
+        user.getTiming().setDwellTime(slDwellTime.getValue());
+        user.getTiming().setScanTime(slScanTime.getValue());
+        user.getTiming().setStepTime(slStepTime.getValue());
+        user.getAbility().setLevel(slLevel.getValue());
+        user.getInteraction().setOverrideSelectionMethod(btnAssistedMode.getValue());
         //DEVICE
         final String selectedDeviceName = getSession().getDeviceManager().getIterator().get();
-        getUser().setDeviceName(selectedDeviceName);
-        final Interaction interaction = getUser().getInteraction();
+        user.setDeviceName(selectedDeviceName);
+        final Interaction interaction = user.getInteraction();
         interaction.setMouseControl(btnMouseControl.getValue());
         interaction.setSelectionControl(btnSelectionControl.getValue());
         Hardware hardware = getSession().getDeviceManager().get(selectedDeviceName).getHardware();
@@ -193,7 +197,7 @@ public class SettingsController extends SettingsControllerBase {
         selectability.setSensitivity((int) (dwellSensitivityField.getValue()));
         selectability.getClickability().setEventType(new SelectionEventType(cbSelectionEvent.getValue()));
         //PROFILE
-        final Profile profile = getUser().getProfile();
+        final Profile profile = user.getProfile();
         profile.setFirstName(firstNameField.getText());
         profile.setLastName(lastNameField.getText());
         profile.setCity(cityField.getText());
@@ -287,14 +291,14 @@ public class SettingsController extends SettingsControllerBase {
             if (isDwellSelect) {
                 gpDwellTime.toFront();
             } else {
-             
+
                 gpDwellTime.toBack();
             }
-            
+
             Boolean isScanSelect = selectionMode.get().equals(SelectionMethod.SCAN);
             Boolean isClickSelect = selectionMode.get().equals(SelectionMethod.CLICK);
-            gpScanTime.setVisible(isScanSelect||isClickSelect);
-            if (isScanSelect||isClickSelect) {
+            gpScanTime.setVisible(isScanSelect || isClickSelect);
+            if (isScanSelect || isClickSelect) {
                 gpScanTime.toFront();
             } else {
                 gpScanTime.toBack();

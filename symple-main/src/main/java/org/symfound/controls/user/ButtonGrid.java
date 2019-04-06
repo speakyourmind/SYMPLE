@@ -25,7 +25,7 @@ import static javafx.scene.layout.AnchorPane.setRightAnchor;
 import static javafx.scene.layout.AnchorPane.setTopAnchor;
 import javafx.scene.media.MediaPlayer.Status;
 import org.apache.log4j.Logger;
-import org.symfound.app.DesktopController;
+//import org.symfound.app.DesktopController;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.system.EditButton;
@@ -59,12 +59,6 @@ import org.symfound.controls.user.voice.SpeakPictoButton;
 import org.symfound.controls.user.voice.SpeakUserButton;
 import org.symfound.controls.user.voice.TwilioSendButton;
 import org.symfound.device.hardware.Hardware;
-import static org.symfound.diagnostic.DiagnosticTarget.CRITICAL_CONSENSUS;
-import static org.symfound.diagnostic.DiagnosticTarget.CRITICAL_TEXT;
-import static org.symfound.diagnostic.DiagnosticTarget.SUCCESS_CONSENSUS;
-import static org.symfound.diagnostic.DiagnosticTarget.SUCCESS_TEXT;
-import static org.symfound.diagnostic.DiagnosticTarget.WARNING_CONSENSUS;
-import static org.symfound.diagnostic.DiagnosticTarget.WARNING_TEXT;
 import org.symfound.main.HomeController;
 import static org.symfound.main.Main.getVersionManager;
 import org.symfound.main.builder.App;
@@ -145,12 +139,14 @@ public abstract class ButtonGrid extends FillableGrid {
             EditGridButton.KEY,
             DeviceButton.KEY,
             VersionUpdateButton.KEY,
-            ClockButton.KEY,
-            DesktopController.KEY);
+            ClockButton.KEY);
+//            DesktopController.KEY);
 
     public static final List<String> USABLE_KEY_CATALOGUE = Arrays.asList(
+            ActiveTextArea.KEY,
             SpeakGrid.KEY,
             SpeakUserButton.KEY,
+            
             TwilioSendButton.KEY,
             
             PhotoControlButton.KEY,
@@ -182,8 +178,8 @@ public abstract class ButtonGrid extends FillableGrid {
             MinimizeButton.KEY,
             SettingsButton.KEY,
             LockButton.KEY,
-            VersionUpdateButton.KEY,
-            DesktopController.KEY);
+            VersionUpdateButton.KEY);
+//            DesktopController.KEY);
 
     /**
      *
@@ -216,8 +212,11 @@ public abstract class ButtonGrid extends FillableGrid {
     }
 
     private void initialize() {
+        
+        //TO DO: SPLIT
         setHgap(getGap());
         setVgap(getGap());
+      
         gapProperty().bindBidirectional(vgapProperty());
         gapProperty().bindBidirectional(hgapProperty());
 
@@ -649,6 +648,7 @@ public abstract class ButtonGrid extends FillableGrid {
                         break;
                     case SubGrid.KEY:
                         SubGrid subGrid = new SubGrid(index);
+                        subGrid.getConfigurableGrid().setRootGrid(Boolean.FALSE);
                         subGrid.setGridLocation(i);
                         requestedControls.add(subGrid);
                         break;
@@ -700,8 +700,12 @@ public abstract class ButtonGrid extends FillableGrid {
                             requestedControls.add(screenButton);
                         }
                         break;
-
+                        
                     default:
+                        LOGGER.fatal("Screen includes an invalid item: "+toBuild.trim());
+                        break;
+
+                    /*default:
                         if (toBuild.length() > 0) {
                             App appToBuild = getSession().appMap.get("Desktop");
                             String appString = appToBuild.getValue();
@@ -720,7 +724,7 @@ public abstract class ButtonGrid extends FillableGrid {
                                 requestedControls.add(appButton);
                             }
                         }
-                        break;
+                        break;*/
                 }
                 getAvailableKeys().remove(toBuild);
             }
@@ -1147,6 +1151,35 @@ public abstract class ButtonGrid extends FillableGrid {
             selectionMethod = new SimpleObjectProperty<>();
         }
         return selectionMethod;
+    }
+
+    private BooleanProperty rootGrid;
+
+    /**
+     *
+     * @param value
+     */
+    public void setRootGrid(Boolean value) {
+        rootGridProperty().setValue(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean isRootGrid() {
+        return rootGridProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty rootGridProperty() {
+        if (rootGrid == null) {
+            rootGrid = new SimpleBooleanProperty(false);
+        }
+        return rootGrid;
     }
 
 }

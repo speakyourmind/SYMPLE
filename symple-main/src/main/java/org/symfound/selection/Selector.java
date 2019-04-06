@@ -77,11 +77,13 @@ public abstract class Selector {
      */
     public void configureStartStop() {
         startStop();
+
         getUser().getInteraction().overrideSelectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
             LOGGER.info("User selection method override changed from "
                     + oldValue1.toString() + " to " + newValue1.toString());
             startStop();
         });
+
         getUser().getInteraction().selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
             LOGGER.info("User selection method changed from "
                     + oldValue1.toString() + " to " + newValue1.toString());
@@ -93,9 +95,11 @@ public abstract class Selector {
                     + oldValue1.toString() + " to " + newValue1.toString());
             startStop();
         });
+
         editModeProperty().addListener((observable, oldValue, newValue) -> {
             startStop();
         });
+
         grid.indexProperty().addListener((observable, oldValue, newValue) -> {
             startStop();
         });

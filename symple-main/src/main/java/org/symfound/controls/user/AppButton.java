@@ -84,7 +84,7 @@ public class AppButton extends AppableControl {
      * @param output
      */
     public void launchApp(String output) {
-        getSession().getApp(output).launch(getScreen());
+   //     getSession().getApp(output).launch(getScreen());
         getSession().setPlaying(true);
 
     }

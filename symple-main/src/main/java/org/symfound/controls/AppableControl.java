@@ -490,7 +490,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         if (getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.CONTAIN.toString())
                 || getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.COVER.toString())
                 || getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.STRETCH.toString())) {
-            backgroundSizeChoices.setValue(BackgroundSizeChoices.valueOf(getBackgroundSize()));
+            System.out.println("test=============="+getBackgroundSize());
+            backgroundSizeChoices.setValue(BackgroundSizeChoices.valueOf(getBackgroundSize().toUpperCase()));
         } else {
             backgroundSizeChoices.setValue(BackgroundSizeChoices.CUSTOM);
             backgroundSizeSlider.setValue(Double.valueOf(getBackgroundSize()));

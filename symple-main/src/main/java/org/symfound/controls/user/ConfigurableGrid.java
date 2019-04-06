@@ -160,6 +160,7 @@ public class ConfigurableGrid extends ButtonGrid {
         getStepper().configure();
 
         triggerReload();
+        
         getSession().playingProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 //startSelector(getUser().getInteraction().getSelectionMethod());
@@ -337,35 +338,6 @@ public class ConfigurableGrid extends ButtonGrid {
             };
         }
         return manager;
-    }
-
-    private BooleanProperty rootGrid;
-
-    /**
-     *
-     * @param value
-     */
-    public void setRootGrid(Boolean value) {
-        rootGridProperty().setValue(value);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Boolean isRootGrid() {
-        return rootGridProperty().getValue();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public BooleanProperty rootGridProperty() {
-        if (rootGrid == null) {
-            rootGrid = new SimpleBooleanProperty(false);
-        }
-        return rootGrid;
     }
 
     private static final Boolean DEFAULT_EDIT_MODE = Boolean.FALSE;
