@@ -87,7 +87,7 @@ public class Scanner extends Selector {
         scanner.start();
         button.executeProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                configureStartStop();
+                configure();
             }
         });
     }

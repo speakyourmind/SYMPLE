@@ -97,20 +97,19 @@ public class Stepper extends Selector {
     @Override
     public void invokeSubGrid(SubGrid nestedGrid) {
         
-    //    stop();
-      /*  Stepper nestedStepper = nestedGrid.getConfigurableGrid().getStepper();
+        Stepper nestedStepper = nestedGrid.getConfigurableGrid().getStepper();
         RunnableControl selector = nestedStepper.getSelectorButton();
-        selector.setStyle("-fx-background-color:-fx-red;-fx-opacity:0.9;");
+       // selector.setStyle("-fx-background-color:-fx-red;-fx-opacity:0.9;");
         addSelectorButton(grid, selector);
         LOGGER.info("Starting stepper in nested grid");
         nestedStepper.start();
-*/
-        /*      subStepper.executeProperty().addListener((observable, oldValue, newValue) -> {
+
+        nestedStepper.executeProperty().addListener((observable, oldValue, newValue) -> {
             if (grid.isRootGrid()) {
                 LOGGER.info("Restarting root grid");
-                configureStartStop();
+                configure();
             }
-        });*/
+        });
     }
 
 }

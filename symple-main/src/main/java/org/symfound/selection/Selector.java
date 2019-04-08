@@ -9,7 +9,6 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Parent;
-import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.selection.Chooser;
@@ -19,7 +18,6 @@ import org.symfound.controls.user.ConfigurableGrid;
 import static org.symfound.controls.user.ConfigurableGrid.editModeProperty;
 import static org.symfound.controls.user.ConfigurableGrid.inEditMode;
 import org.symfound.controls.user.SubGrid;
-import org.symfound.main.Main;
 import org.symfound.tools.timing.LoopedEvent;
 
 /**
@@ -64,7 +62,7 @@ public abstract class Selector {
     /**
      *
      */
-    public void configureStartStop() {
+    public void configure() {
         startStop();
         Bindings.concat(getUser().getInteraction().overrideSelectionMethodProperty().asString(),
                 getUser().getInteraction().selectionMethodProperty().asString(),
@@ -73,35 +71,6 @@ public abstract class Selector {
                 grid.indexProperty()).addListener((observable, oldValue, newValue) -> {
             startStop();
         });
-        /*  getUser().getInteraction().overrideSelectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
-            LOGGER.info("User selection method override changed from "
-                    + oldValue1.toString() + " to " + newValue1.toString());
-            startStop();
-        });
-
-        
-        getUser().getInteraction().selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
-            LOGGER.info("User selection method changed from "
-                    + oldValue1.toString() + " to " + newValue1.toString());
-            startStop();
-        });
-
-        grid.selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
-            LOGGER.info("Grid selection method override changed from "
-                    + oldValue1.toString() + " to " + newValue1.toString());
-            startStop();
-        });
-
-        editModeProperty().addListener((observable, oldValue, newValue) -> {
-            LOGGER.info("Edit mode has changed from " + oldValue.toString() + " to " + newValue.toString());
-            startStop();
-        });
-
-        grid.indexProperty().addListener((observable, oldValue, newValue) -> {
-            LOGGER.info("Grid Index has changed from " + oldValue + " to " + newValue);
-            startStop();
-        });*/
-
     }
 
     /**
@@ -231,21 +200,23 @@ public abstract class Selector {
                     + currentRow + ", " + currentColumn);
             RunnableControl current = getScourer().getCurrent();
             if (current instanceof SubGrid) {
-                LOGGER.info("Nested grid selected");
-                SubGrid currentGrid = (SubGrid) current;
-                invokeSubGrid(currentGrid);
+                SubGrid nestedGrid = (SubGrid) current;
+                LOGGER.info("Nested grid selected: " + nestedGrid.getConfigurableGrid().getIndex());
+                invokeSubGrid(nestedGrid);
+                setExecuted(true);
+                stop();
             } else {
                 LOGGER.info("Executing selection ");
                 current.buttonHandler();
                 current.execute();
+                setExecuted(true);
+                stop();
+                if (grid.isRootGrid()) {
+                    LOGGER.info("Restarting root grid: " + grid.getIndex());
+                    configure();
+                }
             }
-            setExecuted(true);
-            stop();
 
-            if (grid.isRootGrid()) {
-                LOGGER.info("Restarting root grid");
-                configureStartStop();
-            }
             setExecuted(false);
         } else {
             LOGGER.warn("User attempting to make selection before first cell is highlighted");

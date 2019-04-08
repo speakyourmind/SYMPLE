@@ -158,8 +158,8 @@ public class ConfigurableGrid extends ButtonGrid {
         triggerReload();
         statusProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == ScreenStatus.PLAYING) {
-                getScanner().configureStartStop();
-                getStepper().configureStartStop();
+                getScanner().configure();
+                getStepper().configure();
             }
             getUser().getInteraction().selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
                 LOGGER.info("User selection method changed from "
