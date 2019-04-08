@@ -71,7 +71,7 @@
     -fx-border-width: 5;
     -fx-background-color: transparent;
     -fx-background-radius: 0,0,0,0;
-  
+
 }
 
 .choice-box {
@@ -127,7 +127,6 @@
 .text-area .scroll-pane .content{
     -fx-background-color: transparent;
 }
-
 
 .toggle-button {
     -fx-background-color: -fx-dark;
@@ -210,7 +209,7 @@
     -fx-text-alignment:center;
     -fx-font-size:4em;
 }
-
+/*
 .desktop-app-button {
     -fx-background-image: url("../images/app_desktop.png");
     -fx-background-size: 80 80;
@@ -235,7 +234,7 @@
     -fx-background-color: -fx-blue;
     -fx-background-size: contain;
 }
-
+*/
 .glass, .glass:hover {-fx-background-color: -fx-light;}
 
 .transparent {-fx-background-color: transparent;}
@@ -1090,7 +1089,7 @@
 
 .selector{
     -fx-background-color:-fx-dark;
-    -fx-opacity:0.0;
+    -fx-opacity:0.4;
 }
 .locked{
     -fx-background-color:-fx-light;

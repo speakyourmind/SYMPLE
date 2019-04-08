@@ -279,9 +279,9 @@
                                                     <!-- TO DO    <OnOffButton fx:id="btnTimeout" maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
                                                     -->
                                                 </SettingsRow>
-                                                <SettingsRow helpText="Configure the order in which apps are built" titleText="App Build Order" GridPane.columnSpan="3" GridPane.rowIndex="3">
+                                                <!--<SettingsRow helpText="Configure the order in which apps are built" titleText="App Build Order" GridPane.columnSpan="3" GridPane.rowIndex="3">
                                                     <TextField fx:id="appBuildOrderField" maxHeight="60.0" styleClass="settings-text-area" GridPane.columnIndex="1" GridPane.columnSpan="2" />
-                                                </SettingsRow>
+                                                </SettingsRow>-->
                                                 
                                                 <SettingsRow helpText="Configure the order in which TTS Engines are built" titleText="TTS Build Order" GridPane.columnSpan="3" GridPane.rowIndex="4">
                                                     <TextField fx:id="ttsBuildOrderField" maxHeight="60.0" styleClass="settings-text-area" GridPane.columnIndex="1" GridPane.columnSpan="2" />

@@ -152,32 +152,18 @@ public class Navigation extends Characteristic {
 
     /**
      *
-     */
+     
     public static final String BUILD_ORDER_KEY = "app.navigation.appBuildOrder";
     private ListProperty<String> appBuildOrder;
 
-    /**
-     *
-     * @param value
-     */
     public void setAppBuildOrder(ObservableList<String> value) {
         appBuildOrderProperty().setValue(value);
         getPreferences().put(BUILD_ORDER_KEY, value.toString().replaceAll("[\\[\\]]", "").replaceAll(" ", ""));
 
     }
-
-    /**
-     *
-     * @return
-     */
     public ObservableList<String> getAppBuildOrder() {
         return appBuildOrderProperty().getValue();
     }
-
-    /**
-     *
-     * @return
-     */
     public ListProperty<String> appBuildOrderProperty() {
         if (appBuildOrder == null) {
             TextOperator textOperator = new TextOperator();
@@ -188,7 +174,7 @@ public class Navigation extends Characteristic {
         }
         return appBuildOrder;
     }
-
+*/
     /**
      *
      */

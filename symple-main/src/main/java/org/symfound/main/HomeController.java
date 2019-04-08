@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import org.apache.log4j.Logger;
 import org.symfound.app.GridController;
 import org.symfound.controls.user.AnimatedLabel;
@@ -66,9 +67,11 @@ public class HomeController extends GridController {
         //  setIndex("home");
         getSession().builtProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-               ConfigurableGrid.editModeProperty().bindBidirectional(FullSession.getMainUI().editModeProperty());
+                ConfigurableGrid.editModeProperty().bindBidirectional(FullSession.getMainUI().editModeProperty());
                 GridPane.setRowIndex(getGrid(), 1);
-                getGrid().maxHeightProperty().bind(Bindings.multiply(0.96,gpMain.heightProperty()));
+                GridPane.setHgrow(getGrid(), Priority.NEVER);
+                GridPane.setVgrow(getGrid(), Priority.NEVER);
+                getGrid().maxHeightProperty().bind(Bindings.multiply(0.96, gpMain.heightProperty()));
                 gpMain.getChildren().add(getGrid());
             }
 
@@ -88,6 +91,5 @@ public class HomeController extends GridController {
         }
         return grid;
     }
-
 
 }

@@ -109,8 +109,8 @@ public class AppSettingsController extends SettingsControllerBase {
     /**
      *
      */
-    @FXML
-    public TextField appBuildOrderField;
+   // @FXML
+    //public TextField appBuildOrderField;
 
     /**
      *
@@ -173,7 +173,7 @@ public class AppSettingsController extends SettingsControllerBase {
         // NAVIGATION
         final Navigation navigation = getUser().getNavigation();
         timeoutField.setValue(navigation.getTimeout());
-        appBuildOrderField.setText(navigation.getAppBuildOrder().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll(" ", ""));
+//        appBuildOrderField.setText(navigation.getAppBuildOrder().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll(" ", ""));
         ttsBuildOrderField.setText(navigation.getTTSBuildOrder().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll(" ", ""));
 
         //      menuOrderField.setText(navigation.getMenuOrder().asString());
@@ -218,7 +218,7 @@ public class AppSettingsController extends SettingsControllerBase {
         // NAVIGATION
         final Navigation navigation = getUser().getNavigation();
         navigation.setTimeout(timeoutField.getValue());
-        navigation.setAppBuildOrder(FXCollections.observableArrayList(Arrays.asList(appBuildOrderField.getText().split(BUTTON_DELIMITER))));
+        //navigation.setAppBuildOrder(FXCollections.observableArrayList(Arrays.asList(appBuildOrderField.getText().split(BUTTON_DELIMITER))));
         navigation.setTTSBuildOrder(FXCollections.observableArrayList(Arrays.asList(ttsBuildOrderField.getText().split(BUTTON_DELIMITER))));
         //navigation.setButtonOrder(FXCollections.observableArrayList(Arrays.asList(buttonOrderField.getText().split(BUILD_DELIMITER))));
         ParallelList<String, String> parallelList = new ParallelList<>();

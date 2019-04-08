@@ -5,6 +5,7 @@
  */
 package org.symfound.selection;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Parent;
@@ -63,27 +64,22 @@ public abstract class Selector {
     /**
      *
      */
-    public void configure() {
-        Main.getSession().playingProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) {
-                configureStartStop();
-            }
-        });
-
-    }
-
-    /**
-     *
-     */
     public void configureStartStop() {
         startStop();
-
-        getUser().getInteraction().overrideSelectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
+        Bindings.concat(getUser().getInteraction().overrideSelectionMethodProperty().asString(),
+                getUser().getInteraction().selectionMethodProperty().asString(),
+                grid.selectionMethodProperty().asString(),
+                editModeProperty(),
+                grid.indexProperty()).addListener((observable, oldValue, newValue) -> {
+            startStop();
+        });
+        /*  getUser().getInteraction().overrideSelectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
             LOGGER.info("User selection method override changed from "
                     + oldValue1.toString() + " to " + newValue1.toString());
             startStop();
         });
 
+        
         getUser().getInteraction().selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
             LOGGER.info("User selection method changed from "
                     + oldValue1.toString() + " to " + newValue1.toString());
@@ -97,12 +93,14 @@ public abstract class Selector {
         });
 
         editModeProperty().addListener((observable, oldValue, newValue) -> {
+            LOGGER.info("Edit mode has changed from " + oldValue.toString() + " to " + newValue.toString());
             startStop();
         });
 
         grid.indexProperty().addListener((observable, oldValue, newValue) -> {
+            LOGGER.info("Grid Index has changed from " + oldValue + " to " + newValue);
             startStop();
-        });
+        });*/
 
     }
 
@@ -114,7 +112,6 @@ public abstract class Selector {
         SelectionMethod gridMethod = grid.getSelectionMethod();
 
         Boolean overrideSelectionMethod = getUser().getInteraction().overrideSelectionMethod();
-
         SelectionMethod deducedMethod = (overrideSelectionMethod) ? gridMethod : userMethod;
 
         final int size = grid.getGridManager().getOrder().getFirstList().size();
@@ -208,9 +205,9 @@ public abstract class Selector {
             SubGrid subGrid = (SubGrid) parent;
             LOGGER.info("Adding Selector button to Sub grid " + grid.getIndex());
             subGrid.addToPane(selectorButton);
-        } else if (parent instanceof GridPane) {
+        }/* else if (parent instanceof GridPane) {
             ((GridPane) parent).add(selectorButton, 0, 1);
-        } else {
+        }*/ else {
             LOGGER.fatal("Scanner node's parent is neither a grid nor a subgrid");
         }
     }
@@ -219,7 +216,7 @@ public abstract class Selector {
      *
      */
     public void removeSelectorButton() {
-        LOGGER.info("Removing selector button");
+        LOGGER.info("Removing selector button from grid: " + grid.getIndex());
         getSelectorButton().removeFromParent();
     }
 
@@ -234,8 +231,7 @@ public abstract class Selector {
                     + currentRow + ", " + currentColumn);
             RunnableControl current = getScourer().getCurrent();
             if (current instanceof SubGrid) {
-                LOGGER.info("Sub grid selected");
-                stop();
+                LOGGER.info("Nested grid selected");
                 SubGrid currentGrid = (SubGrid) current;
                 invokeSubGrid(currentGrid);
             } else {
@@ -243,7 +239,6 @@ public abstract class Selector {
                 current.buttonHandler();
                 current.execute();
             }
-
             setExecuted(true);
             stop();
 

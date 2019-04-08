@@ -150,12 +150,12 @@ public class FullSession extends Session {
             try {
                 thread.join();
                 LOGGER.info("Settings import from " + masterFile + " complete");
-
             } catch (InterruptedException ex) {
                 LOGGER.warn(ex);
             }
         } else {
-            LOGGER.warn("Master file does not exist in " + masterFile + " Proceeding with default settings");
+            LOGGER.warn("Master file does not exist in " + masterFile 
+                    + ". Proceeding with default settings.");
         }
 
         //   System.getProperties().list(System.out);

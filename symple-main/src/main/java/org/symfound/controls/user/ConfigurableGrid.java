@@ -121,7 +121,6 @@ public class ConfigurableGrid extends ButtonGrid {
         triggerReloadProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 reload();
-
                 setTriggerReload(Boolean.FALSE);
             }
         });
@@ -156,22 +155,18 @@ public class ConfigurableGrid extends ButtonGrid {
             }
         });
 
-        getScanner().configure();
-        getStepper().configure();
-
         triggerReload();
-        
-        getSession().playingProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) {
-                //startSelector(getUser().getInteraction().getSelectionMethod());
-                getUser().getInteraction().selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
-                    LOGGER.info("User selection method changed from "
-                            + oldValue1.toString() + " to " + newValue1.toString());
-                    //  startSelector(newValue1);
-                });
+        statusProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == ScreenStatus.PLAYING) {
+                getScanner().configureStartStop();
+                getStepper().configureStartStop();
             }
-        });
+            getUser().getInteraction().selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
+                LOGGER.info("User selection method changed from "
+                        + oldValue1.toString() + " to " + newValue1.toString());
+            });
 
+        });
     }
 
     /**

@@ -20,6 +20,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import static org.symfound.builder.user.characteristic.Ability.MAX_LEVEL;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
@@ -257,6 +259,7 @@ public class FillableGrid extends BuildableGrid {
                 for (int j = 0; j < getSpecColumns(); j++) {
                     if (k < getControlsQueue().size()) {
                         RunnableControl screenControl = getControlsQueue().get(k);
+                        test(screenControl);
                         //  screenControl.setGridLocation(k);
                         //System.out.println("Adding " + screenControl.getText() + " to column " + j + " to row " + i);
                         add(screenControl, j, i, DEFAULT_COLUMN_SPAN, DEFAULT_ROW_SPAN);
@@ -271,12 +274,20 @@ public class FillableGrid extends BuildableGrid {
                     if (k < getControlsQueue().size()) {
                         RunnableControl screenControl = getControlsQueue().get(k);
                         //System.out.println("Adding " + screenControl.getText() + " to column " + j + " to row " + i);
+                         test(screenControl);
                         add(screenControl, i, j, DEFAULT_COLUMN_SPAN, DEFAULT_ROW_SPAN);
                         k++;
                     }
                 }
             }
         }
+    }
+
+    private void test(RunnableControl screenControl) {
+        GridPane.setHgrow(screenControl, Priority.NEVER);
+        GridPane.setFillWidth(screenControl, Boolean.TRUE);
+        GridPane.setVgrow(screenControl, Priority.NEVER);
+        GridPane.setFillHeight(screenControl, Boolean.TRUE);
     }
 
     /**

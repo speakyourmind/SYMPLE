@@ -13,6 +13,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.layout.VBox;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
@@ -27,14 +28,7 @@ import org.symfound.controls.system.grid.editor.KeyRemoveButton;
 public class SubGrid extends AppableControl {
 
     private static final String NAME = SubGrid.class.getName();
-
-    /**
-     *
-     */
     public static final Logger LOGGER = Logger.getLogger(NAME);
-    /**
-     *
-     */
     public static final String KEY = "SubGrid";
     public static final String DESCRIPTION = "Button Group";
 
@@ -97,14 +91,7 @@ public class SubGrid extends AppableControl {
             if (n.equals(ScreenStatus.PLAYING)) {
                 if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
                     final ObservableList<Node> children = this.getConfigurableGrid().getChildren();
-                    addKeyRemoveButtons();
-
-                    if (!this.getChildren().contains(getAddKeyButton())) {
-                        addToPane(getAddKeyButton(), null, 0.0, 80.0, null);
-                    }
-                    if (!this.getChildren().contains(getEditGridButton())) {
-                        addToPane(getEditGridButton(), null, 0.0, 0.0, null);
-                    }
+                    addConfigButtons();
                 }
             }
         });
@@ -118,6 +105,7 @@ public class SubGrid extends AppableControl {
         });
 
     }
+    VBox vBox = new VBox();
 
     /**
      *
@@ -125,8 +113,14 @@ public class SubGrid extends AppableControl {
     @Override
     public void addConfigButtons() {
         addKeyRemoveButtons();
-        addToPane(getAddKeyButton(), null, 0.0, 80.0, null);
-        addToPane(getEditGridButton(), null, 0.0, 0.0, null);
+        if (!this.getChildren().contains(vBox)) {
+            vBox.getChildren().add(getAddKeyButton());
+            vBox.getChildren().add(getEditGridButton());
+            vBox.setMaxHeight(80.0);
+            vBox.setMaxWidth(20.0);
+            addToPane(vBox, null, 0.0, 0.0, null);
+        }
+
     }
 
     /**
@@ -135,21 +129,16 @@ public class SubGrid extends AppableControl {
     @Override
     public void removeConfigButtons() {
         LOGGER.debug("Removing Key Remove & Add Keys from SubGrid " + getIndex());
-//        getKeyRemoveButton().removeFromParent();
         if (!getRemoveButtons().isEmpty()) {
             getRemoveButtons().forEach((removeButton) -> {
                 removeButton.removeFromParent();
             });
             getRemoveButtons().clear();
         }
-        if (editGridButton != null) {
-            getEditGridButton().removeFromParent();
-            editGridButton = null;
-        }
-        if (addKeyButton != null) {
-            getAddKeyButton().removeFromParent();
-            addKeyButton = null;
-        }
+        editGridButton = null;
+        addKeyButton = null;
+        getChildren().remove(vBox);
+
     }
 
     /**
@@ -181,7 +170,9 @@ public class SubGrid extends AppableControl {
     public EditGridButton getEditGridButton() {
         if (editGridButton == null) {
             editGridButton = new EditGridButton(getConfigurableGrid());
-            editGridButton.setMinHeight(80.0);
+            editGridButton.setMinHeight(5.0);
+            editGridButton.setPrefHeight(60.0);
+            editGridButton.setMaxHeight(120.0);
             editGridButton.setPane("apMain");
             editGridButton.toFront();
         }
@@ -197,7 +188,9 @@ public class SubGrid extends AppableControl {
     public AddKeyButton getAddKeyButton() {
         if (addKeyButton == null) {
             addKeyButton = new AddKeyButton(getConfigurableGrid());
-            addKeyButton.setMinHeight(80.0);
+            addKeyButton.setMinHeight(5.0);
+            addKeyButton.setPrefHeight(60.0);
+            addKeyButton.setMaxHeight(120.0);
             addKeyButton.setPane("apMain");
             addKeyButton.toFront();
         }
