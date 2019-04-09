@@ -106,7 +106,6 @@ public class FillableGrid extends BuildableGrid {
             populate(method);
             spread(method);
             disableAll(isPaused());
-
             setStatus(ScreenStatus.PLAYING);
         };
         Platform.runLater(runnable);

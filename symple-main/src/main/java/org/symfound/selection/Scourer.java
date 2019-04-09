@@ -16,6 +16,7 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import org.apache.log4j.Logger;
@@ -71,7 +72,7 @@ public class Scourer {
      *
      */
     public void resetPosition() {
-        LOGGER.info("---------------------" + getCurrentControl().getText());
+        LOGGER.info("---------------------" + getCurrentControl().getKey());
         final AppableControl control = getCurrentControl();
         if (control != null) {
             if (gridToScour.isRootGrid()) {
@@ -88,6 +89,7 @@ public class Scourer {
                 GridPane.setColumnSpan(control, columnSpan);
                 GridPane.setRowIndex(control, rowIndex);
                 GridPane.setRowSpan(control, rowSpan);
+                control.getFontTracker().fontTracking.setValue(Font.font("Roboto", control.getFontWeight(), null, 0.0));
                 if (!gridToScour.getChildren().contains(control)) {
                     gridToScour.add(control, columnIndex, rowIndex, columnSpan, rowSpan);
                 }

@@ -7,7 +7,6 @@ package org.symfound.controls;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
@@ -63,6 +62,7 @@ import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.AnimatedPane;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ConfigurableGrid;
+import org.symfound.controls.user.ScreenStatus;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
@@ -71,7 +71,6 @@ import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 import org.symfound.tools.ui.ColourChoices;
 import org.symfound.tools.ui.FontTracker;
-import software.amazon.ion.Timestamp;
 
 /**
  *
@@ -339,7 +338,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
     private FontTracker fontTracker;
 
-    private FontTracker getFontTracker() {
+    public FontTracker getFontTracker() {
         if (fontTracker == null) {
             fontTracker = new FontTracker();
         }
@@ -351,25 +350,42 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      *
      */
     public void configureFont() {
-        setFont();
-        getPrimaryControl().setFont(getFontTracker().fontTracking.getValue());
-        getPrimaryControl().fontProperty().bind(getFontTracker().fontTracking);
-        getPrimaryControl().widthProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) -> {
-            setFont();
+        
+        HomeController.getGrid().getConfigurableGrid().statusProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.equals(ScreenStatus.PLAYING)) {
+                resetFont();
+                //setFont();
+                final AnimatedButton primaryControl = getPrimaryControl();
+                primaryControl.widthProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) -> {
+                    resetFont();
+                    setFont();
+                });
+                primaryControl.setFont(getFontTracker().fontTracking.getValue());
+                primaryControl.fontProperty().bind(getFontTracker().fontTracking);
+            }
         });
 
     }
 
+    public void resetFont(){
+        getFontTracker().fontTracking.setValue(buildFont(0.0));
+               
+    }
     private void setFont() {
-        getFontTracker().fontTracking.setValue(buildFont());
+        getFontTracker().fontTracking.setValue(buildFont(getFontSize()));
     }
 
-    private Font buildFont() {
-        return Font.font("Roboto", getFontWeight(), null, getFontSize());
+    private Font buildFont(Double fontSize) {
+        return Font.font("Roboto", getFontWeight(), null, fontSize);
     }
 
     private double getFontSize() {
-        return (3 * getPrimaryControl().getWidth() + getPrimaryControl().getHeight()) * (getFontScale() / 1000);
+        final AnimatedButton primaryControl = getPrimaryControl();
+        final double width = primaryControl.getWidth();
+
+        final double height = primaryControl.getHeight();
+        final double fontSize = (3 * width + height) * (getFontScale() / 1000);
+        return fontSize;
     }
 
     /**

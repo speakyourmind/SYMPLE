@@ -21,6 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import org.apache.log4j.Logger;
@@ -56,6 +57,8 @@ public class HomeController extends GridController {
     private AnimatedLabel lblReady;
     @FXML
     private GridPane gpMain;
+    @FXML
+    private AnchorPane apMain;
 
     /**
      *
@@ -68,11 +71,12 @@ public class HomeController extends GridController {
         getSession().builtProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 ConfigurableGrid.editModeProperty().bindBidirectional(FullSession.getMainUI().editModeProperty());
+                
                 GridPane.setRowIndex(getGrid(), 1);
-                GridPane.setHgrow(getGrid(), Priority.NEVER);
-                GridPane.setVgrow(getGrid(), Priority.NEVER);
-                getGrid().maxHeightProperty().bind(Bindings.multiply(0.96, gpMain.heightProperty()));
                 gpMain.getChildren().add(getGrid());
+                
+                getGrid().maxHeightProperty().bind(Bindings.multiply(0.96, gpMain.heightProperty()));
+               
             }
 
         });
