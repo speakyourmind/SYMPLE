@@ -150,101 +150,118 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     //TODO: Give credit for code?
     private void configureDrag() {
         setOnDragDetected((MouseEvent event) -> {
-            /* drag was detected, start drag-and-drop gesture*/
- /* allow any transfer mode */
-            Dragboard db = startDragAndDrop(TransferMode.ANY);
+            if (ConfigurableGrid.inEditMode() && isEditable()) {
 
-            /* put a string on dragboard */
-            ClipboardContent content = new ClipboardContent();
-            content.putString(String.valueOf(GridPane.getRowIndex(this))
-                    + "," + String.valueOf(GridPane.getColumnIndex(this))
-                    + "," + String.valueOf(GridPane.getRowSpan(this))
-                    + "," + String.valueOf(GridPane.getColumnSpan(this))
-                    + "," + String.valueOf(this.getGridLocation()));
-            db.setContent(content);
-            LOGGER.info("Drag start detected for button " + this.getText() + " with data " + content.getString());
-            event.consume();
+                /* drag was detected, start drag-and-drop gesture*/
+ /* allow any transfer mode */
+                Dragboard db = startDragAndDrop(TransferMode.ANY);
+
+                /* put a string on dragboard */
+                ClipboardContent content = new ClipboardContent();
+                content.putString(String.valueOf(GridPane.getRowIndex(this))
+                        + "," + String.valueOf(GridPane.getColumnIndex(this))
+                        + "," + String.valueOf(GridPane.getRowSpan(this))
+                        + "," + String.valueOf(GridPane.getColumnSpan(this))
+                        + "," + String.valueOf(this.getGridLocation()));
+                db.setContent(content);
+                LOGGER.info("Drag start detected for button " + this.getText() + " with data " + content.getString());
+                event.consume();
+            }
         });
         setOnDragDone((DragEvent event) -> {
-            /* the drag-and-drop gesture ended */
-            LOGGER.info("onDragDone");
-            /* if the data was successfully moved, clear it */
-            if (event.getTransferMode().equals(TransferMode.MOVE)) {
-                //   setText("Moved over");
-                GridPane.setRowIndex(this, SOURCE_ROW_INDEX);
-                GridPane.setColumnIndex(this, SOURCE_COLUMN_INDEX);
-                GridPane.setRowSpan(this, SOURCE_ROW_SPAN);
-                GridPane.setColumnSpan(this, SOURCE_COLUMN_SPAN);
-                setGridLocation(GRID_LOCATION);
+            if (ConfigurableGrid.inEditMode() && isEditable()) {
 
-                updateGridOrder();
+                /* the drag-and-drop gesture ended */
+                LOGGER.info("onDragDone");
+                /* if the data was successfully moved, clear it */
+                if (event.getTransferMode().equals(TransferMode.MOVE)) {
+                    //   setText("Moved over");
+                    GridPane.setRowIndex(this, SOURCE_ROW_INDEX);
+                    GridPane.setColumnIndex(this, SOURCE_COLUMN_INDEX);
+                    GridPane.setRowSpan(this, SOURCE_ROW_SPAN);
+                    GridPane.setColumnSpan(this, SOURCE_COLUMN_SPAN);
+                    setGridLocation(GRID_LOCATION);
+
+                    updateGridOrder();
+                }
+
+                event.consume();
             }
-
-            event.consume();
         });
         setOnDragOver((DragEvent event) -> {
-            /* data is dragged over the source */
-            //     LOGGER.info("onDragOver");
+            if (ConfigurableGrid.inEditMode() && isEditable()) {
 
-            /* accept it only if it is  not dragged from the same node
+                /* data is dragged over the source */
+                //     LOGGER.info("onDragOver");
+
+                /* accept it only if it is  not dragged from the same node
             * and if it has a string data */
-            if (event.getGestureSource() != this
-                    && event.getDragboard().hasString()) {
-                /* allow for both copying and moving, whatever user chooses */
-                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-            }
+                if (event.getGestureSource() != this
+                        && event.getDragboard().hasString()) {
+                    /* allow for both copying and moving, whatever user chooses */
+                    event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+                }
 
-            event.consume();
+                event.consume();
+            }
         });
 
         setOnDragEntered((DragEvent event) -> {
-            /* the drag-and-drop gesture entered the source */
-            //     LOGGER.info("onDragEntered");
-            /* show to the user that it is an actual gesture source */
-            if (event.getGestureSource() != this
-                    && event.getDragboard().hasString()) {
-                //setText("Drag Entered");
+            if (ConfigurableGrid.inEditMode() && isEditable()) {
 
+                /* the drag-and-drop gesture entered the source */
+                //     LOGGER.info("onDragEntered");
+                /* show to the user that it is an actual gesture source */
+                if (event.getGestureSource() != this
+                        && event.getDragboard().hasString()) {
+                    //setText("Drag Entered");
+
+                }
+                event.consume();
             }
-            event.consume();
         });
 
         setOnDragExited((DragEvent event) -> {
-            /* mouse moved away, remove the graphical cues */
-            //  setText("Drag Exited");
+            if (ConfigurableGrid.inEditMode() && isEditable()) {
 
-            event.consume();
+                /* mouse moved away, remove the graphical cues */
+                //  setText("Drag Exited");
+                event.consume();
+            }
         });
         setOnDragDropped((DragEvent event) -> {
-            /* data dropped */
+            if (ConfigurableGrid.inEditMode() && isEditable()) {
+
+                /* data dropped */
  /* if there is a string data on dragboard, read it and use it */
-            Dragboard db = event.getDragboard();
-            boolean success = false;
-            if (db.hasString()) {
-                SOURCE_COLUMN_INDEX = GridPane.getColumnIndex(this);
-                SOURCE_ROW_INDEX = GridPane.getRowIndex(this);
-                SOURCE_COLUMN_SPAN = GridPane.getColumnSpan(this);
-                SOURCE_ROW_SPAN = GridPane.getRowSpan(this);
-                GRID_LOCATION = this.getGridLocation();
-                LOGGER.info("onDragDropped " + db.getString());
+                Dragboard db = event.getDragboard();
+                boolean success = false;
+                if (db.hasString()) {
+                    SOURCE_COLUMN_INDEX = GridPane.getColumnIndex(this);
+                    SOURCE_ROW_INDEX = GridPane.getRowIndex(this);
+                    SOURCE_COLUMN_SPAN = GridPane.getColumnSpan(this);
+                    SOURCE_ROW_SPAN = GridPane.getRowSpan(this);
+                    GRID_LOCATION = this.getGridLocation();
+                    LOGGER.info("onDragDropped " + db.getString());
 
-                final String[] split = db.getString().split(",");
+                    final String[] split = db.getString().split(",");
 
-                GridPane.setRowIndex(this, Integer.valueOf(split[0]));
-                GridPane.setColumnIndex(this, Integer.valueOf(split[1]));
-                GridPane.setRowSpan(this, Integer.valueOf(split[2]));
-                GridPane.setColumnSpan(this, Integer.valueOf(split[3]));
-                setGridLocation(Integer.valueOf(split[4]));
+                    GridPane.setRowIndex(this, Integer.valueOf(split[0]));
+                    GridPane.setColumnIndex(this, Integer.valueOf(split[1]));
+                    GridPane.setRowSpan(this, Integer.valueOf(split[2]));
+                    GridPane.setColumnSpan(this, Integer.valueOf(split[3]));
+                    setGridLocation(Integer.valueOf(split[4]));
 
-                updateGridOrder();
-                //    GridPane.setColumnIndex(target, sourceIndex);
-                success = true;
-            }
-            /* let the target know whether the string was successfully
+                    updateGridOrder();
+                    //    GridPane.setColumnIndex(target, sourceIndex);
+                    success = true;
+                }
+                /* let the target know whether the string was successfully
             * transferred and used */
-            event.setDropCompleted(success);
+                event.setDropCompleted(success);
 
-            event.consume();
+                event.consume();
+            }
         });
     }
 
@@ -490,7 +507,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         if (getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.CONTAIN.toString())
                 || getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.COVER.toString())
                 || getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.STRETCH.toString())) {
-            System.out.println("test=============="+getBackgroundSize());
+            System.out.println("test==============" + getBackgroundSize());
             backgroundSizeChoices.setValue(BackgroundSizeChoices.valueOf(getBackgroundSize().toUpperCase()));
         } else {
             backgroundSizeChoices.setValue(BackgroundSizeChoices.CUSTOM);
