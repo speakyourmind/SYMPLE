@@ -30,11 +30,11 @@ public class Stepper extends Selector {
 
     /**
      *
-     * @param grid
+     * @param gridToScour
      * @param user
      */
-    public Stepper(ConfigurableGrid grid, User user) {
-        super(grid, SelectionMethod.STEP, user);
+    public Stepper(ConfigurableGrid gridToScour, User user) {
+        super(gridToScour, SelectionMethod.STEP, user);
     }
 
     /**
@@ -96,18 +96,19 @@ public class Stepper extends Selector {
      */
     @Override
     public void invokeSubGrid(SubGrid nestedGrid) {
-        
         Stepper nestedStepper = nestedGrid.getConfigurableGrid().getStepper();
         RunnableControl selector = nestedStepper.getSelectorButton();
-       // selector.setStyle("-fx-background-color:-fx-red;-fx-opacity:0.9;");
-        addSelectorButton(grid, selector);
+        addSelectorButton(gridToScour, selector);
         LOGGER.info("Starting stepper in nested grid");
         nestedStepper.start();
 
         nestedStepper.executeProperty().addListener((observable, oldValue, newValue) -> {
-            if (grid.isRootGrid()) {
-                LOGGER.info("Restarting root grid");
-                configure();
+            if (newValue) {
+                if (gridToScour.isRootGrid()) {
+                    LOGGER.info("Restarting root grid");
+                    configure();
+
+                }
             }
         });
     }

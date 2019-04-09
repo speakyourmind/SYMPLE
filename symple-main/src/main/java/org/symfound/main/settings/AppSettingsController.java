@@ -169,7 +169,8 @@ public class AppSettingsController extends SettingsControllerBase {
     public void resetSettings() {
         LOGGER.info("Resetting Application Settings");
         currentFilePath = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Current.txt";
-        getUser().getTyping().activeTextProperty().bindBidirectional(txtCurrent.textProperty());
+        txtCurrent.textProperty().bind(getUser().getTyping().activeTextProperty());
+        //getUser().getTyping().activeTextProperty().bindBidirectional(txtCurrent.textProperty());
         // NAVIGATION
         final Navigation navigation = getUser().getNavigation();
         timeoutField.setValue(navigation.getTimeout());
@@ -340,7 +341,7 @@ public class AppSettingsController extends SettingsControllerBase {
         currentPathWriter.deleteFile();
         currentPathWriter.create();
         PathReader currentPathReader = new PathReader(currentFilePath);
-        txtCurrent.setText(currentPathReader.getFileText());
+        getUser().getTyping().setActiveText(currentPathReader.getFileText());
     }
 
     /**

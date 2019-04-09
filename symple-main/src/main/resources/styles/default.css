@@ -1089,7 +1089,7 @@
 
 .selector{
     -fx-background-color:-fx-dark;
-    -fx-opacity:0.4;
+    -fx-opacity:0.0;
 }
 .locked{
     -fx-background-color:-fx-light;

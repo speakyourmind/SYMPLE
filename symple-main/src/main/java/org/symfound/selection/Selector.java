@@ -36,7 +36,7 @@ public abstract class Selector {
     /**
      *
      */
-    public final ConfigurableGrid grid;
+    public final ConfigurableGrid gridToScour;
     private final User user;
 
     /**
@@ -54,7 +54,7 @@ public abstract class Selector {
      * @param user
      */
     public Selector(ConfigurableGrid grid, SelectionMethod method, User user) {
-        this.grid = grid;
+        this.gridToScour = grid;
         this.method = method;
         this.user = user;
     }
@@ -66,9 +66,9 @@ public abstract class Selector {
         startStop();
         Bindings.concat(getUser().getInteraction().overrideSelectionMethodProperty().asString(),
                 getUser().getInteraction().selectionMethodProperty().asString(),
-                grid.selectionMethodProperty().asString(),
-                editModeProperty(),
-                grid.indexProperty()).addListener((observable, oldValue, newValue) -> {
+                gridToScour.selectionMethodProperty().asString(),
+                editModeProperty().asString(),
+                gridToScour.indexProperty()).addListener((observable, oldValue, newValue) -> {
             startStop();
         });
     }
@@ -78,21 +78,21 @@ public abstract class Selector {
      */
     public void startStop() {
         SelectionMethod userMethod = getUser().getInteraction().getSelectionMethod();
-        SelectionMethod gridMethod = grid.getSelectionMethod();
+        SelectionMethod gridMethod = gridToScour.getSelectionMethod();
 
         Boolean overrideSelectionMethod = getUser().getInteraction().overrideSelectionMethod();
         SelectionMethod deducedMethod = (overrideSelectionMethod) ? gridMethod : userMethod;
 
-        final int size = grid.getGridManager().getOrder().getFirstList().size();
+        final int size = gridToScour.getGridManager().getOrder().getFirstList().size();
         if (deducedMethod.equals(getSelectionMethod())
                 && !inEditMode()
-                && grid.isRootGrid()
+                && gridToScour.isRootGrid()
                 && size > 1) {
             if (!inProcess()) {
                 removeSelectorButton();
                 LOGGER.info("Required method is " + deducedMethod.toString()
                         + ". Starting selector:" + getSelectionMethod());
-                addSelectorButton(grid, getSelectorButton());
+                addSelectorButton(gridToScour, getSelectorButton());
             }
         } else if (!deducedMethod.equals(getSelectionMethod())
                 || inEditMode()
@@ -125,7 +125,7 @@ public abstract class Selector {
         removeSelectorButton();
         getLoopedEvent().end();
         setInProcess(false);
-        getScourer().resetPosition();
+        //  getScourer().resetPosition();
         getScourer().clearHighlight();
     }
 
@@ -172,11 +172,9 @@ public abstract class Selector {
         Parent parent = configGrid.getParent();
         if (parent instanceof SubGrid) {
             SubGrid subGrid = (SubGrid) parent;
-            LOGGER.info("Adding Selector button to Sub grid " + grid.getIndex());
+            LOGGER.info("Adding Selector button to Sub grid " + gridToScour.getIndex());
             subGrid.addToPane(selectorButton);
-        }/* else if (parent instanceof GridPane) {
-            ((GridPane) parent).add(selectorButton, 0, 1);
-        }*/ else {
+        } else {
             LOGGER.fatal("Scanner node's parent is neither a grid nor a subgrid");
         }
     }
@@ -185,7 +183,7 @@ public abstract class Selector {
      *
      */
     public void removeSelectorButton() {
-        LOGGER.info("Removing selector button from grid: " + grid.getIndex());
+        LOGGER.info("Removing selector button from grid: " + gridToScour.getIndex());
         getSelectorButton().removeFromParent();
     }
 
@@ -211,8 +209,8 @@ public abstract class Selector {
                 current.execute();
                 setExecuted(true);
                 stop();
-                if (grid.isRootGrid()) {
-                    LOGGER.info("Restarting root grid: " + grid.getIndex());
+                if (gridToScour.isRootGrid()) {
+                    LOGGER.info("Restarting root grid: " + gridToScour.getIndex());
                     configure();
                 }
             }
@@ -238,7 +236,7 @@ public abstract class Selector {
      */
     public Scourer getScourer() {
         if (scourer == null) {
-            scourer = new Scourer(grid);
+            scourer = new Scourer(gridToScour);
         }
         return scourer;
     }

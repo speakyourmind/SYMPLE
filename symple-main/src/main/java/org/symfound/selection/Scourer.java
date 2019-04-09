@@ -14,6 +14,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -22,6 +23,7 @@ import org.symfound.builder.user.characteristic.Navigation;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
+import org.symfound.main.HomeController;
 import org.symfound.main.Main;
 import org.symfound.voice.player.AudioPlayer;
 
@@ -38,22 +40,22 @@ public class Scourer {
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
-    private final ConfigurableGrid grid;
+    private final ConfigurableGrid gridToScour;
 
     /**
      *
      * @param grid
      */
     public Scourer(ConfigurableGrid grid) {
-        this.grid = grid;
+        this.gridToScour = grid;
     }
 
     /**
      *
      */
     public void clearHighlight() {
-        for (int i = 0; i < grid.getChildren().size(); i++) {
-            Node get = grid.getChildren().get(i);
+        for (int i = 0; i < gridToScour.getChildren().size(); i++) {
+            Node get = gridToScour.getChildren().get(i);
             if (get instanceof AppableControl) {
                 AppableControl node = (AppableControl) get;
                 node.getPrimaryControl().getStyleClass().remove("highlight");
@@ -69,11 +71,28 @@ public class Scourer {
      *
      */
     public void resetPosition() {
-        if (getCurrentControl() != null) {
-            GridPane.setColumnIndex(getCurrentControl(), columnIndex);
-            GridPane.setColumnSpan(getCurrentControl(), columnSpan);
-            GridPane.setRowIndex(getCurrentControl(), rowIndex);
-            GridPane.setRowSpan(getCurrentControl(), rowSpan);
+        LOGGER.info("---------------------" + getCurrentControl().getText());
+        final AppableControl control = getCurrentControl();
+        if (control != null) {
+            if (gridToScour.isRootGrid()) {
+                GridPane.setColumnIndex(control, columnIndex);
+                GridPane.setColumnSpan(control, columnSpan);
+                GridPane.setRowIndex(control, rowIndex);
+                GridPane.setRowSpan(control, rowSpan);
+            } else {
+                LOGGER.info("Return control to original parent root grid");
+                SubGrid subGrid = HomeController.getGrid();
+                final ConfigurableGrid gridToView = subGrid.getConfigurableGrid();
+                gridToView.getChildren().remove(control);
+                GridPane.setColumnIndex(control, columnIndex);
+                GridPane.setColumnSpan(control, columnSpan);
+                GridPane.setRowIndex(control, rowIndex);
+                GridPane.setRowSpan(control, rowSpan);
+                if (!gridToScour.getChildren().contains(control)) {
+                    gridToScour.add(control, columnIndex, rowIndex, columnSpan, rowSpan);
+                }
+            }
+
         }
     }
 
@@ -82,7 +101,7 @@ public class Scourer {
      * @param navigation
      */
     public void highlightNext(Navigation navigation) {
-        LOGGER.info("Searching for next control in grid " + grid.getIndex());
+        LOGGER.info("Searching for next control in grid " + gridToScour.getIndex());
         AppableControl next = null;
         switch (getDirection()) {
             case COLUMN_DIRECTION:
@@ -113,7 +132,8 @@ public class Scourer {
     public void highlightAction(AppableControl next, Navigation navigation) {
         if (next != null) {
             if (next.isSelectable()) {
-                LOGGER.info("Next control found in grid." + grid.getIndex() + ". Setting highlight for " + next.getText() + " at "
+                LOGGER.info("Next control found in grid." + gridToScour.getIndex()
+                        + ". Setting highlight for " + next.getText() + " at "
                         + getCurrentRow() + ", " + getCurrentColumn());
 
                 if (navigation.fullScreen()) {
@@ -122,13 +142,26 @@ public class Scourer {
                     rowIndex = GridPane.getRowIndex(next);
                     rowSpan = GridPane.getRowSpan(next);
                     setCurrentControl(next);
+                    if (gridToScour.isRootGrid()) {
+                        GridPane.setColumnIndex(next, 0);
+                        GridPane.setColumnSpan(next, gridToScour.getColumnConstraints().size());
+                        GridPane.setRowIndex(next, 0);
+                        GridPane.setRowSpan(next, gridToScour.getRowConstraints().size());
+                        next.setMaxHeight(gridToScour.getHeight());
+                    } else {
+                        // gridToScour.getChildren().remove(next);
+                        next.removeFromParent();
+                        LOGGER.info("Requiring full screen scanning while in a nested grid");
+                        SubGrid subGrid = HomeController.getGrid();
+                        final ConfigurableGrid gridToView = subGrid.getConfigurableGrid();
+                        GridPane.setColumnIndex(next, 0);
+                        GridPane.setColumnSpan(next, gridToView.getColumnConstraints().size());
+                        GridPane.setRowIndex(next, 0);
+                        GridPane.setRowSpan(next, gridToView.getRowConstraints().size());
+                        gridToView.getChildren().add(next);
+                        next.setMaxHeight(gridToView.getHeight());
+                    }
                     next.toFront();
-                    GridPane.setColumnIndex(next, 0);
-                    GridPane.setColumnSpan(next, grid.getColumnConstraints().size());
-                    GridPane.setRowIndex(next, 0);
-                    GridPane.setRowSpan(next, grid.getRowConstraints().size());
-                    next.setMaxHeight(grid.getHeight());
-                   
                 }
 
                 if (navigation.highlightBorder()) {
@@ -139,14 +172,14 @@ public class Scourer {
                         next.speak(next.getText());
                     }
                 }
-              //  navigation.setPlaySound(true);
+                //  navigation.setPlaySound(true);
                 if (navigation.playScourSound()) {
                     try {
                         AudioPlayer audioPlayer = new AudioPlayer();
-                       // final File file = new File(getClass().getClassLoader().getResource("sounds/click.wav").getFile());
-                       final File file = new File(Main.getSession().getUser().getNavigation().getScourSound());
-                        
-                       audioPlayer.playAudioFile(file);
+                        // final File file = new File(getClass().getClassLoader().getResource("sounds/click.wav").getFile());
+                        final File file = new File(Main.getSession().getUser().getNavigation().getScourSound());
+
+                        audioPlayer.playAudioFile(file);
                     } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {
                         LOGGER.fatal(null, ex);
                     }
@@ -180,14 +213,14 @@ public class Scourer {
      */
     public AppableControl getNextInRow() {
         incrementCurrentRow();
-        if (getCurrentRow() >= grid.getRowConstraints().size()) {
+        if (getCurrentRow() >= gridToScour.getRowConstraints().size()) {
             setCurrentRow(0);
             incrementCurrentColumn();
-            if (getCurrentColumn() >= grid.getColumnConstraints().size()) {
+            if (getCurrentColumn() >= gridToScour.getColumnConstraints().size()) {
                 setCurrentColumn(0);
             }
         }
-        AppableControl control = (AppableControl) grid.get(getCurrentRow(), getCurrentColumn());
+        AppableControl control = (AppableControl) gridToScour.get(getCurrentRow(), getCurrentColumn());
 
         return control;
     }
@@ -198,14 +231,14 @@ public class Scourer {
      */
     public AppableControl getNextInColumn() {
         incrementCurrentColumn();
-        if (getCurrentColumn() >= grid.getColumnConstraints().size()) {
+        if (getCurrentColumn() >= gridToScour.getColumnConstraints().size()) {
             setCurrentColumn(0);
             incrementCurrentRow();
-            if (getCurrentRow() >= grid.getRowConstraints().size()) {
+            if (getCurrentRow() >= gridToScour.getRowConstraints().size()) {
                 setCurrentRow(0);
             }
         }
-        AppableControl control = (AppableControl) grid.get(getCurrentRow(), getCurrentColumn());
+        AppableControl control = (AppableControl) gridToScour.get(getCurrentRow(), getCurrentColumn());
 
         return control;
     }
@@ -215,7 +248,7 @@ public class Scourer {
      * @return
      */
     public AppableControl getCurrent() {
-        return (AppableControl) grid.get(getCurrentRow(), getCurrentColumn());
+        return (AppableControl) gridToScour.get(getCurrentRow(), getCurrentColumn());
     }
 
     /**

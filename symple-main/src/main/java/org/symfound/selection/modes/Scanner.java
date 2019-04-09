@@ -83,7 +83,7 @@ public class Scanner extends Selector {
     public void invokeSubGrid(SubGrid currentGrid) {
         Scanner scanner = currentGrid.getConfigurableGrid().getScanner();
         RunnableControl button = scanner.getSelectorButton();
-        addSelectorButton(grid, button);
+        addSelectorButton(gridToScour, button);
         scanner.start();
         button.executeProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
