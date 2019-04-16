@@ -74,7 +74,6 @@ public class HomeController extends GridController {
                 
                 GridPane.setRowIndex(getGrid(), 1);
                 gpMain.getChildren().add(getGrid());
-                
                 getGrid().maxHeightProperty().bind(Bindings.multiply(0.96, gpMain.heightProperty()));
                
             }

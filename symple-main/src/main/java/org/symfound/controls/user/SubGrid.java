@@ -92,6 +92,8 @@ public class SubGrid extends AppableControl {
                 if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
                     final ObservableList<Node> children = this.getConfigurableGrid().getChildren();
                     addConfigButtons();
+                } else {
+                    removeConfigButtons();
                 }
             }
         });
@@ -105,7 +107,6 @@ public class SubGrid extends AppableControl {
         });
 
     }
-    VBox vBox = new VBox();
 
     /**
      *
@@ -113,14 +114,27 @@ public class SubGrid extends AppableControl {
     @Override
     public void addConfigButtons() {
         addKeyRemoveButtons();
-        if (!this.getChildren().contains(vBox)) {
-            vBox.getChildren().add(getAddKeyButton());
-            vBox.getChildren().add(getEditGridButton());
-            vBox.setMaxHeight(80.0);
-            vBox.setMaxWidth(20.0);
-            addToPane(vBox, null, 0.0, 0.0, null);
+        if (!getChildren().contains(getMenu())) {
+            addToPane(getMenu(), null, 0.0, 0.0, null);
         }
 
+    }
+
+    private BuildableGrid gridMenu;
+
+    public BuildableGrid getMenu() {
+        if (gridMenu == null) {
+            gridMenu = new BuildableGrid();
+            gridMenu.setSpecRows(2);
+            gridMenu.buildRows();
+            gridMenu.setSpecColumns(1);
+            gridMenu.buildColumns();
+            gridMenu.add(getAddKeyButton(), 0, 0);
+            gridMenu.add(getEditGridButton(), 0, 1);
+            gridMenu.setMaxHeight(100.0);
+            gridMenu.setMaxWidth(20.0);
+        }
+        return gridMenu;
     }
 
     /**
@@ -137,7 +151,8 @@ public class SubGrid extends AppableControl {
         }
         editGridButton = null;
         addKeyButton = null;
-        getChildren().remove(vBox);
+        gridMenu = null;
+        getChildren().remove(getMenu());
 
     }
 

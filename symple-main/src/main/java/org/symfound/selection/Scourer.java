@@ -72,7 +72,7 @@ public class Scourer {
      *
      */
     public void resetPosition() {
-        LOGGER.info("---------------------" + getCurrentControl().getKey());
+//        LOGGER.info("---------------------" + getCurrentControl().getKey());
         final AppableControl control = getCurrentControl();
         if (control != null) {
             if (gridToScour.isRootGrid()) {

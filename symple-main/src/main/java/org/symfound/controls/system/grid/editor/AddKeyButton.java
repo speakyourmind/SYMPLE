@@ -21,7 +21,7 @@ public class AddKeyButton extends SystemControl {
     /**
      *
      */
-    public static final String NAME = EditGridButton.class.getName();
+    public static final String NAME = AddKeyButton.class.getName();
 
     /**
      *
