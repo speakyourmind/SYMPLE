@@ -125,6 +125,7 @@ public class SubGrid extends AppableControl {
     public BuildableGrid getMenu() {
         if (gridMenu == null) {
             gridMenu = new BuildableGrid();
+           
             gridMenu.setSpecRows(2);
             gridMenu.buildRows();
             gridMenu.setSpecColumns(1);
@@ -149,9 +150,6 @@ public class SubGrid extends AppableControl {
             });
             getRemoveButtons().clear();
         }
-        editGridButton = null;
-        addKeyButton = null;
-        gridMenu = null;
         getChildren().remove(getMenu());
 
     }

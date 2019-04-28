@@ -420,7 +420,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     /**
      *
      */
-    public DeleteKeyButton deleteKeyButton;
+  //  public DeleteKeyButton deleteKeyButton;
 
     /**
      *
@@ -597,7 +597,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      * @return
      */
     public List<Tab> addAppableSettings() {
-        SettingsRow deleteKeyRow = createSettingRow("Delete", "Remove this button");
+      /*  SettingsRow deleteKeyRow = createSettingRow("Delete", "Remove this button");
         final Parent parent = this.getParent();
         ConfigurableGrid configurableGrid;
         if (parent instanceof ConfigurableGrid) {
@@ -607,7 +607,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             deleteKeyButton.setMaxHeight(60.0);
             deleteKeyRow.add(deleteKeyButton, 1, 0, 2, 1);
             settings.add(deleteKeyRow);
-        }
+        }*/
 
         SettingsRow showTitleRow = EditDialog.createSettingRow("Title", "Text to be displayed on this button");
         showTitleButton = new OnOffButton("SHOW", "HIDE");
