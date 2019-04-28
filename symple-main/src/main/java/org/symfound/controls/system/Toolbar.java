@@ -98,6 +98,7 @@ public class Toolbar extends ScreenControl<AnimatedButton> {
 
     private void addTitleLabel() {
         titleLabel = new AnimatedLabel();
+        
         setCSS("settings-title", titleLabel);
         titleLabel.setWrapText(DEFAULT_WRAP_TEXT);
         titleLabel.setAlignment(Pos.CENTER_LEFT);

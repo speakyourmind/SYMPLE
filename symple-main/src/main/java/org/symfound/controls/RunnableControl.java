@@ -17,6 +17,7 @@
  */
 package org.symfound.controls;
 
+import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -60,6 +61,7 @@ import org.symfound.device.selection.SelectionEventType;
 import org.symfound.main.HomeController;
 import org.symfound.main.Main;
 import org.symfound.controls.user.voice.TTSManager;
+import org.symfound.device.emulation.EmulationRequest;
 import org.symfound.tools.animation.NodeAnimator;
 import org.symfound.tools.timing.transition.ScanTransition;
 import org.symfound.voice.builder.TTSPlayer;
@@ -243,7 +245,17 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
                 if (!appable.getNavigateIndex().isEmpty()) {
                     LOGGER.info("Post click navigation requested by " + this.getText());
                     appable.openHomeScreen();
+
                     ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
+
+                    if (getUser().getInteraction().getSelectionMethod().equals(SelectionMethod.SCAN) || getUser().getInteraction().getSelectionMethod().equals(SelectionMethod.STEP)) {
+                        Device current = getSession().getDeviceManager().getCurrent();
+                        EmulationManager em = current.getProcessor().getEmulationManager();
+                        final EmulationRequest emulationRequest = new EmulationRequest();
+                        emulationRequest.setPosition(new Point(0, 0));
+                        em.getMouse().getAutomator().navigate(new Point((int) (getParentUI().getWidth() / 2), (int) (getParentUI().getHeight() / 2)));
+
+                    }
                     configurableGrid.setIndex(appable.getNavigateIndex());
                     getSession().setPlaying(false);
                 }

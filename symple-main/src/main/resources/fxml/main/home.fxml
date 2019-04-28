@@ -41,6 +41,7 @@
             </rowConstraints>
             <children>
                 <Toolbar fx:id="tbHome" titleText="" buttonOrder="Update=default,Edit=default,Settings=default,Minimize=default,Script=toolbar/home,Exit=default"/> 
+                
             </children>
         </GridPane>
     </children>

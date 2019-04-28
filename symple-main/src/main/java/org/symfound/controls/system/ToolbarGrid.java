@@ -134,8 +134,6 @@ public class ToolbarGrid extends ButtonGrid {
                     VersionUpdateButton updateButton = new VersionUpdateButton();
                     updateButton.setControlType(ControlType.SETTING_CONTROL);
                     updateButton.setEditable(Boolean.FALSE);
-
-                    //  updateButton.getStyleClass().remove("subgrid");
                     updateButton.setSymStyle("toolbar-update");
                     updateButton.setConfirmable(Boolean.TRUE);
                     updateButton.setPane("apMain");
@@ -154,18 +152,14 @@ public class ToolbarGrid extends ButtonGrid {
                 case MinimizeButton.KEY:
                     MinimizeButton minimizeButton = new MinimizeButton();
                     minimizeButton.setControlType(ControlType.SETTING_CONTROL);
-                    //  minimizeButton.getStyleClass().remove("subgrid");
                     minimizeButton.setEditable(Boolean.FALSE);
-
                     minimizeButton.setSymStyle("toolbar-minimized");
                     requestedControls.add(minimizeButton);
                     break;
                 case ExitButton.KEY:
                     ExitButton exitButton = new ExitButton();
-                    //    exitButton.getStyleClass().remove("subgrid");
                     exitButton.setControlType(ControlType.SETTING_CONTROL);
                     exitButton.setEditable(Boolean.FALSE);
-
                     exitButton.setSymStyle("toolbar-exit");
                     exitButton.setConfirmable(Boolean.TRUE);
                     exitButton.setPane("apMain");
