@@ -29,7 +29,7 @@ import org.symfound.tools.timing.Hold;
  */
 public abstract class MediaViewer extends AppableControl implements Reloadable {
 
-    AnimatedLabel label = new AnimatedLabel("Loading...");
+    public AnimatedLabel label = new AnimatedLabel("Loading...");
 
     /**
      *
@@ -55,7 +55,7 @@ public abstract class MediaViewer extends AppableControl implements Reloadable {
 
     private void initialize() {
         this.setSelectable(false);
-
+        
         label.setStyle("-fx-text-fill:-fx-blue; -fx-font-size:48pt;");
         label.setAlignment(Pos.CENTER);
         statusProperty().addListener((observable1, oldValue1, newValue1) -> {

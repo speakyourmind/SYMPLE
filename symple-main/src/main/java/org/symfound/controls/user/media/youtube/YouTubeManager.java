@@ -32,13 +32,16 @@ public class YouTubeManager extends MediaManager<String> {
         super(Arrays.asList(""));
     }
 
+    public Boolean loading = false;
 
     @Override
     public void run() {
         try {
+            loading = true;
             List<String> videos = load(getPlaylistLoader().getPlaylistID());
             LOGGER.info(videos.size() + " videos retrieved");
             setItems(videos, 100);
+            loading = false;
         } catch (IOException ex) {
             LOGGER.fatal(ex);
         }

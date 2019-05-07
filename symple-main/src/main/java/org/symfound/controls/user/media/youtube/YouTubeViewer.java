@@ -51,7 +51,6 @@ public class YouTubeViewer extends WebViewer {
         });
 
         if (getIndex().contains("next")) {
-            //  System.out.println("Index has changed to " + getIndex());
             reload();
         }
         indexProperty().addListener((observable1, oldValue1, newValue1) -> {
@@ -70,7 +69,7 @@ public class YouTubeViewer extends WebViewer {
     public void play() {
         String videoId = getYouTubeManager().getIterator().get();
         Platform.runLater(() -> {
-            if (!videoId.isEmpty()) {
+            if (!videoId.isEmpty()& !getYouTubeManager().loading) {
                 setStatus(ScreenStatus.LOADING);
                 String url = "https://www.youtube.com/embed/" + videoId
                         + "?"
@@ -98,7 +97,6 @@ public class YouTubeViewer extends WebViewer {
         setStatus(ScreenStatus.ENDING);
         getWebView().getEngine().load(null);
         removeFromParent();
-
         setStatus(ScreenStatus.CLOSED);
     }
 
