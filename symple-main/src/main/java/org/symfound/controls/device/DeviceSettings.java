@@ -107,7 +107,6 @@ public abstract class DeviceSettings<T extends Hardware> extends SettingsDialog 
     public abstract SettingsTab buildGeneralTab();
 
     //ABOUT
-
     /**
      *
      */
@@ -203,7 +202,7 @@ public abstract class DeviceSettings<T extends Hardware> extends SettingsDialog 
     /**
      *
      */
-    public static final double SMOOTHING_MIN = 0.001;
+    public static final double SMOOTHING_MIN = 0.0005;
 
     /**
      *
@@ -213,7 +212,7 @@ public abstract class DeviceSettings<T extends Hardware> extends SettingsDialog 
     /**
      *
      */
-    public static final double SMOOTHING_INC = 0.02;
+    public static final double SMOOTHING_INC = 0.01;
 
     /**
      *
@@ -237,6 +236,9 @@ public abstract class DeviceSettings<T extends Hardware> extends SettingsDialog 
 
         Slider smoothingSlider = new Slider(SMOOTHING_MIN, SMOOTHING_MAX, movability.getSmoothingFactor());
         smoothingSlider.setMajorTickUnit(SMOOTHING_INC);
+        smoothingSlider.setMinorTickCount(5);
+        smoothingSlider.setSnapToTicks(Boolean.TRUE);
+        smoothingSlider.setShowTickMarks(true);
         smoothingSlider.setValue(movability.getSmoothingFactor());
         smoothingSlider.valueProperty().addListener((observableValue, oldValue, newValue) -> {
             movability.setSmoothingFactor(newValue.doubleValue());
