@@ -213,12 +213,11 @@ public abstract class ButtonGrid extends FillableGrid {
 
     private void initialize() {
         
-        //TO DO: SPLIT
-        setHgap(getGap());
-        setVgap(getGap());
-      
-        gapProperty().bindBidirectional(vgapProperty());
-        gapProperty().bindBidirectional(hgapProperty());
+        setHgap(getCustomHGap());
+        customHGapProperty().bindBidirectional(hgapProperty());
+        
+        setVgap(getCustomVGap());
+        customVGapProperty().bindBidirectional(vgapProperty());
 
         setStyle(getOverrideStyle());
         overrideStyleProperty().addListener((obversable1, oldValue1, newValue1) -> {
@@ -901,33 +900,63 @@ public abstract class ButtonGrid extends FillableGrid {
         return triggerReload;
     }
 
-    private DoubleProperty gap;
+    private DoubleProperty customHGap;
 
     /**
      *
      * @param value
      */
-    public void setGap(Double value) {
-        gapProperty().set(value);
+    public void setCustomHGap(Double value) {
+        customHGapProperty().set(value);
     }
 
     /**
      *
      * @return
      */
-    public final Double getGap() {
-        return gapProperty().get();
+    public final Double getCustomHGap() {
+        return customHGapProperty().get();
     }
 
     /**
      *
      * @return
      */
-    public DoubleProperty gapProperty() {
-        if (gap == null) {
-            gap = new SimpleDoubleProperty(DEFAULT_GRID_GAP);
+    public DoubleProperty customHGapProperty() {
+        if (customHGap == null) {
+            customHGap = new SimpleDoubleProperty(DEFAULT_GRID_GAP);
         }
-        return gap;
+        return customHGap;
+    }
+    
+    
+    private DoubleProperty customVGap;
+        
+    /**
+     *
+     * @param value
+     */
+    public void setCustomVGap(Double value) {
+        customVGapProperty().set(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public final Double getCustomVGap() {
+        return customVGapProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DoubleProperty customVGapProperty() {
+        if (customVGap == null) {
+            customVGap = new SimpleDoubleProperty(DEFAULT_GRID_GAP);
+        }
+        return customVGap;
     }
 
     /**

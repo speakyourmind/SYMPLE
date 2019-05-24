@@ -46,7 +46,7 @@ public class ReplaceKeyButton extends SystemControl {
     /**
      *
      */
-    public static final String NAME = EditGridButton.class.getName();
+    public static final String NAME = ReplaceKeyButton.class.getName();
 
     /**
      *
@@ -78,7 +78,6 @@ public class ReplaceKeyButton extends SystemControl {
     public void defineButton() {
         setEditable(Boolean.FALSE);
         setControlType(ControlType.SETTING_CONTROL);
-        //  setConfirmable(Boolean.FALSE);
         setSelectable(Boolean.FALSE);
         setNavigatePostClick(Boolean.FALSE);
     }

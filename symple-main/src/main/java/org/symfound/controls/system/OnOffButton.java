@@ -16,24 +16,13 @@ public class OnOffButton extends RunnableControl {
      *
      */
     public static final String OFF_VALUE = "OFF";
+    public final String offValue;
 
     /**
      *
      */
     public static final String ON_VALUE = "ON";
-
-    /**
-     *
-     */
-    public OnOffButton() {
-        super("settings-text-area");
-        initialize();
-
-        toggleButton(getValue());
-        valueProperty().addListener((observable, oldValue, newValue) -> {
-            toggleButton(newValue);
-        });
-    }
+    public final String onValue;
 
     /**
      *
@@ -42,11 +31,13 @@ public class OnOffButton extends RunnableControl {
      */
     public OnOffButton(String onValue, String offValue) {
         super("settings-text-area");
+        this.onValue = onValue;
+        this.offValue = offValue;
         initialize();
-        toggleButton(getValue(), onValue, offValue);
-        valueProperty().addListener((observable, oldValue, newValue) -> {
-            toggleButton(newValue, onValue, offValue);
-        });
+    }
+
+    public OnOffButton() {
+        this(ON_VALUE, OFF_VALUE);
     }
 
     private void initialize() {
@@ -58,6 +49,10 @@ public class OnOffButton extends RunnableControl {
             run();
         });
         setControlType(ControlType.SETTING_CONTROL);
+        toggleButton(getValue(), onValue, offValue);
+        valueProperty().addListener((observable, oldValue, newValue) -> {
+            toggleButton(newValue, onValue, offValue);
+        });
     }
 
     /**

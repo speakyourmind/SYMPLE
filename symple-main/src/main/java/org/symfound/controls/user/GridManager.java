@@ -14,7 +14,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import static org.symfound.app.GridController.LOGGER;
+import org.apache.log4j.Logger;
 import org.symfound.builder.controller.Editable;
 import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
 import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
@@ -28,6 +28,12 @@ import org.symfound.tools.iteration.ParallelList;
  */
 public abstract class GridManager implements Editable {
 
+    private static final String NAME = GridManager.class.getName();
+
+    /**
+     *
+     */
+    public static final Logger LOGGER = Logger.getLogger(NAME);
     /**
      *
      * @param index
@@ -80,35 +86,66 @@ public abstract class GridManager implements Editable {
         return order;
     }
 
-    private DoubleProperty gap;
+    private DoubleProperty customHGap;
 
     /**
      *
      * @param value
      */
-    public void setGap(Double value) {
-        gapProperty().set(value);
+    public void setCustomHGap(Double value) {
+        customHGapProperty().set(value);
         getPreferences().put("gap", value.toString());
-        LOGGER.info("Grid gap set to " + value.toString());
+        LOGGER.info("Grid H gap set to " + value.toString());
     }
 
     /**
      *
      * @return
      */
-    public final Double getGap() {
-        return gapProperty().get();
+    public final Double getCustomHGap() {
+        return customHGapProperty().get();
     }
 
     /**
      *
      * @return
      */
-    public DoubleProperty gapProperty() {
+    public DoubleProperty customHGapProperty() {
         Double value = Double.valueOf(getPreferences().get("gap", DEFAULT_GRID_GAP.toString()));
-        gap = new SimpleDoubleProperty(value);
-        return gap;
+        customHGap = new SimpleDoubleProperty(value);
+        return customHGap;
     }
+    
+     private DoubleProperty customVGap;
+
+    /**
+     *
+     * @param value
+     */
+    public void setCustomVGap(Double value) {
+        customVGapProperty().set(value);
+        getPreferences().put("vGap", value.toString());
+        LOGGER.info("Grid V gap set to " + value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public final Double getCustomVGap() {
+        return customVGapProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DoubleProperty customVGapProperty() {
+        Double value = Double.valueOf(getPreferences().get("vGap", getCustomHGap().toString()));
+        customVGap = new SimpleDoubleProperty(value);
+        return customVGap;
+    }
+
 
     /**
      *

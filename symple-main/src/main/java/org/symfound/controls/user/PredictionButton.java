@@ -45,7 +45,7 @@ public class PredictionButton extends ScriptButton {
 
             LOGGER.info("Word to be pasted: " + pasteWord);
             getTextArea().get().appendText(pasteWord);
-            ActiveTextArea.bSpaceMode = 0;
+            ActiveTextArea.backspaceMode = Boolean.FALSE;
         }
     }
 

@@ -96,7 +96,6 @@ public class ScriptButton extends TypingControl {
     @Override
     public void setAppableSettings() {
         setKeyCodeConfig(Integer.valueOf(keyCodeField.getText()));
-
         setTypable(typableButton.getValue());
         super.setAppableSettings();
     }
@@ -107,7 +106,6 @@ public class ScriptButton extends TypingControl {
     @Override
     public void resetAppableSettings() {
         keyCodeField.setText(getKeyCodeConfig().toString());
-
         typableButton.setValue(isTypable());
         super.resetAppableSettings();
     }

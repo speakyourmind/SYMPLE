@@ -67,11 +67,16 @@ public class ConfigurableGrid extends ButtonGrid {
             getGridManager().setOrder(newValue);
         });
 
-        setGap(getGridManager().getGap());
-        gapProperty().addListener((observable, oldValue, newValue) -> {
-            getGridManager().setGap(newValue.doubleValue());
+        setCustomHGap(getGridManager().getCustomHGap());
+        customHGapProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setCustomHGap(newValue.doubleValue());
         });
-
+        
+        setCustomVGap(getGridManager().getCustomVGap());
+        customVGapProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setCustomVGap(newValue.doubleValue());
+        });
+        
         setFillMethod(getGridManager().getFillMethod());
         fillMethodProperty().addListener((observable, oldValue, newValue) -> {
             getGridManager().setFillMethod(newValue);
@@ -130,7 +135,8 @@ public class ConfigurableGrid extends ButtonGrid {
                     + " order is " + getGridManager().getOrder().asString()
                     + "difficulty is " + getGridManager().getMaxDifficulty());
             setOrder(getGridManager().getOrder());
-            setGap(getGridManager().getGap());
+            setCustomHGap(getGridManager().getCustomHGap());
+            setCustomVGap(getGridManager().getCustomVGap());
             setFillMethod(getGridManager().getFillMethod());
             setFillDirection(getGridManager().getFillDirection());
             setMaxDifficulty(getGridManager().getMaxDifficulty());
@@ -147,9 +153,6 @@ public class ConfigurableGrid extends ButtonGrid {
         BooleanProperty updatedSettings = SettingsController.updatedProperty();
         updatedSettings.addListener((observable2, oldValue2, newValue2) -> {
             if (newValue2) {
-                /*   if (getOrder().getFirstList().contains(EditGridButton.KEY)) {
-                    getOrder().remove(EditGridButton.KEY);
-                }*/
                 triggerReload();
                 SettingsController.setUpdated(false);
             }

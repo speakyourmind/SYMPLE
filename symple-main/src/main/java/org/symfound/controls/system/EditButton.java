@@ -33,7 +33,7 @@ public class EditButton extends SystemControl {
     /**
      *
      */
-    public static final String DEFAULT_TITLE = "Edit Home Grid";
+    public static final String DEFAULT_TITLE = "Edit Grid";
 
     /**
      *
@@ -42,27 +42,27 @@ public class EditButton extends SystemControl {
         super("toolbar-edit","Edit","","default");
         initialize();
     }
+    
+    @Override
+    public void defineButton() {
+        setConfirmable(Boolean.FALSE);
+        setControlType(ControlType.SETTING_CONTROL);
+        setEditable(Boolean.FALSE);
+    }
 
     private void initialize() {
-        setControlType(ControlType.SETTING_CONTROL);
-       /*primary = new AnimatedButton("");
-        primary.setWrapText(true);
-        load(primary);
-        setCSS(cssClass, primary);
-        setSelection(primary);*/
-        
         initTitleText = "Editing the screen";
-        initCaptionText = "Are you sure you want to change this screen?";
+        initCaptionText = "Are you sure you want to make changes to this screen?";
         getSession().builtProperty().addListener((observableList1, oldValue1, newValue1) -> {
             if (newValue1) {
                 UI parentUI = (UI) getScene().getWindow();
                 parentUI.editModeProperty().addListener((observable, oldValue, newValue) -> {
                     if (newValue) {
-                        setTitleText("Confirm Screen Edits");
-                        setCaptionText("Are you done editing this screen?");
+                        setTitleText("Confirm Changes");
+                        setCaptionText("Are you done making changes to this screen?");
                     } else {
                         setTitleText("Editing Screen");
-                        setCaptionText("Are you sure you want to edit the screen?");
+                        setCaptionText("Are you sure you want to make changes to this screen?");
                     }
                 });
             }

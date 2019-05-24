@@ -56,13 +56,13 @@ public class ActiveTextArea extends AppableControl {
     /**
      *
      */
-    public static int bSpaceMode = 0;
+    public static Boolean backspaceMode = Boolean.FALSE;
 
     /**
      *
      */
     public static final String KEY = "Main Text";
-    public static final String DESCRIPTION="Typing Area";
+    public static final String DESCRIPTION = "Typing Area";
 
     /**
      *
@@ -82,12 +82,13 @@ public class ActiveTextArea extends AppableControl {
         try {
             currentPathWriter.create();
         } catch (IOException ex) {
-            LOGGER.fatal(null, ex);
+            LOGGER.fatal("Unable to create working file path", ex);
         }
 
         StringProperty activeTextProperty = getUser().getTyping().activeTextProperty();
-        activeTextProperty.bind(textProperty());
+
         setText(getUser().getTyping().getActiveText());
+        activeTextProperty.bind(textProperty());
         loadCurrentText();
         textProperty().addListener((observable, oldValue, newValue) -> {
             if (savePath != null && readPath != null) {
@@ -96,14 +97,14 @@ public class ActiveTextArea extends AppableControl {
         });
         get().requestFocus();
         configureStyle();
-        this.setSelectable(false);
+        setSelectable(false);
     }
 
     private void loadCurrentText() {
         try {
             PathReader fileReader = new PathReader(readPath);
             String fileText = fileReader.getFileText();
-            //getUser().getTyping().setActiveText(fileText);
+//           getUser().getTyping().setActiveText(fileText);
             get().setText(fileText);
             get().positionCaret(get().getLength());
         } catch (IOException ex) {
@@ -152,12 +153,12 @@ public class ActiveTextArea extends AppableControl {
      * @param srcText
      */
     public void handle(int srcID, String srcText) {
-        if (getUser().getTyping().needsAutoComplete()) {
-            if (srcText.length() > 1) {
-                //Select the previous word in order to read the length
-                deletePreviousWord();
-            }
+        /*    if (getUser().getTyping().needsAutoComplete()) {
+        if (srcText.length() > 1) {
+        //Select the previous word in order to read the length
+        deletePreviousWord();
         }
+        }*/
 
         switch (srcID) {
             case ActionKeyCode.ENTER:
@@ -173,10 +174,13 @@ public class ActiveTextArea extends AppableControl {
             case ActionKeyCode.SPACE:
                 space();
                 break;
+            case ActionKeyCode.CLEAR:
+                setText(" ");
+                break;
             default:
                 get().replaceSelection("");
                 type(srcText);
-                ActiveTextArea.bSpaceMode = 0;
+                backspaceMode = Boolean.FALSE;
                 break;
         }
     }
@@ -187,7 +191,7 @@ public class ActiveTextArea extends AppableControl {
     public void backspace() {
         // Deletes selected letters in case of autocomplete
         get().replaceSelection("");
-        if (ActiveTextArea.bSpaceMode == 1) {
+        if (backspaceMode) {
             get().deletePreviousChar();
             deletePreviousWord();
         } else {
@@ -209,10 +213,10 @@ public class ActiveTextArea extends AppableControl {
      *
      */
     public void space() {
-        if (get().getSelectedText().length() > 1) {
-            bSpaceMode = 1;
+        if (get().getSelectedText().length() > 0) {
+            backspaceMode = Boolean.TRUE;
         } else {
-            bSpaceMode = 0;
+            backspaceMode = Boolean.FALSE;
         }
         getSession().setMutex(false);
         // Add space to mainText area
@@ -250,7 +254,7 @@ public class ActiveTextArea extends AppableControl {
                 Double autoCompleteTime = typing.getAutoCompleteTime();
                 getPredictor().setAutoComplete(typing.getPredictionGenerator(),
                         autoCompleteTime, typing.isUpperCase());
-                ActiveTextArea.bSpaceMode = 0;
+                backspaceMode = Boolean.FALSE;
             });
         }
     }

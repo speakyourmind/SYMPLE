@@ -67,7 +67,6 @@ public class SubGrid extends AppableControl {
             grid = new ConfigurableGrid();
             grid.setIndex(getIndex());
             grid.configure();
-
             setCSS("subgrid", this);
         }
         return grid;
@@ -114,7 +113,9 @@ public class SubGrid extends AppableControl {
     @Override
     public void addConfigButtons() {
         addKeyRemoveButtons();
+        
         if (!getChildren().contains(getMenu())) {
+            gridMenu=null;
             addToPane(getMenu(), null, 0.0, 0.0, null);
         }
 
@@ -125,11 +126,9 @@ public class SubGrid extends AppableControl {
     public BuildableGrid getMenu() {
         if (gridMenu == null) {
             gridMenu = new BuildableGrid();
-           
             gridMenu.setSpecRows(2);
-            gridMenu.buildRows();
             gridMenu.setSpecColumns(1);
-            gridMenu.buildColumns();
+            gridMenu.build();
             gridMenu.add(getAddKeyButton(), 0, 0);
             gridMenu.add(getEditGridButton(), 0, 1);
             gridMenu.setMaxHeight(100.0);
@@ -170,7 +169,7 @@ public class SubGrid extends AppableControl {
                 getRemoveButtons().add(keyRemoveButton);
                 control.addToPane(keyRemoveButton, 0.0, null, null, 0.0);
                 keyRemoveButton.toFront();
-                LOGGER.info("Key Remove Button added to control " + control.getText() + " with index " + control.getGridLocation() + ". Order is " + getConfigurableGrid().getOrder().asString());
+                LOGGER.info("Key Remove Button added to control " + control.getText() + " with index " + control.getGridLocation());
             }
         }
     }
@@ -181,14 +180,14 @@ public class SubGrid extends AppableControl {
      * @return
      */
     public EditGridButton getEditGridButton() {
-        if (editGridButton == null) {
+       // if (editGridButton == null) {
             editGridButton = new EditGridButton(getConfigurableGrid());
             editGridButton.setMinHeight(5.0);
             editGridButton.setPrefHeight(60.0);
             editGridButton.setMaxHeight(120.0);
             editGridButton.setPane("apMain");
             editGridButton.toFront();
-        }
+        //}
         return editGridButton;
     }
 

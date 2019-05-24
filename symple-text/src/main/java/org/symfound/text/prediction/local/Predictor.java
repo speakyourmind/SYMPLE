@@ -119,38 +119,37 @@ public class Predictor {
      * back afterwards.</em>
      *
      * @param acGen autocomplete prediction generator
-     * @param autoCompTime time in ms to reset the word
+     * @param autoCompleteTime time in ms to reset the word
      * @param toCase upper case = 1, lower case = 2(or more)
      */
     public void setAutoComplete(PredictionGenerator acGen,
-            Double autoCompTime, Boolean toCase) {
+            Double autoCompleteTime, Boolean toCase) {
         String input = textArea.getText();
         // Populate with new autocorrect engine; settings set in initialize()
-        List<String> predList = acGen.generateRaw(input, 1, toCase);
+        List<String> predictionList = acGen.generateRaw(input, 1, toCase);
         //Continue if at least one word is found
-        if (predList.size() >= 1) {
+        if (predictionList.size() > 0) {
             //   LOGGER.info("Prediction List Size:" + predList);
             // CASE: Space as last character indicates new word, prediction based only on bigram probability
             if (input.charAt(input.length() - 1) == ' ') {
                 int i = 0;
-                if (predList.get(i).length() > 0) {
-                    textArea.appendText(predList.get(i));
+                if (predictionList.get(i).length() > 0) {
+                    textArea.appendText(predictionList.get(i));
                     textArea.selectPreviousWord();
                 }
             } else { // CASE: Partial word has been entered          
                 //Select the previous word in order to read the length
                 textArea.selectPreviousWord();
                 //Get the autocomplete predicted word & remove letters entered so far
-                String compText = predList.get(0).substring(textArea.getSelection().getLength());
+                String compText = predictionList.get(0).substring(textArea.getSelection().getLength());
                 //Save the current length of the text in the area
-                int origLength = textArea.getLength();
+                int originalLength = textArea.getLength();
                 // Append text without cursorChar
                 textArea.appendText(compText);
                 // Select all appended text
-                textArea.selectRange(origLength, textArea.getLength());
-
+                textArea.selectRange(originalLength, textArea.getLength());
             }
-            startAutoCompleteTimer(autoCompTime);
+            startAutoCompleteTimer(autoCompleteTime);
         } else {
             LOGGER.info("No prediction words found");
         }
@@ -166,10 +165,11 @@ public class Predictor {
      * @param time
      */
     public void startAutoCompleteTimer(Double time) {
+        getAutoCompleteTimer().end();
         getAutoCompleteTimer().setup(time, (ActionEvent e) -> {
             textArea.replaceSelection("");
         });
-        getAutoCompleteTimer().play();
+        getAutoCompleteTimer().playFromStart();
     }
 
     /**

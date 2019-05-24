@@ -34,7 +34,6 @@ import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.system.dialog.OKCancelDialog;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ButtonGrid;
-import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.FillableGrid.FillDirection;
 import org.symfound.controls.user.FillableGrid.FillMethod;
 import org.symfound.main.Main;
@@ -130,7 +129,8 @@ public class EditGridButton extends SystemControl {
             private BuildableGrid buttonOrderGrid;
             private ChoiceBox<FillMethod> fillMethodChoices;
             private ChoiceBox<FillDirection> fillDirectionChoices;
-            private Slider gapSlider;
+            private Slider hGapSlider;
+            private Slider vGapSlider;
             private TextField maxDifficultyField;//TODO:Change to slider;
             private TextField minDifficultyField;//TODO:Change to slider;
             private Slider overrideRowSlider;
@@ -177,13 +177,21 @@ public class EditGridButton extends SystemControl {
                 fillDirectionChoices.getStyleClass().add("settings-text-area");
                 fillDirectionRow.add(fillDirectionChoices, 1, 0, 2, 1);
 
-                SettingsRow gridGapRow = createSettingRow("Grid gap", "Adjust gaps between cells");
-                gapSlider = new Slider(0.0, 100.0, buttonGrid.getGap());
-                gapSlider.setMajorTickUnit(10);
-                gapSlider.setMinorTickCount(5);
-                gapSlider.setShowTickLabels(true);
-                gapSlider.setShowTickMarks(true);
-                gridGapRow.add(gapSlider, 1, 0, 2, 1);
+                SettingsRow hGapRow = createSettingRow("Horizontal gap", "Adjust gaps between cells");
+                hGapSlider = new Slider(0.0, 200.0, buttonGrid.getCustomHGap());
+                hGapSlider.setMajorTickUnit(20);
+                hGapSlider.setMinorTickCount(10);
+                hGapSlider.setShowTickLabels(true);
+                hGapSlider.setShowTickMarks(true);
+                hGapRow.add(hGapSlider, 1, 0, 2, 1);
+
+                SettingsRow vGapRow = createSettingRow("Vertical gap", "Adjust gaps between cells");
+                vGapSlider = new Slider(0.0, 200.0, buttonGrid.getCustomVGap());
+                vGapSlider.setMajorTickUnit(20);
+                vGapSlider.setMinorTickCount(10);
+                vGapSlider.setShowTickLabels(true);
+                vGapSlider.setShowTickMarks(true);
+                vGapRow.add(vGapSlider, 1, 0, 2, 1);
 
                 SettingsRow difficultyRow = createSettingRow("Difficulty", "Controls size of grid");
 
@@ -277,7 +285,8 @@ public class EditGridButton extends SystemControl {
                 Tab gridTab = buildTab("SIZE", gridSettings);
 
                 lookSettings.add(styleRow);
-                lookSettings.add(gridGapRow);
+                lookSettings.add(hGapRow);
+                lookSettings.add(vGapRow);
                 Tab lookTab = buildTab("LOOK", lookSettings);
 
                 selectionSettings.add(selectionMethodRow);
@@ -305,7 +314,8 @@ public class EditGridButton extends SystemControl {
                 buttonGrid.setOrder(parallelList);
                 buttonGrid.setFillMethod(fillMethodChoices.getValue());
                 buttonGrid.setFillDirection(fillDirectionChoices.getValue());
-                buttonGrid.setGap(gapSlider.getValue());
+                buttonGrid.setCustomHGap(hGapSlider.getValue());
+                buttonGrid.setCustomVGap(vGapSlider.getValue());
                 buttonGrid.setMaxDifficulty(Double.valueOf(maxDifficultyField.getText()));
                 buttonGrid.setMinDifficulty(Double.valueOf(minDifficultyField.getText()));
 
@@ -334,7 +344,8 @@ public class EditGridButton extends SystemControl {
                 buttonOrderField.setText(buttonGrid.getOrder().asString());
                 fillMethodChoices.setValue(buttonGrid.getFillMethod());
                 fillDirectionChoices.setValue(buttonGrid.getFillDirection());
-                gapSlider.setValue(buttonGrid.getGap());
+                hGapSlider.setValue(buttonGrid.getCustomHGap());
+                vGapSlider.setValue(buttonGrid.getCustomVGap());
                 maxDifficultyField.setText(String.valueOf(buttonGrid.getMaxDifficulty()));
                 minDifficultyField.setText(String.valueOf(buttonGrid.getMinDifficulty()));
                 overrideRowSlider.setValue(buttonGrid.getOverrideRow());

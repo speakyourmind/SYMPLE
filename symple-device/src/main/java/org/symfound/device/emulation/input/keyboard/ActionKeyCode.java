@@ -130,4 +130,6 @@ public interface ActionKeyCode {
      */
     int SPACE = -21;
     
+    int CLEAR=-22;
+    
 }

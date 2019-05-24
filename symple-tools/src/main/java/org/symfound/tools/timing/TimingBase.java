@@ -53,7 +53,17 @@ public class TimingBase {
      *
      */
     public void play() {
+       
         timeline.play();
+        setPlaying(Boolean.TRUE);
+    }
+    
+      /**
+     *
+     */
+    public void playFromStart() {
+       
+        timeline.playFromStart();
         setPlaying(Boolean.TRUE);
     }
 

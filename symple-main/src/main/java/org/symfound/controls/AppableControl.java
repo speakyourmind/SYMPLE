@@ -296,10 +296,9 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         // TO DO : CAUSING ISSUES WITH PHOTO AND YOUTUBE. Try when playing?
         if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
             addConfigButtons();
-        }
-        /*else {
+        } else {
             removeConfigButtons();
-        }*/
+        }
 
         ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1 && !isSettingsControl && isEditable()) {
@@ -350,7 +349,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      *
      */
     public void configureFont() {
-        
+
         HomeController.getGrid().getConfigurableGrid().statusProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.equals(ScreenStatus.PLAYING)) {
                 resetFont();
@@ -367,10 +366,11 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
     }
 
-    public void resetFont(){
+    public void resetFont() {
         getFontTracker().fontTracking.setValue(buildFont(0.0));
-               
+
     }
+
     private void setFont() {
         getFontTracker().fontTracking.setValue(buildFont(getFontSize()));
     }
@@ -420,8 +420,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     /**
      *
      */
-  //  public DeleteKeyButton deleteKeyButton;
-
+    //  public DeleteKeyButton deleteKeyButton;
     /**
      *
      */
@@ -523,7 +522,6 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         if (getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.CONTAIN.toString())
                 || getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.COVER.toString())
                 || getBackgroundSize().toUpperCase().equals(BackgroundSizeChoices.STRETCH.toString())) {
-            System.out.println("test==============" + getBackgroundSize());
             backgroundSizeChoices.setValue(BackgroundSizeChoices.valueOf(getBackgroundSize().toUpperCase()));
         } else {
             backgroundSizeChoices.setValue(BackgroundSizeChoices.CUSTOM);
@@ -597,7 +595,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      * @return
      */
     public List<Tab> addAppableSettings() {
-      /*  SettingsRow deleteKeyRow = createSettingRow("Delete", "Remove this button");
+        /*  SettingsRow deleteKeyRow = createSettingRow("Delete", "Remove this button");
         final Parent parent = this.getParent();
         ConfigurableGrid configurableGrid;
         if (parent instanceof ConfigurableGrid) {

@@ -78,3 +78,6 @@
 2018-01-05 11:51:30 INFO  PhraseFinderMain:65 - Whatdidyoudowith
 2018-01-05 11:51:30 INFO  PhraseFinderMain:60 - 0.0636519
 2018-01-05 11:51:30 INFO  PhraseFinderMain:65 - Whatdidyoudoto
+2019-05-14 17:59:21 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-05-14 17:59:21 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-05-14 17:59:21 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+

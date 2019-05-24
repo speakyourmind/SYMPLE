@@ -67,12 +67,12 @@ public class BuildableGrid extends AnimatedGrid {
 
     /**
      *
-     * @param rowPercentages
+     * @param percentages
      */
-    public void buildRowByPerc(List<Double> rowPercentages) {
-        for (Double rowPercentage : rowPercentages) {
+    public void buildRowByPerc(List<Double> percentages) {
+        for (Double percentage : percentages) {
             RowConstraints row = new RowConstraints();
-            row.setPercentHeight(rowPercentage);
+            row.setPercentHeight(percentage);
             addRow(row);
         }
     }

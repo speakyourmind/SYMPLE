@@ -109,7 +109,7 @@ public class SwiftySettings extends DeviceSettings<Swifty> {
     private List<OnOffButton> buildDIPButtons(BuildableGrid grid) {
         List<OnOffButton> buttons = new ArrayList<>();
         for (int i = 0; i < DIP_SIZE; i++) {
-            OnOffButton onOff = new OnOffButton();
+            OnOffButton onOff = new OnOffButton("","");
             buttons.add(onOff);
         }
         return buttons;
