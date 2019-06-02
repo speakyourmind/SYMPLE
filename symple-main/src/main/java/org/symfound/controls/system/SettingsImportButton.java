@@ -42,7 +42,7 @@ public final class SettingsImportButton extends SettingsManagerControl {
         try {
             Preferences.userRoot().node("/org/symfound").removeNode();
         } catch (BackingStoreException ex) {
-            java.util.logging.Logger.getLogger(SettingsImportButton.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.fatal(ex);
         }
         final String fileSelection = getSelectedFile();
         PreferencesImporter settingsImporter = new PreferencesImporter(fileSelection);

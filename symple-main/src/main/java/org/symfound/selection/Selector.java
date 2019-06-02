@@ -64,7 +64,7 @@ public abstract class Selector {
      */
     public void configure() {
         startStop();
-        Bindings.concat(getUser().getInteraction().overrideSelectionMethodProperty().asString(),
+        Bindings.concat(getUser().getInteraction().assistedModeProperty().asString(),
                 getUser().getInteraction().selectionMethodProperty().asString(),
                 gridToScour.selectionMethodProperty().asString(),
                 editModeProperty().asString(),
@@ -80,7 +80,7 @@ public abstract class Selector {
         SelectionMethod userMethod = getUser().getInteraction().getSelectionMethod();
         SelectionMethod gridMethod = gridToScour.getSelectionMethod();
 
-        Boolean overrideSelectionMethod = getUser().getInteraction().overrideSelectionMethod();
+        Boolean overrideSelectionMethod = getUser().getInteraction().isInAssistedMode();
         SelectionMethod deducedMethod = (overrideSelectionMethod) ? gridMethod : userMethod;
 
         final int size = gridToScour.getGridManager().getOrder().getFirstList().size();

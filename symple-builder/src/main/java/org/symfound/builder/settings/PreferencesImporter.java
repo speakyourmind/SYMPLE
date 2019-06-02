@@ -47,8 +47,8 @@ public class PreferencesImporter extends PreferencesTransporter {
     @Override
     public void run() {
         try {
-         //   Preferences.userRoot().node(ROOT_NODE).removeNode();
-           Preferences.userRoot().clear();
+            //   Preferences.userRoot().node(ROOT_NODE).removeNode();
+            Preferences.userRoot().clear();
             PreferencesManager.importPreferences(fileSelection);
             Preferences.userRoot().node(ROOT_NODE).flush();
 

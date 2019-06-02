@@ -1,5 +1,3 @@
-
- 
 package org.symfound.main;
 
 import javafx.application.Application;
@@ -24,7 +22,7 @@ public class Main extends Application {
     /**
      *
      */
-    public static final String VERSION = "v2.3.11";
+    public static final String VERSION = "v2.3.12";
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -57,6 +55,7 @@ public class Main extends Application {
             User user = new User();
             FullSession fullSession = new FullSession(user);
             sessionLauncher = new SessionLauncher<>(fullSession);
+           
         }
         return sessionLauncher;
     }

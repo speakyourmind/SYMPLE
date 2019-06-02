@@ -29,6 +29,7 @@ import org.symfound.builder.characteristic.CharacteristicManager;
 import org.symfound.builder.settings.PreferencesManager;
 import org.symfound.builder.user.characteristic.Ability;
 import org.symfound.builder.user.characteristic.Content;
+import org.symfound.builder.user.characteristic.Statistics;
 import org.symfound.builder.user.characteristic.Interaction;
 import org.symfound.builder.user.characteristic.Navigation;
 import org.symfound.builder.user.characteristic.Physical;
@@ -183,6 +184,20 @@ public class User extends CharacteristicManager {
         }
         return interaction;
     }
+
+    private Statistics statistics;
+
+    /**
+     *
+     * @return
+     */
+    public Statistics getStatistics() {
+        if (statistics == null) {
+            statistics = new Statistics(getPreferences(), getDefaultConfiguration());
+        }
+        return statistics;
+    }
+
     private Content content;
 
     /**

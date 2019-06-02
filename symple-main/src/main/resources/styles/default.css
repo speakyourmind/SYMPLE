@@ -498,52 +498,6 @@
     -fx-control-inner-background: transparent;
 }
 
-.reddit-app-button {
-    -fx-background-image: url("../images/app_reddit.png");
-    -fx-background-color: -fx-blue, derive(-fx-red,10%),-fx-red;
-    -fx-background-size: 80 80;
-    -fx-padding: 0 0 15 0;
-}
-
-.reddit-app-button:hover {-fx-background-color: derive(-fx-red,10%);}
-
-.youtube-app-button {
-    -fx-background-image: url("../images/app_youtube.png");
-    -fx-background-color: -fx-blue, derive(-fx-red,10%), -fx-red;
-    -fx-background-size: 80 80;
-    -fx-padding: 0 0 15 0;
-}
-
-.youtube-app-button:hover {-fx-background-color: derive(-fx-red,10%);}
-
-.slideshow-app-button {
-    -fx-background-image: url("../images/app_slideshow.png");
-    -fx-background-size: 100 100;
-    -fx-background-color:  -fx-blue, derive(-fx-orange,-10%), -fx-orange;
-    -fx-text-alignment:center;
-    -fx-text-fill: -fx-light;
-}
-
-.slideshow-app-button:hover {
-    -fx-background-color:  -fx-blue, derive(-fx-orange,-10%), derive(-fx-orange,10%);
-    -fx-text-fill: derive(-fx-light,10%);
-}
-
-.slideshow-background {-fx-background-color: -fx-dark;}
-
-.speak-app-button {
-    -fx-background-image: url("../images/app_speak.png");
-    -fx-background-size: contain;
-    -fx-background-color:-fx-blue, derive(-fx-green,-10%), -fx-green;
-    -fx-text-alignment:center;
-    -fx-text-fill: -fx-light;
-}
-
-.speak-app-button:hover {
-    -fx-background-color:  -fx-blue, derive(-fx-green,-10%), derive(-fx-green,10%);
-    -fx-text-fill: derive(-fx-light,10%);
-}
-
 .type-button, type-button:disabled, .type-button-small, type-button-small:disabled{
     -fx-background-color:-fx-blue,derive(-fx-light,-10%),-fx-light;
     -fx-text-fill:-fx-grey;
@@ -703,7 +657,7 @@
 .save {-fx-background-image: url("../images/save.png");}
 .undo {-fx-background-image: url("../images/undo.png");}
 .redo {-fx-background-image: url("../images/redo.png");}
-.move,.cut,.paste,.copy, .save, .return,.undo, .redo{
+.move, .cut, .paste, .copy, .save, .return, .undo, .redo{
     -fx-background-size: 20 20;
     -fx-background-color: -fx-blue;
 } 
@@ -714,6 +668,13 @@
 .toolbar, .toolbar:hover{
     -fx-background-color:-fx-dark;
 }
+
+.replace-button{
+    -fx-background-image: url("../images/add.png");
+    -fx-background-size: contain;
+    -fx-background-color: -fx-dark;
+}
+
 .toolbar-back{
     -fx-background-image: url("../images/backspace.png");
     -fx-background-size: contain;
@@ -743,6 +704,14 @@
 .toolbar-update:hover {
     -fx-background-color: -fx-blue;
 }
+.toolbar-stats {
+    -fx-background-image: url("../images/stats.png");
+    -fx-background-size: 20 20;
+    -fx-background-color: -fx-dark;
+}
+.toolbar-stats:hover {
+    -fx-background-color: -fx-blue;
+}
 .toolbar-settings {
     -fx-background-image: url("../images/settings_small.png");
     -fx-background-size: 20 20;
@@ -756,16 +725,6 @@
     -fx-background-color: -fx-dark;
 }
 .toolbar-minimized:hover {
-    -fx-background-color: -fx-blue;
-}
-
-
-.toolbar-add {
-    -fx-background-image: url("../images/add.png");
-    -fx-background-color: -fx-dark;
-    -fx-background-size: contain;
-}
-.toolbar-add:hover {
     -fx-background-color: -fx-blue;
 }
 
@@ -786,6 +745,28 @@
 
 .toolbar-power:hover{
     -fx-background-color: -fx-red;
+}
+
+
+.toolbar-edit-grid,.toolbar-add{
+    -fx-background-radius: 100em;
+    -fx-min-width: 50px;
+    -fx-min-height: 50px; 
+    -fx-max-width: 50px;       
+    -fx-max-height: 50px;
+    -fx-background-color: -fx-dark,-fx-blue;
+     -fx-background-insets: 0,1;
+}
+.toolbar-edit-grid:hover,.toolbar-add:hover{
+    -fx-background-color:  derive(-fx-blue,10%);
+}
+.toolbar-add {
+    -fx-background-image: url("../images/add.png");
+    -fx-background-size:contain;
+}
+.toolbar-edit-grid{
+    -fx-background-image: url("../images/edit_grid.png");
+    -fx-background-size: 20 20;
 }
 
 .settings-background{

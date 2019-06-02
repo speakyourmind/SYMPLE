@@ -208,7 +208,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
 
     private SelectionMethod getDeducedSelectionMethod() {
         SelectionMethod deducedMethod;
-        Boolean overrideSelectionMethod = getUser().getInteraction().overrideSelectionMethod();
+        Boolean overrideSelectionMethod = getUser().getInteraction().isInAssistedMode();
         SelectionMethod userMethod = getUser().getInteraction().getSelectionMethod();
         if (this.getParent() instanceof ConfigurableGrid) {
             ConfigurableGrid grid = (ConfigurableGrid) this.getParent();
@@ -710,7 +710,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
             }
 
         } else {
-            LOGGER.warn("Text is null");
+            LOGGER.warn("Attempting to speak null text");
         }
     }
 

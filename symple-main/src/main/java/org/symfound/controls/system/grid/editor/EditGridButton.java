@@ -21,6 +21,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
@@ -71,7 +72,7 @@ public class EditGridButton extends SystemControl {
      * @param buttonGrid
      */
     public EditGridButton(ButtonGrid buttonGrid) {
-        super("toolbar-edit", KEY, "", "default");
+        super("toolbar-edit-grid", KEY, "", "default");
         this.buttonGrid = buttonGrid;
     }
 
@@ -80,6 +81,7 @@ public class EditGridButton extends SystemControl {
         setEditable(Boolean.FALSE);
         setControlType(ControlType.SETTING_CONTROL);
         setNavigatePostClick(Boolean.FALSE);
+    
     }
 
     /**
@@ -177,7 +179,7 @@ public class EditGridButton extends SystemControl {
                 fillDirectionChoices.getStyleClass().add("settings-text-area");
                 fillDirectionRow.add(fillDirectionChoices, 1, 0, 2, 1);
 
-                SettingsRow hGapRow = createSettingRow("Horizontal gap", "Adjust gaps between cells");
+                SettingsRow hGapRow = createSettingRow("Horizontal gap", "Adjust horizontal gaps between cells");
                 hGapSlider = new Slider(0.0, 200.0, buttonGrid.getCustomHGap());
                 hGapSlider.setMajorTickUnit(20);
                 hGapSlider.setMinorTickCount(10);
@@ -185,7 +187,7 @@ public class EditGridButton extends SystemControl {
                 hGapSlider.setShowTickMarks(true);
                 hGapRow.add(hGapSlider, 1, 0, 2, 1);
 
-                SettingsRow vGapRow = createSettingRow("Vertical gap", "Adjust gaps between cells");
+                SettingsRow vGapRow = createSettingRow("Vertical gap", "Adjust vertical gaps between cells");
                 vGapSlider = new Slider(0.0, 200.0, buttonGrid.getCustomVGap());
                 vGapSlider.setMajorTickUnit(20);
                 vGapSlider.setMinorTickCount(10);
@@ -265,15 +267,12 @@ public class EditGridButton extends SystemControl {
                                 SelectionMethod.SCAN,
                                 SelectionMethod.STEP
                         )));
-                selectionMethodChoices.disableProperty().bind(Main.getSession().getUser().getInteraction().overrideSelectionMethodProperty().not());
+                selectionMethodChoices.disableProperty().bind(Main.getSession().getUser().getInteraction().assistedModeProperty().not());
                 selectionMethodChoices.setValue(buttonGrid.getSelectionMethod());
                 selectionMethodChoices.maxHeight(80.0);
                 selectionMethodChoices.maxWidth(360.0);
                 selectionMethodChoices.getStyleClass().add("settings-text-area");
                 selectionMethodRow.add(selectionMethodChoices, 1, 0, 2, 1);
-
-                advancedSettings.add(buttonOrderRow);
-                Tab advancedTab = buildTab("ADVANCED", advancedSettings);
 
                 fillSettings.add(fillMethodRow);
                 fillSettings.add(fillDirectionRow);
@@ -291,6 +290,9 @@ public class EditGridButton extends SystemControl {
 
                 selectionSettings.add(selectionMethodRow);
                 Tab selectionTab = buildTab("SELECTION", selectionSettings);
+
+                advancedSettings.add(buttonOrderRow);
+                Tab advancedTab = buildTab("ADVANCED", advancedSettings);
 
                 TabPane tabPane = new TabPane();
                 tabPane.setPadding(new Insets(5));

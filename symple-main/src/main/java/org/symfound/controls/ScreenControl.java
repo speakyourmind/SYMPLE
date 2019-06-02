@@ -249,15 +249,7 @@ public abstract class ScreenControl<T extends Labeled> extends AnimatedPane {
      *
      */
     public static enum ControlType {
-
-        /**
-         *
-         */
         SETTING_CONTROL,
-
-        /**
-         *
-         */
         STANDARD_CONTROL
     }
 

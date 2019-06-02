@@ -39,7 +39,6 @@ public abstract class Session implements Buildable {
     public Session(User user) {
         this.user = user;
     }
-    //Main User
 
     /**
      *

@@ -13,13 +13,13 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.system.grid.editor.AddKeyButton;
 import org.symfound.controls.system.grid.editor.EditGridButton;
 import org.symfound.controls.system.grid.editor.KeyRemoveButton;
+import org.symfound.controls.system.grid.editor.StatsButton;
 
 /**
  *
@@ -113,10 +113,10 @@ public class SubGrid extends AppableControl {
     @Override
     public void addConfigButtons() {
         addKeyRemoveButtons();
-        
+
         if (!getChildren().contains(getMenu())) {
-            gridMenu=null;
-            addToPane(getMenu(), null, 0.0, 0.0, null);
+            gridMenu = null;
+            addToPane(getMenu(), null, 10.0, 10.0, null);
         }
 
     }
@@ -129,10 +129,12 @@ public class SubGrid extends AppableControl {
             gridMenu.setSpecRows(2);
             gridMenu.setSpecColumns(1);
             gridMenu.build();
+            //gridMenu.add(getSettingsButton(), 0, 0);
             gridMenu.add(getAddKeyButton(), 0, 0);
             gridMenu.add(getEditGridButton(), 0, 1);
-            gridMenu.setMaxHeight(100.0);
+            gridMenu.setMaxHeight(120.0);
             gridMenu.setMaxWidth(20.0);
+            gridMenu.setVgap(10.0);
         }
         return gridMenu;
     }
@@ -180,17 +182,33 @@ public class SubGrid extends AppableControl {
      * @return
      */
     public EditGridButton getEditGridButton() {
-       // if (editGridButton == null) {
-            editGridButton = new EditGridButton(getConfigurableGrid());
-            editGridButton.setMinHeight(5.0);
-            editGridButton.setPrefHeight(60.0);
-            editGridButton.setMaxHeight(120.0);
-            editGridButton.setPane("apMain");
-            editGridButton.toFront();
+        // if (editGridButton == null) {
+        editGridButton = new EditGridButton(getConfigurableGrid());
+        editGridButton.setMinHeight(5.0);
+        editGridButton.setPrefHeight(60.0);
+        editGridButton.setMaxHeight(120.0);
+        editGridButton.setPane("apMain");
+        editGridButton.toFront();
         //}
         return editGridButton;
     }
+    SettingsButton settingsButton;
 
+    /**
+     *
+     * @return
+     */
+    public SettingsButton getSettingsButton() {
+        if (settingsButton == null) {
+            settingsButton = new SettingsButton();
+            settingsButton.setMinHeight(5.0);
+            settingsButton.setPrefHeight(60.0);
+            settingsButton.setMaxHeight(120.0);
+            settingsButton.setPane("apMain");
+            settingsButton.toFront();
+        }
+        return settingsButton;
+    }
     AddKeyButton addKeyButton;
 
     /**

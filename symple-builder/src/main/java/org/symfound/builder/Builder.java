@@ -43,6 +43,7 @@ public class Builder {
             LOGGER.fatal("Build timed out");
             LOGGER.fatal("Jobs remaining: " + getExecutor().getPoolSize());
         });
+        
         startTimeline.play();
     }
 

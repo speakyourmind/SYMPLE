@@ -69,7 +69,7 @@ public class ReplaceKeyButton extends SystemControl {
      * @param buttonGrid
      */
     public ReplaceKeyButton(ButtonGrid buttonGrid) {
-        super("toolbar-add", KEY, "", "default");
+        super("replace-button", KEY, "", "default");
         this.buttonGrid = buttonGrid;
 
     }

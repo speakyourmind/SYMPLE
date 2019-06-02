@@ -185,7 +185,7 @@ public class SettingsController extends SettingsControllerBase {
         user.getTiming().setScanTime(slScanTime.getValue());
         user.getTiming().setStepTime(slStepTime.getValue());
         user.getAbility().setLevel(slLevel.getValue());
-        user.getInteraction().setOverrideSelectionMethod(btnAssistedMode.getValue());
+        user.getInteraction().setAssistedMode(btnAssistedMode.getValue());
         //DEVICE
         final String selectedDeviceName = getSession().getDeviceManager().getIterator().get();
         user.setDeviceName(selectedDeviceName);
@@ -215,7 +215,7 @@ public class SettingsController extends SettingsControllerBase {
         getSelectionMode().set(getUser().getInteraction().getSelectionMethod());
         cbSelection.setValue(selectionMode.get());
         slLevel.setValue(getUser().getAbility().getLevel());
-        btnAssistedMode.setValue(getUser().getInteraction().overrideSelectionMethod());
+        btnAssistedMode.setValue(getUser().getInteraction().isInAssistedMode());
 
         //DEVICE
         final String activeDevice = getUser().getDeviceName();

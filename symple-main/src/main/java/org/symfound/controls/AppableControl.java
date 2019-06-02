@@ -5,9 +5,14 @@
  */
 package org.symfound.controls;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.TimeZone;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import javafx.beans.binding.Bindings;
@@ -16,10 +21,12 @@ import javafx.beans.binding.StringExpression;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.LongProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -47,6 +54,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import org.apache.log4j.Logger;
+import org.symfound.builder.user.characteristic.Statistics;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
 import org.symfound.controls.system.EditAppButton;
 import org.symfound.controls.system.OnOffButton;
@@ -56,7 +64,6 @@ import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.system.dialog.FixableErrorDialog;
 import org.symfound.controls.system.dialog.ScreenDialog;
 import org.symfound.controls.system.dialog.ScreenPopup;
-import org.symfound.controls.system.grid.editor.DeleteKeyButton;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.AnimatedPane;
@@ -420,10 +427,6 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     /**
      *
      */
-    //  public DeleteKeyButton deleteKeyButton;
-    /**
-     *
-     */
     public List<SettingsRow> textSettings = new ArrayList<>();
 
     /**
@@ -491,6 +494,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
     public RunnableControl resetUsageButton;
     public AnimatedLabel totalUsageLabel;
+    public AnimatedLabel lastUsedLabel;
 
     /**
      *
@@ -831,8 +835,17 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         resetUsageButton.setMaxSize(180.0, 60.0);
         totalUsageRow.add(resetUsageButton, 1, 0, 1, 1);
 
+        SettingsRow lastUsedRow = EditDialog.createSettingRow("Last Used", "Last time this button was clicked");
+        lastUsedLabel = new AnimatedLabel();
+        lastUsedLabel.setStyle("-fx-font-size:3em;");
+        Date date = new Date(getLastUsed());
+        DateFormat formatter = new SimpleDateFormat("d MMM yyyy HH:mm:ss aaa");
+        formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String lastUsedString = formatter.format(date);
+        lastUsedLabel.setText(lastUsedString);
+        lastUsedRow.add(lastUsedLabel, 2, 0, 1, 1);
+        
         settings.add(rowExpandRow);
-
         settings.add(columnExpandRow);
         Tab actionTab = buildTab("ACTION", settings);
 
@@ -854,6 +867,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         Tab backgroundTab = buildTab("BACKGROUND", backgroundSettings);
 
         usageSettings.add(totalUsageRow);
+        usageSettings.add(lastUsedRow);
         Tab usageTab = buildTab("STATS", usageSettings);
 
         List<Tab> tabs = new ArrayList<>();
@@ -1085,10 +1099,28 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
     @Override
     public void run() {
+        final Statistics statistics = getSession().getUser().getStatistics();
         if (isSpeakable()) {
-            speak(getSpeakText());
+            Integer numOfWords = 0;
+            final String wordsToSpeak = getSpeakText();
+            if (wordsToSpeak != null && !wordsToSpeak.isEmpty()) {
+                StringTokenizer tokens = new StringTokenizer(wordsToSpeak);
+                numOfWords = tokens.countTokens();
+                speak(wordsToSpeak);
+            } else {
+                LOGGER.warn("There are no words to speak");
+            }
+            statistics.setTotalSpokenWordsCount(statistics.getTotalSpokenWordsCount() + numOfWords);
+            statistics.setSessionSpokenWordCount(statistics.getSessionSpokenWordCount() + numOfWords);
         }
-        incrementTotalUsageCount();
+        if (!getSession().getUser().getInteraction().isInAssistedMode()) {
+            setLastUsed(System.currentTimeMillis());
+            incrementTotalUsageCount();
+            if (!getControlType().equals(ControlType.SETTING_CONTROL)) {
+                statistics.incrementTotalSelectionCount();
+                statistics.incrementSessionSelections();
+            }
+        }
     }
 
     private StringProperty title;
@@ -1628,7 +1660,30 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         }
         return navigateIndex;
     }
+    private static final String LAST_USED_KEY = "usage.lastUsed";
+    private LongProperty lastUsed;
 
+    /**
+     *
+     * @param value
+     */
+    private void setLastUsed(Long value) {
+        lastUsedProperty().set(value);
+        getPreferences().put(LAST_USED_KEY, value.toString());
+    }
+
+    public Long getLastUsed() {
+        return lastUsedProperty().get();
+    }
+
+    public LongProperty lastUsedProperty() {
+        if (lastUsed == null) {
+            lastUsed = new SimpleLongProperty(Long.valueOf(getPreferences().get(LAST_USED_KEY, "0")));
+        }
+        return lastUsed;
+    }
+
+    private static final String USAGE_COUNT_KEY = "usage.count";
     private IntegerProperty totalUsageCount;
 
     /**
@@ -1637,7 +1692,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      */
     public void setTotalUsageCount(Integer value) {
         totalUsageCountProperty().set(value);
-        getPreferences().put("usage.count", value.toString());
+        getPreferences().put(USAGE_COUNT_KEY, value.toString());
     }
 
     public void incrementTotalUsageCount() {
@@ -1648,21 +1703,13 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         setTotalUsageCount(0);
     }
 
-    /**
-     *
-     * @return
-     */
     public Integer getTotalUsageCount() {
         return totalUsageCountProperty().get();
     }
 
-    /**
-     *
-     * @return
-     */
     public IntegerProperty totalUsageCountProperty() {
         if (totalUsageCount == null) {
-            totalUsageCount = new SimpleIntegerProperty(Integer.valueOf(getPreferences().get("usage.count", "0")));
+            totalUsageCount = new SimpleIntegerProperty(Integer.valueOf(getPreferences().get(USAGE_COUNT_KEY, "0")));
         }
         return totalUsageCount;
     }

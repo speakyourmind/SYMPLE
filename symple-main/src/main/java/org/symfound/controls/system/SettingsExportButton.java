@@ -2,14 +2,10 @@ package org.symfound.controls.system;
 
 import org.symfound.builder.settings.PreferencesExporter;
 import java.io.File;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javafx.stage.DirectoryChooser;
 import org.apache.log4j.Logger;
 import org.symfound.controls.user.AnimatedButton;
 import static org.symfound.main.FullSession.getSettingsFileName;
-import org.symfound.main.Main;
 
 /**
  *
@@ -42,9 +38,7 @@ public final class SettingsExportButton extends SettingsManagerControl {
     @Override
     public void run() {
         String folder = getFolderSelection();
-        
         String fileName = getSettingsFileName();
-
         PreferencesExporter settingsExporter = new PreferencesExporter(folder, fileName);
         settingsExporter.run();
     }
@@ -54,7 +48,9 @@ public final class SettingsExportButton extends SettingsManagerControl {
         String folder = null;
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Export Settings Destination");
-        directoryChooser.setInitialDirectory(new File(getUser().getContent().getHomeFolder()));
+        final String homeFolder = getUser().getContent().getHomeFolder();
+        final File file = new File(homeFolder);
+        directoryChooser.setInitialDirectory(file);
         File directory = directoryChooser.showDialog(getPrimaryControl().getParentUI());
         if (directory != null) {
             folder = directory.getAbsolutePath();

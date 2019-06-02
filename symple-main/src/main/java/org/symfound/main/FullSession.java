@@ -28,10 +28,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.TimeZone;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.util.Duration;
 import org.apache.log4j.Logger;
 import org.symfound.builder.Builder;
 import org.symfound.builder.loader.UIPath;
@@ -42,12 +47,12 @@ import org.symfound.builder.settings.PreferencesExporter;
 import org.symfound.builder.settings.PreferencesImporter;
 import org.symfound.device.emulation.input.InputListener;
 
-import org.symfound.main.builder.App;
 import org.symfound.main.builder.StackedUI;
 import org.symfound.controls.device.DeviceManager;
 import org.symfound.controls.user.voice.TTSManager;
 
 import static org.symfound.text.TextOperator.EOL;
+import org.symfound.tools.timing.LoopedEvent;
 import org.symfound.tools.timing.clock.Clock;
 
 /**
@@ -133,6 +138,10 @@ public class FullSession extends Session {
      */
     public FullSession(User user) {
         super(user);
+        initialize();
+    }
+
+    private void initialize() {
     }
 
     /**
@@ -154,11 +163,10 @@ public class FullSession extends Session {
                 LOGGER.warn(ex);
             }
         } else {
-            LOGGER.warn("Master file does not exist in " + masterFile 
+            LOGGER.warn("Master file does not exist in " + masterFile
                     + ". Proceeding with default settings.");
         }
 
-        //   System.getProperties().list(System.out);
         getBuilder().start(getBuildTimeout());
 
         localFonts = loadFonts();
@@ -198,12 +206,45 @@ public class FullSession extends Session {
                 getBuilder().end();
                 setPlaying(true);
 
+                getSessionTimer().playFromStart();
+                user.getStatistics().setSessionStartTime(System.currentTimeMillis());
+
+                if (!user.getInteraction().isInAssistedMode()) {
+                    user.getStatistics().incrementTotalSessionCount();
+                }
+
                 LOGGER.info(StageHelper.getStages().size() + " stages opened");
 
             }
         });
     }
 
+    /**
+     *
+     */
+    private LoopedEvent sessionTimer;
+
+    /**
+     *
+     * @return
+     */
+    public LoopedEvent getSessionTimer() {
+        if (sessionTimer == null) {
+            sessionTimer = new LoopedEvent();
+            sessionTimer.setup(1.0, (ActionEvent) -> {
+                if (!getUser().getInteraction().isInAssistedMode()) {
+                    getUser().getStatistics().incrementTotalTimeUsed(1);
+                    getUser().getStatistics().incrementSessionTimeInUse(1);
+                    /*
+                    Date date = new Date(getUser().getStatistics().getTotalTimeUsed()*1000);
+                    DateFormat formatter = new SimpleDateFormat("d MMM yyyy HH:mm:ss aaa");
+                    formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    getUser().getStatistics().setTotalTimeString(formatter.format(date));*/
+                }
+            });
+        }
+        return sessionTimer;
+    }
     private static TTSManager ttsManager;
 
     /**
@@ -355,6 +396,12 @@ public class FullSession extends Session {
         } catch (InterruptedException ex) {
             LOGGER.warn(ex);
         }
+
+        getUser().getStatistics().setSessionStartTime(0L);
+        getUser().getStatistics().resetSessionTimeInUse();
+        getUser().getStatistics().resetSessionSpokenWordCount();
+        getUser().getStatistics().resetSessionSelections();
+        getUser().getStatistics().setLastUsed(System.currentTimeMillis());
 
         LOGGER.info("Closing hardware");
         getDeviceManager().getCurrent().getHardware().close();

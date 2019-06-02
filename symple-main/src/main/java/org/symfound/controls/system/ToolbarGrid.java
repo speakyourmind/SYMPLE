@@ -10,6 +10,7 @@ import java.util.List;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl.ControlType;
+import org.symfound.controls.system.grid.editor.StatsButton;
 import org.symfound.controls.user.ButtonGrid;
 import static org.symfound.controls.user.ButtonGrid.LOGGER;
 import org.symfound.controls.user.ExecButton;
@@ -155,6 +156,14 @@ public class ToolbarGrid extends ButtonGrid {
                     minimizeButton.setEditable(Boolean.FALSE);
                     minimizeButton.setSymStyle("toolbar-minimized");
                     requestedControls.add(minimizeButton);
+                    break;
+                    
+                case StatsButton.KEY:
+                    StatsButton statsButton = new StatsButton();
+                    statsButton.setPane("apMain");
+                    statsButton.setOkText("CONFIRM");
+                    statsButton.setCancelText("CANCEL");
+                    requestedControls.add(statsButton);
                     break;
                 case ExitButton.KEY:
                     ExitButton exitButton = new ExitButton();

@@ -229,36 +229,36 @@ public class Interaction extends Characteristic {
         return selectionControl;
     }
     
-     private static final String OVERRIDE_METHOD_KEY = "app.selection.override";
-    private BooleanProperty overrideSelectionMethod;
+     private static final String ASSISTED_MODE_KEY = "app.selection.override";
+    private BooleanProperty assistedMode;
 
     /**
      *
      * @param value
      */
-    public void setOverrideSelectionMethod(Boolean value) {
-        overrideSelectionMethodProperty().setValue(value);
-        getPreferences().put(OVERRIDE_METHOD_KEY, value.toString());
+    public void setAssistedMode(Boolean value) {
+        assistedModeProperty().setValue(value);
+        getPreferences().put(ASSISTED_MODE_KEY, value.toString());
     }
 
     /**
      *
      * @return
      */
-    public Boolean overrideSelectionMethod() {
-        return overrideSelectionMethodProperty().getValue();
+    public Boolean isInAssistedMode() {
+        return assistedModeProperty().getValue();
     }
 
     /**
      *
      * @return
      */
-    public BooleanProperty overrideSelectionMethodProperty() {
-        if (overrideSelectionMethod == null) {
-            Boolean initValue = Boolean.valueOf(getPreference(OVERRIDE_METHOD_KEY));
-            overrideSelectionMethod = new SimpleBooleanProperty(initValue);
+    public BooleanProperty assistedModeProperty() {
+        if (assistedMode == null) {
+            Boolean initValue = Boolean.valueOf(getPreference(ASSISTED_MODE_KEY));
+            assistedMode = new SimpleBooleanProperty(initValue);
         }
-        return overrideSelectionMethod;
+        return assistedMode;
     }
 
 }
