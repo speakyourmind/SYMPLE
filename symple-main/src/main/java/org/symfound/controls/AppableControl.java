@@ -5,6 +5,7 @@
  */
 package org.symfound.controls;
 
+import com.ibm.icu.util.Calendar;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -840,11 +841,11 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         lastUsedLabel.setStyle("-fx-font-size:3em;");
         Date date = new Date(getLastUsed());
         DateFormat formatter = new SimpleDateFormat("d MMM yyyy HH:mm:ss aaa");
-        formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+        formatter.setTimeZone(TimeZone.getDefault());
         String lastUsedString = formatter.format(date);
         lastUsedLabel.setText(lastUsedString);
         lastUsedRow.add(lastUsedLabel, 2, 0, 1, 1);
-        
+
         settings.add(rowExpandRow);
         settings.add(columnExpandRow);
         Tab actionTab = buildTab("ACTION", settings);
@@ -1110,15 +1111,21 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             } else {
                 LOGGER.warn("There are no words to speak");
             }
-            statistics.setTotalSpokenWordsCount(statistics.getTotalSpokenWordsCount() + numOfWords);
-            statistics.setSessionSpokenWordCount(statistics.getSessionSpokenWordCount() + numOfWords);
+
+            if (statistics.isRecording()) {
+                statistics.setTotalSpokenWordsCount(statistics.getTotalSpokenWordsCount() + numOfWords);
+                statistics.setSessionSpokenWordCount(statistics.getSessionSpokenWordCount() + numOfWords);
+            }
         }
-        if (!getSession().getUser().getInteraction().isInAssistedMode()) {
-            setLastUsed(System.currentTimeMillis());
-            incrementTotalUsageCount();
-            if (!getControlType().equals(ControlType.SETTING_CONTROL)) {
-                statistics.incrementTotalSelectionCount();
-                statistics.incrementSessionSelections();
+
+        if (statistics.isRecording()) {
+            if (!getSession().getUser().getInteraction().isInAssistedMode()) {
+                setLastUsed(System.currentTimeMillis());
+                incrementTotalUsageCount();
+                if (!getControlType().equals(ControlType.SETTING_CONTROL)) {
+                    statistics.incrementTotalSelectionCount();
+                    statistics.incrementSessionSelections();
+                }
             }
         }
     }

@@ -7,12 +7,12 @@ package org.symfound.builder.user.characteristic;
 
 import java.util.Properties;
 import java.util.prefs.Preferences;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import org.symfound.builder.characteristic.Characteristic;
 
 /**
@@ -131,35 +131,35 @@ public class Statistics extends Characteristic {
     }
 
     private static final String TOTAL_TIME_KEY = "statistics.global.time";
-    private IntegerProperty timeUsed;
+    private IntegerProperty timeInUse;
 
     /**
      *
      * @param value
      */
-    public void setTotalTimeUsed(Integer value) {
-        totalTimeUsedProperty().set(value);
+    public void setTotalTimeInUse(Integer value) {
+        totalTimeInUseProperty().set(value);
         getPreferences().put(TOTAL_TIME_KEY, value.toString());
     }
 
-    public void incrementTotalTimeUsed(Integer seconds) {
-        setTotalTimeUsed(getTotalTimeUsed() + seconds);
+    public void incrementTotalTimeInUse(Integer seconds) {
+        setTotalTimeInUse(getTotalTimeInUse() + seconds);
     }
 
-    public void resetTotalTimeUsed() {
-        setTotalTimeUsed(0);
+    public void resetTotalTimeInUse() {
+        setTotalTimeInUse(0);
     }
 
-    public Integer getTotalTimeUsed() {
-        return totalTimeUsedProperty().get();
+    public Integer getTotalTimeInUse() {
+        return totalTimeInUseProperty().get();
     }
 
-    public IntegerProperty totalTimeUsedProperty() {
-        if (timeUsed == null) {
+    public IntegerProperty totalTimeInUseProperty() {
+        if (timeInUse == null) {
             Integer initValue = Integer.valueOf(getPreferences().get(TOTAL_TIME_KEY, "0"));
-            timeUsed = new SimpleIntegerProperty(initValue);
+            timeInUse = new SimpleIntegerProperty(initValue);
         }
-        return timeUsed;
+        return timeInUse;
     }
 
     private static final String SESSION_START_KEY = "statistics.session.startTime";
@@ -187,7 +187,11 @@ public class Statistics extends Characteristic {
 
     public void setLastUsed(Long value) {
         lastUsedProperty().set(value);
-        getPreferences().put(SESSION_START_KEY, value.toString());
+        getPreferences().put(LAST_USED_KEY, value.toString());
+    }
+
+    public void resetLastUsed() {
+        setLastUsed(0L);
     }
 
     public Long getLastUsed() {
@@ -195,10 +199,10 @@ public class Statistics extends Characteristic {
     }
 
     public LongProperty lastUsedProperty() {
-        if (sessionStartTime == null) {
-            sessionStartTime = new SimpleLongProperty(Long.valueOf(getPreferences().get(SESSION_START_KEY, "0")));
+        if (lastUsed == null) {
+            lastUsed = new SimpleLongProperty(Long.valueOf(getPreferences().get(LAST_USED_KEY, String.valueOf(System.currentTimeMillis()))));
         }
-        return sessionStartTime;
+        return lastUsed;
     }
 
     private static final String SESSION_TIME_IN_USE_KEY = "statistics.session.timeInUse";
@@ -273,6 +277,7 @@ public class Statistics extends Characteristic {
      * @param value
      */
     public void setSessionSelections(Integer value) {
+        
         sessionSelectionsProperty().set(value);
         getPreferences().put(TOTAL_SESSION_WORDS_KEY, value.toString());
     }
@@ -296,5 +301,55 @@ public class Statistics extends Characteristic {
         }
         return sessionSelections;
     }
+    
+    
+    private static final String RECORD_KEY = "statistics.record";
+    private BooleanProperty record;
+
+    /**
+     *
+     * @param value
+     */
+    public void setRecord(Boolean value) {
+        recordProperty().setValue(value);
+        getPreferences().put(RECORD_KEY, value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean isRecording() {
+        return recordProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty recordProperty() {
+        if (record == null) {
+            Boolean initValue = Boolean.valueOf(getPreferences().get(RECORD_KEY, "true"));
+            record = new SimpleBooleanProperty(initValue);
+        }
+        return record;
+    }
+
+
+    public void resetAllStats() {
+        resetTotalSessionCount();
+        resetTotalSpokenWordsCount();
+        resetTotalTimeInUse();
+        resetTotalSelectionCount();
+        resetSessionStats();
+    }
+
+    public void resetSessionStats() {
+        resetSessionTimeInUse();
+        resetSessionSpokenWordCount();
+        resetSessionSelections();
+    }
+    
+  
 
 }

@@ -197,6 +197,8 @@ public class FullSession extends Session {
                 LOGGER.info("Launching session");
                 //   log(": Starting SYMPLE");
                 if (getUser().getProfile().isFirstUse()) {
+                    // getUser().getStatistics().setFirstUsed(System.currentTimeMillis());
+                    //getUser().getProfile().setFirstUse(Boolean.FALSE);
                     //      uiMain.getStack().load(WIZARD_DEVICE);
                 } else {
                     getMainUI().getStack().load(HOME);
@@ -206,11 +208,22 @@ public class FullSession extends Session {
                 getBuilder().end();
                 setPlaying(true);
 
-                getSessionTimer().playFromStart();
-                user.getStatistics().setSessionStartTime(System.currentTimeMillis());
+                if (user.getStatistics().isRecording()) {
+                    getSessionTimer().playFromStart();
+                }
+                user.getStatistics().recordProperty().addListener((observable1, oldValue1, newValue1) -> {
+                    if (newValue) {
+                        getSessionTimer().playFromStart();
+                    } else {
+                        getSessionTimer().end();
+                    }
+                });
+                if (user.getStatistics().isRecording()) {
+                    user.getStatistics().setSessionStartTime(System.currentTimeMillis());
 
-                if (!user.getInteraction().isInAssistedMode()) {
-                    user.getStatistics().incrementTotalSessionCount();
+                    if (!user.getInteraction().isInAssistedMode()) {
+                        user.getStatistics().incrementTotalSessionCount();
+                    }
                 }
 
                 LOGGER.info(StageHelper.getStages().size() + " stages opened");
@@ -232,14 +245,17 @@ public class FullSession extends Session {
         if (sessionTimer == null) {
             sessionTimer = new LoopedEvent();
             sessionTimer.setup(1.0, (ActionEvent) -> {
-                if (!getUser().getInteraction().isInAssistedMode()) {
-                    getUser().getStatistics().incrementTotalTimeUsed(1);
-                    getUser().getStatistics().incrementSessionTimeInUse(1);
-                    /*
+
+                if (user.getStatistics().isRecording()) {
+                    if (!getUser().getInteraction().isInAssistedMode()) {
+                        getUser().getStatistics().incrementTotalTimeInUse(1);
+                        getUser().getStatistics().incrementSessionTimeInUse(1);
+                        /*
                     Date date = new Date(getUser().getStatistics().getTotalTimeUsed()*1000);
                     DateFormat formatter = new SimpleDateFormat("d MMM yyyy HH:mm:ss aaa");
                     formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
                     getUser().getStatistics().setTotalTimeString(formatter.format(date));*/
+                    }
                 }
             });
         }
@@ -366,6 +382,16 @@ public class FullSession extends Session {
     public void shutdown(Boolean backupSettings) {
         LOGGER.info("Shutting down SYMPLE");
 
+        LOGGER.info("Resetting Stats");
+
+        getUser().getStatistics().resetSessionTimeInUse();
+        getUser().getStatistics().resetSessionSpokenWordCount();
+        getUser().getStatistics().resetSessionSelections();
+
+        if (user.getStatistics().isRecording()) {
+            getUser().getStatistics().setLastUsed(System.currentTimeMillis());
+        }
+
         if (backupSettings) {
             String backupFolder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Backup";
             PathWriter backupPathWriter = new PathWriter(backupFolder);
@@ -396,12 +422,6 @@ public class FullSession extends Session {
         } catch (InterruptedException ex) {
             LOGGER.warn(ex);
         }
-
-        getUser().getStatistics().setSessionStartTime(0L);
-        getUser().getStatistics().resetSessionTimeInUse();
-        getUser().getStatistics().resetSessionSpokenWordCount();
-        getUser().getStatistics().resetSessionSelections();
-        getUser().getStatistics().setLastUsed(System.currentTimeMillis());
 
         LOGGER.info("Closing hardware");
         getDeviceManager().getCurrent().getHardware().close();

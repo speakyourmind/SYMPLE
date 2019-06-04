@@ -19,7 +19,6 @@ import org.symfound.controls.RunnableControl;
 import org.symfound.controls.system.grid.editor.AddKeyButton;
 import org.symfound.controls.system.grid.editor.EditGridButton;
 import org.symfound.controls.system.grid.editor.KeyRemoveButton;
-import org.symfound.controls.system.grid.editor.StatsButton;
 
 /**
  *
@@ -132,7 +131,7 @@ public class SubGrid extends AppableControl {
             //gridMenu.add(getSettingsButton(), 0, 0);
             gridMenu.add(getAddKeyButton(), 0, 0);
             gridMenu.add(getEditGridButton(), 0, 1);
-            gridMenu.setMaxHeight(120.0);
+            gridMenu.setMaxHeight(110.0);
             gridMenu.setMaxWidth(20.0);
             gridMenu.setVgap(10.0);
         }

@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.symfound</groupId>
         <artifactId>SYMPLE</artifactId>
-        <version>2.3.12</version>
+        <version>2.4.0</version>
     </parent>
     <artifactId>symple-main</artifactId>
     <packaging>jar</packaging>

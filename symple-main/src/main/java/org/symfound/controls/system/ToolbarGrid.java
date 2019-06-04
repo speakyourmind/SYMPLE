@@ -10,7 +10,7 @@ import java.util.List;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl.ControlType;
-import org.symfound.controls.system.grid.editor.StatsButton;
+import org.symfound.controls.user.StatsButton;
 import org.symfound.controls.user.ButtonGrid;
 import static org.symfound.controls.user.ButtonGrid.LOGGER;
 import org.symfound.controls.user.ExecButton;
