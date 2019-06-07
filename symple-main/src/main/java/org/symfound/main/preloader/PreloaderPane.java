@@ -29,7 +29,7 @@ public class PreloaderPane extends AnchorPane {
         //   ap.setStyle("-fx-background-color: #2980b9");
         Label label = new Label();
         label.setText(version);
-        label.setStyle("-fx-text-fill: #f3f3f3; -fx-font-size:1.1em;-fx-font-weight:bold;");
+        label.setStyle("-fx-text-fill: #f3f3f3; -fx-font-size:3em;-fx-font-weight:bold;");
         AnchorPane.setTopAnchor(label, null);
         AnchorPane.setBottomAnchor(label, 10.0);
         AnchorPane.setLeftAnchor(label, 20.0);
@@ -37,7 +37,7 @@ public class PreloaderPane extends AnchorPane {
         getChildren().add(label);
 
         Label label2 = new Label("Loading... Please Wait...");
-        label2.setStyle("-fx-text-fill: #f3f3f3; -fx-font-size:1.1em; -fx-font-weight:bold;");
+        label2.setStyle("-fx-text-fill: #f3f3f3; -fx-font-size:3em; -fx-font-weight:bold;");
         AnchorPane.setTopAnchor(label2, null);
         AnchorPane.setBottomAnchor(label2, 10.0);
         AnchorPane.setRightAnchor(label2, 20.0);
