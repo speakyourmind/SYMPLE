@@ -12,8 +12,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.prefs.Preferences;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
@@ -141,9 +139,9 @@ public class StatsButton extends SystemControl {
                 statistics.sessionTimeInUseProperty().addListener((observable, oldValue, newValue) -> {
 
                     String timeString = splitIntoHMS(newValue);
-                   sessionTimeInUseLabel.setText(timeString);
+                    sessionTimeInUseLabel.setText(timeString);
                 });
-              //  sessionTimeInUseLabel.textProperty().bind(Bindings.concat(getSession().getUser().getStatistics().sessionTimeInUseProperty().asString(), " seconds"));
+                //  sessionTimeInUseLabel.textProperty().bind(Bindings.concat(getSession().getUser().getStatistics().sessionTimeInUseProperty().asString(), " seconds"));
                 sessionTimeInUseRow.add(sessionTimeInUseLabel, 1, 0, 2, 1);
 
                 SettingsRow sessionStartTimeRow = EditDialog.createSettingRow("Start Time", "Time this session began");
@@ -164,6 +162,7 @@ public class StatsButton extends SystemControl {
                         getUser().getStatistics().resetSessionStats();
                     }
                 };
+                resetSessionUsageButton.setControlType(ControlType.SETTING_CONTROL);
                 resetSessionUsageButton.setText("RESET");
                 resetSessionUsageButton.setMaxSize(180.0, 60.0);
                 resetSessionStatsRow.add(resetSessionUsageButton, 1, 0, 1, 1);
@@ -203,9 +202,9 @@ public class StatsButton extends SystemControl {
                 DateFormat lastUsedFormatter = new SimpleDateFormat("d MMM yyyy, HH:mm:ss aaa");
                 lastUsedFormatter.setTimeZone(TimeZone.getDefault());
                 String lastUsedTime = lastUsedFormatter.format(lastUsedDate);
-               // if (getLastUsed() != 0L) {
-                    lastUsedLabel.setText(lastUsedTime);
-            
+                // if (getLastUsed() != 0L) {
+                lastUsedLabel.setText(lastUsedTime);
+
                 lastUsedRow.add(lastUsedLabel, 1, 0, 2, 1);
 
                 SettingsRow resetAllStatsRow = EditDialog.createSettingRow("Reset All Stats", "Clear all statistics data");
@@ -216,11 +215,11 @@ public class StatsButton extends SystemControl {
                         getUser().getStatistics().resetAllStats();
                     }
                 };
+                resetUsageButton.setControlType(ControlType.SETTING_CONTROL);
                 resetUsageButton.setText("RESET");
                 resetUsageButton.setMaxSize(180.0, 60.0);
                 resetAllStatsRow.add(resetUsageButton, 1, 0, 1, 1);
 
-                
                 SettingsRow recordingRow = EditDialog.createSettingRow("Pause Recording", "");
 
                 recordButton = new OnOffButton("RECORDING", "PAUSED");
