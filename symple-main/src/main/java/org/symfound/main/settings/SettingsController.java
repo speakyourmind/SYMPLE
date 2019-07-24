@@ -79,6 +79,8 @@ public class SettingsController extends SettingsControllerBase {
     @FXML
     private OnOffButton btnAssistedMode;
     @FXML
+    private OnOffButton btnAutoUpdate;
+    @FXML
     private Button btnDevice;
     @FXML
     private OnOffButton btnMouseControl;
@@ -186,6 +188,7 @@ public class SettingsController extends SettingsControllerBase {
         user.getTiming().setStepTime(slStepTime.getValue());
         user.getAbility().setLevel(slLevel.getValue());
         user.getInteraction().setAssistedMode(btnAssistedMode.getValue());
+        user.getInteraction().setAutoUpdate(btnAutoUpdate.getValue());
         //DEVICE
         final String selectedDeviceName = getSession().getDeviceManager().getIterator().get();
         user.setDeviceName(selectedDeviceName);
@@ -216,6 +219,7 @@ public class SettingsController extends SettingsControllerBase {
         cbSelection.setValue(selectionMode.get());
         slLevel.setValue(getUser().getAbility().getLevel());
         btnAssistedMode.setValue(getUser().getInteraction().isInAssistedMode());
+        btnAutoUpdate.setValue(getUser().getInteraction().autoUpdate());
 
         //DEVICE
         final String activeDevice = getUser().getDeviceName();

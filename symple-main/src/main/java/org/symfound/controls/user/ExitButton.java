@@ -1,8 +1,12 @@
 package org.symfound.controls.user;
 
 import java.util.prefs.Preferences;
+import javafx.scene.layout.Pane;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
+import org.symfound.controls.system.dialog.ScreenPopup;
+import static org.symfound.main.FullSession.getMainUI;
+import static org.symfound.main.Main.getVersionManager;
 
 /**
  *
@@ -37,15 +41,72 @@ public final class ExitButton extends AppableControl {
      */
     public ExitButton() {
         super("exit-button", KEY, DEFAULT_TITLE, "default");
+
+        initialize();
+    }
+
+    private void initialize() {
         initTitleText = "Exit";
-        initCaptionText = "Are you sure you want to close the program?";
+        if (triggerUpdate()) {
+            initCaptionText = "Are you sure you want to close the program?\n"
+                    + "Program will close after downloading an update.";
+        } else {
+            initCaptionText = "Are you sure you want to close the program?";
+        }
         setSpeakText(DEFAULT_TITLE);
+    }
+
+    private boolean triggerUpdate() {
+        return getVersionManager().needsUpdate() && getUser().getInteraction().autoUpdate();
     }
 
     @Override
     public void run() {
+
+        if (triggerUpdate()) {
+            getVersionManager().update();
+            this.getParentPane().getChildren().add(getUpdaterPopup());
+        } else {
+            shutdown();
+        }
+    }
+
+    private void shutdown() {
         LOGGER.info("Exiting the program");
         getSession().shutdown(BACKUP_ON_EXIT);
+    }
+    ScreenPopup updaterPopup;
+
+    /**
+     *
+     * @return
+     */
+    public ScreenPopup<UpdaterDialog> getUpdaterPopup() {
+        if (updaterPopup == null) {
+            updaterPopup = new ScreenPopup<>(getUpdaterDialog());
+        }
+        return updaterPopup;
+    }
+    /**
+     *
+     */
+    public UpdaterDialog updaterDialog;
+
+    /**
+     *
+     * @return
+     */
+    public UpdaterDialog getUpdaterDialog() {
+        if (updaterDialog == null) {
+            updaterDialog = new UpdaterDialog() {
+                @Override
+                public void onOk() {
+                    super.onOk();
+                    shutdown();
+                }
+            };
+        }
+        return updaterDialog;
     }
 
     @Override

@@ -29,14 +29,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.util.Duration;
+import javafx.scene.layout.Pane;
 import org.apache.log4j.Logger;
 import org.symfound.builder.Builder;
 import org.symfound.builder.loader.UIPath;
@@ -49,7 +43,10 @@ import org.symfound.device.emulation.input.InputListener;
 
 import org.symfound.main.builder.StackedUI;
 import org.symfound.controls.device.DeviceManager;
+import org.symfound.controls.system.dialog.ScreenPopup;
+import org.symfound.controls.user.UpdaterDialog;
 import org.symfound.controls.user.voice.TTSManager;
+import static org.symfound.main.Main.getVersionManager;
 
 import static org.symfound.text.TextOperator.EOL;
 import org.symfound.tools.timing.LoopedEvent;
@@ -423,14 +420,15 @@ public class FullSession extends Session {
             LOGGER.warn(ex);
         }
 
-        LOGGER.info("Closing hardware");
-        getDeviceManager().getCurrent().getHardware().close();
-        LOGGER.info("Stopping Input Listener");
-        InputListener.stop();
-        Platform.exit();
-        System.exit(0);
-
+            LOGGER.info("Closing hardware");
+            getDeviceManager().getCurrent().getHardware().close();
+            LOGGER.info("Stopping Input Listener");
+            InputListener.stop();
+            Platform.exit();
+            System.exit(0);
+        
     }
+   
 
     /**
      *
