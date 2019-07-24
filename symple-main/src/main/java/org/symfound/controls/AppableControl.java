@@ -475,19 +475,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      */
     public OnOffButton selectableButton;
 
-    /**
-     *
-     */
     public OnOffButton disabledPrimaryButton;
-
-    /**
-     *
-     */
     public ChoiceBox<String> navigateIndexChoices;
-
-    /**
-     *
-     */
     public List<SettingsRow> selectionSettings = new ArrayList<>();
 
     private Slider rowExpandSlider;
