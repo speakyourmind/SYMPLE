@@ -199,7 +199,7 @@
                                                 <SettingsRow helpText="Speak selection during tabbing" titleText="Speak Selection" GridPane.columnSpan="3" GridPane.rowIndex="1">
                                                     <OnOffButton fx:id="btnSpeakSelection" maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
                                                 </SettingsRow> 
-                                                <SettingsRow helpText="Highlight border during tabbing" titleText="Highlight Border" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                                                <SettingsRow helpText="Highlight border during tabbing. Not available in Full Screen mode" titleText="Highlight Border" GridPane.columnSpan="3" GridPane.rowIndex="2">
                                                     <OnOffButton fx:id="btnHighlightBorder" maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
                                                 </SettingsRow> 
                                                 <SettingsRow helpText="Go full screen during scanning" titleText="Full Screen Tabbing" GridPane.columnSpan="3" GridPane.rowIndex="3">

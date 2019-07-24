@@ -72,7 +72,6 @@ public class Scourer {
      *
      */
     public void resetPosition() {
-//        LOGGER.info("---------------------" + getCurrentControl().getKey());
         final AppableControl control = getCurrentControl();
         if (control != null) {
             if (gridToScour.isRootGrid()) {
@@ -164,10 +163,11 @@ public class Scourer {
                         next.setMaxHeight(gridToView.getHeight());
                     }
                     next.toFront();
-                }
+                } else {
 
-                if (navigation.highlightBorder()) {
-                    next.setCSS("highlight", next.getPrimaryControl());
+                    if (navigation.highlightBorder()) {
+                        next.setCSS("highlight", next.getPrimaryControl());
+                    }
                 }
                 if (navigation.speakSelection()) {
                     if (next.isSpeakable()) {

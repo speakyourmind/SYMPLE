@@ -182,6 +182,7 @@ public class AppSettingsController extends SettingsControllerBase {
 
         btnOnFirstClick.setValue(navigation.onFirstClick());
         btnSpeakSelection.setValue(navigation.speakSelection());
+        btnHighlightBorder.disableProperty().bind(btnFullScreen.valueProperty());
         btnHighlightBorder.setValue(navigation.highlightBorder());
         btnFullScreen.setValue(navigation.fullScreen());
         btnPlayScourSound.setValue(navigation.playScourSound());
@@ -264,13 +265,6 @@ public class AppSettingsController extends SettingsControllerBase {
 
     @Override
     public void initialize(URL location, ResourceBundle rb) {
-        /*   if (tpMain != null) {
-         Integer numberOfTabs = tpMain.getTabs().size();
-         tpMain.setTabMinWidth(tpMain.getWidth() / numberOfTabs);
-         apMain.widthProperty().addListener((observable, oldValue, newValue) -> {
-         tpMain.setTabMinWidth(tpMain.getWidth() / numberOfTabs);
-         });
-         }*/
         loadFileNames();
         resetSettings();
         playScourField.visibleProperty().bind(btnPlayScourSound.valueProperty());
