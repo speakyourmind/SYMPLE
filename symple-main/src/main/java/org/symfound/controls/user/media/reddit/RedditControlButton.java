@@ -177,9 +177,9 @@ public class RedditControlButton extends MediaControlButton<RedditControl> {
         settingsRowD.add(shuffleButton, 1, 0, 1, 1);
 
         // settings = new ArrayList<>();   
-        settings.add(settingsRowA);
-        settings.add(settingsRowC);
-        settings.add(settingsRowD);
+        actionSettings.add(settingsRowA);
+        actionSettings.add(settingsRowC);
+        actionSettings.add(settingsRowD);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

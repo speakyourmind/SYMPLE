@@ -125,7 +125,7 @@ public class CalendarControlButton extends MediaControlButton<CalendarControl> {
         controlTypeBox.getStyleClass().add("settings-text-area");
         typeRow.add(controlTypeBox, 1, 0, 2, 1);
 
-        settings.add(typeRow);
+        actionSettings.add(typeRow);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

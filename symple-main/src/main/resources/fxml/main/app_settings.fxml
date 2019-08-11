@@ -74,10 +74,11 @@
                                             </rowConstraints>
                                             <children>
                                                 <SettingsRow helpText="Choose your voice" titleText="Voice" GridPane.columnSpan="3" GridPane.rowIndex="0">
-                                                 <!--   <SpeakUserButton fx:id="btnTryVoice" controlType="SETTING_CONTROL" maxHeight="60.0" maxWidth="180.0" speakText="welcome to simple by speak your mind" symStyle="settings-button" text="LISTEN" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>   
-                                                    --><ChoiceBox fx:id="cbVoice" maxHeight="60.0" maxWidth="540.0" styleClass="choice-box" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                                                    <!--   <SpeakUserButton fx:id="btnTryVoice" controlType="SETTING_CONTROL" maxHeight="60.0" maxWidth="180.0" speakText="welcome to simple by speak your mind" symStyle="settings-button" text="LISTEN" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>   
+                                                    -->
+                                                    <ChoiceBox fx:id="cbVoice" maxHeight="60.0" maxWidth="540.0" styleClass="choice-box" GridPane.columnIndex="1" GridPane.columnSpan="2" />
                                                 </SettingsRow>
-                                            <!--    <SettingsRow helpText="Choose your screen reader voice" titleText="Voice" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                                                <!--    <SettingsRow helpText="Choose your screen reader voice" titleText="Voice" GridPane.columnSpan="3" GridPane.rowIndex="1">
                                                     <ChoiceBox fx:id="cbReadingVoice" maxHeight="60.0" maxWidth="540.0" styleClass="choice-box" GridPane.columnIndex="2" />
                                                 </SettingsRow>-->
                                                
@@ -193,7 +194,7 @@
                                     <content>
                                         <GridPane hgap="20.0" prefHeight="1000.0" styleClass="main" vgap="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0">
                                             <children>
-                                                 <SettingsRow helpText="Start scanning with first click" titleText="Scan Right Away" GridPane.columnSpan="3" GridPane.rowIndex="0">
+                                                <SettingsRow helpText="Start scanning with first click" titleText="Scan Right Away" GridPane.columnSpan="3" GridPane.rowIndex="0">
                                                     <OnOffButton fx:id="btnOnFirstClick" maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
                                                 </SettingsRow> 
                                                 <SettingsRow helpText="Speak selection during tabbing" titleText="Speak Selection" GridPane.columnSpan="3" GridPane.rowIndex="1">
@@ -212,7 +213,7 @@
                                                 </SettingsRow> 
                                                 <SettingsRow helpText="Play sound during selection" titleText="Play Selection Sound" GridPane.columnSpan="3" GridPane.rowIndex="5">
                                                     <OnOffButton fx:id="btnPlaySelectSound" maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
-                                                  <TextField fx:id="playSelectionField" maxHeight="60.0" styleClass="settings-text-area" GridPane.columnIndex="2" />
+                                                    <TextField fx:id="playSelectionField" maxHeight="60.0" styleClass="settings-text-area" GridPane.columnIndex="2" />
                                                 </SettingsRow> 
                                             </children>
                                             
@@ -305,6 +306,47 @@
                                             </padding>
                                             <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                        </GridPane>
+                                    </content>
+                                    <padding>
+                                        <Insets bottom="20.0" />
+                                    </padding>
+                                </ScrollPane>
+                            </content>
+                        </Tab>
+                        <Tab text="SMS">
+                            <content>
+                                <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0">
+                                    <content>
+                                        <GridPane hgap="20.0" prefHeight="600.0" styleClass="main" vgap="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0">
+                                            <children>
+                                                
+                                                <SettingsRow helpText="Number assigned to your Twilio account" titleText="Twilio ID" GridPane.columnSpan="3" GridPane.rowIndex="0">
+                                                    <TextField fx:id="accountSIDField" maxHeight="60.0" styleClass="settings-text-area" GridPane.columnIndex="2" />
+                                                </SettingsRow> 
+                                                <SettingsRow helpText="Number assigned to your Twilio account" titleText="Twilio Token" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                                                    <TextField fx:id="authTokenField" maxHeight="60.0" styleClass="settings-text-area" GridPane.columnIndex="2" />
+                                                </SettingsRow> 
+                                                <SettingsRow helpText="Number assigned to your Twilio account" titleText="Twilio Number" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                                                    <TextField fx:id="fromNumberField" maxHeight="60.0" styleClass="settings-text-area" GridPane.columnIndex="2" />
+                                                </SettingsRow> 
+                                            </children>
+                                            
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
+                                                <ColumnConstraints minWidth="10.0" percentWidth="60.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <padding>
+                                                <Insets bottom="20.0" left="80.0" right="80.0" top="20.0" />
+                                            </padding>
+                                            <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />

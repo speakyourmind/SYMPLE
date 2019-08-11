@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.prefs.Preferences;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
@@ -146,32 +147,21 @@ public abstract class ButtonGrid extends FillableGrid {
             ActiveTextArea.KEY,
             SpeakGrid.KEY,
             SpeakUserButton.KEY,
-            
             TwilioSendButton.KEY,
-            
             PhotoControlButton.KEY,
-            
             MusicInfoButton.KEY,
             MusicControlButton.KEY,
             VolumeGridButton.KEY,
-            
             VideoControlButton.KEY,
-            
             RedditControlButton.KEY,
-            
             PageFlipControlButton.KEY,
-            
             TwitterControlButton.KEY,
-            
             YouTubeControlButton.KEY,
-            
             GMailSpeakButton.KEY,
-            
             SpeakPictoButton.KEY,
             BackSpacePictoButton.KEY,
             ClearPictoButton.KEY,
             PictoArea.KEY,
-            
             ClockButton.KEY,
             IftttButton.KEY,
             ExitButton.KEY,
@@ -212,10 +202,10 @@ public abstract class ButtonGrid extends FillableGrid {
     }
 
     private void initialize() {
-        
+
         setHgap(getCustomHGap());
         customHGapProperty().bindBidirectional(hgapProperty());
-        
+
         setVgap(getCustomVGap());
         customVGapProperty().bindBidirectional(vgapProperty());
 
@@ -393,22 +383,35 @@ public abstract class ButtonGrid extends FillableGrid {
                         + " is LESS than the size of the requested order " + requestedSize);
                 buildSize = size;
                 LOGGER.warn("Pagination is required to fit all the buttons"); //TODO: Add pagination
-/*
+
                 List<String> paginationFirst = buildOrder.getFirstList().subList(buildSize - 1, buildOrder.getFirstList().size());
                 List<String> paginationSecond = buildOrder.getSecondList().subList(buildSize - 1, buildOrder.getSecondList().size());
 
-               // ParallelList<String, String> paginationList = new ParallelList<>();
                 paginationList.setFirstList(paginationFirst);
                 paginationList.setSecondList(paginationSecond);
-                paginationList.add(0,"Pagination","pg0");
+                paginationList.add(0, "Screen", getIndex());
+                
+                final String paginatedOrder = paginationList.asString();
 
-                System.out.println(paginationList.asString());
+                System.out.println("Page 1:" + paginatedOrder);
 
-                buildOrder.add(buildSize - 1, "Pagination", "pg1");
+                buildOrder.add(buildSize - 1, "Screen", getIndex() + "/pg1");
                 buildOrder.setFirstList(buildOrder.getFirstList().subList(0, buildSize));
                 buildOrder.setSecondList(buildOrder.getSecondList().subList(0, buildSize));
 
-                System.out.println(buildOrder.asString());*/
+                System.out.println("Page 0:" + buildOrder.asString());
+
+                String name = "subgrid/" + getIndex() + "/pg1";
+                Class<? extends ButtonGrid> aClass = this.getClass();
+                final Preferences node = Preferences.userNodeForPackage(aClass).node(name);
+                String currentOrder = node.get("order", "");
+                System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&" + currentOrder);
+
+                System.out.println("Page 1:" + paginatedOrder);
+
+                node.put("order", paginatedOrder);
+                String newOrder = node.get("order", "");
+                System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&" + newOrder);
 
             } else {
                 LOGGER.info("The grid size " + size
@@ -662,46 +665,23 @@ public abstract class ButtonGrid extends FillableGrid {
                         configureItem(clockButton);
                         requestedControls.add(clockButton);
                         break;
-                    /*   case "Pagination":
-                        final String currentIndex1 = index;
-                        ConfigurableGrid homeGrid1 = HomeController.getGrid().getConfigurableGrid();
-                        GenericButton pageButton = new GenericButton(currentIndex1) {
-                            @Override
-                            public void run() {
-                                LOGGER.info("Setting index to " + currentIndex1);
-                                homeGrid1.setIndex(currentIndex1);
-                                super.run();
-                            }
-                        };
-                        pageButton.setKey(HomeController.KEY);
-                        configureItem(pageButton);
-                        pageButton.setGridLocation(i);
-                        pageButton.setVisible(true);
-                            requestedControls.add(pageButton);
-                     
-                        break;*/
                     case ScreenButton.KEY:
-                        final String currentIndex = index;
                         ConfigurableGrid homeGrid = HomeController.getGrid().getConfigurableGrid();
-                        ScreenButton screenButton = new ScreenButton(currentIndex) {
-                            @Override
-                            public void run() {
-                                LOGGER.info("Setting index to " + currentIndex);
-                                homeGrid.setIndex(currentIndex);
-                                super.run();
-                            }
-                        };
+                        ScreenButton screenButton = new ScreenButton(index);
                         screenButton.setKey(HomeController.KEY);
                         configureItem(screenButton);
                         screenButton.setGridLocation(i);
                         screenButton.setVisible(true);
-                        if (Double.valueOf(homeGrid.getGridManager().getPrefs(currentIndex).get("minDifficulty", "0.0")) <= getUser().getAbility().getLevel()) {
+                        if (Double.valueOf(homeGrid.getGridManager().getPrefs(index).get("minDifficulty", "0.0")) <= getUser().getAbility().getLevel()) {
                             requestedControls.add(screenButton);
+                        } else {
+                            LOGGER.info(index + " screen may exceed the user's ability and has not been included.");
                         }
+
                         break;
-                        
+
                     default:
-                        LOGGER.fatal("Screen includes an invalid item: "+toBuild.trim());
+                        LOGGER.warn("Screen includes an invalid item that has been ignored: " + toBuild.trim());
                         break;
 
                     /*default:
@@ -928,10 +908,9 @@ public abstract class ButtonGrid extends FillableGrid {
         }
         return customHGap;
     }
-    
-    
+
     private DoubleProperty customVGap;
-        
+
     /**
      *
      * @param value
@@ -1211,4 +1190,38 @@ public abstract class ButtonGrid extends FillableGrid {
         return rootGrid;
     }
 
+    private StringProperty index;
+
+    /**
+     * Sets the offset of the UI in the Application list that this button will
+     * point to.
+     *
+     * @param value index offset
+     */
+    public void setIndex(String value) {
+        indexProperty().set(value);
+    }
+
+    /**
+     * Gets the offset of the UI in the Application list that this button will
+     * point to.
+     *
+     * @return index offset
+     */
+    public String getIndex() {
+        return indexProperty().get();
+    }
+
+    /**
+     * Represents the offset of the UI in the Application list that this button
+     * will point to
+     *
+     * @return index offset property
+     */
+    public StringProperty indexProperty() {
+        if (index == null) {
+            index = new SimpleStringProperty("default");
+        }
+        return index;
+    }
 }

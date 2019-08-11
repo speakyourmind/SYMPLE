@@ -241,9 +241,9 @@ public final class IftttButton extends AppableControl {
         webhookEventEndField.getStyleClass().add("settings-text-area");
         settingsRowEnd.add(webhookEventEndField, 1, 0, 2, 1);
 
-        settings.add(settingsRowA);
-        settings.add(settingsRowStart);
-        settings.add(settingsRowEnd);
+        actionSettings.add(settingsRowA);
+        actionSettings.add(settingsRowStart);
+        actionSettings.add(settingsRowEnd);
         List<Tab> tabs = super.addAppableSettings();
         return tabs;
     }

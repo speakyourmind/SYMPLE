@@ -155,9 +155,9 @@ public class PageFlipControlButton extends MediaControlButton<PageFlipControl> {
         GridPane.setValignment(shuffleButton, VPos.CENTER);
         shuffleRow.add(shuffleButton, 1, 0, 1, 1);
 
-        settings.add(sitesRow);
-        settings.add(typeRow);
-        settings.add(shuffleRow);
+        actionSettings.add(sitesRow);
+        actionSettings.add(typeRow);
+        actionSettings.add(shuffleRow);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

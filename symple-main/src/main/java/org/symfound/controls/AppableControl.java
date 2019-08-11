@@ -489,7 +489,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     /**
      *
      */
-    public List<SettingsRow> settings = new ArrayList<>();
+    public List<SettingsRow> actionSettings = new ArrayList<>();
 
     /**
      *
@@ -835,9 +835,9 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         lastUsedLabel.setText(lastUsedString);
         lastUsedRow.add(lastUsedLabel, 2, 0, 1, 1);
 
-        settings.add(rowExpandRow);
-        settings.add(columnExpandRow);
-        Tab actionTab = buildTab("ACTION", settings);
+        actionSettings.add(rowExpandRow);
+        actionSettings.add(columnExpandRow);
+        Tab actionTab = buildTab("ACTION", actionSettings);
 
         selectionSettings.add(selectableRow);
         selectionSettings.add(primaryDisabledRow);

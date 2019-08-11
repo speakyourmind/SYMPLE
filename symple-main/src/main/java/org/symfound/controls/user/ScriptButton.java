@@ -5,22 +5,28 @@
  */
 package org.symfound.controls.user;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.prefs.Preferences;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import org.symfound.builder.user.characteristic.Social;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
+import static org.symfound.controls.user.voice.TwilioSendButton.LOGGER;
 import org.symfound.device.emulation.input.keyboard.ActionKeyCode;
 import org.symfound.main.builder.UI;
+import org.symfound.social.sms.TwilioPoster;
 
 /**
  *
@@ -67,6 +73,11 @@ public class ScriptButton extends TypingControl {
             type(getPrimaryControl().getText());
         }
 
+        if (isSMSEnabled()) {
+            final Social social = getUser().getSocial();
+            getTwilioPoster(social.getTwilioAccountSID(),social.getTwilioAuthToken()).textMessage(getToNumber(), social.getTwilioFromNumber(), getSpeakText());
+        }
+
         UI ui = (UI) getScene().getWindow();
         if (ui.inEditMode()) {
             LOGGER.info("Exiting edit mode before navigating");
@@ -87,8 +98,11 @@ public class ScriptButton extends TypingControl {
         }
     }
 
+    private TextField toNumberField;
     private TextField keyCodeField;
     private OnOffButton typableButton;
+    private OnOffButton smsEnabledButton;
+    public List<SettingsRow> socialSettings = new ArrayList<>();
 
     /**
      *
@@ -97,6 +111,8 @@ public class ScriptButton extends TypingControl {
     public void setAppableSettings() {
         setKeyCodeConfig(Integer.valueOf(keyCodeField.getText()));
         setTypable(typableButton.getValue());
+        setSMSEnabled(smsEnabledButton.getValue());
+        setToNumber(toNumberField.getText());
         super.setAppableSettings();
     }
 
@@ -107,6 +123,8 @@ public class ScriptButton extends TypingControl {
     public void resetAppableSettings() {
         keyCodeField.setText(getKeyCodeConfig().toString());
         typableButton.setValue(isTypable());
+        smsEnabledButton.setValue(isSMSEnabled());
+        toNumberField.setText(getToNumber());
         super.resetAppableSettings();
     }
 
@@ -132,8 +150,29 @@ public class ScriptButton extends TypingControl {
         keyCodeField.getStyleClass().add("settings-text-area");
         typableRow.add(keyCodeField, 2, 0, 1, 1);
 
-        settings.add(typableRow);
+        SettingsRow settingsTo = createSettingRow("SMS", "Send button text to a number");
+        smsEnabledButton = new OnOffButton("YES", "NO");
+        smsEnabledButton.setMaxSize(180.0, 60.0);
+        smsEnabledButton.setValue(isSMSEnabled());
+        GridPane.setHalignment(smsEnabledButton, HPos.LEFT);
+        GridPane.setValignment(smsEnabledButton, VPos.CENTER);
+        settingsTo.add(smsEnabledButton, 1, 0, 1, 1);
+
+        toNumberField = new TextField();
+        toNumberField.setText(getToNumber());
+        toNumberField.prefHeight(80.0);
+        toNumberField.prefWidth(360.0);
+        toNumberField.getStyleClass().add("settings-text-area");
+        settingsTo.add(toNumberField, 2, 0, 1, 1);
+        socialSettings = new ArrayList<>();
+        socialSettings.add(settingsTo);
+        Tab socialTab = buildTab("SOCIAL", socialSettings);
+
+        actionSettings.add(typableRow);
         List<Tab> tabs = super.addAppableSettings();
+
+        tabs.add(socialTab);
+
         return tabs;
     }
 
@@ -214,6 +253,75 @@ public class ScriptButton extends TypingControl {
             typable = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("typable", "false")));
         }
         return typable;
+    }
+
+    private BooleanProperty smsEnabled;
+
+    /**
+     *
+     * @param value
+     */
+    public void setSMSEnabled(Boolean value) {
+        smsEnabledProperty().set(value);
+        getPreferences().put("smsEnabled", value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean isSMSEnabled() {
+        return smsEnabledProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty smsEnabledProperty() {
+        if (smsEnabled == null) {
+            smsEnabled = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("smsEnabled", "false")));
+        }
+        return smsEnabled;
+    }
+
+    private TwilioPoster poster;
+
+    public TwilioPoster getTwilioPoster(String accountSID, String authToken) {
+        if (poster == null) {
+            poster = new TwilioPoster(accountSID, authToken);
+        }
+        return poster;
+    }
+    private static final String DEFAULT_TEXT_TO_KEY = "text.to";
+    private StringProperty toNumber;
+
+    /**
+     *
+     * @param value
+     */
+    public void setToNumber(String value) {
+        toNumberProperty().set(value);
+        getPreferences().put(DEFAULT_TEXT_TO_KEY, value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getToNumber() {
+        return toNumberProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty toNumberProperty() {
+        if (toNumber == null) {
+            toNumber = new SimpleStringProperty(getPreferences().get(DEFAULT_TEXT_TO_KEY, "+15555555555"));
+        }
+        return toNumber;
     }
 
 }

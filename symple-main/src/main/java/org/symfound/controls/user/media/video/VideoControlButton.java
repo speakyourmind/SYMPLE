@@ -167,9 +167,9 @@ public class VideoControlButton extends MediaControlButton<VideoControl> {
         GridPane.setValignment(shuffleButton, VPos.CENTER);
         settingsRowD.add(shuffleButton, 1, 0, 1, 1);
         // settings = new ArrayList<>();
-        settings.add(settingsRowA);
-        settings.add(settingsRowB);
-        settings.add(settingsRowD);
+        actionSettings.add(settingsRowA);
+        actionSettings.add(settingsRowB);
+        actionSettings.add(settingsRowD);
        List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

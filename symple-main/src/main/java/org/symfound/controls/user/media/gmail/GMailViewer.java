@@ -210,12 +210,12 @@ public class GMailViewer extends MediaViewer {
         columnExpandField.getStyleClass().add("settings-text-area");
         settingsRow5.add(columnExpandField, 2, 0, 1, 1);
 
-        settings.add(settingsRow);
-        settings.add(settingsRow3);
-        settings.add(settingsRow4);
-        settings.add(settingsRow5);
+        actionSettings.add(settingsRow);
+        actionSettings.add(settingsRow3);
+        actionSettings.add(settingsRow4);
+        actionSettings.add(settingsRow5);
 
-        Tab generalTab = buildTab("GENERAL", settings);
+        Tab generalTab = buildTab("GENERAL", actionSettings);
 
         List<Tab> tabs = new ArrayList<>();
         tabs.add(generalTab);

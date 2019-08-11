@@ -121,7 +121,7 @@ public class GMailControlButton extends AppableControl {
         controlType.getStyleClass().add("settings-text-area");
         settingsRowA.add(controlType, 1, 0, 2, 1);
 
-        settings.add(settingsRowA);
+        actionSettings.add(settingsRowA);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

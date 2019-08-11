@@ -278,40 +278,6 @@ public class ConfigurableGrid extends ButtonGrid {
         });
     }
 
-    private StringProperty index;
-
-    /**
-     * Sets the offset of the UI in the Application list that this button will
-     * point to.
-     *
-     * @param value index offset
-     */
-    public void setIndex(String value) {
-        indexProperty().set(value);
-    }
-
-    /**
-     * Gets the offset of the UI in the Application list that this button will
-     * point to.
-     *
-     * @return index offset
-     */
-    public String getIndex() {
-        return indexProperty().get();
-    }
-
-    /**
-     * Represents the offset of the UI in the Application list that this button
-     * will point to
-     *
-     * @return index offset property
-     */
-    public StringProperty indexProperty() {
-        if (index == null) {
-            index = new SimpleStringProperty("default");
-        }
-        return index;
-    }
 
     /**
      *

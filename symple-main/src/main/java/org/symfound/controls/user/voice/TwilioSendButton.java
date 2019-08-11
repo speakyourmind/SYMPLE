@@ -12,6 +12,7 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import org.apache.log4j.Logger;
+import org.symfound.builder.user.characteristic.Social;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.social.sms.TwilioPoster;
@@ -68,7 +69,8 @@ public class TwilioSendButton extends TextCommunicatorButton {
     @Override
     public void run() {
         LOGGER.info("Sending text message from " + getFromNumber() + " to " + getToNumber() + ": " + getCommText());
-        getTwilioPoster().textMessage(getToNumber(), getFromNumber(), getCommText());
+        final Social social = getUser().getSocial();
+        getTwilioPoster(social.getTwilioAccountSID(), social.getTwilioAuthToken()).textMessage(getToNumber(), social.getTwilioFromNumber(), getCommText());
     }
 
     /**
@@ -126,22 +128,10 @@ public class TwilioSendButton extends TextCommunicatorButton {
         toNumberField.getStyleClass().add("settings-text-area");
         settingsTo.add(toNumberField, 1, 0, 2, 1);
 
-        settings.add(settingsTo);
-        settings.add(settingsFrom);
+        actionSettings.add(settingsTo);
+        actionSettings.add(settingsFrom);
         List<Tab> tabs = super.addAppableSettings();
         return tabs;
-    }
-    private TwilioPoster poster;
-
-    /**
-     *
-     * @return
-     */
-    public TwilioPoster getTwilioPoster() {
-        if (poster == null) {
-            poster = new TwilioPoster();
-        }
-        return poster;
     }
     private static final String DEFAULT_TEXT_TO_KEY = "text.to";
     private StringProperty toNumber;
@@ -203,6 +193,14 @@ public class TwilioSendButton extends TextCommunicatorButton {
             fromNumber = new SimpleStringProperty(getPreferences().get(DEFAULT_TEXT_FROM_KEY, "+15555555555"));
         }
         return fromNumber;
+    }
+    private TwilioPoster poster;
+
+    public TwilioPoster getTwilioPoster(String accountSID, String authToken) {
+        if (poster == null) {
+            poster = new TwilioPoster(accountSID, authToken);
+        }
+        return poster;
     }
 
     @Override

@@ -149,9 +149,9 @@ public class YouTubeControlButton extends MediaControlButton<YouTubeControl> {
         GridPane.setValignment(shuffleButton, VPos.CENTER);
         settingsRowD.add(shuffleButton, 1, 0, 1, 1);
         
-        settings.add(settingsRowA);
-        settings.add(settingsRowB);
-        settings.add(settingsRowD);
+        actionSettings.add(settingsRowA);
+        actionSettings.add(settingsRowB);
+        actionSettings.add(settingsRowD);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

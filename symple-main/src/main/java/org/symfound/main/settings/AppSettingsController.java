@@ -100,6 +100,12 @@ public class AppSettingsController extends SettingsControllerBase {
     @FXML
     private OnOffButton btnPlaySelectSound;
 
+    @FXML
+    public TextField accountSIDField;
+    @FXML
+    public TextField authTokenField;
+    @FXML
+    public TextField fromNumberField;
     /**
      *
      */
@@ -109,9 +115,8 @@ public class AppSettingsController extends SettingsControllerBase {
     /**
      *
      */
-   // @FXML
+    // @FXML
     //public TextField appBuildOrderField;
-
     /**
      *
      */
@@ -209,6 +214,10 @@ public class AppSettingsController extends SettingsControllerBase {
         homeFolderField.setText(getUser().getContent().getHomeFolder());
         volumeField.setValue(getUser().getInteraction().getVolume() * 10.0);
 
+        accountSIDField.setText(getUser().getSocial().getTwilioAccountSID());
+        authTokenField.setText(getUser().getSocial().getTwilioAuthToken());
+        fromNumberField.setText(getUser().getSocial().getTwilioFromNumber());
+
     }
 
     /**
@@ -261,6 +270,10 @@ public class AppSettingsController extends SettingsControllerBase {
         // MEDIA
         getUser().getContent().setHomeFolder(homeFolderField.getText());
         getUser().getInteraction().setVolume(volumeField.getValue() * 0.1);
+
+        getUser().getSocial().setTwilioAccountSID(accountSIDField.getText());
+        getUser().getSocial().setTwilioAuthToken(authTokenField.getText());
+        getUser().getSocial().setTwilioFromNumber(fromNumberField.getText());
     }
 
     @Override

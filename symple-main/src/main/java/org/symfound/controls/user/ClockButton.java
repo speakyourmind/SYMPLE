@@ -73,7 +73,7 @@ public class ClockButton extends AppableControl {
         formatField.getStyleClass().add("settings-text-area");
         formatRow.add(formatField, 1, 0, 1, 1);
 
-        settings.add(formatRow);
+        actionSettings.add(formatRow);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

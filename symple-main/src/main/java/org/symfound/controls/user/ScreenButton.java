@@ -5,30 +5,34 @@
  */
 package org.symfound.controls.user;
 
+import org.symfound.main.HomeController;
+
 /**
  *
  * @author Javed Gangjee <javed@speakyourmindfoundation.org>
  */
-public class ScreenButton extends GenericButton{
-    
-    /**
-     *
-     */
+public class ScreenButton extends GenericButton {
+
     public static final String KEY = "Screen";
-    public static final String DESCRIPTION ="Screen";
-    
-    
+    public static final String DESCRIPTION = "Screen";
+
     public ScreenButton(String index) {
         super(index);
-         initialize(index);
+        initialize(index);
     }
 
     private void initialize(String index) {
-        defaultTitle=index;
+        defaultTitle = index;
         setNavigatePostClick(Boolean.FALSE);
         configureTitle();
     }
-    
-    
-    
+
+    @Override
+    public void run() {
+        ConfigurableGrid homeGrid = HomeController.getGrid().getConfigurableGrid();
+        LOGGER.info("Setting index to " + initIndex);
+        homeGrid.setIndex(initIndex);
+        super.run();
+    }
+
 }

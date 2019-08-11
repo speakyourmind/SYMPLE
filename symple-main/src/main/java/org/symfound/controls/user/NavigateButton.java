@@ -141,7 +141,7 @@ public class NavigateButton extends AppableControl {
         navigateIndexField.getStyleClass().add("settings-text-area");
         settingsRowA.add(navigateIndexField, 1, 0, 1, 1);
 
-        settings.add(settingsRowA);
+        actionSettings.add(settingsRowA);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

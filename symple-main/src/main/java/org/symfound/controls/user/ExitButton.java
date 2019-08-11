@@ -46,11 +46,13 @@ public final class ExitButton extends AppableControl {
     }
 
     private void initialize() {
-        initTitleText = "Exit";
+        
         if (triggerUpdate()) {
+            initTitleText = "Update & Exit";
             initCaptionText = "Are you sure you want to close the program?\n"
                     + "Program will close after downloading an update.";
         } else {
+            initTitleText = "Exit";
             initCaptionText = "Are you sure you want to close the program?";
         }
         setSpeakText(DEFAULT_TITLE);
