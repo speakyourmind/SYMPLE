@@ -435,4 +435,34 @@ public abstract class GridManager implements Editable {
         return paused;
     }
 
+    
+      private BooleanProperty enablePagination;
+
+    /**
+     *
+     * @param value
+     */
+    public void enablePagination(Boolean value) {
+        enablePaginationProperty().set(value);
+        getPreferences().put("enablePagination", value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean isPaginationEnabled() {
+        return enablePaginationProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty enablePaginationProperty() {
+        //  if (enablePagination == null) {
+        enablePagination = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("enablePagination", "false")));
+        //}
+        return enablePagination;
+    }
 }

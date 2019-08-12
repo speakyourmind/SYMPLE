@@ -1179,6 +1179,36 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         return editable;
     }
 
+    private BooleanProperty removable;
+
+    /**
+     *
+     * @param value
+     */
+    public void setRemovable(Boolean value) {
+        removableProperty().set(value);
+        getPreferences().put("removable", value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean isRemovable() {
+        return removableProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty removableProperty() {
+        if (removable == null) {
+            removable = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("removable", "true")));
+        }
+        return removable;
+    }
+    
     private static final Double DEFAULT_FONT_SCALE = 25.0;
     private DoubleProperty fontScale;
 

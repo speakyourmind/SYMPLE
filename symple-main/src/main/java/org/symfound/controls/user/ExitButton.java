@@ -46,15 +46,40 @@ public final class ExitButton extends AppableControl {
     }
 
     private void initialize() {
-        
-        if (triggerUpdate()) {
-            initTitleText = "Update & Exit";
-            initCaptionText = "Are you sure you want to close the program?\n"
-                    + "Program will close after downloading an update.";
+
+        if (getVersionManager().needsUpdate()) {
+            if (getUser().getInteraction().autoUpdate()) {
+                setTitleText("Update & Exit");;
+                setCaptionText("Are you sure you want to close the program?\n"
+                        + "Program will close after downloading an update.");
+            } else {
+
+                setTitleText("Exit Without Updating");;
+                setCaptionText("Are you sure you want to close the program?\n"
+                        + "An update is available and can be downloaded manually.");
+            }
         } else {
-            initTitleText = "Exit";
-            initCaptionText = "Are you sure you want to close the program?";
+            setTitleText("Exit");
+            setCaptionText("Are you sure you want to close the program?");
         }
+        getUser().getInteraction().autoUpdateProperty().addListener((oldValue, newValue, observable) -> {
+            if (getVersionManager().needsUpdate()) {
+                if (getUser().getInteraction().autoUpdate()) {
+                    setTitleText("Update & Exit");;
+                    setCaptionText("Are you sure you want to close the program?\n"
+                            + "Program will close after downloading an update.");
+                } else {
+
+                    setTitleText("Exit Without Updating");;
+                    setCaptionText("Are you sure you want to close the program?\n"
+                            + "An update is available and can be downloaded manually.");
+                }
+            } else {
+                setTitleText("Exit");
+                setCaptionText("Are you sure you want to close the program?");
+            }
+        });
+
         setSpeakText(DEFAULT_TITLE);
     }
 
@@ -64,7 +89,6 @@ public final class ExitButton extends AppableControl {
 
     @Override
     public void run() {
-
         if (triggerUpdate()) {
             getVersionManager().update();
             this.getParentPane().getChildren().add(getUpdaterPopup());

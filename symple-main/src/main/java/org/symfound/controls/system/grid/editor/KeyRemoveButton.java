@@ -63,9 +63,6 @@ public class KeyRemoveButton extends SystemControl {
         setOrder(configurableGrid.getOrder());
 
         setConfirmable(Boolean.TRUE);
-        //  setPane("apMain");
-//        initTitleText = "Removing Button";
-        //      initCaptionText = "Are you sure you want to permanently remove this button?";
         setTitleText("Removing Button");
         setCaptionText("Are you sure you want to permanently remove this button?");
         setOkText("CONFIRM");

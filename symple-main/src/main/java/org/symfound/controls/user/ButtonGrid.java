@@ -384,35 +384,12 @@ public abstract class ButtonGrid extends FillableGrid {
                 buildSize = size;
                 LOGGER.warn("Pagination is required to fit all the buttons"); //TODO: Add pagination
 
-                List<String> paginationFirst = buildOrder.getFirstList().subList(buildSize - 1, buildOrder.getFirstList().size());
-                List<String> paginationSecond = buildOrder.getSecondList().subList(buildSize - 1, buildOrder.getSecondList().size());
+                if (isPaginationEnabled()) {
+                    paginate(buildOrder, buildSize, paginationList);
 
-                paginationList.setFirstList(paginationFirst);
-                paginationList.setSecondList(paginationSecond);
-                paginationList.add(0, "Screen", getIndex());
-                
-                final String paginatedOrder = paginationList.asString();
-
-                System.out.println("Page 1:" + paginatedOrder);
-
-                buildOrder.add(buildSize - 1, "Screen", getIndex() + "/pg1");
-                buildOrder.setFirstList(buildOrder.getFirstList().subList(0, buildSize));
-                buildOrder.setSecondList(buildOrder.getSecondList().subList(0, buildSize));
-
-                System.out.println("Page 0:" + buildOrder.asString());
-
-                String name = "subgrid/" + getIndex() + "/pg1";
-                Class<? extends ButtonGrid> aClass = this.getClass();
-                final Preferences node = Preferences.userNodeForPackage(aClass).node(name);
-                String currentOrder = node.get("order", "");
-                System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&" + currentOrder);
-
-                System.out.println("Page 1:" + paginatedOrder);
-
-                node.put("order", paginatedOrder);
-                String newOrder = node.get("order", "");
-                System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&" + newOrder);
-
+                } else {
+                    LOGGER.warn("Pagination is required to show all buttons but not enabled");
+                }
             } else {
                 LOGGER.info("The grid size " + size
                         + " is GREATER than the size of the requested order" + requestedSize);
@@ -445,7 +422,7 @@ public abstract class ButtonGrid extends FillableGrid {
             for (int i = 0; i < buildSize; i++) {
                 String toBuild = buildOrder.getFirstList().get(i);
                 String index = buildOrder.getSecondList().get(i);
-                LOGGER.info("Attempting to add " + toBuild.trim()
+                LOGGER.debug("Attempting to add " + toBuild.trim()
                         + " with index " + index);
                 switch (toBuild.trim()) {
                     case ScriptButton.KEY:
@@ -722,6 +699,38 @@ public abstract class ButtonGrid extends FillableGrid {
                 fill(defaultList, size);
             }
         }
+    }
+
+    private void paginate(ParallelList<String, String> order, Integer size, final ParallelList<String, String> paginationList) {
+        List<String> paginationFirst = order.getFirstList().subList(size - 1, order.getFirstList().size());
+        List<String> paginationSecond = order.getSecondList().subList(size - 1, order.getSecondList().size());
+
+        paginationList.setFirstList(paginationFirst);
+        paginationList.setSecondList(paginationSecond);
+        paginationList.add(0, "Screen", getIndex());
+
+        final String paginatedOrder = paginationList.asString();
+        final String paginatedIndex = getIndex() + "-pg";
+
+        order.add(size - 1, "Screen", paginatedIndex);
+        order.setFirstList(order.getFirstList().subList(0, size));
+        order.setSecondList(order.getSecondList().subList(0, size));
+
+        String name = "subgrid/" + paginatedIndex;
+        Class<? extends ButtonGrid> aClass = this.getClass();
+        final Preferences node = Preferences.userNodeForPackage(aClass).node(name);
+        node.put("order", paginatedOrder);
+
+        String buttonName = "none/" + paginatedIndex;
+        final Preferences buttonNode = Preferences.userNodeForPackage(aClass).node(buttonName);
+
+        buttonNode.put("editable", "false");
+        buttonNode.put("removable", "false");
+        buttonNode.put("title", "...");
+        buttonNode.put("titlePos", "CENTER");
+        buttonNode.put("textColour", "LIGHT");
+        buttonNode.put("fontScale", "40.0");
+        buttonNode.put("overrideStyle", "-fx-background-color:-fx-dark;");
     }
 
     private void addToParent(MediaViewer viewer) {
@@ -1224,4 +1233,43 @@ public abstract class ButtonGrid extends FillableGrid {
         }
         return index;
     }
+
+    private BooleanProperty enablePagination;
+
+    /**
+     * Toggles the enablePagination boolean property.
+     */
+    public void togglePagination() {
+        enablePagination(!isPaginationEnabled());
+    }
+
+    /**
+     *
+     * @param value
+     */
+    public void enablePagination(Boolean value) {
+        enablePaginationProperty().setValue(value);
+    }
+
+    /**
+     * Finds out whether the pause button is active.
+     *
+     * @return enablePagination if true, false otherwise
+     */
+    public Boolean isPaginationEnabled() {
+        return enablePaginationProperty().getValue();
+    }
+
+    /**
+     * Represents the pause function of the button.
+     *
+     * @return enablePagination
+     */
+    public BooleanProperty enablePaginationProperty() {
+        if (enablePagination == null) {
+            enablePagination = new SimpleBooleanProperty();
+        }
+        return enablePagination;
+    }
+
 }

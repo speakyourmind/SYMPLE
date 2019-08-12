@@ -161,16 +161,18 @@ public class SubGrid extends AppableControl {
         final ObservableList<Node> children = this.getConfigurableGrid().getChildren();
         for (int i = 0; i < children.size(); i++) {
             Node node = children.get(i);
-            if (node instanceof RunnableControl) {
-                RunnableControl control = (RunnableControl) node;
-                final KeyRemoveButton keyRemoveButton = new KeyRemoveButton(control.getGridLocation(), getConfigurableGrid());
-                keyRemoveButton.gridLocationProperty().bindBidirectional(control.gridLocationProperty());
-                keyRemoveButton.setPane("apMain");
-                //  keyRemoveButton.setConfirmable(false);
-                getRemoveButtons().add(keyRemoveButton);
-                control.addToPane(keyRemoveButton, 0.0, null, null, 0.0);
-                keyRemoveButton.toFront();
-                LOGGER.info("Key Remove Button added to control " + control.getText() + " with index " + control.getGridLocation());
+            if (node instanceof AppableControl) {
+                AppableControl control = (AppableControl) node;
+                if (control.isRemovable()) {
+                    final KeyRemoveButton keyRemoveButton = new KeyRemoveButton(control.getGridLocation(), getConfigurableGrid());
+                    keyRemoveButton.gridLocationProperty().bindBidirectional(control.gridLocationProperty());
+                    keyRemoveButton.setPane("apMain");
+                    //  keyRemoveButton.setConfirmable(false);
+                    getRemoveButtons().add(keyRemoveButton);
+                    control.addToPane(keyRemoveButton, 0.0, null, null, 0.0);
+                    keyRemoveButton.toFront();
+                    LOGGER.info("Key Remove Button added to control " + control.getText() + " with index " + control.getGridLocation());
+                }
             }
         }
     }

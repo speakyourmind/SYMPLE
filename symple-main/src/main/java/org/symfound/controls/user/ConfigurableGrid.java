@@ -71,12 +71,12 @@ public class ConfigurableGrid extends ButtonGrid {
         customHGapProperty().addListener((observable, oldValue, newValue) -> {
             getGridManager().setCustomHGap(newValue.doubleValue());
         });
-        
+
         setCustomVGap(getGridManager().getCustomVGap());
         customVGapProperty().addListener((observable, oldValue, newValue) -> {
             getGridManager().setCustomVGap(newValue.doubleValue());
         });
-        
+
         setFillMethod(getGridManager().getFillMethod());
         fillMethodProperty().addListener((observable, oldValue, newValue) -> {
             getGridManager().setFillMethod(newValue);
@@ -122,7 +122,10 @@ public class ConfigurableGrid extends ButtonGrid {
         pausedProperty().addListener((observable, oldValue, newValue) -> {
             getGridManager().setPaused(newValue);
         });
-
+        enablePagination(getGridManager().isPaginationEnabled());
+        enablePaginationProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().enablePagination(newValue);
+        });
         triggerReloadProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 reload();
@@ -277,7 +280,6 @@ public class ConfigurableGrid extends ButtonGrid {
             }
         });
     }
-
 
     /**
      *
