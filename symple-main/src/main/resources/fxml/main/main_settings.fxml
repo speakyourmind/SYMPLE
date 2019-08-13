@@ -258,7 +258,7 @@
                                                                 </children>
                                                             </GridPane>
                                                         </SettingsRow>
-                                                         <SettingsRow helpText="Update the software on exiting if a new version is available" titleText="Update On Exit" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                                                         <SettingsRow helpText="Update the software on exiting if a new version is available" titleText="Update On Exit" GridPane.columnSpan="3" GridPane.rowIndex="3">
                                                               <OnOffButton fx:id="btnAutoUpdate" maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />                                              
                                                          </SettingsRow> 
                                                     </children>

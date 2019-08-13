@@ -68,15 +68,10 @@ public class TwilioSendButton extends TextCommunicatorButton {
 
     @Override
     public void run() {
-        LOGGER.info("Sending text message from " + getFromNumber() + " to " + getToNumber() + ": " + getCommText());
         final Social social = getUser().getSocial();
-        getTwilioPoster(social.getTwilioAccountSID(), social.getTwilioAuthToken()).textMessage(getToNumber(), social.getTwilioFromNumber(), getCommText());
+        LOGGER.info("Sending text message from " + social.getTwilioFromNumber() + " to " + getToNumber() + ": " + getCommText());
+        getTwilioPoster(social.getTwilioAccountSID(), social.getTwilioAuthToken()).textMessage(getToNumber(), social.getTwilioFromNumber(), getSpeakText());
     }
-
-    /**
-     *
-     */
-    public TextField fromNumberField;
 
     /**
      *
@@ -88,7 +83,6 @@ public class TwilioSendButton extends TextCommunicatorButton {
      */
     @Override
     public void setAppableSettings() {
-        setFromNumber(fromNumberField.getText());
         setToNumber(toNumberField.getText());
         super.setAppableSettings();
     }
@@ -98,7 +92,6 @@ public class TwilioSendButton extends TextCommunicatorButton {
      */
     @Override
     public void resetAppableSettings() {
-        fromNumberField.setText(getFromNumber());
         toNumberField.setText(getToNumber());
         super.resetAppableSettings();
     }
@@ -110,15 +103,6 @@ public class TwilioSendButton extends TextCommunicatorButton {
     @Override
     public List<Tab> addAppableSettings() {
 
-        SettingsRow settingsFrom = createSettingRow("From", "What's your phone number?");
-
-        fromNumberField = new TextField();
-        fromNumberField.setText(getFromNumber());
-        fromNumberField.prefHeight(80.0);
-        fromNumberField.prefWidth(360.0);
-        fromNumberField.getStyleClass().add("settings-text-area");
-        settingsFrom.add(fromNumberField, 1, 0, 2, 1);
-
         SettingsRow settingsTo = createSettingRow("To", "Phone number of the person you are sending this to");
 
         toNumberField = new TextField();
@@ -129,7 +113,6 @@ public class TwilioSendButton extends TextCommunicatorButton {
         settingsTo.add(toNumberField, 1, 0, 2, 1);
 
         actionSettings.add(settingsTo);
-        actionSettings.add(settingsFrom);
         List<Tab> tabs = super.addAppableSettings();
         return tabs;
     }
@@ -164,36 +147,6 @@ public class TwilioSendButton extends TextCommunicatorButton {
         return toNumber;
     }
 
-    private static final String DEFAULT_TEXT_FROM_KEY = "text.from";
-    private StringProperty fromNumber;
-
-    /**
-     *
-     * @param value
-     */
-    public void setFromNumber(String value) {
-        fromNumberProperty().set(value);
-        getPreferences().put(DEFAULT_TEXT_FROM_KEY, value);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getFromNumber() {
-        return fromNumberProperty().get();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public StringProperty fromNumberProperty() {
-        if (fromNumber == null) {
-            fromNumber = new SimpleStringProperty(getPreferences().get(DEFAULT_TEXT_FROM_KEY, "+15555555555"));
-        }
-        return fromNumber;
-    }
     private TwilioPoster poster;
 
     public TwilioPoster getTwilioPoster(String accountSID, String authToken) {

@@ -15,7 +15,7 @@ import org.symfound.social.SocialMediaConnector;
 public class TwilioConnector extends SocialMediaConnector {
     // Find your Account Sid and Token at twilio.com/user/account
 
-    private static Boolean connected;
+    private static Boolean connected = false;
 
     public static void connect(String accountSID, String authToken) {
         if (!connected) {

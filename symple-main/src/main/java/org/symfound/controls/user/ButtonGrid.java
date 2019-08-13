@@ -62,7 +62,6 @@ import org.symfound.controls.user.voice.TwilioSendButton;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.HomeController;
 import static org.symfound.main.Main.getVersionManager;
-import org.symfound.main.builder.App;
 import org.symfound.tools.iteration.ParallelList;
 
 /**
@@ -135,7 +134,6 @@ public abstract class ButtonGrid extends FillableGrid {
             GenericButton.KEY,
             ExitButton.KEY,
             SettingsButton.KEY,
-            IftttButton.KEY,
             LockButton.KEY,
             EditGridButton.KEY,
             DeviceButton.KEY,
@@ -163,7 +161,6 @@ public abstract class ButtonGrid extends FillableGrid {
             ClearPictoButton.KEY,
             PictoArea.KEY,
             ClockButton.KEY,
-            IftttButton.KEY,
             ExitButton.KEY,
             MinimizeButton.KEY,
             SettingsButton.KEY,
@@ -574,12 +571,6 @@ public abstract class ButtonGrid extends FillableGrid {
                         configureItem(settingsButton);
                         settingsButton.setGridLocation(i);
                         requestedControls.add(settingsButton);
-                        break;
-                    case IftttButton.KEY:
-                        IftttButton button = new IftttButton(index);
-                        configureItem(button);
-                        button.setGridLocation(i);
-                        requestedControls.add(button);
                         break;
                     case LockButton.KEY:
                         LockButton lockButton = new LockButton(this);

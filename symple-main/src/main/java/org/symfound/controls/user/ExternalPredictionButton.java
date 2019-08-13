@@ -10,7 +10,6 @@ import java.awt.event.KeyEvent;
 import java.util.prefs.Preferences;
 import org.symfound.builder.user.characteristic.Typing;
 import org.symfound.controls.AppableControl;
-import static org.symfound.controls.user.IftttButton.KEY;
 import org.symfound.device.Device;
 import org.symfound.device.emulation.input.keyboard.KeyboardAutomator;
 import org.symfound.device.processing.Processor;
@@ -25,6 +24,7 @@ import org.symfound.text.prediction.local.Predictor;
  */
 public class ExternalPredictionButton extends AppableControl {
 
+    public static final String KEY = "Ext Prediction";
     private final String predictionWord;
 
     /**

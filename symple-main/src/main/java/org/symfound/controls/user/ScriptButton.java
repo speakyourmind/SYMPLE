@@ -74,8 +74,7 @@ public class ScriptButton extends TypingControl {
         }
 
         if (isSMSEnabled()) {
-            final Social social = getUser().getSocial();
-            getTwilioPoster(social.getTwilioAccountSID(),social.getTwilioAuthToken()).textMessage(getToNumber(), social.getTwilioFromNumber(), getSpeakText());
+            sendTwilioText();
         }
 
         UI ui = (UI) getScene().getWindow();
@@ -83,6 +82,16 @@ public class ScriptButton extends TypingControl {
             LOGGER.info("Exiting edit mode before navigating");
             ui.setEditMode(Boolean.FALSE);
         }
+    }
+
+    public void sendTwilioText() {
+        final Social social = getUser().getSocial();
+        final String twilioAuthToken = social.getTwilioAuthToken();
+        final String twilioAccountSID = social.getTwilioAccountSID();
+        LOGGER.info("Sending text message from " + social.getTwilioFromNumber()
+                + " to " + getToNumber() + ": " + getSpeakText());
+        getTwilioPoster(twilioAccountSID, twilioAuthToken)
+                .textMessage(getToNumber(), social.getTwilioFromNumber(), getSpeakText());
     }
 
     /**
@@ -104,6 +113,11 @@ public class ScriptButton extends TypingControl {
     private OnOffButton smsEnabledButton;
     public List<SettingsRow> socialSettings = new ArrayList<>();
 
+    public TextField webhookKeyField;
+    public TextField webhookEventStartField;
+    public TextField webhookEventEndField;
+    public List<SettingsRow> environmentSettings = new ArrayList<>();
+
     /**
      *
      */
@@ -113,6 +127,10 @@ public class ScriptButton extends TypingControl {
         setTypable(typableButton.getValue());
         setSMSEnabled(smsEnabledButton.getValue());
         setToNumber(toNumberField.getText());
+
+        setWebhookKey(webhookKeyField.getText());
+        setWebhookEventStart(webhookEventStartField.getText());
+        setWebhookEventEnd(webhookEventEndField.getText());
         super.setAppableSettings();
     }
 
@@ -125,6 +143,11 @@ public class ScriptButton extends TypingControl {
         typableButton.setValue(isTypable());
         smsEnabledButton.setValue(isSMSEnabled());
         toNumberField.setText(getToNumber());
+
+        webhookKeyField.setText(getWebhookKey());
+        webhookEventStartField.setText(getWebhookEventStart());
+        webhookEventEndField.setText(getWebhookEventEnd());
+
         super.resetAppableSettings();
     }
 
@@ -164,15 +187,48 @@ public class ScriptButton extends TypingControl {
         toNumberField.prefWidth(360.0);
         toNumberField.getStyleClass().add("settings-text-area");
         settingsTo.add(toNumberField, 2, 0, 1, 1);
+
         socialSettings = new ArrayList<>();
         socialSettings.add(settingsTo);
         Tab socialTab = buildTab("SOCIAL", socialSettings);
+
+        SettingsRow webhookKeyRow = createSettingRow("Key", "User key configured in webhook");
+        webhookKeyField = new TextField();
+        webhookKeyField.setText(getWebhookKey());
+        webhookKeyField.prefHeight(80.0);
+        webhookKeyField.prefWidth(360.0);
+        webhookKeyField.getStyleClass().add("settings-text-area");
+        webhookKeyRow.add(webhookKeyField, 1, 0, 2, 1);
+
+        SettingsRow webhookStartRow = createSettingRow("Start Event", "Activity event name in webhook");
+
+        webhookEventStartField = new TextField();
+        webhookEventStartField.setText(getWebhookEventStart());
+        webhookEventStartField.prefHeight(80.0);
+        webhookEventStartField.prefWidth(360.0);
+        webhookEventStartField.getStyleClass().add("settings-text-area");
+        webhookStartRow.add(webhookEventStartField, 1, 0, 2, 1);
+
+        SettingsRow webhookEndRow = createSettingRow("End Event", "Activity event name in webhook");
+
+        webhookEventEndField = new TextField();
+        webhookEventEndField.setText(getWebhookEventEnd());
+        webhookEventEndField.prefHeight(80.0);
+        webhookEventEndField.prefWidth(360.0);
+        webhookEventEndField.getStyleClass().add("settings-text-area");
+        webhookEndRow.add(webhookEventEndField, 1, 0, 2, 1);
+
+        environmentSettings = new ArrayList<>();
+        environmentSettings.add(webhookKeyRow);
+        environmentSettings.add(webhookStartRow);
+        environmentSettings.add(webhookEndRow);
+        Tab environmentTab = buildTab("HOME", environmentSettings);
 
         actionSettings.add(typableRow);
         List<Tab> tabs = super.addAppableSettings();
 
         tabs.add(socialTab);
-
+        tabs.add(environmentTab);
         return tabs;
     }
 
@@ -322,6 +378,96 @@ public class ScriptButton extends TypingControl {
             toNumber = new SimpleStringProperty(getPreferences().get(DEFAULT_TEXT_TO_KEY, "+15555555555"));
         }
         return toNumber;
+    }
+
+    private StringProperty webhookKey;
+
+    /**
+     *
+     * @param value
+     */
+    public void setWebhookKey(String value) {
+        webhookKeyProperty().set(value);
+        getPreferences().put("webhook.key", value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getWebhookKey() {
+        return webhookKeyProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty webhookKeyProperty() {
+        if (webhookKey == null) {
+            webhookKey = new SimpleStringProperty(getPreferences().get("webhook.key", "dOqKgMizDNXLj8dKIEy4oH"));
+        }
+        return webhookKey;
+    }
+
+    private StringProperty webhookEventStart;
+
+    /**
+     *
+     * @param value
+     */
+    public void setWebhookEventStart(String value) {
+        webhookEventStartProperty().set(value);
+        getPreferences().put("webhook.event.start", value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getWebhookEventStart() {
+        return webhookEventStartProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty webhookEventStartProperty() {
+        if (webhookEventStart == null) {
+            webhookEventStart = new SimpleStringProperty(getPreferences().get("webhook.event.start", "test"));
+        }
+        return webhookEventStart;
+    }
+
+    private StringProperty webhookEventEnd;
+
+    /**
+     *
+     * @param value
+     */
+    public void setWebhookEventEnd(String value) {
+        webhookEventEndProperty().set(value);
+        getPreferences().put("webhook.event.end", value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getWebhookEventEnd() {
+        return webhookEventEndProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty webhookEventEndProperty() {
+        if (webhookEventEnd == null) {
+            webhookEventEnd = new SimpleStringProperty(getPreferences().get("webhook.event.end", "test"));
+        }
+        return webhookEventEnd;
     }
 
 }

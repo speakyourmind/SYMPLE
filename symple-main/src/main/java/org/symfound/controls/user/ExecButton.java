@@ -10,7 +10,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.symfound.builder.loader.RuntimeExecutor;
 import org.symfound.controls.AppableControl;
-import static org.symfound.controls.user.IftttButton.KEY;
 
 /**
  *
@@ -18,6 +17,7 @@ import static org.symfound.controls.user.IftttButton.KEY;
  */
 public class ExecButton extends AppableControl {
 
+    public static final String KEY = "Exec";
     /**
      *
      */
