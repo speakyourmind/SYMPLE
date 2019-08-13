@@ -5,9 +5,12 @@
  */
 package org.symfound.prediction.main;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
 import java.util.List;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
-import org.symfound.prediction.retriever.PredictionRetriever;
+import org.symfound.prediction.phrasefinder.retriever.PredictionRetriever;
 
 /**
  *
@@ -23,8 +26,12 @@ public class PhraseMain {
      * @param args
      */
     public static void main(String[] args) {
-        PredictionRetriever retriever = new PredictionRetriever();
-        List<String> name = retriever.retrievePredictions("I thought tha",5);
-        LOGGER.info(name);
+        try {
+            PredictionRetriever retriever = new PredictionRetriever();
+            List<String> name = retriever.retrievePredictions("I would like to go to *",1,5);
+            LOGGER.info(name);
+        } catch (UnsupportedEncodingException | URISyntaxException ex) {
+            java.util.logging.Logger.getLogger(PhraseMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

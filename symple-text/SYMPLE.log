@@ -81,3 +81,1510 @@
 2019-05-14 17:59:21 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
 2019-05-14 17:59:21 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
 2019-05-14 17:59:21 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:00:41 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:00:41 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:00:41 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:24 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:24 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:24 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:26 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:26 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:26 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:26 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:26 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:26 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:26 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:26 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:26 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:26 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:26 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:26 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:26 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:26 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:26 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:27 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:27 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:27 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:27 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:27 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:27 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:27 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:27 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:27 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:27 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:28 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:28 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:28 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:28 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:28 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:28 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:28 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:28 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:28 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:28 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:28 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:28 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:28 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:28 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:28 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:29 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:29 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:29 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:29 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:29 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:29 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:29 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:29 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:29 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:29 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:30 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:30 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:30 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:30 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:30 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:30 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:30 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:30 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:30 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:30 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:30 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:30 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:30 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:30 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:30 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:31 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:31 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:31 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:31 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:31 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:31 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:31 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:31 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:31 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:31 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:32 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:32 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:32 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:32 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:32 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:32 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:32 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:32 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:32 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:32 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:32 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:32 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:32 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:32 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:32 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:33 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:33 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:33 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:33 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:33 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:33 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:33 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:33 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:33 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:33 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:34 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:34 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:34 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:34 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:34 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:34 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:34 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:34 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:34 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:34 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:01:34 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:01:34 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:01:34 INFO  PredictionRetriever:79 - List of words:[I, thought, tha]
+2019-08-13 10:01:34 INFO  PredictionRetriever:85 - Words to search with: [I, thought, tha]
+2019-08-13 10:01:34 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought tha+
+2019-08-13 10:06:27 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:06:27 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:06:27 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:06:28 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:06:28 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:06:28 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:06:28 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:06:28 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:06:28 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:06:28 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:06:28 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:06:28 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:06:28 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:06:28 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:06:28 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:06:28 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:06:28 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:06:28 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:06:29 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:06:29 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:06:29 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:06:29 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:06:29 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:06:29 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:06:29 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:06:29 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:06:29 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:06:29 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:06:30 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:06:30 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:06:30 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:06:30 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:06:30 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:06:30 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:06:30 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:06:30 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:06:30 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:06:30 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:06:30 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:06:30 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:06:30 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:06:30 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:06:30 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:06:31 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:06:31 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:06:31 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:06:31 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:06:31 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:06:31 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:06:31 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:06:31 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:06:31 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:06:31 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:10:43 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:10:43 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:10:43 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:10:44 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:10:44 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:10:44 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:10:44 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:10:44 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:10:45 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:10:45 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:10:45 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:10:45 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:10:45 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:10:45 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:10:45 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:10:45 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:10:45 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:10:45 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:10:46 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:10:46 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:10:46 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:10:46 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:10:46 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:10:46 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:10:46 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:10:46 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:10:46 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:10:46 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:11:07 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:11:07 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:11:07 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:11:08 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:11:08 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:11:08 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:11:08 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:11:08 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:11:08 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:11:08 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:11:08 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:11:08 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:11:08 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:11:09 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:11:09 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:11:09 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:11:09 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:11:09 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:11:09 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:11:09 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:11:09 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:11:09 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:11:09 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:11:10 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:11:10 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:11:10 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:11:10 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:11:10 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:11:10 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:11:10 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:11:10 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:11:10 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:11:10 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:11:10 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:11:10 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:11:10 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:11:10 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:11:10 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:14:21 INFO  PhraseMain:28 - [If, The, Of, I]
+2019-08-13 10:14:44 INFO  PhraseMain:28 - [If, The, Of, I]
+2019-08-13 10:15:12 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:15:12 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:15:12 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:15:13 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:15:13 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:15:13 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:15:13 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:15:13 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:15:13 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:15:13 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:15:13 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:15:13 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:15:13 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:15:14 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:15:14 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:15:14 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:15:14 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:15:14 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:15:14 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:15:14 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:15:14 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:15:14 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:15:14 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:15:15 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:15:15 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:15:15 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:15:15 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:15:15 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:15:15 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:15:15 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:15:15 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:15:15 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:15:15 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:15:15 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:15:15 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:15:15 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:15:15 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:15:15 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:15:16 WARN  PhraseFinder:121 - Status is BAD_REQUEST
+2019-08-13 10:15:16 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:15:16 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:15:16 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:15:16 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:20:33 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:20:33 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:20:33 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:20:34 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:20:34 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:20:34 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:20:34 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:20:34 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:20:35 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:20:35 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:20:35 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:20:35 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:20:35 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:20:35 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:20:35 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:20:35 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:20:35 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:20:35 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:20:36 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:20:36 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:20:36 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:20:36 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:20:36 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:20:36 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:20:36 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:20:36 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:20:36 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:20:36 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:20:36 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:20:36 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:20:36 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:20:36 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:20:36 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:20:37 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:20:37 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:20:37 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:20:37 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:20:37 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:20:37 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:20:37 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:20:37 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:20:37 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:20:37 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:23:20 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:23:20 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:23:20 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:24:21 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:24:21 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:24:21 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:24:22 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:24:22 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:24:22 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:24:22 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:24:22 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:24:22 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:24:22 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:24:22 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:24:22 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:24:22 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:24:23 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:24:23 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:24:23 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:24:23 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:24:23 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:24:23 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:24:23 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:24:23 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:24:23 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:24:23 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:24:23 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:24:23 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:24:23 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:24:23 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:24:23 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:24:24 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:24:24 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:24:24 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:24:24 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:24:24 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:24:24 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:24:24 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:24:24 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:24:24 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:24:24 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:24:25 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:24:25 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:24:25 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:24:25 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:24:25 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:24:25 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:24:25 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:24:25 INFO  PredictionRetriever:79 - List of words:[I, thought]
+2019-08-13 10:24:25 INFO  PredictionRetriever:85 - Words to search with: [I, thought]
+2019-08-13 10:24:25 INFO  PredictionRetriever:102 - Searching phrases for query:  I thought+
+2019-08-13 10:24:48 INFO  PhraseMain:28 - [If, The, Of, I]
+2019-08-13 10:26:04 INFO  PhraseMain:28 - [If, The, Of, I]
+2019-08-13 10:29:11 INFO  PredictionRetriever:79 - List of words:[how, t]
+2019-08-13 10:29:11 INFO  PredictionRetriever:85 - Words to search with: [how, t]
+2019-08-13 10:29:11 INFO  PredictionRetriever:102 - Searching phrases for query:  how t+
+2019-08-13 10:29:12 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:29:12 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:29:12 INFO  PredictionRetriever:79 - List of words:[how, t]
+2019-08-13 10:29:12 INFO  PredictionRetriever:85 - Words to search with: [how, t]
+2019-08-13 10:29:12 INFO  PredictionRetriever:102 - Searching phrases for query:  how t+
+2019-08-13 10:29:13 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:29:13 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:29:13 INFO  PredictionRetriever:79 - List of words:[how, t]
+2019-08-13 10:29:13 INFO  PredictionRetriever:85 - Words to search with: [how, t]
+2019-08-13 10:29:13 INFO  PredictionRetriever:102 - Searching phrases for query:  how t+
+2019-08-13 10:29:13 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:29:13 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:29:13 INFO  PredictionRetriever:79 - List of words:[how, t]
+2019-08-13 10:29:13 INFO  PredictionRetriever:85 - Words to search with: [how, t]
+2019-08-13 10:29:13 INFO  PredictionRetriever:102 - Searching phrases for query:  how t+
+2019-08-13 10:29:14 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:29:14 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:29:14 INFO  PredictionRetriever:79 - List of words:[how, t]
+2019-08-13 10:29:14 INFO  PredictionRetriever:85 - Words to search with: [how, t]
+2019-08-13 10:29:14 INFO  PredictionRetriever:102 - Searching phrases for query:  how t+
+2019-08-13 10:29:14 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:29:14 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:29:14 INFO  PredictionRetriever:79 - List of words:[how, t]
+2019-08-13 10:29:14 INFO  PredictionRetriever:85 - Words to search with: [how, t]
+2019-08-13 10:29:14 INFO  PredictionRetriever:102 - Searching phrases for query:  how t+
+2019-08-13 10:29:14 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:29:14 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:29:14 INFO  PredictionRetriever:79 - List of words:[how, t]
+2019-08-13 10:29:14 INFO  PredictionRetriever:85 - Words to search with: [how, t]
+2019-08-13 10:29:14 INFO  PredictionRetriever:102 - Searching phrases for query:  how t+
+2019-08-13 10:29:15 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:29:15 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:29:15 INFO  PredictionRetriever:79 - List of words:[how, t]
+2019-08-13 10:29:15 INFO  PredictionRetriever:85 - Words to search with: [how, t]
+2019-08-13 10:29:15 INFO  PredictionRetriever:102 - Searching phrases for query:  how t+
+2019-08-13 10:29:15 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:29:15 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:29:15 INFO  PredictionRetriever:79 - List of words:[how, t]
+2019-08-13 10:29:15 INFO  PredictionRetriever:85 - Words to search with: [how, t]
+2019-08-13 10:29:15 INFO  PredictionRetriever:102 - Searching phrases for query:  how t+
+2019-08-13 10:29:16 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:29:16 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:29:16 INFO  PredictionRetriever:79 - List of words:[how, t]
+2019-08-13 10:29:16 INFO  PredictionRetriever:85 - Words to search with: [how, t]
+2019-08-13 10:29:16 INFO  PredictionRetriever:102 - Searching phrases for query:  how t+
+2019-08-13 10:31:22 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:31:22 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:31:22 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:31:23 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:31:23 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:31:23 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:31:23 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:31:23 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:31:23 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:31:23 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:31:23 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:31:23 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:31:23 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:31:23 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:31:23 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:31:23 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:31:23 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:31:23 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:31:24 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:31:24 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:31:24 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:31:24 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:31:24 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:31:24 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:31:24 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:31:24 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:31:24 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:31:24 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:04 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:04 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:04 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:06 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:37:06 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:37:06 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:06 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:06 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:06 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:37:06 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:37:06 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:06 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:06 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:06 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:37:06 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:37:06 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:06 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:06 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:07 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:37:07 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:37:07 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:07 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:07 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:07 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:37:07 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:37:07 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:07 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:07 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:08 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:37:08 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:37:08 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:08 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:08 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:08 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:37:08 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:37:08 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:08 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:08 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:08 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:37:08 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:37:08 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:08 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:08 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:09 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:37:09 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:37:09 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:09 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:09 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:09 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:37:09 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:37:09 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:09 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:09 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:37:10 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 10:37:10 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 10:37:10 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:37:10 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:37:10 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:39:02 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:39:02 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:39:02 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:39:03 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 10:39:03 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 10:39:03 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:39:03 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:39:03 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:39:03 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 10:39:03 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 10:39:03 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:39:03 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:39:03 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:39:04 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 10:39:04 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 10:39:04 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:39:04 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:39:04 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:39:04 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 10:39:04 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 10:39:04 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:39:04 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:39:04 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:39:04 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 10:39:04 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 10:39:04 INFO  PhraseMain:28 - [If, The, Of, I]
+2019-08-13 10:39:39 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:39:39 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:39:39 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:39:40 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 10:39:40 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 10:39:40 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:39:40 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:39:40 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:39:40 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 10:39:40 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 10:39:40 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:39:40 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:39:40 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:39:40 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 10:39:40 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 10:39:40 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:39:40 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:39:40 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:39:40 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 10:39:40 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 10:39:40 INFO  PredictionRetriever:79 - List of words:[how]
+2019-08-13 10:39:40 INFO  PredictionRetriever:85 - Words to search with: [how]
+2019-08-13 10:39:40 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 10:39:40 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 10:39:40 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 10:39:40 INFO  PhraseMain:28 - [If, The, Of, I]
+2019-08-13 14:23:49 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:23:49 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:23:49 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:23:50 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 14:23:50 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 14:23:50 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:23:50 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:23:50 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:23:50 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 14:23:50 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 14:23:50 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:23:50 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:23:50 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:23:50 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 14:23:50 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 14:23:50 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:23:50 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:23:50 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:23:51 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 14:23:51 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 14:23:51 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:23:51 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:23:51 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:23:51 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 14:23:51 WARN  PhraseFinder:116 - No phrases found
+2019-08-13 14:23:51 INFO  PhraseMain:28 - [If, The, Of, I]
+2019-08-13 14:27:07 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:27:07 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:27:07 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:27:08 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 14:27:08 INFO  PhraseFinder:111 - Adding phrase:how
+2019-08-13 14:27:08 INFO  PhraseFinder:111 - Adding phrase:however
+2019-08-13 14:27:08 INFO  PhraseFinder:111 - Adding phrase:How
+2019-08-13 14:27:08 INFO  PhraseFinder:111 - Adding phrase:However
+2019-08-13 14:27:08 INFO  PhraseFinder:111 - Adding phrase:Howard
+2019-08-13 14:27:08 INFO  PhraseFinder:114 - 5 phrases found
+2019-08-13 14:27:08 INFO  PredictionRetriever:111 - 0.427409 - how
+2019-08-13 14:27:08 INFO  PredictionRetriever:111 - 0.258826 - however
+2019-08-13 14:27:08 INFO  PredictionRetriever:111 - 0.165554 - How
+2019-08-13 14:27:08 INFO  PredictionRetriever:111 - 0.130098 - However
+2019-08-13 14:27:08 INFO  PredictionRetriever:111 - 0.0181134 - Howard
+2019-08-13 14:27:08 INFO  PredictionRetriever:118 - [, ever, , ever, ard]
+2019-08-13 14:27:08 INFO  PhraseMain:28 - [, ever, ard]
+2019-08-13 14:28:06 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:28:07 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:28:07 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:28:08 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 14:28:08 INFO  PhraseFinder:111 - Adding phrase:how
+2019-08-13 14:28:08 INFO  PhraseFinder:111 - Adding phrase:however
+2019-08-13 14:28:08 INFO  PhraseFinder:111 - Adding phrase:How
+2019-08-13 14:28:08 INFO  PhraseFinder:111 - Adding phrase:However
+2019-08-13 14:28:08 INFO  PhraseFinder:111 - Adding phrase:Howard
+2019-08-13 14:28:08 INFO  PhraseFinder:114 - 5 phrases found
+2019-08-13 14:28:08 INFO  PredictionRetriever:111 - 0.427409 - how
+2019-08-13 14:28:08 INFO  PredictionRetriever:111 - 0.258826 - however
+2019-08-13 14:28:08 INFO  PredictionRetriever:111 - 0.165554 - How
+2019-08-13 14:28:08 INFO  PredictionRetriever:111 - 0.130098 - However
+2019-08-13 14:28:08 INFO  PredictionRetriever:111 - 0.0181134 - Howard
+2019-08-13 14:28:08 INFO  PredictionRetriever:118 - [, ever, , ever, ard]
+2019-08-13 14:28:08 INFO  PhraseMain:28 - [, ever, ard]
+2019-08-13 14:28:42 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:28:42 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:28:42 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:29:31 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:29:31 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:29:31 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:29:32 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 14:29:32 INFO  PhraseFinder:111 - Adding phrase:how
+2019-08-13 14:29:32 INFO  PhraseFinder:111 - Adding phrase:however
+2019-08-13 14:29:32 INFO  PhraseFinder:111 - Adding phrase:How
+2019-08-13 14:29:32 INFO  PhraseFinder:111 - Adding phrase:However
+2019-08-13 14:29:32 INFO  PhraseFinder:111 - Adding phrase:Howard
+2019-08-13 14:29:32 INFO  PhraseFinder:114 - 5 phrases found
+2019-08-13 14:29:32 INFO  PredictionRetriever:111 - 0.427409 - how
+2019-08-13 14:29:32 INFO  PredictionRetriever:111 - 0.258826 - however
+2019-08-13 14:29:32 INFO  PredictionRetriever:111 - 0.165554 - How
+2019-08-13 14:29:32 INFO  PredictionRetriever:111 - 0.130098 - However
+2019-08-13 14:29:32 INFO  PredictionRetriever:111 - 0.0181134 - Howard
+2019-08-13 14:29:32 INFO  PredictionRetriever:118 - [, ever, , ever, ard]
+2019-08-13 14:29:32 INFO  PhraseMain:28 - [, ever, ard]
+2019-08-13 14:30:51 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:30:51 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:30:51 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:30:52 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 14:30:52 INFO  PhraseFinder:111 - Adding phrase:how
+2019-08-13 14:30:52 INFO  PhraseFinder:111 - Adding phrase:however
+2019-08-13 14:30:52 INFO  PhraseFinder:111 - Adding phrase:How
+2019-08-13 14:30:52 INFO  PhraseFinder:111 - Adding phrase:However
+2019-08-13 14:30:52 INFO  PhraseFinder:111 - Adding phrase:Howard
+2019-08-13 14:30:52 INFO  PhraseFinder:114 - 5 phrases found
+2019-08-13 14:30:52 INFO  PredictionRetriever:111 - 0.427409 - how
+2019-08-13 14:30:52 INFO  PredictionRetriever:111 - 0.258826 - however
+2019-08-13 14:30:52 INFO  PredictionRetriever:111 - 0.165554 - How
+2019-08-13 14:30:52 INFO  PredictionRetriever:111 - 0.130098 - However
+2019-08-13 14:30:52 INFO  PredictionRetriever:111 - 0.0181134 - Howard
+2019-08-13 14:30:52 INFO  PredictionRetriever:118 - [, ever, , ever, ard]
+2019-08-13 14:30:52 INFO  PhraseMain:28 - [, ever, ard]
+2019-08-13 14:32:26 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:32:26 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:32:26 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:32:27 INFO  PhraseFinder:87 - Status is OK
+2019-08-13 14:32:27 INFO  PhraseFinder:111 - Adding phrase:how
+2019-08-13 14:32:27 INFO  PhraseFinder:111 - Adding phrase:however
+2019-08-13 14:32:27 INFO  PhraseFinder:111 - Adding phrase:How
+2019-08-13 14:32:27 INFO  PhraseFinder:111 - Adding phrase:However
+2019-08-13 14:32:27 INFO  PhraseFinder:111 - Adding phrase:Howard
+2019-08-13 14:32:27 INFO  PhraseFinder:114 - 5 phrases found
+2019-08-13 14:32:27 INFO  PredictionRetriever:111 - 0.427409 - how
+2019-08-13 14:32:27 INFO  PredictionRetriever:111 - 0.258826 - however
+2019-08-13 14:32:27 INFO  PredictionRetriever:111 - 0.165554 - How
+2019-08-13 14:32:27 INFO  PredictionRetriever:111 - 0.130098 - However
+2019-08-13 14:32:27 INFO  PredictionRetriever:111 - 0.0181134 - Howard
+2019-08-13 14:32:27 INFO  PredictionRetriever:118 - [, ever, , ever, ard]
+2019-08-13 14:32:27 INFO  PhraseMain:28 - [, ever, ard]
+2019-08-13 14:35:16 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:16 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:16 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:35:17 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 14:35:17 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 14:35:17 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:17 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:17 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:35:18 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 14:35:18 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 14:35:18 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:18 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:18 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:35:18 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 14:35:18 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 14:35:18 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:18 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:18 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:35:19 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 14:35:19 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 14:35:19 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:19 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:19 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:35:19 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 14:35:19 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 14:35:19 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:19 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:19 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:35:19 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 14:35:19 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 14:35:20 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:20 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:20 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:35:20 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 14:35:20 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 14:35:20 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:20 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:20 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:35:20 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 14:35:20 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 14:35:20 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:20 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:20 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:35:21 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 14:35:21 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 14:35:21 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:21 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:21 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:35:21 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 14:35:21 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 14:35:21 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:21 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:21 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:35:22 WARN  PhraseFinder:123 - Status is BAD_REQUEST
+2019-08-13 14:35:22 WARN  PredictionRetriever:105 - Request was not successful: BAD_REQUEST
+2019-08-13 14:35:22 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:35:22 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:35:22 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:41:16 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:41:16 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:41:16 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:41:55 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:41:55 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:41:55 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:41:56 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 14:41:56 INFO  PhraseFinder:112 - Adding phrase:how
+2019-08-13 14:41:56 INFO  PhraseFinder:112 - Adding phrase:however
+2019-08-13 14:41:56 INFO  PhraseFinder:112 - Adding phrase:How
+2019-08-13 14:41:56 INFO  PhraseFinder:112 - Adding phrase:However
+2019-08-13 14:41:56 INFO  PhraseFinder:112 - Adding phrase:Howard
+2019-08-13 14:41:56 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 14:41:56 INFO  PredictionRetriever:111 - 0.427409 - how
+2019-08-13 14:41:56 INFO  PredictionRetriever:111 - 0.258826 - however
+2019-08-13 14:41:56 INFO  PredictionRetriever:111 - 0.165554 - How
+2019-08-13 14:41:56 INFO  PredictionRetriever:111 - 0.130098 - However
+2019-08-13 14:41:56 INFO  PredictionRetriever:111 - 0.0181134 - Howard
+2019-08-13 14:41:56 INFO  PredictionRetriever:118 - [, ever, , ever, ard]
+2019-08-13 14:41:56 INFO  PhraseMain:28 - [, ever, ard]
+2019-08-13 14:44:40 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:44:40 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:44:40 INFO  PredictionRetriever:102 - Searching phrases for query:  how+
+2019-08-13 14:44:41 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 14:44:41 INFO  PhraseFinder:112 - Adding phrase:how
+2019-08-13 14:44:41 INFO  PhraseFinder:112 - Adding phrase:however
+2019-08-13 14:44:41 INFO  PhraseFinder:112 - Adding phrase:How
+2019-08-13 14:44:41 INFO  PhraseFinder:112 - Adding phrase:However
+2019-08-13 14:44:41 INFO  PhraseFinder:112 - Adding phrase:Howard
+2019-08-13 14:44:41 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 14:44:41 INFO  PredictionRetriever:111 - 0.427409 - how
+2019-08-13 14:44:41 INFO  PredictionRetriever:111 - 0.258826 - however
+2019-08-13 14:44:41 INFO  PredictionRetriever:111 - 0.165554 - How
+2019-08-13 14:44:41 INFO  PredictionRetriever:111 - 0.130098 - However
+2019-08-13 14:44:41 INFO  PredictionRetriever:111 - 0.0181134 - Howard
+2019-08-13 14:44:41 INFO  PredictionRetriever:118 - [, ever, , ever, ard]
+2019-08-13 14:44:41 INFO  PhraseMain:28 - [, ever, ard]
+2019-08-13 14:52:27 INFO  PredictionRetriever:78 - List of words:[how]
+2019-08-13 14:52:27 INFO  PredictionRetriever:84 - Words to search with: [how]
+2019-08-13 14:52:27 INFO  PredictionRetriever:104 - Searching phrases for query:  how+
+2019-08-13 14:52:28 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 14:52:28 INFO  PhraseFinder:112 - Adding phrase:how
+2019-08-13 14:52:28 INFO  PhraseFinder:112 - Adding phrase:however
+2019-08-13 14:52:28 INFO  PhraseFinder:112 - Adding phrase:How
+2019-08-13 14:52:28 INFO  PhraseFinder:112 - Adding phrase:However
+2019-08-13 14:52:28 INFO  PhraseFinder:112 - Adding phrase:Howard
+2019-08-13 14:52:28 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 14:52:28 INFO  PredictionRetriever:113 - 0.427409 - how
+2019-08-13 14:52:28 INFO  PredictionRetriever:113 - 0.258826 - however
+2019-08-13 14:52:28 INFO  PredictionRetriever:113 - 0.165554 - How
+2019-08-13 14:52:28 INFO  PredictionRetriever:113 - 0.130098 - However
+2019-08-13 14:52:28 INFO  PredictionRetriever:113 - 0.0181134 - Howard
+2019-08-13 14:52:28 INFO  PredictionRetriever:120 - [, ever, , ever, ard]
+2019-08-13 14:52:28 INFO  PhraseMain:32 - [, ever, ard]
+2019-08-13 14:52:56 INFO  PredictionRetriever:78 - List of words:[I, thought, tha]
+2019-08-13 14:52:56 INFO  PredictionRetriever:84 - Words to search with: [I, thought, tha]
+2019-08-13 14:52:56 INFO  PredictionRetriever:104 - Searching phrases for query:  I thought tha+
+2019-08-13 14:52:57 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 14:52:57 INFO  PhraseFinder:112 - Adding phrase:I thought that
+2019-08-13 14:52:57 INFO  PhraseFinder:112 - Adding phrase:I thought that's
+2019-08-13 14:52:57 INFO  PhraseFinder:112 - Adding phrase:I thought That
+2019-08-13 14:52:57 INFO  PhraseFinder:112 - Adding phrase:i thought that
+2019-08-13 14:52:57 INFO  PhraseFinder:112 - Adding phrase:I THOUGHT THAT
+2019-08-13 14:52:57 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 14:52:57 INFO  PredictionRetriever:113 - 0.983807 - I thought that
+2019-08-13 14:52:57 INFO  PredictionRetriever:113 - 0.0129207 - I thought that's
+2019-08-13 14:52:57 INFO  PredictionRetriever:113 - 0.00165435 - I thought That
+2019-08-13 14:52:57 INFO  PredictionRetriever:113 - 0.00101821 - i thought that
+2019-08-13 14:52:57 INFO  PredictionRetriever:113 - 5.99703E-4 - I THOUGHT THAT
+2019-08-13 14:52:57 INFO  PredictionRetriever:120 - [t, t's, t, t, T]
+2019-08-13 14:52:57 INFO  PhraseMain:32 - [t, t's, T]
+2019-08-13 14:53:46 INFO  PredictionRetriever:78 - List of words:[I, thought]
+2019-08-13 14:53:46 INFO  PredictionRetriever:84 - Words to search with: [I, thought]
+2019-08-13 14:53:46 INFO  PredictionRetriever:104 - Searching phrases for query:  I thought+
+2019-08-13 14:53:47 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 14:53:47 INFO  PhraseFinder:112 - Adding phrase:I thought
+2019-08-13 14:53:47 INFO  PhraseFinder:112 - Adding phrase:i thought
+2019-08-13 14:53:47 INFO  PhraseFinder:112 - Adding phrase:I THOUGHT
+2019-08-13 14:53:47 INFO  PhraseFinder:112 - Adding phrase:I Thought
+2019-08-13 14:53:47 INFO  PhraseFinder:112 - Adding phrase:i THOUGHT
+2019-08-13 14:53:47 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 14:53:47 INFO  PredictionRetriever:113 - 0.997493 - I thought
+2019-08-13 14:53:47 INFO  PredictionRetriever:113 - 0.00103656 - i thought
+2019-08-13 14:53:47 INFO  PredictionRetriever:113 - 7.99566E-4 - I THOUGHT
+2019-08-13 14:53:47 INFO  PredictionRetriever:113 - 6.57977E-4 - I Thought
+2019-08-13 14:53:47 INFO  PredictionRetriever:113 - 1.32631E-5 - i THOUGHT
+2019-08-13 14:53:47 INFO  PredictionRetriever:120 - [, , , , ]
+2019-08-13 14:53:47 INFO  PhraseMain:32 - []
+2019-08-13 14:54:21 INFO  PredictionRetriever:78 - List of words:[I, thought]
+2019-08-13 14:54:21 INFO  PredictionRetriever:84 - Words to search with: [I, thought]
+2019-08-13 14:54:21 INFO  PredictionRetriever:104 - Searching phrases for query:  I thought+
+2019-08-13 14:54:22 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 14:54:22 INFO  PhraseFinder:112 - Adding phrase:I thought
+2019-08-13 14:54:22 INFO  PhraseFinder:112 - Adding phrase:i thought
+2019-08-13 14:54:22 INFO  PhraseFinder:112 - Adding phrase:I THOUGHT
+2019-08-13 14:54:22 INFO  PhraseFinder:112 - Adding phrase:I Thought
+2019-08-13 14:54:22 INFO  PhraseFinder:112 - Adding phrase:i THOUGHT
+2019-08-13 14:54:22 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 14:54:22 INFO  PredictionRetriever:113 - 0.997493 - I thought
+2019-08-13 14:54:22 INFO  PredictionRetriever:113 - 0.00103656 - i thought
+2019-08-13 14:54:22 INFO  PredictionRetriever:113 - 7.99566E-4 - I THOUGHT
+2019-08-13 14:54:22 INFO  PredictionRetriever:113 - 6.57977E-4 - I Thought
+2019-08-13 14:54:22 INFO  PredictionRetriever:113 - 1.32631E-5 - i THOUGHT
+2019-08-13 14:54:22 INFO  PredictionRetriever:120 - [, , , , ]
+2019-08-13 14:54:22 INFO  PhraseMain:32 - []
+2019-08-13 14:55:20 INFO  PredictionRetriever:78 - List of words:[I, need]
+2019-08-13 14:55:20 INFO  PredictionRetriever:84 - Words to search with: [I, need]
+2019-08-13 14:55:20 INFO  PredictionRetriever:104 - Searching phrases for query:  I need+
+2019-08-13 14:55:21 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 14:55:21 INFO  PhraseFinder:112 - Adding phrase:I need
+2019-08-13 14:55:21 INFO  PhraseFinder:112 - Adding phrase:I needed
+2019-08-13 14:55:21 INFO  PhraseFinder:112 - Adding phrase:I Need
+2019-08-13 14:55:21 INFO  PhraseFinder:112 - Adding phrase:I needs
+2019-08-13 14:55:21 INFO  PhraseFinder:112 - Adding phrase:I NEED
+2019-08-13 14:55:21 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 14:55:21 INFO  PredictionRetriever:113 - 0.735367 - I need
+2019-08-13 14:55:21 INFO  PredictionRetriever:113 - 0.250147 - I needed
+2019-08-13 14:55:21 INFO  PredictionRetriever:113 - 0.00682169 - I Need
+2019-08-13 14:55:21 INFO  PredictionRetriever:113 - 0.00485176 - I needs
+2019-08-13 14:55:21 INFO  PredictionRetriever:113 - 0.00281241 - I NEED
+2019-08-13 14:55:21 INFO  PredictionRetriever:120 - [, ed, , s, ]
+2019-08-13 14:55:21 INFO  PhraseMain:32 - [, ed, s]
+2019-08-13 14:56:52 INFO  PredictionRetriever:78 - List of words:[I, w]
+2019-08-13 14:56:52 INFO  PredictionRetriever:84 - Words to search with: [I, w]
+2019-08-13 14:56:52 INFO  PredictionRetriever:104 - Searching phrases for query:  I w+
+2019-08-13 14:56:53 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 14:56:53 INFO  PhraseFinder:112 - Adding phrase:I w
+2019-08-13 14:56:53 INFO  PhraseFinder:112 - Adding phrase:I W
+2019-08-13 14:56:53 INFO  PhraseFinder:112 - Adding phrase:i w
+2019-08-13 14:56:53 INFO  PhraseFinder:112 - Adding phrase:i W
+2019-08-13 14:56:53 INFO  PhraseFinder:115 - 4 phrases found
+2019-08-13 14:56:53 INFO  PredictionRetriever:113 - 0.552965 - I w
+2019-08-13 14:56:53 INFO  PredictionRetriever:113 - 0.207798 - I W
+2019-08-13 14:56:53 INFO  PredictionRetriever:113 - 0.158767 - i w
+2019-08-13 14:56:53 INFO  PredictionRetriever:113 - 0.0804698 - i W
+2019-08-13 14:56:53 INFO  PredictionRetriever:120 - [, , , ]
+2019-08-13 14:56:53 INFO  PhraseMain:32 - []
+2019-08-13 15:00:01 INFO  PredictionRetriever:78 - List of words:[I, w]
+2019-08-13 15:00:01 INFO  PredictionRetriever:84 - Words to search with: [I, w]
+2019-08-13 15:00:01 INFO  PredictionRetriever:104 - Searching phrases for query:  I w+
+2019-08-13 15:00:29 INFO  PredictionRetriever:78 - List of words:[I, w]
+2019-08-13 15:00:29 INFO  PredictionRetriever:84 - Words to search with: [I, w]
+2019-08-13 15:00:29 INFO  PredictionRetriever:104 - Searching phrases for query:  I w+
+2019-08-13 15:00:30 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:00:30 INFO  PhraseFinder:112 - Adding phrase:I w
+2019-08-13 15:00:30 INFO  PhraseFinder:112 - Adding phrase:I W
+2019-08-13 15:00:30 INFO  PhraseFinder:112 - Adding phrase:i w
+2019-08-13 15:00:30 INFO  PhraseFinder:112 - Adding phrase:i W
+2019-08-13 15:00:30 INFO  PhraseFinder:115 - 4 phrases found
+2019-08-13 15:00:30 INFO  PredictionRetriever:113 - 0.552965 - I w
+2019-08-13 15:00:30 INFO  PredictionRetriever:113 - 0.207798 - I W
+2019-08-13 15:00:30 INFO  PredictionRetriever:113 - 0.158767 - i w
+2019-08-13 15:00:30 INFO  PredictionRetriever:113 - 0.0804698 - i W
+2019-08-13 15:00:30 INFO  PredictionRetriever:120 - [, , , ]
+2019-08-13 15:00:30 INFO  PhraseMain:32 - []
+2019-08-13 15:14:55 INFO  PredictionRetriever:78 - List of words:[I, w]
+2019-08-13 15:14:55 INFO  PredictionRetriever:84 - Words to search with: [I, w]
+2019-08-13 15:14:55 INFO  PredictionRetriever:104 - Searching phrases for query:  I w+
+2019-08-13 15:14:56 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:14:56 INFO  PhraseFinder:112 - Adding phrase:I w
+2019-08-13 15:14:56 INFO  PhraseFinder:112 - Adding phrase:I W
+2019-08-13 15:14:56 INFO  PhraseFinder:112 - Adding phrase:i w
+2019-08-13 15:14:56 INFO  PhraseFinder:112 - Adding phrase:i W
+2019-08-13 15:14:56 INFO  PhraseFinder:115 - 4 phrases found
+2019-08-13 15:14:56 INFO  PredictionRetriever:113 - 0.552965 - I w
+2019-08-13 15:14:56 INFO  PredictionRetriever:113 - 0.207798 - I W
+2019-08-13 15:14:56 INFO  PredictionRetriever:113 - 0.158767 - i w
+2019-08-13 15:14:56 INFO  PredictionRetriever:113 - 0.0804698 - i W
+2019-08-13 15:14:56 INFO  PredictionRetriever:120 - [, , , ]
+2019-08-13 15:14:56 INFO  PhraseMain:32 - []
+2019-08-13 15:15:37 INFO  PredictionRetriever:78 - List of words:[I]
+2019-08-13 15:15:37 INFO  PredictionRetriever:84 - Words to search with: [I]
+2019-08-13 15:15:37 INFO  PredictionRetriever:104 - Searching phrases for query:  I+
+2019-08-13 15:15:38 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:15:38 INFO  PhraseFinder:112 - Adding phrase:I
+2019-08-13 15:15:38 INFO  PhraseFinder:112 - Adding phrase:i
+2019-08-13 15:15:38 INFO  PhraseFinder:112 - Adding phrase:?
+2019-08-13 15:15:38 INFO  PhraseFinder:115 - 3 phrases found
+2019-08-13 15:15:38 INFO  PredictionRetriever:113 - 0.969225 - I
+2019-08-13 15:15:38 INFO  PredictionRetriever:113 - 0.030775 - i
+2019-08-13 15:15:38 INFO  PredictionRetriever:113 - 2.97357E-7 - ?
+2019-08-13 15:15:38 INFO  PredictionRetriever:120 - [, , ]
+2019-08-13 15:15:38 INFO  PhraseMain:32 - []
+2019-08-13 15:16:49 INFO  PredictionRetriever:78 - List of words:[I]
+2019-08-13 15:16:49 INFO  PredictionRetriever:84 - Words to search with: [I]
+2019-08-13 15:16:49 INFO  PredictionRetriever:104 - Searching phrases for query:  I+
+2019-08-13 15:16:50 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:16:50 INFO  PhraseFinder:112 - Adding phrase:I
+2019-08-13 15:16:50 INFO  PhraseFinder:112 - Adding phrase:i
+2019-08-13 15:16:50 INFO  PhraseFinder:112 - Adding phrase:?
+2019-08-13 15:16:50 INFO  PhraseFinder:115 - 3 phrases found
+2019-08-13 15:16:50 INFO  PredictionRetriever:113 - 0.969225 - I
+2019-08-13 15:16:50 INFO  PredictionRetriever:113 - 0.030775 - i
+2019-08-13 15:16:50 INFO  PredictionRetriever:113 - 2.97357E-7 - ?
+2019-08-13 15:16:50 INFO  PredictionRetriever:120 - [, , ]
+2019-08-13 15:16:50 INFO  PhraseMain:32 - []
+2019-08-13 15:17:09 INFO  PredictionRetriever:78 - List of words:[I]
+2019-08-13 15:17:09 INFO  PredictionRetriever:84 - Words to search with: [I]
+2019-08-13 15:17:09 INFO  PredictionRetriever:104 - Searching phrases for query:  I+
+2019-08-13 15:17:10 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:17:10 INFO  PhraseFinder:112 - Adding phrase:I
+2019-08-13 15:17:10 INFO  PhraseFinder:112 - Adding phrase:i
+2019-08-13 15:17:10 INFO  PhraseFinder:112 - Adding phrase:?
+2019-08-13 15:17:10 INFO  PhraseFinder:115 - 3 phrases found
+2019-08-13 15:17:10 INFO  PredictionRetriever:113 - 0.969225 - I
+2019-08-13 15:17:10 INFO  PredictionRetriever:113 - 0.030775 - i
+2019-08-13 15:17:10 INFO  PredictionRetriever:113 - 2.97357E-7 - ?
+2019-08-13 15:17:10 INFO  PredictionRetriever:120 - [, , ]
+2019-08-13 15:17:10 INFO  PhraseMain:32 - []
+2019-08-13 15:18:32 INFO  PredictionRetriever:78 - List of words:[I]
+2019-08-13 15:18:32 INFO  PredictionRetriever:84 - Words to search with: [I]
+2019-08-13 15:18:32 INFO  PredictionRetriever:104 - Searching phrases for query:  I+
+2019-08-13 15:18:33 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:18:33 INFO  PhraseFinder:112 - Adding phrase:I
+2019-08-13 15:18:33 INFO  PhraseFinder:112 - Adding phrase:i
+2019-08-13 15:18:33 INFO  PhraseFinder:112 - Adding phrase:?
+2019-08-13 15:18:33 INFO  PhraseFinder:115 - 3 phrases found
+2019-08-13 15:18:33 INFO  PredictionRetriever:113 - 0.969225 - I
+2019-08-13 15:18:33 INFO  PredictionRetriever:113 - 0.030775 - i
+2019-08-13 15:18:33 INFO  PredictionRetriever:113 - 2.97357E-7 - ?
+2019-08-13 15:18:33 INFO  PredictionRetriever:120 - [, , ]
+2019-08-13 15:18:33 INFO  PhraseMain:32 - []
+2019-08-13 15:18:53 INFO  PredictionRetriever:78 - List of words:[I, wo]
+2019-08-13 15:18:53 INFO  PredictionRetriever:84 - Words to search with: [I, wo]
+2019-08-13 15:18:53 INFO  PredictionRetriever:104 - Searching phrases for query:  I wo+
+2019-08-13 15:18:54 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:18:54 INFO  PhraseFinder:112 - Adding phrase:I wo
+2019-08-13 15:18:54 INFO  PhraseFinder:112 - Adding phrase:I WO
+2019-08-13 15:18:54 INFO  PhraseFinder:112 - Adding phrase:i wo
+2019-08-13 15:18:54 INFO  PhraseFinder:112 - Adding phrase:I Wo
+2019-08-13 15:18:54 INFO  PhraseFinder:112 - Adding phrase:i Wo
+2019-08-13 15:18:54 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:18:54 INFO  PredictionRetriever:113 - 0.702154 - I wo
+2019-08-13 15:18:54 INFO  PredictionRetriever:113 - 0.14487 - I WO
+2019-08-13 15:18:54 INFO  PredictionRetriever:113 - 0.0919378 - i wo
+2019-08-13 15:18:54 INFO  PredictionRetriever:113 - 0.0452617 - I Wo
+2019-08-13 15:18:54 INFO  PredictionRetriever:113 - 0.0157763 - i Wo
+2019-08-13 15:18:54 INFO  PredictionRetriever:120 - [, , , , ]
+2019-08-13 15:18:54 INFO  PhraseMain:32 - []
+2019-08-13 15:19:12 INFO  PredictionRetriever:78 - List of words:[I, wo]
+2019-08-13 15:19:12 INFO  PredictionRetriever:84 - Words to search with: [I, wo]
+2019-08-13 15:19:12 INFO  PredictionRetriever:104 - Searching phrases for query:  I wo+
+2019-08-13 15:19:13 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:19:13 INFO  PhraseFinder:112 - Adding phrase:I wo
+2019-08-13 15:19:13 INFO  PhraseFinder:112 - Adding phrase:I WO
+2019-08-13 15:19:13 INFO  PhraseFinder:112 - Adding phrase:i wo
+2019-08-13 15:19:13 INFO  PhraseFinder:112 - Adding phrase:I Wo
+2019-08-13 15:19:13 INFO  PhraseFinder:112 - Adding phrase:i Wo
+2019-08-13 15:19:13 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:19:13 INFO  PredictionRetriever:113 - 0.702154 - I wo
+2019-08-13 15:19:13 INFO  PredictionRetriever:113 - 0.14487 - I WO
+2019-08-13 15:19:13 INFO  PredictionRetriever:113 - 0.0919378 - i wo
+2019-08-13 15:19:13 INFO  PredictionRetriever:113 - 0.0452617 - I Wo
+2019-08-13 15:19:13 INFO  PredictionRetriever:113 - 0.0157763 - i Wo
+2019-08-13 15:19:13 INFO  PredictionRetriever:120 - [, , , , ]
+2019-08-13 15:19:13 INFO  PhraseMain:32 - []
+2019-08-13 15:19:28 INFO  PredictionRetriever:78 - List of words:[I, would, l]
+2019-08-13 15:19:28 INFO  PredictionRetriever:84 - Words to search with: [I, would, l]
+2019-08-13 15:19:28 INFO  PredictionRetriever:104 - Searching phrases for query:  I would l+
+2019-08-13 15:19:29 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:19:29 INFO  PhraseFinder:112 - Adding phrase:I would l
+2019-08-13 15:19:29 INFO  PhraseFinder:115 - 1 phrases found
+2019-08-13 15:19:29 INFO  PredictionRetriever:113 - 1.0 - I would l
+2019-08-13 15:19:29 INFO  PredictionRetriever:120 - []
+2019-08-13 15:19:29 INFO  PhraseMain:32 - []
+2019-08-13 15:20:54 INFO  PredictionRetriever:78 - List of words:[I, would, l]
+2019-08-13 15:20:54 INFO  PredictionRetriever:84 - Words to search with: [I, would, l]
+2019-08-13 15:20:54 INFO  PredictionRetriever:104 - Searching phrases for query:  I would l+
+2019-08-13 15:20:55 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:20:55 INFO  PhraseFinder:112 - Adding phrase:I would l
+2019-08-13 15:20:55 INFO  PhraseFinder:115 - 1 phrases found
+2019-08-13 15:20:55 INFO  PredictionRetriever:113 - 1.0 - I would l
+2019-08-13 15:20:55 INFO  PredictionRetriever:120 - []
+2019-08-13 15:20:55 INFO  PhraseMain:32 - []
+2019-08-13 15:21:15 INFO  PredictionRetriever:78 - List of words:[I, would]
+2019-08-13 15:21:15 INFO  PredictionRetriever:84 - Words to search with: [I, would]
+2019-08-13 15:21:15 INFO  PredictionRetriever:104 - Searching phrases for query:  I would+
+2019-08-13 15:21:16 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:21:16 INFO  PhraseFinder:112 - Adding phrase:I would
+2019-08-13 15:21:16 INFO  PhraseFinder:112 - Adding phrase:i would
+2019-08-13 15:21:16 INFO  PhraseFinder:112 - Adding phrase:I Would
+2019-08-13 15:21:16 INFO  PhraseFinder:112 - Adding phrase:I WOULD
+2019-08-13 15:21:16 INFO  PhraseFinder:112 - Adding phrase:i Would
+2019-08-13 15:21:16 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:21:16 INFO  PredictionRetriever:113 - 0.99638 - I would
+2019-08-13 15:21:16 INFO  PredictionRetriever:113 - 0.00152158 - i would
+2019-08-13 15:21:16 INFO  PredictionRetriever:113 - 0.00112241 - I Would
+2019-08-13 15:21:16 INFO  PredictionRetriever:113 - 9.31803E-4 - I WOULD
+2019-08-13 15:21:16 INFO  PredictionRetriever:113 - 4.4482E-5 - i Would
+2019-08-13 15:21:16 INFO  PredictionRetriever:120 - [, , , , ]
+2019-08-13 15:21:16 INFO  PhraseMain:32 - []
+2019-08-13 15:23:55 INFO  PredictionRetriever:78 - List of words:[I, would]
+2019-08-13 15:23:55 INFO  PredictionRetriever:84 - Words to search with: [I, would]
+2019-08-13 15:23:55 INFO  PredictionRetriever:104 - Searching phrases for query: I would +
+2019-08-13 15:23:56 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:23:56 INFO  PhraseFinder:112 - Adding phrase:I would
+2019-08-13 15:23:56 INFO  PhraseFinder:112 - Adding phrase:i would
+2019-08-13 15:23:56 INFO  PhraseFinder:112 - Adding phrase:I Would
+2019-08-13 15:23:56 INFO  PhraseFinder:112 - Adding phrase:I WOULD
+2019-08-13 15:23:56 INFO  PhraseFinder:112 - Adding phrase:i Would
+2019-08-13 15:23:56 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:23:56 INFO  PredictionRetriever:113 - 0.99638 - I would
+2019-08-13 15:23:56 INFO  PredictionRetriever:113 - 0.00152158 - i would
+2019-08-13 15:23:56 INFO  PredictionRetriever:113 - 0.00112241 - I Would
+2019-08-13 15:23:56 INFO  PredictionRetriever:113 - 9.31803E-4 - I WOULD
+2019-08-13 15:23:56 INFO  PredictionRetriever:113 - 4.4482E-5 - i Would
+2019-08-13 15:23:56 INFO  PredictionRetriever:120 - [, , , , ]
+2019-08-13 15:23:56 INFO  PhraseMain:32 - []
+2019-08-13 15:24:36 INFO  PredictionRetriever:78 - List of words:[I, would]
+2019-08-13 15:24:36 INFO  PredictionRetriever:84 - Words to search with: [I, would]
+2019-08-13 15:24:36 INFO  PredictionRetriever:104 - Searching phrases for query: I would ?
+2019-08-13 15:24:37 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:24:37 INFO  PhraseFinder:112 - Adding phrase:I would not
+2019-08-13 15:24:37 INFO  PhraseFinder:112 - Adding phrase:I would have
+2019-08-13 15:24:37 INFO  PhraseFinder:112 - Adding phrase:I would like
+2019-08-13 15:24:37 INFO  PhraseFinder:112 - Adding phrase:I would be
+2019-08-13 15:24:37 INFO  PhraseFinder:112 - Adding phrase:I would say
+2019-08-13 15:24:37 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:24:37 INFO  PredictionRetriever:113 - 0.40457 - I would not
+2019-08-13 15:24:37 INFO  PredictionRetriever:113 - 0.243333 - I would have
+2019-08-13 15:24:37 INFO  PredictionRetriever:113 - 0.170273 - I would like
+2019-08-13 15:24:37 INFO  PredictionRetriever:113 - 0.132258 - I would be
+2019-08-13 15:24:37 INFO  PredictionRetriever:113 - 0.0495667 - I would say
+2019-08-13 15:24:37 INFO  PredictionRetriever:120 - [ not,  have,  like,  be,  say]
+2019-08-13 15:24:37 INFO  PhraseMain:32 - [ not,  have,  like,  be,  say]
+2019-08-13 15:26:59 INFO  PredictionRetriever:78 - List of words:[I, wo]
+2019-08-13 15:26:59 INFO  PredictionRetriever:84 - Words to search with: [I, wo]
+2019-08-13 15:26:59 INFO  PredictionRetriever:104 - Searching phrases for query: I wo +
+2019-08-13 15:27:00 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:27:00 INFO  PhraseFinder:112 - Adding phrase:I wo
+2019-08-13 15:27:00 INFO  PhraseFinder:112 - Adding phrase:I WO
+2019-08-13 15:27:00 INFO  PhraseFinder:112 - Adding phrase:i wo
+2019-08-13 15:27:00 INFO  PhraseFinder:112 - Adding phrase:I Wo
+2019-08-13 15:27:00 INFO  PhraseFinder:112 - Adding phrase:i Wo
+2019-08-13 15:27:00 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:27:00 INFO  PredictionRetriever:113 - 0.702154 - I wo
+2019-08-13 15:27:00 INFO  PredictionRetriever:113 - 0.14487 - I WO
+2019-08-13 15:27:00 INFO  PredictionRetriever:113 - 0.0919378 - i wo
+2019-08-13 15:27:00 INFO  PredictionRetriever:113 - 0.0452617 - I Wo
+2019-08-13 15:27:00 INFO  PredictionRetriever:113 - 0.0157763 - i Wo
+2019-08-13 15:27:00 INFO  PredictionRetriever:120 - [, , , , ]
+2019-08-13 15:27:00 INFO  PhraseMain:32 - []
+2019-08-13 15:27:56 INFO  PredictionRetriever:78 - List of words:[I, wo]
+2019-08-13 15:27:56 INFO  PredictionRetriever:84 - Words to search with: [I, wo]
+2019-08-13 15:27:56 INFO  PredictionRetriever:104 - Searching phrases for query:  I wo+
+2019-08-13 15:27:57 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:27:57 INFO  PhraseFinder:112 - Adding phrase:I wo
+2019-08-13 15:27:57 INFO  PhraseFinder:112 - Adding phrase:I WO
+2019-08-13 15:27:57 INFO  PhraseFinder:112 - Adding phrase:i wo
+2019-08-13 15:27:57 INFO  PhraseFinder:112 - Adding phrase:I Wo
+2019-08-13 15:27:57 INFO  PhraseFinder:112 - Adding phrase:i Wo
+2019-08-13 15:27:57 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:27:57 INFO  PredictionRetriever:113 - 0.702154 - I wo
+2019-08-13 15:27:57 INFO  PredictionRetriever:113 - 0.14487 - I WO
+2019-08-13 15:27:57 INFO  PredictionRetriever:113 - 0.0919378 - i wo
+2019-08-13 15:27:57 INFO  PredictionRetriever:113 - 0.0452617 - I Wo
+2019-08-13 15:27:57 INFO  PredictionRetriever:113 - 0.0157763 - i Wo
+2019-08-13 15:27:57 INFO  PredictionRetriever:120 - [, , , , ]
+2019-08-13 15:27:57 INFO  PhraseMain:32 - []
+2019-08-13 15:28:46 INFO  PredictionRetriever:78 - List of words:[I, wo]
+2019-08-13 15:28:46 INFO  PredictionRetriever:84 - Words to search with: [I, wo]
+2019-08-13 15:28:46 INFO  PredictionRetriever:104 - Searching phrases for query:  I wo+
+2019-08-13 15:28:47 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:28:47 INFO  PhraseFinder:112 - Adding phrase:I wo
+2019-08-13 15:28:47 INFO  PhraseFinder:112 - Adding phrase:I WO
+2019-08-13 15:28:47 INFO  PhraseFinder:112 - Adding phrase:i wo
+2019-08-13 15:28:47 INFO  PhraseFinder:112 - Adding phrase:I Wo
+2019-08-13 15:28:47 INFO  PhraseFinder:112 - Adding phrase:i Wo
+2019-08-13 15:28:47 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:28:47 INFO  PredictionRetriever:113 - 0.702154 - I wo
+2019-08-13 15:28:47 INFO  PredictionRetriever:113 - 0.14487 - I WO
+2019-08-13 15:28:47 INFO  PredictionRetriever:113 - 0.0919378 - i wo
+2019-08-13 15:28:47 INFO  PredictionRetriever:113 - 0.0452617 - I Wo
+2019-08-13 15:28:47 INFO  PredictionRetriever:113 - 0.0157763 - i Wo
+2019-08-13 15:28:47 INFO  PredictionRetriever:120 - [, , , , ]
+2019-08-13 15:28:47 INFO  PhraseMain:32 - []
+2019-08-13 15:30:04 INFO  PredictionRetriever:78 - List of words:[I, wo]
+2019-08-13 15:30:04 INFO  PredictionRetriever:84 - Words to search with: [I, wo]
+2019-08-13 15:30:04 INFO  PredictionRetriever:104 - Searching phrases for query:  I wo+
+2019-08-13 15:30:05 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:30:05 INFO  PhraseFinder:112 - Adding phrase:I wo
+2019-08-13 15:30:05 INFO  PhraseFinder:112 - Adding phrase:I WO
+2019-08-13 15:30:05 INFO  PhraseFinder:112 - Adding phrase:i wo
+2019-08-13 15:30:05 INFO  PhraseFinder:112 - Adding phrase:I Wo
+2019-08-13 15:30:05 INFO  PhraseFinder:112 - Adding phrase:i Wo
+2019-08-13 15:30:05 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:30:05 INFO  PredictionRetriever:113 - 0.702154 - I wo
+2019-08-13 15:30:05 INFO  PredictionRetriever:113 - 0.14487 - I WO
+2019-08-13 15:30:05 INFO  PredictionRetriever:113 - 0.0919378 - i wo
+2019-08-13 15:30:05 INFO  PredictionRetriever:113 - 0.0452617 - I Wo
+2019-08-13 15:30:05 INFO  PredictionRetriever:113 - 0.0157763 - i Wo
+2019-08-13 15:30:05 INFO  PredictionRetriever:120 - [, , , , ]
+2019-08-13 15:30:05 INFO  PhraseMain:32 - []
+2019-08-13 15:30:26 INFO  PredictionRetriever:78 - List of words:[I, would]
+2019-08-13 15:30:26 INFO  PredictionRetriever:84 - Words to search with: [I, would]
+2019-08-13 15:30:26 INFO  PredictionRetriever:104 - Searching phrases for query:  I would+
+2019-08-13 15:30:27 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:30:27 INFO  PhraseFinder:112 - Adding phrase:I would
+2019-08-13 15:30:27 INFO  PhraseFinder:112 - Adding phrase:i would
+2019-08-13 15:30:27 INFO  PhraseFinder:112 - Adding phrase:I Would
+2019-08-13 15:30:27 INFO  PhraseFinder:112 - Adding phrase:I WOULD
+2019-08-13 15:30:27 INFO  PhraseFinder:112 - Adding phrase:i Would
+2019-08-13 15:30:27 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:30:27 INFO  PredictionRetriever:113 - 0.99638 - I would
+2019-08-13 15:30:27 INFO  PredictionRetriever:113 - 0.00152158 - i would
+2019-08-13 15:30:27 INFO  PredictionRetriever:113 - 0.00112241 - I Would
+2019-08-13 15:30:27 INFO  PredictionRetriever:113 - 9.31803E-4 - I WOULD
+2019-08-13 15:30:27 INFO  PredictionRetriever:113 - 4.4482E-5 - i Would
+2019-08-13 15:30:27 INFO  PredictionRetriever:120 - [, , , , ]
+2019-08-13 15:30:27 INFO  PhraseMain:32 - []
+2019-08-13 15:30:42 INFO  PredictionRetriever:78 - List of words:[I, would]
+2019-08-13 15:30:42 INFO  PredictionRetriever:84 - Words to search with: [I, would]
+2019-08-13 15:30:42 INFO  PredictionRetriever:104 - Searching phrases for query:  I would ???
+2019-08-13 15:30:44 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:30:44 INFO  PhraseFinder:112 - Adding phrase:I would like to thank
+2019-08-13 15:30:44 INFO  PhraseFinder:112 - Adding phrase:I would not want to
+2019-08-13 15:30:44 INFO  PhraseFinder:112 - Adding phrase:I would also like to
+2019-08-13 15:30:44 INFO  PhraseFinder:112 - Adding phrase:I would like to see
+2019-08-13 15:30:44 INFO  PhraseFinder:112 - Adding phrase:I would like to have
+2019-08-13 15:30:44 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:30:44 INFO  PredictionRetriever:113 - 0.31922 - I would like to thank
+2019-08-13 15:30:44 INFO  PredictionRetriever:113 - 0.21153 - I would not want to
+2019-08-13 15:30:44 INFO  PredictionRetriever:113 - 0.170936 - I would also like to
+2019-08-13 15:30:44 INFO  PredictionRetriever:113 - 0.164051 - I would like to see
+2019-08-13 15:30:44 INFO  PredictionRetriever:113 - 0.134262 - I would like to have
+2019-08-13 15:30:44 INFO  PredictionRetriever:120 - [ like to thank,  not want to,  also like to,  like to see,  like to have]
+2019-08-13 15:30:44 INFO  PhraseMain:32 - [ like to thank,  not want to,  also like to,  like to see,  like to have]
+2019-08-13 15:31:05 INFO  PredictionRetriever:78 - List of words:[I, wou]
+2019-08-13 15:31:05 INFO  PredictionRetriever:84 - Words to search with: [I, wou]
+2019-08-13 15:31:05 INFO  PredictionRetriever:104 - Searching phrases for query:  I wou+
+2019-08-13 15:31:07 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:31:07 INFO  PhraseFinder:112 - Adding phrase:I would
+2019-08-13 15:31:07 INFO  PhraseFinder:112 - Adding phrase:I would've
+2019-08-13 15:31:07 INFO  PhraseFinder:112 - Adding phrase:I wound
+2019-08-13 15:31:07 INFO  PhraseFinder:112 - Adding phrase:i would
+2019-08-13 15:31:07 INFO  PhraseFinder:112 - Adding phrase:I Would
+2019-08-13 15:31:07 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:31:07 INFO  PredictionRetriever:113 - 0.992974 - I would
+2019-08-13 15:31:07 INFO  PredictionRetriever:113 - 0.00244675 - I would've
+2019-08-13 15:31:07 INFO  PredictionRetriever:113 - 0.00194463 - I wound
+2019-08-13 15:31:07 INFO  PredictionRetriever:113 - 0.00151637 - i would
+2019-08-13 15:31:07 INFO  PredictionRetriever:113 - 0.00111858 - I Would
+2019-08-13 15:31:07 INFO  PredictionRetriever:120 - [ld, ld've, nd, ld, ld]
+2019-08-13 15:31:07 INFO  PhraseMain:32 - [ld, ld've, nd]
+2019-08-13 15:31:47 INFO  PredictionRetriever:78 - List of words:[I, would, like]
+2019-08-13 15:31:47 INFO  PredictionRetriever:84 - Words to search with: [I, would, like]
+2019-08-13 15:31:47 INFO  PredictionRetriever:104 - Searching phrases for query:  I would like ???
+2019-08-13 15:31:48 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:31:48 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:31:48 INFO  PredictionRetriever:78 - List of words:[I, would, like]
+2019-08-13 15:31:48 INFO  PredictionRetriever:84 - Words to search with: [I, would, like]
+2019-08-13 15:31:48 INFO  PredictionRetriever:104 - Searching phrases for query:  I would like ???
+2019-08-13 15:31:48 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:31:48 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:31:48 INFO  PredictionRetriever:78 - List of words:[I, would, like]
+2019-08-13 15:31:48 INFO  PredictionRetriever:84 - Words to search with: [I, would, like]
+2019-08-13 15:31:48 INFO  PredictionRetriever:104 - Searching phrases for query:  I would like ???
+2019-08-13 15:31:48 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:31:48 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:31:48 INFO  PredictionRetriever:78 - List of words:[I, would, like]
+2019-08-13 15:31:48 INFO  PredictionRetriever:84 - Words to search with: [would, like]
+2019-08-13 15:31:48 INFO  PredictionRetriever:104 - Searching phrases for query:  would like ???
+2019-08-13 15:31:48 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:31:48 INFO  PhraseFinder:112 - Adding phrase:would like to make a
+2019-08-13 15:31:48 INFO  PhraseFinder:112 - Adding phrase:would like to thank the
+2019-08-13 15:31:48 INFO  PhraseFinder:112 - Adding phrase:would like to see the
+2019-08-13 15:31:48 INFO  PhraseFinder:112 - Adding phrase:would like to have a
+2019-08-13 15:31:48 INFO  PhraseFinder:112 - Adding phrase:would like to express my
+2019-08-13 15:31:48 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:31:48 INFO  PredictionRetriever:113 - 0.34584 - would like to make a
+2019-08-13 15:31:48 INFO  PredictionRetriever:113 - 0.246579 - would like to thank the
+2019-08-13 15:31:48 INFO  PredictionRetriever:113 - 0.155717 - would like to see the
+2019-08-13 15:31:48 INFO  PredictionRetriever:113 - 0.148855 - would like to have a
+2019-08-13 15:31:48 INFO  PredictionRetriever:113 - 0.103009 - would like to express my
+2019-08-13 15:31:48 INFO  PredictionRetriever:120 - [ to make a,  to thank the,  to see the,  to have a,  to express my]
+2019-08-13 15:31:48 INFO  PhraseMain:32 - [ to make a,  to thank the]
+2019-08-13 15:32:25 INFO  PredictionRetriever:78 - List of words:[I, would, li]
+2019-08-13 15:32:25 INFO  PredictionRetriever:84 - Words to search with: [I, would, li]
+2019-08-13 15:32:25 INFO  PredictionRetriever:104 - Searching phrases for query:  I would li+
+2019-08-13 15:32:26 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:32:26 INFO  PhraseFinder:112 - Adding phrase:I would li
+2019-08-13 15:32:26 INFO  PhraseFinder:115 - 1 phrases found
+2019-08-13 15:32:26 INFO  PredictionRetriever:113 - 1.0 - I would li
+2019-08-13 15:32:26 INFO  PredictionRetriever:120 - []
+2019-08-13 15:32:26 INFO  PhraseMain:32 - []
+2019-08-13 15:33:03 INFO  PredictionRetriever:78 - List of words:[I, would, li]
+2019-08-13 15:33:03 INFO  PredictionRetriever:84 - Words to search with: [I, would, li]
+2019-08-13 15:33:03 INFO  PredictionRetriever:104 - Searching phrases for query:  I would li+
+2019-08-13 15:33:04 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:33:04 INFO  PhraseFinder:112 - Adding phrase:I would li
+2019-08-13 15:33:04 INFO  PhraseFinder:115 - 1 phrases found
+2019-08-13 15:33:04 INFO  PredictionRetriever:113 - 1.0 - I would li
+2019-08-13 15:33:04 INFO  PredictionRetriever:120 - []
+2019-08-13 15:33:04 INFO  PhraseMain:32 - []
+2019-08-13 15:33:32 INFO  PredictionRetriever:78 - List of words:[I, would, li]
+2019-08-13 15:33:32 INFO  PredictionRetriever:84 - Words to search with: [I, would, li]
+2019-08-13 15:33:32 INFO  PredictionRetriever:104 - Searching phrases for query:  I would li+
+2019-08-13 15:33:33 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:33:33 INFO  PhraseFinder:112 - Adding phrase:I would li \
+2019-08-13 15:33:33 INFO  PhraseFinder:115 - 1 phrases found
+2019-08-13 15:33:33 INFO  PredictionRetriever:113 - 1.0 - I would li \
+2019-08-13 15:33:33 INFO  PredictionRetriever:120 - [ \]
+2019-08-13 15:33:33 INFO  PhraseMain:32 - [ \]
+2019-08-13 15:35:40 INFO  PredictionRetriever:78 - List of words:[I, would, li]
+2019-08-13 15:35:40 INFO  PredictionRetriever:84 - Words to search with: [I, would, li]
+2019-08-13 15:35:40 INFO  PredictionRetriever:104 - Searching phrases for query:  I would li+
+2019-08-13 15:35:41 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:35:41 INFO  PhraseFinder:112 - Adding phrase:I would li \
+2019-08-13 15:35:41 INFO  PhraseFinder:115 - 1 phrases found
+2019-08-13 15:35:41 INFO  PredictionRetriever:113 - 1.0 - I would li \
+2019-08-13 15:35:41 INFO  PredictionRetriever:120 - [ \]
+2019-08-13 15:35:41 INFO  PhraseMain:32 - [ \]
+2019-08-13 15:38:16 INFO  PredictionRetriever:78 - List of words:[I, would, lik]
+2019-08-13 15:38:16 INFO  PredictionRetriever:84 - Words to search with: [I, would, lik]
+2019-08-13 15:38:16 INFO  PredictionRetriever:104 - Searching phrases for query:  I would lik+
+2019-08-13 15:38:17 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:38:17 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:38:17 INFO  PredictionRetriever:78 - List of words:[I, would, lik]
+2019-08-13 15:38:17 INFO  PredictionRetriever:84 - Words to search with: [I, would, lik]
+2019-08-13 15:38:17 INFO  PredictionRetriever:104 - Searching phrases for query:  I would lik+
+2019-08-13 15:38:17 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:38:17 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:38:17 INFO  PredictionRetriever:78 - List of words:[I, would, lik]
+2019-08-13 15:38:17 INFO  PredictionRetriever:84 - Words to search with: [I, would, lik]
+2019-08-13 15:38:17 INFO  PredictionRetriever:104 - Searching phrases for query:  I would lik+
+2019-08-13 15:38:17 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:38:17 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:38:17 INFO  PredictionRetriever:78 - List of words:[I, would, lik]
+2019-08-13 15:38:17 INFO  PredictionRetriever:84 - Words to search with: [would, lik]
+2019-08-13 15:38:17 INFO  PredictionRetriever:104 - Searching phrases for query:  would lik+
+2019-08-13 15:38:17 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:38:17 INFO  PhraseFinder:112 - Adding phrase:would lik to
+2019-08-13 15:38:17 INFO  PhraseFinder:115 - 1 phrases found
+2019-08-13 15:38:17 INFO  PredictionRetriever:113 - 1.0 - would lik to
+2019-08-13 15:38:17 INFO  PredictionRetriever:120 - [ to]
+2019-08-13 15:38:17 INFO  PhraseMain:32 - [ to]
+2019-08-13 15:38:54 INFO  PredictionRetriever:78 - List of words:[I, would, lik]
+2019-08-13 15:38:54 INFO  PredictionRetriever:84 - Words to search with: [I, would, lik]
+2019-08-13 15:38:54 INFO  PredictionRetriever:104 - Searching phrases for query:  I would lik+
+2019-08-13 15:38:55 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:38:55 INFO  PhraseFinder:112 - Adding phrase:I would like
+2019-08-13 15:38:55 INFO  PhraseFinder:112 - Adding phrase:I WOULD LIKE
+2019-08-13 15:38:55 INFO  PhraseFinder:112 - Adding phrase:I would likely
+2019-08-13 15:38:55 INFO  PhraseFinder:112 - Adding phrase:i would like
+2019-08-13 15:38:55 INFO  PhraseFinder:112 - Adding phrase:I Would Like
+2019-08-13 15:38:55 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:38:55 INFO  PredictionRetriever:113 - 0.993938 - I would like
+2019-08-13 15:38:55 INFO  PredictionRetriever:113 - 0.00192635 - I WOULD LIKE
+2019-08-13 15:38:55 INFO  PredictionRetriever:113 - 0.00162705 - I would likely
+2019-08-13 15:38:55 INFO  PredictionRetriever:113 - 0.00130573 - i would like
+2019-08-13 15:38:55 INFO  PredictionRetriever:113 - 0.00120308 - I Would Like
+2019-08-13 15:38:55 INFO  PredictionRetriever:120 - [e, E, ely, e, e]
+2019-08-13 15:38:55 INFO  PhraseMain:32 - [e, E]
+2019-08-13 15:39:32 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:39:32 INFO  PredictionRetriever:84 - Words to search with: [would, like, to, go, to]
+2019-08-13 15:39:32 INFO  PredictionRetriever:104 - Searching phrases for query:  would like to go to ???
+2019-08-13 15:39:34 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:39:34 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:39:34 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:39:34 INFO  PredictionRetriever:84 - Words to search with: [like, to, go, to]
+2019-08-13 15:39:34 INFO  PredictionRetriever:104 - Searching phrases for query:  like to go to ???
+2019-08-13 15:39:34 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:39:34 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:39:34 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:39:34 INFO  PredictionRetriever:84 - Words to search with: [to, go, to]
+2019-08-13 15:39:34 INFO  PredictionRetriever:104 - Searching phrases for query:  to go to ???
+2019-08-13 15:39:34 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:39:34 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:39:34 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:39:34 INFO  PredictionRetriever:84 - Words to search with: [go, to]
+2019-08-13 15:39:34 INFO  PredictionRetriever:104 - Searching phrases for query:  go to ???
+2019-08-13 15:39:34 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:39:34 INFO  PhraseFinder:112 - Adding phrase:go to bed . "
+2019-08-13 15:39:34 INFO  PhraseFinder:112 - Adding phrase:go to the bathroom .
+2019-08-13 15:39:34 INFO  PhraseFinder:112 - Adding phrase:go to make up the
+2019-08-13 15:39:34 INFO  PhraseFinder:112 - Adding phrase:go to great lengths to
+2019-08-13 15:39:34 INFO  PhraseFinder:112 - Adding phrase:go to sleep . "
+2019-08-13 15:39:34 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:39:34 INFO  PredictionRetriever:113 - 0.237786 - go to bed . "
+2019-08-13 15:39:34 INFO  PredictionRetriever:113 - 0.213599 - go to the bathroom .
+2019-08-13 15:39:34 INFO  PredictionRetriever:113 - 0.1985 - go to make up the
+2019-08-13 15:39:34 INFO  PredictionRetriever:113 - 0.188291 - go to great lengths to
+2019-08-13 15:39:34 INFO  PredictionRetriever:113 - 0.161823 - go to sleep . "
+2019-08-13 15:39:34 INFO  PredictionRetriever:120 - [ bed . ",  the bathroom .,  make up the,  great lengths to,  sleep . "]
+2019-08-13 15:39:34 INFO  PhraseMain:32 - [ bed . ",  the bathroom .,  make up the]
+2019-08-13 15:40:05 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:40:05 INFO  PredictionRetriever:84 - Words to search with: [would, like, to, go, to]
+2019-08-13 15:40:05 INFO  PredictionRetriever:104 - Searching phrases for query:  would like to go to ???
+2019-08-13 15:40:06 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:40:06 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:40:06 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:40:06 INFO  PredictionRetriever:84 - Words to search with: [like, to, go, to]
+2019-08-13 15:40:06 INFO  PredictionRetriever:104 - Searching phrases for query:  like to go to ???
+2019-08-13 15:40:06 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:40:06 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:40:06 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:40:06 INFO  PredictionRetriever:84 - Words to search with: [to, go, to]
+2019-08-13 15:40:06 INFO  PredictionRetriever:104 - Searching phrases for query:  to go to ???
+2019-08-13 15:40:06 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:40:06 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:40:06 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:40:06 INFO  PredictionRetriever:84 - Words to search with: [go, to]
+2019-08-13 15:40:06 INFO  PredictionRetriever:104 - Searching phrases for query:  go to ???
+2019-08-13 15:40:06 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:40:06 INFO  PhraseFinder:112 - Adding phrase:go to bed . "
+2019-08-13 15:40:06 INFO  PhraseFinder:112 - Adding phrase:go to the bathroom .
+2019-08-13 15:40:06 INFO  PhraseFinder:112 - Adding phrase:go to make up the
+2019-08-13 15:40:06 INFO  PhraseFinder:112 - Adding phrase:go to great lengths to
+2019-08-13 15:40:06 INFO  PhraseFinder:112 - Adding phrase:go to sleep . "
+2019-08-13 15:40:06 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:40:06 INFO  PredictionRetriever:113 - 0.237786 - go to bed . "
+2019-08-13 15:40:06 INFO  PredictionRetriever:113 - 0.213599 - go to the bathroom .
+2019-08-13 15:40:06 INFO  PredictionRetriever:113 - 0.1985 - go to make up the
+2019-08-13 15:40:06 INFO  PredictionRetriever:113 - 0.188291 - go to great lengths to
+2019-08-13 15:40:06 INFO  PredictionRetriever:113 - 0.161823 - go to sleep . "
+2019-08-13 15:40:06 INFO  PredictionRetriever:120 - [ bed . ",  the bathroom .,  make up the,  great lengths to,  sleep . "]
+2019-08-13 15:40:06 INFO  PhraseMain:32 - [ bed . ",  the bathroom .,  make up the,  great lengths to,  sleep . "]
+2019-08-13 15:40:29 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:40:29 INFO  PredictionRetriever:84 - Words to search with: [would, like, to, go, to]
+2019-08-13 15:40:29 INFO  PredictionRetriever:104 - Searching phrases for query:  would like to go to ???
+2019-08-13 15:40:30 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:40:30 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:40:30 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:40:30 INFO  PredictionRetriever:84 - Words to search with: [like, to, go, to]
+2019-08-13 15:40:30 INFO  PredictionRetriever:104 - Searching phrases for query:  like to go to ???
+2019-08-13 15:40:30 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:40:30 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:40:30 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:40:30 INFO  PredictionRetriever:84 - Words to search with: [to, go, to]
+2019-08-13 15:40:30 INFO  PredictionRetriever:104 - Searching phrases for query:  to go to ???
+2019-08-13 15:40:30 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:40:30 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:40:30 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:40:30 INFO  PredictionRetriever:84 - Words to search with: [go, to]
+2019-08-13 15:40:30 INFO  PredictionRetriever:104 - Searching phrases for query:  go to ???
+2019-08-13 15:40:31 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:40:31 INFO  PhraseFinder:112 - Adding phrase:go to bed . "
+2019-08-13 15:40:31 INFO  PhraseFinder:112 - Adding phrase:go to the bathroom .
+2019-08-13 15:40:31 INFO  PhraseFinder:112 - Adding phrase:go to make up the
+2019-08-13 15:40:31 INFO  PhraseFinder:112 - Adding phrase:go to great lengths to
+2019-08-13 15:40:31 INFO  PhraseFinder:112 - Adding phrase:go to sleep . "
+2019-08-13 15:40:31 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:40:31 INFO  PredictionRetriever:113 - 0.237786 - go to bed . "
+2019-08-13 15:40:31 INFO  PredictionRetriever:113 - 0.213599 - go to the bathroom .
+2019-08-13 15:40:31 INFO  PredictionRetriever:113 - 0.1985 - go to make up the
+2019-08-13 15:40:31 INFO  PredictionRetriever:113 - 0.188291 - go to great lengths to
+2019-08-13 15:40:31 INFO  PredictionRetriever:113 - 0.161823 - go to sleep . "
+2019-08-13 15:40:31 INFO  PredictionRetriever:120 - [ bed . ",  the bathroom .,  make up the,  great lengths to,  sleep . "]
+2019-08-13 15:40:31 INFO  PhraseMain:32 - [ bed . "]
+2019-08-13 15:41:09 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:41:09 INFO  PredictionRetriever:84 - Words to search with: [would, like, to, go, to]
+2019-08-13 15:41:09 INFO  PredictionRetriever:104 - Searching phrases for query:  would like to go to ?
+2019-08-13 15:41:10 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:41:10 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:41:10 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:41:10 INFO  PredictionRetriever:84 - Words to search with: [like, to, go, to]
+2019-08-13 15:41:10 INFO  PredictionRetriever:104 - Searching phrases for query:  like to go to ?
+2019-08-13 15:41:10 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:41:10 INFO  PhraseFinder:112 - Adding phrase:like to go to the
+2019-08-13 15:41:10 INFO  PhraseFinder:112 - Adding phrase:like to go to a
+2019-08-13 15:41:10 INFO  PhraseFinder:112 - Adding phrase:like to go to bed
+2019-08-13 15:41:10 INFO  PhraseFinder:112 - Adding phrase:like to go to school
+2019-08-13 15:41:10 INFO  PhraseFinder:112 - Adding phrase:like to go to church
+2019-08-13 15:41:10 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:41:10 INFO  PredictionRetriever:113 - 0.551957 - like to go to the
+2019-08-13 15:41:10 INFO  PredictionRetriever:113 - 0.163417 - like to go to a
+2019-08-13 15:41:10 INFO  PredictionRetriever:113 - 0.135393 - like to go to bed
+2019-08-13 15:41:10 INFO  PredictionRetriever:113 - 0.0959846 - like to go to school
+2019-08-13 15:41:10 INFO  PredictionRetriever:113 - 0.053248 - like to go to church
+2019-08-13 15:41:10 INFO  PredictionRetriever:120 - [ the,  a,  bed,  school,  church]
+2019-08-13 15:41:10 INFO  PhraseMain:32 - [ the]
+2019-08-13 15:46:14 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:46:14 INFO  PredictionRetriever:84 - Words to search with: [would, like, to, go, to]
+2019-08-13 15:46:14 INFO  PredictionRetriever:104 - Searching phrases for query:  would like to go to ?????
+2019-08-13 15:46:15 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:46:15 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:46:15 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:46:15 INFO  PredictionRetriever:84 - Words to search with: [like, to, go, to]
+2019-08-13 15:46:15 INFO  PredictionRetriever:104 - Searching phrases for query:  like to go to ?????
+2019-08-13 15:46:15 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:46:15 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:46:15 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:46:15 INFO  PredictionRetriever:84 - Words to search with: [to, go, to]
+2019-08-13 15:46:15 INFO  PredictionRetriever:104 - Searching phrases for query:  to go to ?????
+2019-08-13 15:46:15 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:46:15 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:46:15 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:46:15 INFO  PredictionRetriever:84 - Words to search with: [go, to]
+2019-08-13 15:46:15 INFO  PredictionRetriever:104 - Searching phrases for query:  go to ?????
+2019-08-13 15:46:15 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:46:15 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:46:15 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:46:15 INFO  PredictionRetriever:84 - Words to search with: [to]
+2019-08-13 15:46:15 INFO  PredictionRetriever:104 - Searching phrases for query:  to ?????
+2019-08-13 15:46:15 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:46:15 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:46:15 INFO  PhraseMain:32 - [If, The, Of, I]
+2019-08-13 15:46:35 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:46:35 INFO  PredictionRetriever:84 - Words to search with: [would, like, to, go, to]
+2019-08-13 15:46:35 INFO  PredictionRetriever:104 - Searching phrases for query:  would like to go to ?
+2019-08-13 15:46:36 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:46:36 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:46:36 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:46:36 INFO  PredictionRetriever:84 - Words to search with: [like, to, go, to]
+2019-08-13 15:46:36 INFO  PredictionRetriever:104 - Searching phrases for query:  like to go to ?
+2019-08-13 15:46:36 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:46:36 INFO  PhraseFinder:112 - Adding phrase:like to go to the
+2019-08-13 15:46:36 INFO  PhraseFinder:112 - Adding phrase:like to go to a
+2019-08-13 15:46:36 INFO  PhraseFinder:112 - Adding phrase:like to go to bed
+2019-08-13 15:46:36 INFO  PhraseFinder:112 - Adding phrase:like to go to school
+2019-08-13 15:46:36 INFO  PhraseFinder:112 - Adding phrase:like to go to church
+2019-08-13 15:46:36 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:46:36 INFO  PredictionRetriever:113 - 0.551957 - like to go to the
+2019-08-13 15:46:36 INFO  PredictionRetriever:113 - 0.163417 - like to go to a
+2019-08-13 15:46:36 INFO  PredictionRetriever:113 - 0.135393 - like to go to bed
+2019-08-13 15:46:36 INFO  PredictionRetriever:113 - 0.0959846 - like to go to school
+2019-08-13 15:46:36 INFO  PredictionRetriever:113 - 0.053248 - like to go to church
+2019-08-13 15:46:36 INFO  PredictionRetriever:120 - [ the,  a,  bed,  school,  church]
+2019-08-13 15:46:36 INFO  PhraseMain:32 - [ the]
+2019-08-13 15:47:01 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:47:01 INFO  PredictionRetriever:84 - Words to search with: [would, like, to, go, to]
+2019-08-13 15:47:01 INFO  PredictionRetriever:104 - Searching phrases for query:  would like to go to ?
+2019-08-13 15:47:03 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:47:03 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:47:03 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:47:03 INFO  PredictionRetriever:84 - Words to search with: [like, to, go, to]
+2019-08-13 15:47:03 INFO  PredictionRetriever:104 - Searching phrases for query:  like to go to ?
+2019-08-13 15:47:03 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:47:03 INFO  PhraseFinder:112 - Adding phrase:like to go to the
+2019-08-13 15:47:03 INFO  PhraseFinder:112 - Adding phrase:like to go to a
+2019-08-13 15:47:03 INFO  PhraseFinder:112 - Adding phrase:like to go to bed
+2019-08-13 15:47:03 INFO  PhraseFinder:112 - Adding phrase:like to go to school
+2019-08-13 15:47:03 INFO  PhraseFinder:112 - Adding phrase:like to go to church
+2019-08-13 15:47:03 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:47:03 INFO  PredictionRetriever:113 - 0.551957 - like to go to the
+2019-08-13 15:47:03 INFO  PredictionRetriever:113 - 0.163417 - like to go to a
+2019-08-13 15:47:03 INFO  PredictionRetriever:113 - 0.135393 - like to go to bed
+2019-08-13 15:47:03 INFO  PredictionRetriever:113 - 0.0959846 - like to go to school
+2019-08-13 15:47:03 INFO  PredictionRetriever:113 - 0.053248 - like to go to church
+2019-08-13 15:47:03 INFO  PredictionRetriever:120 - [ the,  a,  bed,  school,  church]
+2019-08-13 15:47:03 INFO  PhraseMain:32 - [ the,  a,  bed,  school,  church]
+2019-08-13 15:47:16 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:47:16 INFO  PredictionRetriever:84 - Words to search with: [would, like, to, go, to]
+2019-08-13 15:47:16 INFO  PredictionRetriever:104 - Searching phrases for query:  would like to go to ??
+2019-08-13 15:47:17 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:47:17 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:47:17 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:47:17 INFO  PredictionRetriever:84 - Words to search with: [like, to, go, to]
+2019-08-13 15:47:17 INFO  PredictionRetriever:104 - Searching phrases for query:  like to go to ??
+2019-08-13 15:47:17 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:47:17 WARN  PhraseFinder:117 - No phrases found
+2019-08-13 15:47:17 INFO  PredictionRetriever:78 - List of words:[I, would, like, to, go, to]
+2019-08-13 15:47:17 INFO  PredictionRetriever:84 - Words to search with: [to, go, to]
+2019-08-13 15:47:17 INFO  PredictionRetriever:104 - Searching phrases for query:  to go to ??
+2019-08-13 15:47:17 INFO  PhraseFinder:88 - Status is OK
+2019-08-13 15:47:17 INFO  PhraseFinder:112 - Adding phrase:to go to college .
+2019-08-13 15:47:17 INFO  PhraseFinder:112 - Adding phrase:to go to church .
+2019-08-13 15:47:17 INFO  PhraseFinder:112 - Adding phrase:to go to the United
+2019-08-13 15:47:17 INFO  PhraseFinder:112 - Adding phrase:to go to bed at
+2019-08-13 15:47:17 INFO  PhraseFinder:112 - Adding phrase:to go to one of
+2019-08-13 15:47:17 INFO  PhraseFinder:115 - 5 phrases found
+2019-08-13 15:47:17 INFO  PredictionRetriever:113 - 0.414791 - to go to college .
+2019-08-13 15:47:17 INFO  PredictionRetriever:113 - 0.200766 - to go to church .
+2019-08-13 15:47:17 INFO  PredictionRetriever:113 - 0.137955 - to go to the United
+2019-08-13 15:47:17 INFO  PredictionRetriever:113 - 0.125766 - to go to bed at
+2019-08-13 15:47:17 INFO  PredictionRetriever:113 - 0.120722 - to go to one of
+2019-08-13 15:47:17 INFO  PredictionRetriever:120 - [ college .,  church .,  the United,  bed at,  one of]
+2019-08-13 15:47:17 INFO  PhraseMain:32 - [ college .,  church .,  the United,  bed at,  one of]

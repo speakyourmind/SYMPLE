@@ -5,14 +5,22 @@
  */
 package org.symfound.social.sms;
 
-import com.twilio.Twilio;
 import com.twilio.base.ResourceSet;
 import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.symfound.social.SocialMediaReader;
 
 public class TwilioReader extends SocialMediaReader {
-final String accountSID;
+
+    private static final String NAME = TwilioReader.class.getName();
+
+    public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    final String accountSID;
     final String authToken;
 
     public TwilioReader(String accountSID, String authToken) {
@@ -20,26 +28,22 @@ final String accountSID;
         this.authToken = authToken;
     }
 
-    //public static void main(String[] args) {
-        
- //       TwilioPoster.getConnector().connect("AC6a37be7aaf5843480abe36821ed002c1", "c9b94f75df200722e4ff2eb607763554");
-  
-        
-   // }
-
-    public void read(DateTime since,String fromNumber) {
-        TwilioConnector.connect(accountSID, authToken);
-         ResourceSet<Message> messages = Message.reader()
-                .setDateSent(new DateTime(2019, 8, 10, 0, 0))
-                .setFrom(new com.twilio.type.PhoneNumber(fromNumber))
+    public List<String> read(DateTime since, String fromNumber) {
+         TwilioConnector.connect(accountSID, authToken);
+        List<String> messageText = new ArrayList<>();
+        ResourceSet<Message> messages = Message.reader()
+            //    .setDateSent(new DateTime(2019, 8, 10, 0, 0))
+              .setFrom(new PhoneNumber(fromNumber))
                 .limit(20)
                 .read();
+
         for (Message record : messages) {
-            System.out.println(record.getSid());
+            LOGGER.info(record.getSid());
             Message message = Message.fetcher(record.getSid())
                     .fetch();
-
-            System.out.println(message.getTo() + " " + message.getBody());
+            messageText.add(message.getBody());
+            LOGGER.info(message.getFrom() + " " + message.getBody());
         }
+        return messageText;
     }
 }

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.prediction.query;
+package org.symfound.prediction.phrasefinder.query;
 
 import java.util.List;
 import org.symfound.prediction.query.string.StringAnalyzer;
 import org.symfound.prediction.query.string.StringOperator;
-import static org.symfound.prediction.retriever.PredictionRetriever.LOGGER;
+import static org.symfound.prediction.phrasefinder.retriever.PredictionRetriever.LOGGER;
 
 /**
  *
@@ -52,7 +52,6 @@ public class QueryBuilder {
     public String buildQuery(Integer predictionLength, String modified, String original) {
         String queryBuild = "";
         String end = original.substring(original.length()-1);
-        
         
         if (StringAnalyzer.isContinuing(original)) {
             queryBuild = queryBuild.concat(" ");

@@ -5,7 +5,6 @@
  */
 package org.symfound.controls;
 
-import com.ibm.icu.util.Calendar;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -434,18 +433,10 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      *
      */
     public OnOffButton showTitleButton;
-
-    /**
-     *
-     */
     public TextArea titleArea;
     private ChoiceBox<ColourChoices> textColourChoices;
     private Slider fontScaleSlider = new Slider();
-
-    /**
-     *
-     */
-    public ChoiceBox<Pos> textAlignment;
+    public ChoiceBox<Pos> textAlignment = new ChoiceBox<>();
     // TODO: Split into font size, color, background image, background size
     //  private ChoiceBox<String> backgroundSizeChoices;
     private Slider backgroundSizeSlider;
@@ -933,6 +924,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                     baseGrid.setVgap(0);
                     AnimatedPane actionPane = buildActionPane(HPos.CENTER, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
                     baseGrid.add(actionPane, 0, 0);
+
                     final AnimatedButton animatedButton = new AnimatedButton("");
                     animatedButton.setMaxWidth(540.0);
                     animatedButton.maxHeightProperty().bind(Bindings.multiply(0.325, baseGrid.heightProperty()));
@@ -992,7 +984,9 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             };
 
             editAppButton = new EditAppButton(editDialog);
-            editAppButton.setPane("apMain");
+
+            editAppButton.setPane(
+                    "apMain");
         }
         return editAppButton;
     }
@@ -1208,7 +1202,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         }
         return removable;
     }
-    
+
     private static final Double DEFAULT_FONT_SCALE = 25.0;
     private DoubleProperty fontScale;
 

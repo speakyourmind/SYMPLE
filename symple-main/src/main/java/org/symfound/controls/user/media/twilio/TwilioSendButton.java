@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.controls.user.voice;
+package org.symfound.controls.user.media.twilio;
 
 import java.util.List;
 import java.util.prefs.Preferences;
@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.characteristic.Social;
 import org.symfound.controls.system.SettingsRow;
+import org.symfound.controls.user.voice.TextCommunicatorButton;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.social.sms.TwilioPoster;
 

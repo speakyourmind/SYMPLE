@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.prediction.retriever;
+package org.symfound.prediction.phrasefinder.retriever;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +17,7 @@ import org.symfound.prediction.phrasefinder.Phrase;
 import org.symfound.prediction.phrasefinder.PhraseFinder;
 import org.symfound.prediction.phrasefinder.SearchOptions;
 import org.symfound.prediction.phrasefinder.SearchResult;
-import org.symfound.prediction.query.QueryBuilder;
+import org.symfound.prediction.phrasefinder.query.QueryBuilder;
 import org.symfound.prediction.query.string.StringAnalyzer;
 import org.symfound.prediction.query.string.StringOperator;
 
@@ -60,7 +62,7 @@ public class PredictionRetriever {
      * @param previous
      * @return
      */
-    public List<String> retrievePredictions(String previous) {
+    public List<String> retrievePredictions(String previous) throws UnsupportedEncodingException, URISyntaxException {
         return retrievePredictions(previous, DEFAULT_NUM_WORDS, MAX_RESULTS);
     }
 
@@ -70,7 +72,7 @@ public class PredictionRetriever {
      * @param numResults
      * @return
      */
-    public List<String> retrievePredictions(String previous, Integer numResults) {
+    public List<String> retrievePredictions(String previous, Integer numResults) throws UnsupportedEncodingException, URISyntaxException {
         return retrievePredictions(previous, DEFAULT_NUM_WORDS, numResults);
     }
 
@@ -81,7 +83,7 @@ public class PredictionRetriever {
      * @param numResults
      * @return
      */
-    public List<String> retrievePredictions(String original, Integer numWordsToPredict, Integer numResults) {
+    public List<String> retrievePredictions(String original, Integer numWordsToPredict, Integer numResults) throws UnsupportedEncodingException, URISyntaxException {
 
         List<String> suggestions = new ArrayList<>();
         List<String> predictions;
@@ -95,7 +97,7 @@ public class PredictionRetriever {
                 String query = getBuilder().buildQuery(numWordsToPredict, retrievablePhrase, original);
                 // Optional: set the maximum number of phrases to return.
                 SearchOptions options = new SearchOptions();
-                options.setMaxResults(10);
+                options.setMaxResults(5);
                 // Send the request.
                 SearchResult result;
                 try {

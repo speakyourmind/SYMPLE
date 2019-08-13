@@ -34,6 +34,9 @@ import org.symfound.controls.system.grid.editor.EditGridButton;
 import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
 import org.symfound.controls.user.media.MediaViewer;
+import org.symfound.controls.user.media.Twilio.TwilioControlButton;
+import org.symfound.controls.user.media.Twilio.TwilioSpeakButton;
+import org.symfound.controls.user.media.Twilio.TwilioViewer;
 import org.symfound.controls.user.media.calendar.CalendarControlButton;
 import org.symfound.controls.user.media.calendar.CalendarViewer;
 import org.symfound.controls.user.media.gmail.GMailControlButton;
@@ -58,7 +61,7 @@ import org.symfound.controls.user.media.youtube.YouTubeViewer;
 import org.symfound.controls.user.voice.SpeakGrid;
 import org.symfound.controls.user.voice.SpeakPictoButton;
 import org.symfound.controls.user.voice.SpeakUserButton;
-import org.symfound.controls.user.voice.TwilioSendButton;
+import org.symfound.controls.user.media.twilio.TwilioSendButton;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.HomeController;
 import static org.symfound.main.Main.getVersionManager;
@@ -123,6 +126,11 @@ public abstract class ButtonGrid extends FillableGrid {
             CalendarViewer.KEY,
             YouTubeControlButton.KEY,
             VolumeGridButton.KEY,
+            
+            TwilioViewer.KEY,
+            TwilioSpeakButton.KEY,
+            TwilioControlButton.KEY,
+            
             GMailViewer.KEY,
             GMailSpeakButton.KEY,
             GMailControlButton.KEY,
@@ -156,6 +164,7 @@ public abstract class ButtonGrid extends FillableGrid {
             TwitterControlButton.KEY,
             YouTubeControlButton.KEY,
             GMailSpeakButton.KEY,
+            TwilioSpeakButton.KEY,
             SpeakPictoButton.KEY,
             BackSpacePictoButton.KEY,
             ClearPictoButton.KEY,
@@ -541,7 +550,7 @@ public abstract class ButtonGrid extends FillableGrid {
                         calendarButton.setGridLocation(i);
                         requestedControls.add(calendarButton);
                         break;
-                    case GMailViewer.KEY:
+                         case GMailViewer.KEY:
                         GMailViewer gmailButton = new GMailViewer(index);
                         gmailButton.setGridLocation(i);
                         requestedControls.add(gmailButton);
@@ -555,6 +564,21 @@ public abstract class ButtonGrid extends FillableGrid {
                         GMailControlButton gmailControl = new GMailControlButton(index);
                         gmailControl.setGridLocation(i);
                         requestedControls.add(gmailControl);
+                        break;
+                    case TwilioViewer.KEY:
+                        TwilioViewer twilioViewer = new TwilioViewer(index);
+                        twilioViewer.setGridLocation(i);
+                        requestedControls.add(twilioViewer);
+                        break;
+                    case TwilioSpeakButton.KEY:
+                        TwilioSpeakButton twilioSpeak = new TwilioSpeakButton(index);
+                        twilioSpeak.setGridLocation(i);
+                        requestedControls.add(twilioSpeak);
+                        break;
+                    case TwilioControlButton.KEY:
+                        TwilioControlButton twilioControl = new TwilioControlButton(index);
+                        twilioControl.setGridLocation(i);
+                        requestedControls.add(twilioControl);
                         break;
                     case MusicInfoButton.KEY:
                         MusicInfoButton musicTagButton = new MusicInfoButton(index);
@@ -759,6 +783,19 @@ public abstract class ButtonGrid extends FillableGrid {
         addToParent(gmailViewer);
         gmailViewer.play();
         return gmailViewer;
+    }
+
+
+    private GMailViewer twilioViewer;
+
+    private GMailViewer getTwilioViewer(String index) {
+        if (twilioViewer == null) {
+            twilioViewer = new GMailViewer(index);
+        }
+        twilioViewer.setIndex(index);
+        addToParent(twilioViewer);
+        twilioViewer.play();
+        return twilioViewer;
     }
 
     private VideoViewer videoViewer;

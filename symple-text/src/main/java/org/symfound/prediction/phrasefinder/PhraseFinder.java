@@ -21,8 +21,9 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -50,7 +51,7 @@ public final class PhraseFinder {
     /**
      * The URL to send search requests to.
      */
-    public static final String BASE_URL = "http://phrasefinder.io/search";
+    public static final String BASE_URL = "https://api.phrasefinder.io/search";
 
     /**
      * Sends a search request with default parameters.
@@ -63,7 +64,7 @@ public final class PhraseFinder {
      * @throws IOException when sending the request or receiving the response
      * failed.
      */
-    public static SearchResult search(Corpus corpus, String query) throws IOException {
+    public static SearchResult search(Corpus corpus, String query) throws IOException, UnsupportedEncodingException, URISyntaxException {
         return search(corpus, query, SearchOptions.defaultInstance());
     }
 
@@ -77,9 +78,11 @@ public final class PhraseFinder {
      * @throws IOException Same as {@link #search(Corpus, String)}
      */
     public static SearchResult search(Corpus corpus, String query, SearchOptions options)
-            throws IOException {
+            throws IOException, UnsupportedEncodingException, URISyntaxException {
+        final URL makeUrl = makeUrl(corpus, query, options);
+        System.out.println(makeUrl.toString());
         HttpURLConnection connection
-                = (HttpURLConnection) makeUrl(corpus, query, options).openConnection();
+                = (HttpURLConnection) makeUrl.openConnection();
         Status status = Status.fromHttpStatusCode(connection.getResponseCode());
         if (status == Status.OK) {
             LOGGER.info("Status is " + status.name());
@@ -124,12 +127,17 @@ public final class PhraseFinder {
     }
 
     private static URL makeUrl(Corpus corpus, String query, SearchOptions options)
-            throws UnsupportedEncodingException, MalformedURLException {
+            throws UnsupportedEncodingException, MalformedURLException, URISyntaxException {
         StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("?format=tsv");
-        sb.append("&corpus=").append(corpus.shortName());
+        sb.append(BASE_URL);
+        sb.append("?corpus=").append(corpus.shortName());
+        final String toASCIIString = (new URI(null, query, null)).toASCIIString();
+                //.replaceAll("\\+", "%3f");
+        System.out.println(">>>>>>>    "+toASCIIString);
         sb.append("&query=")
-                .append(URLEncoder.encode(query, java.nio.charset.StandardCharsets.UTF_8.toString()));
+                //    .append((URLEncoder.encode(query, java.nio.charset.StandardCharsets..toString()))); // TO DO: ISSUE is HERE
+                .append(toASCIIString);
+        sb.append("&format=tsv");
         if (options.getMinPhraseLength() != SearchOptions.defaultInstance().getMinPhraseLength()) {
             sb.append("&nmin=").append(options.getMinPhraseLength());
         }

@@ -320,17 +320,17 @@
                                 </ScrollPane>
                             </content>
                         </Tab>
-                        <Tab text="SMS">
+                        <Tab text="SOCIAL">
                             <content>
                                 <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0">
                                     <content>
                                         <GridPane hgap="20.0" prefHeight="600.0" styleClass="main" vgap="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0">
                                             <children>
                                                 
-                                                <SettingsRow helpText="Number assigned to your Twilio account" titleText="Twilio ID" GridPane.columnSpan="3" GridPane.rowIndex="0">
+                                                <SettingsRow helpText="SID associated with your Twilio account" titleText="Twilio ID" GridPane.columnSpan="3" GridPane.rowIndex="0">
                                                     <TextField fx:id="accountSIDField" maxHeight="60.0" styleClass="settings-text-area" GridPane.columnIndex="2" />
                                                 </SettingsRow> 
-                                                <SettingsRow helpText="Number assigned to your Twilio account" titleText="Twilio Token" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                                                <SettingsRow helpText="Auth token associated with your Twilio account" titleText="Twilio Token" GridPane.columnSpan="3" GridPane.rowIndex="1">
                                                     <TextField fx:id="authTokenField" maxHeight="60.0" styleClass="settings-text-area" GridPane.columnIndex="2" />
                                                 </SettingsRow> 
                                                 <SettingsRow helpText="Number assigned to your Twilio account" titleText="Twilio Number" GridPane.columnSpan="3" GridPane.rowIndex="2">

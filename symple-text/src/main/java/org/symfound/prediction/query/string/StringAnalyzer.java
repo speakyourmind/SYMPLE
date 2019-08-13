@@ -27,7 +27,7 @@ public class StringAnalyzer {
     /**
      *
      */
-    public static final List<String> SENTENCE_ENDING = Arrays.asList(".", "!", "?");
+    public static final List<String> SENTENCE_ENDING = Arrays.asList(".", "!");
 
     /**
      *
@@ -55,7 +55,7 @@ public class StringAnalyzer {
     public static Boolean isContinuing(String previous) {
         Boolean isContinuing = false;
         for (String continuation : SENTENCE_CONTINUING) {
-            isContinuing = isContinuing || previous.endsWith(continuation);
+            isContinuing = isContinuing || previous.substring(0, previous.length()-1).endsWith(continuation);
         }
         return isContinuing;
     }

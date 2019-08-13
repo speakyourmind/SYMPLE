@@ -1,4 +1,4 @@
-package org.symfound.prediction.query;
+package org.symfound.prediction.phrasefinder.query;
 
 /**
  *
