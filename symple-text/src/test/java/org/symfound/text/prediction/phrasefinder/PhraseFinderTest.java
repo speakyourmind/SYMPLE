@@ -17,6 +17,8 @@
 package org.symfound.text.prediction.phrasefinder;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
@@ -37,7 +39,7 @@ class PhraseFinderTest {
   private static final String ENG_US_EXPECTED_PHRASE_2 = "I struggled to sit up";
 
   @Test
-  void testSearchCorpusString() throws IOException {
+  void testSearchCorpusString() throws IOException, UnsupportedEncodingException, URISyntaxException {
     SearchResult result = PhraseFinder.search(Corpus.AMERICAN_ENGLISH, ENG_US_QUERY);
     assertEquals(100, result.getPhrases().length);
     assertEquals(ENG_US_EXPECTED_PHRASE_0, result.getPhrases()[0].toString());
@@ -46,7 +48,7 @@ class PhraseFinderTest {
   }
 
   @Test
-  void testSearchCorpusStringOptions() throws IOException {
+  void testSearchCorpusStringOptions() throws IOException, UnsupportedEncodingException, URISyntaxException {
     SearchOptions options = new SearchOptions();
     options.setMaxResults(3);
     SearchResult result = PhraseFinder.search(Corpus.AMERICAN_ENGLISH, ENG_US_QUERY, options);
@@ -57,7 +59,7 @@ class PhraseFinderTest {
   }
 
   @Test
-  void phraseIdEncodesCorpusId() throws IOException {
+  void phraseIdEncodesCorpusId() throws IOException, UnsupportedEncodingException, URISyntaxException {
     for (Corpus corpus : Corpus.values()) {
       if (corpus != Corpus.NULL) {
         SearchResult result = PhraseFinder.search(corpus, COMMON_QUERY);

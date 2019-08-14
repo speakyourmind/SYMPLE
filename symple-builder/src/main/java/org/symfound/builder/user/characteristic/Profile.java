@@ -296,6 +296,36 @@ public class Profile extends Characteristic {
         return userID;
     }
 
-    
+     private static final String AUTO_UPDATE_KEY = "profile.autoUpdate";
+    private BooleanProperty autoUpdate;
+
+    /**
+     *
+     * @param value
+     */
+    public void setAutoUpdate(Boolean value) {
+        autoUpdateProperty().setValue(value);
+        getPreferences().put(AUTO_UPDATE_KEY, value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean autoUpdate() {
+        return autoUpdateProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty autoUpdateProperty() {
+        if (autoUpdate == null) {
+            Boolean initValue = Boolean.valueOf(getPreference(AUTO_UPDATE_KEY));
+            autoUpdate = new SimpleBooleanProperty(initValue);
+        }
+        return autoUpdate;
+    }
     
 }

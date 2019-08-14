@@ -48,7 +48,7 @@ public final class ExitButton extends AppableControl {
     private void initialize() {
 
         if (getVersionManager().needsUpdate()) {
-            if (getUser().getInteraction().autoUpdate()) {
+            if (getUser().getProfile().autoUpdate()) {
                 setTitleText("Update & Exit");;
                 setCaptionText("Are you sure you want to close the program?\n"
                         + "Program will close after downloading an update.");
@@ -62,9 +62,9 @@ public final class ExitButton extends AppableControl {
             setTitleText("Exit");
             setCaptionText("Are you sure you want to close the program?");
         }
-        getUser().getInteraction().autoUpdateProperty().addListener((oldValue, newValue, observable) -> {
+        getUser().getProfile().autoUpdateProperty().addListener((oldValue, newValue, observable) -> {
             if (getVersionManager().needsUpdate()) {
-                if (getUser().getInteraction().autoUpdate()) {
+                if (getUser().getProfile().autoUpdate()) {
                     setTitleText("Update & Exit");;
                     setCaptionText("Are you sure you want to close the program?\n"
                             + "Program will close after downloading an update.");
@@ -72,7 +72,8 @@ public final class ExitButton extends AppableControl {
 
                     setTitleText("Exit Without Updating");;
                     setCaptionText("Are you sure you want to close the program?\n"
-                            + "An update is available and can be downloaded manually.");
+                            + "An update is available and can be downloaded manually. \n"
+                            + "Note:See Settings > Profile > Update on Exit");
                 }
             } else {
                 setTitleText("Exit");
@@ -84,7 +85,7 @@ public final class ExitButton extends AppableControl {
     }
 
     private boolean triggerUpdate() {
-        return getVersionManager().needsUpdate() && getUser().getInteraction().autoUpdate();
+        return getVersionManager().needsUpdate() && getUser().getProfile().autoUpdate();
     }
 
     @Override

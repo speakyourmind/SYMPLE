@@ -188,7 +188,6 @@ public class SettingsController extends SettingsControllerBase {
         user.getTiming().setStepTime(slStepTime.getValue());
         user.getAbility().setLevel(slLevel.getValue());
         user.getInteraction().setAssistedMode(btnAssistedMode.getValue());
-        user.getInteraction().setAutoUpdate(btnAutoUpdate.getValue());
         //DEVICE
         final String selectedDeviceName = getSession().getDeviceManager().getIterator().get();
         user.setDeviceName(selectedDeviceName);
@@ -206,6 +205,7 @@ public class SettingsController extends SettingsControllerBase {
         profile.setCity(cityField.getText());
         profile.setRegion(regionField.getText());
         profile.setCountry(countryField.getText());
+        profile.setAutoUpdate(btnAutoUpdate.getValue());
     }
 
     @Override
@@ -219,7 +219,6 @@ public class SettingsController extends SettingsControllerBase {
         cbSelection.setValue(selectionMode.get());
         slLevel.setValue(getUser().getAbility().getLevel());
         btnAssistedMode.setValue(getUser().getInteraction().isInAssistedMode());
-        btnAutoUpdate.setValue(getUser().getInteraction().autoUpdate());
 
         //DEVICE
         final String activeDevice = getUser().getDeviceName();
@@ -243,6 +242,7 @@ public class SettingsController extends SettingsControllerBase {
         cityField.setText(profile.getCity());
         regionField.setText(profile.getRegion());
         countryField.setText(profile.getCountry());
+        btnAutoUpdate.setValue(profile.autoUpdate());
         setUpdated(false);
     }
 
