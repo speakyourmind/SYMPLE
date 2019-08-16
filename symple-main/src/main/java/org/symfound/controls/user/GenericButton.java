@@ -24,7 +24,7 @@ public class GenericButton extends AppableControl {
      * @param index
      */
     public GenericButton(String index) {
-        super("button", KEY, "", index);
+        super("button", KEY, index, index);
         initialize();
     }
 

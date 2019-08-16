@@ -25,7 +25,7 @@ public class TwilioSpeakButton extends SpeakButton {
     /**
      *
      */
-    public static final String KEY = "Twilio Speak";
+    public static final String KEY = "Twilio Read";
 
     /**
      *

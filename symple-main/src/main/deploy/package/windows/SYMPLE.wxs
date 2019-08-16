@@ -3,7 +3,7 @@
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
     
     <Product Id="*" Name="SYMPLE" 
-             Language="1033" Version="2.5.0"
+             Language="1033" Version="2.5.1"
              Manufacturer="SpeakYourMind Foundation" 
              UpgradeCode="71985a1b-2eaa-4282-be99-c0d39ca4f89d">
         <Package Description="SYMPLE" Comments="None"
@@ -13,7 +13,7 @@
         <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
         <Upgrade Id="71985a1b-2eaa-4282-be99-c0d39ca4f89d">  
             <UpgradeVersion
-                Minimum="1.0.0.0" Maximum="2.5.0"
+                Minimum="1.0.0.0" Maximum="2.5.1"
                 Property="PREVIOUSVERSIONSINSTALLED"
                 IncludeMinimum="yes" IncludeMaximum="no" />
         </Upgrade> 

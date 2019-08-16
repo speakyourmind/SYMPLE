@@ -1,22 +1,24 @@
-package org.symfound.controls.user;
+package org.symfound.controls.user.type.picto;
 
+import org.symfound.controls.user.type.picto.PictoArea;
 import java.util.prefs.Preferences;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
+import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.tools.iteration.ParallelList;
 
 /**
  *
  * @author Javed Gangjee
  */
-public final class BackSpacePictoButton extends AppableControl {
+public final class PictoBackspaceButton extends PictoControl {
 
     /**
      *
      */
-    public static final String NAME = BackSpacePictoButton.class.getName();
+    public static final String NAME = PictoBackspaceButton.class.getName();
 
     /**
      *
@@ -26,14 +28,14 @@ public final class BackSpacePictoButton extends AppableControl {
     /**
      *
      */
-    public static final String KEY = "BackSpace Picto";
+    public static final String KEY = "Picto Backspace";
 
     /**
      *
      * @param index
      */
-    public BackSpacePictoButton(String index) {
-        super("", KEY, index, index);
+    public PictoBackspaceButton(String index) {
+        super("", KEY, "Backspace", index);
         initialize();
     }
 
@@ -55,8 +57,9 @@ public final class BackSpacePictoButton extends AppableControl {
             order.getSecondList().remove(name - 1);
             configurableGrid.setOrder(order);
         } else {
+            //TODO: Replace with PictoGrid().clear();
             final ParallelList<String, String> clearedOrder = new ParallelList<>();
-            clearedOrder.getFirstList().add("None");
+            clearedOrder.getFirstList().add("Replace Key");
             clearedOrder.getSecondList().add("default");
              configurableGrid.setOrder(clearedOrder);
             getPictoArea().setPictoText("");
@@ -65,58 +68,12 @@ public final class BackSpacePictoButton extends AppableControl {
             configurableGrid.triggerReload();
     }
 
-    /**
-     *
-     */
-    public PictoArea picto;
-
-    /**
-     *
-     * @return
-     */
-    public final PictoArea getPictoArea() {
-        if (picto == null) {
-            if (!getPictoID().isEmpty()) {
-                final String pictoHash = "#" + getPictoID();
-                picto = (PictoArea) getScene().lookup(pictoHash);
-            }
-        }
-        return picto;
-    }
-    private StringProperty pictoID;
-
-    /**
-     *
-     * @param value
-     */
-    public void setPictoID(String value) {
-        pictoIDProperty().setValue(value);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getPictoID() {
-        return pictoIDProperty().getValue();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public StringProperty pictoIDProperty() {
-        if (pictoID == null) {
-            pictoID = new SimpleStringProperty("");
-        }
-        return pictoID;
-    }
 
     @Override
     public Preferences getPreferences() {
         if (preferences == null) {
             String name = KEY.toLowerCase() + "/" + getIndex().toLowerCase();
-            Class<? extends BackSpacePictoButton> aClass = this.getClass();
+            Class<? extends PictoBackspaceButton> aClass = this.getClass();
             preferences = Preferences.userNodeForPackage(aClass).node(name);
         }
         return preferences;

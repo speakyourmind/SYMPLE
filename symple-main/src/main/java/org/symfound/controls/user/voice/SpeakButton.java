@@ -5,6 +5,7 @@
  */
 package org.symfound.controls.user.voice;
 
+import org.symfound.controls.user.type.picto.TextCommunicatorButton;
 import java.util.Arrays;
 import java.util.List;
 import javafx.beans.property.ObjectProperty;

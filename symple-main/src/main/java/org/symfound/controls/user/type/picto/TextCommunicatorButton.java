@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.controls.user.voice;
+package org.symfound.controls.user.type.picto;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import org.symfound.controls.AppableControl;
 
 /**
  *
  * @author Javed
  */
-public abstract class TextCommunicatorButton extends AppableControl {
+public abstract class TextCommunicatorButton extends PictoControl {
 
     /**
      *

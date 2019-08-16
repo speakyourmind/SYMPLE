@@ -6,6 +6,7 @@
 package org.symfound.builder.user.characteristic;
 
 import java.util.Properties;
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
@@ -13,6 +14,7 @@ import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
+import org.apache.log4j.Logger;
 import org.symfound.builder.characteristic.Characteristic;
 
 /**
@@ -20,6 +22,9 @@ import org.symfound.builder.characteristic.Characteristic;
  * @author Javed Gangjee <javed@speakyourmindfoundation.org>
  */
 public class Statistics extends Characteristic {
+
+    private static final String NAME = Statistics.class.getName();
+    private static final Logger LOGGER = Logger.getLogger(NAME);
 
     public Statistics(Preferences preferences, Properties properties) {
         super(preferences, properties);
@@ -43,7 +48,7 @@ public class Statistics extends Characteristic {
      */
     public void setTotalSessionCount(Integer value) {
         totalSessionCountProperty().set(value);
-        getPreferences().put(TOTAL_SESSIONS_KEY, value.toString());
+        updatePreferences(TOTAL_SESSIONS_KEY, value.toString());
     }
 
     public void incrementTotalSessionCount() {
@@ -60,7 +65,7 @@ public class Statistics extends Characteristic {
 
     public IntegerProperty totalSessionCountProperty() {
         if (sessionCount == null) {
-            Integer initValue = Integer.valueOf(getPreferences().get(TOTAL_SESSIONS_KEY, "0"));
+            Integer initValue = Integer.valueOf(loadPreference(TOTAL_SESSIONS_KEY, "0"));
             sessionCount = new SimpleIntegerProperty(initValue);
         }
         return sessionCount;
@@ -75,7 +80,7 @@ public class Statistics extends Characteristic {
      */
     public void setTotalSelectionCount(Integer value) {
         totalSelectionCountProperty().set(value);
-        getPreferences().put(TOTAL_SELECTIONS_KEY, value.toString());
+        updatePreferences(TOTAL_SELECTIONS_KEY, value.toString());
     }
 
     public void incrementTotalSelectionCount() {
@@ -92,7 +97,7 @@ public class Statistics extends Characteristic {
 
     public IntegerProperty totalSelectionCountProperty() {
         if (selectionCount == null) {
-            Integer initValue = Integer.valueOf(getPreferences().get(TOTAL_SELECTIONS_KEY, "0"));
+            Integer initValue = Integer.valueOf(loadPreference(TOTAL_SELECTIONS_KEY, "0"));
             selectionCount = new SimpleIntegerProperty(initValue);
         }
         return selectionCount;
@@ -107,7 +112,7 @@ public class Statistics extends Characteristic {
      */
     public void setTotalSpokenWordsCount(Integer value) {
         totalSpokenWordsCountProperty().set(value);
-        getPreferences().put(TOTAL_SPOKEN_WORDS_KEY, value.toString());
+        updatePreferences(TOTAL_SPOKEN_WORDS_KEY, value.toString());
     }
 
     public void incrementTotalSpokenWordsCount() {
@@ -124,7 +129,7 @@ public class Statistics extends Characteristic {
 
     public IntegerProperty totalSpokenWordsCountProperty() {
         if (spokenWordCount == null) {
-            Integer initValue = Integer.valueOf(getPreferences().get(TOTAL_SPOKEN_WORDS_KEY, "0"));
+            Integer initValue = Integer.valueOf(loadPreference(TOTAL_SPOKEN_WORDS_KEY, "0"));
             spokenWordCount = new SimpleIntegerProperty(initValue);
         }
         return spokenWordCount;
@@ -139,7 +144,7 @@ public class Statistics extends Characteristic {
      */
     public void setTotalTimeInUse(Integer value) {
         totalTimeInUseProperty().set(value);
-        getPreferences().put(TOTAL_TIME_KEY, value.toString());
+        updatePreferences(TOTAL_TIME_KEY, value.toString());
     }
 
     public void incrementTotalTimeInUse(Integer seconds) {
@@ -156,7 +161,7 @@ public class Statistics extends Characteristic {
 
     public IntegerProperty totalTimeInUseProperty() {
         if (timeInUse == null) {
-            Integer initValue = Integer.valueOf(getPreferences().get(TOTAL_TIME_KEY, "0"));
+            Integer initValue = Integer.valueOf(loadPreference(TOTAL_TIME_KEY, "0"));
             timeInUse = new SimpleIntegerProperty(initValue);
         }
         return timeInUse;
@@ -167,7 +172,7 @@ public class Statistics extends Characteristic {
 
     public void setSessionStartTime(Long value) {
         sessionStartTimeProperty().set(value);
-        getPreferences().put(SESSION_START_KEY, value.toString());
+        updatePreferences(SESSION_START_KEY, value.toString());
     }
 
     public Long getSessionStartTime() {
@@ -176,18 +181,17 @@ public class Statistics extends Characteristic {
 
     public LongProperty sessionStartTimeProperty() {
         if (sessionStartTime == null) {
-            sessionStartTime = new SimpleLongProperty(Long.valueOf(getPreferences().get(SESSION_START_KEY, "0")));
+            sessionStartTime = new SimpleLongProperty(Long.valueOf(loadPreference(SESSION_START_KEY, "0")));
         }
         return sessionStartTime;
     }
-
 
     private static final String LAST_USED_KEY = "statistics.global.lastUsed";
     private LongProperty lastUsed;
 
     public void setLastUsed(Long value) {
         lastUsedProperty().set(value);
-        getPreferences().put(LAST_USED_KEY, value.toString());
+        updatePreferences(LAST_USED_KEY, value.toString());
     }
 
     public void resetLastUsed() {
@@ -200,7 +204,7 @@ public class Statistics extends Characteristic {
 
     public LongProperty lastUsedProperty() {
         if (lastUsed == null) {
-            lastUsed = new SimpleLongProperty(Long.valueOf(getPreferences().get(LAST_USED_KEY, String.valueOf(System.currentTimeMillis()))));
+            lastUsed = new SimpleLongProperty(Long.valueOf(loadPreference(LAST_USED_KEY, String.valueOf(System.currentTimeMillis()))));
         }
         return lastUsed;
     }
@@ -214,7 +218,7 @@ public class Statistics extends Characteristic {
      */
     public void setSessionTimeInUse(Integer value) {
         sessionTimeInUseProperty().set(value);
-        getPreferences().put(SESSION_TIME_IN_USE_KEY, value.toString());
+        updatePreferences(SESSION_TIME_IN_USE_KEY, value.toString());
     }
 
     public void incrementSessionTimeInUse(Integer seconds) {
@@ -231,7 +235,7 @@ public class Statistics extends Characteristic {
 
     public IntegerProperty sessionTimeInUseProperty() {
         if (sessionTimeInUse == null) {
-            Integer initValue = Integer.valueOf(getPreferences().get(SESSION_TIME_IN_USE_KEY, "0"));
+            Integer initValue = Integer.valueOf(loadPreference(SESSION_TIME_IN_USE_KEY, "0"));
             sessionTimeInUse = new SimpleIntegerProperty(initValue);
         }
         return sessionTimeInUse;
@@ -246,7 +250,7 @@ public class Statistics extends Characteristic {
      */
     public void setSessionSpokenWordCount(Integer value) {
         sessionSpokenWordCountProperty().set(value);
-        getPreferences().put(TOTAL_SESSION_WORDS_KEY, value.toString());
+        updatePreferences(TOTAL_SESSION_WORDS_KEY, value.toString());
     }
 
     public void incrementSessionSpokenWordCount() {
@@ -263,7 +267,7 @@ public class Statistics extends Characteristic {
 
     public IntegerProperty sessionSpokenWordCountProperty() {
         if (sessionWordCount == null) {
-            Integer initValue = Integer.valueOf(getPreferences().get(TOTAL_SESSION_WORDS_KEY, "0"));
+            Integer initValue = Integer.valueOf(loadPreference(TOTAL_SESSION_WORDS_KEY, "0"));
             sessionWordCount = new SimpleIntegerProperty(initValue);
         }
         return sessionWordCount;
@@ -277,9 +281,9 @@ public class Statistics extends Characteristic {
      * @param value
      */
     public void setSessionSelections(Integer value) {
-        
+
         sessionSelectionsProperty().set(value);
-        getPreferences().put(TOTAL_SESSION_WORDS_KEY, value.toString());
+        updatePreferences(TOTAL_SESSION_WORDS_KEY, value.toString());
     }
 
     public void incrementSessionSelections() {
@@ -296,13 +300,12 @@ public class Statistics extends Characteristic {
 
     public IntegerProperty sessionSelectionsProperty() {
         if (sessionSelections == null) {
-            Integer initValue = Integer.valueOf(getPreferences().get(TOTAL_SESSION_SELECTIONS_KEY, "0"));
+            Integer initValue = Integer.valueOf(loadPreference(TOTAL_SESSION_SELECTIONS_KEY, "0"));
             sessionSelections = new SimpleIntegerProperty(initValue);
         }
         return sessionSelections;
     }
-    
-    
+
     private static final String RECORD_KEY = "statistics.record";
     private BooleanProperty record;
 
@@ -312,7 +315,7 @@ public class Statistics extends Characteristic {
      */
     public void setRecord(Boolean value) {
         recordProperty().setValue(value);
-        getPreferences().put(RECORD_KEY, value.toString());
+        updatePreferences(RECORD_KEY, value.toString());
     }
 
     /**
@@ -329,12 +332,11 @@ public class Statistics extends Characteristic {
      */
     public BooleanProperty recordProperty() {
         if (record == null) {
-            Boolean initValue = Boolean.valueOf(getPreferences().get(RECORD_KEY, "true"));
+            Boolean initValue = Boolean.valueOf(loadPreference(RECORD_KEY, "true"));
             record = new SimpleBooleanProperty(initValue);
         }
         return record;
     }
-
 
     public void resetAllStats() {
         resetTotalSessionCount();
@@ -349,7 +351,32 @@ public class Statistics extends Characteristic {
         resetSessionSpokenWordCount();
         resetSessionSelections();
     }
-    
-  
 
+    public void updatePreferences(String node, String value) {
+        try {
+            final Preferences prefs = getPreferences();
+            if (prefs.nodeExists(node)) {
+                prefs.put(node, value);
+            }
+        } catch (BackingStoreException ex) {
+            LOGGER.warn("Node " + node + " does not exist in registry");
+        } catch(IllegalStateException ex){
+            LOGGER.warn("Node " + node + " may have been removed.");
+        }
+    }
+
+    public String loadPreference(String key, String defaultValue){
+        String value=defaultValue;
+        try {
+            final Preferences prefs = getPreferences();
+            if (prefs.nodeExists(key)) {
+                 value = prefs.get(key, defaultValue);
+            }
+        } catch (BackingStoreException ex) {
+            LOGGER.warn("Node " + key + " does not exist in registry");
+        } catch(IllegalStateException ex){
+            LOGGER.warn("Node " + key + " may have been removed.");
+        }
+        return value;
+    }
 }

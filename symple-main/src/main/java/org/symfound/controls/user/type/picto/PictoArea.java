@@ -3,15 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.controls.user;
+package org.symfound.controls.user.type.picto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.prefs.Preferences;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
+import org.symfound.controls.system.OnOffButton;
+import org.symfound.controls.system.SettingsRow;
+import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
+import org.symfound.controls.user.AnimatedButton;
+import org.symfound.controls.user.ConfigurableGrid;
+import org.symfound.controls.user.ScriptButton;
 import org.symfound.tools.iteration.ParallelList;
 
 /**
@@ -34,19 +49,20 @@ public class PictoArea extends AppableControl {
      *
      */
     public static final String KEY = "Picto Area";
-    
-    /**
-     *
-     */
-    public PictoArea() {
-        super("", KEY, "picto", "picto");
+
+    public PictoArea(String index) {
+        super("", KEY, "", index);
         initialize();
     }
-    
+
     private void initialize() {
         addToPane(getConfigurableGrid());
-       speakableProperty().bindBidirectional(selectableProperty());
-       setSpeakable(false);
+        speakableProperty().bindBidirectional(selectableProperty());
+        setSpeakable(false);
+
+        //   disablePrimaryProperty().bindBidirectional(disableProperty());
+        // setDisablePrimary(true);
+        //disabledPrimaryButton.setValue(true);
     }
 
     /**
@@ -55,12 +71,32 @@ public class PictoArea extends AppableControl {
     @Override
     public void loadPrimaryControl() {
         primary = new AnimatedButton("");
+        primary.setWrapText(Boolean.TRUE);
+        load(primary);
+        setCSS("transparent", primary);
+        setSelection(primary);
     }
+
     @Override
     public void run() {
-        if(this.isSpeakable()){
-            //speak
+        if (isSpeakable()) {
+            updatePictoText();
+            speak(getPictoText());
+
         }
+        if (autoClear()) {
+            clear();
+        }
+    }
+
+    public void clear() {
+        final ParallelList<String, String> order = new ParallelList<>();
+        order.getFirstList().add("Replace Key");
+        order.getSecondList().add("default");
+
+        getConfigurableGrid().setOrder(order);
+        getConfigurableGrid().reload();
+        setPictoText("");
     }
 
     /**
@@ -73,7 +109,7 @@ public class PictoArea extends AppableControl {
         order.getFirstList().add("Script");
         order.getSecondList().add(button.getIndex());
         configurableGrid.setOrder(order);
-        
+
         if (configurableGrid.getOrder().getFirstList().contains("None")) {
             configurableGrid.getOrder().remove("None");
         }
@@ -84,9 +120,9 @@ public class PictoArea extends AppableControl {
         configurableGrid.getGridManager().setOrder(configurableGrid.getOrder());
         configurableGrid.triggerReload();
     }
-    
+
     private ConfigurableGrid pictoGrid;
-    
+
     /**
      *
      * @return
@@ -96,8 +132,6 @@ public class PictoArea extends AppableControl {
             pictoGrid = new ConfigurableGrid();
             pictoGrid.setIndex(getIndex());
             pictoGrid.getGridManager().setOverrideRow(1.0);
-            //   pictoGrid.getGridManager().overrideColumnProperty().bind()
-            
             pictoGrid.setMinDifficulty(10.0);
             pictoGrid.configure();
             pictoGrid.setDisable(true);
@@ -105,9 +139,9 @@ public class PictoArea extends AppableControl {
         }
         return pictoGrid;
     }
-    
+
     private StringProperty pictoText;
-    
+
     /**
      *
      */
@@ -133,7 +167,7 @@ public class PictoArea extends AppableControl {
      */
     public void setPictoText(String value) {
         pictoTextProperty().set(value);
-        getPreferences().put("webhook.event", value);
+        getPreferences().put("text", value);
     }
 
     /**
@@ -154,7 +188,78 @@ public class PictoArea extends AppableControl {
         }
         return pictoText;
     }
-    
+    private BooleanProperty autoClear;
+
+    /**
+     *
+     * @param value
+     */
+    public void setAutoClear(Boolean value) {
+        autoClearProperty().set(value);
+        getPreferences().put("autoClear", value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean autoClear() {
+        return autoClearProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty autoClearProperty() {
+        if (autoClear == null) {
+            autoClear = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("autoClear", "false")));
+        }
+        return autoClear;
+    }
+
+    private OnOffButton autoClearButton;
+
+    /**
+     *
+     */
+    @Override
+    public void setAppableSettings() {
+        setAutoClear(autoClearButton.getValue());
+        super.setAppableSettings();
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void resetAppableSettings() {
+        autoClearButton.setValue(autoClear());
+        super.resetAppableSettings();
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public List<Tab> addAppableSettings() {
+
+        SettingsRow autoClearRow = createSettingRow("Auto Clear", "Clear the text when the area is clicked");
+        autoClearButton = new OnOffButton("YES", "NO");
+        autoClearButton.setMaxSize(180.0, 60.0);
+        autoClearButton.setValue(autoClear());
+        GridPane.setHalignment(autoClearButton, HPos.LEFT);
+        GridPane.setValignment(autoClearButton, VPos.CENTER);
+
+        autoClearRow.add(autoClearButton, 1, 0, 1, 1);
+
+        actionSettings.add(autoClearRow);
+        List<Tab> tabs = super.addAppableSettings();
+
+        return tabs;
+    }
+
     @Override
     public Preferences getPreferences() {
         if (preferences == null) {

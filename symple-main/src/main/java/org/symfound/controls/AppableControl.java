@@ -592,6 +592,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             settings.add(deleteKeyRow);
         }*/
 
+        List<Tab> tabs = new ArrayList<>();
         SettingsRow showTitleRow = EditDialog.createSettingRow("Title", "Text to be displayed on this button");
         showTitleButton = new OnOffButton("SHOW", "HIDE");
         showTitleButton.setMaxSize(180.0, 60.0);
@@ -851,7 +852,6 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         usageSettings.add(lastUsedRow);
         Tab usageTab = buildTab("STATS", usageSettings);
 
-        List<Tab> tabs = new ArrayList<>();
         tabs.add(actionTab);
         tabs.add(textTab);
         tabs.add(backgroundTab);
@@ -925,28 +925,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                     AnimatedPane actionPane = buildActionPane(HPos.CENTER, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
                     baseGrid.add(actionPane, 0, 0);
 
-                    final AnimatedButton animatedButton = new AnimatedButton("");
-                    animatedButton.setMaxWidth(540.0);
-                    animatedButton.maxHeightProperty().bind(Bindings.multiply(0.325, baseGrid.heightProperty()));
-                    //animatedButton.setPrefSize(540.0, 360.0);
-                    GridPane.setHalignment(animatedButton, HPos.CENTER);
-                    GridPane.setValignment(animatedButton, VPos.CENTER);
-                    GridPane.setMargin(animatedButton, new Insets(10.0, 0, 10.0, 0));
-                    animatedButton.textProperty().bind(titleArea.textProperty());
-
-                    animatedButton.alignmentProperty().bind(textAlignment.valueProperty());
-
-                    animatedButton.styleProperty().bind(Bindings.concat("-fx-background-color:-fx-", backgroundColourChoices.valueProperty().asString(), "; \n",
-                            "-fx-text-fill:-fx-", textColourChoices.valueProperty().asString(), "; \n",
-                            "-fx-background-image:url(\"", backgroundURLField.textProperty(), "\"); \n",
-                            "-fx-border-color: -fx-dark;\n",
-                            "-fx-border-insets: 0;\n",
-                            "-fx-border-width: 5;\n",
-                            "-fx-background-size:", backgroundSizeSlider.valueProperty().asString(), "; \n",
-                            "-fx-background-size:", backgroundSizeChoices.valueProperty().asString(), "; \n", //TODO:Blank if custom
-                            "-fx-background-repeat:no-repeat;\n",
-                            "-fx-background-position:center;", overrideStyleField.textProperty()
-                    ));
+                    AnimatedButton animatedButton = buildPreviewButton();
 
                     baseGrid.add(animatedButton, 0, 1);
 
@@ -959,6 +938,30 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
                     addToStackPane(baseGrid);
 
+                }
+
+                public AnimatedButton buildPreviewButton() {
+                    final AnimatedButton previewButton = new AnimatedButton("");
+                    previewButton.setMaxWidth(540.0);
+                    previewButton.maxHeightProperty().bind(Bindings.multiply(0.325, baseGrid.heightProperty()));
+                    //animatedButton.setPrefSize(540.0, 360.0);
+                    GridPane.setHalignment(previewButton, HPos.CENTER);
+                    GridPane.setValignment(previewButton, VPos.CENTER);
+                    GridPane.setMargin(previewButton, new Insets(10.0, 0, 10.0, 0));
+                    previewButton.textProperty().bind(titleArea.textProperty());
+                    previewButton.alignmentProperty().bind(textAlignment.valueProperty());
+                    previewButton.styleProperty().bind(Bindings.concat("-fx-background-color:-fx-", backgroundColourChoices.valueProperty().asString(), "; \n",
+                            "-fx-text-fill:-fx-", textColourChoices.valueProperty().asString(), "; \n",
+                            "-fx-background-image:url(\"", backgroundURLField.textProperty(), "\"); \n",
+                            "-fx-border-color: -fx-dark;\n",
+                            "-fx-border-insets: 0;\n",
+                            "-fx-border-width: 5;\n",
+                            "-fx-background-size:", backgroundSizeSlider.valueProperty().asString(), "; \n",
+                            "-fx-background-size:", backgroundSizeChoices.valueProperty().asString(), "; \n", //TODO:Blank if custom
+                            "-fx-background-repeat:no-repeat;\n",
+                            "-fx-background-position:center;", overrideStyleField.textProperty()
+                    ));
+                    return previewButton;
                 }
 
                 @Override

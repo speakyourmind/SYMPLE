@@ -1,5 +1,8 @@
 package org.symfound.controls.user;
 
+import org.symfound.controls.user.type.picto.PictoBackspaceButton;
+import org.symfound.controls.user.type.picto.PictoArea;
+import org.symfound.controls.user.type.picto.PictoClearButton;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -59,9 +62,9 @@ import org.symfound.controls.user.media.video.VideoViewer;
 import org.symfound.controls.user.media.youtube.YouTubeControlButton;
 import org.symfound.controls.user.media.youtube.YouTubeViewer;
 import org.symfound.controls.user.voice.SpeakGrid;
-import org.symfound.controls.user.voice.SpeakPictoButton;
+import org.symfound.controls.user.type.picto.PictoSpeakButton;
 import org.symfound.controls.user.voice.SpeakUserButton;
-import org.symfound.controls.user.media.twilio.TwilioSendButton;
+import org.symfound.controls.user.type.picto.PictoTwilioButton;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.HomeController;
 import static org.symfound.main.Main.getVersionManager;
@@ -109,10 +112,10 @@ public abstract class ButtonGrid extends FillableGrid {
             ScriptButton.KEY,
             SpeakGrid.KEY,
             SpeakUserButton.KEY,
-            SpeakPictoButton.KEY,
-            TwilioSendButton.KEY,
-            BackSpacePictoButton.KEY,
-            ClearPictoButton.KEY,
+            PictoSpeakButton.KEY,
+            PictoTwilioButton.KEY,
+            PictoBackspaceButton.KEY,
+            PictoClearButton.KEY,
             PhotoControlButton.KEY,
             MusicInfoButton.KEY,
             MusicControlButton.KEY,
@@ -126,11 +129,9 @@ public abstract class ButtonGrid extends FillableGrid {
             CalendarViewer.KEY,
             YouTubeControlButton.KEY,
             VolumeGridButton.KEY,
-            
             TwilioViewer.KEY,
             TwilioSpeakButton.KEY,
             TwilioControlButton.KEY,
-            
             GMailViewer.KEY,
             GMailSpeakButton.KEY,
             GMailControlButton.KEY,
@@ -149,11 +150,10 @@ public abstract class ButtonGrid extends FillableGrid {
             ClockButton.KEY);
 //            DesktopController.KEY);
 
-    public static final List<String> USABLE_KEY_CATALOGUE = Arrays.asList(
-            ActiveTextArea.KEY,
+    public static final List<String> USABLE_KEY_CATALOGUE = Arrays.asList(ActiveTextArea.KEY,
             SpeakGrid.KEY,
             SpeakUserButton.KEY,
-            TwilioSendButton.KEY,
+            PictoTwilioButton.KEY,
             PhotoControlButton.KEY,
             MusicInfoButton.KEY,
             MusicControlButton.KEY,
@@ -165,9 +165,9 @@ public abstract class ButtonGrid extends FillableGrid {
             YouTubeControlButton.KEY,
             GMailSpeakButton.KEY,
             TwilioSpeakButton.KEY,
-            SpeakPictoButton.KEY,
-            BackSpacePictoButton.KEY,
-            ClearPictoButton.KEY,
+            PictoSpeakButton.KEY,
+            PictoBackspaceButton.KEY,
+            PictoClearButton.KEY,
             PictoArea.KEY,
             ClockButton.KEY,
             ExitButton.KEY,
@@ -445,54 +445,50 @@ public abstract class ButtonGrid extends FillableGrid {
                         textArea.setGridLocation(i);
                         requestedControls.add(textArea);
                         break;
-                    case TwilioSendButton.KEY:
-                        TwilioSendButton twilioButton = new TwilioSendButton(index);
-                        configureItem(twilioButton);
-                        twilioButton.setGridLocation(i);
-                        twilioButton.setPane("agApp");
-                        requestedControls.add(twilioButton);
-                        break;
+
                     case SpeakUserButton.KEY:
                         SpeakUserButton speakButton = new SpeakUserButton(index);
                         configureItem(speakButton);
                         speakButton.setGridLocation(i);
-                        speakButton.setPane("agApp");
                         requestedControls.add(speakButton);
                         break;
                     case PictoArea.KEY:
-                        PictoArea pictoArea = new PictoArea();
+                        PictoArea pictoArea = new PictoArea(index);
                         pictoArea.setId("gridPictoArea");
                         pictoArea.setGridLocation(i);
                         requestedControls.add(pictoArea);
                         break;
-                    case SpeakPictoButton.KEY:
-                        SpeakPictoButton speakPictoButton = new SpeakPictoButton(index);
+                    case PictoSpeakButton.KEY:
+                        PictoSpeakButton speakPictoButton = new PictoSpeakButton(index);
                         speakPictoButton.setPictoID("gridPictoArea");
                         configureItem(speakPictoButton);
-                        speakPictoButton.setPane("agApp");
                         speakPictoButton.setGridLocation(i);
                         requestedControls.add(speakPictoButton);
                         break;
-                    case ClearPictoButton.KEY:
-                        ClearPictoButton clearPictoButton = new ClearPictoButton(index);
+                    case PictoClearButton.KEY:
+                        PictoClearButton clearPictoButton = new PictoClearButton(index);
                         clearPictoButton.setPictoID("gridPictoArea");
                         configureItem(clearPictoButton);
-                        clearPictoButton.setPane("agApp");
                         clearPictoButton.setGridLocation(i);
                         requestedControls.add(clearPictoButton);
                         break;
-                    case BackSpacePictoButton.KEY:
-                        BackSpacePictoButton bsPictoButton = new BackSpacePictoButton(index);
+                    case PictoTwilioButton.KEY:
+                        PictoTwilioButton twilioButton = new PictoTwilioButton(index);
+                        twilioButton.setPictoID("gridPictoArea");
+                        configureItem(twilioButton);
+                        twilioButton.setGridLocation(i);
+                        requestedControls.add(twilioButton);
+                        break;
+                    case PictoBackspaceButton.KEY:
+                        PictoBackspaceButton bsPictoButton = new PictoBackspaceButton(index);
                         bsPictoButton.setPictoID("gridPictoArea");
                         configureItem(bsPictoButton);
-                        bsPictoButton.setPane("agApp");
                         bsPictoButton.setGridLocation(i);
                         requestedControls.add(bsPictoButton);
                         break;
                     case ExitButton.KEY:
                         ExitButton exitButton = new ExitButton();
                         configureItem(exitButton);
-                        exitButton.setPane("agApp");
                         exitButton.setGridLocation(i);
                         requestedControls.add(exitButton);
                         break;
@@ -550,7 +546,7 @@ public abstract class ButtonGrid extends FillableGrid {
                         calendarButton.setGridLocation(i);
                         requestedControls.add(calendarButton);
                         break;
-                         case GMailViewer.KEY:
+                    case GMailViewer.KEY:
                         GMailViewer gmailButton = new GMailViewer(index);
                         gmailButton.setGridLocation(i);
                         requestedControls.add(gmailButton);
@@ -785,7 +781,6 @@ public abstract class ButtonGrid extends FillableGrid {
         return gmailViewer;
     }
 
-
     private GMailViewer twilioViewer;
 
     private GMailViewer getTwilioViewer(String index) {
@@ -815,10 +810,8 @@ public abstract class ButtonGrid extends FillableGrid {
     private PhotoViewer getPhotoViewer(String index) {
         if (photoViewer == null) {
             photoViewer = new PhotoViewer(index);
-
         }
         photoViewer.setIndex(index);
-
         addToParent(photoViewer);
         photoViewer.play();
         return photoViewer;
@@ -848,6 +841,7 @@ public abstract class ButtonGrid extends FillableGrid {
         youtubeViewer.play();
         return youtubeViewer;
     }
+
     private PageFlipViewer pageFlipViewer;
 
     private PageFlipViewer getPageFlipViewer(String index) {
@@ -865,7 +859,6 @@ public abstract class ButtonGrid extends FillableGrid {
     private RedditViewer getRedditViewer(String index) {
         if (redditViewer == null) {
             redditViewer = new RedditViewer(index);
-
         }
         redditViewer.setIndex(index);
         addToParent(redditViewer);

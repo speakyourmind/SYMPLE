@@ -23,7 +23,7 @@ import org.symfound.builder.user.characteristic.Social;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
-import static org.symfound.controls.user.media.twilio.TwilioSendButton.LOGGER;
+import static org.symfound.controls.user.type.picto.PictoTwilioButton.LOGGER;
 import org.symfound.device.emulation.input.keyboard.ActionKeyCode;
 import org.symfound.main.builder.UI;
 import org.symfound.social.sms.TwilioPoster;
@@ -38,7 +38,7 @@ public class ScriptButton extends TypingControl {
      *
      */
     public static final String KEY = "Script";
-    public static final String DESCRIPTION = "Talk or Type Button";
+    public static final String DESCRIPTION = "Button";
 
     /**
      *

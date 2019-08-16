@@ -5,6 +5,7 @@
  */
 package org.symfound.controls.user;
 
+import org.symfound.controls.user.type.picto.PictoArea;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;

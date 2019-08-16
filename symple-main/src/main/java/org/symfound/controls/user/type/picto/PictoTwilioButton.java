@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.controls.user.media.twilio;
+package org.symfound.controls.user.type.picto;
 
 import java.util.List;
 import java.util.prefs.Preferences;
@@ -14,7 +14,6 @@ import javafx.scene.control.TextField;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.characteristic.Social;
 import org.symfound.controls.system.SettingsRow;
-import org.symfound.controls.user.voice.TextCommunicatorButton;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.social.sms.TwilioPoster;
 
@@ -22,9 +21,9 @@ import org.symfound.social.sms.TwilioPoster;
  *
  * @author Javed
  */
-public class TwilioSendButton extends TextCommunicatorButton {
+public class PictoTwilioButton extends TextCommunicatorButton {
 
-    private static final String NAME = TwilioSendButton.class.getName();
+    private static final String NAME = PictoTwilioButton.class.getName();
 
     /**
      *
@@ -34,12 +33,12 @@ public class TwilioSendButton extends TextCommunicatorButton {
     /**
      *
      */
-    public static final String KEY = "Twilio Send";
+    public static final String KEY = "Picto Twilio";
 
     /**
      *
      */
-    public TwilioSendButton() {
+    public PictoTwilioButton() {
         super("speak-field-button", KEY, "", "default");
         initialize();
     }
@@ -48,14 +47,15 @@ public class TwilioSendButton extends TextCommunicatorButton {
      *
      * @param index
      */
-    public TwilioSendButton(String index) {
-        super("speak-field-button", KEY, "", index);
+    public PictoTwilioButton(String index) {
+        super("speak-field-button", KEY, "Send SMS", index);
         initialize();
     }
 
     private void initialize() {
         bindToText();
         configureFont();
+        configureStyle();
     }
 
     /**
@@ -63,15 +63,18 @@ public class TwilioSendButton extends TextCommunicatorButton {
      */
     @Override
     public void bindToText() {
-        setCommText(getUser().getTyping().getActiveText());
-        commTextProperty().bindBidirectional(getUser().getTyping().activeTextProperty());
+  //      setCommText(getUser().getTyping().getActiveText());
+    //    commTextProperty().bindBidirectional(getUser().getTyping().activeTextProperty());
+   //     setCommText(getPictoArea().getPictoText());
+     //   commTextProperty().bindBidirectional(getPictoArea().pictoTextProperty());
     }
 
     @Override
     public void run() {
+                getPictoArea().updatePictoText();
         final Social social = getUser().getSocial();
-        LOGGER.info("Sending text message from " + social.getTwilioFromNumber() + " to " + getToNumber() + ": " + getCommText());
-        getTwilioPoster(social.getTwilioAccountSID(), social.getTwilioAuthToken()).textMessage(getToNumber(), social.getTwilioFromNumber(), getSpeakText());
+        LOGGER.info("Sending text message from " + social.getTwilioFromNumber() + " to " + getToNumber() + ": " + getPictoArea().getPictoText());
+        getTwilioPoster(social.getTwilioAccountSID(), social.getTwilioAuthToken()).textMessage(getToNumber(), social.getTwilioFromNumber(), getPictoArea().getPictoText());
     }
 
     /**
@@ -161,7 +164,7 @@ public class TwilioSendButton extends TextCommunicatorButton {
     public Preferences getPreferences() {
         if (preferences == null) {
             String name = KEY.toLowerCase() + "/" + getIndex().toLowerCase();
-            Class<? extends TwilioSendButton> aClass = this.getClass();
+            Class<? extends PictoTwilioButton> aClass = this.getClass();
             preferences = Preferences.userNodeForPackage(aClass).node(name);
         }
         return preferences;
