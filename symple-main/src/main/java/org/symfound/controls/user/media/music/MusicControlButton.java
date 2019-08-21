@@ -93,9 +93,9 @@ public class MusicControlButton extends MusicButton {
         overrideStyleProperty().addListener((obversable, oldValue, newValue) -> {
             getPrimaryControl().setStyle(newValue);
         });
-        setCSS("media-" + getMusicControl().toString().toLowerCase(), getPrimaryControl());
+        setCSS(getMusicControl().toString().toLowerCase(), getPrimaryControl());
         musicControlProperty().addListener((observeableValue, oldValue, newValue) -> {
-            setCSS("media-" + getMusicControl().toString().toLowerCase(), getPrimaryControl());
+            setCSS(getMusicControl().toString().toLowerCase(), getPrimaryControl());
         });
 
         /*    getPrimaryControl().setStyle(getOverrideStyle());
@@ -145,8 +145,8 @@ public class MusicControlButton extends MusicButton {
             getMusicView().getPlaylistManager().setPlaylist(getContents());
             shuffleContents();
         } else {
-            String message = "Uh-oh! Items in the folder " 
-                    + getFolderPath() + "are not playable music files.";
+            String message = "Uh-oh! Items in the folder \n" 
+                    + getFolderPath() + "\n are not playable music files.";
             LOGGER.fatal(message);
             
             generateFixableError(message);

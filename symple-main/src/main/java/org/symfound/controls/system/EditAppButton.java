@@ -40,7 +40,7 @@ public class EditAppButton extends ConfirmableControl {
      * @param dialog
      */
     public EditAppButton(EditDialog dialog) {
-        super("toolbar-edit");
+        super("toolbar-edit-app");
         this.dialog = dialog;
         initialize();
     }

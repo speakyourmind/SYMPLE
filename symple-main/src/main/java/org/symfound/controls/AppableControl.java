@@ -942,7 +942,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
                 public AnimatedButton buildPreviewButton() {
                     final AnimatedButton previewButton = new AnimatedButton("");
-                    previewButton.setMaxWidth(540.0);
+                    previewButton.setMaxWidth(540.0); // TO DO: Make it a percentage
                     previewButton.maxHeightProperty().bind(Bindings.multiply(0.325, baseGrid.heightProperty()));
                     //animatedButton.setPrefSize(540.0, 360.0);
                     GridPane.setHalignment(previewButton, HPos.CENTER);

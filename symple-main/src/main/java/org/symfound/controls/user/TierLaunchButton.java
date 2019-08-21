@@ -25,7 +25,7 @@ import javafx.scene.layout.Pane;
 import org.symfound.controls.RunnableControl;
 
 /**
- *
+ *@deprecated 
  * @author Javed Gangjee
  */
 public final class TierLaunchButton extends RunnableControl {

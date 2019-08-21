@@ -1,5 +1,6 @@
 package org.symfound.controls.user;
 
+import org.symfound.controls.user.social.twilio.TwilioHistory;
 import org.symfound.controls.user.type.picto.PictoBackspaceButton;
 import org.symfound.controls.user.type.picto.PictoArea;
 import org.symfound.controls.user.type.picto.PictoClearButton;
@@ -37,9 +38,6 @@ import org.symfound.controls.system.grid.editor.EditGridButton;
 import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
 import org.symfound.controls.user.media.MediaViewer;
-import org.symfound.controls.user.media.Twilio.TwilioControlButton;
-import org.symfound.controls.user.media.Twilio.TwilioSpeakButton;
-import org.symfound.controls.user.media.Twilio.TwilioViewer;
 import org.symfound.controls.user.media.calendar.CalendarControlButton;
 import org.symfound.controls.user.media.calendar.CalendarViewer;
 import org.symfound.controls.user.media.gmail.GMailControlButton;
@@ -129,9 +127,7 @@ public abstract class ButtonGrid extends FillableGrid {
             CalendarViewer.KEY,
             YouTubeControlButton.KEY,
             VolumeGridButton.KEY,
-            TwilioViewer.KEY,
-            TwilioSpeakButton.KEY,
-            TwilioControlButton.KEY,
+            TwilioHistory.KEY,
             GMailViewer.KEY,
             GMailSpeakButton.KEY,
             GMailControlButton.KEY,
@@ -146,6 +142,7 @@ public abstract class ButtonGrid extends FillableGrid {
             LockButton.KEY,
             EditGridButton.KEY,
             DeviceButton.KEY,
+            TwilioHistory.KEY,
             VersionUpdateButton.KEY,
             ClockButton.KEY);
 //            DesktopController.KEY);
@@ -164,7 +161,6 @@ public abstract class ButtonGrid extends FillableGrid {
             TwitterControlButton.KEY,
             YouTubeControlButton.KEY,
             GMailSpeakButton.KEY,
-            TwilioSpeakButton.KEY,
             PictoSpeakButton.KEY,
             PictoBackspaceButton.KEY,
             PictoClearButton.KEY,
@@ -174,6 +170,7 @@ public abstract class ButtonGrid extends FillableGrid {
             MinimizeButton.KEY,
             SettingsButton.KEY,
             LockButton.KEY,
+            TwilioHistory.KEY,
             VersionUpdateButton.KEY);
 //            DesktopController.KEY);
 
@@ -492,6 +489,12 @@ public abstract class ButtonGrid extends FillableGrid {
                         exitButton.setGridLocation(i);
                         requestedControls.add(exitButton);
                         break;
+                    case TwilioHistory.KEY:
+                        TwilioHistory twilioHistory = new TwilioHistory(index);
+                        configureItem(twilioHistory);
+                        twilioHistory.setGridLocation(i);
+                        requestedControls.add(twilioHistory);
+                        break;
                     case VolumeGridButton.KEY:
                         VolumeGridButton volumeGridButton = new VolumeGridButton(index);
                         volumeGridButton.setGridLocation(i);
@@ -560,21 +563,6 @@ public abstract class ButtonGrid extends FillableGrid {
                         GMailControlButton gmailControl = new GMailControlButton(index);
                         gmailControl.setGridLocation(i);
                         requestedControls.add(gmailControl);
-                        break;
-                    case TwilioViewer.KEY:
-                        TwilioViewer twilioViewer = new TwilioViewer(index);
-                        twilioViewer.setGridLocation(i);
-                        requestedControls.add(twilioViewer);
-                        break;
-                    case TwilioSpeakButton.KEY:
-                        TwilioSpeakButton twilioSpeak = new TwilioSpeakButton(index);
-                        twilioSpeak.setGridLocation(i);
-                        requestedControls.add(twilioSpeak);
-                        break;
-                    case TwilioControlButton.KEY:
-                        TwilioControlButton twilioControl = new TwilioControlButton(index);
-                        twilioControl.setGridLocation(i);
-                        requestedControls.add(twilioControl);
                         break;
                     case MusicInfoButton.KEY:
                         MusicInfoButton musicTagButton = new MusicInfoButton(index);

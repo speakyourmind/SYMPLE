@@ -5,6 +5,7 @@
  */
 package org.symfound.social.sms;
 
+import com.google.common.collect.Range;
 import com.twilio.base.ResourceSet;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
@@ -28,22 +29,37 @@ public class TwilioReader extends SocialMediaReader {
         this.authToken = authToken;
     }
 
-    public List<String> read(DateTime since, String fromNumber) {
-         TwilioConnector.connect(accountSID, authToken);
-        List<String> messageText = new ArrayList<>();
-        ResourceSet<Message> messages = Message.reader()
-            //    .setDateSent(new DateTime(2019, 8, 10, 0, 0))
-              .setFrom(new PhoneNumber(fromNumber))
+    public List<Message> readContactsSMS(Range<DateTime> range, String contactsNumber, String myNumber) {
+        TwilioConnector.connect(accountSID, authToken);
+        return getSMSs(range, contactsNumber);
+    }
+
+    public List<Message> readMySMSToContact(Range<DateTime> range, String contactsNumber, String myNumber) {
+        TwilioConnector.connect(accountSID, authToken);
+        List<Message> mySMSToContact = new ArrayList<>();
+
+        List<Message> allMySMS = getSMSs(range, myNumber);
+        allMySMS.forEach((message) -> {
+            final String to = message.getTo();
+            if (to.equals(contactsNumber)) {
+                mySMSToContact.add(message);
+            }
+        });
+        return mySMSToContact;
+    }
+
+    public List<Message> getSMSs(Range<DateTime> range, String myNumber) {
+        ResourceSet<Message> mySMSSet = Message.reader()
+                .setDateSent(range)
+                .setFrom(new PhoneNumber(myNumber))
                 .limit(20)
                 .read();
-
-        for (Message record : messages) {
-            LOGGER.info(record.getSid());
+        List<Message> smsList = new ArrayList<>();
+        for (Message record : mySMSSet) {
             Message message = Message.fetcher(record.getSid())
                     .fetch();
-            messageText.add(message.getBody());
-            LOGGER.info(message.getFrom() + " " + message.getBody());
+            smsList.add(message);
         }
-        return messageText;
+        return smsList;
     }
 }

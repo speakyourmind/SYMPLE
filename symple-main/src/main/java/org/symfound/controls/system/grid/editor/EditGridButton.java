@@ -193,7 +193,7 @@ public class EditGridButton extends SystemControl {
                 SettingsRow hGapRow = createSettingRow("Horizontal gap", "Adjust horizontal gaps between cells");
                 hGapSlider = new Slider(0.0, 200.0, buttonGrid.getCustomHGap());
                 hGapSlider.setMajorTickUnit(20);
-                hGapSlider.setMinorTickCount(10);
+                hGapSlider.setMinorTickCount(4);
                 hGapSlider.setShowTickLabels(true);
                 hGapSlider.setShowTickMarks(true);
                 hGapRow.add(hGapSlider, 1, 0, 2, 1);
@@ -201,7 +201,7 @@ public class EditGridButton extends SystemControl {
                 SettingsRow vGapRow = createSettingRow("Vertical gap", "Adjust vertical gaps between cells");
                 vGapSlider = new Slider(0.0, 200.0, buttonGrid.getCustomVGap());
                 vGapSlider.setMajorTickUnit(20);
-                vGapSlider.setMinorTickCount(10);
+                vGapSlider.setMinorTickCount(4);
                 vGapSlider.setShowTickLabels(true);
                 vGapSlider.setShowTickMarks(true);
                 vGapRow.add(vGapSlider, 1, 0, 2, 1);

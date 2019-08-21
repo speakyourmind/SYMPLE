@@ -63,18 +63,24 @@ public class PictoTwilioButton extends TextCommunicatorButton {
      */
     @Override
     public void bindToText() {
-  //      setCommText(getUser().getTyping().getActiveText());
-    //    commTextProperty().bindBidirectional(getUser().getTyping().activeTextProperty());
-   //     setCommText(getPictoArea().getPictoText());
-     //   commTextProperty().bindBidirectional(getPictoArea().pictoTextProperty());
+        //      setCommText(getUser().getTyping().getActiveText());
+        //    commTextProperty().bindBidirectional(getUser().getTyping().activeTextProperty());
+        //     setCommText(getPictoArea().getPictoText());
+        //   commTextProperty().bindBidirectional(getPictoArea().pictoTextProperty());
     }
 
     @Override
     public void run() {
-                getPictoArea().updatePictoText();
+        getPictoArea().updatePictoText();
+
         final Social social = getUser().getSocial();
-        LOGGER.info("Sending text message from " + social.getTwilioFromNumber() + " to " + getToNumber() + ": " + getPictoArea().getPictoText());
-        getTwilioPoster(social.getTwilioAccountSID(), social.getTwilioAuthToken()).textMessage(getToNumber(), social.getTwilioFromNumber(), getPictoArea().getPictoText());
+        final String message = getPictoArea().getPictoText();
+        if (!message.isEmpty()) {
+            LOGGER.info("Sending text message from " + social.getTwilioFromNumber() + " to " + getToNumber() + ": " + message);
+            getTwilioPoster(social.getTwilioAccountSID(), social.getTwilioAuthToken()).textMessage(getToNumber(), social.getTwilioFromNumber(), message);
+        } else {
+            LOGGER.warn("Attempting to send a blank message from " + social.getTwilioFromNumber() + " to " + getToNumber());
+        }
     }
 
     /**

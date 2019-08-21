@@ -64,6 +64,8 @@ public abstract class Selector {
      */
     public void configure() {
         startStop();
+       
+        //TO DO: Bug - Runs too many times. Could be a problem.
         Bindings.concat(getUser().getInteraction().assistedModeProperty().asString(),
                 getUser().getInteraction().selectionMethodProperty().asString(),
                 gridToScour.selectionMethodProperty().asString(),

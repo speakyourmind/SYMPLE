@@ -46,7 +46,7 @@ public class KeyRemoveButton extends SystemControl {
      * @param configurableGrid
      */
     public KeyRemoveButton(Integer orderIndex, ConfigurableGrid configurableGrid) {
-        super("toolbar-exit", KEY, "", "default");
+        super("toolbar-remove", KEY, "", "default");
         this.orderIndexInit = orderIndex;
         this.configurableGrid = configurableGrid;
         initialize();
