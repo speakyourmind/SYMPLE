@@ -55,13 +55,11 @@ public abstract class MediaViewer extends AppableControl implements Reloadable {
 
     private void initialize() {
         this.setSelectable(false);
-        
         label.setStyle("-fx-text-fill:-fx-blue; -fx-font-size:48pt;");
         label.setAlignment(Pos.CENTER);
         statusProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1.equals(ScreenStatus.READY)) {
                 label.setDisable(true);
-
                 if (!getChildren().contains(label)) {
                     addToPane(label);
                 }

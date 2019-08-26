@@ -310,9 +310,8 @@ public class EditGridButton extends SystemControl {
                     
                     public void exportChildrenNodes(ConfigurableGrid subGrid, String folder) {
                         String fileName = getSettingsFileName(grid.getIndex().replaceAll("\\/", "-").concat("-grid"));
-                     //   final String absolutePath = grid.getPreferences().absolutePath();
-                       // System.out.println(absolutePath);
-                        //UIExporter may be replaced with PReferencesExporter
+         
+                        //TO DO: UIExporter may be replaced with PReferencesExporter
                         UIExporter gridExporter = new UIExporter(folder, fileName, "/org/symfound/controls/user/subgrid/"+grid.getIndex());;
                         getExecutor().execute(gridExporter);
                         

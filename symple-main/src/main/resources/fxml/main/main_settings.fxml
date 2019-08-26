@@ -210,14 +210,13 @@
                                     <children>
                                         <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <content>
-                                                <GridPane hgap="20.0" styleClass="main" prefHeight="1000.0" vgap="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0">
+                                                <GridPane hgap="20.0" styleClass="main" prefHeight="800.0" vgap="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0">
                                                     <columnConstraints>
                                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
                                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
                                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                     </columnConstraints>
                                                     <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -232,16 +231,8 @@
                                                                 </children>
                                                             </HBox>
                                                         </SettingsRow>  
-                                                        <SettingsRow helpText="Used to personalize your application data" titleText="Location" GridPane.columnSpan="3" GridPane.rowIndex="1">
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="600.0" spacing="20.0" GridPane.columnIndex="1" GridPane.columnSpan="2" >
-                                                                <children>     
-                                                                    <TextField fx:id="cityField" maxHeight="60.0" promptText="City" styleClass="settings-text-area" />                                               
-                                                                    <TextField fx:id="regionField" maxHeight="60.0" promptText="Region" styleClass="settings-text-area" />                                               
-                                                                    <TextField fx:id="countryField" maxHeight="60.0" promptText="Country" styleClass="settings-text-area" />                                               
-                                                                </children>
-                                                            </HBox>
-                                                        </SettingsRow> 
-                                                        <SettingsRow helpText="Export or clear user settings" titleText="Manage Settings" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                                                      
+                                                        <SettingsRow helpText="Export or clear user settings" titleText="Manage Settings" GridPane.columnSpan="3" GridPane.rowIndex="1">
                                                             
                                                             <GridPane hgap="20.0" styleClass="main" prefHeight="60.0" vgap="20.0" GridPane.columnSpan="2" GridPane.columnIndex="1">
                                                                 <columnConstraints>
@@ -259,11 +250,11 @@
                                                                 </children>
                                                             </GridPane>
                                                         </SettingsRow>
-                                                        <SettingsRow helpText="Update the software on exiting if a new version is available" titleText="Update On Exit" GridPane.columnSpan="3" GridPane.rowIndex="4">
+                                                        <SettingsRow helpText="Update the software on exiting if a new version is available" titleText="Update On Exit" GridPane.columnSpan="3" GridPane.rowIndex="3">
                                                             <OnOffButton fx:id="btnAutoUpdate" maxHeight="60.0" maxWidth="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />                                              
                                                         </SettingsRow> 
-                                                        <SettingsRow helpText="Import a series of XMLs" titleText="Import UI" GridPane.columnSpan="3" GridPane.rowIndex="3">
-                                                            <UIImportButton controlType="SETTING_CONTROL" okText="CONFIRM" cancelText="CANCEL" pane="apMain" maxHeight="60.0" maxWidth="180.0" text="IMPORT" GridPane.columnIndex="1"/>
+                                                        <SettingsRow helpText="Import a series of XMLs" titleText="Import UI" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                                                            <UIImportButton controlType="SETTING_CONTROL" okText="CONFIRM" cancelText="CANCEL" pane="apMain" maxHeight="60.0" maxWidth="180.0" text="IMPORT" GridPane.halignment="CENTER" GridPane.valignment="CENTER" GridPane.columnIndex="1"/>
                                                         </SettingsRow> 
                                                     </children>
                                                     <padding>

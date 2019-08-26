@@ -124,23 +124,6 @@ public class SettingsController extends SettingsControllerBase {
     @FXML
     public TextField lastNameField;
 
-    /**
-     *
-     */
-    @FXML
-    public TextField cityField;
-
-    /**
-     *
-     */
-    @FXML
-    public TextField regionField;
-
-    /**
-     *
-     */
-    @FXML
-    public TextField countryField;
 
     @FXML
     private void cancelSettings(MouseEvent e) {
@@ -202,9 +185,6 @@ public class SettingsController extends SettingsControllerBase {
         final Profile profile = user.getProfile();
         profile.setFirstName(firstNameField.getText());
         profile.setLastName(lastNameField.getText());
-        profile.setCity(cityField.getText());
-        profile.setRegion(regionField.getText());
-        profile.setCountry(countryField.getText());
         profile.setAutoUpdate(btnAutoUpdate.getValue());
     }
 
@@ -239,9 +219,6 @@ public class SettingsController extends SettingsControllerBase {
         final Profile profile = getUser().getProfile();
         firstNameField.setText(profile.getFirstName());
         lastNameField.setText(profile.getLastName());
-        cityField.setText(profile.getCity());
-        regionField.setText(profile.getRegion());
-        countryField.setText(profile.getCountry());
         btnAutoUpdate.setValue(profile.autoUpdate());
         setUpdated(false);
     }

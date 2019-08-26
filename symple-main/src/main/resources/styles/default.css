@@ -310,31 +310,41 @@
     -fx-background-color: -fx-blue;
 }
 
-
+.transparent-home{    
+    -fx-background-image: url("../images/main_home.png");
+    -fx-background-size: contain;
+}
 .transparent-next{    
     -fx-background-image: url("../images/forward.png");
-    -fx-background-color: transparent;
     -fx-background-size: contain;
-
 }
 .transparent-previous{    
     -fx-background-image: url("../images/backspace.png");
     -fx-background-size: contain;
-    -fx-background-color: transparent;
 }
 .transparent-stop{    
     -fx-background-image: url("../images/stop.png");
     -fx-background-size: 80;
-    -fx-background-color: transparent;
 }
 
-.transparent:hover, 
+.transparent, .transparent:hover,
+.transparent-home,.transparent-home:hover,
+.transparent-next, .transparent-next:hover, 
+.transparent-previous,.transparent-previous:hover,
+.transparent-stop,.transparent-stop:hover{
+    -fx-background-color: transparent;
+    
+}
+
+.transparent-home:hover,
 .transparent-next:hover, 
 .transparent-previous:hover,
 .transparent-stop:hover{
-    -fx-background-color: transparent;
+    -fx-border-color: -fx-blue;
+    -fx-border-insets: 0;
+    -fx-border-width: 1;
+    
 }
-
 .music-album-art{
     -fx-background-color: transparent;
     -fx-background-size: cover;
@@ -374,6 +384,12 @@
     -fx-background-size: contain;
 }
 
+.music-volume-up:hover,
+.music-volume-down:hover,
+.music-volume-mute:hover{
+    -fx-background-color: derive(-fx-blue,-10%);
+    -fx-background-size: contain;
+}
 .music-progress {
     -fx-background-color:transparent;
 }
