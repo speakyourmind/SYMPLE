@@ -182,7 +182,6 @@ public class DeviceManager extends UsableManager<Device> implements Runnable {
 
     /**
      *
-     */
     public void clearAllPreferences() {
 
         try {
@@ -195,6 +194,7 @@ public class DeviceManager extends UsableManager<Device> implements Runnable {
         }
 
     }
+     */
 
     /**
      *

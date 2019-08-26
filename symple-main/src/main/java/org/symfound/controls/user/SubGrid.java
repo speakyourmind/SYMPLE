@@ -184,7 +184,7 @@ public class SubGrid extends AppableControl {
      */
     public EditGridButton getEditGridButton() {
         // if (editGridButton == null) {
-        editGridButton = new EditGridButton(getConfigurableGrid());
+        editGridButton = new EditGridButton(this.getConfigurableGrid());
         editGridButton.setMinHeight(5.0);
         editGridButton.setPrefHeight(60.0);
         editGridButton.setMaxHeight(120.0);

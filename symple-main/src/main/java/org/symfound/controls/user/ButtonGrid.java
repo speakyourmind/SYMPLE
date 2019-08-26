@@ -586,12 +586,12 @@ public abstract class ButtonGrid extends FillableGrid {
                         lockButton.setGridLocation(i);
                         requestedControls.add(lockButton);
                         break;
-                    case EditGridButton.KEY:
+                 /*   case EditGridButton.KEY:
                         EditGridButton editKeysButton = new EditGridButton(this);
                         editKeysButton.setPane("apMain"); // Change to apMain for Menu Grid
                         editKeysButton.setGridLocation(i);
                         requestedControls.add(editKeysButton);
-                        break;
+                        break;*/
                     case ReplaceKeyButton.KEY:
                         ReplaceKeyButton addKeyButton = new ReplaceKeyButton(this);
                         addKeyButton.setPane("apMain"); // Change to apMain for Menu Grid

@@ -3,23 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.symfound.builder.settings;
+package org.symfound.controls.system;
 
 import java.io.IOException;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import org.apache.log4j.Logger;
+import org.symfound.builder.settings.PreferencesManager;
+import org.symfound.builder.settings.PreferencesTransporter;
 
 /**
  *
  * @author Javed Gangjee <javed@speakyourmindfoundation.org>
  */
-public class PreferencesExporter extends PreferencesTransporter {
+public class UIExporter extends PreferencesTransporter {
 
     /**
      *
      */
-    public static final String NAME = PreferencesExporter.class.getName();
+    public static final String NAME = UIExporter.class.getName();
 
     /**
      *
@@ -34,7 +36,7 @@ public class PreferencesExporter extends PreferencesTransporter {
      * @param folder
      * @param fileName
      */
-    public PreferencesExporter(String folder, String fileName, String node) {
+    public UIExporter(String folder, String fileName, String node) {
         this.fileName = fileName;
         this.folder = folder;
         this.node = node;
@@ -52,10 +54,10 @@ public class PreferencesExporter extends PreferencesTransporter {
         export(folder, fileName, node);
     }
 
-    public static void export(String folder, String fileName, String node) {
-        Preferences prefs = Preferences.userRoot().node(node);
+    public void export(String folder, String fileName, String node) {
+        Preferences prefs = Preferences.userNodeForPackage(this.getClass()).node(node);
         try {
-            LOGGER.debug("Exporting preferences as " + fileName + " in " + folder);
+            LOGGER.info("Exporting preferences from " + prefs.absolutePath() + " as " + fileName + " in " + folder);
             final String destination = folder + fileName;
             PreferencesManager.exportTo(destination, prefs);
         } catch (BackingStoreException | IOException ex) {

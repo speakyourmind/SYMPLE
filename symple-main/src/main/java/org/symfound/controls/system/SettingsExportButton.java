@@ -38,11 +38,16 @@ public final class SettingsExportButton extends SettingsManagerControl {
     @Override
     public void run() {
         String folder = getFolderSelection();
-        String fileName = getSettingsFileName();
-        PreferencesExporter settingsExporter = new PreferencesExporter(folder, fileName);
-        settingsExporter.run();
+        String fileName = getSettingsFileName("All");
+        PreferencesExporter settingsExporter = new PreferencesExporter(folder, fileName, "/org/symfound");
+        Thread thread = new Thread(settingsExporter);
+        try {
+            thread.start();
+            thread.join();
+        } catch (InterruptedException ex) {
+            LOGGER.warn("Unable to backup settings file to " + folder, ex);
+        }
     }
-
 
     private String getFolderSelection() {
         String folder = null;

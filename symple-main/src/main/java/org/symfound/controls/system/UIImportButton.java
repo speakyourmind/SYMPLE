@@ -4,9 +4,9 @@ import org.symfound.builder.settings.PreferencesImporter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.prefs.BackingStoreException;
-import java.util.prefs.Preferences;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import org.apache.log4j.Logger;
@@ -17,15 +17,15 @@ import org.symfound.main.builder.UI;
  *
  * @author Javed Gangjee
  */
-public final class SettingsImportButton extends SettingsManagerControl {
+public final class UIImportButton extends SettingsManagerControl {
 
-    private static final String NAME = SettingsImportButton.class.getName();
+    private static final String NAME = UIImportButton.class.getName();
     private static final Logger LOGGER = Logger.getLogger(NAME);
 
     /**
      *
      */
-    public SettingsImportButton() {
+    public UIImportButton() {
         super();
         setSelection(primary);
         initTitleText = "Import Settings";
@@ -39,34 +39,44 @@ public final class SettingsImportButton extends SettingsManagerControl {
      */
     @Override
     public void run() {
-        try {
-            Preferences.userRoot().node("/org/symfound").removeNode();
-        } catch (BackingStoreException ex) {
-            LOGGER.fatal(ex);
-        }
-        final String fileSelection = getSelectedFile();
-        PreferencesImporter settingsImporter = new PreferencesImporter(fileSelection);
-        final Thread thread = new Thread(settingsImporter);
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException ex) {
-            LOGGER.fatal(ex);
+
+        final List<String> fileSelection = getFileSelection();
+        for (String file : fileSelection) {
+            final Thread thread = new Thread(new PreferencesImporter(file));
+            thread.start();
+            getExecutor().execute(thread);
         }
         deleteMasterFile();
         getSession().shutdown(Boolean.FALSE);
-
     }
 
-    private String getSelectedFile() {
+    private static ThreadPoolExecutor executor;
+
+    public static ThreadPoolExecutor getExecutor() {
+        if (executor == null) {
+            executor = new ThreadPoolExecutor(3, 8, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
+        }
+        return executor;
+    }
+
+    private List<String> getFileSelection() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Import Settings Source");
         final ExtensionFilter xmlFilter = new ExtensionFilter("XML Files", "*.xml");
         fileChooser.getExtensionFilters().addAll(xmlFilter);
+
         final UI root = getPrimaryControl().getParentUI();
-        File selectedFile = fileChooser.showOpenDialog(root);
-        String importedFile = selectedFile.getAbsolutePath();
-        return importedFile;
+
+        List<File> selectedFiles = fileChooser.showOpenMultipleDialog(root);
+        List<String> importFiles = new ArrayList<>();
+        for (File selectedFile : selectedFiles) {
+            if (selectedFile != null) {
+                importFiles.add(selectedFile.getAbsolutePath());
+            } else {
+                throw new NullPointerException("File cannot be null");
+            }
+        }
+        return importFiles;
     }
 
     /**

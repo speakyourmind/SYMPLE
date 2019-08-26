@@ -52,7 +52,7 @@ public class VersionUpdateButton extends AppableControl {
         PathWriter backupPathWriter = new PathWriter(backupFolder);
         backupPathWriter.file.mkdirs();
 
-        PreferencesExporter backupSettingsExporter = new PreferencesExporter(backupFolder, FullSession.getSettingsFileName());
+        PreferencesExporter backupSettingsExporter = new PreferencesExporter(backupFolder, FullSession.getSettingsFileName("All"),"/org/symfound");
         LOGGER.info("Backing up settings to folder: " + backupFolder);
         Thread backupThread = new Thread(backupSettingsExporter);
         try {

@@ -393,7 +393,7 @@ public class FullSession extends Session {
             String backupFolder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Backup";
             PathWriter backupPathWriter = new PathWriter(backupFolder);
             backupPathWriter.file.mkdirs();
-            PreferencesExporter backupSettingsExporter = new PreferencesExporter(backupFolder, getSettingsFileName());
+            PreferencesExporter backupSettingsExporter = new PreferencesExporter(backupFolder, getSettingsFileName("All"), "/org/symfound");
             LOGGER.info("Backing up settings");
             Thread backupThread = new Thread(backupSettingsExporter);
             try {
@@ -409,7 +409,7 @@ public class FullSession extends Session {
         String folder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings";
         PathWriter savePathWriter = new PathWriter(folder);
         savePathWriter.file.mkdirs();
-        PreferencesExporter settingsExporter = new PreferencesExporter(folder, "/Master.xml");
+        PreferencesExporter settingsExporter = new PreferencesExporter(folder, "/Master.xml","/org/symfound");
 
         LOGGER.info("Backing up master settings");
         Thread thread = new Thread(settingsExporter);
@@ -420,15 +420,14 @@ public class FullSession extends Session {
             LOGGER.warn(ex);
         }
 
-            LOGGER.info("Closing hardware");
-            getDeviceManager().getCurrent().getHardware().close();
-            LOGGER.info("Stopping Input Listener");
-            InputListener.stop();
-            Platform.exit();
-            System.exit(0);
-        
+        LOGGER.info("Closing hardware");
+        getDeviceManager().getCurrent().getHardware().close();
+        LOGGER.info("Stopping Input Listener");
+        InputListener.stop();
+        Platform.exit();
+        System.exit(0);
+
     }
-   
 
     /**
      *
@@ -488,11 +487,11 @@ public class FullSession extends Session {
         return uiMain;
     }
 
-    public static String getSettingsFileName() {
+    public static String getSettingsFileName(String suffix) {
         DateFormat dateFormat = new SimpleDateFormat("yyMMddHHmmss");
         Date date = new Date();
         final String fullName = Main.getSession().getUser().getProfile().getFullName();
-        String fileName = "/" + fullName + " Settings " + dateFormat.format(date) + ".xml";
+        String fileName = "/" + fullName + " " + suffix + " " + dateFormat.format(date) + ".xml";
         return fileName;
     }
 }

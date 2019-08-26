@@ -1,5 +1,7 @@
 package org.symfound.controls.system;
 
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.Preferences;
 import org.apache.log4j.Logger;
 import org.symfound.controls.user.AnimatedButton;
 
@@ -29,7 +31,11 @@ public final class SettingsRestoreButton extends SettingsManagerControl {
      */
     @Override
     public void run() {
-        getSession().getDeviceManager().clearAllPreferences();
+      try {
+            Preferences.userRoot().node("/org/symfound").removeNode();
+        } catch (BackingStoreException ex) {
+            LOGGER.fatal(ex);
+        }
         deleteMasterFile();
         LOGGER.info("Exiting the program");
         getSession().shutdown(Boolean.FALSE);

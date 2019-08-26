@@ -37,13 +37,13 @@ public class PreferencesManager {
             LOGGER.info("Importing preferences from " + source);
             InputStream im = new FileInputStream(new File(source));
             Preferences.importPreferences(im);
+           
         } catch (IOException | InvalidPreferencesFormatException ex) {
             LOGGER.fatal("Unable to load preferences from " + source, ex);
         }
     }
 
-    // TO DO: Test with multiple file import
-
+    
     /**
      *
      * @param sources
@@ -63,7 +63,8 @@ public class PreferencesManager {
      * @throws IOException
      */
     public static void exportTo(String destination, Preferences preferences) throws FileNotFoundException, BackingStoreException, IOException {
-        OutputStream osTree = new BufferedOutputStream(new FileOutputStream(destination));
+        final FileOutputStream fileOutputStream = new FileOutputStream(destination);
+        OutputStream osTree = new BufferedOutputStream(fileOutputStream);
         preferences.exportSubtree(osTree);
     }
 }
