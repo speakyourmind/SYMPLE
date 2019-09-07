@@ -75,7 +75,7 @@ public class CommonPane extends AnimatedPane {
         baseGrid = new BuildableGrid();
         baseGrid.setSpecRows(2);
         List<Double> rowPercentages = Arrays.asList(4.0, 96.0);
-        baseGrid.buildRowByPerc(rowPercentages);
+        baseGrid.buildRowsByPerc(rowPercentages);
         baseGrid.setSpecColumns(1);
         baseGrid.buildColumns();
         getChildren().add(baseGrid);

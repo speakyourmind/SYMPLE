@@ -68,7 +68,6 @@ public class ScriptButton extends TypingControl {
 
     @Override
     public void run() {
-        super.run();
         if (isTypable()) {
             type(getPrimaryControl().getText());
         }
@@ -77,6 +76,7 @@ public class ScriptButton extends TypingControl {
             sendTwilioText();
         }
 
+        super.run();
         UI ui = (UI) getScene().getWindow();
         if (ui.inEditMode()) {
             LOGGER.info("Exiting edit mode before navigating");
@@ -99,11 +99,12 @@ public class ScriptButton extends TypingControl {
      * @param text
      */
     public void type(String text) {
-        if (getTextArea() != null) {
-            getTextArea().handle(getActionKey(), text);
-        }
+
         if (getPictoArea() != null) {
             getPictoArea().add(this);
+        }
+        if (getTextArea() != null) {
+            getTextArea().handle(getActionKey(), text);
         }
     }
 
@@ -405,7 +406,7 @@ public class ScriptButton extends TypingControl {
      */
     public StringProperty webhookKeyProperty() {
         if (webhookKey == null) {
-            webhookKey = new SimpleStringProperty(getPreferences().get("webhook.key", "dOqKgMizDNXLj8dKIEy4oH"));
+            webhookKey = new SimpleStringProperty(getPreferences().get("webhook.key", ""));
         }
         return webhookKey;
     }
@@ -435,7 +436,7 @@ public class ScriptButton extends TypingControl {
      */
     public StringProperty webhookEventStartProperty() {
         if (webhookEventStart == null) {
-            webhookEventStart = new SimpleStringProperty(getPreferences().get("webhook.event.start", "test"));
+            webhookEventStart = new SimpleStringProperty(getPreferences().get("webhook.event.start", ""));
         }
         return webhookEventStart;
     }
@@ -465,7 +466,7 @@ public class ScriptButton extends TypingControl {
      */
     public StringProperty webhookEventEndProperty() {
         if (webhookEventEnd == null) {
-            webhookEventEnd = new SimpleStringProperty(getPreferences().get("webhook.event.end", "test"));
+            webhookEventEnd = new SimpleStringProperty(getPreferences().get("webhook.event.end", ""));
         }
         return webhookEventEnd;
     }

@@ -97,7 +97,7 @@ public abstract class SettingsDialog extends OKDialog {
         // Build base Grid rows
         baseGrid.setSpecRows(rows);
         List<Double> rowPercentage = Arrays.asList(8.0, 82.0, 10.0);
-        baseGrid.buildRowByPerc(rowPercentage);
+        baseGrid.buildRowsByPerc(rowPercentage);
 
         // Build base Grid columns
         baseGrid.setSpecColumns(DEFAULT_COLUMNS);

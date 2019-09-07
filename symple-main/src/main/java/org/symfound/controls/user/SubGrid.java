@@ -15,10 +15,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
-import org.symfound.controls.RunnableControl;
 import org.symfound.controls.system.grid.editor.AddKeyButton;
 import org.symfound.controls.system.grid.editor.EditGridButton;
 import org.symfound.controls.system.grid.editor.KeyRemoveButton;
+import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
 
 /**
  *
@@ -164,14 +164,17 @@ public class SubGrid extends AppableControl {
             if (node instanceof AppableControl) {
                 AppableControl control = (AppableControl) node;
                 if (control.isRemovable()) {
+
                     final KeyRemoveButton keyRemoveButton = new KeyRemoveButton(control.getGridLocation(), getConfigurableGrid());
                     keyRemoveButton.gridLocationProperty().bindBidirectional(control.gridLocationProperty());
                     keyRemoveButton.setPane("apMain");
                     //  keyRemoveButton.setConfirmable(false);
                     getRemoveButtons().add(keyRemoveButton);
                     control.addToPane(keyRemoveButton, 0.0, null, null, 0.0);
+                    
+                    keyRemoveButton.setVisible(!(control.getGridLocation() == 0 && control.getKey().equals((ReplaceKeyButton.KEY))));
                     keyRemoveButton.toFront();
-                    LOGGER.info("Key Remove Button added to control " + control.getText() + " with index " + control.getGridLocation());
+                   
                 }
             }
         }

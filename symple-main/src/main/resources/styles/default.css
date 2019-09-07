@@ -27,7 +27,6 @@
 .grid, #gpTier, #gpMain, .pane,.main{
     -fx-background-color:-fx-light;
 }
-
 .button {
     -fx-background-color: -fx-blue, derive(-fx-dark,10%), -fx-dark;
     -fx-background-radius: 0,0,0,0;
@@ -111,6 +110,10 @@
 }
 
 .text-area .content {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0,5;
+}
+.text-area:disabled  .content{
     -fx-background-color: transparent;
     -fx-background-insets: 0,5;
 }
@@ -268,9 +271,7 @@
     -fx-font-size: 3em;
 }
 
-.results-consensus {
-    -fx-text-fill: -fx-light;
-}
+.results-consensus {-fx-text-fill: -fx-light;}
 
 .play-button {
     -fx-text-fill: -fx-light;
@@ -287,30 +288,36 @@
 }
 
 .close-button:hover {-fx-background-color: -fx-red;}
-.media-next{    
-    -fx-background-image: url("../images/forward.png");
-    -fx-background-color: -fx-blue;
-    -fx-background-size: contain;
 
+.control-clear{    
+    -fx-background-image: url("../images/main_exit.png");
+    -fx-background-size: contain;
 }
-.media-previous{    
+.control-next{    
+    -fx-background-image: url("../images/forward.png");
+    -fx-background-size: contain;
+}
+.control-previous{    
     -fx-background-image: url("../images/backspace.png");
     -fx-background-size: contain;
-    -fx-background-color: -fx-blue;
 }
-.media-stop{    
+.control-stop{    
     -fx-background-image: url("../images/stop.png");
     -fx-background-size: 80;
-    -fx-background-color: -fx-blue;
 }
 
-.media-next:hover, 
-.media-previous:hover,
-.media-stop:hover{
+.control-speak{    
+    -fx-background-image: url("../images/app_speak.png");
+    -fx-background-size: contain;
+}
+.control-clear,.control-speak, .control-next, .control-previous, .control-stop{
     -fx-background-color: -fx-blue;
 }
+.control-clear:hover,.control-speak:hover, .control-next:hover,.control-previous:hover,.control-stop:hover{
+    -fx-background-color: derive(-fx-blue,-10%);
+}
 
-.transparent-home{    
+.transparent-home{
     -fx-background-image: url("../images/main_home.png");
     -fx-background-size: contain;
 }
@@ -333,7 +340,6 @@
 .transparent-previous,.transparent-previous:hover,
 .transparent-stop,.transparent-stop:hover{
     -fx-background-color: transparent;
-    
 }
 
 .transparent-home:hover,
@@ -343,8 +349,12 @@
     -fx-border-color: -fx-blue;
     -fx-border-insets: 0;
     -fx-border-width: 1;
-    
 }
+
+.transparent:disabled{
+    -fx-opacity:1.0;
+}
+
 .music-album-art{
     -fx-background-color: transparent;
     -fx-background-size: cover;
@@ -435,7 +445,6 @@
 }
 
 .calibrate-button:hover {-fx-background-color: derive(-fx-red,10%);}
-
 
 .setting-button {
     -fx-background-image: url("../images/settings.png");
@@ -566,10 +575,10 @@
 }
 
 .toolbar-remove, .toolbar-edit-app{
- /*   -fx-min-width: 40px;
-    -fx-min-height: 40px; 
-    -fx-max-width: 40px;       
-    -fx-max-height: 40px;*/
+    /*   -fx-min-width: 40px;
+       -fx-min-height: 40px; 
+       -fx-max-width: 40px;       
+       -fx-max-height: 40px;*/
     -fx-background-insets: 0,1;
     -fx-background-size: 40;
 }
@@ -872,6 +881,13 @@
 
 .subgrid,.subgrid:disabled{
     -fx-background-color: transparent;
+}
+.picto-area,.picto-area:disabled{
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-dark;
+    -fx-border-insets: 0;
+    -fx-border-width: 10;
+    -fx-opacity:1.0;
 }
 
 .highlight,.highlight:disabled{

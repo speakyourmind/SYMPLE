@@ -85,7 +85,7 @@ public class SwiftySettings extends DeviceSettings<Swifty> {
 
         grid.setSpecRows(DEFAULT_CONFIG_ROWS);
         List<Double> rowPercentages = Arrays.asList(20.0, 80.0);
-        grid.buildRowByPerc(rowPercentages);
+        grid.buildRowsByPerc(rowPercentages);
 
         grid.setSpecColumns(DEFAULT_CONFIG_COLUMNS);
         grid.buildColumns();

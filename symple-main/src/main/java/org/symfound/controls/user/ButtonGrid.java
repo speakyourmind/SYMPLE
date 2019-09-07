@@ -1020,6 +1020,35 @@ public abstract class ButtonGrid extends FillableGrid {
         }
         return fillMethod;
     }
+    
+      private StringProperty description;
+
+    /**
+     *
+     * @param value
+     */
+    public void setDescription(String value) {
+        descriptionProperty().set(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getDescription() {
+        return descriptionProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty descriptionProperty() {
+        if (description == null) {
+            description = new SimpleStringProperty();
+        }
+        return description;
+    }
 
     private StringProperty overrideStyle;
 

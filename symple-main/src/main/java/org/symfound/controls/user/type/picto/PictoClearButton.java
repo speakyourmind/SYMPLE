@@ -33,13 +33,12 @@ public final class PictoClearButton extends PictoControl {
      * @param index
      */
     public PictoClearButton(String index) {
-        super("", KEY, "Clear", index);
+        super("control-clear", KEY, "Clear", index);
         initialize();
     }
 
     private void initialize() {
        configureStyle();
-
     }
 
     /**

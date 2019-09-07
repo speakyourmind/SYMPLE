@@ -85,7 +85,7 @@ public abstract class MusicButton extends AppableControl {
             setCSS("transparent-" + getMusicControl().toString().toLowerCase(), getPrimaryControl());
         } else {
             getAlbumArt().removeFromParent();
-            setCSS("media-" + getMusicControl().toString().toLowerCase(), getPrimaryControl());
+            setCSS("control-" + getMusicControl().toString().toLowerCase(), getPrimaryControl());
         }
     }
 

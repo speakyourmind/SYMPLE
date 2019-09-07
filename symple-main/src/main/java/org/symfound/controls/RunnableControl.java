@@ -241,6 +241,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
                     appable.speak(getSpeakText());
                 }
             }*/
+            Platform.runLater(this);
             if (appable.navigatePostClick()) {
                 if (!appable.getNavigateIndex().isEmpty()) {
                     LOGGER.info("Post click navigation requested by " + this.getText());
@@ -271,7 +272,6 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
                 LOGGER.fatal(null, ex);
             }
         }
-        Platform.runLater(this);
         setExecuted(true);
         getPrimaryControl().setOnFinished(srcText, srcStyle);
         setExecuted(false);
@@ -482,7 +482,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
     @Override
     public void loadPrimaryControl() {
         primary = new AnimatedButton("");
-        primary.setWrapText(Boolean.TRUE);
+        primary.setWrapText(Boolean.FALSE);
         load(primary);
         setCSS(cssClass, primary);
         setSelection(primary);

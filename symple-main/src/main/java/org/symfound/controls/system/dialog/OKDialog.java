@@ -72,7 +72,7 @@ public abstract class OKDialog extends ScreenDialog {
      */
     public void buildBaseGrid(Integer rows, Integer columns, List<Double> rowPercentages) {
         baseGrid.setSpecRows(rows);
-        baseGrid.buildRowByPerc(rowPercentages);
+        baseGrid.buildRowsByPerc(rowPercentages);
         baseGrid.setSpecColumns(columns);
         baseGrid.buildColumns();
     }

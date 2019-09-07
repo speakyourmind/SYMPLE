@@ -5,6 +5,7 @@
  */
 package org.symfound.controls.user.media.reddit;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.prefs.Preferences;
 import javafx.application.Platform;
@@ -16,6 +17,7 @@ import javafx.geometry.Pos;
 import org.apache.log4j.Logger;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.AnimatedLabel;
+import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ScreenStatus;
 import org.symfound.controls.user.media.web.WebViewer;
 
@@ -49,8 +51,16 @@ public class RedditViewer extends WebViewer {
     public void loadPrimaryControl() {
         primary = new AnimatedButton("");
 
-        addToPane(getWebView());
-        addToPane(getLinkTitle());
+        BuildableGrid grid = new BuildableGrid();
+        grid.getStyleClass().add("background");
+        grid.setAlignment(Pos.CENTER);
+        grid.setSpecRows(2);
+        grid.buildRowsByPerc(Arrays.asList(90.0, 10.0));
+        grid.setSpecColumns(1);
+        grid.buildColumnsByPerc(Arrays.asList(100.0));
+        grid.add(getWebView(), 0, 0);
+        grid.add(getLinkTitle(), 0, 1);
+        addToPane(grid);
     }
 
     private AnimatedLabel linkTitle;
@@ -60,6 +70,7 @@ public class RedditViewer extends WebViewer {
             linkTitle = new AnimatedLabel();
             linkTitle.setAlignment(Pos.BOTTOM_CENTER);
             linkTitle.setStyle("-fx-font-size:38pt;");
+            linkTitle.setMaxWidth(Double.POSITIVE_INFINITY);
         }
         return linkTitle;
     }

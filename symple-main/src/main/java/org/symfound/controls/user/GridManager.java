@@ -84,6 +84,36 @@ public abstract class GridManager implements Editable {
         order = new SimpleObjectProperty<>(parallelList);
         return order;
     }
+    
+    private StringProperty description;
+
+    /**
+     *
+     * @param value
+     */
+    public void setDescription(String value) {
+        descriptionProperty().set(value);
+        getPreferences().put("description", value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getDescription() {
+        return descriptionProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty descriptionProperty() {
+        //    if (description == null) {
+        description = new SimpleStringProperty(getPreferences().get("description", ""));
+        //  }
+        return description;
+    }
 
     private DoubleProperty customHGap;
 

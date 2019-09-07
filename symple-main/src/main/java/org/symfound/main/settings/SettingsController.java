@@ -124,7 +124,6 @@ public class SettingsController extends SettingsControllerBase {
     @FXML
     public TextField lastNameField;
 
-
     @FXML
     private void cancelSettings(MouseEvent e) {
         cancelSettings();
@@ -149,8 +148,6 @@ public class SettingsController extends SettingsControllerBase {
         setSettings();
         getMainUI().getStack().load(HOME);
         getMainUI().open();
-
-        System.out.println("++++++++++++++" + selectionMode.get());
         getUser().getInteraction().setSelectionMethod(selectionMode.get()); // TO DO: REMOVE
         setUpdated(true);
 

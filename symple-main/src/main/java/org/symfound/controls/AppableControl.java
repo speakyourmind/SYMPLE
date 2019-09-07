@@ -798,7 +798,6 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
         totalUsageLabel = new AnimatedLabel();
         totalUsageLabel.setStyle("-fx-font-size:3em;");
-
         totalUsageLabel.setText(getTotalUsageCount().toString());
         totalUsageRow.add(totalUsageLabel, 2, 0, 1, 1);
 

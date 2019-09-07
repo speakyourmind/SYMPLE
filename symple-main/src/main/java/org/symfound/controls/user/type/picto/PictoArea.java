@@ -5,7 +5,6 @@
  */
 package org.symfound.controls.user.type.picto;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.prefs.Preferences;
 import javafx.beans.property.BooleanProperty;
@@ -16,14 +15,13 @@ import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
-import org.symfound.controls.RunnableControl;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
+import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.ScriptButton;
@@ -51,7 +49,7 @@ public class PictoArea extends AppableControl {
     public static final String KEY = "Picto Area";
 
     public PictoArea(String index) {
-        super("", KEY, "", index);
+        super("picto-area", KEY, "", index);
         initialize();
     }
 
@@ -59,10 +57,6 @@ public class PictoArea extends AppableControl {
         addToPane(getConfigurableGrid());
         speakableProperty().bindBidirectional(selectableProperty());
         setSpeakable(false);
-
-        //   disablePrimaryProperty().bindBidirectional(disableProperty());
-        // setDisablePrimary(true);
-        //disabledPrimaryButton.setValue(true);
     }
 
     /**
@@ -106,17 +100,17 @@ public class PictoArea extends AppableControl {
     public void add(ScriptButton button) {
         final ConfigurableGrid configurableGrid = getConfigurableGrid();
         final ParallelList<String, String> order = configurableGrid.getOrder();
-        order.getFirstList().add("Script");
+        order.getFirstList().add(ScriptButton.KEY);
         order.getSecondList().add(button.getIndex());
         configurableGrid.setOrder(order);
 
         if (configurableGrid.getOrder().getFirstList().contains("None")) {
             configurableGrid.getOrder().remove("None");
         }
-        if (configurableGrid.getOrder().getFirstList().contains("Replace Key")) {
-            configurableGrid.getOrder().remove("Replace Key");
+        if (configurableGrid.getOrder().getFirstList().contains(ReplaceKeyButton.KEY)) {
+            configurableGrid.getOrder().remove(ReplaceKeyButton.KEY);
         }
-        configurableGrid.getGridManager().setOverrideColumn(order.size().doubleValue());
+        configurableGrid.getGridManager().setOverrideColumn(order.size().doubleValue()+1.0);
         configurableGrid.getGridManager().setOrder(configurableGrid.getOrder());
         configurableGrid.triggerReload();
     }
@@ -131,11 +125,14 @@ public class PictoArea extends AppableControl {
         if (pictoGrid == null) {
             pictoGrid = new ConfigurableGrid();
             pictoGrid.setIndex(getIndex());
+           // pictoGrid.setMinDifficulty(10.0);
             pictoGrid.getGridManager().setOverrideRow(1.0);
-            pictoGrid.setMinDifficulty(10.0);
+            pictoGrid.getGridManager().setOverrideColumn(10.0);
             pictoGrid.configure();
+            pictoGrid.setMaxWidth(this.getWidth());
             pictoGrid.setDisable(true);
-            setCSS("subgrid", this);
+          
+            setCSS("picto-area", pictoGrid);
         }
         return pictoGrid;
     }
@@ -150,9 +147,9 @@ public class PictoArea extends AppableControl {
         final int size = getConfigurableGrid().getChildren().size();
         for (int i = 0; i < size; i++) {
             Node node = getConfigurableGrid().getChildren().get(i);
-            if (node instanceof RunnableControl) {
-                RunnableControl button = (RunnableControl) node;
-                final String currentButtonText = button.getPrimaryControl().getText();
+            if (node instanceof AppableControl) {
+                AppableControl button = (AppableControl) node;
+                final String currentButtonText = button.getSpeakText();
                 text = text + currentButtonText + " ";
             } else {
                 LOGGER.warn("Unreadable item in picto area");

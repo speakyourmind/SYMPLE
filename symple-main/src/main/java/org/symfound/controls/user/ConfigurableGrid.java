@@ -64,6 +64,11 @@ public class ConfigurableGrid extends ButtonGrid {
             LOGGER.info("Setting order " + newValue.asString());
             getGridManager().setOrder(newValue);
         });
+        
+        setDescription(getGridManager().getDescription());
+        descriptionProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setDescription(newValue);
+        });
 
         setCustomHGap(getGridManager().getCustomHGap());
         customHGapProperty().addListener((observable, oldValue, newValue) -> {
@@ -147,7 +152,7 @@ public class ConfigurableGrid extends ButtonGrid {
             setOverrideStyle(getGridManager().getOverrideStyle());
             setSelectionMethod(getGridManager().getSelectionMethod());
             setPaused(getGridManager().isPaused());
-
+            setDescription(getGridManager().getDescription());
             triggerReload();
         });
 

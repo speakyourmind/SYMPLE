@@ -56,7 +56,7 @@ public class GMailControlButton extends AppableControl {
             getPrimaryControl().setStyle(getOverrideStyle());
         } else {
             getPrimaryControl().setStyle("");
-            setCSS("media-" + getControl().toString().toLowerCase(), getPrimaryControl());
+            setCSS("control-" + getControl().toString().toLowerCase(), getPrimaryControl());
         }
     }
 

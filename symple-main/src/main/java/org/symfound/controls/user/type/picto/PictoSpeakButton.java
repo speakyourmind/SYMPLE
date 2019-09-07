@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.apache.log4j.Logger;
 import org.symfound.controls.user.voice.SpeakButton;
+import org.symfound.tools.iteration.ParallelList;
 
 /**
  *
@@ -46,6 +47,16 @@ public class PictoSpeakButton extends SpeakButton {
             case SPEAK:
                 getPictoArea().updatePictoText();
                 speak(getPictoArea().getPictoText());
+                Boolean clearAfter = true;
+                if (clearAfter) {
+                    final ParallelList<String, String> order = new ParallelList<>();
+                    order.getFirstList().add("Replace Key");
+                    order.getSecondList().add("default");
+
+                    getPictoArea().getConfigurableGrid().setOrder(order);
+                    getPictoArea().getConfigurableGrid().reload();
+                    getPictoArea().setPictoText("");
+                }
                 break;
             case STOP:
                 stopSpeak();
@@ -63,5 +74,4 @@ public class PictoSpeakButton extends SpeakButton {
         return preferences;
     }
 
-  
 }

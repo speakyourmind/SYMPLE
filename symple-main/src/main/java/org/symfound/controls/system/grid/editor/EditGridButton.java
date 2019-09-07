@@ -43,6 +43,7 @@ import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.LOGGER;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.system.dialog.OKCancelDialog;
+import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.FillableGrid.FillDirection;
 import org.symfound.controls.user.FillableGrid.FillMethod;
@@ -84,15 +85,15 @@ public class EditGridButton extends SystemControl {
      */
     public EditGridButton(ConfigurableGrid grid) {
         super("toolbar-edit-grid", KEY, "", "default");
-        this.grid =grid;
+        this.grid = grid;
     }
-    
+
     @Override
     public void defineButton() {
         setEditable(Boolean.FALSE);
         setControlType(ControlType.SETTING_CONTROL);
         setNavigatePostClick(Boolean.FALSE);
-        
+
     }
 
     /**
@@ -125,12 +126,14 @@ public class EditGridButton extends SystemControl {
     /**
      *
      */
-    public List<SettingsRow> gridSelectionSettings = new ArrayList<>();
+    public List<SettingsRow> selectionSettings = new ArrayList<>();
 
     /**
      *
      */
-    public List<SettingsRow> gridSettings = new ArrayList<>();
+    public List<SettingsRow> sizeSettings = new ArrayList<>();
+
+    public List<SettingsRow> aboutSettings = new ArrayList<>();
 
     /**
      *
@@ -151,12 +154,14 @@ public class EditGridButton extends SystemControl {
             private Slider overrideColumnSlider;
             private OnOffButton overrideColumnButton;
             private TextArea overrideStyleField;
+            private OnOffButton editDescriptionButton;
+            private TextArea descriptionArea;
             private ChoiceBox<SelectionMethod> selectionMethodChoices;
-            
+
             private OnOffButton paginationButton;
-            
+
             private RunnableControl exportButton;
-            
+
             @Override
             public Node addSettingControls() {
                 SettingsRow buttonOrderRow = createSettingRow("Button Order", "Placeholder method to change app order");
@@ -167,32 +172,33 @@ public class EditGridButton extends SystemControl {
                 buttonOrderField.maxHeight(80.0);
                 buttonOrderField.maxWidth(360.0);
                 buttonOrderField.getStyleClass().add("settings-text-area");
+
                 buttonOrderRow.add(buttonOrderField, 1, 0, 2, 1);
-                
+
                 SettingsRow paginationRow = createSettingRow("Pagination", "Enable automated splitting into multiple pages");
-                
+
                 paginationButton = new OnOffButton("YES", "NO");
                 paginationButton.setValue(grid.isPaginationEnabled());
                 paginationButton.setMaxSize(180.0, 60.0);
                 GridPane.setHalignment(paginationButton, HPos.LEFT);
                 GridPane.setValignment(paginationButton, VPos.CENTER);
                 paginationRow.add(paginationButton, 1, 0, 1, 1);
-                
+
                 SettingsRow fillMethodRow = createSettingRow("Fill Method", "How the grid is populated");
-                
+
                 fillMethodChoices = new ChoiceBox<>(FXCollections.observableArrayList(Arrays.asList(
                         FillMethod.ROW_WISE,
                         FillMethod.COLUMN_WISE
                 )));
                 fillMethodChoices.setValue(grid.getFillMethod());
-                
+
                 fillMethodChoices.maxHeight(80.0);
                 fillMethodChoices.maxWidth(360.0);
                 fillMethodChoices.getStyleClass().add("settings-text-area");
                 fillMethodRow.add(fillMethodChoices, 1, 0, 2, 1);
-                
+
                 SettingsRow fillDirectionRow = createSettingRow("Fill Direction", "Fill order forward or in reverse");
-                
+
                 fillDirectionChoices = new ChoiceBox<>(FXCollections.observableArrayList(Arrays.asList(
                         FillDirection.FORWARD,
                         FillDirection.REVERSE
@@ -202,7 +208,7 @@ public class EditGridButton extends SystemControl {
                 fillDirectionChoices.maxWidth(360.0);
                 fillDirectionChoices.getStyleClass().add("settings-text-area");
                 fillDirectionRow.add(fillDirectionChoices, 1, 0, 2, 1);
-                
+
                 SettingsRow hGapRow = createSettingRow("Horizontal gap", "Adjust horizontal gaps between cells");
                 hGapSlider = new Slider(0.0, 200.0, grid.getCustomHGap());
                 hGapSlider.setMajorTickUnit(20);
@@ -210,7 +216,7 @@ public class EditGridButton extends SystemControl {
                 hGapSlider.setShowTickLabels(true);
                 hGapSlider.setShowTickMarks(true);
                 hGapRow.add(hGapSlider, 1, 0, 2, 1);
-                
+
                 SettingsRow vGapRow = createSettingRow("Vertical gap", "Adjust vertical gaps between cells");
                 vGapSlider = new Slider(0.0, 200.0, grid.getCustomVGap());
                 vGapSlider.setMajorTickUnit(20);
@@ -218,34 +224,34 @@ public class EditGridButton extends SystemControl {
                 vGapSlider.setShowTickLabels(true);
                 vGapSlider.setShowTickMarks(true);
                 vGapRow.add(vGapSlider, 1, 0, 2, 1);
-                
+
                 SettingsRow difficultyRow = createSettingRow("Difficulty", "Controls size of grid");
-                
+
                 maxDifficultyField = new TextField();
                 maxDifficultyField.setText(String.valueOf(grid.getMaxDifficulty()));
                 maxDifficultyField.maxHeight(80.0);
                 maxDifficultyField.maxWidth(360.0);
                 maxDifficultyField.getStyleClass().add("settings-text-area");
                 difficultyRow.add(maxDifficultyField, 2, 0, 1, 1);
-                
+
                 minDifficultyField = new TextField();
                 minDifficultyField.setText(String.valueOf(grid.getMinDifficulty()));
                 minDifficultyField.maxHeight(80.0);
                 minDifficultyField.maxWidth(360.0);
                 minDifficultyField.getStyleClass().add("settings-text-area");
                 difficultyRow.add(minDifficultyField, 1, 0, 1, 1);
-                
+
                 SettingsRow overrideRowRow = createSettingRow("Row Size", "Row size overrides automation");
-                
+
                 overrideRowSlider = new Slider(1.0, 10.0, grid.getOverrideRow());
                 overrideRowSlider.setMajorTickUnit(1);
                 overrideRowSlider.setMinorTickCount(0);
                 overrideRowSlider.setShowTickLabels(true);
                 overrideRowSlider.setShowTickMarks(true);
                 overrideRowSlider.setSnapToTicks(true);
-                
+
                 overrideRowRow.add(overrideRowSlider, 2, 0, 1, 1);
-                
+
                 overrideRowButton = new OnOffButton("AUTO", "MANUAL");
                 overrideRowButton.setValue(grid.getOverrideRow() == 0);
                 overrideRowSlider.visibleProperty().bind(Bindings.not(overrideRowButton.valueProperty()));
@@ -253,18 +259,18 @@ public class EditGridButton extends SystemControl {
                 GridPane.setHalignment(overrideRowButton, HPos.LEFT);
                 GridPane.setValignment(overrideRowButton, VPos.CENTER);
                 overrideRowRow.add(overrideRowButton, 1, 0, 1, 1);
-                
+
                 SettingsRow overrideColumnRow = createSettingRow("Column Size", "Column size overrides automation");
-                
+
                 overrideColumnSlider = new Slider(1.0, 10.0, grid.getOverrideColumn());
                 overrideColumnSlider.setMajorTickUnit(1);
                 overrideColumnSlider.setMinorTickCount(0);
                 overrideColumnSlider.setShowTickLabels(true);
                 overrideColumnSlider.setShowTickMarks(true);
                 overrideColumnSlider.setSnapToTicks(true);
-                
+
                 overrideColumnRow.add(overrideColumnSlider, 2, 0, 1, 1);
-                
+
                 overrideColumnButton = new OnOffButton("AUTO", "MANUAL");
                 overrideColumnButton.setValue(grid.getOverrideColumn() == 0);
                 overrideColumnSlider.visibleProperty().bind(Bindings.not(overrideColumnButton.valueProperty()));
@@ -272,9 +278,9 @@ public class EditGridButton extends SystemControl {
                 GridPane.setHalignment(overrideColumnButton, HPos.LEFT);
                 GridPane.setValignment(overrideColumnButton, VPos.CENTER);
                 overrideColumnRow.add(overrideColumnButton, 1, 0, 1, 1);
-                
+
                 SettingsRow styleRow = createSettingRow("Style", "CSS Style code");
-                
+
                 overrideStyleField = new TextArea();
                 overrideStyleField.setStyle("-fx-font-size:1.6em;");
                 overrideStyleField.setText(grid.getOverrideStyle());
@@ -282,7 +288,7 @@ public class EditGridButton extends SystemControl {
                 overrideStyleField.maxWidth(360.0);
                 overrideStyleField.getStyleClass().add("settings-text-area");
                 styleRow.add(overrideStyleField, 1, 0, 2, 1);
-                
+
                 SettingsRow selectionMethodRow = createSettingRow("Selection Method", "Only available in assisted mode");
                 selectionMethodChoices = new ChoiceBox<>(FXCollections.observableArrayList(
                         Arrays.asList(
@@ -297,24 +303,24 @@ public class EditGridButton extends SystemControl {
                 selectionMethodChoices.maxWidth(360.0);
                 selectionMethodChoices.getStyleClass().add("settings-text-area");
                 selectionMethodRow.add(selectionMethodChoices, 1, 0, 2, 1);
-                
+
                 SettingsRow exportRow = createSettingRow("Export this Screen", "Limited ability to export this screen");
-                
+
                 exportButton = new RunnableControl("settings-button") {
                     @Override
                     public void run() {
                         String folder = getFolderSelection();
                         exportChildrenNodes(grid, folder);
-                        
+
                     }
-                    
+
                     public void exportChildrenNodes(ConfigurableGrid subGrid, String folder) {
                         String fileName = getSettingsFileName(grid.getIndex().replaceAll("\\/", "-").concat("-grid"));
-         
+
                         //TO DO: UIExporter may be replaced with PReferencesExporter
-                        UIExporter gridExporter = new UIExporter(folder, fileName, "/org/symfound/controls/user/subgrid/"+grid.getIndex());;
+                        UIExporter gridExporter = new UIExporter(folder, fileName, "/org/symfound/controls/user/subgrid/" + grid.getIndex());;
                         getExecutor().execute(gridExporter);
-                        
+
                         grid.getChildren().forEach((node) -> {
                             if (node instanceof AppableControl) {
                                 AppableControl control = (AppableControl) node;
@@ -331,9 +337,9 @@ public class EditGridButton extends SystemControl {
                             }
                         });
                     }
-                    
+
                     private ThreadPoolExecutor exportExecutor;
-                    
+
                     public ThreadPoolExecutor getExecutor() {
                         if (exportExecutor == null) {
                             exportExecutor = new ThreadPoolExecutor(3, 8, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
@@ -347,29 +353,51 @@ public class EditGridButton extends SystemControl {
                 GridPane.setHalignment(exportButton, HPos.LEFT);
                 GridPane.setValignment(exportButton, VPos.CENTER);
                 exportRow.add(exportButton, 1, 0, 1, 1);
-                
+
+                SettingsRow descriptionRow = createSettingRow("Speakable", "Say the phrase on the button");
+                editDescriptionButton = new OnOffButton("DONE", "EDIT");
+                editDescriptionButton.setMaxSize(180.0, 60.0);
+                editDescriptionButton.setValue(Boolean.FALSE);
+                GridPane.setHalignment(editDescriptionButton, HPos.LEFT);
+                GridPane.setValignment(editDescriptionButton, VPos.CENTER);
+                descriptionRow.add(editDescriptionButton, 1, 0, 1, 1);
+
+                descriptionArea = new TextArea();
+                descriptionArea.setText(grid.getDescription());
+                descriptionArea.disableProperty().bind(Bindings.not(editDescriptionButton.valueProperty()));
+
+                descriptionArea.setStyle("-fx-font-size:1.6em;");
+                GridPane.setMargin(descriptionArea, new Insets(10.0));
+                descriptionArea.prefHeight(80.0);
+                descriptionArea.prefWidth(360.0);
+                descriptionArea.getStyleClass().add("settings-text-area");
+                descriptionRow.add(descriptionArea, 2, 0, 1, 1);
+
                 fillSettings.add(fillMethodRow);
                 fillSettings.add(fillDirectionRow);
                 Tab fillTab = buildTab("FILL", fillSettings);
-                
-                gridSettings.add(overrideRowRow);
-                gridSettings.add(overrideColumnRow);
-                gridSettings.add(paginationRow);
-                Tab gridTab = buildTab("SIZE", gridSettings);
-                
+
+                sizeSettings.add(overrideRowRow);
+                sizeSettings.add(overrideColumnRow);
+                sizeSettings.add(paginationRow);
+                Tab gridTab = buildTab("SIZE", sizeSettings);
+
                 lookSettings.add(styleRow);
                 lookSettings.add(hGapRow);
                 lookSettings.add(vGapRow);
                 Tab lookTab = buildTab("LOOK", lookSettings);
-                
-                gridSelectionSettings.add(selectionMethodRow);
-                Tab selectionTab = buildTab("SELECTION", gridSelectionSettings);
-                
+
+                selectionSettings.add(selectionMethodRow);
+                Tab selectionTab = buildTab("SELECTION", selectionSettings);
+
                 advancedSettings.add(buttonOrderRow);
                 advancedSettings.add(difficultyRow);
                 advancedSettings.add(exportRow);
                 Tab advancedTab = buildTab("ADVANCED", advancedSettings);
-                
+
+                aboutSettings.add(descriptionRow);
+                Tab aboutTab = buildTab("ABOUT", aboutSettings);
+
                 TabPane tabPane = new TabPane();
                 tabPane.setPadding(new Insets(5));
                 tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
@@ -378,17 +406,26 @@ public class EditGridButton extends SystemControl {
                 tabPane.getTabs().add(lookTab);
                 tabPane.getTabs().add(selectionTab);
                 tabPane.getTabs().add(advancedTab);
+                tabPane.getTabs().add(aboutTab);
                 return tabPane;
             }
-            
+
             @Override
             public void setSettings() {
+
                 ParallelList<String, String> parallelList = new ParallelList<>();
+                String orderText = buttonOrderField.getText();
+                if (buttonOrderField.getText().replaceAll(" ", "").isEmpty()) {
+                    buttonOrderField.setText("Replace Key=default,");
+                }
+                // TO DO: Test that string is valid or switch to xml
                 String[] pairs = buttonOrderField.getText().split(BUTTON_DELIMITER);
+
                 for (String pair : pairs) {
                     String[] keyValue = pair.split(KEY_DELIMITER);
                     parallelList.add(keyValue[0], keyValue[1]);
                 }
+
                 grid.setOrder(parallelList);
                 grid.setFillMethod(fillMethodChoices.getValue());
                 grid.setFillDirection(fillDirectionChoices.getValue());
@@ -396,27 +433,28 @@ public class EditGridButton extends SystemControl {
                 grid.setCustomVGap(vGapSlider.getValue());
                 grid.setMaxDifficulty(Double.valueOf(maxDifficultyField.getText()));
                 grid.setMinDifficulty(Double.valueOf(minDifficultyField.getText()));
-                
+
                 if (overrideRowButton.getValue()) {
                     grid.setOverrideRow(0.0);
-                    
+
                 } else {
                     grid.setOverrideRow(overrideRowSlider.getValue());
                 }
-                
+
                 if (overrideColumnButton.getValue()) {
                     grid.setOverrideColumn(0.0);
                 } else {
                     grid.setOverrideColumn(overrideColumnSlider.getValue());
                 }
-                
+
                 grid.setOverrideStyle(overrideStyleField.getText());
                 grid.setSelectionMethod(selectionMethodChoices.getValue());
                 grid.enablePagination(paginationButton.getValue());
+                grid.setDescription(descriptionArea.getText());
                 SettingsController.setUpdated(true);
-                
+
             }
-            
+
             @Override
             public void resetSettings() {
                 buttonOrderField.setText(grid.getOrder().asString());
@@ -433,23 +471,24 @@ public class EditGridButton extends SystemControl {
                 overrideStyleField.setText(grid.getOverrideStyle());
                 selectionMethodChoices.setValue(grid.getSelectionMethod());
                 paginationButton.setValue(grid.isPaginationEnabled());
+                descriptionArea.setText(grid.getDescription());
                 SettingsController.setUpdated(false);
             }
         };
         return editDialog;
     }
-    
+
     @Override
     public void run() {
         LOGGER.info("Edit Grid button clicked");
     }
-    
+
     private String getFolderSelection() {
         String folder = null;
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Export Settings Destination");
         final String homeFolder = getUser().getContent().getHomeFolder();
-        
+
         final File file = new File(homeFolder);
         directoryChooser.setInitialDirectory(file);
         File directory = directoryChooser.showDialog(getPrimaryControl().getParentUI());
@@ -460,7 +499,7 @@ public class EditGridButton extends SystemControl {
         }
         return folder;
     }
-    
+
     @Override
     public Preferences getPreferences() {
         if (preferences == null) {

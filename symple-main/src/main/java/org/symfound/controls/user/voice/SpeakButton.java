@@ -54,10 +54,9 @@ public abstract class SpeakButton extends TextCommunicatorButton {
             this.setSymStyle("");
             getPrimaryControl().getStyleClass().clear();
             getPrimaryControl().setStyle(getConcatStyle());
-
         } else {
             getPrimaryControl().setStyle("");
-            setCSS("media-" + getSpeakControl().toString().toLowerCase(), getPrimaryControl());
+            setCSS("control-" + getSpeakControl().toString().toLowerCase(), getPrimaryControl());
         }
     }
 
@@ -151,7 +150,7 @@ public abstract class SpeakButton extends TextCommunicatorButton {
 
   
 
-    private static final SpeakControl DEFAULT_MUSIC_CONTROL = SpeakControl.SPEAK;
+    private static final SpeakControl DEFAULT_SPEAK_CONTROL = SpeakControl.SPEAK;
     private ObjectProperty<SpeakControl> speakControl;
 
     /**
@@ -177,7 +176,7 @@ public abstract class SpeakButton extends TextCommunicatorButton {
      */
     public ObjectProperty<SpeakControl> speakControlProperty() {
         if (speakControl == null) {
-            speakControl = new SimpleObjectProperty(SpeakControl.valueOf(getPreferences().get("speakControl", DEFAULT_MUSIC_CONTROL.toString())));
+            speakControl = new SimpleObjectProperty(SpeakControl.valueOf(getPreferences().get("speakControl", DEFAULT_SPEAK_CONTROL.toString())));
         }
         return speakControl;
     }
