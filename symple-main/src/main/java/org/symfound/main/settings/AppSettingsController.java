@@ -271,6 +271,7 @@ public class AppSettingsController extends SettingsControllerBase {
         getUser().getContent().setHomeFolder(homeFolderField.getText());
         getUser().getInteraction().setVolume(volumeField.getValue() * 0.1);
 
+        //SOCIAL
         getUser().getSocial().setTwilioAccountSID(accountSIDField.getText());
         getUser().getSocial().setTwilioAuthToken(authTokenField.getText());
         getUser().getSocial().setTwilioFromNumber(fromNumberField.getText());

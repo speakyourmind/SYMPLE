@@ -48,14 +48,15 @@ public class TwilioHistoryGrid extends ScreenControl<AnimatedButton> {
                 DEFAULT_GRID_GAP * 2);
         grid.setPadding(insets);
         grid.setPrefWidth(Double.POSITIVE_INFINITY);
-        grid.setPrefHeight(numSettings * rowHeight);
+      // grid.setPrefHeight(numSettings * rowHeight);
         grid.setMaxWidth(grid.getPrefWidth());
-        grid.setMaxHeight(grid.getPrefHeight());
+       // grid.setMaxHeight(grid.getPrefHeight());
         grid.setHgap(DEFAULT_GRID_GAP);
         grid.setVgap(DEFAULT_GRID_GAP);
         grid.setSpecRows(numSettings);
         grid.setSpecColumns(1);
-        grid.build();
+        grid.buildRows();
+        grid.buildColumns();
         setCSS("transparent", grid);
 
         scrollPane = new ScrollPane();

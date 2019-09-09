@@ -123,7 +123,10 @@
 .text-area .scroll-pane .content{
     -fx-background-color: transparent;
 }
-
+#errorLog .scroll-pane {
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: never;
+}
 .toggle-button {
     -fx-background-color: -fx-dark;
     -fx-background-insets: 0 0 -1 0,0,1;

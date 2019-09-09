@@ -28,13 +28,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
 import org.apache.log4j.Logger;
-import org.symfound.builder.settings.PreferencesExporter;
 import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
 import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
-import org.symfound.controls.ScreenControl;
 import org.symfound.controls.SystemControl;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
@@ -43,11 +41,9 @@ import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.LOGGER;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.system.dialog.OKCancelDialog;
-import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.FillableGrid.FillDirection;
 import org.symfound.controls.user.FillableGrid.FillMethod;
-import org.symfound.controls.user.SubGrid;
 import static org.symfound.main.FullSession.getSettingsFileName;
 import org.symfound.main.Main;
 import org.symfound.main.settings.SettingsController;
@@ -79,10 +75,6 @@ public class EditGridButton extends SystemControl {
      */
     public static final String KEY = "Edit Grid";
 
-    /**
-     *
-     * @param buttonGrid
-     */
     public EditGridButton(ConfigurableGrid grid) {
         super("toolbar-edit-grid", KEY, "", "default");
         this.grid = grid;
@@ -142,7 +134,6 @@ public class EditGridButton extends SystemControl {
     public EditDialog configureEditDialog() {
         EditDialog editDialog = new EditDialog("Edit Grid") {
             private TextArea buttonOrderField;
-            
             private ChoiceBox<FillMethod> fillMethodChoices;
             private ChoiceBox<FillDirection> fillDirectionChoices;
             private Slider hGapSlider;

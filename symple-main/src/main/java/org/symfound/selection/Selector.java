@@ -5,6 +5,7 @@
  */
 package org.symfound.selection;
 
+import java.util.prefs.Preferences;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -13,10 +14,13 @@ import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.selection.Chooser;
 import org.symfound.builder.user.selection.SelectionMethod;
+import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import static org.symfound.controls.user.ConfigurableGrid.editModeProperty;
 import static org.symfound.controls.user.ConfigurableGrid.inEditMode;
+import org.symfound.controls.user.NavigateButton;
+import static org.symfound.controls.user.NavigateButton.KEY;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.tools.timing.LoopedEvent;
 
@@ -64,7 +68,7 @@ public abstract class Selector {
      */
     public void configure() {
         startStop();
-       
+
         //TO DO: Bug - Runs too many times. Could be a problem.
         Bindings.concat(getUser().getInteraction().assistedModeProperty().asString(),
                 getUser().getInteraction().selectionMethodProperty().asString(),
@@ -136,22 +140,35 @@ public abstract class Selector {
      */
     public abstract void reset();
 
-    private RunnableControl selectorButton;
+    private AppableControl selectorButton;
 
     /**
      *
      * @return
      */
-    public RunnableControl getSelectorButton() {
+    public AppableControl getSelectorButton() {
         if (selectorButton == null) {
-            selectorButton = new RunnableControl("selector") {
+            selectorButton = new AppableControl("selector", "", "", "") {
                 @Override
                 public void run() {
+                    System.out.println("1111111111111");
                     if (!inProcess()) {
+                        System.out.println("2222222222222222");
                         start();
                     } else {
+                        System.out.println("33333333333333333");
                         onSelected();
                     }
+                }
+
+                @Override
+                public Preferences getPreferences() {
+                    if (preferences == null) {
+                        String name = "selector";
+                        Class<? extends AppableControl> aClass = this.getClass();
+                        preferences = Preferences.userNodeForPackage(aClass).node(name);
+                    }
+                    return preferences;
                 }
             };
         }
@@ -174,7 +191,7 @@ public abstract class Selector {
         Parent parent = configGrid.getParent();
         if (parent instanceof SubGrid) {
             SubGrid subGrid = (SubGrid) parent;
-            LOGGER.info("Adding Selector button to Sub grid " + gridToScour.getIndex());
+            LOGGER.info("Adding Selector button to grid " + gridToScour.getIndex());
             subGrid.addToPane(selectorButton);
         } else {
             LOGGER.fatal("Scanner node's parent is neither a grid nor a subgrid");

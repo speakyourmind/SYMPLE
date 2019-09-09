@@ -9,14 +9,17 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.prefs.Preferences;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
@@ -24,8 +27,9 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.symfound.builder.user.characteristic.Social;
 import org.symfound.controls.AppableControl;
-import org.symfound.controls.user.AnimatedLabel;
+import static org.symfound.controls.ScreenControl.CSS_PATH;
 import static org.symfound.controls.ScreenControl.setSizeMax;
+import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.main.Main;
@@ -80,27 +84,35 @@ public final class TwilioHistory extends AppableControl {
         }
         List<Message> smsHistory = retrieveMessages();
         final int numOfMessages = smsHistory.size();
-        smsHistoryGrid = new TwilioHistoryGrid(numOfMessages, 160.0);
+
+        VBox vBox = new VBox();
+        vBox.setSpacing(20.0);
         for (int i = 0; i < numOfMessages; i++) {
             final Message message = smsHistory.get(i);
+            TextArea area = loadMessageView(message);
             AnchorPane pane = new AnchorPane();
-            VBox vBox = loadMessageView(message);
-            pane.getChildren().add(vBox);
-            smsHistoryGrid.grid.add(pane, 0, i);
+            pane.getChildren().add(area);
+            vBox.getChildren().add(pane);
+            area.setMaxHeight(TextUtils.computeTextWidth(area.getFont(),
+                    area.getText(), 0.0D) * 0.5);
         }
-        addToPane(smsHistoryGrid);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setPadding(new Insets(5, 5, 5, 5));
+        scrollPane.setFitToWidth(Boolean.TRUE);
+        setSizeMax(scrollPane);
+        scrollPane.setContent(vBox);
+        scrollPane.setVvalue(1.0);
+        scrollPane.getStylesheets().add(CSS_PATH);
+        setCSS("main", scrollPane);
+        addToPane(scrollPane);
     }
 
-    public VBox loadMessageView(final Message message) {
-        VBox vBox = new VBox();
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setMaxWidth(600.0);
-        vBox.setMaxHeight(200.0);
+    public TextArea loadMessageView(final Message message) {
 
         final TextArea smsArea = new TextArea(message.getBody());
         smsArea.getStylesheets().add(CSS_PATH);
         smsArea.setWrapText(true);
-        vBox.getChildren().add(smsArea);
+        smsArea.maxWidthProperty().bind(Bindings.multiply(this.widthProperty(), 0.8));
 
         final String myNumber = getUser().getSocial().getTwilioFromNumber();
         final boolean isFromMe = message.getFrom().toString().equals(myNumber);
@@ -108,21 +120,21 @@ public final class TwilioHistory extends AppableControl {
             smsArea.setStyle("-fx-text-fill:-fx-light;\n"
                     + "    -fx-background-color: -fx-dark,-fx-blue;\n"
                     + "    -fx-background-insets: 0,5;");
-            AnchorPane.setRightAnchor(vBox, 0.0);
+            // vBox.setStyle("-fx-background-color:-fx-green;");
+            AnchorPane.setRightAnchor(smsArea, 0.0);
         } else {
             smsArea.setStyle(
                     "    -fx-background-color: -fx-dark,-fx-light;\n"
                     + "    -fx-background-insets: 0,5;");
-            AnchorPane.setLeftAnchor(vBox, 0.0);
+            AnchorPane.setLeftAnchor(smsArea, 0.0);
         }
 
         AnimatedLabel timeSent = loadTimestampLabel(message);
-        vBox.getChildren().add(timeSent);
+        
+        AnchorPane.setBottomAnchor(smsArea, 0.0);
+        AnchorPane.setTopAnchor(smsArea, 0.0);
 
-        AnchorPane.setBottomAnchor(vBox, 0.0);
-        AnchorPane.setTopAnchor(vBox, 0.0);
-
-        return vBox;
+        return smsArea;
     }
 
     public AnimatedLabel loadTimestampLabel(final Message message) {

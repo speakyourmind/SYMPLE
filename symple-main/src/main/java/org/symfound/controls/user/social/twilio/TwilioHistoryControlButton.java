@@ -1,10 +1,7 @@
 package org.symfound.controls.user.social.twilio;
 
 import java.util.prefs.Preferences;
-
 import org.apache.log4j.Logger;
-
-
 import org.symfound.controls.AppableControl;
 
 /**

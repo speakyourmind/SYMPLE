@@ -586,7 +586,7 @@ public abstract class ButtonGrid extends FillableGrid {
                         lockButton.setGridLocation(i);
                         requestedControls.add(lockButton);
                         break;
-                 /*   case EditGridButton.KEY:
+                    /*   case EditGridButton.KEY:
                         EditGridButton editKeysButton = new EditGridButton(this);
                         editKeysButton.setPane("apMain"); // Change to apMain for Menu Grid
                         editKeysButton.setGridLocation(i);
@@ -648,7 +648,11 @@ public abstract class ButtonGrid extends FillableGrid {
                         configureItem(screenButton);
                         screenButton.setGridLocation(i);
                         screenButton.setVisible(true);
-                        if (Double.valueOf(homeGrid.getGridManager().getPrefs(index).get("minDifficulty", "0.0")) <= getUser().getAbility().getLevel()) {
+
+                        Double level = getUser().getAbility().getLevel();
+                        final Preferences gridPreferences = homeGrid.getGridManager().getPrefs(index);
+                        if ((Double.valueOf(gridPreferences.get("minDifficulty", "0.0")) <= level)
+                                && (level <= (Double.valueOf(gridPreferences.get("maxDifficulty", "10.0"))))) {
                             requestedControls.add(screenButton);
                         } else {
                             LOGGER.info(index + " screen may exceed the user's ability and has not been included.");
@@ -1020,8 +1024,8 @@ public abstract class ButtonGrid extends FillableGrid {
         }
         return fillMethod;
     }
-    
-      private StringProperty description;
+
+    private StringProperty description;
 
     /**
      *
