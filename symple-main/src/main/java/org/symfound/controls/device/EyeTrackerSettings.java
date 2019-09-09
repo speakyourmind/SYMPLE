@@ -45,7 +45,7 @@ public class EyeTrackerSettings extends DeviceSettings<GamingEyeTracker> {
     @Override
     public GamingEyeTracker getHardware() {
         if (hardware == null) {
-            hardware = getSession().getDeviceManager().tobii.getHardware();
+            hardware = getSession().getDeviceManager().eyeTracker.getHardware();
         }
         return hardware;
     }
@@ -102,7 +102,7 @@ public class EyeTrackerSettings extends DeviceSettings<GamingEyeTracker> {
     @Override
     public Device<GamingEyeTracker> getDevice() {
         if (device == null) {
-            device = getSession().getDeviceManager().tobii;
+            device = getSession().getDeviceManager().eyeTracker;
         }
         return device;
     }

@@ -142,7 +142,7 @@ public class EditGridButton extends SystemControl {
     public EditDialog configureEditDialog() {
         EditDialog editDialog = new EditDialog("Edit Grid") {
             private TextArea buttonOrderField;
-            //private BuildableGrid buttonOrderGrid;
+            
             private ChoiceBox<FillMethod> fillMethodChoices;
             private ChoiceBox<FillDirection> fillDirectionChoices;
             private Slider hGapSlider;
@@ -309,9 +309,9 @@ public class EditGridButton extends SystemControl {
                 exportButton = new RunnableControl("settings-button") {
                     @Override
                     public void run() {
+                        System.out.println("CLICKED");
                         String folder = getFolderSelection();
                         exportChildrenNodes(grid, folder);
-
                     }
 
                     public void exportChildrenNodes(ConfigurableGrid subGrid, String folder) {
@@ -354,7 +354,7 @@ public class EditGridButton extends SystemControl {
                 GridPane.setValignment(exportButton, VPos.CENTER);
                 exportRow.add(exportButton, 1, 0, 1, 1);
 
-                SettingsRow descriptionRow = createSettingRow("Speakable", "Say the phrase on the button");
+                SettingsRow descriptionRow = createSettingRow("Description", "About this board.");
                 editDescriptionButton = new OnOffButton("DONE", "EDIT");
                 editDescriptionButton.setMaxSize(180.0, 60.0);
                 editDescriptionButton.setValue(Boolean.FALSE);

@@ -376,7 +376,7 @@ public class ScriptButton extends TypingControl {
      */
     public StringProperty toNumberProperty() {
         if (toNumber == null) {
-            toNumber = new SimpleStringProperty(getPreferences().get(DEFAULT_TEXT_TO_KEY, "+15555555555"));
+            toNumber = new SimpleStringProperty(getPreferences().get(DEFAULT_TEXT_TO_KEY, ""));
         }
         return toNumber;
     }

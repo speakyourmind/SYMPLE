@@ -24,7 +24,7 @@
     -fx-font-smoothing-type: gray;
 }
 
-.grid, #gpTier, #gpMain, .pane,.main{
+.grid, #gpTier, #gpMain, .pane,.main,#apConfig{
     -fx-background-color:-fx-light;
 }
 .button {
@@ -773,7 +773,7 @@
 }
 
 .tab-content-area{
-    -fx-background-color:-fx-dark;
+    -fx-background-color:transparent;
 }
 
 .tab-down-button {

@@ -30,7 +30,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import javafx.application.Platform;
-import javafx.scene.layout.Pane;
 import org.apache.log4j.Logger;
 import org.symfound.builder.Builder;
 import org.symfound.builder.loader.UIPath;
@@ -39,14 +38,12 @@ import org.symfound.builder.user.User;
 import org.symfound.comm.file.PathWriter;
 import org.symfound.builder.settings.PreferencesExporter;
 import org.symfound.builder.settings.PreferencesImporter;
+import org.symfound.comm.web.Downloader;
 import org.symfound.device.emulation.input.InputListener;
 
 import org.symfound.main.builder.StackedUI;
 import org.symfound.controls.device.DeviceManager;
-import org.symfound.controls.system.dialog.ScreenPopup;
-import org.symfound.controls.user.UpdaterDialog;
 import org.symfound.controls.user.voice.TTSManager;
-import static org.symfound.main.Main.getVersionManager;
 
 import static org.symfound.text.TextOperator.EOL;
 import org.symfound.tools.timing.LoopedEvent;
@@ -162,6 +159,14 @@ public class FullSession extends Session {
         } else {
             LOGGER.warn("Master file does not exist in " + masterFile
                     + ". Proceeding with default settings.");
+            /* if (getUser().getProfile().isFirstUse()) {
+            String defaultFile = "/profiles/default.xml";
+            PreferencesImporter settingsImporter = new PreferencesImporter(defaultFile);
+            settingsImporter.run();
+            LOGGER.info("Settings import from " + defaultFile + " complete");
+            
+            getUser().getProfile().setFirstUse(Boolean.FALSE);
+            }*/
         }
 
         getBuilder().start(getBuildTimeout());
@@ -193,14 +198,15 @@ public class FullSession extends Session {
                 getBuilder().setProgress(1.0); // TO DO: Combine built and progress
                 LOGGER.info("Launching session");
                 //   log(": Starting SYMPLE");
-                if (getUser().getProfile().isFirstUse()) {
-                    // getUser().getStatistics().setFirstUsed(System.currentTimeMillis());
-                    //getUser().getProfile().setFirstUse(Boolean.FALSE);
-                    //      uiMain.getStack().load(WIZARD_DEVICE);
-                } else {
-                    getMainUI().getStack().load(HOME);
-                    getMainUI().open();
-                }
+                //  if (getUser().getProfile().isFirstUse()) {
+
+                // getUser().getStatistics().setFirstUsed(System.currentTimeMillis());
+                //getUser().getProfile().setFirstUse(Boolean.FALSE);
+                //      uiMain.getStack().load(WIZARD_DEVICE);
+                //} else {
+                getMainUI().getStack().load(HOME);
+                getMainUI().open();
+                //}
                 LOGGER.info("Total Start Time = ".concat(getBuilder().getTimeElapsed().toString()));
                 getBuilder().end();
                 setPlaying(true);
@@ -409,7 +415,7 @@ public class FullSession extends Session {
         String folder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings";
         PathWriter savePathWriter = new PathWriter(folder);
         savePathWriter.file.mkdirs();
-        PreferencesExporter settingsExporter = new PreferencesExporter(folder, "/Master.xml","/org/symfound");
+        PreferencesExporter settingsExporter = new PreferencesExporter(folder, "/Master.xml", "/org/symfound");
 
         LOGGER.info("Backing up master settings");
         Thread thread = new Thread(settingsExporter);

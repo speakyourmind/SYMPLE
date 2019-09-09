@@ -64,7 +64,7 @@ public class ConfigurableGrid extends ButtonGrid {
             LOGGER.info("Setting order " + newValue.asString());
             getGridManager().setOrder(newValue);
         });
-        
+
         setDescription(getGridManager().getDescription());
         descriptionProperty().addListener((observable, oldValue, newValue) -> {
             getGridManager().setDescription(newValue);
@@ -152,6 +152,7 @@ public class ConfigurableGrid extends ButtonGrid {
             setOverrideStyle(getGridManager().getOverrideStyle());
             setSelectionMethod(getGridManager().getSelectionMethod());
             setPaused(getGridManager().isPaused());
+            enablePagination(getGridManager().isPaginationEnabled());
             setDescription(getGridManager().getDescription());
             triggerReload();
         });

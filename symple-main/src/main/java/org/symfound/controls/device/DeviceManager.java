@@ -133,7 +133,7 @@ public class DeviceManager extends UsableManager<Device> implements Runnable {
     /**
      *
      */
-    public Device<GamingEyeTracker> tobii;
+    public Device<GamingEyeTracker> eyeTracker;
 
     /**
      *
@@ -141,14 +141,14 @@ public class DeviceManager extends UsableManager<Device> implements Runnable {
      * @return
      */
     public Device<GamingEyeTracker> getGamingEyeTracker(User user) {
-        if (tobii == null) {
+        if (eyeTracker == null) {
             Physical physical = user.getPhysical();
             Eye leftEye = physical.getLeftEye();
             Eye rightEye = physical.getRightEye();
             LOGGER.info("Initializing Eye Tracker...");
-            tobii = new Device<>(new GamingEyeTracker(leftEye, rightEye), user);
+            eyeTracker = new Device<>(new GamingEyeTracker(leftEye, rightEye), user);
         }
-        return tobii;
+        return eyeTracker;
     }
 
     /**

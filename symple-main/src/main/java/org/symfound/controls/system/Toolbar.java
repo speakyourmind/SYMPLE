@@ -147,7 +147,7 @@ public class Toolbar extends ScreenControl<AnimatedButton> {
         return titleText;
     }
 
-    private static final String DEFAULT_BUTTON_ORDER = "Minimize=default, Exit=default";
+    private static final String DEFAULT_BUTTON_ORDER = "Exit=default";
 
     /**
      *

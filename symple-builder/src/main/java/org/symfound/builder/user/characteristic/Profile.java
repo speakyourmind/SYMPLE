@@ -68,7 +68,7 @@ public class Profile extends Characteristic {
      */
     public BooleanProperty firstUseProperty() {
         if (firstUse == null) {
-            Boolean initValue = Boolean.valueOf(getDefaultConfiguration().getProperty("firstUse"));
+            Boolean initValue = Boolean.valueOf(getDefaultConfiguration().getProperty("profile.firstUse"));
             firstUse = new SimpleBooleanProperty(initValue);
         }
         return firstUse;

@@ -63,15 +63,17 @@ public abstract class DeviceSettings<T extends Hardware> extends SettingsDialog 
      *
      */
     public void populate() {
-        tabs = getTabList();
+      //  tabs = getTabList();
         buildBase(getHardware().getName());
         addToStackPane(baseGrid);
+       
     }
 
     /**
      *
      * @return
      */
+    @Override
     public List<SettingsTab> getTabList() {
         List<SettingsTab> tabList = new ArrayList<>();
         // ABOUT TAB
@@ -138,12 +140,14 @@ public abstract class DeviceSettings<T extends Hardware> extends SettingsDialog 
      */
     public SettingsTab buildAboutTab() {
         SettingsRow descriptionRow = buildSettingsRow(DESCRIPTION_TITLE, DESCRIPTION_CAPTION);
+        
         AnimatedLabel descriptionLabel = new AnimatedLabel();
         descriptionLabel.setWrapText(true);
         descriptionLabel.setText(getHardware().getInfo().getDescription());
         setSizeMax(descriptionLabel);
         setCSS("settings-label", descriptionLabel);
         descriptionRow.add(descriptionLabel, 1, 0, 2, 1);
+       
 
         SettingsRow manufacturerRow = buildSettingsRow(MANUFACTURER_TITLE, MANUFACTURER_CAPTION);
         WebLaunchButton webLaunchButton = new WebLaunchButton();
