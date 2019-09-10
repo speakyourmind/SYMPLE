@@ -405,8 +405,7 @@ public class EditGridButton extends SystemControl {
             public void setSettings() {
 
                 ParallelList<String, String> parallelList = new ParallelList<>();
-                String orderText = buttonOrderField.getText();
-                if (buttonOrderField.getText().replaceAll(" ", "").isEmpty()) {
+               if (buttonOrderField.getText().replaceAll(" ", "").isEmpty()) {
                     buttonOrderField.setText("Replace Key=default,");
                 }
                 // TO DO: Test that string is valid or switch to xml
