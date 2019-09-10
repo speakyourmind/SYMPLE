@@ -3,6 +3,7 @@ package org.symfound.controls.user.social.twilio;
 import com.google.common.collect.Range;
 import com.twilio.rest.api.v2010.account.Message;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,8 +13,10 @@ import java.util.prefs.Preferences;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
@@ -23,6 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.symfound.builder.user.characteristic.Social;
@@ -31,6 +35,7 @@ import static org.symfound.controls.ScreenControl.CSS_PATH;
 import static org.symfound.controls.ScreenControl.setSizeMax;
 import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.system.SettingsRow;
+import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.main.Main;
 import org.symfound.social.sms.TwilioReader;
@@ -76,6 +81,9 @@ public final class TwilioHistory extends AppableControl {
         fromNumberProperty().addListener((observable, oldValue, newValue) -> {
             reloadHistoryGrid();
         });
+        timeZoneProperty().addListener((observable, oldValue, newValue) -> {
+            reloadHistoryGrid();
+        });
     }
 
     public void reloadHistoryGrid() {
@@ -89,12 +97,10 @@ public final class TwilioHistory extends AppableControl {
         vBox.setSpacing(20.0);
         for (int i = 0; i < numOfMessages; i++) {
             final Message message = smsHistory.get(i);
-            TextArea area = loadMessageView(message);
+            VBox area = loadMessageView(message);
             AnchorPane pane = new AnchorPane();
             pane.getChildren().add(area);
             vBox.getChildren().add(pane);
-            area.setMaxHeight(TextUtils.computeTextWidth(area.getFont(),
-                    area.getText(), 0.0D) * 0.5);
         }
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPadding(new Insets(5, 5, 5, 5));
@@ -107,13 +113,17 @@ public final class TwilioHistory extends AppableControl {
         addToPane(scrollPane);
     }
 
-    public TextArea loadMessageView(final Message message) {
+    public VBox loadMessageView(final Message message) {
 
         final TextArea smsArea = new TextArea(message.getBody());
         smsArea.getStylesheets().add(CSS_PATH);
         smsArea.setWrapText(true);
-        smsArea.maxWidthProperty().bind(Bindings.multiply(this.widthProperty(), 0.8));
-
+        smsArea.maxWidthProperty().bind(Bindings.multiply(this.widthProperty(), 0.75));
+        VBox vBox = new VBox();
+        vBox.getChildren().add(smsArea);
+        AnimatedLabel timeSent = loadTimestampLabel(message);
+        vBox.getChildren().add(timeSent);
+        
         final String myNumber = getUser().getSocial().getTwilioFromNumber();
         final boolean isFromMe = message.getFrom().toString().equals(myNumber);
         if (isFromMe) {
@@ -121,24 +131,25 @@ public final class TwilioHistory extends AppableControl {
                     + "    -fx-background-color: -fx-dark,-fx-blue;\n"
                     + "    -fx-background-insets: 0,5;");
             // vBox.setStyle("-fx-background-color:-fx-green;");
-            AnchorPane.setRightAnchor(smsArea, 0.0);
+            AnchorPane.setRightAnchor(vBox, 0.0);
         } else {
             smsArea.setStyle(
                     "    -fx-background-color: -fx-dark,-fx-light;\n"
                     + "    -fx-background-insets: 0,5;");
-            AnchorPane.setLeftAnchor(smsArea, 0.0);
+            AnchorPane.setLeftAnchor(vBox, 0.0);
         }
+        smsArea.setMaxHeight(TextUtils.computeTextWidth(smsArea.getFont(),
+                    smsArea.getText(), 0.0D) * 0.5);
+    
+        AnchorPane.setBottomAnchor(vBox, 0.0);
+        AnchorPane.setTopAnchor(vBox, 0.0);
 
-        AnimatedLabel timeSent = loadTimestampLabel(message);
-        
-        AnchorPane.setBottomAnchor(smsArea, 0.0);
-        AnchorPane.setTopAnchor(smsArea, 0.0);
-
-        return smsArea;
+        return vBox;
     }
 
     public AnimatedLabel loadTimestampLabel(final Message message) {
-        final DateTime dateSent = message.getDateSent();
+        final DateTime dateSent = message.getDateSent().toDateTime(DateTimeZone.forID(getTimeZone()));
+        
         DateTimeFormatter fmt = DateTimeFormat.forPattern("EEE, d MMM ''yy, hh:mm aaa");
         String formattedDateSent = fmt.print(dateSent);
         AnimatedLabel captionLabel = new AnimatedLabel(formattedDateSent);
@@ -146,7 +157,7 @@ public final class TwilioHistory extends AppableControl {
         captionLabel.setWrapText(true);
         captionLabel.setAlignment(Pos.CENTER_LEFT);
         setSizeMax(captionLabel);
-        captionTextProperty().bindBidirectional(captionLabel.textProperty());
+    //    captionTextProperty().bindBidirectional(captionLabel.textProperty());
         return captionLabel;
     }
 
@@ -190,13 +201,14 @@ public final class TwilioHistory extends AppableControl {
     }
 
     private TextField fromNumberField;
-
+    private ChoiceBox<String> timeZoneChoices;
     /**
      *
      */
     @Override
     public void setAppableSettings() {
         setFromNumber(fromNumberField.getText());
+        setTimeZone(timeZoneChoices.getValue());
         super.setAppableSettings();
     }
 
@@ -206,6 +218,7 @@ public final class TwilioHistory extends AppableControl {
     @Override
     public void resetAppableSettings() {
         fromNumberField.setText(getFromNumber());
+        timeZoneChoices.setValue(getTimeZone());
         super.resetAppableSettings();
     }
 
@@ -223,7 +236,20 @@ public final class TwilioHistory extends AppableControl {
         fromNumberField.getStyleClass().add("settings-text-area");
         formatRow.add(fromNumberField, 1, 0, 1, 1);
 
+        
+        SettingsRow timeZoneChoicesRow = EditDialog.createSettingRow("Time Zone", "Time sent shown as per Twilio time zones");
+
+        timeZoneChoices = new ChoiceBox<>(FXCollections.observableArrayList(new ArrayList<>(DateTimeZone.getAvailableIDs())));
+        timeZoneChoices.setValue(getTimeZone());
+        timeZoneChoices.setMaxSize(180.0, 60.0);
+
+        timeZoneChoices.getStyleClass().add("settings-text-area");
+        timeZoneChoicesRow.add(timeZoneChoices, 1, 0, 2, 1);
+
+        
         actionSettings.add(formatRow);
+        
+        actionSettings.add(timeZoneChoicesRow);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;
@@ -256,9 +282,41 @@ public final class TwilioHistory extends AppableControl {
      */
     public StringProperty fromNumberProperty() {
         if (fromNumber == null) {
-            fromNumber = new SimpleStringProperty(getPreferences().get("fromNumber", "+15089444913"));
+            fromNumber = new SimpleStringProperty(getPreferences().get("fromNumber", ""));
         }
         return fromNumber;
+    }
+
+      private StringProperty timeZone;
+
+    /**
+     *
+     * @param value
+     */
+    public void setTimeZone(String value) {
+        timeZoneProperty().setValue(value);
+        getPreferences().put("timeZone", value);
+        LOGGER.info("timeZone set to: " + value);
+
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getTimeZone() {
+        return timeZoneProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty timeZoneProperty() {
+        if (timeZone == null) {
+            timeZone = new SimpleStringProperty(getPreferences().get("timeZone", "America/Detroit"));
+        }
+        return timeZone;
     }
 
     @Override
