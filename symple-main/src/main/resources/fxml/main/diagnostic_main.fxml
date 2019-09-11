@@ -46,9 +46,7 @@
                             </padding>
                         </Label>
                         <Label alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="results-label" text="AVERAGE TRIES" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                            <GridPane.margin>
-                                <Insets />
-                            </GridPane.margin>
+                         
                             <padding>
                                 <Insets left="10.0" />
                             </padding>
@@ -58,20 +56,18 @@
                                 <Insets left="10.0" />
                             </padding>
                         </Label>
-                        <Label fx:id="lblLevel" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="results-value" text="1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="lblLevel" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="results-value" text="" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <padding>
                                 <Insets left="10.0" />
                             </padding>
                         </Label>
-                        <ResultValue fx:id="lblAvgTries" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="results-value" text="1.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                            <GridPane.margin>
-                                <Insets />
-                            </GridPane.margin>
+                        <ResultValue fx:id="lblAvgTries" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="results-value" text="" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                         
                             <padding>
                                 <Insets left="10.0" />
                             </padding>
                         </ResultValue>
-                        <ResultValue fx:id="lblTravelTime" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="results-value" text="0.0s" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <ResultValue fx:id="lblTravelTime" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="results-value" text="" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <padding>
                                 <Insets left="10.0" />
                             </padding>
