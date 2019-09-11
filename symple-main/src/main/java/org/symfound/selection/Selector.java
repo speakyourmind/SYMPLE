@@ -19,8 +19,6 @@ import org.symfound.controls.RunnableControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import static org.symfound.controls.user.ConfigurableGrid.editModeProperty;
 import static org.symfound.controls.user.ConfigurableGrid.inEditMode;
-import org.symfound.controls.user.NavigateButton;
-import static org.symfound.controls.user.NavigateButton.KEY;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.tools.timing.LoopedEvent;
 

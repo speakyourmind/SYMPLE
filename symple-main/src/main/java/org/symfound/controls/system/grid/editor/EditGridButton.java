@@ -203,17 +203,19 @@ public class EditGridButton extends SystemControl {
                 SettingsRow hGapRow = createSettingRow("Horizontal gap", "Adjust horizontal gaps between cells");
                 hGapSlider = new Slider(0.0, 200.0, grid.getCustomHGap());
                 hGapSlider.setMajorTickUnit(20);
-                hGapSlider.setMinorTickCount(4);
+                hGapSlider.setMinorTickCount(2);
                 hGapSlider.setShowTickLabels(true);
                 hGapSlider.setShowTickMarks(true);
+                hGapSlider.setSnapToTicks(true);
                 hGapRow.add(hGapSlider, 1, 0, 2, 1);
 
                 SettingsRow vGapRow = createSettingRow("Vertical gap", "Adjust vertical gaps between cells");
                 vGapSlider = new Slider(0.0, 200.0, grid.getCustomVGap());
                 vGapSlider.setMajorTickUnit(20);
-                vGapSlider.setMinorTickCount(4);
+                vGapSlider.setMinorTickCount(2);
                 vGapSlider.setShowTickLabels(true);
                 vGapSlider.setShowTickMarks(true);
+                vGapSlider.setSnapToTicks(true);
                 vGapRow.add(vGapSlider, 1, 0, 2, 1);
 
                 SettingsRow difficultyRow = createSettingRow("Difficulty", "Controls size of grid");
@@ -405,7 +407,7 @@ public class EditGridButton extends SystemControl {
             public void setSettings() {
 
                 ParallelList<String, String> parallelList = new ParallelList<>();
-               if (buttonOrderField.getText().replaceAll(" ", "").isEmpty()) {
+                if (buttonOrderField.getText().replaceAll(" ", "").isEmpty()) {
                     buttonOrderField.setText("Replace Key=default,");
                 }
                 // TO DO: Test that string is valid or switch to xml

@@ -21,6 +21,7 @@ import images.Images;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -289,7 +290,11 @@ public class SettingsController extends SettingsControllerBase {
                 gpStepTime.toBack();
             }
         });
-        dtbTest.visibleProperty().bind(slLevel.valueProperty().isNotEqualTo(MAX_LEVEL));
+        dtbTest.visibleProperty().bind(Bindings.and(
+                slLevel.valueProperty().isNotEqualTo(MAX_LEVEL),Bindings.or(
+                cbSelection.valueProperty().isEqualTo(SelectionMethod.CLICK),
+                cbSelection.valueProperty().isEqualTo(SelectionMethod.DWELL))));
+
         ObjectProperty<String> selectedDeviceMode = getSession().getDeviceManager().getIterator().modeProperty();
         selectedDeviceMode.addListener((observable, oldValue, newValue) -> {
             btnDevice.setText(newValue);

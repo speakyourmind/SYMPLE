@@ -81,8 +81,8 @@ public class DiagnosticController extends TestControllerBase {
 
     private ResultMap gpMap;
 
-    @FXML
-    private NavigateButton btnHome;
+   // @FXML
+ //   private NavigateButton btnHome;
     @FXML
     private DiagnosticGrid gpDiag;
     @FXML
@@ -341,6 +341,7 @@ public class DiagnosticController extends TestControllerBase {
         test.getCountdown().textProperty().bindBidirectional(lblCountdown.textProperty());
         test.getCountdown().textProperty().bindBidirectional(lblFirstCountdown.textProperty());
 
+   //     btnHome.setNavigateIndex("home");
         getMainUI().getStack().currentProperty().addListener((observeableValue, oldValue, newValue) -> {
             if (newValue.get().equals(FullSession.DIAGNOSTIC_APP)) {
                 test.getCountdown().play();

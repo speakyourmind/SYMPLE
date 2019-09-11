@@ -62,6 +62,7 @@ import org.symfound.main.HomeController;
 import org.symfound.main.Main;
 import org.symfound.controls.user.voice.TTSManager;
 import org.symfound.device.emulation.EmulationRequest;
+import org.symfound.main.builder.UI;
 import org.symfound.tools.animation.NodeAnimator;
 import org.symfound.tools.timing.transition.ScanTransition;
 import org.symfound.voice.builder.TTSPlayer;
@@ -242,8 +243,14 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
                 }
             }*/
             Platform.runLater(this);
+
             if (appable.navigatePostClick()) {
                 if (!appable.getNavigateIndex().isEmpty()) {
+                    UI ui = (UI) getScene().getWindow();
+                    if (ui.inEditMode()) {
+                        LOGGER.info("Exiting edit mode before navigating");
+                        ui.setEditMode(Boolean.FALSE);
+                    }
                     LOGGER.info("Post click navigation requested by " + this.getText());
                     appable.openHomeScreen();
 

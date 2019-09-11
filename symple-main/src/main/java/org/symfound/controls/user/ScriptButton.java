@@ -76,12 +76,14 @@ public class ScriptButton extends TypingControl {
             sendTwilioText();
         }
 
-        super.run();
-        UI ui = (UI) getScene().getWindow();
+        /*      UI ui = (UI) getScene().getWindow();
         if (ui.inEditMode()) {
-            LOGGER.info("Exiting edit mode before navigating");
-            ui.setEditMode(Boolean.FALSE);
-        }
+        LOGGER.info("Exiting edit mode before navigating");
+        ui.setEditMode(Boolean.FALSE);
+        }*/
+        
+        super.run();
+
     }
 
     public void sendTwilioText() {

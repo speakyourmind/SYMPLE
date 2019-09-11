@@ -17,10 +17,11 @@ import org.symfound.main.HomeController;
 import org.symfound.main.builder.UI;
 
 /**
- * To Be Deprecated
+ * 
  *
  * @author Javed Gangjee
  */
+@Deprecated
 public class NavigateButton extends AppableControl {
 
     /**
@@ -83,12 +84,12 @@ public class NavigateButton extends AppableControl {
     @Override
     public void run() {
         LOGGER.info("Requesting navigation to " + getNavigateIndex());
-        
-        UI ui = (UI) getScene().getWindow();
-        if (ui.inEditMode()) {
-            LOGGER.info("Exiting edit mode before navigating");
-            ui.setEditMode(Boolean.FALSE);
-        }
+
+            UI ui = (UI) getScene().getWindow();
+            if (ui.inEditMode()) {
+                LOGGER.info("Exiting edit mode before navigating");
+                ui.setEditMode(Boolean.FALSE);
+            }
         
         openHomeScreen();
 
@@ -105,7 +106,6 @@ public class NavigateButton extends AppableControl {
         configurableGrid.setIndex(getNavigateIndex());
         getSession().setPlaying(false);
 
-        //   }
     }
     private TextField navigateIndexField;
 

@@ -37,7 +37,6 @@ public class TwilioReader extends SocialMediaReader {
     public List<Message> readMySMSToContact(Range<DateTime> range, String contactsNumber, String myNumber) {
         TwilioConnector.connect(accountSID, authToken);
         List<Message> mySMSToContact = new ArrayList<>();
-
         List<Message> allMySMS = getSMSs(range, myNumber);
         allMySMS.forEach((message) -> {
             final String to = message.getTo();

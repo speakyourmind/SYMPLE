@@ -90,6 +90,7 @@ public final class TwilioHistory extends AppableControl {
         if (smsHistoryGrid != null) {
             this.getChildren().remove(smsHistoryGrid);
         }
+        
         List<Message> smsHistory = retrieveMessages();
         final int numOfMessages = smsHistory.size();
 
