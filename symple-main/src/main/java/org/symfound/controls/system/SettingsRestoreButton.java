@@ -38,7 +38,7 @@ public final class SettingsRestoreButton extends SettingsManagerControl {
         }
         deleteMasterFile();
         LOGGER.info("Exiting the program");
-        getSession().shutdown(Boolean.FALSE);
+        getSession().exit(Boolean.FALSE);
 
     }
 

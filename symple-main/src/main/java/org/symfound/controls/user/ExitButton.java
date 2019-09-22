@@ -94,13 +94,9 @@ public final class ExitButton extends AppableControl {
             getVersionManager().update();
             this.getParentPane().getChildren().add(getUpdaterPopup());
         } else {
-            shutdown();
+            LOGGER.info("Exiting the program");
+            getSession().exit(BACKUP_ON_EXIT);
         }
-    }
-
-    private void shutdown() {
-        LOGGER.info("Exiting the program");
-        getSession().shutdown(BACKUP_ON_EXIT);
     }
     ScreenPopup updaterPopup;
 
@@ -129,7 +125,8 @@ public final class ExitButton extends AppableControl {
                 @Override
                 public void onOk() {
                     super.onOk();
-                    shutdown();
+                    LOGGER.info("Exiting the program");
+                    getSession().exit(BACKUP_ON_EXIT);
                 }
             };
         }

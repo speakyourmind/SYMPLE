@@ -142,7 +142,7 @@ public final class VersionManager {
                 LOGGER.info("Executing command -" + command);
                 RuntimeExecutor runtimeExecutor = new RuntimeExecutor();
                 runtimeExecutor.execute(command);
-                session.shutdown(Boolean.TRUE);
+                session.exit(Boolean.TRUE);
             }
         });
 

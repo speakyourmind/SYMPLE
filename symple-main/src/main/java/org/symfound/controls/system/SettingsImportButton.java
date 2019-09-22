@@ -54,7 +54,7 @@ public final class SettingsImportButton extends SettingsManagerControl {
             LOGGER.fatal(ex);
         }
         deleteMasterFile();
-        getSession().shutdown(Boolean.FALSE);
+        getSession().exit(Boolean.FALSE);
 
     }
 

@@ -47,7 +47,7 @@ public final class UIImportButton extends SettingsManagerControl {
             getExecutor().execute(thread);
         }
         deleteMasterFile();
-        getSession().shutdown(Boolean.FALSE);
+        getSession().exit(Boolean.FALSE);
     }
 
     private static ThreadPoolExecutor executor;

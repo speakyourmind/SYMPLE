@@ -382,19 +382,18 @@ public class FullSession extends Session {
     }
 
     @Override
+    public void exit(Boolean backupSettings) {
+        shutdown(backupSettings);
+        close();
+
+    }
+
     public void shutdown(Boolean backupSettings) {
-        LOGGER.info("Shutting down SYMPLE");
+        resetStats();
+        saveSettings(backupSettings);
+    }
 
-        LOGGER.info("Resetting Stats");
-
-        getUser().getStatistics().resetSessionTimeInUse();
-        getUser().getStatistics().resetSessionSpokenWordCount();
-        getUser().getStatistics().resetSessionSelections();
-
-        if (user.getStatistics().isRecording()) {
-            getUser().getStatistics().setLastUsed(System.currentTimeMillis());
-        }
-
+    public void saveSettings(Boolean backupSettings) {
         if (backupSettings) {
             String backupFolder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Backup";
             PathWriter backupPathWriter = new PathWriter(backupFolder);
@@ -425,14 +424,29 @@ public class FullSession extends Session {
         } catch (InterruptedException ex) {
             LOGGER.warn(ex);
         }
+    }
 
+    public void resetStats() {
+        LOGGER.info("Shutting down SYMPLE");
+        
+        LOGGER.info("Resetting Stats");
+        
+        getUser().getStatistics().resetSessionTimeInUse();
+        getUser().getStatistics().resetSessionSpokenWordCount();
+        getUser().getStatistics().resetSessionSelections();
+        
+        if (user.getStatistics().isRecording()) {
+            getUser().getStatistics().setLastUsed(System.currentTimeMillis());
+        }
+    }
+
+    public void close() {
         LOGGER.info("Closing hardware");
         getDeviceManager().getCurrent().getHardware().close();
         LOGGER.info("Stopping Input Listener");
         InputListener.stop();
         Platform.exit();
         System.exit(0);
-
     }
 
     /**

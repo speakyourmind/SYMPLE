@@ -328,6 +328,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 "-fx-background-image:url(\"", backgroundURLProperty(), "\"); \n"
                 + "-fx-background-repeat:no-repeat;\n"
                 + "-fx-background-position:center;\n"
+                + "-fx-wrap-text:",wrapTextProperty().asString(),";\n"
                 + "-fx-background-size:", backgroundSizeProperty(), "; \n",
                 overrideStyleProperty());
         setConcatStyle(concat.getValue());
@@ -441,6 +442,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     //  private ChoiceBox<String> backgroundSizeChoices;
     private Slider backgroundSizeSlider;
     private OnOffButton speakableButton;
+    private OnOffButton wrapTextButton;
     private TextArea speakTextArea;
 
     /**
@@ -490,6 +492,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         textAlignment.setValue(Pos.valueOf(getTitlePos()));
         textColourChoices.setValue(getTextColour());
         speakableButton.setValue(isSpeakable());
+        wrapTextButton.setValue(wrapText());
         speakTextArea.setText(getSpeakText());
         fontScaleSlider.setValue(getFontScale());
         overrideStyleField.setText(getOverrideStyle());
@@ -524,6 +527,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         setTextColour(textColourChoices.getValue());
         setFontScale(fontScaleSlider.getValue());
         setSpeakable(speakableButton.getValue());
+        setWrapText(wrapTextButton.getValue());
 
         String speakTextValue = " ";
 
@@ -652,6 +656,14 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         fontScaleSlider.setSnapToTicks(true);
         fontScaleRow.add(fontScaleSlider, 1, 0, 2, 1);
 
+        SettingsRow wrapTextRow = createSettingRow("Wrap Text", "Wrap the text displayed on the button");
+        wrapTextButton = new OnOffButton("YES", "NO");
+        wrapTextButton.setMaxSize(180.0, 60.0);
+        wrapTextButton.setValue(wrapText());
+        GridPane.setHalignment(wrapTextButton, HPos.LEFT);
+        GridPane.setValignment(wrapTextButton, VPos.CENTER);
+        wrapTextRow.add(wrapTextButton, 1, 0, 1, 1);
+        
         SettingsRow textAlignmentRow = EditDialog.createSettingRow("Text Alignment", "Location of text on this button");
 
         textAlignment = new ChoiceBox<>(FXCollections.observableArrayList(Arrays.asList(
@@ -839,6 +851,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         textSettings.add(textColourRow);
         textSettings.add(fontScaleRow);
         textSettings.add(textAlignmentRow);
+        textSettings.add(wrapTextRow);
         Tab textTab = buildTab("TEXT", textSettings);
 
         backgroundSettings.add(backgroundColourRow);
@@ -1356,6 +1369,36 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         return fontWeight;
     }
 
+    private BooleanProperty wrapText;
+
+    /**
+     *
+     * @param value
+     */
+    public void setWrapText(Boolean value) {
+        wrapTextProperty().setValue(value);
+        getPreferences().put("wrapText", value.toString().toUpperCase());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean wrapText() {
+        return wrapTextProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty wrapTextProperty() {
+        if (wrapText == null) {
+            wrapText = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("wrapText", "true")));
+        }
+        return wrapText;
+    }
+    
     private ObjectProperty<ColourChoices> textColour;
 
     /**
