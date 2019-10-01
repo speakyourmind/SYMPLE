@@ -816,10 +816,11 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         resetUsageButton = new RunnableControl("settings-button") {
             @Override
             public void run() {
-                resetTotalUsageCount();
+                resetTotalUsageCount(); 
                 totalUsageLabel.setText(getTotalUsageCount().toString());
             }
         };
+                resetUsageButton.setControlType(ControlType.SETTING_CONTROL);
         resetUsageButton.setVisible(getTotalUsageCount() > 0);
         totalUsageCountProperty().addListener((observable, oldValue, newValue) -> {
             resetUsageButton.setVisible(newValue.intValue() > 0);

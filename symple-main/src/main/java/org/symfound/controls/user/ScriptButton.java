@@ -5,6 +5,7 @@
  */
 package org.symfound.controls.user;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.prefs.Preferences;
@@ -20,12 +21,13 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import org.symfound.builder.user.characteristic.Social;
+import org.symfound.comm.web.Webhook;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import static org.symfound.controls.user.type.picto.PictoTwilioButton.LOGGER;
 import org.symfound.device.emulation.input.keyboard.ActionKeyCode;
-import org.symfound.main.builder.UI;
+import org.symfound.main.Main;
 import org.symfound.social.sms.TwilioPoster;
 
 /**
@@ -81,9 +83,38 @@ public class ScriptButton extends TypingControl {
         LOGGER.info("Exiting edit mode before navigating");
         ui.setEditMode(Boolean.FALSE);
         }*/
-        
+        if (webhookEnabled()) {
+            requestWebhook();
+        }
+
         super.run();
 
+    }
+
+    public void requestWebhook() {
+        Webhook webhooks = new Webhook();
+        try {
+            
+            String urlEnd = "https://maker.ifttt.com/trigger/" + getWebhookEventEnd() + "/with/key/" + getWebhookKey();
+            webhooks.request(urlEnd);
+            final Double postSelectTime = Main.getSession().getDeviceManager().getCurrent().getHardware().getSelectability().getPostSelectTime();
+            
+            final long name = (long) (postSelectTime * 1000.0);
+            //Thread.sleep(name);
+            
+            String urlStart = "https://maker.ifttt.com/trigger/" + getWebhookEventStart() + "/with/key/" + getWebhookKey();
+            webhooks.request(urlStart);
+            
+            /*final long name = (long)(postSelectTime*1000.0);
+            System.out.println(name);
+            Thread.sleep(name);
+            
+            String urlEnd = "https://maker.ifttt.com/trigger/" + getWebhookEventEnd() + "/with/key/" + getWebhookKey();
+            webhooks.request(urlEnd);
+            */
+        } catch (IOException ex) {
+            LOGGER.warn(ex);
+        }
     }
 
     public void sendTwilioText() {
@@ -116,6 +147,7 @@ public class ScriptButton extends TypingControl {
     private OnOffButton smsEnabledButton;
     public List<SettingsRow> socialSettings = new ArrayList<>();
 
+    private OnOffButton webhookEnabledButton;
     public TextField webhookKeyField;
     public TextField webhookEventStartField;
     public TextField webhookEventEndField;
@@ -131,6 +163,7 @@ public class ScriptButton extends TypingControl {
         setSMSEnabled(smsEnabledButton.getValue());
         setToNumber(toNumberField.getText());
 
+           setWebhookEnabled(webhookEnabledButton.getValue());
         setWebhookKey(webhookKeyField.getText());
         setWebhookEventStart(webhookEventStartField.getText());
         setWebhookEventEnd(webhookEventEndField.getText());
@@ -146,7 +179,7 @@ public class ScriptButton extends TypingControl {
         typableButton.setValue(isTypable());
         smsEnabledButton.setValue(isSMSEnabled());
         toNumberField.setText(getToNumber());
-
+    webhookEnabledButton.setValue(webhookEnabled());
         webhookKeyField.setText(getWebhookKey());
         webhookEventStartField.setText(getWebhookEventStart());
         webhookEventEndField.setText(getWebhookEventEnd());
@@ -195,13 +228,21 @@ public class ScriptButton extends TypingControl {
         socialSettings.add(settingsTo);
         Tab socialTab = buildTab("SOCIAL", socialSettings);
 
-        SettingsRow webhookKeyRow = createSettingRow("Key", "User key configured in webhook");
+        SettingsRow webhookKeyRow = createSettingRow("Webhook", "Enter key configured in webhook");
+        webhookEnabledButton = new OnOffButton("ENABLED", "DISABLED");
+        webhookEnabledButton.setMaxSize(180.0, 60.0);
+        webhookEnabledButton.setValue(webhookEnabled());
+        GridPane.setHalignment(webhookEnabledButton, HPos.LEFT);
+        GridPane.setValignment(webhookEnabledButton, VPos.CENTER);
+
+        webhookKeyRow.add(webhookEnabledButton, 1, 0, 1, 1);
+
         webhookKeyField = new TextField();
         webhookKeyField.setText(getWebhookKey());
         webhookKeyField.prefHeight(80.0);
         webhookKeyField.prefWidth(360.0);
         webhookKeyField.getStyleClass().add("settings-text-area");
-        webhookKeyRow.add(webhookKeyField, 1, 0, 2, 1);
+        webhookKeyRow.add(webhookKeyField, 2, 0, 1, 1);
 
         SettingsRow webhookStartRow = createSettingRow("Start Event", "Activity event name in webhook");
 
@@ -381,6 +422,35 @@ public class ScriptButton extends TypingControl {
             toNumber = new SimpleStringProperty(getPreferences().get(DEFAULT_TEXT_TO_KEY, ""));
         }
         return toNumber;
+    }
+    private BooleanProperty webhookEnabled;
+
+    /**
+     *
+     * @param value
+     */
+    public void setWebhookEnabled(Boolean value) {
+        webhookEnabledProperty().set(value);
+        getPreferences().put("webhookEnabled", value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean webhookEnabled() {
+        return webhookEnabledProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty webhookEnabledProperty() {
+        if (webhookEnabled == null) {
+            webhookEnabled = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("webhookEnabled", "false")));
+        }
+        return webhookEnabled;
     }
 
     private StringProperty webhookKey;

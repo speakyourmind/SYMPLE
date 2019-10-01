@@ -235,6 +235,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
      */
     public void execute() {
         final Navigation navigation = Main.getSession().getUser().getNavigation();
+            Platform.runLater(this);
         if (this instanceof AppableControl) {
             AppableControl appable = (AppableControl) this;
             /* if (navigation.speakSelection()) {
@@ -242,7 +243,6 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
                     appable.speak(getSpeakText());
                 }
             }*/
-            Platform.runLater(this);
 
             if (appable.navigatePostClick()) {
                 if (!appable.getNavigateIndex().isEmpty()) {

@@ -9,8 +9,6 @@ import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import org.symfound.controls.ScreenControl;
 import org.symfound.controls.user.AnimatedButton;
-import org.symfound.controls.user.AnimatedButton;
-import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.BuildableGrid;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
 

@@ -71,9 +71,9 @@ public class ReplaceKeyButton extends SystemControl {
     public ReplaceKeyButton(ButtonGrid buttonGrid) {
         super("replace-button", KEY, "", "default");
         this.buttonGrid = buttonGrid;
-
+        
     }
-
+    
     @Override
     public void defineButton() {
         setEditable(Boolean.FALSE);
@@ -112,7 +112,7 @@ public class ReplaceKeyButton extends SystemControl {
             ChoiceBox<String> existingButtonChoiceBox;
             ConfigurableGrid appGrid;
             DeleteKeyButton deleteKeyButton;
-
+            
             @Override
             public Node addSettingControls() {
                 SettingsRow buttonTypeRow = createSettingRow("Type", "Select the type of button you would like to add");
@@ -121,15 +121,15 @@ public class ReplaceKeyButton extends SystemControl {
                 buttonTypeChoices.setMaxSize(180.0, 60.0);
                 buttonTypeChoices.getStyleClass().add("settings-text-area");
                 buttonTypeRow.add(buttonTypeChoices, 1, 0, 1, 1);
-
+                
                 otherTypeChoices = new ChoiceBox<>(FXCollections.observableArrayList(ButtonGrid.USABLE_KEY_CATALOGUE));
                 otherTypeChoices.setValue(GenericButton.KEY);
                 otherTypeChoices.setMaxSize(180.0, 60.0);
                 otherTypeChoices.getStyleClass().add("settings-text-area");
                 otherTypeChoices.visibleProperty().bind(Bindings.equal(buttonTypeChoices.valueProperty(), ButtonGrid.OTHER_BUTTON));
-
+                
                 buttonTypeRow.add(otherTypeChoices, 2, 0, 1, 1);
-
+                
                 SettingsRow buttonTitleRow = EditDialog.createSettingRow("Title", "Use an existing button or pick a unique title to create a new button");
                 buttonTitleField = new TextField();
                 buttonTitleField.setText("");
@@ -147,9 +147,9 @@ public class ReplaceKeyButton extends SystemControl {
                     LOGGER.fatal("Unable to load Preferences" + ex.getMessage());
                 }
                 existingButtonChoiceBox = new ChoiceBox<>(FXCollections.observableArrayList(nodes));
-
+                
                 existingButtonChoiceBox.disableProperty().bind(Bindings.notEqual(buttonTitleField.textProperty(), ""));
-
+                
                 buttonTypeChoices.valueProperty().addListener((observable, oldValue, newValue) -> {
                     try {
                         String buttonType = (buttonTypeChoices.getValue().equals(OTHER_BUTTON)) ? otherTypeChoices.getValue().toLowerCase() : USABLE_OPTIONS_MAP.get(buttonTypeChoices.getValue()).toLowerCase();
@@ -162,7 +162,7 @@ public class ReplaceKeyButton extends SystemControl {
                         LOGGER.warn(ex);
                     }
                 });
-
+                
                 otherTypeChoices.valueProperty().addListener((observable, oldValue, newValue) -> {
                     try {
                         String buttonType = (buttonTypeChoices.getValue().equals(OTHER_BUTTON)) ? otherTypeChoices.getValue().toLowerCase() : USABLE_OPTIONS_MAP.get(buttonTypeChoices.getValue()).toLowerCase();
@@ -175,36 +175,40 @@ public class ReplaceKeyButton extends SystemControl {
                 existingButtonChoiceBox.setMaxSize(180.0, 60.0);
                 existingButtonChoiceBox.getStyleClass().add("settings-text-area");
                 buttonTitleRow.add(existingButtonChoiceBox, 1, 0, 1, 1);
-
+                
                 orderSettings.add(buttonTypeRow);
                 orderSettings.add(buttonTitleRow);
                 Tab orderTab = buildTab("ADD", orderSettings);
-
+                
                 TabPane tabPane = new TabPane();
                 tabPane.setPadding(new Insets(5));
                 tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-
+                
                 tabPane.getTabs().add(orderTab);
-
+                
                 return tabPane;
             }
-
+            
             @Override
             public void setSettings() {
-
+                
                 final ParallelList<String, String> order1 = buttonGrid.getOrder();
-
+                
                 final String buttonType = (buttonTypeChoices.getValue().equals(OTHER_BUTTON)) ? otherTypeChoices.getValue() : USABLE_OPTIONS_MAP.get(buttonTypeChoices.getValue());
                 order1.getFirstList().set(getGridLocation(), buttonType);
                 String index;
-                if (!buttonTitleField.getText().isEmpty()) {
-                    index = buttonTitleField.getText();
+                final String userEnteredTitle = buttonTitleField.getText();
+                if (!userEnteredTitle.isEmpty()) {
+                    // TO DO: length needs to be limited
+                  //  final int length = userEnteredTitle.trim().length();
+                    //Integer indexLength = (length > 50) ? 50 : length; 
+                    index = userEnteredTitle.trim();
                 } else {
                     // TO DO - Set to default if choice box is also empty
                     if (existingButtonChoiceBox.getValue() != null) {
                         index = existingButtonChoiceBox.getValue();
                     } else {
-                        index = "default";
+                        index = "default";                        
                     }
                 }
                 order1.getSecondList().set(getGridLocation(), index);
@@ -215,11 +219,11 @@ public class ReplaceKeyButton extends SystemControl {
                     configurableGrid.setOrder(order1);
                     configurableGrid.getGridManager().setOrder(configurableGrid.getOrder());
                 }
-
+                
                 SettingsController.setUpdated(true);
-
+                
             }
-
+            
             @Override
             public void resetSettings() {
                 buttonTypeChoices.setValue(DESCRIPTION);
@@ -231,10 +235,10 @@ public class ReplaceKeyButton extends SystemControl {
         };
         return editDialog;
     }
-
+    
     private List<String> getButtons(String node, String alt) throws BackingStoreException {
 
-       // System.out.println("Node:" + node);
+        // System.out.println("Node:" + node);
         List<String> screenNames = new ArrayList<>();
         final Preferences userNodeForPackage = Preferences.userNodeForPackage(AnimatedButton.class);
         //System.out.println(userNodeForPackage.name());
@@ -247,15 +251,15 @@ public class ReplaceKeyButton extends SystemControl {
                 screenNames.addAll(getButtons(name, alt));
             }
         }
-
+        
         return screenNames;
     }
-
+    
     @Override
     public void run() {
         LOGGER.info("Replace Keys button clicked");
     }
-
+    
     @Override
     public Preferences getPreferences() {
         if (preferences == null) {
