@@ -34,7 +34,7 @@ public class UpdaterDialog extends OKDialog {
     @Override
     public void buildDialog() {
         getStylesheets().add(CSS_PATH);
-        List<Double> rowPercentages = Arrays.asList(60.0, 10.0, 30.0);
+        List<Double> rowPercentages = Arrays.asList(55.0, 10.0, 35.0);
         buildBaseGrid(3, 1, rowPercentages);
         baseGrid.add(titledLabel, 0, 0);
         progressBar = new ProgressBar();
@@ -46,7 +46,7 @@ public class UpdaterDialog extends OKDialog {
         progressBar.getStyleClass().add("progress-bar-dark");
         progressBar.progressProperty().bindBidirectional(getVersionManager().msiDownloader.getTracker().progressProperty());
         baseGrid.add(progressBar, 0, 1);
-        actionGrid = buildActionGrid(HPos.CENTER, 360.0, 60.0);
+        actionGrid = buildActionGrid(HPos.CENTER, 180.0, 60.0);
         baseGrid.add(actionGrid, 0, 2);
         addToStackPane(baseGrid);
     }
