@@ -29,6 +29,8 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import org.apache.log4j.Logger;
+import org.symfound.comm.web.Downloader;
 
 /**
  *
@@ -36,6 +38,8 @@ import javafx.beans.property.StringProperty;
  */
 public class PathReader {
 
+    private static final String NAME = PathReader.class.getName();
+    private static final Logger LOGGER = Logger.getLogger(NAME);
     /**
      *
      */
@@ -239,8 +243,9 @@ public class PathReader {
                     fileList.add(file.getAbsolutePath());
                 }
             }
-        } else {
 
+        } else {
+            LOGGER.warn("Folder is not a directory:" + folder);
         }
     }
 }
