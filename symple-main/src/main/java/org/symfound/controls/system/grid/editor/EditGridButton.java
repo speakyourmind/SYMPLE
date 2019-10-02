@@ -473,6 +473,7 @@ public class EditGridButton extends SystemControl {
     @Override
     public void run() {
         LOGGER.info("Edit Grid button clicked");
+        
     }
 
     private String getFolderSelection() {
