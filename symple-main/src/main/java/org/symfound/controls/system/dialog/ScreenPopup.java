@@ -31,7 +31,7 @@ public class ScreenPopup<T extends ScreenDialog> extends ScreenControl<AnimatedB
         AnimatedPane ap = new AnimatedPane();
         ap.getStylesheets().add(CSS_PATH);
         ap.setStyle("-fx-background-color:-fx-dark; -fx-opacity:0.8;");
-
+        
         stackPane.getChildren().add(ap);
 
         screenDialog.doneProperty().addListener((observable, oldValue, newValue) -> {
@@ -69,8 +69,6 @@ public class ScreenPopup<T extends ScreenDialog> extends ScreenControl<AnimatedB
             getDialog().setDone(false);
         }
     }
-
-    //TO DO: Make ScreenControl include Control instead of Labeled.
 
     /**
      *

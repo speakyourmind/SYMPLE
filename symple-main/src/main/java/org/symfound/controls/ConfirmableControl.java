@@ -61,7 +61,9 @@ public abstract class ConfirmableControl extends RunnableControl {
     public void execute() {
         if (isConfirmable()) {
             if (getSession().isBuilt()) {
-                getParentPane().getChildren().add(getPopup(getDialog()));
+                Pane errorPane = (Pane) getScene().lookup("#apMain");
+                //  getParentPane().getChildren().add(getPopup(getDialog()));
+                errorPane.getChildren().add(getPopup(getDialog()));
                 final Double selectionTime = getSession().getUser().getInteraction().getSelectionTime();
                 getDialog().animate().startScale(selectionTime, 0.8, 1.0);
             }

@@ -51,6 +51,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import org.apache.log4j.Logger;
@@ -328,7 +329,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 "-fx-background-image:url(\"", backgroundURLProperty(), "\"); \n"
                 + "-fx-background-repeat:no-repeat;\n"
                 + "-fx-background-position:center;\n"
-                + "-fx-wrap-text:",wrapTextProperty().asString(),";\n"
+                + "-fx-wrap-text:", wrapTextProperty().asString(), ";\n"
                 + "-fx-background-size:", backgroundSizeProperty(), "; \n",
                 overrideStyleProperty());
         setConcatStyle(concat.getValue());
@@ -663,7 +664,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         GridPane.setHalignment(wrapTextButton, HPos.LEFT);
         GridPane.setValignment(wrapTextButton, VPos.CENTER);
         wrapTextRow.add(wrapTextButton, 1, 0, 1, 1);
-        
+
         SettingsRow textAlignmentRow = EditDialog.createSettingRow("Text Alignment", "Location of text on this button");
 
         textAlignment = new ChoiceBox<>(FXCollections.observableArrayList(Arrays.asList(
@@ -816,11 +817,11 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         resetUsageButton = new RunnableControl("settings-button") {
             @Override
             public void run() {
-                resetTotalUsageCount(); 
+                resetTotalUsageCount();
                 totalUsageLabel.setText(getTotalUsageCount().toString());
             }
         };
-                resetUsageButton.setControlType(ControlType.SETTING_CONTROL);
+        resetUsageButton.setControlType(ControlType.SETTING_CONTROL);
         resetUsageButton.setVisible(getTotalUsageCount() > 0);
         totalUsageCountProperty().addListener((observable, oldValue, newValue) -> {
             resetUsageButton.setVisible(newValue.intValue() > 0);
@@ -1053,10 +1054,18 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                     ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
                     configurableGrid.setIndex("home");
                     getSession().setPlaying(false);
+                    
                     final SubGrid homeGrid = HomeController.getGrid();
                     homeGrid.setInError(Boolean.FALSE);
+                    ConfigurableGrid.setEditMode(Boolean.FALSE);
+
                 }
+
             };
+            final SubGrid homeGrid = HomeController.getGrid();
+            homeGrid.indexProperty().addListener((observable, oldValue, newValue) -> {
+               homeGrid.setInError(Boolean.FALSE);
+            });
         }
         return errorDialog;
     }
@@ -1067,7 +1076,9 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             homeGrid.setInError(Boolean.TRUE);
             final FixableErrorDialog errDialog = getFixableErrorDialog(message);
             final ScreenPopup<ScreenDialog> errorPopup = getPopup(errDialog);
-            homeGrid.getChildren().add(errorPopup);
+          //  homeGrid.getChildren().add(errorPopup);
+         Pane pane =(Pane) getScene().lookup("#apMain");
+         pane.getChildren().add(errorPopup);
         }
     }
 
@@ -1399,7 +1410,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         }
         return wrapText;
     }
-    
+
     private ObjectProperty<ColourChoices> textColour;
 
     /**
