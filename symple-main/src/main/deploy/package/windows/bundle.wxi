@@ -7,7 +7,7 @@
                     <CreateFolder/>
                     <RemoveFolder Id="RemoveDir0" On="uninstall" />
                     <RegistryKey Root="HKCU"  Key="Software\SpeakYourMind Foundation\SYMPLE">
-                        <RegistryValue Name="Version" Value="2.5.11" Type="string" KeyPath="yes"/>
+                        <RegistryValue Name="Version" Value="2.6.1" Type="string" KeyPath="yes"/>
                     </RegistryKey>
                     <File Id="FileId10000" Name="api-ms-win-core-console-l1-1-0.dll"  Source="api-ms-win-core-console-l1-1-0.dll" ProcessorArchitecture="x64"></File>
                     <File Id="FileId10001" Name="api-ms-win-core-datetime-l1-1-0.dll"  Source="api-ms-win-core-datetime-l1-1-0.dll" ProcessorArchitecture="x64"></File>
@@ -200,6 +200,8 @@
                                 <File Id="FileId4017" Name="Tobii.EyeX.Client.dll"  Source="app\etc\tobii\Tobii.EyeX.Client.dll" ProcessorArchitecture="x64"></File>
                                 <File Id="FileId4018" Name="Tobii.EyeX.Client.Net20.dll"  Source="app\etc\tobii\Tobii.EyeX.Client.Net20.dll" ProcessorArchitecture="x64"></File>
                                 <File Id="FileId4019" Name="Tobii.EyeX.Client.Net20.xml"  Source="app\etc\tobii\Tobii.EyeX.Client.Net20.xml" ProcessorArchitecture="x64"></File>    
+                                <File Id="FileId4020" Name="Launch.lnk"  Source="app\etc\tobii\Launch.lnk" ProcessorArchitecture="x64"></File>    
+                                <File Id="FileId4021" Name="Launch.cmd"  Source="app\etc\tobii\Launch.cmd" ProcessorArchitecture="x64"></File>    
                             </Component>
                         </Directory>
                    

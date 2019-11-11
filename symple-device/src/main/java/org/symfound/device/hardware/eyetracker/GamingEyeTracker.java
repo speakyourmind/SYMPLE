@@ -5,6 +5,9 @@
  */
 package org.symfound.device.hardware.eyetracker;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import org.apache.log4j.Logger;
 import org.symfound.builder.loader.RuntimeExecutor;
 import org.symfound.builder.user.feature.Eye;
@@ -25,16 +28,11 @@ public class GamingEyeTracker extends EyeTracker implements Calibratable {
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
-    /**
-     *
-     */
     public static final String EXE_LOCATION = "\\etc\\tobii\\";
 
-    /**
-     *
-     */
     public static final String DATA_STREAM_EXE_FILE = "MinimalGazeDataStream.exe"; // TO DO: Make a setting. TO DO: Change Name
-   
+    public static final String LAUNCH_FILE = "Launch.lnk"; // TO DO: Make a setting. TO DO: Change Name
+
     private RuntimeExecutor runtimeExecutor;
 
     private LoopedEvent positionEvent;
@@ -54,6 +52,45 @@ public class GamingEyeTracker extends EyeTracker implements Calibratable {
      */
     @Override
     public Boolean connect() {
+        {
+            try {
+                Process p = Runtime.getRuntime().exec("sc query \"Tobii Service\"");
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+                String line = reader.readLine();
+                while (line != null) {
+                    if (line.trim().startsWith("STATE")) {
+                        if (line.trim().substring(line.trim().indexOf(":") + 1, line.trim().indexOf(":") + 4).trim().equals("1")) {
+                            LOGGER.info("Eye Tracker Service is Stopped");
+                            String TEST = "\"C:\\Program Files\\SYMPLE\\app\\etc\\tobii\\Launch.lnk\"";
+                            ProcessBuilder pb = new ProcessBuilder("cmd", "/c",
+                                    TEST);
+                            Process trackerProcess;
+                            try {
+                                trackerProcess = pb.start();
+                                trackerProcess.waitFor();
+                            } catch (IOException | InterruptedException ex) {
+                                LOGGER.fatal(ex);
+                            }
+
+                        } else if (line.trim().substring(line.trim().indexOf(":") + 1, line.trim().indexOf(":") + 4).trim().equals("2")) {
+                            System.out.println("Eye Tracker Service is Starting....");
+                        } else if (line.trim().substring(line.trim().indexOf(":") + 1, line.trim().indexOf(":") + 4).trim().equals("3")) {
+                            System.out.println("Eye Tracker Service is Stopping....");
+                        } else if (line.trim().substring(line.trim().indexOf(":") + 1, line.trim().indexOf(":") + 4).trim().equals("4")) {
+                            System.out.println("Eye Tracker Service is Running");
+                        }
+
+                    }
+                    line = reader.readLine();
+                }
+
+            } catch (IOException e1) {
+            }
+
+        }
+
         setConnected(true);
         return isConnected();
     }
@@ -67,7 +104,7 @@ public class GamingEyeTracker extends EyeTracker implements Calibratable {
             String userDirectory = System.getProperty("user.dir");
             String command = userDirectory + EXE_LOCATION + DATA_STREAM_EXE_FILE;
             String readFile = getProcessability().getReadFile();
-            LOGGER.info("Launching Eye Tracker exe from: " + command + " and reading its data from " + readFile);
+            LOGGER.info("Launching Eye Tracker processing from: " + command + " and reading its data from " + readFile);
             getRuntimeExecutor().execute(command);
             setLaunched(true);
 
@@ -86,8 +123,7 @@ public class GamingEyeTracker extends EyeTracker implements Calibratable {
      */
     @Override
     public void record() {
-        
-        
+
     }
 
     /**

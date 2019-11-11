@@ -266,6 +266,7 @@ public class ConfigurableGrid extends ButtonGrid {
     public void reload(ParallelList<String, String> buildOrder, FillMethod method, FillDirection direction, Double size) {
         Platform.runLater(() -> {
             if (!mutex) {
+                editMode=null;
                 mutex = true;
                 LOGGER.info("Reloading App Grid with " + buildOrder.asString() + " and size " + size);
                 build(buildOrder, method, direction, size);
@@ -311,7 +312,7 @@ public class ConfigurableGrid extends ButtonGrid {
     }
 
     private static final Boolean DEFAULT_EDIT_MODE = Boolean.FALSE;
-    private static BooleanProperty editMode;
+    public static BooleanProperty editMode;
 
     /**
      *

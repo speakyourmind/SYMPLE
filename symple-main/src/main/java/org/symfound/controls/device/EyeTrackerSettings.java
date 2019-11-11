@@ -5,18 +5,21 @@
  */
 package org.symfound.controls.device;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
+import org.apache.log4j.Logger;
 import org.symfound.controls.RunnableControl;
 import static org.symfound.controls.ScreenControl.setSize;
 import static org.symfound.controls.ScreenControl.setSizeMax;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.SettingsTab;
 import org.symfound.controls.system.dialog.SettingsDialog;
+import org.symfound.controls.user.ButtonGrid;
 import org.symfound.device.Device;
 import org.symfound.device.hardware.eyetracker.GamingEyeTracker;
 
@@ -25,6 +28,13 @@ import org.symfound.device.hardware.eyetracker.GamingEyeTracker;
  * @author Javed Gangjee
  */
 public class EyeTrackerSettings extends DeviceSettings<GamingEyeTracker> {
+
+    private static final String NAME = EyeTrackerSettings.class.getName();
+
+    /**
+     *
+     */
+    public static final Logger LOGGER = Logger.getLogger(NAME);
 
     /**
      *
@@ -83,6 +93,7 @@ public class EyeTrackerSettings extends DeviceSettings<GamingEyeTracker> {
                 getHardware().calibrate();
             }
         };
+
         calibrate.setSymStyle("settings-button");
         calibrate.setControlType(ControlType.SETTING_CONTROL);
         setSize(calibrate, SettingsDialog.MAX_WIDTH, SettingsDialog.MAX_HEIGHT);
@@ -90,7 +101,32 @@ public class EyeTrackerSettings extends DeviceSettings<GamingEyeTracker> {
         calibrate.setOnMouseClicked(null);
         calibrationRow.add(calibrate, 1, 0, 1, 1);
 
-        List<SettingsRow> rows = Arrays.asList(consoleRow, calibrationRow);
+        SettingsRow troubleshootRow = buildSettingsRow("Troubleshoot", "Fix this tracker if you get an error");
+        RunnableControl troubleshoot = new RunnableControl() {
+            @Override
+            public void run() {
+                String TEST = "\"C:\\Program Files\\SYMPLE\\app\\etc\\tobii\\Launch.lnk\"";
+                ProcessBuilder pb = new ProcessBuilder("cmd", "/c",
+                        TEST);
+                Process p;
+                try {
+                    p = pb.start();
+                    p.waitFor();
+                } catch (IOException | InterruptedException ex) {
+                    LOGGER.fatal(ex);
+                }
+
+            }
+        };
+
+        troubleshoot.setSymStyle("settings-button");
+        troubleshoot.setControlType(ControlType.SETTING_CONTROL);
+        setSize(troubleshoot, SettingsDialog.MAX_WIDTH, SettingsDialog.MAX_HEIGHT);
+        troubleshoot.setText("FIX");
+        troubleshoot.setOnMouseClicked(null);
+        troubleshootRow.add(troubleshoot, 1, 0, 1, 1);
+
+        List<SettingsRow> rows = Arrays.asList(consoleRow, calibrationRow, troubleshootRow);
         SettingsTab generalTab = new SettingsTab(GENERAL_TAB_TITLE, rows);
         return generalTab;
     }
