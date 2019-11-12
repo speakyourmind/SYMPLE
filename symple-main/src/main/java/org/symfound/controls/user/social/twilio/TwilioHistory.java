@@ -3,7 +3,6 @@ package org.symfound.controls.user.social.twilio;
 import com.google.common.collect.Range;
 import com.twilio.rest.api.v2010.account.Message;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,14 +10,16 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.prefs.Preferences;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -37,8 +38,10 @@ import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
+import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.Main;
 import org.symfound.social.sms.TwilioReader;
+import org.symfound.tools.timing.LoopedEvent;
 
 /**
  *
@@ -74,6 +77,8 @@ public final class TwilioHistory extends AppableControl {
     }
 
     TwilioHistoryGrid smsHistoryGrid;
+    private static int test = 0;
+    private LoopedEvent refreshEvent;
 
     private void initialize() {
         setDisabled(true);
@@ -84,13 +89,40 @@ public final class TwilioHistory extends AppableControl {
         timeZoneProperty().addListener((observable, oldValue, newValue) -> {
             reloadHistoryGrid();
         });
+        refreshEvent = buildRefreshEvent(getRefreshRate());
+        refreshEvent.play();
+        ConfigurableGrid.editModeProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                refreshEvent.timeline.stop();
+            } else {
+                refreshEvent.playFromStart();
+            }
+        });
+        refreshRateProperty().addListener((observablue, oldValue, newValue) -> {
+            refreshEvent.end();
+            refreshEvent = buildRefreshEvent(newValue.doubleValue());
+            refreshEvent.play();
+        });
+
+    }
+
+    public LoopedEvent buildRefreshEvent(Double rate) {
+        LoopedEvent loopedEvent = new LoopedEvent();
+        loopedEvent.setup(rate, (ActionEvent) -> {
+            if (getParent() == null) {
+                loopedEvent.end();
+            } else {
+                reloadHistoryGrid();
+            }
+        });
+        return loopedEvent;
     }
 
     public void reloadHistoryGrid() {
         if (smsHistoryGrid != null) {
             this.getChildren().remove(smsHistoryGrid);
         }
-        
+
         List<Message> smsHistory = retrieveMessages();
         final int numOfMessages = smsHistory.size();
 
@@ -124,7 +156,7 @@ public final class TwilioHistory extends AppableControl {
         vBox.getChildren().add(smsArea);
         AnimatedLabel timeSent = loadTimestampLabel(message);
         vBox.getChildren().add(timeSent);
-        
+
         final String myNumber = getUser().getSocial().getTwilioFromNumber();
         final boolean isFromMe = message.getFrom().toString().equals(myNumber);
         if (isFromMe) {
@@ -140,8 +172,8 @@ public final class TwilioHistory extends AppableControl {
             AnchorPane.setLeftAnchor(vBox, 0.0);
         }
         smsArea.setMaxHeight(TextUtils.computeTextWidth(smsArea.getFont(),
-                    smsArea.getText(), 0.0D) * 0.5);
-    
+                smsArea.getText(), 0.0D) * 0.5);
+
         AnchorPane.setBottomAnchor(vBox, 0.0);
         AnchorPane.setTopAnchor(vBox, 0.0);
 
@@ -150,7 +182,7 @@ public final class TwilioHistory extends AppableControl {
 
     public AnimatedLabel loadTimestampLabel(final Message message) {
         final DateTime dateSent = message.getDateSent().toDateTime(DateTimeZone.forID(getTimeZone()));
-        
+
         DateTimeFormatter fmt = DateTimeFormat.forPattern("EEE, d MMM ''yy, hh:mm aaa");
         String formattedDateSent = fmt.print(dateSent);
         AnimatedLabel captionLabel = new AnimatedLabel(formattedDateSent);
@@ -158,7 +190,7 @@ public final class TwilioHistory extends AppableControl {
         captionLabel.setWrapText(true);
         captionLabel.setAlignment(Pos.CENTER_LEFT);
         setSizeMax(captionLabel);
-    //    captionTextProperty().bindBidirectional(captionLabel.textProperty());
+        //    captionTextProperty().bindBidirectional(captionLabel.textProperty());
         return captionLabel;
     }
 
@@ -202,7 +234,9 @@ public final class TwilioHistory extends AppableControl {
     }
 
     private TextField fromNumberField;
+    private Slider refreshRateSlider;
     private ChoiceBox<String> timeZoneChoices;
+
     /**
      *
      */
@@ -210,6 +244,7 @@ public final class TwilioHistory extends AppableControl {
     public void setAppableSettings() {
         setFromNumber(fromNumberField.getText());
         setTimeZone(timeZoneChoices.getValue());
+        setRefreshRate(refreshRateSlider.getValue());
         super.setAppableSettings();
     }
 
@@ -220,6 +255,7 @@ public final class TwilioHistory extends AppableControl {
     public void resetAppableSettings() {
         fromNumberField.setText(getFromNumber());
         timeZoneChoices.setValue(getTimeZone());
+        refreshRateSlider.setValue(getRefreshRate());
         super.resetAppableSettings();
     }
 
@@ -237,20 +273,28 @@ public final class TwilioHistory extends AppableControl {
         fromNumberField.getStyleClass().add("settings-text-area");
         formatRow.add(fromNumberField, 1, 0, 1, 1);
 
-        
         SettingsRow timeZoneChoicesRow = EditDialog.createSettingRow("Time Zone", "Time sent shown as per Twilio time zones");
 
         timeZoneChoices = new ChoiceBox<>(FXCollections.observableArrayList(new ArrayList<>(DateTimeZone.getAvailableIDs())));
         timeZoneChoices.setValue(getTimeZone());
         timeZoneChoices.setMaxSize(180.0, 60.0);
-
         timeZoneChoices.getStyleClass().add("settings-text-area");
         timeZoneChoicesRow.add(timeZoneChoices, 1, 0, 2, 1);
 
-        
+        SettingsRow refreshRateRow = createSettingRow("Refresh Rate", "How often the view refreshes to include new messages");
+
+        refreshRateSlider = new Slider(1.0, 60.0, getRefreshRate());
+        refreshRateSlider.setMajorTickUnit(10);
+        refreshRateSlider.setMinorTickCount(5);
+        refreshRateSlider.setShowTickLabels(true);
+        refreshRateSlider.setShowTickMarks(true);
+        refreshRateSlider.setSnapToTicks(true);
+
+        refreshRateRow.add(refreshRateSlider, 1, 0, 2, 1);
+
         actionSettings.add(formatRow);
-        
         actionSettings.add(timeZoneChoicesRow);
+        actionSettings.add(refreshRateRow);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;
@@ -288,7 +332,7 @@ public final class TwilioHistory extends AppableControl {
         return fromNumber;
     }
 
-      private StringProperty timeZone;
+    private StringProperty timeZone;
 
     /**
      *
@@ -318,6 +362,38 @@ public final class TwilioHistory extends AppableControl {
             timeZone = new SimpleStringProperty(getPreferences().get("timeZone", "America/Detroit"));
         }
         return timeZone;
+    }
+
+    private DoubleProperty refreshRate;
+
+    /**
+     *
+     * @param value
+     */
+    public void setRefreshRate(Double value) {
+        refreshRateProperty().setValue(value);
+        getPreferences().put("refreshRate", value.toString());
+        LOGGER.info("refreshRate set to: " + value);
+
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Double getRefreshRate() {
+        return refreshRateProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DoubleProperty refreshRateProperty() {
+        if (refreshRate == null) {
+            refreshRate = new SimpleDoubleProperty(Double.valueOf(getPreferences().get("refreshRate", "5")));
+        }
+        return refreshRate;
     }
 
     @Override

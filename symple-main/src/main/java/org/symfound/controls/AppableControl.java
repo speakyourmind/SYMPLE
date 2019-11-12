@@ -309,7 +309,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         }
 
         // TO DO: May cause issues creating too many listeners.
-        HomeController.getGrid().getConfigurableGrid().editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
+        ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
             if (newValue1 && !isSettingsControl && isEditable()) {
                 addConfigButtons();
             } else {
