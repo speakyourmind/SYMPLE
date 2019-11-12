@@ -21,6 +21,8 @@ import org.symfound.text.font.FontLoader;
 import com.sun.javafx.stage.StageHelper;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,6 +31,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.prefs.InvalidPreferencesFormatException;
+import java.util.prefs.Preferences;
 import javafx.application.Platform;
 import org.apache.log4j.Logger;
 import org.symfound.builder.Builder;
@@ -159,14 +164,22 @@ public class FullSession extends Session {
         } else {
             LOGGER.warn("Master file does not exist in " + masterFile
                     + ". Proceeding with default settings.");
-            /* if (getUser().getProfile().isFirstUse()) {
-            String defaultFile = "/profiles/default.xml";
-            PreferencesImporter settingsImporter = new PreferencesImporter(defaultFile);
-            settingsImporter.run();
-            LOGGER.info("Settings import from " + defaultFile + " complete");
-            
-            getUser().getProfile().setFirstUse(Boolean.FALSE);
-            }*/
+            if (getUser().getProfile().isFirstUse()) {
+                String defaultFile = "templates/super.xml";
+                LOGGER.info("This is the user's first use. Loading template "+defaultFile);
+                InputStream resourceAsStream = FullSession.class.getClassLoader().getResourceAsStream(defaultFile);
+                try {
+                    Preferences.importPreferences(resourceAsStream);
+                } catch (IOException | InvalidPreferencesFormatException ex) {
+                    LOGGER.warn(ex);
+                }
+
+                //    PreferencesImporter settingsImporter = new PreferencesImporter(resource);
+                //  settingsImporter.run();
+                LOGGER.info("Settings import from " + defaultFile + " complete");
+
+                getUser().getProfile().setFirstUse(Boolean.FALSE);
+            }
         }
 
         getBuilder().start(getBuildTimeout());
@@ -428,13 +441,13 @@ public class FullSession extends Session {
 
     public void resetStats() {
         LOGGER.info("Shutting down SYMPLE");
-        
+
         LOGGER.info("Resetting Stats");
-        
+
         getUser().getStatistics().resetSessionTimeInUse();
         getUser().getStatistics().resetSessionSpokenWordCount();
         getUser().getStatistics().resetSessionSelections();
-        
+
         if (user.getStatistics().isRecording()) {
             getUser().getStatistics().setLastUsed(System.currentTimeMillis());
         }

@@ -1,0 +1,2743 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE preferences SYSTEM "http://java.sun.com/dtd/preferences.dtd">
+<preferences EXTERNAL_XML_VERSION="1.0">
+  <root type="user">
+    <map/>
+    <node name="org">
+      <map/>
+      <node name="symfound">
+        <map/>
+        <node name="builder">
+          <map/>
+          <node name="user">
+            <map>
+              <entry key="app.selection.type" value="DWELL"/>
+              <entry key="app.selection.dwellTime" value="2.2"/>
+              <entry key="app.selection.scanTime" value="3.0"/>
+              <entry key="app.selection.stepTime" value="4.0"/>
+              <entry key="app.navigation.level" value="2.0"/>
+              <entry key="app.selection.override" value="false"/>
+              <entry key="device.name" value="Eye Tracker"/>
+              <entry key="device.movement.mouseControl" value="true"/>
+              <entry key="device.movement.selectionControl" value="false"/>
+              <entry key="profile.firstName" value=""/>
+              <entry key="profile.lastName" value=""/>
+              <entry key="profile.autoUpdate" value="true"/>
+              <entry key="app.general.timeout" value="15.0"/>
+              <entry key="app.navigation.ttsBuildOrder" value="Polly"/>
+              <entry key="app.navigation.buttonMap" value="Desktop=1"/>
+              <entry key="app.navigation.onFirstClick" value="true"/>
+              <entry key="app.navigation.speakSelection" value="false"/>
+              <entry key="app.navigation.highlightBorder" value="false"/>
+              <entry key="app.navigation.fullScreen" value="true"/>
+              <entry key="app.navigation.playSound" value="false"/>
+              <entry key="app.general.scourSound" value="C:\Windows\media\Windows Navigation Start.wav"/>
+              <entry key="app.general.selectionSound" value="C:\Windows\media\Windows Default.wav"/>
+              <entry key="app.speaking.voice" value="Matthew"/>
+              <entry key="app.typing.autocomplete.enabled" value="true"/>
+              <entry key="app.typing.autocomplete.time" value="10.0"/>
+              <entry key="app.typing.userDictWeight" value="10"/>
+              <entry key="app.general.homeFolder" value="C:\Users\aweis"/>
+              <entry key="app.media.volume" value="0.8"/>
+              <entry key="app.social.twilio.accountSID" value=""/>
+              <entry key="app.social.twilio.authToken" value=""/>
+              <entry key="app.social.twilio.fromNumber" value=""/>
+            </map>
+          </node>
+        </node>
+        <node name="controls">
+          <map/>
+          <node name="system">
+            <map/>
+            <node name="edit">
+              <map/>
+              <node name="default">
+                <map>
+                  <entry key="editable" value="false"/>
+                </map>
+              </node>
+            </node>
+            <node name="grid">
+              <map/>
+              <node name="editor">
+                <map/>
+                <node name="add key">
+                  <map/>
+                  <node name="default">
+                    <map>
+                      <entry key="editable" value="false"/>
+                      <entry key="navigatePostClick" value="false"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="edit grid">
+                  <map/>
+                  <node name="default">
+                    <map>
+                      <entry key="editable" value="false"/>
+                      <entry key="navigatePostClick" value="false"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="remove key">
+                  <map/>
+                  <node name="default">
+                    <map>
+                      <entry key="editable" value="false"/>
+                      <entry key="navigatePostClick" value="false"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="replace key">
+                  <map/>
+                  <node name="default">
+                    <map>
+                      <entry key="editable" value="false"/>
+                      <entry key="selectable" value="false"/>
+                      <entry key="navigatePostClick" value="false"/>
+                    </map>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node name="subgrid">
+              <map/>
+            </node>
+          </node>
+          <node name="user">
+            <map/>
+            <node name="device">
+              <map>
+                <entry key="editable" value="false"/>
+              </map>
+            </node>
+            <node name="exit">
+              <map>
+                <entry key="speakText" value="Exit"/>
+                <entry key="editable" value="false"/>
+              </map>
+            </node>
+            <node name="media">
+              <map/>
+              <node name="music">
+                <map>
+                  <entry key="folder" value="C:\Users\Administrator/music/"/>
+                </map>
+                <node name="music control">
+                  <map/>
+                  <node name="next">
+                    <map>
+                      <entry key="title" value="Hotel California-Eagles"/>
+                      <entry key="musicControl" value="NEXT"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="showTitle" value="false"/>
+                      <entry key="shuffle" value="true"/>
+                      <entry key="showProgress" value="false"/>
+                      <entry key="showAlbumArt" value="false"/>
+                      <entry key="rowExpand" value="0"/>
+                      <entry key="columnExpand" value="0"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="textColour" value="DARK"/>
+                      <entry key="fontScale" value="25.0"/>
+                      <entry key="speakable" value="false"/>
+                      <entry key="speakText" value="Wish You Were Here-Pink Floyd"/>
+                      <entry key="backgroundColour" value="LIGHT"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="previous">
+                    <map>
+                      <entry key="title" value="Hotel California-Eagles"/>
+                      <entry key="musicControl" value="PREVIOUS"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="showTitle" value="false"/>
+                      <entry key="shuffle" value="true"/>
+                      <entry key="showProgress" value="false"/>
+                      <entry key="showAlbumArt" value="false"/>
+                      <entry key="rowExpand" value="0"/>
+                      <entry key="columnExpand" value="0"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="textColour" value="DARK"/>
+                      <entry key="fontScale" value="25.0"/>
+                      <entry key="speakable" value="false"/>
+                      <entry key="speakText" value="Pour Some Sugar On Me-Def Leppard"/>
+                      <entry key="backgroundColour" value="LIGHT"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="stop">
+                    <map>
+                      <entry key="title" value="Hotel California-Eagles"/>
+                      <entry key="musicControl" value="STOP"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="showTitle" value="false"/>
+                      <entry key="shuffle" value="true"/>
+                      <entry key="showProgress" value="false"/>
+                      <entry key="showAlbumArt" value="false"/>
+                      <entry key="rowExpand" value="0"/>
+                      <entry key="columnExpand" value="0"/>
+                      <entry key="disablePrimary" value="false"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="music info">
+                  <map/>
+                  <node name="default">
+                    <map>
+                      <entry key="musicControl" value="TOGGLE"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="showTitle" value="false"/>
+                      <entry key="shuffle" value="true"/>
+                      <entry key="showProgress" value="true"/>
+                      <entry key="showAlbumArt" value="true"/>
+                      <entry key="rowExpand" value="0"/>
+                      <entry key="columnExpand" value="0"/>
+                      <entry key="title" value=""/>
+                      <entry key="textColour" value="DARK"/>
+                      <entry key="fontScale" value="25.0"/>
+                      <entry key="speakable" value="false"/>
+                      <entry key="speakText" value=" "/>
+                      <entry key="backgroundColour" value="TRANSPARENT"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="selectable" value="false"/>
+                      <entry key="disablePrimary" value="true"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                </node>
+                <node name="subgrid">
+                  <map/>
+                </node>
+              </node>
+              <node name="pageflip">
+                <map/>
+                <node name="pageflip control">
+                  <map/>
+                  <node name="next">
+                    <map>
+                      <entry key="control" value="NEXT"/>
+                      <entry key="title" value="PageFlip Control"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="DARK"/>
+                      <entry key="fontScale" value="25.0"/>
+                      <entry key="speakable" value="false"/>
+                      <entry key="speakText" value="PageFlip Control"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="LIGHT"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="false"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="previous">
+                    <map>
+                      <entry key="control" value="PREVIOUS"/>
+                      <entry key="title" value="PageFlip Control"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="DARK"/>
+                      <entry key="fontScale" value="25.0"/>
+                      <entry key="speakable" value="false"/>
+                      <entry key="speakText" value="PageFlip Control"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="LIGHT"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="false"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                </node>
+                <node name="pageflip viewer">
+                  <map/>
+                  <node name="next">
+                    <map>
+                      <entry key="shuffle" value="false"/>
+                    </map>
+                  </node>
+                  <node name="previous">
+                    <map>
+                      <entry key="selectable" value="false"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="subgrid">
+                  <map/>
+                </node>
+              </node>
+              <node name="photos">
+                <map/>
+                <node name="photo control">
+                  <map/>
+                  <node name="next_1">
+                    <map>
+                      <entry key="control" value="NEXT"/>
+                      <entry key="title" value="Photo Control"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="DARK"/>
+                      <entry key="fontScale" value="25.0"/>
+                      <entry key="speakable" value="false"/>
+                      <entry key="speakText" value="Photo Control"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="LIGHT"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="false"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="previous_1">
+                    <map>
+                      <entry key="control" value="PREVIOUS"/>
+                      <entry key="title" value="Photo Control"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="DARK"/>
+                      <entry key="fontScale" value="25.0"/>
+                      <entry key="speakable" value="false"/>
+                      <entry key="speakText" value="Photo Control"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="LIGHT"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="false"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                </node>
+                <node name="photo viewer">
+                  <map/>
+                  <node name="next_1">
+                    <map>
+                      <entry key="folder" value="C:\Users\Administrator/pictures/"/>
+                      <entry key="shuffle" value="false"/>
+                    </map>
+                  </node>
+                  <node name="previous_1">
+                    <map>
+                      <entry key="selectable" value="false"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="subgrid">
+                  <map/>
+                </node>
+              </node>
+              <node name="reddit">
+                <map/>
+                <node name="reddit control">
+                  <map/>
+                  <node name="next_1">
+                    <map/>
+                  </node>
+                  <node name="previous_1">
+                    <map>
+                      <entry key="control" value="PREVIOUS"/>
+                      <entry key="title" value="Reddit Control"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="DARK"/>
+                      <entry key="fontScale" value="25.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Reddit Control"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="LIGHT"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                </node>
+                <node name="reddit viewer">
+                  <map/>
+                  <node name="next_1">
+                    <map>
+                      <entry key="subreddit" value="aww"/>
+                      <entry key="subList" value="top"/>
+                      <entry key="shuffle" value="false"/>
+                    </map>
+                  </node>
+                  <node name="previous_1">
+                    <map>
+                      <entry key="selectable" value="false"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="subgrid">
+                  <map/>
+                </node>
+              </node>
+              <node name="youtube">
+                <map/>
+                <node name="subgrid">
+                  <map/>
+                </node>
+                <node name="youtube control">
+                  <map/>
+                  <node name="next_1">
+                    <map>
+                      <entry key="control" value="NEXT"/>
+                      <entry key="title" value="YouTube Control"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="showTitle" value="false"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="rowExpand" value="0"/>
+                      <entry key="columnExpand" value="0"/>
+                    </map>
+                  </node>
+                  <node name="previous_1">
+                    <map>
+                      <entry key="control" value="PREVIOUS"/>
+                      <entry key="title" value="YouTube Control"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="showTitle" value="false"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="rowExpand" value="0"/>
+                      <entry key="columnExpand" value="0"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="youtube viewer">
+                  <map/>
+                  <node name="next_1">
+                    <map/>
+                  </node>
+                  <node name="previous_1">
+                    <map>
+                      <entry key="selectable" value="false"/>
+                    </map>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node name="minimize">
+              <map>
+                <entry key="speakText" value="Minimize"/>
+                <entry key="editable" value="false"/>
+              </map>
+            </node>
+            <node name="navigate">
+              <map/>
+              <node name="default">
+                <map/>
+              </node>
+            </node>
+            <node name="none">
+              <map/>
+              <node name="app">
+                <map/>
+                <node name="music">
+                  <map>
+                    <entry key="navigatePostClick" value="false"/>
+                    <entry key="usage.lastUsed" value="1568141910803"/>
+                    <entry key="usage.count" value="4"/>
+                    <entry key="title" value="Music"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="35.0"/>
+                    <entry key="speakable" value="true"/>
+                    <entry key="speakText" value="Music&#9;"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="ORANGE"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value="images/app_music.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                  </map>
+                </node>
+                <node name="pageflip">
+                  <map>
+                    <entry key="navigatePostClick" value="false"/>
+                    <entry key="usage.lastUsed" value="1568186185312"/>
+                    <entry key="usage.count" value="11"/>
+                    <entry key="title" value="Page Flipper"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="30.0"/>
+                    <entry key="speakable" value="true"/>
+                    <entry key="speakText" value="Page Flipper&#9;"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="ORANGE"/>
+                    <entry key="backgroundSize" value="98.79367469879517"/>
+                    <entry key="backgroundURL" value="https://www.iconsdb.com/icons/preview/color/F5F5F5/external-link-2-xxl.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                  </map>
+                  <node name="series_1">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="Series 1"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="30.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Series 1"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="ORANGE"/>
+                      <entry key="backgroundSize" value="100.29819277108435"/>
+                      <entry key="backgroundURL" value="https://www.iconsdb.com/icons/preview/color/F5F5F5/external-link-2-xxl.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="usage.lastUsed" value="1568186188615"/>
+                      <entry key="usage.count" value="7"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="photos">
+                  <map>
+                    <entry key="navigatePostClick" value="false"/>
+                    <entry key="title" value="Photos"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="30.0"/>
+                    <entry key="speakable" value="true"/>
+                    <entry key="speakText" value="Photos"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="ORANGE"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value="images/app_slideshow.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="usage.lastUsed" value="1568141784402"/>
+                    <entry key="usage.count" value="7"/>
+                  </map>
+                  <node name="folder_1">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="Folder 1"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="30.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Folder 1"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="ORANGE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value="images/app_slideshow.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="usage.lastUsed" value="1568138909735"/>
+                      <entry key="usage.count" value="4"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="reddit">
+                  <map>
+                    <entry key="navigatePostClick" value="false"/>
+                    <entry key="title" value="Reddit"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="30.0"/>
+                    <entry key="speakable" value="true"/>
+                    <entry key="speakText" value="Reddit"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="BLUE"/>
+                    <entry key="backgroundSize" value="97.28915662650603"/>
+                    <entry key="backgroundURL" value="https://www.iconsdb.com/icons/preview/color/F5F5F5/reddit-xxl.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="usage.lastUsed" value="1568141790029"/>
+                    <entry key="usage.count" value="11"/>
+                  </map>
+                  <node name="subreddit_1">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="Subreddit 1"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="25.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Subreddit 1"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="BLUE"/>
+                      <entry key="backgroundSize" value="120.0"/>
+                      <entry key="backgroundURL" value="https://www.iconsdb.com/icons/preview/color/F5F5F5/reddit-xxl.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="usage.lastUsed" value="1568141793239"/>
+                      <entry key="usage.count" value="4"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="sms">
+                  <map>
+                    <entry key="navigatePostClick" value="false"/>
+                    <entry key="title" value="SMS"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="30.0"/>
+                    <entry key="speakable" value="true"/>
+                    <entry key="speakText" value="SMS"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="GREEN"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value="images/app_speak.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="usage.lastUsed" value="1568141931864"/>
+                    <entry key="usage.count" value="8"/>
+                  </map>
+                  <node name="contact_1">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="Contact 1"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="DARK"/>
+                      <entry key="fontScale" value="30.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Contact 1"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="LIGHT"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="usage.lastUsed" value="1568138800384"/>
+                      <entry key="usage.count" value="2"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="videos">
+                  <map>
+                    <entry key="navigatePostClick" value="false"/>
+                    <entry key="title" value="Videos"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="30.0"/>
+                    <entry key="speakable" value="true"/>
+                    <entry key="speakText" value="Videos"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="PURPLE"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value="images/app_video.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="usage.lastUsed" value="1568141768821"/>
+                    <entry key="usage.count" value="3"/>
+                  </map>
+                  <node name="folder_1">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="Folder 1"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="30.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Folder 1"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="PURPLE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value="images/app_video.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="youtube">
+                  <map>
+                    <entry key="navigatePostClick" value="false"/>
+                    <entry key="title" value="YouTube"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="30.0"/>
+                    <entry key="speakable" value="true"/>
+                    <entry key="speakText" value="YouTube"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="RED"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value="images/app_youtube.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="usage.lastUsed" value="1567923891908"/>
+                    <entry key="usage.count" value="6"/>
+                  </map>
+                  <node name="playlist_1">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="Playlist 1"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="30.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Playlist 1&#9;"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="RED"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value="images/app_youtube.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="usage.lastUsed" value="1567923893461"/>
+                      <entry key="usage.count" value="1"/>
+                    </map>
+                  </node>
+                </node>
+              </node>
+              <node name="board">
+                <map/>
+                <node name="no_images">
+                  <map>
+                    <entry key="navigatePostClick" value="false"/>
+                    <entry key="title" value="Boards"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="40.0"/>
+                    <entry key="speakable" value="true"/>
+                    <entry key="speakText" value="Boards"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="GREEN"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value="images/app_speak.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="usage.lastUsed" value="1568190754759"/>
+                    <entry key="usage.count" value="18"/>
+                  </map>
+                  <node name="4phrase">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="4 Phrase Board"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="35.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="4 Phrase"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value="images/app_speak.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="usage.lastUsed" value="1568190743997"/>
+                      <entry key="usage.count" value="9"/>
+                    </map>
+                  </node>
+                  <node name="6phrase">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="6 Phrase Board"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="35.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="6 Phrase"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value="images/app_speak.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="usage.lastUsed" value="1567245798414"/>
+                      <entry key="usage.count" value="8"/>
+                    </map>
+                  </node>
+                  <node name="8phrase">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="8 Phrase Board"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="35.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="8 Phrase"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value="images/app_speak.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="usage.lastUsed" value="1567925448287"/>
+                      <entry key="usage.count" value="7"/>
+                    </map>
+                  </node>
+                  <node name="core-36">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="Core 36 Board"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="35.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Universal Core 36 Board"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value="images/app_speak.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="usage.lastUsed" value="1568138727399"/>
+                      <entry key="usage.count" value="18"/>
+                    </map>
+                  </node>
+                  <node name="yes_no">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="2 Phrase Board"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="35.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Yes No"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value="images/app_speak.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="usage.lastUsed" value="1568190702669"/>
+                      <entry key="usage.count" value="9"/>
+                    </map>
+                  </node>
+                  <node name="yes_no_maybe">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="3 Phrase Board"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="35.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Yes No Maybe"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value="images/app_speak.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="usage.lastUsed" value="1568190715471"/>
+                      <entry key="usage.count" value="7"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="no_images-pg">
+                  <map>
+                    <entry key="editable" value="false"/>
+                    <entry key="removable" value="false"/>
+                    <entry key="title" value="..."/>
+                    <entry key="titlePos" value="CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="40.0"/>
+                    <entry key="overrideStyle" value="-fx-background-color:-fx-dark;"/>
+                    <entry key="navigatePostClick" value="false"/>
+                  </map>
+                </node>
+              </node>
+              <node name="default">
+                <map>
+                  <entry key="title" value=""/>
+                  <entry key="titlePos" value="BOTTOM_CENTER"/>
+                  <entry key="overrideStyle" value="-fx-background-color:transparent;"/>
+                  <entry key="showTitle" value="true"/>
+                  <entry key="selectable" value="false"/>
+                  <entry key="rowExpand" value="0"/>
+                  <entry key="columnExpand" value="0"/>
+                  <entry key="disablePrimary" value="true"/>
+                  <entry key="navigatePostClick" value="false"/>
+                  <entry key="textColour" value="DARK"/>
+                  <entry key="fontScale" value="25.0"/>
+                  <entry key="speakable" value="true"/>
+                  <entry key="speakText" value=" "/>
+                  <entry key="backgroundColour" value="GREEN"/>
+                  <entry key="backgroundSize" value="contain"/>
+                  <entry key="backgroundURL" value=""/>
+                </map>
+              </node>
+              <node name="home">
+                <map>
+                  <entry key="navigatePostClick" value="false"/>
+                  <entry key="title" value="Home"/>
+                  <entry key="titlePos" value="BOTTOM_CENTER"/>
+                  <entry key="textColour" value="LIGHT"/>
+                  <entry key="fontScale" value="30.0"/>
+                  <entry key="speakable" value="true"/>
+                  <entry key="speakText" value="Home"/>
+                  <entry key="overrideStyle" value=""/>
+                  <entry key="backgroundColour" value="BLUE"/>
+                  <entry key="backgroundSize" value="contain"/>
+                  <entry key="backgroundURL" value="images/main_home.png"/>
+                  <entry key="showTitle" value="true"/>
+                  <entry key="selectable" value="true"/>
+                  <entry key="disablePrimary" value="false"/>
+                  <entry key="usage.lastUsed" value="1568141828918"/>
+                  <entry key="usage.count" value="12"/>
+                </map>
+              </node>
+              <node name="keyboard">
+                <map>
+                  <entry key="navigatePostClick" value="false"/>
+                  <entry key="title" value="Keyboards"/>
+                  <entry key="titlePos" value="BOTTOM_CENTER"/>
+                  <entry key="textColour" value="LIGHT"/>
+                  <entry key="fontScale" value="40.0"/>
+                  <entry key="speakable" value="true"/>
+                  <entry key="speakText" value="Keyboards"/>
+                  <entry key="overrideStyle" value=""/>
+                  <entry key="backgroundColour" value="GREEN"/>
+                  <entry key="backgroundSize" value="98.79367469879517"/>
+                  <entry key="backgroundURL" value="https://www.iconsdb.com/icons/preview/color/F5F5F5/keyboard-xxl.png"/>
+                  <entry key="showTitle" value="true"/>
+                  <entry key="selectable" value="true"/>
+                  <entry key="disablePrimary" value="false"/>
+                  <entry key="usage.lastUsed" value="1568141515951"/>
+                  <entry key="usage.count" value="9"/>
+                </map>
+                <node name="core-36">
+                  <map/>
+                  <node name="picto">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="usage.lastUsed" value="1568141519153"/>
+                      <entry key="usage.count" value="8"/>
+                      <entry key="title" value="Core 36 Keyboard"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="30.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Core 36 Keyboard&#9;"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="98.79367469879517"/>
+                      <entry key="backgroundURL" value="https://www.iconsdb.com/icons/preview/color/F5F5F5/keyboard-xxl.png"/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                    </map>
+                  </node>
+                </node>
+              </node>
+              <node name="watch tv">
+                <map>
+                  <entry key="navigatePostClick" value="false"/>
+                  <entry key="usage.lastUsed" value="1568141824116"/>
+                  <entry key="usage.count" value="11"/>
+                  <entry key="title" value="Watch TV"/>
+                  <entry key="titlePos" value="BOTTOM_CENTER"/>
+                  <entry key="textColour" value="LIGHT"/>
+                  <entry key="fontScale" value="30.0"/>
+                  <entry key="speakable" value="true"/>
+                  <entry key="speakText" value="Watch TV&#9;"/>
+                  <entry key="overrideStyle" value=""/>
+                  <entry key="backgroundColour" value="PURPLE"/>
+                  <entry key="backgroundSize" value="120.0"/>
+                  <entry key="backgroundURL" value="images/app_tv.png"/>
+                  <entry key="showTitle" value="true"/>
+                  <entry key="selectable" value="true"/>
+                  <entry key="disablePrimary" value="false"/>
+                </map>
+              </node>
+            </node>
+            <node name="picto area">
+              <map/>
+            </node>
+            <node name="picto clear">
+              <map/>
+            </node>
+            <node name="picto speak">
+              <map/>
+            </node>
+            <node name="replace key">
+              <map/>
+            </node>
+            <node name="script">
+              <map/>
+              <node name="-1">
+                <map>
+                  <entry key="speakable" value="false"/>
+                  <entry key="navigateIndex" value="home"/>
+                </map>
+              </node>
+              <node name="a">
+                <map/>
+              </node>
+              <node name="b">
+                <map>
+                  <entry key="usage.lastUsed" value="1567878209339"/>
+                  <entry key="usage.count" value="1"/>
+                </map>
+              </node>
+              <node name="c">
+                <map>
+                  <entry key="usage.lastUsed" value="1567879639157"/>
+                  <entry key="usage.count" value="2"/>
+                </map>
+              </node>
+              <node name="d">
+                <map/>
+              </node>
+              <node name="navigate">
+                <map/>
+                <node name="home">
+                  <map>
+                    <entry key="keyCodeConfig" value="-100"/>
+                    <entry key="speakable" value="true"/>
+                    <entry key="speakText" value="Home"/>
+                    <entry key="typable" value="false"/>
+                    <entry key="title" value="Home"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="40.090090090090094"/>
+                    <entry key="overrideStyle" value="-fx-background-size:contain;"/>
+                    <entry key="backgroundColour" value="BLUE"/>
+                    <entry key="backgroundURL" value="images/main_home.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="navigateIndex" value="home"/>
+                    <entry key="usage.count" value="18"/>
+                    <entry key="usage.lastUsed" value="1567102896175"/>
+                    <entry key="smsEnabled" value="false"/>
+                    <entry key="webhook.key" value=""/>
+                    <entry key="webhook.event.start" value=""/>
+                    <entry key="webhook.event.end" value=""/>
+                    <entry key="backgroundSize" value="contain"/>
+                  </map>
+                </node>
+              </node>
+              <node name="phrase">
+                <map/>
+                <node name="no_images">
+                  <map/>
+                  <node name="I">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="I"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="I"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="all">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="ALL"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="all"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="bye">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="BYE"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="bye"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="RED"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="can">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="CAN"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="can"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1568141582595"/>
+                      <entry key="usage.count" value="1"/>
+                    </map>
+                  </node>
+                  <node name="different">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="DIFFERENT"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="different"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1567457108486"/>
+                      <entry key="usage.count" value="1"/>
+                    </map>
+                  </node>
+                  <node name="do">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="DO"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="do"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1567480109331"/>
+                      <entry key="usage.count" value="21"/>
+                    </map>
+                  </node>
+                  <node name="finished">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="FINISHED"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="finished"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="RED"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1568141601131"/>
+                      <entry key="usage.count" value="2"/>
+                    </map>
+                  </node>
+                  <node name="get">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="GET"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="get"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1567457218212"/>
+                      <entry key="usage.count" value="1"/>
+                    </map>
+                  </node>
+                  <node name="go">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="GO"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="go"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1567456658325"/>
+                      <entry key="usage.count" value="1"/>
+                    </map>
+                  </node>
+                  <node name="good">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="GOOD"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="good"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1568138772063"/>
+                      <entry key="usage.count" value="2"/>
+                    </map>
+                  </node>
+                  <node name="he">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="HE"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="he"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="PURPLE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="hello">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="HELLO"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="hello"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="PURPLE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="help">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="HELP"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="help"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1568141586178"/>
+                      <entry key="usage.count" value="19"/>
+                    </map>
+                  </node>
+                  <node name="here">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="HERE"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="here"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="i">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="I"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="i"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="PURPLE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1568141525269"/>
+                      <entry key="usage.count" value="6"/>
+                    </map>
+                  </node>
+                  <node name="in">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="IN"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="in"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="BLUE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="it">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="IT"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="it"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="PURPLE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="like">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="LIKE"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="like"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1567457607990"/>
+                      <entry key="usage.count" value="6"/>
+                    </map>
+                  </node>
+                  <node name="look">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="LOOK"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="look"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="make">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="MAKE"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="make"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1567479744332"/>
+                      <entry key="usage.count" value="6"/>
+                    </map>
+                  </node>
+                  <node name="maybe">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="MAYBE"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="maybe&#9;"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="ORANGE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="more">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="MORE"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="more"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1567479162615"/>
+                      <entry key="usage.count" value="1"/>
+                    </map>
+                  </node>
+                  <node name="no">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="NO"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="no"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="RED"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="not">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="NOT"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="not"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="RED"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="ok">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="OK&#9;"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="okay"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="PURPLE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="on">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="ON"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="on"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="BLUE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="open">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="OPEN"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="open"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="please">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="PLEASE"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="please"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="put">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="PUT"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="put"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="same">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="SAME"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="same"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="she">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="SHE"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="she"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="PURPLE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="some">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="SOME"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="some"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="stop">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="STOP"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="stop"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="RED"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="thank you">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="THANK YOU"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="Thank you"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="ORANGE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="that">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="THAT"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="that"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="PURPLE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1568141532460"/>
+                      <entry key="usage.count" value="6"/>
+                    </map>
+                  </node>
+                  <node name="turn">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="TURN"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="turn"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="up">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="UP"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="up"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="BLUE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1567480353463"/>
+                      <entry key="usage.count" value="12"/>
+                    </map>
+                  </node>
+                  <node name="want">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="WANT"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="want"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1568141528538"/>
+                      <entry key="usage.count" value="4"/>
+                    </map>
+                  </node>
+                  <node name="what">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="WHAT"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="what"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="ORANGE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="when">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="WHEN"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="when"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="ORANGE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="where">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="WHERE"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="where"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="ORANGE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="who">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="WHO"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="who"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="ORANGE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="why">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="WHY"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="why"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="ORANGE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1568138764743"/>
+                      <entry key="usage.count" value="11"/>
+                    </map>
+                  </node>
+                  <node name="yes">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="YES"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="yes"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="GREEN"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1568141498691"/>
+                      <entry key="usage.count" value="1"/>
+                    </map>
+                  </node>
+                  <node name="you">
+                    <map>
+                      <entry key="keyCodeConfig" value="-100"/>
+                      <entry key="typable" value="true"/>
+                      <entry key="smsEnabled" value="false"/>
+                      <entry key="webhook.key" value=""/>
+                      <entry key="webhook.event.start" value=""/>
+                      <entry key="webhook.event.end" value=""/>
+                      <entry key="title" value="YOU"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="40.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="speakText" value="you"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="PURPLE"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="navigateIndex" value=""/>
+                      <entry key="usage.lastUsed" value="1568141563633"/>
+                      <entry key="usage.count" value="1"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="stop">
+                  <map>
+                    <entry key="title" value="STOP"/>
+                    <entry key="titlePos" value="CENTER"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="overrideStyle" value="-fx-background-color:-fx-red;&#10;-fx-text-fill:-fx-light;&#10;-fx-font-size:72pt;"/>
+                    <entry key="keyCodeConfig" value="-100"/>
+                    <entry key="rowExpand" value="0"/>
+                    <entry key="columnExpand" value="0"/>
+                    <entry key="speakable" value="true"/>
+                    <entry key="typable" value="false"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="textColour" value="DARK"/>
+                    <entry key="fontScale" value="50.28892455858748"/>
+                    <entry key="backgroundColour" value="LIGHT"/>
+                    <entry key="backgroundURL" value=""/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="navigateIndex" value=""/>
+                    <entry key="usage.count" value="1"/>
+                  </map>
+                </node>
+              </node>
+              <node name="toolbar">
+                <map/>
+                <node name="home">
+                  <map>
+                    <entry key="editable" value="false"/>
+                    <entry key="navigateIndex" value="home"/>
+                    <entry key="backgroundColour" value="DARK"/>
+                    <entry key="backgroundURL" value="/images/home_small.png"/>
+                    <entry key="overrideStyle" value="-fx-background-size:20 20;-fx-background-position: center;-fx-background-repeat:no-repeat;"/>
+                    <entry key="usage.lastUsed" value="1568190758965"/>
+                    <entry key="usage.count" value="109"/>
+                  </map>
+                </node>
+              </node>
+              <node name="watch tv">
+                <map/>
+                <node name="channel down">
+                  <map>
+                    <entry key="keyCodeConfig" value="-100"/>
+                    <entry key="typable" value="false"/>
+                    <entry key="smsEnabled" value="false"/>
+                    <entry key="webhook.key" value="dOqKgMizDNXLj8dKIEy4oH"/>
+                    <entry key="webhook.event.start" value="test"/>
+                    <entry key="webhook.event.end" value="test"/>
+                    <entry key="title" value="Channel Down"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="25.0"/>
+                    <entry key="speakable" value="false"/>
+                    <entry key="speakText" value="Channel Down"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="PURPLE"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value="images/down.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="navigateIndex" value=""/>
+                  </map>
+                </node>
+                <node name="channel up">
+                  <map>
+                    <entry key="keyCodeConfig" value="-100"/>
+                    <entry key="typable" value="false"/>
+                    <entry key="smsEnabled" value="false"/>
+                    <entry key="webhook.key" value="dOqKgMizDNXLj8dKIEy4oH"/>
+                    <entry key="webhook.event.start" value="test"/>
+                    <entry key="webhook.event.end" value="test"/>
+                    <entry key="title" value="Channel Up"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="25.0"/>
+                    <entry key="speakable" value="false"/>
+                    <entry key="speakText" value="Channel Up"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="PURPLE"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value="images/up.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="navigateIndex" value=""/>
+                  </map>
+                </node>
+                <node name="toggle power">
+                  <map>
+                    <entry key="keyCodeConfig" value="-100"/>
+                    <entry key="typable" value="false"/>
+                    <entry key="smsEnabled" value="false"/>
+                    <entry key="webhook.key" value="dOqKgMizDNXLj8dKIEy4oH"/>
+                    <entry key="webhook.event.start" value="test"/>
+                    <entry key="webhook.event.end" value="test"/>
+                    <entry key="title" value="Power"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="25.0"/>
+                    <entry key="speakable" value="true"/>
+                    <entry key="speakText" value="Power"/>
+                    <entry key="overrideStyle" value="-fx-background-size:160"/>
+                    <entry key="backgroundColour" value="RED"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value="images/power.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="navigateIndex" value=""/>
+                  </map>
+                </node>
+                <node name="volume down">
+                  <map>
+                    <entry key="keyCodeConfig" value="-100"/>
+                    <entry key="typable" value="false"/>
+                    <entry key="smsEnabled" value="false"/>
+                    <entry key="webhook.key" value="dOqKgMizDNXLj8dKIEy4oH"/>
+                    <entry key="webhook.event.start" value="test"/>
+                    <entry key="webhook.event.end" value="test"/>
+                    <entry key="title" value="Volume Down"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="25.0"/>
+                    <entry key="speakable" value="false"/>
+                    <entry key="speakText" value="Volume Down"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="ORANGE"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value="images/music_volume_down.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="navigateIndex" value=""/>
+                    <entry key="text.to" value=""/>
+                  </map>
+                </node>
+                <node name="volume up">
+                  <map>
+                    <entry key="keyCodeConfig" value="-100"/>
+                    <entry key="typable" value="false"/>
+                    <entry key="smsEnabled" value="false"/>
+                    <entry key="webhook.key" value="dOqKgMizDNXLj8dKIEy4oH"/>
+                    <entry key="webhook.event.start" value="test"/>
+                    <entry key="webhook.event.end" value="test"/>
+                    <entry key="title" value="Volume Up"/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="LIGHT"/>
+                    <entry key="fontScale" value="25.0"/>
+                    <entry key="speakable" value="false"/>
+                    <entry key="speakText" value="Volume Up"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="ORANGE"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value="images/music_volume_up.png"/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="navigateIndex" value=""/>
+                    <entry key="text.to" value=""/>
+                  </map>
+                </node>
+              </node>
+            </node>
+            <node name="settings">
+              <map>
+                <entry key="speakText" value="Launch Settings"/>
+                <entry key="editable" value="false"/>
+              </map>
+            </node>
+            <node name="social">
+              <map/>
+              <node name="twilio">
+                <map/>
+                <node name="subgrid">
+                  <map/>
+                </node>
+                <node name="twilio history">
+                  <map/>
+                  <node name="contact_1">
+                    <map/>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node name="stats">
+              <map>
+                <entry key="editable" value="false"/>
+                <entry key="navigatePostClick" value="false"/>
+              </map>
+            </node>
+            <node name="subgrid">
+              <map/>
+              <node name="app">
+                <map/>
+                <node name="music">
+                  <map>
+                    <entry key="order" value="SubGrid=app/music/back,SubGrid=app/music/info,SubGrid=app/music/forward,"/>
+                    <entry key="fillMethod" value="COLUMN_WISE"/>
+                    <entry key="overrideRow" value="1.0"/>
+                    <entry key="overrideColumn" value="3.0"/>
+                    <entry key="maxDifficulty" value="10.0"/>
+                    <entry key="gap" value="5.0"/>
+                    <entry key="vGap" value="5.0"/>
+                    <entry key="overrideStyle" value=""/>
+                  </map>
+                  <node name="back">
+                    <map>
+                      <entry key="order" value="Music Control=previous,Volume=down,Volume=mute,Script=phrase/stop,"/>
+                      <entry key="overrideRow" value="0.0"/>
+                      <entry key="minDifficulty" value="1.0"/>
+                      <entry key="overrideColumn" value="1.0"/>
+                      <entry key="disablePrimary" value="false"/>
+                    </map>
+                  </node>
+                  <node name="flipper">
+                    <map>
+                      <entry key="order" value="Music Info=default,"/>
+                    </map>
+                  </node>
+                  <node name="forward">
+                    <map>
+                      <entry key="order" value="Music Control=next,Volume=up,Music Control=stop,Screen=home,"/>
+                      <entry key="minDifficulty" value="1.0"/>
+                      <entry key="overrideColumn" value="1.0"/>
+                      <entry key="disablePrimary" value="false"/>
+                    </map>
+                  </node>
+                  <node name="full">
+                    <map>
+                      <entry key="order" value="SubGrid=app/music/back,SubGrid=app/music/info,SubGrid=app/music/forward,"/>
+                    </map>
+                  </node>
+                  <node name="info">
+                    <map>
+                      <entry key="order" value="Music Info=default,"/>
+                      <entry key="minDifficulty" value="1.0"/>
+                      <entry key="overrideColumn" value="1.0"/>
+                      <entry key="overrideRow" value="3.0"/>
+                      <entry key="disablePrimary" value="false"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="pageflip">
+                  <map>
+                    <entry key="order" value="Screen=home,Screen=app/pageflip/series_1,Replace Key=default,Replace Key=default,Replace Key=default,Replace Key=default,"/>
+                  </map>
+                  <node name="series_1">
+                    <map>
+                      <entry key="order" value="PageFlip Control=previous,None=default,None=default,PageFlip Control=next,"/>
+                      <entry key="overrideRow" value="1.0"/>
+                      <entry key="overrideColumn" value="4.0"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="photos">
+                  <map>
+                    <entry key="order" value="Screen=home,Screen=app/photos/folder_1,Replace Key=default,Replace Key=default,Replace Key=default,Replace Key=default,"/>
+                  </map>
+                  <node name="folder_1">
+                    <map>
+                      <entry key="order" value="Photo Control=previous_1,None=default,None=default,Photo Control=next_1,"/>
+                      <entry key="overrideRow" value="1.0"/>
+                      <entry key="overrideColumn" value="4.0"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="reddit">
+                  <map>
+                    <entry key="order" value="Screen=home,Screen=app/reddit/subreddit_1,Replace Key=default,Replace Key=default,Replace Key=default,Replace Key=default,"/>
+                  </map>
+                  <node name="subreddit_1">
+                    <map>
+                      <entry key="order" value="Reddit Control=previous_1,None=default,None=default,Reddit Control=next_1,"/>
+                      <entry key="overrideRow" value="1.0"/>
+                      <entry key="overrideColumn" value="4.0"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="sms">
+                  <map>
+                    <entry key="order" value="Screen=home,Screen=app/sms/contact_1,Replace Key=default,Replace Key=default,Replace Key=default,Replace Key=default,"/>
+                  </map>
+                  <node name="contact_1">
+                    <map>
+                      <entry key="order" value="Twilio History=contact_1,None=default,SubGrid=app/sms/contact_1/toolbar,"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="videos">
+                  <map>
+                    <entry key="order" value="Screen=home,Screen=app/videos/folder_1,Replace Key=default,Replace Key=default,Replace Key=default,Replace Key=default,"/>
+                  </map>
+                  <node name="folder_1">
+                    <map/>
+                  </node>
+                </node>
+                <node name="youtube">
+                  <map>
+                    <entry key="order" value="Screen=home,Screen=app/youtube/playlist_1,Replace Key=default,Replace Key=default,Replace Key=default,Replace Key=default,"/>
+                  </map>
+                  <node name="playlist_1">
+                    <map>
+                      <entry key="order" value="YouTube Control=previous_1,None=default,None=default,YouTube Control=next_1,"/>
+                      <entry key="overrideRow" value="1.0"/>
+                      <entry key="overrideColumn" value="4.0"/>
+                      <entry key="gap" value="5.0"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="vGap" value="5.0"/>
+                      <entry key="fillMethod" value="ROW_WISE"/>
+                    </map>
+                  </node>
+                </node>
+              </node>
+              <node name="board">
+                <map/>
+                <node name="no_images">
+                  <map>
+                    <entry key="order" value="Screen=home,Screen=board/no_images/yes_no,Screen=board/no_images/yes_no_maybe,Screen=board/no_images/4Phrase,Screen=board/no_images/6Phrase,Screen=board/no_images/8Phrase,Screen=board/no_images/core-36,Replace Key=default,"/>
+                    <entry key="gap" value="40.0"/>
+                    <entry key="vGap" value="40.0"/>
+                    <entry key="maxDifficulty" value="10.0"/>
+                    <entry key="minDifficulty" value="0.0"/>
+                  </map>
+                  <node name="4phrase">
+                    <map>
+                      <entry key="order" value="Script=phrase/no_images/yes,Script=phrase/no_images/maybe,Script=phrase/no_images/no,Script=phrase/no_images/ok,"/>
+                      <entry key="gap" value="60.0"/>
+                      <entry key="vGap" value="60.0"/>
+                      <entry key="minDifficulty" value="2.0"/>
+                      <entry key="maxDifficulty" value="4.0"/>
+                    </map>
+                  </node>
+                  <node name="6phrase">
+                    <map>
+                      <entry key="order" value="Script=phrase/no_images/yes,Script=phrase/no_images/no,Script=phrase/no_images/maybe,Script=phrase/no_images/ok,Script=phrase/no_images/please,Script=phrase/no_images/thank you,"/>
+                      <entry key="gap" value="60.0"/>
+                      <entry key="vGap" value="60.0"/>
+                      <entry key="minDifficulty" value="2.5"/>
+                      <entry key="maxDifficulty" value="4.0"/>
+                    </map>
+                  </node>
+                  <node name="8phrase">
+                    <map>
+                      <entry key="order" value="Script=phrase/no_images/yes,Script=phrase/no_images/no,Script=phrase/no_images/maybe,Script=phrase/no_images/ok,Script=phrase/no_images/please,Script=phrase/no_images/thank you,Script=phrase/no_images/hello,Script=phrase/no_images/bye,Screen=home,"/>
+                      <entry key="gap" value="60.0"/>
+                      <entry key="vGap" value="60.0"/>
+                      <entry key="minDifficulty" value="3.0"/>
+                      <entry key="maxDifficulty" value="6.0"/>
+                    </map>
+                  </node>
+                  <node name="core-36">
+                    <map>
+                      <entry key="order" value="Script=phrase/no_images/like,Script=phrase/no_images/want,Script=phrase/no_images/get,Script=phrase/no_images/make,Script=phrase/no_images/good,Script=phrase/no_images/more,Script=phrase/no_images/not,Script=phrase/no_images/go,Script=phrase/no_images/look,Script=phrase/no_images/turn,Script=phrase/no_images/help,Script=phrase/no_images/different,Script=phrase/no_images/I,Script=phrase/no_images/he,Script=phrase/no_images/open,Script=phrase/no_images/do,Script=phrase/no_images/put,Script=phrase/no_images/same,Script=phrase/no_images/you,Script=phrase/no_images/she,Script=phrase/no_images/that,Script=phrase/no_images/up,Script=phrase/no_images/all,Script=phrase/no_images/some,Script=phrase/no_images/it,Script=phrase/no_images/here,Script=phrase/no_images/in,Script=phrase/no_images/on,Script=phrase/no_images/can,Script=phrase/no_images/finished,Script=phrase/no_images/where,Script=phrase/no_images/what,Script=phrase/no_images/why,Script=phrase/no_images/who,Script=phrase/no_images/when,Screen=home,"/>
+                      <entry key="gap" value="8.396124865446716"/>
+                      <entry key="vGap" value="7.965554359526372"/>
+                      <entry key="minDifficulty" value="3.0"/>
+                      <entry key="maxDifficulty" value="6.5"/>
+                      <entry key="description" value="Project Core&#10;http://www.project-core.com/about-project-core/"/>
+                      <entry key="fillMethod" value="ROW_WISE"/>
+                      <entry key="enablePagination" value="false"/>
+                      <entry key="overrideRow" value="6.0"/>
+                      <entry key="overrideColumn" value="6.0"/>
+                    </map>
+                  </node>
+                  <node name="yes_no">
+                    <map>
+                      <entry key="order" value="Script=phrase/no_images/yes,Script=phrase/no_images/no,"/>
+                      <entry key="gap" value="60.0"/>
+                      <entry key="vGap" value="60.0"/>
+                      <entry key="minDifficulty" value="1.5"/>
+                      <entry key="maxDifficulty" value="3.0"/>
+                      <entry key="description" value="Simple Yes/No Board"/>
+                    </map>
+                  </node>
+                  <node name="yes_no_maybe">
+                    <map>
+                      <entry key="order" value="Script=phrase/no_images/yes,Script=phrase/no_images/no,Script=phrase/no_images/maybe,Screen=home,"/>
+                      <entry key="gap" value="60.0"/>
+                      <entry key="vGap" value="60.0"/>
+                      <entry key="minDifficulty" value="2.0"/>
+                      <entry key="maxDifficulty" value="3.0"/>
+                      <entry key="description" value="Simple Yes/No/Maybe Board"/>
+                    </map>
+                  </node>
+                </node>
+                <node name="no_images-pg">
+                  <map>
+                    <entry key="order" value="Screen=board/no_images,Screen=board/no_images/6Phrase,Screen=board/no_images/8Phrase,Screen=board/no_images/core-36,Screen=home,Replace Key=default,Replace Key=default,"/>
+                  </map>
+                </node>
+              </node>
+              <node name="controls">
+                <map/>
+                <node name="picto">
+                  <map>
+                    <entry key="order" value="Picto Speak=default,Picto Area=default,Replace Key=default,"/>
+                    <entry key="overrideRow" value="1.0"/>
+                    <entry key="overrideColumn" value="0.0"/>
+                    <entry key="minDifficulty" value="6.0"/>
+                    <entry key="gap" value="3.8751345532831003"/>
+                    <entry key="vGap" value="4.090419806243272"/>
+                  </map>
+                </node>
+              </node>
+              <node name="default">
+                <map>
+                  <entry key="overrideRow" value="1.0"/>
+                  <entry key="overrideColumn" value="2.0"/>
+                  <entry key="order" value="Script=phrase/no_images/finished,"/>
+                </map>
+              </node>
+              <node name="home">
+                <map>
+                  <entry key="order" value="Screen=board/no_images,Screen=keyboard,Screen=app/music,Screen=app/youtube,Screen=app/photos,Screen=app/videos,Screen=app/reddit,Screen=app/pageflip,Screen=watch tv,Screen=app/sms,"/>
+                  <entry key="gap" value="40.0"/>
+                  <entry key="vGap" value="40.0"/>
+                  <entry key="minDifficulty" value="0.0"/>
+                  <entry key="maxDifficulty" value="10.0"/>
+                  <entry key="description" value=""/>
+                  <entry key="fillMethod" value="COLUMN_WISE"/>
+                  <entry key="overrideRow" value="0.0"/>
+                  <entry key="overrideColumn" value="0.0"/>
+                  <entry key="enablePagination" value="false"/>
+                </map>
+              </node>
+              <node name="home-pg">
+                <map>
+                  <entry key="order" value="Screen=home,Replace Key=default,Screen=app/music,Screen=app/youtube,Replace Key=default,Replace Key=default,Replace Key=default,"/>
+                </map>
+              </node>
+              <node name="keyboard">
+                <map>
+                  <entry key="order" value="Screen=keyboard/core-36/picto,Replace Key=default,Replace Key=default,Replace Key=default,Screen=home,"/>
+                  <entry key="minDifficulty" value="5.0"/>
+                </map>
+                <node name="core-36">
+                  <map/>
+                  <node name="picto">
+                    <map>
+                      <entry key="order" value="SubGrid=controls/picto,SubGrid=board/no_images/core-36,"/>
+                      <entry key="overrideRow" value="10.0"/>
+                      <entry key="minDifficulty" value="6.0"/>
+                      <entry key="overrideColumn" value="1.0"/>
+                    </map>
+                  </node>
+                </node>
+              </node>
+              <node name="watch tv">
+                <map>
+                  <entry key="order" value="Screen=home,Script=Watch TV/Toggle Power,Script=Watch TV/Channel Up,Script=Watch TV/Channel Down,Script=Watch TV/Volume Up,Script=Watch TV/Volume Down,"/>
+                  <entry key="gap" value="59.84930032292788"/>
+                  <entry key="vGap" value="60.06458557588805"/>
+                  <entry key="fillMethod" value="COLUMN_WISE"/>
+                  <entry key="maxDifficulty" value="10.0"/>
+                  <entry key="overrideStyle" value=""/>
+                  <entry key="overrideRow" value="2.0"/>
+                  <entry key="minDifficulty" value="0.0"/>
+                  <entry key="overrideColumn" value="3.0"/>
+                </map>
+              </node>
+            </node>
+            <node name="type">
+              <map/>
+              <node name="picto">
+                <map/>
+                <node name="picto area">
+                  <map>
+                    <entry key="speakable" value="false"/>
+                    <entry key="autoClear" value="false"/>
+                    <entry key="title" value=""/>
+                    <entry key="titlePos" value="BOTTOM_CENTER"/>
+                    <entry key="textColour" value="DARK"/>
+                    <entry key="fontScale" value="25.0"/>
+                    <entry key="speakText" value=" "/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="backgroundColour" value="LIGHT"/>
+                    <entry key="backgroundSize" value="contain"/>
+                    <entry key="backgroundURL" value=""/>
+                    <entry key="showTitle" value="true"/>
+                    <entry key="selectable" value="true"/>
+                    <entry key="disablePrimary" value="false"/>
+                    <entry key="navigateIndex" value=""/>
+                    <entry key="rowExpand" value="0"/>
+                    <entry key="columnExpand" value="2"/>
+                    <entry key="text" value=""/>
+                  </map>
+                </node>
+                <node name="picto backspace">
+                  <map/>
+                  <node name="default">
+                    <map/>
+                  </node>
+                </node>
+                <node name="picto clear">
+                  <map/>
+                  <node name="default">
+                    <map/>
+                  </node>
+                </node>
+                <node name="picto speak">
+                  <map/>
+                  <node name="default">
+                    <map/>
+                  </node>
+                </node>
+                <node name="subgrid">
+                  <map/>
+                </node>
+              </node>
+            </node>
+            <node name="update">
+              <map>
+                <entry key="speakText" value="Updating SYMPLE.The program will download and automatically install the new version."/>
+                <entry key="editable" value="false"/>
+              </map>
+            </node>
+            <node name="volume">
+              <map/>
+              <node name="down">
+                <map>
+                  <entry key="volumeControl" value="DOWN"/>
+                  <entry key="titlePos" value="BOTTOM_CENTER"/>
+                  <entry key="overrideStyle" value=""/>
+                  <entry key="showTitle" value="true"/>
+                  <entry key="rowExpand" value="0"/>
+                  <entry key="columnExpand" value="0"/>
+                  <entry key="disablePrimary" value="false"/>
+                </map>
+              </node>
+              <node name="mute">
+                <map>
+                  <entry key="volumeControl" value="MUTE"/>
+                  <entry key="titlePos" value="BOTTOM_CENTER"/>
+                  <entry key="overrideStyle" value=""/>
+                  <entry key="showTitle" value="true"/>
+                  <entry key="rowExpand" value="0"/>
+                  <entry key="columnExpand" value="0"/>
+                  <entry key="disablePrimary" value="false"/>
+                </map>
+              </node>
+              <node name="up">
+                <map>
+                  <entry key="disablePrimary" value="false"/>
+                </map>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node name="device">
+          <map/>
+          <node name="hardware">
+            <map/>
+            <node name="eyetracker">
+              <map>
+                <entry key="selectability.dwell.sensitivity" value="100"/>
+                <entry key="selectability.click.event" value="On Pressed"/>
+                <entry key="selectability.postSelectionTime" value="2.5"/>
+                <entry key="processability.read.rate" value="0.0175"/>
+                <entry key="movability.smoothingFactor" value="0.0022"/>
+                <entry key="movability.sampleSize" value="15"/>
+              </map>
+            </node>
+            <node name="generic">
+              <map>
+                <entry key="selectability.dwell.sensitivity" value="100"/>
+                <entry key="selectability.click.event" value="On Pressed"/>
+              </map>
+            </node>
+            <node name="swifty">
+              <map/>
+            </node>
+          </node>
+        </node>
+        <node name="selection">
+          <map/>
+          <node name="selector">
+            <map/>
+          </node>
+          <node name="subgrid">
+            <map/>
+          </node>
+        </node>
+      </node>
+    </node>
+  </root>
+</preferences>

@@ -7,8 +7,10 @@ package org.symfound.selection;
 
 import java.util.prefs.Preferences;
 import javafx.beans.binding.Bindings;
+import javafx.beans.binding.StringExpression;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.scene.Parent;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
@@ -66,15 +68,18 @@ public abstract class Selector {
      */
     public void configure() {
         startStop();
-
-        //TO DO: Bug - Runs too many times. Could be a problem.
-        Bindings.concat(getUser().getInteraction().assistedModeProperty().asString(),
+        final ChangeListener<String> startStopListener = (observable, oldValue, newValue) -> {
+            startStop();
+            
+        };
+        final StringExpression concatenatedBindings = Bindings.concat(
+                getUser().getInteraction().assistedModeProperty().asString(),
                 getUser().getInteraction().selectionMethodProperty().asString(),
                 gridToScour.selectionMethodProperty().asString(),
                 editModeProperty().asString(),
-                gridToScour.indexProperty()).addListener((observable, oldValue, newValue) -> {
-            startStop();
-        });
+                gridToScour.indexProperty());
+
+        concatenatedBindings.addListener(startStopListener);
     }
 
     /**
@@ -149,12 +154,9 @@ public abstract class Selector {
             selectorButton = new AppableControl("selector", "", "", "") {
                 @Override
                 public void run() {
-                    System.out.println("1111111111111");
                     if (!inProcess()) {
-                        System.out.println("2222222222222222");
                         start();
                     } else {
-                        System.out.println("33333333333333333");
                         onSelected();
                     }
                 }

@@ -11,7 +11,9 @@ import java.util.TreeSet;
 import java.util.prefs.Preferences;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -59,8 +61,6 @@ public final class TwilioHistory extends AppableControl {
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
-    private static final boolean BACKUP_ON_EXIT = Boolean.TRUE;
-
     /**
      *
      */
@@ -76,9 +76,8 @@ public final class TwilioHistory extends AppableControl {
         initialize();
     }
 
+    public Integer totalMessages = 0;
     TwilioHistoryGrid smsHistoryGrid;
-    private static int test = 0;
-    private LoopedEvent refreshEvent;
 
     private void initialize() {
         setDisabled(true);
@@ -106,10 +105,13 @@ public final class TwilioHistory extends AppableControl {
 
     }
 
+    private LoopedEvent refreshEvent;
+
     public LoopedEvent buildRefreshEvent(Double rate) {
         LoopedEvent loopedEvent = new LoopedEvent();
         loopedEvent.setup(rate, (ActionEvent) -> {
             if (getParent() == null) {
+                // TO DO: Implement new Messages;
                 loopedEvent.end();
             } else {
                 reloadHistoryGrid();
@@ -125,6 +127,7 @@ public final class TwilioHistory extends AppableControl {
 
         List<Message> smsHistory = retrieveMessages();
         final int numOfMessages = smsHistory.size();
+        totalMessages = numOfMessages;
 
         VBox vBox = new VBox();
         vBox.setSpacing(20.0);
@@ -391,9 +394,40 @@ public final class TwilioHistory extends AppableControl {
      */
     public DoubleProperty refreshRateProperty() {
         if (refreshRate == null) {
-            refreshRate = new SimpleDoubleProperty(Double.valueOf(getPreferences().get("refreshRate", "5")));
+            refreshRate = new SimpleDoubleProperty(Double.valueOf(getPreferences().get("refreshRate", "5.0")));
         }
         return refreshRate;
+    }
+    private IntegerProperty newMessages;
+
+    /**
+     *
+     * @param value
+     */
+    public void setNewMessages(Integer value) {
+        newMessagesProperty().setValue(value);
+        getPreferences().put("newMessages", value.toString());
+        LOGGER.info("newMessages set to: " + value);
+
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Integer getNewMessages() {
+        return newMessagesProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public IntegerProperty newMessagesProperty() {
+        if (newMessages == null) {
+            newMessages = new SimpleIntegerProperty(Integer.valueOf(getPreferences().get("newMessages", "0")));
+        }
+        return newMessages;
     }
 
     @Override
