@@ -88,7 +88,7 @@ public class Scourer {
                 GridPane.setColumnSpan(control, columnSpan);
                 GridPane.setRowIndex(control, rowIndex);
                 GridPane.setRowSpan(control, rowSpan);
-                control.getFontTracker().fontTracking.setValue(Font.font("Roboto", control.getFontWeight(), null, 0.0));
+                control.getFontTracker().fontTracking.setValue(Font.font("Roboto",0.0));
                 if (!gridToScour.getChildren().contains(control)) {
                     gridToScour.add(control, columnIndex, rowIndex, columnSpan, rowSpan);
                 }

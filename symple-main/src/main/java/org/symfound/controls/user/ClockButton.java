@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.text.FontWeight;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
@@ -89,7 +90,7 @@ public class ClockButton extends AppableControl {
         dateFormatProperty().addListener((observable, oldValue, newValue) -> {
             date.setFormat(newValue);
         });
-        configureStyle();
+        configureStyle("Roboto", FontWeight.NORMAL);
     }
 
     @Override

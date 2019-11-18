@@ -13,6 +13,7 @@ import java.util.prefs.Preferences;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
+import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
@@ -178,10 +179,11 @@ public class ReplaceKeyButton extends SystemControl {
                 
                 orderSettings.add(buttonTypeRow);
                 orderSettings.add(buttonTitleRow);
-                Tab orderTab = buildTab("ADD", orderSettings);
+                Tab orderTab = buildTab("Details", orderSettings);
                 
                 TabPane tabPane = new TabPane();
-                tabPane.setPadding(new Insets(5));
+                tabPane.setPadding(new Insets(0,0,5,5));
+                tabPane.setSide(Side.LEFT);
                 tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
                 
                 tabPane.getTabs().add(orderTab);

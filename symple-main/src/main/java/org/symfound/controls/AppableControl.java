@@ -35,6 +35,7 @@ import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Side;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -60,6 +61,7 @@ import static org.symfound.controls.ScreenControl.CSS_PATH;
 import org.symfound.controls.system.EditAppButton;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
+import org.symfound.controls.system.TabTitle;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.system.dialog.FixableErrorDialog;
@@ -95,6 +97,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
     public String defaultTitle = "";
     private String initKey = "";
+    public String fontFamily = "Roboto";
 
     /**
      *
@@ -318,12 +321,9 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         });
     }
 
-    /**
-     *
-     */
-    public void configureStyle() {
+    public void configureStyle(String fontFamily, FontWeight fw) {
 
-        configureFont();
+        configureFont(fontFamily, fw);
 
         final StringExpression concat = Bindings.concat("-fx-background-color:-fx-", backgroundColourProperty().asString(), "; \n",
                 "-fx-text-fill:-fx-", textColourProperty().asString(), "; \n",
@@ -333,8 +333,11 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 + "-fx-wrap-text:", wrapTextProperty().asString(), ";\n"
                 + "-fx-background-size:", backgroundSizeProperty(), "; \n",
                 overrideStyleProperty());
+
         setConcatStyle(concat.getValue());
+        System.out.println(getConcatStyle());
         concatStyleProperty().bind(concat);
+
         getPrimaryControl().setStyle(getConcatStyle());
         concatStyleProperty().addListener((obversable1, oldValue1, newValue1) -> {
             LOGGER.info("Setting style for " + getKey() + "/" + getIndex() + " to " + newValue1);
@@ -345,48 +348,37 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
     }
 
-    private FontTracker fontTracker;
-
-    public FontTracker getFontTracker() {
-        if (fontTracker == null) {
-            fontTracker = new FontTracker();
-        }
-        return fontTracker;
-    }
     private final ObjectProperty<Font> fontTracking2 = new SimpleObjectProperty<>();
 
-    /**
-     *
-     */
-    public void configureFont() {
-
+    public void configureFont(String fontFamily, FontWeight fw) {
+        resetFont(fontFamily, fw);
         HomeController.getGrid().getConfigurableGrid().statusProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.equals(ScreenStatus.PLAYING)) {
-                resetFont();
+                resetFont(fontFamily, fw);
                 //setFont();
                 final AnimatedButton primaryControl = getPrimaryControl();
                 primaryControl.widthProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) -> {
-                    resetFont();
-                    setFont();
+                    resetFont(fontFamily, fw);
+                    setFont(fontFamily, fw);
+
                 });
                 primaryControl.setFont(getFontTracker().fontTracking.getValue());
+
                 primaryControl.fontProperty().bind(getFontTracker().fontTracking);
             }
         });
-
     }
 
-    public void resetFont() {
-        getFontTracker().fontTracking.setValue(buildFont(0.0));
-
+    public void resetFont(String fontFamily, FontWeight fw) {
+        getFontTracker().fontTracking.setValue(buildFont(fontFamily, fw, 0.0));
     }
 
-    private void setFont() {
-        getFontTracker().fontTracking.setValue(buildFont(getFontSize()));
+    private void setFont(String fontFamily, FontWeight fw) {
+        getFontTracker().fontTracking.setValue(buildFont(fontFamily, fw, getFontSize()));
     }
 
-    private Font buildFont(Double fontSize) {
-        return Font.font("Roboto", getFontWeight(), null, fontSize);
+    private Font buildFont(String fontFamily, FontWeight fw, Double fontSize) {
+        return Font.font(fontFamily, fw, fontSize);
     }
 
     private double getFontSize() {
@@ -843,11 +835,11 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
         actionSettings.add(rowExpandRow);
         actionSettings.add(columnExpandRow);
-        Tab actionTab = buildTab("ACTION", actionSettings);
+        Tab actionTab = buildTab("Action", actionSettings);
 
         selectionSettings.add(selectableRow);
         selectionSettings.add(primaryDisabledRow);
-        Tab selectionTab = buildTab("SELECTION", selectionSettings);
+        Tab selectionTab = buildTab("Selection", selectionSettings);
 
         textSettings.add(showTitleRow);
         textSettings.add(speakableRow);
@@ -855,17 +847,17 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         textSettings.add(fontScaleRow);
         textSettings.add(textAlignmentRow);
         textSettings.add(wrapTextRow);
-        Tab textTab = buildTab("TEXT", textSettings);
+        Tab textTab = buildTab("Text", textSettings);
 
         backgroundSettings.add(backgroundColourRow);
         backgroundSettings.add(backgroundSizeRow);
         backgroundSettings.add(backgroundURLRow);
         backgroundSettings.add(overrideStyleRow);
-        Tab backgroundTab = buildTab("BACKGROUND", backgroundSettings);
+        Tab backgroundTab = buildTab("Background", backgroundSettings);
 
         usageSettings.add(totalUsageRow);
         usageSettings.add(lastUsedRow);
-        Tab usageTab = buildTab("STATS", usageSettings);
+        Tab usageTab = buildTab("Stats", usageSettings);
 
         tabs.add(actionTab);
         tabs.add(textTab);
@@ -899,7 +891,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     public Tab buildTab(String title, List<SettingsRow> rows) {
         BuildableGrid grid = EditDialog.buildSettingsGrid(rows);
         ScrollPane scrollPane = buildScrollPane(grid);
-        Tab tab = new Tab(title, scrollPane);
+        Tab tab = new Tab("", scrollPane);
+        tab.setGraphic(new TabTitle(title));
         //     tab.setContent(scrollPane);
         return tab;
     }
@@ -945,10 +938,10 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                     baseGrid.add(animatedButton, 0, 1);
 
                     //animatedButton.fontProperty().bind(fontTracking2);
-                    fontTracking2.setValue(Font.font("Roboto", getFontWeight(), null, getFontScale()));
+                    fontTracking2.setValue(Font.font("Roboto", getFontScale()));
                     fontScaleSlider.valueProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) -> {
                         final double name = (3 * AppableControl.this.getPrimaryControl().getWidth() + AppableControl.this.getPrimaryControl().getHeight()) * fontScaleSlider.getValue() / 1000;
-                        fontTracking2.setValue(Font.font("Roboto", getFontWeight(), null, name));
+                        fontTracking2.setValue(Font.font("Roboto", name));
                     });
 
                     addToStackPane(baseGrid);
@@ -974,7 +967,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                             "-fx-background-size:", backgroundSizeSlider.valueProperty().asString(), "; \n",
                             "-fx-background-size:", backgroundSizeChoices.valueProperty().asString(), "; \n", //TODO:Blank if custom
                             "-fx-background-repeat:no-repeat;\n",
-                            "-fx-background-position:center;", overrideStyleField.textProperty()
+                            "-fx-background-position:center;",
+                            overrideStyleField.textProperty()
                     ));
                     return previewButton;
                 }
@@ -982,7 +976,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 @Override
                 public void setSettings() {
                     setAppableSettings();
-                    setFont();
+                    setFont(fontFamily, FontWeight.NORMAL);
                 }
 
                 @Override
@@ -993,7 +987,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 @Override
                 public Node addSettingControls() {
                     TabPane tabPane = new TabPane();
-                    tabPane.setPadding(new Insets(5));
+                    tabPane.setSide(Side.LEFT);
+                    tabPane.setPadding(new Insets(0, 0, 5, 5));
                     tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
                     tabPane.getTabs().addAll(addAppableSettings());
                     return tabPane;
@@ -1055,7 +1050,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                     ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
                     configurableGrid.setIndex("home");
                     getSession().setPlaying(false);
-                    
+
                     final SubGrid homeGrid = HomeController.getGrid();
                     homeGrid.setInError(Boolean.FALSE);
                     ConfigurableGrid.setEditMode(Boolean.FALSE);
@@ -1065,7 +1060,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             };
             final SubGrid homeGrid = HomeController.getGrid();
             homeGrid.indexProperty().addListener((observable, oldValue, newValue) -> {
-               homeGrid.setInError(Boolean.FALSE);
+                homeGrid.setInError(Boolean.FALSE);
             });
         }
         return errorDialog;
@@ -1077,9 +1072,9 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             homeGrid.setInError(Boolean.TRUE);
             final FixableErrorDialog errDialog = getFixableErrorDialog(message);
             final ScreenPopup<ScreenDialog> errorPopup = getPopup(errDialog);
-          //  homeGrid.getChildren().add(errorPopup);
-         Pane pane =(Pane) getScene().lookup("#apMain");
-         pane.getChildren().add(errorPopup);
+            //  homeGrid.getChildren().add(errorPopup);
+            Pane pane = (Pane) getScene().lookup("#apMain");
+            pane.getChildren().add(errorPopup);
         }
     }
 
@@ -1377,7 +1372,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      */
     public ObjectProperty<FontWeight> fontWeightProperty() {
         //  if (fontWeight == null) {
-        fontWeight = new SimpleObjectProperty(FontWeight.valueOf(getPreferences().get("fontWeight", "BOLD").toUpperCase()));
+        fontWeight = new SimpleObjectProperty(FontWeight.valueOf(getPreferences().get("fontWeight", FontWeight.NORMAL.toString()).toUpperCase()));
         //}
         return fontWeight;
     }

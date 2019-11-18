@@ -1,6 +1,7 @@
 package org.symfound.controls.user;
 
 import java.util.prefs.Preferences;
+import javafx.scene.text.FontWeight;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
 
@@ -45,7 +46,7 @@ public final class LockButton extends AppableControl {
     public LockButton(ButtonGrid lockGrid) {
         super("type-button", KEY, DEFAULT_TITLE, "default");
         this.lockGrid = lockGrid;
-        configureStyle();
+        configureStyle("Roboto", FontWeight.BOLD);
         
     }
 

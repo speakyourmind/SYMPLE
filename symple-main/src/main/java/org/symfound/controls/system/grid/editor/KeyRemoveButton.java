@@ -83,7 +83,7 @@ public class KeyRemoveButton extends SystemControl {
         setOrder(order1);
         configurableGrid.setOrder(getOrder());
         configurableGrid.getGridManager().setOrder(getOrder());
-
+        
         SettingsController.setUpdated(Boolean.TRUE);
     }
     private ObjectProperty<ParallelList<String, String>> order;

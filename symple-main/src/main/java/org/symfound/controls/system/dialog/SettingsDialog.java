@@ -6,6 +6,7 @@ import java.util.List;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Side;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
@@ -64,7 +65,7 @@ public abstract class SettingsDialog extends OKDialog {
         Toolbar toolbar = new Toolbar();
         toolbar.setButtonOrder("Minimize=default,Exit=default");
         toolbar.setTitleText(title);
-        baseGrid.add(toolbar, 0, 0);    
+        baseGrid.add(toolbar, 0, 0);
         TabPane tabPane = buildTabPane(getTabList());
         baseGrid.add(tabPane, 0, 1);
         actionGrid = buildActionGrid(HPos.CENTER, 360.0, 60.0);
@@ -72,6 +73,7 @@ public abstract class SettingsDialog extends OKDialog {
     }
 
     public abstract List<SettingsTab> getTabList();
+
     /**
      *
      * @param rows
@@ -107,7 +109,6 @@ public abstract class SettingsDialog extends OKDialog {
     }
 
     // TO DO: Replace with Toolbar
-
     /**
      *
      * @param title
@@ -133,6 +134,7 @@ public abstract class SettingsDialog extends OKDialog {
         tabs.stream().forEach((tab) -> {
             tabPane.getTabs().add(tab);
         });
+        tabPane.setSide(Side.LEFT);
         return tabPane;
     }
 

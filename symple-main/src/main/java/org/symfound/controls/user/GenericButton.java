@@ -6,6 +6,7 @@
 package org.symfound.controls.user;
 
 import java.util.prefs.Preferences;
+import javafx.scene.text.FontWeight;
 import org.symfound.controls.AppableControl;
 
 /**
@@ -29,7 +30,7 @@ public class GenericButton extends AppableControl {
     }
 
     private void initialize() {
-        configureStyle();
+        configureStyle("Roboto", FontWeight.BOLD);
     }
 
     @Override

@@ -104,7 +104,7 @@ public class ToolbarGrid extends ButtonGrid {
      */
     @Override
     public void fill(ParallelList<String, String> buildOrder, Integer size) {
-        List<AppableControl> requestedControls = new ArrayList<>();
+        List<AppableControl> requested = new ArrayList<>();
         for (int i = 0; i < buildOrder.getFirstList().size(); i++) {
             String toBuild = buildOrder.getFirstList().get(i);
             switch (toBuild.trim()) {
@@ -115,7 +115,7 @@ public class ToolbarGrid extends ButtonGrid {
                     edit.setPane("apMain");
                     edit.setOkText("CONFIRM");
                     edit.setCancelText("CANCEL");
-                    requestedControls.add(edit);
+                    requested.add(edit);
                     break;
                 case ScriptButton.KEY:
                     ScriptButton homeButton = new ScriptButton("toolbar/home");
@@ -127,9 +127,8 @@ public class ToolbarGrid extends ButtonGrid {
                     homeButton.setSymStyle("toolbar-home");// TODO: Fix;
                     homeButton.setBackgroundColour(ColourChoices.DARK);
                     homeButton.setBackgroundURL("/images/home_small.png");
-                    // homeButton.disablePrimaryProperty().bindBidirectional(ConfigurableGrid.editModeProperty());
                     homeButton.setOverrideStyle("-fx-background-size:20 20;-fx-background-position: center;-fx-background-repeat:no-repeat;");
-                    requestedControls.add(homeButton);
+                    requested.add(homeButton);
                     break;
                 case VersionUpdateButton.KEY:
                     VersionUpdateButton updateButton = new VersionUpdateButton();
@@ -140,7 +139,7 @@ public class ToolbarGrid extends ButtonGrid {
                     updateButton.setPane("apMain");
                     updateButton.setOkText("CONFIRM");
                     updateButton.setCancelText("CANCEL");
-                    requestedControls.add(updateButton);
+                    requested.add(updateButton);
                     break;
                 case SettingsButton.KEY:
                     SettingsButton settingsButton = new SettingsButton();
@@ -148,14 +147,14 @@ public class ToolbarGrid extends ButtonGrid {
                     settingsButton.setEditable(Boolean.FALSE);
                     // settingsButton.getStyleClass().remove("subgrid");
                     settingsButton.setSymStyle("toolbar-settings");
-                    requestedControls.add(settingsButton);
+                    requested.add(settingsButton);
                     break;
                 case MinimizeButton.KEY:
                     MinimizeButton minimizeButton = new MinimizeButton();
                     minimizeButton.setControlType(ControlType.SETTING_CONTROL);
                     minimizeButton.setEditable(Boolean.FALSE);
                     minimizeButton.setSymStyle("toolbar-minimized");
-                    requestedControls.add(minimizeButton);
+                    requested.add(minimizeButton);
                     break;
                     
                 case StatsButton.KEY:
@@ -163,7 +162,7 @@ public class ToolbarGrid extends ButtonGrid {
                     statsButton.setPane("apMain");
                     statsButton.setOkText("CONFIRM");
                     statsButton.setCancelText("CANCEL");
-                    requestedControls.add(statsButton);
+                    requested.add(statsButton);
                     break;
                 case ExitButton.KEY:
                     ExitButton exitButton = new ExitButton();
@@ -174,7 +173,7 @@ public class ToolbarGrid extends ButtonGrid {
                     exitButton.setPane("apMain");
                     exitButton.setOkText("CONFIRM");
                     exitButton.setCancelText("CANCEL");
-                    requestedControls.add(exitButton);
+                    requested.add(exitButton);
                     break;
                 case ExecButton.RESTART_KEY:
                     ExecButton execButton = new ExecButton("toolbar-power", ExecButton.RESTART_COMMAND);
@@ -184,7 +183,7 @@ public class ToolbarGrid extends ButtonGrid {
                     execButton.setPane("apMain");
                     execButton.setOkText("CONFIRM");
                     execButton.setCancelText("CANCEL");
-                    requestedControls.add(execButton);
+                    requested.add(execButton);
                     break;
 
             }
@@ -192,8 +191,8 @@ public class ToolbarGrid extends ButtonGrid {
 
         resetControlsQueue();
 
-        if (requestedControls.size() > 0) {
-            getControlsQueue().addAll(requestedControls);
+        if (requested.size() > 0) {
+            getControlsQueue().addAll(requested);
         } else {
             LOGGER.warn("No controls available!");
         }

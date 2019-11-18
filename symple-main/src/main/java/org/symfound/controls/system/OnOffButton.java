@@ -42,8 +42,9 @@ public class OnOffButton extends RunnableControl {
 
     private void initialize() {
         primary = new AnimatedButton("");
+        
         load(primary);
-        setCSS(cssClass, primary);
+        setCSS("settings-text-area", primary);
 
         getPrimaryControl().setOnMousePressed((MouseEvent e) -> {
             run();

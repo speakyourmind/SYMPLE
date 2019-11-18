@@ -100,7 +100,7 @@ public abstract class DeviceSettings<T extends Hardware> extends SettingsDialog 
     /**
      *
      */
-    public static final String GENERAL_TAB_TITLE = "GENERAL";
+    public static final String GENERAL_TAB_TITLE = "General";
 
     /**
      *
@@ -132,7 +132,7 @@ public abstract class DeviceSettings<T extends Hardware> extends SettingsDialog 
     /**
      *
      */
-    public static final String ABOUT_TAB_TITLE = "ABOUT";
+    public static final String ABOUT_TAB_TITLE = "About";
 
     /**
      *
@@ -221,7 +221,7 @@ public abstract class DeviceSettings<T extends Hardware> extends SettingsDialog 
     /**
      *
      */
-    public static final String MOVEMENT_TAB_TITLE = "MOVEMENT";
+    public static final String MOVEMENT_TAB_TITLE = "Movement";
 
     /**
      *
@@ -333,7 +333,7 @@ public abstract class DeviceSettings<T extends Hardware> extends SettingsDialog 
     /**
      *
      */
-    public static final String SELECTION_TAB_TITLE = "SELECTION";
+    public static final String SELECTION_TAB_TITLE = "Selection";
 
     /**
      *
@@ -476,7 +476,7 @@ public abstract class DeviceSettings<T extends Hardware> extends SettingsDialog 
         SettingsRow scanRateRow = buildSliderFieldSetting("Scan Rate", "Time period between scans", scanRateSlider);
 
         List<SettingsRow> rows = Arrays.asList(writeMethodRow, readMethodRow, scanRateRow);
-        SettingsTab processTab = new SettingsTab("PROCESSING", rows);
+        SettingsTab processTab = new SettingsTab("Processing", rows);
         return processTab;
     }
 

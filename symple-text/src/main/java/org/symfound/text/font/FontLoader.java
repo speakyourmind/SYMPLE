@@ -52,6 +52,7 @@ public class FontLoader {
             ClassLoader classLoader = getClass().getClassLoader();
             InputStream inputStream = classLoader.getResourceAsStream(fontLocation + fontName);
             Font font = Font.loadFont(inputStream, DEFAULT_SIZE);
+            System.out.println(font.getName()+"-"+font.getFamily());
             fontList.add(font);
         }
 

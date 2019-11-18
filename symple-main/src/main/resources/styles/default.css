@@ -22,6 +22,7 @@
 .text {
     -fx-font-family: "Roboto";
     -fx-font-smoothing-type: gray;
+
 }
 
 .grid, #gpTier, #gpMain, .pane,.main,#apConfig{
@@ -39,6 +40,7 @@
     -fx-font-size: 1.6em;
 }
 
+
 .button:hover {
     -fx-background-color: derive(-fx-dark,10%)
 }
@@ -47,7 +49,6 @@
     -fx-text-fill: -fx-dark;
     -fx-font-size: 1.6em;
 }
-
 .check-box .text {
     -fx-font-size: 1.6em;
 }
@@ -75,12 +76,12 @@
     -fx-background-color: -fx-dark, -fx-light;
     -fx-background-insets: 0,5;
     -fx-background-radius: 0;
-    -fx-font-weight: bold;
+
 }
 
 .choice-box .label {
     -fx-text-fill: -fx-dark;
-    -fx-font-weight: bold;
+
     -fx-alignment: center;
 }
 
@@ -104,7 +105,7 @@
     -fx-display-caret: true;
     -fx-background-color: -fx-light;
     -fx-font-size: 2.6em;
-    -fx-font-weight: bold;
+
     -fx-text-fill: -fx-dark;
     -fx-highlight-fill: -fx-blue;
 }
@@ -238,7 +239,7 @@
     -fx-background-color: -fx-blue;
     -fx-text-fill: -fx-light;
     -fx-font-size: 3em;
-    -fx-font-weight: bold;
+
     -fx-border-color: -fx-dark;
     -fx-border-insets: 0;
 }
@@ -252,13 +253,13 @@
 
 .results-label {
     -fx-background-color: -fx-light;
-    -fx-font-weight: bold;
+
     -fx-text-fill: -fx-grey;
     -fx-padding: 10 10 10 10;
 }
 
 .results-value {
-    -fx-font-weight: bold;
+
     -fx-text-fill: -fx-dark;
     -fx-font-size: 3em;
 }
@@ -267,7 +268,6 @@
     -fx-padding: 1 1 10 10;
     -fx-text-fill: -fx-light;
     -fx-background-color: -fx-green; 
-    -fx-font-weight: bold;
     -fx-font-size: 3em;
 }
 
@@ -276,7 +276,7 @@
 .play-button {
     -fx-text-fill: -fx-light;
     -fx-background-color: -fx-green;
-    -fx-font-weight: bold;
+
 }
 
 .play-button:hover {-fx-background-color: -fx-green;}
@@ -284,7 +284,7 @@
 .close-button {
     -fx-text-fill: -fx-light;
     -fx-background-color: -fx-red;
-    -fx-font-weight: bold;
+
 }
 
 .close-button:hover {-fx-background-color: -fx-red;}
@@ -367,7 +367,7 @@
 }
 
 .music-song{
-    -fx-font-weight: bold;
+
     -fx-text-fill: -fx-blue;
     -fx-font-size: 4em;  
 }
@@ -622,29 +622,24 @@
     -fx-background-color: transparent;
     -fx-text-fill: -fx-light;
     -fx-font-size: 3em;
-    -fx-padding: 0 0 0 40;
+    -fx-padding: 0 0 -40 40;
+    -fx-font-weight:bold;
 }
 
 .settings-text-area,.settings-text-area:hover  {
     -fx-background-color: -fx-dark, -fx-light;
     -fx-background-insets: 0,5;
     -fx-text-fill: -fx-dark;
-    -fx-font-weight: bold;
-}
 
-.settings-text-area-small,.settings-text-area-small:hover  {
-    -fx-background-color: -fx-dark, -fx-light;
-    -fx-background-insets: 0,5;
-    -fx-text-fill: -fx-grey;
-    -fx-font-weight: bold;
-    -fx-font-size: 1.6em;
-    -fx-text-alignment: center;
 }
 
 .settings-button{
     -fx-background-color:-fx-blue;
-    -fx-font-weight: bold;
+    
+    -fx-padding: 0 0 -10 0;
+    -fx-font-weight:bold;
 }
+
 .settings-button:hover{
     -fx-background-color: derive(-fx-blue,10%);
 }
@@ -658,17 +653,19 @@
 
 .settings-label{
     -fx-font-size: 2.6em;
-    -fx-font-weight: bold;
+    -fx-padding: 0 0 -20 0;
+    -fx-font-weight:bold;
 }
 
 .settings-text{
     -fx-alignment:center;
     -fx-text-alignment:center;
     -fx-font-size: 2.6em;
-    -fx-font-weight: bold;
+
 }
 .settings-caption{
-    -fx-text-fill: -fx-grey;
+    -fx-text-fill: -fx-dark;
+    -fx-font-size:1.8em;
 }
 .settings-pane{
     -fx-background-color: -fx-dark,-fx-light;
@@ -676,7 +673,7 @@
 }
 .settings-slider-label{
     -fx-font-size:1.1em; 
-    -fx-text-fill:-fx-grey;
+    -fx-text-fill:-fx-dark;
 }
 
 .settings-control{
@@ -734,42 +731,50 @@
     -fx-background-radius: 25px;
     -fx-padding: 5px;
 }
+.tab-pane{
+    -fx-tab-min-width:60px;    
+    -fx-tab-max-width:60px;    
+    -fx-tab-min-height:240px;    
+    -fx-tab-max-height:240px;
+}
 
 .tab-pane .tab-header-background{
-    -fx-background-color: -fx-blue;
+    -fx-background-color: -fx-dark;
     -fx-opacity:1.0;
 }
-.tab-pane{
-    -fx-tab-min-width:160px;
-}
-.tab-pane:top *.tab-header-area {
+
+.tab-pane:left *.tab-header-area {
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.416667em 0.166667em 0.0em 0.0em; 
 }
 .tab-pane .tab{
-    -fx-padding: 10 20 10 20;
-    -fx-background-insets: 0 10 0 10;
     -fx-background-radius:0;
-    -fx-background-color: -fx-blue;
+    -fx-background-color: -fx-dark;
 }
 
 .tab-pane .tab:selected {
     -fx-text-fill: -fx-dark;
-    -fx-background-color: -fx-light;
-    -fx-focus-color: -fx-background-color;
+    -fx-background-color: -fx-blue;
+    -fx-focus-color: -fx-blue;
 }
 
-.tab .tab-label { 
-    -fx-padding: 0 0 0 0;
-    -fx-alignment: CENTER;
-    -fx-font-weight: bold;
+.tab-title { 
+    -fx-alignment: center-left;
+
     -fx-text-fill: -fx-light;
     -fx-font-size: 1.6em;
 }
 
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+
+    -fx-text-fill: -fx-light;
+    -fx-font-size: 1.5em;
+}
+
 .tab:selected .tab-label { 
     -fx-alignment: CENTER;
-    -fx-text-fill: -fx-blue;
+    -fx-text-fill: -fx-light;
 }
 
 .tab-content-area{
@@ -778,13 +783,13 @@
 
 .tab-down-button {
     -fx-background-color: transparent;
-    -fx-padding: 0.0em 0.416667em 0.0em 0.416667em; /* 0 5 0 5 */
+    -fx-padding: 0.0em 0.416667em 0.0em 0.416667em; 
 }
 .tab-down-button .arrow 
 {
     -fx-background-color: -fx-grey, -fx-dark;
     -fx-background-insets: 1 0 -1 0, 0;
-    -fx-padding: 0.238083em 0.416667em 0.238083em 0.416667em; /* 2.857 5 2.857 5 */
+    -fx-padding: 0.238083em 0.416667em 0.238083em 0.416667em;
     -fx-shape: "M 0 0 H 7 L 3.5 4 z";
 }
 .scroll-bar{

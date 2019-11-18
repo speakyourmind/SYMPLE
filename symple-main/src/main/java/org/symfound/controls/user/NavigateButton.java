@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.prefs.Preferences;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.text.FontWeight;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.AppableControl;
@@ -74,7 +75,7 @@ public class NavigateButton extends AppableControl {
     }
 
     private void initialize() {
-        configureStyle();
+        configureStyle("Roboto", FontWeight.BOLD);
 
     }
 

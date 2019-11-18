@@ -25,9 +25,14 @@
                 <RowConstraints minHeight="10.0" percentHeight="10.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <TabPane fx:id="tpMain" layoutX="29.0" layoutY="44.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.rowIndex="1">
+                <TabPane fx:id="tpMain" layoutX="29.0" side="left" layoutY="44.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.rowIndex="1">
                     <tabs>
-                        <Tab text="APPLICATION">
+                        <Tab text="">
+                            <graphic>
+                                <Group >
+                                    <Label text="Application" styleClass="tab-title"/>
+                                </Group>
+                            </graphic>
                             <content>
                                 <AnchorPane>
                                     <children>
@@ -132,7 +137,12 @@
                             </content>
                         </Tab>
                       
-                        <Tab text="DEVICE">
+                        <Tab text="">
+                            <graphic>
+                                <Group >
+                                    <Label text="Device" styleClass="tab-title"/>
+                                </Group>
+                            </graphic>   
                             <content>
                                 <AnchorPane>
                                     <children>
@@ -204,7 +214,12 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab text="PROFILE">
+                        <Tab text="">
+                            <graphic>
+                                <Group >
+                                    <Label text="Profile" styleClass="tab-title"/>
+                                </Group>
+                            </graphic> 
                             <content>
                                 <AnchorPane>
                                     <children>
@@ -232,7 +247,7 @@
                                                             </HBox>
                                                         </SettingsRow>  
                                                       
-                                                        <SettingsRow helpText="Export or clear user settings" titleText="Manage Settings" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                                                        <SettingsRow helpText="Export or clear user settings" titleText="Manage" GridPane.columnSpan="3" GridPane.rowIndex="1">
                                                             
                                                             <GridPane hgap="20.0" styleClass="main" prefHeight="60.0" vgap="20.0" GridPane.columnSpan="2" GridPane.columnIndex="1">
                                                                 <columnConstraints>
@@ -268,7 +283,12 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab text="ABOUT">
+                        <Tab text="">
+                            <graphic>
+                                <Group >
+                                    <Label text="About" styleClass="tab-title"/>
+                                </Group>
+                            </graphic>    
                             <content>
                                 <AnchorPane>
                                     <children>

@@ -91,7 +91,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         grid.setSpecColumns(1);
         grid.buildColumnsByPerc(Arrays.asList(100.0));
         grid.setHgap(20.0);
-        grid.setPrefHeight(numRows * 120);
+        grid.setPrefHeight(numRows * 200);
         GridPane.setMargin(grid, new Insets(0, 40, 0, 40));
 
         for (int i = 0; i < settings.size(); i++) {
@@ -157,7 +157,6 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         titleLabel.setStyle(" -fx-text-fill: -fx-light;\n"
                 + "    -fx-font-size: 3em;\n"
                 + "    -fx-padding: 0 0 0 80;");
-
         titleLabel.setAlignment(Pos.CENTER_LEFT);
         setTopAnchor(titleLabel, 0.0);
         setLeftAnchor(titleLabel, 0.0);

@@ -3,6 +3,7 @@ package org.symfound.controls.user.type.picto;
 import java.util.prefs.Preferences;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.text.FontWeight;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
 import org.symfound.tools.iteration.ParallelList;
@@ -38,7 +39,7 @@ public final class PictoClearButton extends PictoControl {
     }
 
     private void initialize() {
-       configureStyle();
+       configureStyle("Roboto", FontWeight.BOLD);
     }
 
     /**

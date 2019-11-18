@@ -14,6 +14,8 @@ import javafx.beans.property.StringProperty;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import org.symfound.controls.ScreenControl;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
 import org.symfound.controls.user.AnimatedLabel;
@@ -40,6 +42,11 @@ public class TitledLabel extends ScreenControl<AnimatedLabel> {
      *
      */
     public TitledLabel() {
+        super("settings-title");
+        
+        Font font=Font.font("Roboto", FontWeight.BOLD,18);
+        this.getPrimaryControl().setFont(font);
+        
         vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
         vBox.getChildren().add(primary);

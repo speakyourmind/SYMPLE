@@ -20,6 +20,7 @@ import javafx.geometry.VPos;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.FontWeight;
 import org.symfound.builder.user.characteristic.Social;
 import org.symfound.comm.web.Webhook;
 import org.symfound.controls.system.OnOffButton;
@@ -59,7 +60,7 @@ public class ScriptButton extends TypingControl {
     }
 
     private void initialize() {
-        configureStyle();
+        configureStyle("Roboto", FontWeight.BOLD);
 
         setActionKey(getKeyCodeConfig());
         keyCodeConfigProperty().addListener((obversable, oldValue, newValue) -> {
@@ -226,7 +227,7 @@ public class ScriptButton extends TypingControl {
 
         socialSettings = new ArrayList<>();
         socialSettings.add(settingsTo);
-        Tab socialTab = buildTab("SOCIAL", socialSettings);
+        Tab socialTab = buildTab("Social", socialSettings);
 
         SettingsRow webhookKeyRow = createSettingRow("Webhook", "Enter key configured in webhook");
         webhookEnabledButton = new OnOffButton("ENABLED", "DISABLED");
@@ -266,7 +267,7 @@ public class ScriptButton extends TypingControl {
         environmentSettings.add(webhookKeyRow);
         environmentSettings.add(webhookStartRow);
         environmentSettings.add(webhookEndRow);
-        Tab environmentTab = buildTab("HOME", environmentSettings);
+        Tab environmentTab = buildTab("Home", environmentSettings);
 
         actionSettings.add(typableRow);
         List<Tab> tabs = super.addAppableSettings();

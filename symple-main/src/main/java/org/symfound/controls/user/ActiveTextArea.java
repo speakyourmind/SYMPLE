@@ -13,6 +13,7 @@ import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.FontWeight;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.characteristic.Typing;
 import org.symfound.comm.file.PathReader;
@@ -96,7 +97,7 @@ public class ActiveTextArea extends AppableControl {
             }
         });
         get().requestFocus();
-        configureStyle();
+        configureStyle("Roboto", FontWeight.NORMAL);
         setSelectable(false);
     }
 
@@ -371,17 +372,17 @@ public class ActiveTextArea extends AppableControl {
      *
      */
     @Override
-    public void configureStyle() {
-        updateStyle();
+    public void configureStyle(String fontFamily,FontWeight fw) {
+        updateStyle(fontFamily,fw);
         overrideStyleProperty().addListener((obversable1, oldValue1, newValue1) -> {
-            updateStyle();
+            updateStyle(fontFamily,fw);
         });
     }
 
     /**
      *
      */
-    public void updateStyle() {
+    public void updateStyle(String fontFamily, FontWeight fw) {
         if (!getOverrideStyle().isEmpty()) {
             LOGGER.info("Setting style for " + getKey() + "." + getIndex() + " to " + getOverrideStyle());
             this.setSymStyle("");

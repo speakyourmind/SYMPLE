@@ -17,6 +17,7 @@ import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Side;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
@@ -368,31 +369,32 @@ public class EditGridButton extends SystemControl {
 
                 fillSettings.add(fillMethodRow);
                 fillSettings.add(fillDirectionRow);
-                Tab fillTab = buildTab("FILL", fillSettings);
+                Tab fillTab = buildTab("Fill", fillSettings);
 
                 sizeSettings.add(overrideRowRow);
                 sizeSettings.add(overrideColumnRow);
                 sizeSettings.add(paginationRow);
-                Tab gridTab = buildTab("SIZE", sizeSettings);
+                Tab gridTab = buildTab("Size", sizeSettings);
 
                 lookSettings.add(styleRow);
                 lookSettings.add(hGapRow);
                 lookSettings.add(vGapRow);
-                Tab lookTab = buildTab("LOOK", lookSettings);
+                Tab lookTab = buildTab("Look", lookSettings);
 
                 selectionSettings.add(selectionMethodRow);
-                Tab selectionTab = buildTab("SELECTION", selectionSettings);
+                Tab selectionTab = buildTab("Selection", selectionSettings);
 
                 advancedSettings.add(buttonOrderRow);
                 advancedSettings.add(difficultyRow);
                 advancedSettings.add(exportRow);
-                Tab advancedTab = buildTab("ADVANCED", advancedSettings);
+                Tab advancedTab = buildTab("Advanced", advancedSettings);
 
                 aboutSettings.add(descriptionRow);
-                Tab aboutTab = buildTab("ABOUT", aboutSettings);
+                Tab aboutTab = buildTab("About", aboutSettings);
 
                 TabPane tabPane = new TabPane();
-                tabPane.setPadding(new Insets(5));
+                tabPane.setPadding(new Insets(0,0,5,5));
+                tabPane.setSide(Side.LEFT);
                 tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
                 tabPane.getTabs().add(gridTab);
                 tabPane.getTabs().add(fillTab);

@@ -164,7 +164,7 @@ public class FullSession extends Session {
         } else {
             LOGGER.warn("Master file does not exist in " + masterFile
                     + ". Proceeding with default settings.");
-            if (getUser().getProfile().isFirstUse()) {
+            /*if (getUser().getProfile().isFirstUse()) {
                 String defaultFile = "templates/super.xml";
                 LOGGER.info("This is the user's first use. Loading template "+defaultFile);
                 InputStream resourceAsStream = FullSession.class.getClassLoader().getResourceAsStream(defaultFile);
@@ -179,7 +179,7 @@ public class FullSession extends Session {
                 LOGGER.info("Settings import from " + defaultFile + " complete");
 
                 getUser().getProfile().setFirstUse(Boolean.FALSE);
-            }
+            }*/
         }
 
         getBuilder().start(getBuildTimeout());

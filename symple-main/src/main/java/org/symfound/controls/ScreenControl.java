@@ -24,6 +24,7 @@ import org.symfound.device.Device;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.FullSession;
 import org.symfound.controls.device.DeviceManager;
+import org.symfound.tools.ui.FontTracker;
 
 /**
  *
@@ -143,6 +144,14 @@ public abstract class ScreenControl<T extends Labeled> extends AnimatedPane {
         });
     }
 
+    private FontTracker fontTracker;
+
+    public FontTracker getFontTracker() {
+        if (fontTracker == null) {
+            fontTracker = new FontTracker();
+        }
+        return fontTracker;
+    }
     /**
      *
      * @param path

@@ -13,6 +13,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Tab;
+import javafx.scene.text.FontWeight;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 
@@ -37,7 +38,7 @@ public abstract class SpeakButton extends TextCommunicatorButton {
     private void initialize() {
         bindToText();
         style();
-        configureFont();
+        configureFont("Roboto", FontWeight.BOLD);
         concatStyleProperty().addListener((obversable, oldValue, newValue) -> {
             style();
         });

@@ -5,6 +5,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.text.FontWeight;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
 import static org.symfound.main.FullSession.getMainUI;
@@ -47,7 +48,7 @@ public class AppButton extends AppableControl {
      *
      */
     public final void initialize() {
-        configureStyle();
+        configureStyle("Roboto", FontWeight.NORMAL);
      
     }
 
@@ -55,7 +56,7 @@ public class AppButton extends AppableControl {
      *
      */
     @Override
-    public void configureStyle() {
+    public void configureStyle(String fontFamily, FontWeight fw) {
         if (!getOverrideStyle().isEmpty()) {
             LOGGER.info("Setting style for " + getKey() + "." + getIndex() + " to " + getOverrideStyle());
             getPrimaryControl().setStyle(getOverrideStyle());

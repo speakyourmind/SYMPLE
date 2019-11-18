@@ -46,6 +46,7 @@ import org.symfound.builder.user.Usable;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Interaction;
 import org.symfound.builder.user.selection.SelectionMethod;
+import static org.symfound.controls.ScreenControl.CSS_PATH;
 
 //import org.symfound.main.FullSession;//
 
@@ -95,6 +96,7 @@ public class AnimatedButton extends Button implements Animated, Usable {
         session = Main.getSession();
         user = session.getUser();
         setRippleAnimation();
+        getStylesheets().add(CSS_PATH);
         textProperty().bindBidirectional(accessibleTextProperty());
     }
 

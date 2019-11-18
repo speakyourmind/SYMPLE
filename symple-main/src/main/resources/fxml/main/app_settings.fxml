@@ -59,9 +59,14 @@
                 <RowConstraints minHeight="10.0" percentHeight="10.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <TabPane fx:id="tpMain" layoutX="29.0" layoutY="44.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.rowIndex="1">
+                <TabPane fx:id="tpMain" layoutX="29.0" side="left" layoutY="44.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.rowIndex="1">
                     <tabs>
-                        <Tab text="VOICE">
+                        <Tab text="">
+                            <graphic>
+                                <Group >
+                                    <Label text="Voice" styleClass="tab-title"/>
+                                </Group>
+                            </graphic>  
                             <content>
                                 <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0">
                                     <content>
@@ -97,8 +102,13 @@
                                 </ScrollPane>
                             </content>
                         </Tab>
-                        <Tab text="TYPING">
-                            <content>
+                        <Tab text="">
+                            <graphic>
+                                <Group >
+                                    <Label text="Typing" styleClass="tab-title"/>
+                                </Group>
+                            </graphic>    
+                            <content>     
                                 <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0">
                                     <content>
                                         <GridPane hgap="20.0" styleClass="main" prefHeight="600.0" vgap="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0">
@@ -156,7 +166,12 @@
                                 </ScrollPane>
                             </content>
                         </Tab>
-                        <Tab text="MEDIA">
+                        <Tab text="">
+                            <graphic>
+                                <Group >
+                                    <Label text="Media" styleClass="tab-title"/>
+                                </Group>
+                            </graphic>  
                             <content>
                                 <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0">
                                     <padding>
@@ -191,7 +206,12 @@
                                 </ScrollPane>
                             </content>
                         </Tab>
-                        <Tab text="SELECTION">
+                        <Tab text="">
+                            <graphic>
+                                <Group >
+                                    <Label text="Selection" styleClass="tab-title"/>
+                                </Group>
+                            </graphic>     
                             <content>
                                 <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0">
                                     <content>
@@ -243,7 +263,12 @@
                                 </ScrollPane>
                             </content>
                         </Tab>
-                        <Tab text="NAVIGATION">
+                        <Tab text="">
+                            <graphic>
+                                <Group >
+                                    <Label text="Navigation" styleClass="tab-title"/>
+                                </Group>
+                            </graphic>    
                             <content>
                                 <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0">
                                     <content>
@@ -323,7 +348,12 @@
                                 </ScrollPane>
                             </content>
                         </Tab>
-                        <Tab text="SOCIAL">
+                        <Tab text="">
+                            <graphic>
+                                <Group >
+                                    <Label text="Social" styleClass="tab-title"/>
+                                </Group>
+                            </graphic>    
                             <content>
                                 <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefViewportHeight="275.0" prefViewportWidth="600.0">
                                     <content>

@@ -11,6 +11,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.text.FontWeight;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.characteristic.Social;
 import org.symfound.controls.system.SettingsRow;
@@ -54,8 +55,7 @@ public class PictoTwilioButton extends TextCommunicatorButton {
 
     private void initialize() {
         bindToText();
-        configureFont();
-        configureStyle();
+        configureStyle("Roboto", FontWeight.BOLD);
     }
 
     /**

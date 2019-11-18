@@ -17,6 +17,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.FontWeight;
 import static org.symfound.controls.AppableControl.LOGGER;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
@@ -57,7 +58,7 @@ public class GMailViewer extends MediaViewer {
         statusProperty().addListener((observable1, oldValue1, newValue1) -> {
             setDisable(!newValue1.equals(ScreenStatus.PLAYING));
         });
-        configureStyle();
+        configureStyle("Roboto", FontWeight.NORMAL);
     }
 
     /**
@@ -83,7 +84,7 @@ public class GMailViewer extends MediaViewer {
      *
      */
     @Override
-    public void configureStyle() {
+    public void configureStyle(String fontFamily, FontWeight fw) {
         updateStyle();
         overrideStyleProperty().addListener((obversable1, oldValue1, newValue1) -> {
             updateStyle();

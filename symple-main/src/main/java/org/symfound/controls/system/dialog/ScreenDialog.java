@@ -118,6 +118,7 @@ public class ScreenDialog extends ScreenControl<AnimatedButton> {
      */
     public void addToStackPane(Node node) {
         StackPane stackPane = new StackPane();
+        stackPane.getStyleClass().add("transparent");
         stackPane.getChildren().add(node);
         addToPane(stackPane, 0.0, 0.0, 0.0, 0.0);
         setTopAnchor(this, 0.0);
