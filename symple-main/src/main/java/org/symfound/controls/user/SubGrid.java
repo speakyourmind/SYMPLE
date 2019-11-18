@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.prefs.Preferences;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import org.apache.log4j.Logger;
@@ -77,6 +78,7 @@ public class SubGrid extends AppableControl {
     }
 
     List<KeyRemoveButton> removeButtons;
+    private static ChangeListener<Boolean> addRemoveListener;
 
     /**
      *
@@ -84,26 +86,29 @@ public class SubGrid extends AppableControl {
     @Override
     public void configButtons() {
         boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
-
+        /*
         getConfigurableGrid().statusProperty().addListener((ob, o, n) -> {
-            if (n.equals(ScreenStatus.PLAYING)) {
-                if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
-                    final ObservableList<Node> children = this.getConfigurableGrid().getChildren();
-                    addConfigButtons();
-                } else {
-                    removeConfigButtons();
-                }
-            }
-        });
+        if (n.equals(ScreenStatus.PLAYING)) {
+        addRemoveEditButtons(isSettingsControl);
+        }
+        });*/
+        if (addRemoveListener == null) {
+            addRemoveListener = (observable1, oldValue1, newValue1) -> {
+                addRemoveEditButtons(isSettingsControl);
+            };
+            ConfigurableGrid.editModeProperty().addListener(addRemoveListener);
+        }
 
-        ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
-            if (newValue1 && !isSettingsControl && isEditable()) {
-                addConfigButtons();
-            } else {
-                removeConfigButtons();
-            }
-        });
+    }
 
+    public void addRemoveEditButtons(boolean isSettingsControl) {
+        if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
+            System.out.println("adding");
+            addConfigButtons();
+        } else {
+            System.out.println("removing");
+            removeConfigButtons();
+        }
     }
 
     /**
@@ -171,10 +176,10 @@ public class SubGrid extends AppableControl {
                     //  keyRemoveButton.setConfirmable(false);
                     getRemoveButtons().add(keyRemoveButton);
                     control.addToPane(keyRemoveButton, 0.0, null, null, 0.0);
-                    
+
                     keyRemoveButton.setVisible(!(control.getGridLocation() == 0 && control.getKey().equals((ReplaceKeyButton.KEY))));
                     keyRemoveButton.toFront();
-                   
+
                 }
             }
         }

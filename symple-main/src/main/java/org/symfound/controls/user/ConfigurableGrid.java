@@ -171,11 +171,6 @@ public class ConfigurableGrid extends ButtonGrid {
                 getScanner().configure();
                 getStepper().configure();
             }
-            getUser().getInteraction().selectionMethodProperty().addListener((observable1, oldValue1, newValue1) -> {
-                LOGGER.info("User selection method changed from "
-                        + oldValue1.toString() + " to " + newValue1.toString());
-            });
-
         });
     }
 

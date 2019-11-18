@@ -335,7 +335,6 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 overrideStyleProperty());
 
         setConcatStyle(concat.getValue());
-        System.out.println(getConcatStyle());
         concatStyleProperty().bind(concat);
 
         getPrimaryControl().setStyle(getConcatStyle());

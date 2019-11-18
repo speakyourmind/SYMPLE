@@ -68,18 +68,23 @@ public abstract class Selector {
      */
     public void configure() {
         startStop();
-        final ChangeListener<String> startStopListener = (observable, oldValue, newValue) -> {
-            startStop();
-            
-        };
-        final StringExpression concatenatedBindings = Bindings.concat(
-                getUser().getInteraction().assistedModeProperty().asString(),
-                getUser().getInteraction().selectionMethodProperty().asString(),
-                gridToScour.selectionMethodProperty().asString(),
-                editModeProperty().asString(),
-                gridToScour.indexProperty());
+        loadStartStopListener();
+    }
+    private static ChangeListener<String> startStopListener;
 
-        concatenatedBindings.addListener(startStopListener);
+    public void loadStartStopListener() {
+        if (startStopListener == null) {
+            startStopListener = (observable, oldValue, newValue) -> {
+                startStop();
+            };
+            final StringExpression concatenatedBindings = Bindings.concat(
+                    getUser().getInteraction().assistedModeProperty().asString(),
+                    getUser().getInteraction().selectionMethodProperty().asString(),
+                    gridToScour.selectionMethodProperty().asString(),
+                    editModeProperty().asString(),
+                    gridToScour.indexProperty());
+            concatenatedBindings.addListener(startStopListener);
+        }
     }
 
     /**
