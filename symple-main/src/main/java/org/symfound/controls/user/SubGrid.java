@@ -78,7 +78,7 @@ public class SubGrid extends AppableControl {
     }
 
     List<KeyRemoveButton> removeButtons;
-    private static ChangeListener<Boolean> addRemoveListener;
+    private ChangeListener<Boolean> addRemoveListener;
 
     /**
      *
@@ -86,12 +86,12 @@ public class SubGrid extends AppableControl {
     @Override
     public void configButtons() {
         boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
-        /*
+        
         getConfigurableGrid().statusProperty().addListener((ob, o, n) -> {
         if (n.equals(ScreenStatus.PLAYING)) {
         addRemoveEditButtons(isSettingsControl);
         }
-        });*/
+        });
         if (addRemoveListener == null) {
             addRemoveListener = (observable1, oldValue1, newValue1) -> {
                 addRemoveEditButtons(isSettingsControl);
