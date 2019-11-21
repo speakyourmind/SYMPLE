@@ -21,9 +21,14 @@ import java.util.prefs.Preferences;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.selection.SelectionMethod;
+import org.symfound.controls.AppableControl;
+import org.symfound.controls.ScreenControl;
+import org.symfound.controls.system.EditAppButton;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.main.Main;
 import org.symfound.main.settings.SettingsController;
@@ -178,6 +183,22 @@ public class ConfigurableGrid extends ButtonGrid {
      *
      */
     public void reload() {
+
+        /*   if (this.getParent() instanceof SubGrid) {
+        SubGrid subGrid = (SubGrid) this.getParent();
+        System.out.println("-----------" + this.getIndex());
+        ConfigurableGrid.editModeProperty().removeListener(subGrid.getConfigButtonListener());
+        final ObservableList<Node> children = this.getChildren();
+        for (int i = 0; i < children.size(); i++) {
+        Node node = children.get(i);
+        if (node instanceof SubGrid) {
+        SubGrid control = (SubGrid) node;
+        System.out.println("-----------" + this.getIndex());
+        ConfigurableGrid.editModeProperty().removeListener(control.getConfigButtonListener());
+        
+        }
+        }
+        }*/
         Double level = getUser().getAbility().getLevel();
         Double max = getMaxDifficulty();
         Double min = getMinDifficulty();

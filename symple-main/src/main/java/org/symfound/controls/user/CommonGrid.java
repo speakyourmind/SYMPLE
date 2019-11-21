@@ -43,7 +43,6 @@ public abstract class CommonGrid extends GridPane implements Usable {
      *
      */
     public CommonGrid() {
-        super();
         session = Main.getSession();
         user = session.getUser();
     }

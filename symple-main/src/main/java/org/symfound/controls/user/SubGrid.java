@@ -69,6 +69,7 @@ public class SubGrid extends AppableControl {
             grid.setIndex(getIndex());
             grid.configure();
             setCSS("subgrid", this);
+
         }
         return grid;
     }
@@ -89,25 +90,30 @@ public class SubGrid extends AppableControl {
 
         getConfigurableGrid().statusProperty().addListener((ob, o, n) -> {
             if (n.equals(ScreenStatus.PLAYING)) {
-                if (ConfigurableGrid.inEditMode()) {
+                if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
                     addConfigButtons();
                 } else {
                     removeConfigButtons();
                 }
             }
         });
-        addRemoveListener = (observable1, oldValue1, newValue1) -> {
-            if (newValue1) {
-                addConfigButtons();
-            } else {
-                removeConfigButtons();
-            }
-        };
-        System.out.println("-----------" + this.getIndex());
-        ConfigurableGrid.editModeProperty().removeListener(addRemoveListener);
-        System.out.println("++++++++++" + this.getIndex());
-        ConfigurableGrid.editModeProperty().addListener(addRemoveListener);
 
+        System.out.println("++++++++++" + this.getIndex());
+        ConfigurableGrid.editModeProperty().addListener(getConfigButtonListener());
+
+    }
+
+    public ChangeListener<Boolean> getConfigButtonListener() {
+        if (addRemoveListener == null) {
+            addRemoveListener = (observable1, oldValue1, newValue1) -> {
+                if (ConfigurableGrid.inEditMode() && isEditable()) {
+                    addConfigButtons();
+                } else {
+                    removeConfigButtons();
+                }
+            };
+        }
+        return addRemoveListener;
     }
 
     /**
@@ -166,9 +172,8 @@ public class SubGrid extends AppableControl {
             Node node = children.get(i);
             if (node instanceof AppableControl) {
                 AppableControl control = (AppableControl) node;
-                if (control.isEditable()) {
-                    control.getPrimaryControl().setDisable(control.isPrimaryDisabled());
-                }
+                control.getPrimaryControl().setDisable(control.isPrimaryDisabled());
+
             }
         }
         getChildren().remove(getMenu());
@@ -202,12 +207,12 @@ public class SubGrid extends AppableControl {
     }
 
     public void addEditAppButtons() {
-        boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
         final ObservableList<Node> children = this.getConfigurableGrid().getChildren();
         for (int i = 0; i < children.size(); i++) {
             Node node = children.get(i);
             if (node instanceof AppableControl) {
                 AppableControl control = (AppableControl) node;
+                boolean isSettingsControl = control.getControlType().equals(ControlType.SETTING_CONTROL);
                 if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
 
                     final EditAppButton button = control.getEditAppButton();
