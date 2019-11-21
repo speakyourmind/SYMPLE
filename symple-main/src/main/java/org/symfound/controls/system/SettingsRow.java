@@ -19,7 +19,7 @@ import org.symfound.controls.user.BuildableGrid;
  */
 public class SettingsRow extends BuildableGrid {
 
-    private TitledLabel titledLabel = new TitledLabel();
+    private TitledLabel titledLabel;
 
     private AnimatedPane background;
 

@@ -302,7 +302,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      *
      */
     public void configButtons() {
-        boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
+       /* boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
 
         // TO DO : CAUSING ISSUES WITH PHOTO AND YOUTUBE. Try when playing?
         if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
@@ -318,7 +318,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             } else {
                 removeConfigButtons();
             }
-        });
+        });*/
     }
 
     public void configureStyle(String fontFamily, FontWeight fw) {
@@ -975,12 +975,13 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 @Override
                 public void setSettings() {
                     setAppableSettings();
-                    setFont(fontFamily, FontWeight.NORMAL);
+                    setFont(fontFamily, FontWeight.BOLD);
                 }
 
                 @Override
                 public void resetSettings() {
                     resetAppableSettings();
+                    setFont(fontFamily, FontWeight.BOLD);
                 }
 
                 @Override

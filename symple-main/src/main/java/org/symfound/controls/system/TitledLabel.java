@@ -44,9 +44,9 @@ public class TitledLabel extends ScreenControl<AnimatedLabel> {
     public TitledLabel() {
         super("settings-title");
         
-        Font font=Font.font("Roboto", FontWeight.BOLD,18);
+        /*  Font font=Font.font("Roboto", FontWeight.BOLD,18);
         this.getPrimaryControl().setFont(font);
-        
+        */ 
         vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
         vBox.getChildren().add(primary);
