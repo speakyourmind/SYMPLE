@@ -98,6 +98,8 @@ public class SubGrid extends AppableControl {
             }
         });
 
+        System.out.println("-----------" + this.getIndex());
+        ConfigurableGrid.editModeProperty().removeListener(getConfigButtonListener());
         System.out.println("++++++++++" + this.getIndex());
         ConfigurableGrid.editModeProperty().addListener(getConfigButtonListener());
 

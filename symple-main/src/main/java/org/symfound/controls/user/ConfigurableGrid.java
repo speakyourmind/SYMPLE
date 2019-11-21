@@ -184,21 +184,18 @@ public class ConfigurableGrid extends ButtonGrid {
      */
     public void reload() {
 
-        /*   if (this.getParent() instanceof SubGrid) {
-        SubGrid subGrid = (SubGrid) this.getParent();
-        System.out.println("-----------" + this.getIndex());
-        ConfigurableGrid.editModeProperty().removeListener(subGrid.getConfigButtonListener());
-        final ObservableList<Node> children = this.getChildren();
-        for (int i = 0; i < children.size(); i++) {
-        Node node = children.get(i);
-        if (node instanceof SubGrid) {
-        SubGrid control = (SubGrid) node;
-        System.out.println("-----------" + this.getIndex());
-        ConfigurableGrid.editModeProperty().removeListener(control.getConfigButtonListener());
-        
+        if (this.getParent() instanceof SubGrid) {
+            final ObservableList<Node> children = this.getChildren();
+            for (int i = 0; i < children.size(); i++) {
+                Node node = children.get(i);
+                if (node instanceof SubGrid) {
+                    SubGrid control = (SubGrid) node;
+                    System.out.println("-----------" + control.getIndex());
+                    ConfigurableGrid.editModeProperty().removeListener(control.getConfigButtonListener());
+
+                }
+            }
         }
-        }
-        }*/
         Double level = getUser().getAbility().getLevel();
         Double max = getMaxDifficulty();
         Double min = getMinDifficulty();
