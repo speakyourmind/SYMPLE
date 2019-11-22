@@ -41,7 +41,6 @@ public class FillableGrid extends BuildableGrid {
          *
          */
         ROW_WISE,
-
         /**
          *
          */
@@ -57,7 +56,6 @@ public class FillableGrid extends BuildableGrid {
          *
          */
         FORWARD,
-
         /**
          *
          */
@@ -120,7 +118,7 @@ public class FillableGrid extends BuildableGrid {
             if (child instanceof AppableControl) {
                 AppableControl control = (AppableControl) child;
                 if (!(control instanceof LockButton)) {
-                 //   System.out.println(value.toString());
+                    //   System.out.println(value.toString());
                     control.setDisable(value);
                 }
             }
@@ -196,48 +194,49 @@ public class FillableGrid extends BuildableGrid {
             for (int j = 0; j < spec1; j++) {
                 RunnableControl node = this.get(i, j);
                 if (node != null) {
-                    if (node instanceof AppableControl){
-                        AppableControl appableControl = (AppableControl)node;
-                   
-                    Integer span1 = getDimensionSpan(appableControl, dimension1);
-                    Integer index1 = getDimensionIndex(appableControl, dimension1);
+                    if (node instanceof AppableControl) {
+                        AppableControl appableControl = (AppableControl) node;
 
-                    Integer span2 = getDimensionSpan(appableControl, dimension2);
-                    Integer index2 = getDimensionIndex(appableControl, dimension2);
+                        Integer span1 = getDimensionSpan(appableControl, dimension1);
+                        Integer index1 = getDimensionIndex(appableControl, dimension1);
 
-                    Integer expandedSpan1 = span1 + appableControl.getExpandByDimension(dimension1);
-                    if (expandedSpan1 + index1 > spec1) {
-                        expandedSpan1 = spec1 - index1;
-                        appableControl.setExpandByDimension(spec1 - index1, dimension1);
-                    }
-                    setDimensionSpan(appableControl, expandedSpan1, dimension1);
-                    appableControl.toFront();
+                        Integer span2 = getDimensionSpan(appableControl, dimension2);
+                        Integer index2 = getDimensionIndex(appableControl, dimension2);
 
-                    if (appableControl.getExpandByDimension(dimension1) > 0) {
-                        LOGGER.info("Checking for overlap for appableControl " + appableControl.getText());
-                        for (int k = 1; k < expandedSpan1; k++) {
-                            for (int l = 0; l < span2; l++) {
-                                Integer nextIndex2 = getDimensionIndex(appableControl, dimension2) + l;
-                                Integer nextIndex1 = getDimensionIndex(appableControl, dimension1) + k;
+                        Integer expandedSpan1 = span1 + appableControl.getExpandByDimension(dimension1);
+                        if (expandedSpan1 + index1 > spec1) {
+                            expandedSpan1 = spec1 - index1;
+                            appableControl.setExpandByDimension(spec1 - index1, dimension1);
+                        }
+                        setDimensionSpan(appableControl, expandedSpan1, dimension1);
+                        appableControl.toFront();
 
-                                RunnableControl spanCheckNode;
-                                if (dimension.equals("row")) {
-                                    spanCheckNode = get(nextIndex1, nextIndex2);
-                                } else {
-                                    spanCheckNode = get(nextIndex2, nextIndex1);
-                                }
-                                if (spanCheckNode != null) {
-                                    LOGGER.info("Found overlapping appableControl " + spanCheckNode.getText()
-                                            + " at " + nextIndex2 + "," + nextIndex1);
-                                    LOGGER.info("Cascading remaining cells from "
-                                            + nextIndex2 + ", " + nextIndex1 + " to "
-                                            + spec2 + ", " + spec1);
-                                    spanCheckNode.removeFromParent();
+                        if (appableControl.getExpandByDimension(dimension1) > 0) {
+                            LOGGER.info("Checking for overlap for appableControl " + appableControl.getText());
+                            for (int k = 1; k < expandedSpan1; k++) {
+                                for (int l = 0; l < span2; l++) {
+                                    Integer nextIndex2 = getDimensionIndex(appableControl, dimension2) + l;
+                                    Integer nextIndex1 = getDimensionIndex(appableControl, dimension1) + k;
+
+                                    RunnableControl spanCheckNode;
+                                    if (dimension.equals("row")) {
+                                        spanCheckNode = get(nextIndex1, nextIndex2);
+                                    } else {
+                                        spanCheckNode = get(nextIndex2, nextIndex1);
+                                    }
+                                    if (spanCheckNode != null) {
+                                        LOGGER.info("Found overlapping appableControl " + spanCheckNode.getText()
+                                                + " at " + nextIndex2 + "," + nextIndex1);
+                                        LOGGER.info("Cascading remaining cells from "
+                                                + nextIndex2 + ", " + nextIndex1 + " to "
+                                                + spec2 + ", " + spec1);
+                                        spanCheckNode.removeFromParent();
+                                    }
                                 }
                             }
                         }
-                    }}
-                    
+                    }
+
                 }
             }
         }
@@ -273,7 +272,7 @@ public class FillableGrid extends BuildableGrid {
                     if (k < getControlsQueue().size()) {
                         RunnableControl screenControl = getControlsQueue().get(k);
                         //System.out.println("Adding " + screenControl.getText() + " to column " + j + " to row " + i);
-                         test(screenControl);
+                        test(screenControl);
                         add(screenControl, i, j, DEFAULT_COLUMN_SPAN, DEFAULT_ROW_SPAN);
                         k++;
                     }
@@ -691,6 +690,5 @@ public class FillableGrid extends BuildableGrid {
         }
         return status;
     }
-    
-    
+
 }

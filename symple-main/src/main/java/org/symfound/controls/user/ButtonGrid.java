@@ -214,6 +214,13 @@ public abstract class ButtonGrid extends FillableGrid {
         setVgap(getCustomVGap());
         customVGapProperty().bindBidirectional(vgapProperty());
 
+        final double marginSize = getCustomMargin();
+        setAnchors(this, marginSize, marginSize, marginSize, marginSize);
+        customMarginProperty().addListener((observable, oldValue, newValue) -> {
+            final double newMargin = newValue.doubleValue();
+            setAnchors(this, newMargin, newMargin, newMargin, newMargin);
+        });
+
         setStyle(getOverrideStyle());
         overrideStyleProperty().addListener((obversable1, oldValue1, newValue1) -> {
             LOGGER.info("Setting style to " + newValue1);
@@ -957,11 +964,39 @@ public abstract class ButtonGrid extends FillableGrid {
      */
     public DoubleProperty customVGapProperty() {
         if (customVGap == null) {
-            customVGap = new SimpleDoubleProperty(DEFAULT_GRID_GAP);
+            customVGap = new SimpleDoubleProperty(DEFAULT_MARGIN);
         }
         return customVGap;
     }
+    private DoubleProperty customMargin;
 
+    /**
+     *
+     * @param value
+     */
+    public void setCustomMargin(Double value) {
+        customMarginProperty().set(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public final Double getCustomMargin() {
+        return customMarginProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DoubleProperty customMarginProperty() {
+        if (customMargin == null) {
+            customMargin = new SimpleDoubleProperty(DEFAULT_MARGIN);
+
+        }
+        return customMargin;
+    }
     /**
      *
      */

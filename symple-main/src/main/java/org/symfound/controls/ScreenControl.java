@@ -104,11 +104,15 @@ public abstract class ScreenControl<T extends Labeled> extends AnimatedPane {
      * @param right
      */
     public void addToPane(Node node, Double top, Double left, Double bottom, Double right) {
+        setAnchors(node, top, left, right, bottom);
+        getChildren().add(node);
+    }
+
+    public void setAnchors(Node node, Double top, Double left, Double right, Double bottom) {
         setTopAnchor(node, top);
         setLeftAnchor(node, left);
         setRightAnchor(node, right);
         setBottomAnchor(node, bottom);
-        getChildren().add(node);
     }
 
     /**

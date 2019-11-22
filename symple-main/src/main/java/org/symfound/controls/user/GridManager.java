@@ -175,6 +175,36 @@ public abstract class GridManager implements Editable {
         return customVGap;
     }
 
+    
+     private DoubleProperty customMargin;
+
+    /**
+     *
+     * @param value
+     */
+    public void setCustomMargin(Double value) {
+        customMarginProperty().set(value);
+        getPreferences().put("margin", value.toString());
+        LOGGER.info("Grid Margin set to " + value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public final Double getCustomMargin() {
+        return customMarginProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DoubleProperty customMarginProperty() {
+        Double value = Double.valueOf(getPreferences().get("margin", getCustomHGap().toString()));
+        customMargin = new SimpleDoubleProperty(value);
+        return customMargin;
+    }
 
     /**
      *

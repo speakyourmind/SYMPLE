@@ -85,6 +85,10 @@ public class ConfigurableGrid extends ButtonGrid {
             getGridManager().setCustomVGap(newValue.doubleValue());
         });
 
+        setCustomMargin(getGridManager().getCustomMargin());
+        customMarginProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setCustomMargin(newValue.doubleValue());
+        });
         setFillMethod(getGridManager().getFillMethod());
         fillMethodProperty().addListener((observable, oldValue, newValue) -> {
             getGridManager().setFillMethod(newValue);
@@ -147,6 +151,7 @@ public class ConfigurableGrid extends ButtonGrid {
                     + "difficulty is " + getGridManager().getMaxDifficulty());
             setOrder(getGridManager().getOrder());
             setCustomHGap(getGridManager().getCustomHGap());
+            setCustomMargin(getGridManager().getCustomMargin());
             setCustomVGap(getGridManager().getCustomVGap());
             setFillMethod(getGridManager().getFillMethod());
             setFillDirection(getGridManager().getFillDirection());
@@ -175,7 +180,8 @@ public class ConfigurableGrid extends ButtonGrid {
             if (newValue == ScreenStatus.PLAYING) {
                 getScanner().configure();
                 getStepper().configure();
-            }
+            } 
+
         });
     }
 
@@ -191,7 +197,7 @@ public class ConfigurableGrid extends ButtonGrid {
                 if (node instanceof SubGrid) {
                     SubGrid control = (SubGrid) node;
                     System.out.println("-----------" + control.getIndex());
-                    ConfigurableGrid.editModeProperty().removeListener(control.getConfigButtonListener());
+                    editModeProperty().removeListener(control.getConfigButtonListener());
 
                 }
             }

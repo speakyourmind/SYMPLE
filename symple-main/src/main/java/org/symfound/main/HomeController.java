@@ -21,11 +21,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import org.apache.log4j.Logger;
 import org.symfound.app.GridController;
+import static org.symfound.controls.ScreenControl.CSS_PATH;
+import static org.symfound.controls.ScreenControl.setSizeMax;
 import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ConfigurableGrid;
@@ -71,11 +74,19 @@ public class HomeController extends GridController {
         getSession().builtProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 ConfigurableGrid.editModeProperty().bindBidirectional(FullSession.getMainUI().editModeProperty());
+
+                ScrollPane scrollPane = new ScrollPane();
+                scrollPane.setPadding(new Insets(0));
+                scrollPane.setFitToHeight(Boolean.TRUE);
+                scrollPane.setFitToWidth(Boolean.TRUE);
+                setSizeMax(scrollPane);
+                scrollPane.setContent(getGrid());
+                scrollPane.getStylesheets().add(CSS_PATH);
+                GridPane.setRowIndex(scrollPane, 1);
                 
-                GridPane.setRowIndex(getGrid(), 1);
-                gpMain.getChildren().add(getGrid());
-                getGrid().maxHeightProperty().bind(Bindings.multiply(0.96, gpMain.heightProperty()));
-               
+                gpMain.getChildren().add(scrollPane);
+
+                //getGrid().maxHeightProperty().bind(Bindings.multiply(0.96, gpMain.heightProperty()));
             }
 
         });
@@ -91,6 +102,7 @@ public class HomeController extends GridController {
         if (grid == null) {
             grid = new SubGrid("home");
             grid.getConfigurableGrid().setRootGrid(true);
+            setSizeMax(grid);
         }
         return grid;
     }

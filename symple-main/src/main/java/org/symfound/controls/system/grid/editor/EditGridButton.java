@@ -139,6 +139,7 @@ public class EditGridButton extends SystemControl {
             private ChoiceBox<FillDirection> fillDirectionChoices;
             private Slider hGapSlider;
             private Slider vGapSlider;
+            private Slider marginSlider;
             private TextField maxDifficultyField;//TODO:Change to slider;
             private TextField minDifficultyField;//TODO:Change to slider;
             private Slider overrideRowSlider;
@@ -218,6 +219,15 @@ public class EditGridButton extends SystemControl {
                 vGapSlider.setShowTickMarks(true);
                 vGapSlider.setSnapToTicks(true);
                 vGapRow.add(vGapSlider, 1, 0, 2, 1);
+                
+                SettingsRow marginRow = createSettingRow("Margin", "Outer gap");
+                marginSlider = new Slider(0.0, 200.0, grid.getCustomMargin());
+                marginSlider.setMajorTickUnit(20);
+                marginSlider.setMinorTickCount(2);
+                marginSlider.setShowTickLabels(true);
+                marginSlider.setShowTickMarks(true);
+                marginSlider.setSnapToTicks(true);
+                marginRow.add(marginSlider, 1, 0, 2, 1);
 
                 SettingsRow difficultyRow = createSettingRow("Difficulty", "Controls size of grid");
 
@@ -379,6 +389,7 @@ public class EditGridButton extends SystemControl {
                 lookSettings.add(styleRow);
                 lookSettings.add(hGapRow);
                 lookSettings.add(vGapRow);
+                lookSettings.add(marginRow);
                 Tab lookTab = buildTab("Look", lookSettings);
 
                 selectionSettings.add(selectionMethodRow);
@@ -393,7 +404,7 @@ public class EditGridButton extends SystemControl {
                 Tab aboutTab = buildTab("About", aboutSettings);
 
                 TabPane tabPane = new TabPane();
-                tabPane.setPadding(new Insets(0,0,5,5));
+                tabPane.setPadding(new Insets(0, 0, 5, 5));
                 tabPane.setSide(Side.LEFT);
                 tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
                 tabPane.getTabs().add(gridTab);
@@ -425,6 +436,7 @@ public class EditGridButton extends SystemControl {
                 grid.setFillDirection(fillDirectionChoices.getValue());
                 grid.setCustomHGap(hGapSlider.getValue());
                 grid.setCustomVGap(vGapSlider.getValue());
+                grid.setCustomMargin(marginSlider.getValue());
                 grid.setMaxDifficulty(Double.valueOf(maxDifficultyField.getText()));
                 grid.setMinDifficulty(Double.valueOf(minDifficultyField.getText()));
 
@@ -456,6 +468,7 @@ public class EditGridButton extends SystemControl {
                 fillDirectionChoices.setValue(grid.getFillDirection());
                 hGapSlider.setValue(grid.getCustomHGap());
                 vGapSlider.setValue(grid.getCustomVGap());
+                marginSlider.setValue(grid.getCustomMargin());
                 maxDifficultyField.setText(String.valueOf(grid.getMaxDifficulty()));
                 minDifficultyField.setText(String.valueOf(grid.getMinDifficulty()));
                 overrideRowSlider.setValue(grid.getOverrideRow());
@@ -475,7 +488,7 @@ public class EditGridButton extends SystemControl {
     @Override
     public void run() {
         LOGGER.info("Edit Grid button clicked");
-        
+
     }
 
     private String getFolderSelection() {

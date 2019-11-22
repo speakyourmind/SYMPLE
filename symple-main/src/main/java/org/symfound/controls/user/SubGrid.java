@@ -13,7 +13,9 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.system.EditAppButton;
@@ -52,9 +54,15 @@ public class SubGrid extends AppableControl {
         initialize();
     }
 
+    public SubGrid(String index, Boolean rootGrid) {
+        super("", KEY, "", index);
+        initialize();
+    }
+
     private void initialize() {
         // TO DO: Test with loadPrimaryControl Instead
         addToPane(getConfigurableGrid());
+
     }
 
     private ConfigurableGrid grid;
@@ -90,17 +98,18 @@ public class SubGrid extends AppableControl {
 
         getConfigurableGrid().statusProperty().addListener((ob, o, n) -> {
             if (n.equals(ScreenStatus.PLAYING)) {
+                setDisable(false);
                 if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
                     addConfigButtons();
                 } else {
                     removeConfigButtons();
                 }
+            } else {
+                setDisable(true);
             }
         });
 
-        System.out.println("-----------" + this.getIndex());
         ConfigurableGrid.editModeProperty().removeListener(getConfigButtonListener());
-        System.out.println("++++++++++" + this.getIndex());
         ConfigurableGrid.editModeProperty().addListener(getConfigButtonListener());
 
     }

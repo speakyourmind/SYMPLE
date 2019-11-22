@@ -330,7 +330,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 "-fx-background-image:url(\"", backgroundURLProperty(), "\"); \n"
                 + "-fx-background-repeat:no-repeat;\n"
                 + "-fx-background-position:center;\n"
-                        
+                + "-fx-padding:0 0 -5 0;\n"
                 + "-fx-wrap-text:", wrapTextProperty().asString(), ";\n"
                 + "-fx-background-size:", backgroundSizeProperty(), "; \n",
                 overrideStyleProperty());

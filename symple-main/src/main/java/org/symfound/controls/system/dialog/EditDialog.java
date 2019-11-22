@@ -107,6 +107,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
      * @return
      */
     public static SettingsRow createSettingRow(String title, String caption) {
+       
         SettingsRow settingsRow = new SettingsRow();
         settingsRow.setMaxHeight(220.0);
         settingsRow.setTitleText(title);

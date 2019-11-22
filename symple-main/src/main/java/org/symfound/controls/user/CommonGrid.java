@@ -14,6 +14,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import static javafx.scene.layout.AnchorPane.setBottomAnchor;
+import static javafx.scene.layout.AnchorPane.setLeftAnchor;
+import static javafx.scene.layout.AnchorPane.setRightAnchor;
+import static javafx.scene.layout.AnchorPane.setTopAnchor;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Window;
@@ -38,6 +42,7 @@ public abstract class CommonGrid extends GridPane implements Usable {
      *
      */
     public static final Double DEFAULT_GRID_GAP = 5.0;
+    public static final Double DEFAULT_MARGIN= 0.0;
 
     /**
      *
@@ -438,6 +443,14 @@ public abstract class CommonGrid extends GridPane implements Usable {
             specColumns = new SimpleIntegerProperty(1);
         }
         return specColumns;
+    }
+
+
+    public void setAnchors(Node node, Double top, Double left, Double right, Double bottom) {
+        setTopAnchor(node, top);
+        setLeftAnchor(node, left);
+        setRightAnchor(node, right);
+        setBottomAnchor(node, bottom);
     }
 
 }
