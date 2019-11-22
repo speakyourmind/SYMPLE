@@ -152,6 +152,10 @@ public class ConfigurableGrid extends ButtonGrid {
             setOrder(getGridManager().getOrder());
             setCustomHGap(getGridManager().getCustomHGap());
             setCustomMargin(getGridManager().getCustomMargin());
+             final Double newMargin = getCustomMargin();
+            System.out.println("----------" + newMargin);
+            this.setAnchors(this, newMargin, newMargin, newMargin, newMargin);
+
             setCustomVGap(getGridManager().getCustomVGap());
             setFillMethod(getGridManager().getFillMethod());
             setFillDirection(getGridManager().getFillDirection());
@@ -180,7 +184,7 @@ public class ConfigurableGrid extends ButtonGrid {
             if (newValue == ScreenStatus.PLAYING) {
                 getScanner().configure();
                 getStepper().configure();
-            } 
+            }
 
         });
     }

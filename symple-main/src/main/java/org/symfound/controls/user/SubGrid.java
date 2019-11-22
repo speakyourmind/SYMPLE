@@ -13,9 +13,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.system.EditAppButton;
@@ -60,8 +58,8 @@ public class SubGrid extends AppableControl {
     }
 
     private void initialize() {
-        // TO DO: Test with loadPrimaryControl Instead
-        addToPane(getConfigurableGrid());
+        final Double customMargin = getConfigurableGrid().getGridManager().getCustomMargin();
+        addToPane(getConfigurableGrid(), customMargin, customMargin, customMargin, customMargin);
 
     }
 
@@ -136,7 +134,7 @@ public class SubGrid extends AppableControl {
         addEditAppButtons();
         if (!getChildren().contains(getMenu())) {
             gridMenu = null;
-            addToPane(getMenu(), null, 10.0, 10.0, null);
+            addToPane(getMenu(), 10.0, 10.0, null, null);
         }
 
     }

@@ -20,6 +20,7 @@ import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMIT
 import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
 import org.symfound.builder.user.selection.SelectionMethod;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
+import static org.symfound.controls.user.CommonGrid.DEFAULT_MARGIN;
 import org.symfound.tools.iteration.ParallelList;
 
 /**
@@ -201,7 +202,7 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public DoubleProperty customMarginProperty() {
-        Double value = Double.valueOf(getPreferences().get("margin", getCustomHGap().toString()));
+        Double value = Double.valueOf(getPreferences().get("margin",DEFAULT_MARGIN.toString()));
         customMargin = new SimpleDoubleProperty(value);
         return customMargin;
     }
