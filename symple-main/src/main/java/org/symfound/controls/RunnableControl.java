@@ -235,7 +235,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
      */
     public void execute() {
         final Navigation navigation = Main.getSession().getUser().getNavigation();
-            Platform.runLater(this);
+        Platform.runLater(this);
         if (this instanceof AppableControl) {
             AppableControl appable = (AppableControl) this;
             /* if (navigation.speakSelection()) {
@@ -264,7 +264,12 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
                         em.getMouse().getAutomator().navigate(new Point((int) (getParentUI().getWidth() / 2), (int) (getParentUI().getHeight() / 2)));
 
                     }
-                    configurableGrid.setIndex(appable.getNavigateIndex());
+                    if (appable.getNavigateIndex().equals("-Previous")) {
+
+                        configurableGrid.setIndex(getUser().getNavigation().getPreviousIndex());
+                    } else {
+                        configurableGrid.setIndex(appable.getNavigateIndex());
+                    }
                     getSession().setPlaying(false);
                 }
             }

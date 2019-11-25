@@ -452,14 +452,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     private ChoiceBox<ColourChoices> backgroundColourChoices;
     private ChoiceBox<BackgroundSizeChoices> backgroundSizeChoices;
 
-    /**
-     *
-     */
     public TextField backgroundURLField;
-
-    /**
-     *
-     */
     public OnOffButton selectableButton;
 
     public OnOffButton disabledPrimaryButton;
@@ -497,6 +490,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         disabledPrimaryButton.setValue(isPrimaryDisabled());
         rowExpandSlider.setValue(getRowExpand());
         columnExpandSlider.setValue(getColumnExpand());
+        
+        
         if (navigatePostClick()) {
             navigateIndexChoices.setValue(getNavigateIndex());
         }
@@ -786,12 +781,12 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         if (navigatePostClick()) {
             SettingsRow navigateRow = createSettingRow("Navigate", "Screen to navigate to after click");
             List<String> navigatableScreens = new ArrayList<>();
+            navigatableScreens.add("-Previous");
             try {
                 navigatableScreens = getNavigatableScreens("subgrid");
             } catch (BackingStoreException ex) {
                 LOGGER.fatal("Unable to load Preferences" + ex.getMessage());
             }
-
             navigateIndexChoices = new ChoiceBox<>(FXCollections.observableArrayList(navigatableScreens));
             navigateIndexChoices.setValue(getNavigateIndex());
             navigateIndexChoices.setMaxSize(180.0, 60.0);

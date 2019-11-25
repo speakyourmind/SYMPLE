@@ -548,4 +548,68 @@ public class Navigation extends Characteristic {
         return onFirstClick;
     }
 
+    
+    private static final String PREVIOUS_INDEX_KEY = "app.general.previousIndex";
+    private StringProperty previousIndex;
+
+    /**
+     *
+     * @param value
+     */
+    public void setPreviousIndex(String value) {
+        previousIndexProperty().setValue(value);
+        getPreferences().put(PREVIOUS_INDEX_KEY, value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getPreviousIndex() {
+        return previousIndexProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty previousIndexProperty() {
+        if (previousIndex == null) {
+            String initValue = getPreferences().get(PREVIOUS_INDEX_KEY, "home");
+            previousIndex = new SimpleStringProperty(initValue);
+        }
+        return previousIndex;
+    }
+    
+        private static final String CURRENT_INDEX_KEY = "app.general.previousIndex";
+    private StringProperty currentIndex;
+
+    /**
+     *
+     * @param value
+     */
+    public void setCurrentIndex(String value) {
+        currentIndexProperty().setValue(value);
+        getPreferences().put(CURRENT_INDEX_KEY, value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getCurrentIndex() {
+        return currentIndexProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty currentIndexProperty() {
+        if (currentIndex == null) {
+            String initValue = getPreferences().get(CURRENT_INDEX_KEY, "home");
+            currentIndex = new SimpleStringProperty(initValue);
+        }
+        return currentIndex;
+    }
 }

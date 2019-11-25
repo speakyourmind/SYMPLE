@@ -146,14 +146,16 @@ public class ConfigurableGrid extends ButtonGrid {
         });
 
         indexProperty().addListener((observable1, oldValue1, newValue1) -> {
-            LOGGER.info("Index updated to " + newValue1
+            LOGGER.info("User navigated from " + oldValue1 + " to " + newValue1
                     + " order is " + getGridManager().getOrder().asString()
                     + "difficulty is " + getGridManager().getMaxDifficulty());
+            getUser().getNavigation().setPreviousIndex(oldValue1);
+            getUser().getNavigation().setCurrentIndex(newValue1);
+
             setOrder(getGridManager().getOrder());
             setCustomHGap(getGridManager().getCustomHGap());
             setCustomMargin(getGridManager().getCustomMargin());
-             final Double newMargin = getCustomMargin();
-            System.out.println("----------" + newMargin);
+            final Double newMargin = getCustomMargin();
             this.setAnchors(this, newMargin, newMargin, newMargin, newMargin);
 
             setCustomVGap(getGridManager().getCustomVGap());

@@ -95,24 +95,24 @@ public class ScriptButton extends TypingControl {
     public void requestWebhook() {
         Webhook webhooks = new Webhook();
         try {
-            
+
             String urlEnd = "https://maker.ifttt.com/trigger/" + getWebhookEventEnd() + "/with/key/" + getWebhookKey();
             webhooks.request(urlEnd);
             final Double postSelectTime = Main.getSession().getDeviceManager().getCurrent().getHardware().getSelectability().getPostSelectTime();
-            
+
             final long name = (long) (postSelectTime * 1000.0);
             //Thread.sleep(name);
-            
+
             String urlStart = "https://maker.ifttt.com/trigger/" + getWebhookEventStart() + "/with/key/" + getWebhookKey();
             webhooks.request(urlStart);
-            
+
             /*final long name = (long)(postSelectTime*1000.0);
             System.out.println(name);
             Thread.sleep(name);
             
             String urlEnd = "https://maker.ifttt.com/trigger/" + getWebhookEventEnd() + "/with/key/" + getWebhookKey();
             webhooks.request(urlEnd);
-            */
+             */
         } catch (IOException ex) {
             LOGGER.warn(ex);
         }
@@ -164,7 +164,7 @@ public class ScriptButton extends TypingControl {
         setSMSEnabled(smsEnabledButton.getValue());
         setToNumber(toNumberField.getText());
 
-           setWebhookEnabled(webhookEnabledButton.getValue());
+        setWebhookEnabled(webhookEnabledButton.getValue());
         setWebhookKey(webhookKeyField.getText());
         setWebhookEventStart(webhookEventStartField.getText());
         setWebhookEventEnd(webhookEventEndField.getText());
@@ -180,7 +180,7 @@ public class ScriptButton extends TypingControl {
         typableButton.setValue(isTypable());
         smsEnabledButton.setValue(isSMSEnabled());
         toNumberField.setText(getToNumber());
-    webhookEnabledButton.setValue(webhookEnabled());
+        webhookEnabledButton.setValue(webhookEnabled());
         webhookKeyField.setText(getWebhookKey());
         webhookEventStartField.setText(getWebhookEventStart());
         webhookEventEndField.setText(getWebhookEventEnd());
