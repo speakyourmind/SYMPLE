@@ -30,6 +30,7 @@ import org.symfound.controls.AppableControl;
 import org.symfound.controls.ScreenControl;
 import org.symfound.controls.system.EditAppButton;
 import org.symfound.device.hardware.Hardware;
+import org.symfound.main.HomeController;
 import org.symfound.main.Main;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.selection.modes.Scanner;
@@ -173,11 +174,11 @@ public class ConfigurableGrid extends ButtonGrid {
             triggerReload();
         });
 
-        BooleanProperty updatedSettings = SettingsController.updatedProperty();
+        BooleanProperty updatedSettings = HomeController.updatedProperty();
         updatedSettings.addListener((observable2, oldValue2, newValue2) -> {
             if (newValue2) {
                 triggerReload();
-                SettingsController.setUpdated(false);
+                HomeController.setUpdated(false);
             }
         });
 

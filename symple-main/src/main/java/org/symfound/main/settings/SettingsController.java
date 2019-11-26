@@ -21,24 +21,16 @@ import images.Images;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
-import static org.symfound.app.DiagnosticController.MAX_LEVEL;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Interaction;
-import org.symfound.builder.user.characteristic.Profile;
-import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.system.OnOffButton;
-import org.symfound.controls.user.DiagnosticTestButton;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.device.hardware.characteristic.Movability;
 import org.symfound.device.hardware.characteristic.Selectability;
@@ -46,6 +38,7 @@ import org.symfound.device.hardware.eyetracker.EyeTracker;
 import org.symfound.device.selection.SelectionEventType;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.*;
+import org.symfound.main.HomeController;
 import org.symfound.tools.iteration.ModeIterator;
 
 /**
@@ -58,30 +51,6 @@ public class SettingsController extends SettingsControllerBase {
     private static final Logger LOGGER = Logger.getLogger(NAME);
 
     @FXML
-    private AnchorPane apMain;
-    @FXML
-    private ChoiceBox<SelectionMethod> cbSelection;
-    @FXML
-    private Slider slDwellTime;
-    @FXML
-    private GridPane gpDwellTime;
-    @FXML
-    private Slider slScanTime;
-    @FXML
-    private GridPane gpScanTime;
-    @FXML
-    private Slider slStepTime;
-    @FXML
-    private GridPane gpStepTime;
-    @FXML
-    private ChoiceBox<String> cbCursor;
-    @FXML
-    private Slider slLevel;
-    @FXML
-    private OnOffButton btnAssistedMode;
-    @FXML
-    private OnOffButton btnAutoUpdate;
-    @FXML
     private Button btnDevice;
     @FXML
     private OnOffButton btnMouseControl;
@@ -93,44 +62,14 @@ public class SettingsController extends SettingsControllerBase {
     private ChoiceBox<String> cbSelectionEvent;
     @FXML
     private ChoiceBox<String> cbSwitchDirection;
-    @FXML
-    private DiagnosticTestButton dtbTest;
 
-    /**
-     *
-     */
-    public ModeIterator<SelectionMethod> selectionMode;
-
-    /**
-     *
-     */
-    public ModeIterator<String> calibMode = new ModeIterator<>(EyeTracker.CALIBRATION_STATES);
-
-    /**
-     *
-     */
-    public ModeIterator<String> fileChooser;
-    private static BooleanProperty updated = new SimpleBooleanProperty(true);
-
-    //PROFILE
-    /**
-     *
-     */
-    @FXML
-    public TextField firstNameField;
-
-    /**
-     *
-     */
-    @FXML
-    public TextField lastNameField;
 
     @FXML
     private void cancelSettings(MouseEvent e) {
         cancelSettings();
         getMainUI().getStack().load(HOME);
         getMainUI().open();
-        setUpdated(false);
+        HomeController.setUpdated(false);
     }
 
     @FXML
@@ -149,26 +88,14 @@ public class SettingsController extends SettingsControllerBase {
         setSettings();
         getMainUI().getStack().load(HOME);
         getMainUI().open();
-        getUser().getInteraction().setSelectionMethod(selectionMode.get()); // TO DO: REMOVE
-        setUpdated(true);
+        HomeController.setUpdated(true);
 
-    }
-
-    @FXML
-    private void launchAppSettings(MouseEvent e) {
-        getMainUI().getStack().load(FullSession.APP_SETTINGS);
     }
 
     @Override
     public void setSettings() {
         LOGGER.info("Setting Main Settings");
         final User user = getUser();
-        //APPLICATION
-        user.getTiming().setDwellTime(slDwellTime.getValue());
-        user.getTiming().setScanTime(slScanTime.getValue());
-        user.getTiming().setStepTime(slStepTime.getValue());
-        user.getAbility().setLevel(slLevel.getValue());
-        user.getInteraction().setAssistedMode(btnAssistedMode.getValue());
         //DEVICE
         final String selectedDeviceName = getSession().getDeviceManager().getIterator().get();
         user.setDeviceName(selectedDeviceName);
@@ -179,24 +106,12 @@ public class SettingsController extends SettingsControllerBase {
         final Selectability selectability = hardware.getSelectability();
         selectability.setSensitivity((int) (dwellSensitivityField.getValue()));
         selectability.getClickability().setEventType(new SelectionEventType(cbSelectionEvent.getValue()));
-        //PROFILE
-        final Profile profile = user.getProfile();
-        profile.setFirstName(firstNameField.getText());
-        profile.setLastName(lastNameField.getText());
-        profile.setAutoUpdate(btnAutoUpdate.getValue());
+
     }
 
     @Override
     public void resetSettings() {
         LOGGER.info("Resetting Main Settings");
-        //APPLICATION
-        slDwellTime.setValue(getUser().getTiming().getDwellTime());
-        slScanTime.setValue(getUser().getTiming().getScanTime());
-        slStepTime.setValue(getUser().getTiming().getStepTime());
-        getSelectionMode().set(getUser().getInteraction().getSelectionMethod());
-        cbSelection.setValue(selectionMode.get());
-        slLevel.setValue(getUser().getAbility().getLevel());
-        btnAssistedMode.setValue(getUser().getInteraction().isInAssistedMode());
 
         //DEVICE
         final String activeDevice = getUser().getDeviceName();
@@ -213,25 +128,8 @@ public class SettingsController extends SettingsControllerBase {
         resetMouseControl(hardware);
         resetSelectionControl(hardware);
 
-        //PROFILE
-        final Profile profile = getUser().getProfile();
-        firstNameField.setText(profile.getFirstName());
-        lastNameField.setText(profile.getLastName());
-        btnAutoUpdate.setValue(profile.autoUpdate());
-        setUpdated(false);
+        HomeController.setUpdated(false);
     }
-
-    /**
-     *
-     * @return
-     */
-    public ModeIterator<SelectionMethod> getSelectionMode() {
-        if (selectionMode == null) {
-            selectionMode = new ModeIterator<>(Arrays.asList(SelectionMethod.values()));
-        }
-        return selectionMode;
-    }
-
     /**
      *
      * @param hardware
@@ -247,53 +145,22 @@ public class SettingsController extends SettingsControllerBase {
      * @param hardware
      */
     public void resetSelectionControl(Hardware hardware) {
-        SelectionMethod selectionMethod = selectionMode.get();
         final Selectability selectability = hardware.getSelectability();
         btnSelectionControl.setDisable(!selectability.canSelect());
         btnSelectionControl.setValue(getUser().getInteraction().needsSelectionControl());
-        dwellSensitivityField.setVisible(selectability.getDwellability().isEnabled() && selectionMethod.equals(SelectionMethod.DWELL));
+      //  dwellSensitivityField.setVisible(selectability.getDwellability().isEnabled() && selectionMethod.equals(SelectionMethod.DWELL));
+        dwellSensitivityField.setVisible(selectability.getDwellability().isEnabled());
         dwellSensitivityField.setValue(selectability.getSensitivity());
         cbSelectionEvent.setItems(FXCollections.observableArrayList(SelectionEventType.EVENT_TYPES));
-        cbSelectionEvent.setVisible(selectability.getClickability().isEnabled() && (selectionMethod.equals(SelectionMethod.SWITCH) || selectionMethod.equals(SelectionMethod.CLICK)));
+       // cbSelectionEvent.setVisible(selectability.getClickability().isEnabled() && (selectionMethod.equals(SelectionMethod.SWITCH) || selectionMethod.equals(SelectionMethod.CLICK)));
+       cbSelectionEvent.setVisible(selectability.getClickability().isEnabled());
         cbSelectionEvent.setValue(selectability.getClickability().getEventType().getValue());
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle rb) {
-        cbSelection.setItems(FXCollections.observableArrayList(SelectionMethod.values()));
-        cbSelection.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-            selectionMode.set(newValue.intValue());
-            getUser().getInteraction().setSelectionMethod(selectionMode.get());
-            Boolean isDwellSelect = selectionMode.get().equals(SelectionMethod.DWELL);
-            gpDwellTime.setVisible(isDwellSelect);
-            if (isDwellSelect) {
-                gpDwellTime.toFront();
-            } else {
-
-                gpDwellTime.toBack();
-            }
-
-            Boolean isScanSelect = selectionMode.get().equals(SelectionMethod.SCAN);
-            Boolean isClickSelect = selectionMode.get().equals(SelectionMethod.CLICK);
-            gpScanTime.setVisible(isScanSelect || isClickSelect);
-            if (isScanSelect || isClickSelect) {
-                gpScanTime.toFront();
-            } else {
-                gpScanTime.toBack();
-            }
-            Boolean isStepSelect = selectionMode.get().equals(SelectionMethod.STEP);
-            gpStepTime.setVisible(isStepSelect);
-            if (isStepSelect) {
-                gpStepTime.toFront();
-            } else {
-                gpStepTime.toBack();
-            }
-        });
-        dtbTest.visibleProperty().bind(Bindings.and(
-                slLevel.valueProperty().isNotEqualTo(MAX_LEVEL),Bindings.or(
-                cbSelection.valueProperty().isEqualTo(SelectionMethod.CLICK),
-                cbSelection.valueProperty().isEqualTo(SelectionMethod.DWELL))));
+     
 
         ObjectProperty<String> selectedDeviceMode = getSession().getDeviceManager().getIterator().modeProperty();
         selectedDeviceMode.addListener((observable, oldValue, newValue) -> {
@@ -323,31 +190,5 @@ public class SettingsController extends SettingsControllerBase {
 
     }
 
-    /**
-     *
-     * @param value
-     */
-    public static void setUpdated(Boolean value) {
-        updatedProperty().setValue(value);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public static boolean isUpdated() {
-        return updatedProperty().getValue();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public static BooleanProperty updatedProperty() {
-        if (updated == null) {
-            updated = new SimpleBooleanProperty(false);
-        }
-        return updated;
-    }
 
 }

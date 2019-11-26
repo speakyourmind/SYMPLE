@@ -18,6 +18,7 @@ import org.symfound.controls.user.ExitButton;
 import org.symfound.controls.user.MinimizeButton;
 import org.symfound.controls.user.ScriptButton;
 import org.symfound.controls.user.SettingsButton;
+import org.symfound.controls.user.UserSettingsButton;
 import org.symfound.controls.user.VersionUpdateButton;
 import org.symfound.tools.iteration.ParallelList;
 import org.symfound.tools.ui.ColourChoices;
@@ -156,7 +157,13 @@ public class ToolbarGrid extends ButtonGrid {
                     minimizeButton.setSymStyle("toolbar-minimized");
                     requested.add(minimizeButton);
                     break;
-                    
+
+                case UserSettingsButton.KEY:
+                    UserSettingsButton userSettingsButton = new UserSettingsButton();
+                    userSettingsButton.setPane("apMain");
+                    userSettingsButton.setSymStyle("toolbar-settings");
+                    requested.add(userSettingsButton);
+                    break;
                 case StatsButton.KEY:
                     StatsButton statsButton = new StatsButton();
                     statsButton.setPane("apMain");

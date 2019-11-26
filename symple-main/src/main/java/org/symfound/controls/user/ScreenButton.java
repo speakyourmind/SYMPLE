@@ -14,7 +14,7 @@ import org.symfound.main.HomeController;
 public class ScreenButton extends GenericButton {
 
     public static final String KEY = "Screen";
-    public static final String DESCRIPTION = "Screen";
+    public static final String DESCRIPTION = "Board";
 
     public ScreenButton(String index) {
         super(index);

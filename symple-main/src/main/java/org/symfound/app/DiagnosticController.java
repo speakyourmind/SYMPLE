@@ -39,6 +39,7 @@ import org.symfound.diagnostic.DiagnosticTest;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.HOME;
 import static org.symfound.main.FullSession.getMainUI;
+import org.symfound.main.HomeController;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.test.Result;
 import org.symfound.test.ResultMap;
@@ -240,7 +241,7 @@ public class DiagnosticController extends TestControllerBase {
         bpResults.setVisible(true);
         bpResults.toFront();
         
-        SettingsController.setUpdated(Boolean.TRUE);
+        HomeController.setUpdated(Boolean.TRUE);
 
     }
 

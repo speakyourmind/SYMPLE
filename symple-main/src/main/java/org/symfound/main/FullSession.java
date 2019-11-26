@@ -116,10 +116,6 @@ public class FullSession extends Session {
      */
     public static String MAIN_SETTINGS = SCREENS_FOLDER + "main/main_settings";
 
-    /**
-     *
-     */
-    public static String APP_SETTINGS = SCREENS_FOLDER + "main/app_settings";
 
     /**
      *

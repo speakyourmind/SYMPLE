@@ -20,6 +20,7 @@ package org.symfound.controls.user;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import org.symfound.builder.user.User;
+import static org.symfound.controls.ScreenControl.CSS_PATH;
 import org.symfound.main.FullSession;
 import org.symfound.main.Main;
 import org.symfound.tools.animation.Animated;
@@ -46,6 +47,7 @@ public class AnimatedLabel extends Label implements Animated {
         super();
         session = Main.getSession();
      //   user = session.getUser();
+        getStylesheets().add(CSS_PATH);
     }
 
     /**
@@ -54,6 +56,7 @@ public class AnimatedLabel extends Label implements Animated {
      */
     public AnimatedLabel(String text) {
         super(text);
+        getStylesheets().add(CSS_PATH);
     }
 
     /**

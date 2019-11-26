@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
+import org.symfound.main.HomeController;
 import static org.symfound.main.Main.getVersionManager;
 import org.symfound.main.settings.SettingsController;
 
@@ -54,7 +55,7 @@ public final class SettingsButton extends AppableControl {
             LOGGER.info("Launching Settings screen");
             getMainUI().open();
         }
-        SettingsController.setUpdated(false);
+        HomeController.setUpdated(false);
         getSession().setPlaying(false);
     }
 

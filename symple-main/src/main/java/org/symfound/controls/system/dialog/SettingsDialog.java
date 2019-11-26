@@ -63,7 +63,7 @@ public abstract class SettingsDialog extends OKDialog {
         List<Double> rowPercentages = Arrays.asList(65.0, 35.0);
         buildBaseGrid(3, 1, rowPercentages);
         Toolbar toolbar = new Toolbar();
-        toolbar.setButtonOrder("Minimize=default,Exit=default");
+        toolbar.setButtonOrder("Exit=default");
         toolbar.setTitleText(title);
         baseGrid.add(toolbar, 0, 0);
         TabPane tabPane = buildTabPane(getTabList());

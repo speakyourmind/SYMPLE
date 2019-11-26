@@ -218,8 +218,8 @@ public class TextAnalyzer {
         // Remove whitespaces and change to lower case to get the raw string
         String textRaw = text.toLowerCase().trim();
         // Test to see if text contains a punctuation that ends a sentence
-        Boolean isEnd = textRaw.contains(".") || textRaw.contains("!")
-                || textRaw.contains("?");
+        Boolean isEnd = textRaw.endsWith(".") || textRaw.endsWith("!")
+                || textRaw.endsWith("?");
         return isEnd;
     }
 

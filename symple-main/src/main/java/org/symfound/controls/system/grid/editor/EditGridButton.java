@@ -42,10 +42,14 @@ import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.LOGGER;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.system.dialog.OKCancelDialog;
+import org.symfound.controls.user.SettingsButtonBase;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.FillableGrid.FillDirection;
 import org.symfound.controls.user.FillableGrid.FillMethod;
+import static org.symfound.controls.user.UserSettingsButton.DEFAULT_TITLE;
+import static org.symfound.controls.user.UserSettingsButton.KEY;
 import static org.symfound.main.FullSession.getSettingsFileName;
+import org.symfound.main.HomeController;
 import org.symfound.main.Main;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
@@ -54,7 +58,7 @@ import org.symfound.tools.iteration.ParallelList;
  *
  * @author Javed Gangjee
  */
-public class EditGridButton extends SystemControl {
+public class EditGridButton extends SettingsButtonBase {
 
     /**
      *
@@ -77,28 +81,10 @@ public class EditGridButton extends SystemControl {
     public static final String KEY = "Edit Grid";
 
     public EditGridButton(ConfigurableGrid grid) {
-        super("toolbar-edit-grid", KEY, "", "default");
+        super("setting-button", KEY, DEFAULT_TITLE);
+
+    
         this.grid = grid;
-    }
-
-    @Override
-    public void defineButton() {
-        setEditable(Boolean.FALSE);
-        setControlType(ControlType.SETTING_CONTROL);
-        setNavigatePostClick(Boolean.FALSE);
-
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public OKCancelDialog getDialog() {
-        if (settingsDialog == null) {
-            settingsDialog = configureEditDialog();
-        }
-        return settingsDialog;
     }
 
     /**
@@ -132,6 +118,7 @@ public class EditGridButton extends SystemControl {
      *
      * @return
      */
+    @Override
     public EditDialog configureEditDialog() {
         EditDialog editDialog = new EditDialog("Edit Grid") {
             private TextArea buttonOrderField;
@@ -457,7 +444,7 @@ public class EditGridButton extends SystemControl {
                 grid.setSelectionMethod(selectionMethodChoices.getValue());
                 grid.enablePagination(paginationButton.getValue());
                 grid.setDescription(descriptionArea.getText());
-                SettingsController.setUpdated(true);
+                HomeController.setUpdated(true);
 
             }
 
@@ -479,7 +466,7 @@ public class EditGridButton extends SystemControl {
                 selectionMethodChoices.setValue(grid.getSelectionMethod());
                 paginationButton.setValue(grid.isPaginationEnabled());
                 descriptionArea.setText(grid.getDescription());
-                SettingsController.setUpdated(false);
+                HomeController.setUpdated(false);
             }
         };
         return editDialog;

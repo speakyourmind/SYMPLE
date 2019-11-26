@@ -23,6 +23,7 @@ import org.symfound.audio.music.song.SongFileAnalyzer;
 import org.symfound.comm.file.PathReader;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.user.ConfigurableGrid;
+import org.symfound.main.HomeController;
 import org.symfound.main.settings.SettingsController;
 
 /**
@@ -51,7 +52,7 @@ public abstract class MusicButton extends AppableControl {
 
     private void initialize() {
         configureAlbumArt();
-        SettingsController.updatedProperty().addListener((observeableValue, oldValue, newValue) -> {
+        HomeController.updatedProperty().addListener((observeableValue, oldValue, newValue) -> {
             if (newValue) {
                 configureAlbumArt();
             }

@@ -80,7 +80,6 @@ import org.symfound.main.HomeController;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 import org.symfound.tools.ui.ColourChoices;
-import org.symfound.tools.ui.FontTracker;
 
 /**
  *
@@ -330,7 +329,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 "-fx-background-image:url(\"", backgroundURLProperty(), "\"); \n"
                 + "-fx-background-repeat:no-repeat;\n"
                 + "-fx-background-position:center;\n"
-                + "-fx-padding:0 0 -5 0;\n"
+             //   + "-fx-padding:0 0 -5 0;\n"
                 + "-fx-wrap-text:", wrapTextProperty().asString(), ";\n"
                 + "-fx-background-size:", backgroundSizeProperty(), "; \n",
                 overrideStyleProperty());
@@ -504,7 +503,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             backgroundSizeChoices.setValue(BackgroundSizeChoices.CUSTOM);
             backgroundSizeSlider.setValue(Double.valueOf(getBackgroundSize()));
         }
-        SettingsController.setUpdated(Boolean.FALSE);
+        HomeController.setUpdated(Boolean.FALSE);
     }
 
     /**
@@ -565,7 +564,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             reloadRequired = Boolean.TRUE;
         }
 
-        SettingsController.setUpdated(reloadRequired);
+        HomeController.setUpdated(reloadRequired);
     }
 
     /**
@@ -852,7 +851,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
         usageSettings.add(totalUsageRow);
         usageSettings.add(lastUsedRow);
-        Tab usageTab = buildTab("Stats", usageSettings);
+        Tab usageTab = buildTab("Statistics", usageSettings);
 
         tabs.add(actionTab);
         tabs.add(textTab);

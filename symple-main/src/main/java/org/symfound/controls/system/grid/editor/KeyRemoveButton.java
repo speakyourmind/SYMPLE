@@ -13,6 +13,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import org.apache.log4j.Logger;
 import org.symfound.controls.SystemControl;
 import org.symfound.controls.user.ConfigurableGrid;
+import org.symfound.main.HomeController;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 
@@ -72,7 +73,7 @@ public class KeyRemoveButton extends SystemControl {
 
     @Override
     public void run() {
-        SettingsController.setUpdated(Boolean.FALSE);
+        HomeController.setUpdated(Boolean.FALSE);
         final ParallelList<String, String> order1 = getOrder();
         if (order1.getFirstList().get(getOrderIndex()).equals(ReplaceKeyButton.KEY)) {
             order1.remove(getOrderIndex());
@@ -84,7 +85,7 @@ public class KeyRemoveButton extends SystemControl {
         configurableGrid.setOrder(getOrder());
         configurableGrid.getGridManager().setOrder(getOrder());
         
-        SettingsController.setUpdated(Boolean.TRUE);
+        HomeController.setUpdated(Boolean.TRUE);
     }
     private ObjectProperty<ParallelList<String, String>> order;
 

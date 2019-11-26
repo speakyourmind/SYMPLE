@@ -36,6 +36,7 @@ import org.symfound.tools.iteration.ParallelList;
  *
  * @author Javed Gangjee
  */
+@Deprecated
 public class AppSettingsController extends SettingsControllerBase {
 
     private static final String NAME = AppSettingsController.class.getName();
@@ -43,44 +44,28 @@ public class AppSettingsController extends SettingsControllerBase {
 
     @FXML
     private AnchorPane apMain;
-
-    /**
-     *
-     */
     @FXML
     public Button btnUpdateSettings;
-
-    /**
-     *
-     */
     @FXML
     public Button btnHomeFolder;
-
-    /**
-     *
-     */
     @FXML
     public TextField homeFolderField;
     @FXML
     private Slider timeoutField;
-    @FXML
-    private Slider autoCompleteTimeField;
 
-    /**
-     *
-     */
     @FXML
     public GridPane gpTier;
 
-    /**
-     *
-     */
     @FXML
     public GridPane gpMain;
     @FXML
     private Slider userDictWeightField;
     @FXML
     private OnOffButton btnAutocomplete;
+    @FXML
+    private Slider autoCompleteTimeField;
+    
+    
     @FXML
     private OnOffButton btnOnFirstClick;
     @FXML
@@ -91,14 +76,12 @@ public class AppSettingsController extends SettingsControllerBase {
     private OnOffButton btnFullScreen;
     @FXML
     private OnOffButton btnPlayScourSound;
-
-    /**
-     *
-     */
     @FXML
     public TextField playScourField;
     @FXML
     private OnOffButton btnPlaySelectSound;
+    @FXML
+    public TextField playSelectionField;
 
     @FXML
     public TextField accountSIDField;
@@ -106,11 +89,6 @@ public class AppSettingsController extends SettingsControllerBase {
     public TextField authTokenField;
     @FXML
     public TextField fromNumberField;
-    /**
-     *
-     */
-    @FXML
-    public TextField playSelectionField;
 
     /**
      *
@@ -286,9 +264,9 @@ public class AppSettingsController extends SettingsControllerBase {
         getSession().builtProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 FullSession.getMainUI().getStack().currentProperty().addListener((observable1, oldValue1, newValue1) -> {
-                    if (newValue1.get().contains(FullSession.APP_SETTINGS)) {
+//                    if (newValue1.get().contains(FullSession.APP_SETTINGS)) {
                         resetSettings();
-                    }
+  //                  }
                 });
             }
         });

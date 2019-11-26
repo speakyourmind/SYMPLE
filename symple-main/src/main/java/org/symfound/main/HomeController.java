@@ -20,6 +20,8 @@ package org.symfound.main;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
@@ -33,6 +35,7 @@ import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
+import org.symfound.main.settings.SettingsController;
 
 /**
  *
@@ -51,6 +54,34 @@ public class HomeController extends GridController {
      *
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+
+    private static BooleanProperty updated = new SimpleBooleanProperty(true);
+    /**
+     *
+     * @param value
+     */
+    public static void setUpdated(Boolean value) {
+        updatedProperty().setValue(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static boolean isUpdated() {
+        return updatedProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static BooleanProperty updatedProperty() {
+        if (updated == null) {
+            updated = new SimpleBooleanProperty(false);
+        }
+        return updated;
+    }
 
     @FXML
     private BuildableGrid gpWizard;

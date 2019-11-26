@@ -23,6 +23,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
+import org.symfound.main.HomeController;
 import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 
@@ -58,7 +59,7 @@ public final class MenuGrid extends ButtonGrid {
                 Double level = getUser().getAbility().getLevel();
                 Double size = (level - 2 <= MIN_SIZE) ? MIN_SIZE : level - 2;
                 reload(getValidatedKeyOrder(getUser().getNavigation().getMenuOrder()), FillMethod.ROW_WISE, FillDirection.FORWARD, size);
-                SettingsController.updatedProperty().addListener((observable2, oldValue2, newValue2) -> {
+                HomeController.updatedProperty().addListener((observable2, oldValue2, newValue2) -> {
                     if (newValue2) {
                         reload();
                     }

@@ -50,6 +50,7 @@ public class SettingsRow extends BuildableGrid {
         add(background, 0, 0, 3, 1);
 
         titledLabel = new TitledLabel();
+       
         titledLabel.setMaxHeight(Double.POSITIVE_INFINITY);
         titledLabel.setMaxWidth(Double.POSITIVE_INFINITY);
         titleTextProperty().bindBidirectional(titledLabel.titleTextProperty());
@@ -130,7 +131,7 @@ public class SettingsRow extends BuildableGrid {
         buildRows();
 
         setSpecColumns(DEFAULT_COLUMNS);
-        List<Double> columnPercentages = Arrays.asList(25.0, 20.0, 55.0);
+        List<Double> columnPercentages = Arrays.asList(30.0, 20.0, 50.0);
         buildColumnsByPerc(columnPercentages);
     }
 }

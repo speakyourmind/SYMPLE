@@ -41,7 +41,7 @@ public class ActiveTextArea extends AppableControl {
     private static final Logger LOGGER = Logger.getLogger(NAME);
 
     private static final Boolean DEFAULT_WRAP_TEXT = Boolean.TRUE;
-    private static final String DEFAULT_PROMPT_TEXT = "Select a letter button to begin typing...";
+   // private static final String DEFAULT_PROMPT_TEXT = "Select a letter button to begin typing...";
 
     //Autosave variables
     /**
@@ -280,7 +280,7 @@ public class ActiveTextArea extends AppableControl {
             textArea = new TextArea();
             //setCSS("main-text", textArea);
             textArea.setWrapText(DEFAULT_WRAP_TEXT);
-            textArea.setPromptText(DEFAULT_PROMPT_TEXT);
+//            textArea.setPromptText(DEFAULT_PROMPT_TEXT);
         }
         return textArea;
     }

@@ -94,32 +94,35 @@ public class TextOperator {
     public void autoSave(String pathSave, String pathRead) {
         if (textArea != null && pathSave != null && pathRead != null) {
             try {
-                // Get timeStamp as String to use in filename
-                String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH").
-                        format(Calendar.getInstance().getTime());
+                TextAnalyzer textAnalyzer = new TextAnalyzer(textArea.getText());
+                // If the added text is a period or a phrase
+                if (textAnalyzer.isSentence()) {
+                    // Get timeStamp as String to use in filename
+                    String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH mm").
+                            format(Calendar.getInstance().getTime());
 
-                String fileName = pathSave + "Autosave " + timeStamp + "00.txt";
-                // Write to both current file and autosaved file
-                exportToFile(fileName);
-                exportToFile(pathRead);
-            } catch (IOException ex) {
+                    String fileName = pathSave + "Autosave " + timeStamp + ".txt";
+                    // Write to both current file and autosaved file
+                    exportToFile(fileName);
+                }
+                    exportToFile(pathRead);
+                }catch (IOException ex) {
                 LOGGER.fatal(null, ex);
             }
 
+            }
         }
-    }
-
-    /**
-     * Gets the last sentence — marked by period, question mark or exclamation
-     * mark — in the specified <code>TextArea textarea</code>. Splits the text
-     * using a regular expression that selects for <code> . || ! || ? </code>
-     * followed by one or more spaces. Then returns the last sentence in the
-     * consequent array. This method is used when the user ends a sentence to
-     * save only the most recent sentence in the custom user dictionary
-     * automatically.
-     *
-     * @return the last sentence in <code>textarea</code>
-     */
+        /**
+         * Gets the last sentence — marked by period, question mark or
+         * exclamation mark — in the specified <code>TextArea textarea</code>.
+         * Splits the text using a regular expression that selects for <code> . || ! || ?
+         * </code> followed by one or more spaces. Then returns the last
+         * sentence in the consequent array. This method is used when the user
+         * ends a sentence to save only the most recent sentence in the custom
+         * user dictionary automatically.
+         *
+         * @return the last sentence in <code>textarea</code>
+         */
     public String getLastSentence() {
         String text = textArea.getText();
         // RegEx splits at . || ! || ? followed by one or more spaces
@@ -127,7 +130,7 @@ public class TextOperator {
         String[] sentences = text.split(regex);
         // CASE: No sentences found in TextArea
         if (sentences.length == 0) {
-            LOGGER.fatal( "No sentence in TextArea found; "
+            LOGGER.fatal("No sentence in TextArea found; "
                     + "returning empty string.   (Pred.getLastSentence)");
             return "";
         }

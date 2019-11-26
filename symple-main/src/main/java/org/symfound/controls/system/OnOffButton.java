@@ -73,7 +73,7 @@ public class OnOffButton extends RunnableControl {
     public void toggleButton(Boolean newValue, String onValue, String offValue) {
         if (newValue) {
             getPrimaryControl().setText(onValue);
-            getPrimaryControl().setStyle("-fx-background-color:-fx-blue; -fx-background-insets: 0,0; -fx-text-fill: -fx-light;");
+            getPrimaryControl().setStyle("-fx-background-color:-fx-blue; -fx-background-insets: 0,0; -fx-text-fill: -fx-light; -fx-font-weight:bold; -fx-padding:0 0 -10 0;");
         } else {
             getPrimaryControl().setText(offValue);
             getPrimaryControl().setStyle("");

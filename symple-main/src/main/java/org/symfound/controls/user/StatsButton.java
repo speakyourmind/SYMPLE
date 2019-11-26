@@ -28,12 +28,14 @@ import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import org.symfound.controls.system.dialog.OKCancelDialog;
+import org.symfound.main.HomeController;
 import org.symfound.main.settings.SettingsController;
 
 /**
  *
  * @author Javed Gangjee <javed@speakyourmindfoundation.org>
  */
+@Deprecated
 public class StatsButton extends SystemControl {
 
     /**
@@ -273,14 +275,14 @@ public class StatsButton extends SystemControl {
             @Override
             public void setSettings() {
 
-                SettingsController.setUpdated(true);
+                HomeController.setUpdated(true);
 
             }
 
             @Override
             public void resetSettings() {
 
-                SettingsController.setUpdated(false);
+                HomeController.setUpdated(false);
             }
         };
         return editDialog;
