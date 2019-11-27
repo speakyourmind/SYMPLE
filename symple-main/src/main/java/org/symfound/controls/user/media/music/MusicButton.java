@@ -16,15 +16,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import org.apache.log4j.Logger;
-import org.symfound.audio.music.song.SongFileAnalyzer;
 import org.symfound.comm.file.PathReader;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.HomeController;
-import org.symfound.main.settings.SettingsController;
 
 /**
  *

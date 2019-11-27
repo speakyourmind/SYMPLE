@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 import org.symfound.controls.SystemControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.HomeController;
-import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 
 /**
@@ -59,6 +58,7 @@ public class AddKeyButton extends SystemControl {
 
     @Override
     public void run() {
+        HomeController.setUpdated(Boolean.FALSE);
         LOGGER.info("Add Key button clicked");
         final ParallelList<String, String> order1 = configurableGrid.getOrder();
         order1.add(ReplaceKeyButton.KEY, getIndex().toLowerCase());

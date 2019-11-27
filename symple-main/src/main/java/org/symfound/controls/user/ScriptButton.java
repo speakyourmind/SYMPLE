@@ -7,12 +7,17 @@ package org.symfound.controls.user;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.prefs.Preferences;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.HPos;
@@ -133,12 +138,16 @@ public class ScriptButton extends TypingControl {
      * @param text
      */
     public void type(String text) {
-
         if (getPictoArea() != null) {
             getPictoArea().add(this);
         }
+
         if (getTextArea() != null) {
             getTextArea().handle(getActionKey(), text);
+        } else {
+            HashMap<Integer, String> map = new HashMap<>();
+            LOGGER.warn("No active text area on the current screen");
+            ActiveTextArea.setScratchpad(new KeyAction(getActionKey(),text));
         }
     }
 
@@ -544,4 +553,7 @@ public class ScriptButton extends TypingControl {
         return webhookEventEnd;
     }
 
+   
+    
+    
 }

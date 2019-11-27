@@ -23,7 +23,7 @@ import org.symfound.controls.device.DeviceManager;
  *
  * @author Javed Gangjee
  */
-public final class DeviceButton extends AppableControl {
+public class DeviceConfigButton extends AppableControl {
 
     /**
      *
@@ -38,9 +38,15 @@ public final class DeviceButton extends AppableControl {
     /**
      *
      */
-    public DeviceButton() {
+    public DeviceConfigButton() {
         super("calibrate-button", KEY, "Configure Your Device","default");
-        initialize();
+     initialize();
+    }
+
+    /**
+     *
+     */
+    public final void initialize() {
         setEditable(Boolean.FALSE);
         setConfirmable(Boolean.TRUE);
         initTitleText = "Activate To Configure";
@@ -48,12 +54,6 @@ public final class DeviceButton extends AppableControl {
         setOkText("CONFIRM");
         setCancelText("CANCEL");
         titleProperty().bind(Bindings.concat(DEFAULT_TITLE_PREFIX, getUser().deviceNameProperty()));
-    }
-
-    /**
-     *
-     */
-    public final void initialize() {
         iconTypeProperty().addListener((ObservableValue<? extends String> ov, String t, String t1) -> {
             getUser().deviceNameProperty().addListener((observable, oldValue, newValue) -> {
                 updateIcon();

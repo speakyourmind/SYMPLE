@@ -5,26 +5,22 @@
  */
 package org.symfound.controls.user;
 
-import images.Images;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.prefs.Preferences;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
-import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Tab;
@@ -41,6 +37,10 @@ import org.symfound.builder.user.characteristic.Speech;
 import org.symfound.builder.user.characteristic.Statistics;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.RunnableControl;
+import org.symfound.controls.device.DeviceManager;
+import org.symfound.controls.device.EyeTrackerSettings;
+import org.symfound.controls.device.GenericDeviceSettings;
+import org.symfound.controls.device.SwiftySettings;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsExportButton;
 import org.symfound.controls.system.SettingsImportButton;
@@ -50,14 +50,13 @@ import org.symfound.controls.system.UIImportButton;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.controls.user.voice.TTSManager;
+import org.symfound.device.Device;
 import org.symfound.device.hardware.Hardware;
 import org.symfound.device.hardware.characteristic.Movability;
 import org.symfound.device.hardware.characteristic.Selectability;
 import org.symfound.device.selection.SelectionEventType;
 import org.symfound.main.HomeController;
 import org.symfound.main.Main;
-import org.symfound.main.settings.SettingsController;
-import org.symfound.tools.iteration.ModeIterator;
 
 /**
  *
@@ -119,7 +118,7 @@ public class UserSettingsButton extends SettingsButtonBase {
             private OnOffButton assistedModeButton;
 
             private ChoiceBox<String> deviceChoiceBox;
-            private DeviceButton configureDeviceButton;
+            private DeviceConfigButton configureDeviceButton;
             private OnOffButton mouseControlButton;
             private OnOffButton selectionControlButton;
             private Slider dwellSensitivitySlider;
@@ -299,7 +298,6 @@ public class UserSettingsButton extends SettingsButtonBase {
                 Hardware hardware1 = getSelectedHardware();
                 resetMouseControl(hardware1);
                 resetSelectionControl(hardware1);
-                ObjectProperty<String> selectedDeviceMode = getSession().getDeviceManager().getIterator().modeProperty();
                 deviceChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {
                     deviceChoiceBox.setValue(newValue);
                     Hardware hardware2 = getSession().getDeviceManager().get(newValue).getHardware();
@@ -308,7 +306,43 @@ public class UserSettingsButton extends SettingsButtonBase {
                 });
 
                 deviceRow.add(deviceChoiceBox, 2, 0, 1, 1);
-                configureDeviceButton = new DeviceButton();
+                configureDeviceButton = new DeviceConfigButton() {
+
+                    @Override
+                    public void execute() {
+                        if (isConfirmable() && !(getUser().getDeviceName().equals(deviceChoiceBox.getValue()))) {
+                            if (getSession().isBuilt()) {
+                                stackPane.getChildren().add(getPopup(getDialog()));
+                                final Double selectionTime = getSession().getUser().getInteraction().getSelectionTime();
+                                getDialog().animate().startScale(selectionTime, 0.8, 1.0);
+                            }
+                        } else {
+                            Platform.runLater(this);
+                        }
+                    }
+
+                    @Override
+                    public void run() {
+                        final String selectedDeviceName = deviceChoiceBox.getValue();
+                        getUser().setDeviceName(selectedDeviceName);
+                        DeviceManager deviceManager = getSession().getDeviceManager();
+                        switch (deviceChoiceBox.getValue()) {
+                            case Hardware.SWIFTY:
+                                SwiftySettings swiftyConfiguration = new SwiftySettings();
+                                launchConfiguration(swiftyConfiguration);
+                                break;
+                            case Hardware.EYE_TRACKER:
+                                EyeTrackerSettings tobiiConfiguration = new EyeTrackerSettings();
+                                launchConfiguration(tobiiConfiguration);
+                                break;
+                            case Hardware.GENERIC:
+                                GenericDeviceSettings genericConfiguration = new GenericDeviceSettings();
+                                launchConfiguration(genericConfiguration);
+                                break;
+                        }
+                    }
+
+                };
                 configureDeviceButton.setControlType(ControlType.SETTING_CONTROL);
                 configureDeviceButton.setConfirmable(Boolean.TRUE);
                 configureDeviceButton.setSymStyle("settings-button");
@@ -735,10 +769,11 @@ public class UserSettingsButton extends SettingsButtonBase {
 
             public void setSettings() {
 
+                HomeController.setUpdated(false);
                 final User user = getUser();
                 //DEVICE
                 final String selectedDeviceName = getSession().getDeviceManager().getIterator().get();
-                user.setDeviceName(selectedDeviceName);
+                user.setDeviceName(deviceChoiceBox.getValue());
                 final Interaction interaction = user.getInteraction();
                 interaction.setMouseControl(mouseControlButton.getValue());
                 interaction.setSelectionControl(selectionControlButton.getValue());
@@ -791,13 +826,13 @@ public class UserSettingsButton extends SettingsButtonBase {
 
                 //DEVICE
                 final String activeDevice = getUser().getDeviceName();
-                getSession().getDeviceManager().getIterator().set(activeDevice);
+                //    getSession().getDeviceManager().getIterator().set(activeDevice);
                 deviceChoiceBox.setValue(activeDevice);
 
                 Hardware hardware = getSelectedHardware();
                 resetMouseControl(hardware);
                 resetSelectionControl(hardware);
-                final User user = getUser();
+                //  final User user = getUser();
                 //APPLICATION 
                 dwellTimeSlider.setValue(getUser().getTiming().getDwellTime());
                 scanTimeSlider.setValue(getUser().getTiming().getScanTime());
@@ -876,14 +911,15 @@ public class UserSettingsButton extends SettingsButtonBase {
 
             }
 
-            private void prevDevice(MouseEvent e) {
-                getSession().getDeviceManager().getIterator().previous();
-
+            @Override
+            public Hardware getSelectedHardware() {
+                String deviceName = deviceChoiceBox.getValue();
+                final DeviceManager deviceManager = getSession().getDeviceManager();
+                Device device = deviceManager.get(deviceName);
+                Hardware hardware = device.getHardware();
+                return hardware;
             }
 
-            private void nextDevice(MouseEvent e) {
-                getSession().getDeviceManager().getIterator().next();
-            }
         };
         return editDialog;
     }

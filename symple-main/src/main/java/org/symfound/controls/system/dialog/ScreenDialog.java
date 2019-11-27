@@ -105,19 +105,19 @@ public class ScreenDialog extends ScreenControl<AnimatedButton> {
         label.getPrimaryControl().setAlignment(Pos.CENTER);
         label.getPrimaryControl().setStyle("-fx-text-fill:-fx-blue;");
         label.captionLabel.setAlignment(Pos.CENTER);
-        label.captionLabel.setStyle("-fx-text-alignment:center;-fx-font-size:1.6em;");
+        label.captionLabel.setStyle("-fx-text-alignment:center;-fx-font-size:1.8em;");
         label.getStyleClass().add("dialog-label");
         GridPane.setHalignment(label, HPos.CENTER);
         GridPane.setValignment(label, VPos.CENTER);
         return label;
     }
-
+ public StackPane stackPane;
     /**
      *
      * @param node
      */
     public void addToStackPane(Node node) {
-        StackPane stackPane = new StackPane();
+        stackPane = new StackPane();
         stackPane.getStyleClass().add("transparent");
         stackPane.getChildren().add(node);
         addToPane(stackPane, 0.0, 0.0, 0.0, 0.0);

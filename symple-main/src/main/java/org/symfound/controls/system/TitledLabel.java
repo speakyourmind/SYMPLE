@@ -14,8 +14,6 @@ import javafx.beans.property.StringProperty;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import org.symfound.controls.ScreenControl;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
 import org.symfound.controls.user.AnimatedLabel;

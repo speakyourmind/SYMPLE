@@ -29,7 +29,6 @@ import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import org.symfound.controls.system.dialog.OKCancelDialog;
 import org.symfound.main.HomeController;
-import org.symfound.main.settings.SettingsController;
 
 /**
  *

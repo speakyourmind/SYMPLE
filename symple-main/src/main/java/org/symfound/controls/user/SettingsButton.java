@@ -7,7 +7,6 @@ import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
 import org.symfound.main.HomeController;
 import static org.symfound.main.Main.getVersionManager;
-import org.symfound.main.settings.SettingsController;
 
 /**
  *

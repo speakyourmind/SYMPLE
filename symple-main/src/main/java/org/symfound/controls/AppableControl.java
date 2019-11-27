@@ -77,7 +77,6 @@ import org.symfound.controls.user.SubGrid;
 import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
 import org.symfound.main.HomeController;
-import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 import org.symfound.tools.ui.ColourChoices;
 
@@ -329,7 +328,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 "-fx-background-image:url(\"", backgroundURLProperty(), "\"); \n"
                 + "-fx-background-repeat:no-repeat;\n"
                 + "-fx-background-position:center;\n"
-             //   + "-fx-padding:0 0 -5 0;\n"
+                //   + "-fx-padding:0 0 -5 0;\n"
                 + "-fx-wrap-text:", wrapTextProperty().asString(), ";\n"
                 + "-fx-background-size:", backgroundSizeProperty(), "; \n",
                 overrideStyleProperty());
@@ -489,8 +488,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         disabledPrimaryButton.setValue(isPrimaryDisabled());
         rowExpandSlider.setValue(getRowExpand());
         columnExpandSlider.setValue(getColumnExpand());
-        
-        
+
         if (navigatePostClick()) {
             navigateIndexChoices.setValue(getNavigateIndex());
         }
@@ -886,7 +884,16 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         BuildableGrid grid = EditDialog.buildSettingsGrid(rows);
         ScrollPane scrollPane = buildScrollPane(grid);
         Tab tab = new Tab("", scrollPane);
-        tab.setGraphic(new TabTitle(title));
+        final TabTitle tabTitle = new TabTitle(title);
+        tab.setGraphic(tabTitle);
+        tab.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                tabTitle.getLabel().setStyle("-fx-text-fill:-fx-blue;");
+            } else {
+                tabTitle.getLabel().setStyle("-fx-text-fill:-fx-light;");
+
+            }
+        });
         //     tab.setContent(scrollPane);
         return tab;
     }
@@ -1129,6 +1136,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 }
             }
         }
+        
     }
 
     private StringProperty title;

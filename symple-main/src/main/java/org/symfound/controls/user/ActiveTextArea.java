@@ -7,9 +7,15 @@ package org.symfound.controls.user;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.prefs.Preferences;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -23,6 +29,11 @@ import org.symfound.controls.system.EditAppButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import org.symfound.device.emulation.input.keyboard.ActionKeyCode;
+import org.symfound.device.emulation.input.switcher.SwitchDirection;
+import static org.symfound.device.emulation.input.switcher.SwitchDirector.DOWN;
+import static org.symfound.device.emulation.input.switcher.SwitchDirector.LEFT;
+import static org.symfound.device.emulation.input.switcher.SwitchDirector.RIGHT;
+import static org.symfound.device.emulation.input.switcher.SwitchDirector.UP;
 import org.symfound.text.TextAnalyzer;
 import org.symfound.text.TextOperator;
 import static org.symfound.text.TextOperator.EOL;
@@ -41,7 +52,7 @@ public class ActiveTextArea extends AppableControl {
     private static final Logger LOGGER = Logger.getLogger(NAME);
 
     private static final Boolean DEFAULT_WRAP_TEXT = Boolean.TRUE;
-   // private static final String DEFAULT_PROMPT_TEXT = "Select a letter button to begin typing...";
+    // private static final String DEFAULT_PROMPT_TEXT = "Select a letter button to begin typing...";
 
     //Autosave variables
     /**
@@ -89,7 +100,7 @@ public class ActiveTextArea extends AppableControl {
         StringProperty activeTextProperty = getUser().getTyping().activeTextProperty();
 
         setText(getUser().getTyping().getActiveText());
-        activeTextProperty.bind(textProperty());
+        activeTextProperty.bindBidirectional(textProperty());
         loadCurrentText();
         textProperty().addListener((observable, oldValue, newValue) -> {
             if (savePath != null && readPath != null) {
@@ -99,6 +110,18 @@ public class ActiveTextArea extends AppableControl {
         get().requestFocus();
         configureStyle("Roboto", FontWeight.NORMAL);
         setSelectable(false);
+
+        handleScratchpad();
+        /*   scratchpadProperty().addListener((observable, oldValue, newValue) -> {
+        handleScratchpad();
+        });*/
+    }
+
+    public void handleScratchpad() {
+        if(getScratchpad().actionKey!=0){
+            handle(getScratchpad().actionKey,getScratchpad().text);
+            setScratchpad(new KeyAction(0,""));
+        }
     }
 
     private void loadCurrentText() {
@@ -125,13 +148,13 @@ public class ActiveTextArea extends AppableControl {
         return textOperator;
     }
 
-    private Predictor predictor;
+    private static Predictor predictor;
 
     /**
      *
      * @return
      */
-    public final Predictor getPredictor() {
+    public static final Predictor getPredictor() {
         if (predictor == null) {
             predictor = new Predictor(textArea);
         }
@@ -150,10 +173,10 @@ public class ActiveTextArea extends AppableControl {
 
     /**
      *
-     * @param srcID
+     * @param actionKeyCode
      * @param srcText
      */
-    public void handle(int srcID, String srcText) {
+    public void handle(Integer actionKeyCode, String srcText) {
         /*    if (getUser().getTyping().needsAutoComplete()) {
         if (srcText.length() > 1) {
         //Select the previous word in order to read the length
@@ -161,7 +184,7 @@ public class ActiveTextArea extends AppableControl {
         }
         }*/
 
-        switch (srcID) {
+        switch (actionKeyCode) {
             case ActionKeyCode.ENTER:
                 // Must delete caret before autocomplete, append & save
                 getTextOperator().appendLetter(EOL, getUser().getTyping().isUpperCase());
@@ -269,13 +292,13 @@ public class ActiveTextArea extends AppableControl {
         addToPane(get());
     }
 
-    private TextArea textArea;
+    private static TextArea textArea;
 
     /**
      *
      * @return
      */
-    public TextArea get() {
+    public static TextArea get() {
         if (textArea == null) {
             textArea = new TextArea();
             //setCSS("main-text", textArea);
@@ -372,16 +395,13 @@ public class ActiveTextArea extends AppableControl {
      *
      */
     @Override
-    public void configureStyle(String fontFamily,FontWeight fw) {
-        updateStyle(fontFamily,fw);
+    public void configureStyle(String fontFamily, FontWeight fw) {
+        updateStyle(fontFamily, fw);
         overrideStyleProperty().addListener((obversable1, oldValue1, newValue1) -> {
-            updateStyle(fontFamily,fw);
+            updateStyle(fontFamily, fw);
         });
     }
 
-    /**
-     *
-     */
     public void updateStyle(String fontFamily, FontWeight fw) {
         if (!getOverrideStyle().isEmpty()) {
             LOGGER.info("Setting style for " + getKey() + "." + getIndex() + " to " + getOverrideStyle());
@@ -393,4 +413,34 @@ public class ActiveTextArea extends AppableControl {
             get().setStyle("");
         }
     }
+
+    private static ObjectProperty<KeyAction> scratchpad;
+
+    /**
+     *
+     * @param value
+     */
+    public static void setScratchpad(KeyAction value) {
+        scratchpadProperty().setValue(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static KeyAction getScratchpad() {
+        return scratchpadProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static ObjectProperty<KeyAction> scratchpadProperty() {
+        if (scratchpad == null) {
+            scratchpad = new SimpleObjectProperty<>(new KeyAction(0,""));
+        }
+        return scratchpad;
+    }
+
 }

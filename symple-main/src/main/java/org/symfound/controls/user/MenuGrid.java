@@ -24,7 +24,6 @@ import javafx.scene.Node;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
 import org.symfound.main.HomeController;
-import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 
 /**

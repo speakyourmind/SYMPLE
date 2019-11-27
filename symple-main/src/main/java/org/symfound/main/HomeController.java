@@ -19,7 +19,6 @@ package org.symfound.main;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
@@ -35,7 +34,6 @@ import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
-import org.symfound.main.settings.SettingsController;
 
 /**
  *

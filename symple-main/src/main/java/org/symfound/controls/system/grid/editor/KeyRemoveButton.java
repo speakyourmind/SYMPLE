@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
 import org.symfound.controls.SystemControl;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.main.HomeController;
-import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 
 /**

@@ -36,7 +36,6 @@ import org.symfound.controls.user.GenericButton;
 import org.symfound.controls.user.ScreenButton;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.main.HomeController;
-import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 
 /**
@@ -194,6 +193,7 @@ public class ReplaceKeyButton extends SystemControl {
             
             @Override
             public void setSettings() {
+                HomeController.setUpdated(false);
                 
                 final ParallelList<String, String> order1 = buttonGrid.getOrder();
                 

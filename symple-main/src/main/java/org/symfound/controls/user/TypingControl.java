@@ -20,8 +20,8 @@ import org.symfound.device.emulation.input.keyboard.ActionKeyCode;
 public abstract class TypingControl extends AppableControl {
 
     /**
-
-    /**
+     *
+     * /**
      *
      * @param cssClass
      * @param key
@@ -35,6 +35,7 @@ public abstract class TypingControl extends AppableControl {
      *
      */
     public ActiveTextArea textArea;
+
     /**
      *
      * @return
@@ -47,6 +48,7 @@ public abstract class TypingControl extends AppableControl {
                 textArea = (ActiveTextArea) getScene().lookup(textAreaHash);
             }
         }
+
         return textArea;
     }
     private StringProperty textAreaID;
@@ -82,6 +84,7 @@ public abstract class TypingControl extends AppableControl {
      *
      */
     public PictoArea picto;
+
     /**
      *
      * @return
@@ -96,7 +99,7 @@ public abstract class TypingControl extends AppableControl {
         }
         return picto;
     }
-    
+
     private StringProperty pictoID;
 
     /**

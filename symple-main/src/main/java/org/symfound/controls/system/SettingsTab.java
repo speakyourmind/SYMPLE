@@ -24,8 +24,17 @@ public class SettingsTab extends Tab {
     }
 
     private void build(List<SettingsRow> rows) {
-        setGraphic(new TabTitle(title));
+        //   setGraphic(new TabTitle(title));
+        final TabTitle tabTitle = new TabTitle(title);
+        setGraphic(tabTitle);
+        selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                tabTitle.getLabel().setStyle("-fx-text-fill:-fx-blue;");
+            } else {
+                tabTitle.getLabel().setStyle("-fx-text-fill:-fx-light;");
 
+            }
+        });
         getStyleClass().add("transparent");
         final int numOfSettings = rows.size();
         SettingsGrid settingsGrid = new SettingsGrid(numOfSettings);

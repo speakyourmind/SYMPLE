@@ -142,7 +142,7 @@ public abstract class ButtonGrid extends FillableGrid {
             SettingsButton.KEY,
             LockButton.KEY,
             EditGridButton.KEY,
-            DeviceButton.KEY,
+            DeviceConfigButton.KEY,
             TwilioHistory.KEY,
             VersionUpdateButton.KEY,
             ClockButton.KEY);
@@ -607,8 +607,8 @@ public abstract class ButtonGrid extends FillableGrid {
                         addKeyButton.setGridLocation(i);
                         requestedControls.add(addKeyButton);
                         break;
-                    case DeviceButton.KEY:
-                        DeviceButton deviceButton = new DeviceButton();
+                    case DeviceConfigButton.KEY:
+                        DeviceConfigButton deviceButton = new DeviceConfigButton();
                         deviceButton.configureTitle();
                         deviceButton.setIconType("Device");
                         deviceButton.setPane("apMain");

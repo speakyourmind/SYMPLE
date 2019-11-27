@@ -34,24 +34,20 @@ import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
-import org.symfound.controls.SystemControl;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.UIExporter;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.LOGGER;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
-import org.symfound.controls.system.dialog.OKCancelDialog;
 import org.symfound.controls.user.SettingsButtonBase;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.FillableGrid.FillDirection;
 import org.symfound.controls.user.FillableGrid.FillMethod;
 import static org.symfound.controls.user.UserSettingsButton.DEFAULT_TITLE;
-import static org.symfound.controls.user.UserSettingsButton.KEY;
 import static org.symfound.main.FullSession.getSettingsFileName;
 import org.symfound.main.HomeController;
 import org.symfound.main.Main;
-import org.symfound.main.settings.SettingsController;
 import org.symfound.tools.iteration.ParallelList;
 
 /**
@@ -290,8 +286,7 @@ public class EditGridButton extends SettingsButtonBase {
                         )));
                 selectionMethodChoices.disableProperty().bind(Main.getSession().getUser().getInteraction().assistedModeProperty().not());
                 selectionMethodChoices.setValue(grid.getSelectionMethod());
-                selectionMethodChoices.maxHeight(80.0);
-                selectionMethodChoices.maxWidth(360.0);
+                selectionMethodChoices.setMaxSize(180.0, 60.0);
                 selectionMethodChoices.getStyleClass().add("settings-text-area");
                 selectionMethodRow.add(selectionMethodChoices, 1, 0, 2, 1);
 
