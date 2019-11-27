@@ -60,7 +60,6 @@ public class SubGrid extends AppableControl {
     private void initialize() {
         final Double customMargin = getConfigurableGrid().getGridManager().getCustomMargin();
         addToPane(getConfigurableGrid(), customMargin, customMargin, customMargin, customMargin);
-
     }
 
     private ConfigurableGrid grid;
@@ -75,7 +74,6 @@ public class SubGrid extends AppableControl {
             grid.setIndex(getIndex());
             grid.configure();
             setCSS("subgrid", this);
-
         }
         return grid;
     }

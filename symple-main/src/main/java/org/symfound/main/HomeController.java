@@ -54,6 +54,7 @@ public class HomeController extends GridController {
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
     private static BooleanProperty updated = new SimpleBooleanProperty(true);
+
     /**
      *
      * @param value
@@ -112,7 +113,7 @@ public class HomeController extends GridController {
                 scrollPane.setContent(getGrid());
                 scrollPane.getStylesheets().add(CSS_PATH);
                 GridPane.setRowIndex(scrollPane, 1);
-                
+
                 gpMain.getChildren().add(scrollPane);
 
                 //getGrid().maxHeightProperty().bind(Bindings.multiply(0.96, gpMain.heightProperty()));
@@ -131,6 +132,12 @@ public class HomeController extends GridController {
         if (grid == null) {
             grid = new SubGrid("home");
             grid.getConfigurableGrid().setRootGrid(true);
+            updatedProperty().addListener((observable2, oldValue2, newValue2) -> {
+                if (newValue2) {
+                    grid.getConfigurableGrid().triggerReload();
+                    HomeController.setUpdated(false);
+                }
+            });
             setSizeMax(grid);
         }
         return grid;

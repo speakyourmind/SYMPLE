@@ -48,7 +48,7 @@ public abstract class OKDialog extends ScreenDialog {
     }
 
     private void initialize() {
-        buildDialog();
+     //   buildDialog();
     }
 
     /**

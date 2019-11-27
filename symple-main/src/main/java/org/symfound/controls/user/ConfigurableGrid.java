@@ -60,7 +60,6 @@ public class ConfigurableGrid extends ButtonGrid {
      *
      */
     public void configure() {
-
         setOrder(getGridManager().getOrder());
         orderProperty().addListener((observable, oldValue, newValue) -> {
             LOGGER.info("Setting order " + newValue.asString());
@@ -170,13 +169,6 @@ public class ConfigurableGrid extends ButtonGrid {
             triggerReload();
         });
 
-        BooleanProperty updatedSettings = HomeController.updatedProperty();
-        updatedSettings.addListener((observable2, oldValue2, newValue2) -> {
-            if (newValue2) {
-                triggerReload();
-                HomeController.setUpdated(false);
-            }
-        });
 
         triggerReload();
         statusProperty().addListener((observable, oldValue, newValue) -> {

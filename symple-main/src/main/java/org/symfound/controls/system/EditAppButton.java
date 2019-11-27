@@ -10,7 +10,6 @@ import org.symfound.controls.ConfirmableControl;
 import org.symfound.controls.system.dialog.EditDialog;
 import org.symfound.controls.system.dialog.OKCancelDialog;
 import org.symfound.controls.user.AnimatedButton;
-import org.symfound.controls.user.ConfigurableGrid;
 
 /**
  *
@@ -52,8 +51,6 @@ public class EditAppButton extends ConfirmableControl {
         load(primary);
         setCSS(cssClass, primary);
         setSelection(primary);
-        visibleProperty().bindBidirectional(ConfigurableGrid.editModeProperty());
-
     }
 
     @Override
@@ -68,7 +65,8 @@ public class EditAppButton extends ConfirmableControl {
     @Override
     public OKCancelDialog getDialog() {
         if (settingsDialog == null) {
-            settingsDialog = dialog;
+            settingsDialog = dialog;    
+            settingsDialog.buildDialog();    
         }
         return settingsDialog;
     }

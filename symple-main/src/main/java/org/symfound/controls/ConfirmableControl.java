@@ -106,6 +106,7 @@ public abstract class ConfirmableControl extends RunnableControl {
 
                 }
             };
+            settingsDialog.buildDialog();
             settingsDialog.titleTextProperty().bindBidirectional(titleTextProperty());
             settingsDialog.captionTextProperty().bindBidirectional(captionTextProperty());
             settingsDialog.okButton.textProperty().bindBidirectional(okTextProperty());
@@ -120,10 +121,6 @@ public abstract class ConfirmableControl extends RunnableControl {
      */
     public ScreenPopup<ScreenDialog> popup;
 
-    /**
-     *
-     * @return
-     */
     public ScreenPopup<ScreenDialog> getPopup(ScreenDialog dialog) {
         if (popup == null) {
             popup = new ScreenPopup<>(dialog);
