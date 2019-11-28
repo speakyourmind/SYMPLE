@@ -322,13 +322,13 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     public void configureStyle(String fontFamily, FontWeight fw) {
 
         configureFont(fontFamily, fw);
-        
+
         final StringExpression concat = Bindings.concat("-fx-background-color:-fx-", backgroundColourProperty().asString(), "; \n",
                 "-fx-text-fill:-fx-", textColourProperty().asString(), "; \n",
                 "-fx-background-image:url(\"", backgroundURLProperty(), "\"); \n"
                 + "-fx-background-repeat:no-repeat;\n"
                 + "-fx-background-position:center;\n"
-                 + "-fx-padding:0 0 -"+Bindings.divide(fontScaleProperty(),5).asString()+" 0;\n"
+                //    + "-fx-padding:0 0 -"+Bindings.divide(fontScaleProperty(),4).asString()+" 0;\n"
                 + "-fx-wrap-text:", wrapTextProperty().asString(), ";\n"
                 + "-fx-background-size:", backgroundSizeProperty(), "; \n",
                 overrideStyleProperty());
@@ -978,13 +978,13 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 @Override
                 public void setSettings() {
                     setAppableSettings();
-                    setFont(fontFamily, FontWeight.BOLD);
+                    //  setFont(fontFamily, FontWeight.BOLD);
                 }
 
                 @Override
                 public void resetSettings() {
                     resetAppableSettings();
-                    setFont(fontFamily, FontWeight.BOLD);
+                    //    setFont(fontFamily, FontWeight.BOLD);
                 }
 
                 @Override
@@ -1001,8 +1001,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
             editAppButton = new EditAppButton(editDialog);
 
-            editAppButton.setPane(
-                    "apMain");
+            editAppButton.setPane("apMain");
         }
         return editAppButton;
     }

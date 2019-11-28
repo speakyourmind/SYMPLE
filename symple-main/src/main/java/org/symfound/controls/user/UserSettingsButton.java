@@ -190,7 +190,7 @@ public class UserSettingsButton extends SettingsButtonBase {
                 diagnosticTest.setMaxSize(180.0, 60.0);
                 GridPane.setHalignment(diagnosticTest, HPos.LEFT);
                 GridPane.setValignment(diagnosticTest, VPos.CENTER);
-                levelSlider = new Slider(1, 10, 11);
+                levelSlider = new Slider(1, 20, 11);
                 levelSlider.setValue(getUser().getAbility().getLevel());
                 diagnosticTest.visibleProperty().bind(Bindings.and(
                         levelSlider.valueProperty().isNotEqualTo(MAX_LEVEL), Bindings.or(
@@ -380,7 +380,7 @@ public class UserSettingsButton extends SettingsButtonBase {
                 autocompleteRow.add(autocompleteSlider, 2, 0, 1, 1);
 
                 SettingsRow userDictWeightRow = EditDialog.createSettingRow("User Vocabulary", "Frequency of user's vocabulary in autocompleted words");
-                userDictWeightSlider = new Slider(1, 60, 10);
+                userDictWeightSlider = new Slider(0, 100, 10);
                 userDictWeightSlider.setValue(getUser().getTyping().getDictionaryWeight());
                 userDictWeightSlider.setMajorTickUnit(10);
                 userDictWeightSlider.setMinorTickCount(5);

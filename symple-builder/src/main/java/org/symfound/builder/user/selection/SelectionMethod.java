@@ -46,4 +46,9 @@ public enum SelectionMethod {
      *
      */
     STEP,
+    
+    /**
+     * 
+     */
+    SCROLL
 }

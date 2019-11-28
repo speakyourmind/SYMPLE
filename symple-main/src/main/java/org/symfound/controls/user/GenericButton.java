@@ -30,7 +30,7 @@ public class GenericButton extends AppableControl {
     }
 
     private void initialize() {
-        configureStyle("Roboto", FontWeight.BOLD);
+        configureStyle("Roboto", FontWeight.NORMAL);
     }
 
     @Override

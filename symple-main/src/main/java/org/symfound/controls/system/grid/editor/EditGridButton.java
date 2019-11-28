@@ -230,7 +230,7 @@ public class EditGridButton extends SettingsButtonBase {
 
                 SettingsRow overrideRowRow = createSettingRow("Row Size", "Row size overrides automation");
 
-                overrideRowSlider = new Slider(1.0, 10.0, grid.getOverrideRow());
+                overrideRowSlider = new Slider(1.0, 20.0, grid.getOverrideRow());
                 overrideRowSlider.setMajorTickUnit(1);
                 overrideRowSlider.setMinorTickCount(0);
                 overrideRowSlider.setShowTickLabels(true);
@@ -249,7 +249,7 @@ public class EditGridButton extends SettingsButtonBase {
 
                 SettingsRow overrideColumnRow = createSettingRow("Column Size", "Column size overrides automation");
 
-                overrideColumnSlider = new Slider(1.0, 10.0, grid.getOverrideColumn());
+                overrideColumnSlider = new Slider(1.0, 20.0, grid.getOverrideColumn());
                 overrideColumnSlider.setMajorTickUnit(1);
                 overrideColumnSlider.setMinorTickCount(0);
                 overrideColumnSlider.setShowTickLabels(true);
@@ -401,6 +401,7 @@ public class EditGridButton extends SettingsButtonBase {
             @Override
             public void setSettings() {
 
+                HomeController.setUpdated(false);
                 ParallelList<String, String> parallelList = new ParallelList<>();
                 if (buttonOrderField.getText().replaceAll(" ", "").isEmpty()) {
                     buttonOrderField.setText("Replace Key=default,");

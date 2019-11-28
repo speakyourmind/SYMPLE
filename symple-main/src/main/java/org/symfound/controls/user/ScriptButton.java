@@ -65,7 +65,7 @@ public class ScriptButton extends TypingControl {
     }
 
     private void initialize() {
-        configureStyle("Roboto", FontWeight.BOLD);
+        configureStyle("Roboto", FontWeight.NORMAL);
 
         setActionKey(getKeyCodeConfig());
         keyCodeConfigProperty().addListener((obversable, oldValue, newValue) -> {
