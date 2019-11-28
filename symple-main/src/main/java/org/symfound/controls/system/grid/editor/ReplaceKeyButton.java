@@ -91,6 +91,7 @@ public class ReplaceKeyButton extends SystemControl {
     public OKCancelDialog getDialog() {
         if (settingsDialog == null) {
             settingsDialog = configureEditDialog();
+            settingsDialog.buildDialog();
         }
         return settingsDialog;
     }

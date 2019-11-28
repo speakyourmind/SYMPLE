@@ -255,8 +255,9 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
                     appable.openHomeScreen();
 
                     ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
+                    final SelectionMethod selectionMethod = getUser().getInteraction().getSelectionMethod();
 
-                    if (getUser().getInteraction().getSelectionMethod().equals(SelectionMethod.SCAN) || getUser().getInteraction().getSelectionMethod().equals(SelectionMethod.STEP)) {
+                    if (selectionMethod.equals(SelectionMethod.SCAN) || selectionMethod.equals(SelectionMethod.STEP)) {
                         Device current = getSession().getDeviceManager().getCurrent();
                         EmulationManager em = current.getProcessor().getEmulationManager();
                         final EmulationRequest emulationRequest = new EmulationRequest();
@@ -264,8 +265,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
                         em.getMouse().getAutomator().navigate(new Point((int) (getParentUI().getWidth() / 2), (int) (getParentUI().getHeight() / 2)));
 
                     }
-                    if (appable.getNavigateIndex().equals("-Previous")) {
-
+                    if (appable.getNavigateIndex().equals(ConfigurableGrid.PREVIOUS_SCREEN_INDEX)) {
                         configurableGrid.setIndex(getUser().getNavigation().getPreviousIndex());
                     } else {
                         configurableGrid.setIndex(appable.getNavigateIndex());

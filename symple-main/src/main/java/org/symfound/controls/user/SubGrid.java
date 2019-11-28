@@ -132,7 +132,12 @@ public class SubGrid extends AppableControl {
         addEditAppButtons();
         if (!getChildren().contains(getMenu())) {
             gridMenu = null;
+            if (this.getConfigurableGrid().isRootGrid()){
             addToPane(getMenu(), 10.0, 10.0, null, null);
+            } else {
+                
+            addToPane(getMenu(), 10.0, 90.0, null, null);
+            }
         }
 
     }

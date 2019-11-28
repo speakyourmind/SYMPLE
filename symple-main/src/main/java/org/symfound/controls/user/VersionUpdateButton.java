@@ -99,6 +99,7 @@ public class VersionUpdateButton extends AppableControl {
     public UpdaterDialog getUpdaterDialog() {
         if (updaterDialog == null) {
             updaterDialog = new UpdaterDialog();
+            updaterDialog.buildDialog();
             updaterDialog.titleTextProperty().bindBidirectional(titleTextProperty());
             updaterDialog.captionTextProperty().bindBidirectional(captionTextProperty());
         }

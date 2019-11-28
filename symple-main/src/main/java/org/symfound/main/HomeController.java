@@ -135,7 +135,7 @@ public class HomeController extends GridController {
             updatedProperty().addListener((observable2, oldValue2, newValue2) -> {
                 if (newValue2) {
                     grid.getConfigurableGrid().triggerReload();
-                    HomeController.setUpdated(false);
+                   setUpdated(false);
                 }
             });
             setSizeMax(grid);

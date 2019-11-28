@@ -48,6 +48,7 @@ public class ConfigurableGrid extends ButtonGrid {
      *
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
+    public static final String PREVIOUS_SCREEN_INDEX = "-Previous";
 
     /**
      *

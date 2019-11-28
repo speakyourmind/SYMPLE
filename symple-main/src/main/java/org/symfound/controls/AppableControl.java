@@ -322,13 +322,13 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     public void configureStyle(String fontFamily, FontWeight fw) {
 
         configureFont(fontFamily, fw);
-
+        
         final StringExpression concat = Bindings.concat("-fx-background-color:-fx-", backgroundColourProperty().asString(), "; \n",
                 "-fx-text-fill:-fx-", textColourProperty().asString(), "; \n",
                 "-fx-background-image:url(\"", backgroundURLProperty(), "\"); \n"
                 + "-fx-background-repeat:no-repeat;\n"
                 + "-fx-background-position:center;\n"
-                //   + "-fx-padding:0 0 -5 0;\n"
+                 + "-fx-padding:0 0 -"+Bindings.divide(fontScaleProperty(),5).asString()+" 0;\n"
                 + "-fx-wrap-text:", wrapTextProperty().asString(), ";\n"
                 + "-fx-background-size:", backgroundSizeProperty(), "; \n",
                 overrideStyleProperty());
@@ -350,6 +350,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
     public void configureFont(String fontFamily, FontWeight fw) {
         resetFont(fontFamily, fw);
+        //TO DO: Could be an issue
         HomeController.getGrid().getConfigurableGrid().statusProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.equals(ScreenStatus.PLAYING)) {
                 resetFont(fontFamily, fw);
@@ -1064,19 +1065,24 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             homeGrid.indexProperty().addListener((observable, oldValue, newValue) -> {
                 homeGrid.setInError(Boolean.FALSE);
             });
+            errorDialog.buildDialog();
         }
         return errorDialog;
     }
+    private ScreenPopup<ScreenDialog> errorPopup;
 
     public void generateFixableError(String message) {
         final SubGrid homeGrid = HomeController.getGrid();
         if (!homeGrid.isInError()) {
             homeGrid.setInError(Boolean.TRUE);
             final FixableErrorDialog errDialog = getFixableErrorDialog(message);
-            final ScreenPopup<ScreenDialog> errorPopup = getPopup(errDialog);
+            errorPopup = getPopup(errDialog);
             //  homeGrid.getChildren().add(errorPopup);
-            Pane pane = (Pane) getScene().lookup("#apMain");
-            pane.getChildren().add(errorPopup);
+            //Pane pane = (Pane) getScene().lookup("#apMain");
+            HomeController.getGrid().getChildren().add(errorPopup);
+
+        } else {
+            HomeController.getGrid().getChildren().remove(errorPopup);
         }
     }
 
@@ -1136,7 +1142,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 }
             }
         }
-        
+
     }
 
     private StringProperty title;

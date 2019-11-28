@@ -129,6 +129,7 @@ public final class ExitButton extends AppableControl {
                     getSession().exit(BACKUP_ON_EXIT);
                 }
             };
+            updaterDialog.buildDialog();
         }
         return updaterDialog;
     }
