@@ -145,6 +145,10 @@ public class EditGridButton extends SettingsButtonBase {
                 buttonOrderField.setStyle("-fx-font-size:1.6em;");
                 buttonOrderField.setWrapText(true);
                 buttonOrderField.setText(grid.getOrder().asString());
+                grid.orderProperty().addListener((observable,oldValue,newValue)->{
+                    buttonOrderField.setText(grid.getOrder().asString());
+               
+                });
                 buttonOrderField.maxHeight(80.0);
                 buttonOrderField.maxWidth(360.0);
                 buttonOrderField.getStyleClass().add("settings-text-area");

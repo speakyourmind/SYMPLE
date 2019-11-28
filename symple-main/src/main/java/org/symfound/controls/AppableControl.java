@@ -52,7 +52,6 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import org.apache.log4j.Logger;
@@ -72,6 +71,7 @@ import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.AnimatedPane;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ConfigurableGrid;
+import static org.symfound.controls.user.ConfigurableGrid.PREVIOUS_SCREEN_INDEX;
 import org.symfound.controls.user.ScreenStatus;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.main.FullSession;
@@ -509,6 +509,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      *
      */
     public void setAppableSettings() {
+        
+        HomeController.setUpdated(Boolean.FALSE);
         setTitle(titleArea.getText());
         setTitlePos(textAlignment.getValue().toString());
         setTextColour(textColourChoices.getValue());
@@ -779,7 +781,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         if (navigatePostClick()) {
             SettingsRow navigateRow = createSettingRow("Navigate", "Screen to navigate to after click");
             List<String> navigatableScreens = new ArrayList<>();
-            navigatableScreens.add("-Previous");
+            navigatableScreens.add(PREVIOUS_SCREEN_INDEX);
             try {
                 navigatableScreens = getNavigatableScreens("subgrid");
             } catch (BackingStoreException ex) {
@@ -978,13 +980,13 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 @Override
                 public void setSettings() {
                     setAppableSettings();
-                    //  setFont(fontFamily, FontWeight.BOLD);
+                 //    setFont(fontFamily, getFontWeight());
                 }
 
                 @Override
                 public void resetSettings() {
                     resetAppableSettings();
-                    //    setFont(fontFamily, FontWeight.BOLD);
+                     //  setFont(fontFamily, FontWeight.NORMAL);
                 }
 
                 @Override
