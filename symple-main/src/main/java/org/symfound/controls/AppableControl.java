@@ -80,6 +80,7 @@ import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
 import org.symfound.main.HomeController;
 import org.symfound.tools.iteration.ParallelList;
+import org.symfound.tools.timing.clock.Clock;
 import org.symfound.tools.ui.ColourChoices;
 import org.symfound.tools.ui.SnapshotExporter;
 
@@ -600,7 +601,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 File selectedFile = fileChooser.showDialog(getPrimaryControl().getParentUI());
                 final AnimatedButton primaryControl = AppableControl.this.getPrimaryControl();
                 primaryControl.setDisable(Boolean.FALSE);
-                SnapshotExporter.saveAsPng(primaryControl, selectedFile.getAbsolutePath() + "\\snapshot.png");
+                Clock clock = new Clock("yyyyMMddhmmss");
+                SnapshotExporter.saveAsPng(primaryControl, selectedFile.getAbsolutePath() + "\\" + AppableControl.this.getText() + "_" + clock.getTimestamp() + ".png");
                 primaryControl.setDisable(Boolean.TRUE);
 
             }
