@@ -7,12 +7,14 @@ package org.symfound.controls.system;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.binding.Bindings;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl.ControlType;
 import org.symfound.controls.user.StatsButton;
 import org.symfound.controls.user.ButtonGrid;
 import static org.symfound.controls.user.ButtonGrid.LOGGER;
+import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.ExecButton;
 import org.symfound.controls.user.ExitButton;
 import org.symfound.controls.user.MinimizeButton;
@@ -20,6 +22,7 @@ import org.symfound.controls.user.ScriptButton;
 import org.symfound.controls.user.SettingsButton;
 import org.symfound.controls.user.UserSettingsButton;
 import org.symfound.controls.user.VersionUpdateButton;
+import org.symfound.main.HomeController;
 import org.symfound.tools.iteration.ParallelList;
 import org.symfound.tools.ui.ColourChoices;
 
@@ -28,7 +31,7 @@ import org.symfound.tools.ui.ColourChoices;
  * @author Javed Gangjee
  */
 public class ToolbarGrid extends ButtonGrid {
-
+    
     private static final Integer DEFAULT_ROWS = 1;
     private static final double CONTROL_MAX_HEIGHT = 200.0;
     private static final double CONTROL_MAX_WIDTH = 75.0;
@@ -109,6 +112,14 @@ public class ToolbarGrid extends ButtonGrid {
         for (int i = 0; i < buildOrder.getFirstList().size(); i++) {
             String toBuild = buildOrder.getFirstList().get(i);
             switch (toBuild.trim()) {
+                case SnapshotButton.KEY:
+                    SnapshotButton snapshot = new SnapshotButton("toolbar-snapshot", HomeController.getGrid(), HomeController.getGrid().getConfigurableGrid().getIndex());
+                    snapshot.setControlType(ControlType.SETTING_CONTROL);
+                    snapshot.setConfirmable(Boolean.FALSE);
+                    snapshot.setPane("apMain");
+                    snapshot.visibleProperty().bind(Bindings.not(ConfigurableGrid.editModeProperty()));
+                    requested.add(snapshot);
+                    break;
                 case EditButton.KEY:
                     EditButton edit = new EditButton();
                     edit.setControlType(ControlType.SETTING_CONTROL);
@@ -157,7 +168,7 @@ public class ToolbarGrid extends ButtonGrid {
                     minimizeButton.setSymStyle("toolbar-minimized");
                     requested.add(minimizeButton);
                     break;
-
+                
                 case UserSettingsButton.KEY:
                     UserSettingsButton userSettingsButton = new UserSettingsButton();
                     userSettingsButton.setPane("apMain");
@@ -192,17 +203,17 @@ public class ToolbarGrid extends ButtonGrid {
                     execButton.setCancelText("CANCEL");
                     requested.add(execButton);
                     break;
-
+                
             }
         }
-
+        
         resetControlsQueue();
-
+        
         if (requested.size() > 0) {
             getControlsQueue().addAll(requested);
         } else {
             LOGGER.warn("No controls available!");
         }
     }
-
+    
 }

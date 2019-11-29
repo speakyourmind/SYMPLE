@@ -81,11 +81,12 @@ public class EditButton extends SystemControl {
 
     @Override
     public Preferences getPreferences() {
-      if (preferences == null) {
+        if (preferences == null) {
             String name = KEY.toLowerCase() + "/" + getIndex().toLowerCase();
             Class<? extends EditButton> aClass = this.getClass();
             preferences = Preferences.userNodeForPackage(aClass).node(name);
         }
-        return preferences; }
+        return preferences;
+    }
 
 }

@@ -533,12 +533,14 @@
     -fx-background-color: -fx-dark;
 }
 .toolbar-edit{-fx-background-image: url("../images/edit_small.png");}
+.toolbar-snapshot{-fx-background-image: url("../images/save.png");}
 .toolbar-home{-fx-background-image: url("../images/home_small.png");}
 .toolbar-update{-fx-background-image: url("../images/update_small.png");}
 .toolbar-stats{-fx-background-image: url("../images/stats.png");}
 .toolbar-settings{-fx-background-image: url("../images/settings_small.png");}
 
 .toolbar-edit,
+.toolbar-snapshot,
 .toolbar-home,
 .toolbar-update,
 .toolbar-stats,
@@ -552,6 +554,7 @@
 .toolbar-minimized:hover,
 .toolbar-stats:hover,
 .toolbar-update:hover,
+.toolbar-snapshot:hover,
 .toolbar-edit:hover{
     -fx-background-color: -fx-blue;
 }

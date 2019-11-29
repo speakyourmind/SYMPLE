@@ -5,7 +5,6 @@
  */
 package org.symfound.controls;
 
-import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,13 +54,13 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.DirectoryChooser;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.characteristic.Statistics;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
 import org.symfound.controls.system.EditAppButton;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
+import org.symfound.controls.system.SnapshotButton;
 import org.symfound.controls.system.TabTitle;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
@@ -80,9 +79,7 @@ import org.symfound.main.FullSession;
 import static org.symfound.main.FullSession.getMainUI;
 import org.symfound.main.HomeController;
 import org.symfound.tools.iteration.ParallelList;
-import org.symfound.tools.timing.clock.Clock;
 import org.symfound.tools.ui.ColourChoices;
-import org.symfound.tools.ui.SnapshotExporter;
 
 /**
  *
@@ -443,7 +440,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     private OnOffButton wrapTextButton;
     private TextArea speakTextArea;
 
-    public RunnableControl snapshotButton;
+    public SnapshotButton snapshotButton;
     /**
      *
      */
@@ -592,22 +589,18 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         }*/
 
         SettingsRow snapshotRow = EditDialog.createSettingRow("Snapshot", "Export this button as a .PNG file");
+        final AnimatedButton primaryControl = AppableControl.this.getPrimaryControl();
+        primaryControl.setDisable(Boolean.FALSE);
 
-        snapshotButton = new RunnableControl("settings-button") {
+        snapshotButton = new SnapshotButton("settings-button",primaryControl, AppableControl.this.getText()) {
             @Override
             public void run() {
-                DirectoryChooser fileChooser = new DirectoryChooser();
-                fileChooser.setTitle("Export as .PNG");
-                File selectedFile = fileChooser.showDialog(getPrimaryControl().getParentUI());
-                final AnimatedButton primaryControl = AppableControl.this.getPrimaryControl();
-                primaryControl.setDisable(Boolean.FALSE);
-                Clock clock = new Clock("yyyyMMddhmmss");
-                SnapshotExporter.saveAsPng(primaryControl, selectedFile.getAbsolutePath() + "\\" + AppableControl.this.getText() + "_" + clock.getTimestamp() + ".png");
+                super.run();
                 primaryControl.setDisable(Boolean.TRUE);
-
             }
         };
         snapshotButton.setControlType(ControlType.SETTING_CONTROL);
+
         snapshotButton.setText("SAVE");
         snapshotButton.setMaxSize(180.0, 60.0);
         snapshotRow.add(snapshotButton, 1, 0, 1, 1);

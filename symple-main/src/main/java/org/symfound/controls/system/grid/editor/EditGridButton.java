@@ -40,6 +40,7 @@ import org.symfound.controls.system.UIExporter;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.LOGGER;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
+import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.SettingsButtonBase;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.FillableGrid.FillDirection;
@@ -49,6 +50,8 @@ import static org.symfound.main.FullSession.getSettingsFileName;
 import org.symfound.main.HomeController;
 import org.symfound.main.Main;
 import org.symfound.tools.iteration.ParallelList;
+import org.symfound.tools.timing.clock.Clock;
+import org.symfound.tools.ui.SnapshotExporter;
 
 /**
  *
@@ -79,7 +82,6 @@ public class EditGridButton extends SettingsButtonBase {
     public EditGridButton(ConfigurableGrid grid) {
         super("setting-button", KEY, DEFAULT_TITLE);
 
-    
         this.grid = grid;
     }
 
@@ -140,14 +142,16 @@ public class EditGridButton extends SettingsButtonBase {
 
             @Override
             public Node addSettingControls() {
+
+
                 SettingsRow buttonOrderRow = createSettingRow("Button Order", "Placeholder method to change app order");
                 buttonOrderField = new TextArea();
                 buttonOrderField.setStyle("-fx-font-size:1.6em;");
                 buttonOrderField.setWrapText(true);
                 buttonOrderField.setText(grid.getOrder().asString());
-                grid.orderProperty().addListener((observable,oldValue,newValue)->{
+                grid.orderProperty().addListener((observable, oldValue, newValue) -> {
                     buttonOrderField.setText(grid.getOrder().asString());
-               
+
                 });
                 buttonOrderField.maxHeight(80.0);
                 buttonOrderField.maxWidth(360.0);
@@ -206,7 +210,7 @@ public class EditGridButton extends SettingsButtonBase {
                 vGapSlider.setShowTickMarks(true);
                 vGapSlider.setSnapToTicks(true);
                 vGapRow.add(vGapSlider, 1, 0, 2, 1);
-                
+
                 SettingsRow marginRow = createSettingRow("Margin", "Outer gap");
                 marginSlider = new Slider(0.0, 200.0, grid.getCustomMargin());
                 marginSlider.setMajorTickUnit(20);
@@ -370,7 +374,7 @@ public class EditGridButton extends SettingsButtonBase {
                 sizeSettings.add(overrideRowRow);
                 sizeSettings.add(overrideColumnRow);
                 sizeSettings.add(paginationRow);
-                Tab gridTab = buildTab("Size", sizeSettings);
+                Tab sizeTab = buildTab("Size", sizeSettings);
 
                 lookSettings.add(styleRow);
                 lookSettings.add(hGapRow);
@@ -393,7 +397,7 @@ public class EditGridButton extends SettingsButtonBase {
                 tabPane.setPadding(new Insets(0, 0, 5, 5));
                 tabPane.setSide(Side.LEFT);
                 tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-                tabPane.getTabs().add(gridTab);
+                tabPane.getTabs().add(sizeTab);
                 tabPane.getTabs().add(fillTab);
                 tabPane.getTabs().add(lookTab);
                 tabPane.getTabs().add(selectionTab);
