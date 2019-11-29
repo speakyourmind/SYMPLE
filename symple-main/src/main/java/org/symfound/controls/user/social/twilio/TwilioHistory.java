@@ -295,9 +295,9 @@ public final class TwilioHistory extends AppableControl {
 
         refreshRateRow.add(refreshRateSlider, 1, 0, 2, 1);
 
-        actionSettings.add(formatRow);
-        actionSettings.add(timeZoneChoicesRow);
-        actionSettings.add(refreshRateRow);
+        generalSettings.add(formatRow);
+        generalSettings.add(timeZoneChoicesRow);
+        generalSettings.add(refreshRateRow);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

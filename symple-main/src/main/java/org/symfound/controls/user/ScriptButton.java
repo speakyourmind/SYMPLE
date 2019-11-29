@@ -278,7 +278,7 @@ public class ScriptButton extends TypingControl {
         environmentSettings.add(webhookEndRow);
         Tab environmentTab = buildTab("Home", environmentSettings);
 
-        actionSettings.add(typableRow);
+        generalSettings.add(typableRow);
         List<Tab> tabs = super.addAppableSettings();
 
         tabs.add(socialTab);

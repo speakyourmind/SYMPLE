@@ -167,9 +167,9 @@ public class PhotoControlButton extends MediaControlButton<PhotoControl> {
         GridPane.setValignment(shuffleButton, VPos.CENTER);
         settingsRowC.add(shuffleButton, 1, 0, 1, 1);
 
-        actionSettings.add(settingsRowA);
-        actionSettings.add(settingsRowB);
-        actionSettings.add(settingsRowC);
+        generalSettings.add(settingsRowA);
+        generalSettings.add(settingsRowB);
+        generalSettings.add(settingsRowC);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

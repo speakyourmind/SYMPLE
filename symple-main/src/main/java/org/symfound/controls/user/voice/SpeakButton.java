@@ -116,7 +116,7 @@ public abstract class SpeakButton extends TextCommunicatorButton {
         speakControlType.getStyleClass().add("settings-text-area");
         settingsRow.add(speakControlType, 1, 0, 2, 1);
 
-        actionSettings.add(settingsRow);
+        generalSettings.add(settingsRow);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

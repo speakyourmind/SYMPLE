@@ -298,11 +298,11 @@ public class MusicControlButton extends MusicButton {
         GridPane.setValignment(showAlbumArtButton, VPos.CENTER);
         settingsRowE.add(showAlbumArtButton, 1, 0, 1, 1);
 
-        actionSettings.add(settingsRowA);
-        actionSettings.add(settingsRowB);
-        actionSettings.add(settingsRowC);
-        actionSettings.add(settingsRowD);
-        actionSettings.add(settingsRowE);
+        generalSettings.add(settingsRowA);
+        generalSettings.add(settingsRowB);
+        generalSettings.add(settingsRowC);
+        generalSettings.add(settingsRowD);
+        generalSettings.add(settingsRowE);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

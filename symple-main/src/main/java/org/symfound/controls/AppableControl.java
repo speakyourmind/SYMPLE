@@ -5,6 +5,7 @@
  */
 package org.symfound.controls;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.DirectoryChooser;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.characteristic.Statistics;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
@@ -79,6 +81,7 @@ import static org.symfound.main.FullSession.getMainUI;
 import org.symfound.main.HomeController;
 import org.symfound.tools.iteration.ParallelList;
 import org.symfound.tools.ui.ColourChoices;
+import org.symfound.tools.ui.SnapshotExporter;
 
 /**
  *
@@ -115,6 +118,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     private void initialize() {
         defineButton();
         configureFeatures();
+
     }
 
     public void defineButton() {
@@ -438,6 +442,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     private OnOffButton wrapTextButton;
     private TextArea speakTextArea;
 
+    public RunnableControl snapshotButton;
     /**
      *
      */
@@ -468,7 +473,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     /**
      *
      */
-    public List<SettingsRow> actionSettings = new ArrayList<>();
+    public List<SettingsRow> generalSettings = new ArrayList<>();
 
     /**
      *
@@ -509,7 +514,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      *
      */
     public void setAppableSettings() {
-        
+
         HomeController.setUpdated(Boolean.FALSE);
         setTitle(titleArea.getText());
         setTitlePos(textAlignment.getValue().toString());
@@ -584,6 +589,26 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             deleteKeyRow.add(deleteKeyButton, 1, 0, 2, 1);
             settings.add(deleteKeyRow);
         }*/
+
+        SettingsRow snapshotRow = EditDialog.createSettingRow("Snapshot", "Export this button as a .PNG file");
+
+        snapshotButton = new RunnableControl("settings-button") {
+            @Override
+            public void run() {
+                DirectoryChooser fileChooser = new DirectoryChooser();
+                fileChooser.setTitle("Export as .PNG");
+                File selectedFile = fileChooser.showDialog(getPrimaryControl().getParentUI());
+                final AnimatedButton primaryControl = AppableControl.this.getPrimaryControl();
+                primaryControl.setDisable(Boolean.FALSE);
+                SnapshotExporter.saveAsPng(primaryControl, selectedFile.getAbsolutePath() + "\\snapshot.png");
+                primaryControl.setDisable(Boolean.TRUE);
+
+            }
+        };
+        snapshotButton.setControlType(ControlType.SETTING_CONTROL);
+        snapshotButton.setText("SAVE");
+        snapshotButton.setMaxSize(180.0, 60.0);
+        snapshotRow.add(snapshotButton, 1, 0, 1, 1);
 
         List<Tab> tabs = new ArrayList<>();
         SettingsRow showTitleRow = EditDialog.createSettingRow("Title", "Text to be displayed on this button");
@@ -828,9 +853,10 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         lastUsedLabel.setText(lastUsedString);
         lastUsedRow.add(lastUsedLabel, 2, 0, 1, 1);
 
-        actionSettings.add(rowExpandRow);
-        actionSettings.add(columnExpandRow);
-        Tab actionTab = buildTab("Action", actionSettings);
+        generalSettings.add(rowExpandRow);
+        generalSettings.add(columnExpandRow);
+        generalSettings.add(snapshotRow);
+        Tab actionTab = buildTab("General", generalSettings);
 
         selectionSettings.add(selectableRow);
         selectionSettings.add(primaryDisabledRow);
@@ -980,13 +1006,13 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 @Override
                 public void setSettings() {
                     setAppableSettings();
-                 //    setFont(fontFamily, getFontWeight());
+                    //    setFont(fontFamily, getFontWeight());
                 }
 
                 @Override
                 public void resetSettings() {
                     resetAppableSettings();
-                     //  setFont(fontFamily, FontWeight.NORMAL);
+                    //  setFont(fontFamily, FontWeight.NORMAL);
                 }
 
                 @Override

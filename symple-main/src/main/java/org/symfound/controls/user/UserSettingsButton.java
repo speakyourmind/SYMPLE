@@ -202,6 +202,7 @@ public class UserSettingsButton extends SettingsButtonBase {
                 levelSlider.setMinorTickCount(1);
                 levelSlider.setShowTickLabels(true);
                 levelSlider.setShowTickMarks(true);
+                levelSlider.setSnapToTicks(true);
 
                 levelRow.add(levelSlider, 2, 0, 1, 1);
 

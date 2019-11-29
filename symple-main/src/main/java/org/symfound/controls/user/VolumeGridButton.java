@@ -136,7 +136,7 @@ public class VolumeGridButton extends VolumeControl {
         volumeControlType.getStyleClass().add("settings-text-area");
         settingsRowA.add(volumeControlType, 1, 0, 2, 1);
         
-        actionSettings.add(settingsRowA);
+        generalSettings.add(settingsRowA);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

@@ -122,7 +122,7 @@ public class PictoTwilioButton extends TextCommunicatorButton {
         toNumberField.getStyleClass().add("settings-text-area");
         settingsTo.add(toNumberField, 1, 0, 2, 1);
 
-        actionSettings.add(settingsTo);
+        generalSettings.add(settingsTo);
         List<Tab> tabs = super.addAppableSettings();
         return tabs;
     }

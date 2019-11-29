@@ -159,6 +159,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
                 + "    -fx-font-size: 3em;\n"
                 + "    -fx-font-weight:bold;"
                 + "    -fx-padding: 0 0 0 90;");
+        titleLabel.setWrapText(Boolean.FALSE);
         titleLabel.setAlignment(Pos.CENTER_LEFT);
         setTopAnchor(titleLabel, 0.0);
         setLeftAnchor(titleLabel, 0.0);

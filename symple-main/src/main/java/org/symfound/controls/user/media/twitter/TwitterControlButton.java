@@ -137,7 +137,7 @@ public class TwitterControlButton extends MediaControlButton<TwitterControl> {
             pinField.maxWidth(60.0);
             pinField.getStyleClass().add("settings-text-area");
             settingsRowA.add(pinField, 1, 0, 1, 1);
-            actionSettings.add(settingsRowA);
+            generalSettings.add(settingsRowA);
         }
 
         SettingsRow settingsRowC = createSettingRow("Control Type", "Next or Previous or Toggle");
@@ -162,8 +162,8 @@ public class TwitterControlButton extends MediaControlButton<TwitterControl> {
         settingsRowD.add(shuffleButton, 1, 0, 1, 1);
 
         // settings = new ArrayList<>(); 
-        actionSettings.add(settingsRowC);
-        actionSettings.add(settingsRowD);
+        generalSettings.add(settingsRowC);
+        generalSettings.add(settingsRowD);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;

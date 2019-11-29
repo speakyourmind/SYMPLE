@@ -251,7 +251,7 @@ public class PictoArea extends AppableControl {
 
         autoClearRow.add(autoClearButton, 1, 0, 1, 1);
 
-        actionSettings.add(autoClearRow);
+        generalSettings.add(autoClearRow);
         List<Tab> tabs = super.addAppableSettings();
 
         return tabs;
