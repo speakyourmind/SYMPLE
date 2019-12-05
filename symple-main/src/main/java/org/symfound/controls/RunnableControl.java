@@ -142,6 +142,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
      * @param node
      */
     public final void setSelection(Node node) {
+       
         getPhysicalDwellReaction().configure(node);
         controlTypeProperty().addListener((observable, oldValue, newValue) -> {
             getPhysicalDwellReaction().configure(node);
@@ -174,8 +175,8 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
      * @param e
      */
     public void mouseEnter(MouseEvent e) {
+        System.out.println("entered "+ this.getText());
         SelectionMethod deducedMethod = getDeducedSelectionMethod();
-
         if (deducedMethod.equals(SelectionMethod.DWELL)) {
             buttonHandler();
             enter();
@@ -207,7 +208,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
         }
     }
 
-    private SelectionMethod getDeducedSelectionMethod() {
+    public SelectionMethod getDeducedSelectionMethod() {
         SelectionMethod deducedMethod;
         Boolean overrideSelectionMethod = getUser().getInteraction().isInAssistedMode();
         SelectionMethod userMethod = getUser().getInteraction().getSelectionMethod();

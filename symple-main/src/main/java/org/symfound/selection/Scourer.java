@@ -41,13 +41,13 @@ public class Scourer {
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
-    private final ConfigurableGrid gridToScour;
+    private final SubGrid gridToScour;
 
     /**
      *
      * @param grid
      */
-    public Scourer(ConfigurableGrid grid) {
+    public Scourer(SubGrid grid) {
         this.gridToScour = grid;
     }
 
@@ -55,8 +55,8 @@ public class Scourer {
      *
      */
     public void clearHighlight() {
-        for (int i = 0; i < gridToScour.getChildren().size(); i++) {
-            Node get = gridToScour.getChildren().get(i);
+        for (int i = 0; i < gridToScour.getConfigurableGrid().getChildren().size(); i++) {
+            Node get = gridToScour.getConfigurableGrid().getChildren().get(i);
             if (get instanceof AppableControl) {
                 AppableControl node = (AppableControl) get;
                 node.getPrimaryControl().getStyleClass().remove("highlight");
@@ -74,7 +74,7 @@ public class Scourer {
     public void resetPosition() {
         final AppableControl control = getCurrentControl();
         if (control != null) {
-            if (gridToScour.isRootGrid()) {
+            if (gridToScour.getConfigurableGrid().isRootGrid()) {
                 GridPane.setColumnIndex(control, columnIndex);
                 GridPane.setColumnSpan(control, columnSpan);
                 GridPane.setRowIndex(control, rowIndex);
@@ -89,8 +89,8 @@ public class Scourer {
                 GridPane.setRowIndex(control, rowIndex);
                 GridPane.setRowSpan(control, rowSpan);
                 control.getFontTracker().fontTracking.setValue(Font.font("Roboto",0.0));
-                if (!gridToScour.getChildren().contains(control)) {
-                    gridToScour.add(control, columnIndex, rowIndex, columnSpan, rowSpan);
+                if (!gridToScour.getConfigurableGrid().getChildren().contains(control)) {
+                    gridToScour.getConfigurableGrid().add(control, columnIndex, rowIndex, columnSpan, rowSpan);
                 }
             }
 
@@ -102,7 +102,7 @@ public class Scourer {
      * @param navigation
      */
     public void highlightNext(Navigation navigation) {
-        LOGGER.info("Searching for next control in grid " + gridToScour.getIndex());
+        LOGGER.info("Searching for next control in grid " + gridToScour.getConfigurableGrid().getIndex());
         AppableControl next = null;
         switch (getDirection()) {
             case COLUMN_DIRECTION:
@@ -143,12 +143,12 @@ public class Scourer {
                     rowIndex = GridPane.getRowIndex(next);
                     rowSpan = GridPane.getRowSpan(next);
                     setCurrentControl(next);
-                    if (gridToScour.isRootGrid()) {
+                    if (gridToScour.getConfigurableGrid().isRootGrid()) {
                         GridPane.setColumnIndex(next, 0);
-                        GridPane.setColumnSpan(next, gridToScour.getColumnConstraints().size());
+                        GridPane.setColumnSpan(next, gridToScour.getConfigurableGrid().getColumnConstraints().size());
                         GridPane.setRowIndex(next, 0);
-                        GridPane.setRowSpan(next, gridToScour.getRowConstraints().size());
-                        next.setMaxHeight(gridToScour.getHeight());
+                        GridPane.setRowSpan(next, gridToScour.getConfigurableGrid().getRowConstraints().size());
+                        next.setMaxHeight(gridToScour.getConfigurableGrid().getHeight());
                     } else {
                         // gridToScour.getChildren().remove(next);
                         next.removeFromParent();
@@ -215,14 +215,14 @@ public class Scourer {
      */
     public AppableControl getNextInRow() {
         incrementCurrentRow();
-        if (getCurrentRow() >= gridToScour.getRowConstraints().size()) {
+        if (getCurrentRow() >= gridToScour.getConfigurableGrid().getRowConstraints().size()) {
             setCurrentRow(0);
             incrementCurrentColumn();
-            if (getCurrentColumn() >= gridToScour.getColumnConstraints().size()) {
+            if (getCurrentColumn() >= gridToScour.getConfigurableGrid().getColumnConstraints().size()) {
                 setCurrentColumn(0);
             }
         }
-        AppableControl control = (AppableControl) gridToScour.get(getCurrentRow(), getCurrentColumn());
+        AppableControl control = (AppableControl) gridToScour.getConfigurableGrid().get(getCurrentRow(), getCurrentColumn());
 
         return control;
     }
@@ -233,14 +233,14 @@ public class Scourer {
      */
     public AppableControl getNextInColumn() {
         incrementCurrentColumn();
-        if (getCurrentColumn() >= gridToScour.getColumnConstraints().size()) {
+        if (getCurrentColumn() >= gridToScour.getConfigurableGrid().getColumnConstraints().size()) {
             setCurrentColumn(0);
             incrementCurrentRow();
-            if (getCurrentRow() >= gridToScour.getRowConstraints().size()) {
+            if (getCurrentRow() >= gridToScour.getConfigurableGrid().getRowConstraints().size()) {
                 setCurrentRow(0);
             }
         }
-        AppableControl control = (AppableControl) gridToScour.get(getCurrentRow(), getCurrentColumn());
+        AppableControl control = (AppableControl) gridToScour.getConfigurableGrid().get(getCurrentRow(), getCurrentColumn());
 
         return control;
     }
@@ -250,7 +250,7 @@ public class Scourer {
      * @return
      */
     public AppableControl getCurrent() {
-        return (AppableControl) gridToScour.get(getCurrentRow(), getCurrentColumn());
+        return (AppableControl) gridToScour.getConfigurableGrid().get(getCurrentRow(), getCurrentColumn());
     }
 
     /**

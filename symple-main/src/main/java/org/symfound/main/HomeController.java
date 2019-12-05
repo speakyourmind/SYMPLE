@@ -30,8 +30,7 @@ import org.apache.log4j.Logger;
 import org.symfound.app.GridController;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
 import static org.symfound.controls.ScreenControl.setSizeMax;
-import org.symfound.controls.user.AnimatedLabel;
-import org.symfound.controls.user.BuildableGrid;
+import org.symfound.controls.system.Toolbar;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
 
@@ -83,12 +82,6 @@ public class HomeController extends GridController {
     }
 
     @FXML
-    private BuildableGrid gpWizard;
-    @FXML
-    private AnimatedLabel lblCongratulations;
-    @FXML
-    private AnimatedLabel lblReady;
-    @FXML
     private GridPane gpMain;
     @FXML
     private AnchorPane apMain;
@@ -100,28 +93,45 @@ public class HomeController extends GridController {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //  setIndex("home");
-        getSession().builtProperty().addListener((observable, oldValue, newValue) -> {
+      getSession().builtProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 ConfigurableGrid.editModeProperty().bindBidirectional(FullSession.getMainUI().editModeProperty());
-
-                ScrollPane scrollPane = new ScrollPane();
-                scrollPane.setPadding(new Insets(0));
-                scrollPane.setFitToHeight(Boolean.TRUE);
-                scrollPane.setFitToWidth(Boolean.TRUE);
-                setSizeMax(scrollPane);
-                scrollPane.setContent(getGrid());
-                scrollPane.getStylesheets().add(CSS_PATH);
-                GridPane.setRowIndex(scrollPane, 1);
-
-                gpMain.getChildren().add(scrollPane);
+                gpMain.getChildren().add(getToolbar());
+                gpMain.getChildren().add(getScrollPane());
 
                 //getGrid().maxHeightProperty().bind(Bindings.multiply(0.96, gpMain.heightProperty()));
             }
-
+  
         });
     }
+    
+    private static Toolbar toolbar;
+    public Toolbar getToolbar(){
+        if (toolbar==null){
+            toolbar= new Toolbar();
+            toolbar.setButtonOrder("Snapshot=default,Update=default,Edit=default,User Settings=default,Minimize=default,Script=toolbar/home,Exit=default");
+            GridPane.setColumnSpan(toolbar,2);
+        }
+        return toolbar;
+    }
+    
+    private static ScrollPane scrollPane;
 
+    public static ScrollPane getScrollPane() {
+        if (scrollPane == null) {
+            scrollPane = new ScrollPane();
+            scrollPane.setPadding(new Insets(0));
+            scrollPane.setFitToHeight(Boolean.TRUE);
+            scrollPane.setFitToWidth(Boolean.TRUE);
+            setSizeMax(scrollPane);
+            scrollPane.setContent(getGrid());
+            scrollPane.getStylesheets().add(CSS_PATH);
+            GridPane.setRowIndex(scrollPane, 1);
+            GridPane.setColumnSpan(scrollPane,2);
+        }
+        return scrollPane;
+    }
+    
     private static SubGrid grid;
 
     /**
@@ -135,7 +145,7 @@ public class HomeController extends GridController {
             updatedProperty().addListener((observable2, oldValue2, newValue2) -> {
                 if (newValue2) {
                     grid.getConfigurableGrid().triggerReload();
-                   setUpdated(false);
+                    setUpdated(false);
                 }
             });
             setSizeMax(grid);

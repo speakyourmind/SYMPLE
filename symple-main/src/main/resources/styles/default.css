@@ -902,8 +902,8 @@
     -fx-border-width: 15;
 }
 
-.selector{
-    -fx-background-color:-fx-dark;
+.selector,.selector:hover{
+    -fx-background-color:-fx-orange;
     -fx-opacity:0.0;
 }
 .locked{

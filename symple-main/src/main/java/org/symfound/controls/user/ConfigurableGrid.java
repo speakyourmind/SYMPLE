@@ -27,10 +27,6 @@ import javafx.scene.Node;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.device.hardware.Hardware;
-import org.symfound.main.HomeController;
-import org.symfound.main.Main;
-import org.symfound.selection.modes.Scanner;
-import org.symfound.selection.modes.Stepper;
 import org.symfound.tools.iteration.ParallelList;
 import org.symfound.tools.timing.DelayedEvent;
 
@@ -172,13 +168,7 @@ public class ConfigurableGrid extends ButtonGrid {
 
 
         triggerReload();
-        statusProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == ScreenStatus.PLAYING) {
-                getScanner().configure();
-                getStepper().configure();
-            }
-
-        });
+        
     }
 
     /**
@@ -192,9 +182,7 @@ public class ConfigurableGrid extends ButtonGrid {
                 Node node = children.get(i);
                 if (node instanceof SubGrid) {
                     SubGrid control = (SubGrid) node;
-                    System.out.println("-----------" + control.getIndex());
                     editModeProperty().removeListener(control.getConfigButtonListener());
-
                 }
             }
         }
@@ -221,54 +209,7 @@ public class ConfigurableGrid extends ButtonGrid {
 
     }
 
-    /**
-     *
-     */
-    public void stopSelector() {
-        if (getScanner().inProcess()) {
-            getScanner().stop();
-        }
-        if (getStepper().inProcess()) {
-            getStepper().stop();
-        }
-    }
 
-    private void startSelector(SelectionMethod newValue1) {
-        if (this.getScene() != null) {
-            if (!inEditMode() && getParentUI().isShowing()) {
-                LOGGER.info("Grid is not in edit mode & the parent UI is showing");
-                if (newValue1.equals(SelectionMethod.SCAN)) {
-                    LOGGER.info("In SCAN mode");
-                    if (!getScanner().inProcess()) {
-                        getScanner().start();
-                    } else {
-                        LOGGER.warn("Attempting to start scanner while already in process");
-                    }
-                } else {
-                    if (getScanner().inProcess()) {
-                        LOGGER.info("Stopping scanner as user is not in SCAN mode");
-                        getScanner().stop();
-                    }
-                }
-
-                if (newValue1.equals(SelectionMethod.STEP)) {
-                    LOGGER.info("In STEP mode");
-                    if (!getStepper().inProcess()) {
-                        getStepper().start();
-                    } else {
-                        LOGGER.warn("Attempting to start stepper while already in process");
-                    }
-                } else {
-                    if (getStepper().inProcess()) {
-                        LOGGER.info("Stopping stepper as user is not in STEP mode");
-                        getStepper().stop();
-                    }
-                }
-            }
-        } else {
-            LOGGER.warn("The scene of this grid is NULL");
-        }
-    }
 
     /**
      *
@@ -362,36 +303,6 @@ public class ConfigurableGrid extends ButtonGrid {
         return editMode;
     }
 
-    /**
-     *
-     */
-    public Scanner scanner;
-
-    /**
-     *
-     * @return
-     */
-    public Scanner getScanner() {
-        if (scanner == null) {
-            scanner = new Scanner(this, Main.getSession().getUser());
-        }
-        return scanner;
-    }
-
-    /**
-     *
-     */
-    public Stepper stepper;
-
-    /**
-     *
-     * @return
-     */
-    public Stepper getStepper() {
-        if (stepper == null) {
-            stepper = new Stepper(this, Main.getSession().getUser());
-        }
-        return stepper;
-    }
+ 
 
 }

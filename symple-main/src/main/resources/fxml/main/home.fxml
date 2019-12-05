@@ -13,36 +13,15 @@
 
 <AnchorPane fx:id="apMain" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="background" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../styles/default.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.symfound.main.HomeController">
     <children>
-        <!--<BuildableGrid fx:id="gpWizard" layoutX="94.0" layoutY="98.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <AnimatedLabel fx:id="lblCongratulations" alignment="CENTER" ellipsisString="..." maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.0" styleClass="wizard-title" text="Congratulations!" GridPane.columnSpan="3" />
-                <AnimatedLabel fx:id="lblReady" alignment="CENTER" ellipsisString="..." maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.0" style="-fx-font-size:100px;" styleClass="wizard-title" text="It's Ready..." GridPane.columnSpan="3" GridPane.rowIndex="1" />
-            </children>
-        </BuildableGrid>-->
         <GridPane fx:id="gpMain" layoutX="121.0" layoutY="52.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints percentWidth = "10.0" hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints percentWidth = "90.0" hgrow="SOMETIMES" minWidth="10.0" />
             </columnConstraints>
             <rowConstraints>
-              <!--  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />-->
-                <RowConstraints percentHeight="4.0" vgrow="SOMETIMES" />
-                <RowConstraints percentHeight="96.0" vgrow="SOMETIMES" />
+                <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints percentHeight="95.0" vgrow="SOMETIMES" />
             </rowConstraints>
-            <children>
-                <Toolbar fx:id="tbHome" titleText="" buttonOrder="Snapshot=default,Update=default,Edit=default,User Settings=default,Minimize=default,Script=toolbar/home,Exit=default"/> 
-                
-            </children>
         </GridPane>
     </children>
 </AnchorPane>

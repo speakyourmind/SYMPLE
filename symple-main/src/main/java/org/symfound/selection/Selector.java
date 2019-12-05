@@ -5,20 +5,16 @@
  */
 package org.symfound.selection;
 
-import java.util.prefs.Preferences;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringExpression;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
-import javafx.scene.Parent;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.selection.Chooser;
 import org.symfound.builder.user.selection.SelectionMethod;
-import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
-import org.symfound.controls.user.ConfigurableGrid;
 import static org.symfound.controls.user.ConfigurableGrid.editModeProperty;
 import static org.symfound.controls.user.ConfigurableGrid.inEditMode;
 import org.symfound.controls.user.SubGrid;
@@ -40,7 +36,7 @@ public abstract class Selector {
     /**
      *
      */
-    public final ConfigurableGrid gridToScour;
+    public final SubGrid gridToScour;
     private final User user;
 
     /**
@@ -51,14 +47,8 @@ public abstract class Selector {
         return user;
     }
 
-    /**
-     *
-     * @param grid
-     * @param method
-     * @param user
-     */
-    public Selector(ConfigurableGrid grid, SelectionMethod method, User user) {
-        this.gridToScour = grid;
+    public Selector(SubGrid subGrid, SelectionMethod method, User user) {
+        this.gridToScour = subGrid;
         this.method = method;
         this.user = user;
     }
@@ -80,7 +70,7 @@ public abstract class Selector {
             final StringExpression concatenatedBindings = Bindings.concat(
                     getUser().getInteraction().assistedModeProperty().asString(),
                     getUser().getInteraction().selectionMethodProperty().asString(),
-                    gridToScour.selectionMethodProperty().asString(),
+                    gridToScour.getConfigurableGrid().selectionMethodProperty().asString(),
                     editModeProperty().asString(),
                     gridToScour.indexProperty());
             concatenatedBindings.addListener(startStopListener);
@@ -92,21 +82,21 @@ public abstract class Selector {
      */
     public void startStop() {
         SelectionMethod userMethod = getUser().getInteraction().getSelectionMethod();
-        SelectionMethod gridMethod = gridToScour.getSelectionMethod();
+        SelectionMethod gridMethod = gridToScour.getConfigurableGrid().getSelectionMethod();
 
         Boolean overrideSelectionMethod = getUser().getInteraction().isInAssistedMode();
         SelectionMethod deducedMethod = (overrideSelectionMethod) ? gridMethod : userMethod;
 
-        final int size = gridToScour.getGridManager().getOrder().getFirstList().size();
+        final int size = gridToScour.getConfigurableGrid().getGridManager().getOrder().getFirstList().size();
         if (deducedMethod.equals(getSelectionMethod())
                 && !inEditMode()
-                && gridToScour.isRootGrid()
+                && gridToScour.getConfigurableGrid().isRootGrid()
                 && size > 1) {
             if (!inProcess()) {
-                removeSelectorButton();
+                removeCurtain();
                 LOGGER.info("Required method is " + deducedMethod.toString()
                         + ". Starting selector:" + getSelectionMethod());
-                addSelectorButton(gridToScour, getSelectorButton());
+                addCurtain(gridToScour, getCurtain());
             }
         } else if (!deducedMethod.equals(getSelectionMethod())
                 || inEditMode()
@@ -136,7 +126,8 @@ public abstract class Selector {
      *
      */
     public void stop() {
-        removeSelectorButton();
+        LOGGER.info("Stopping selector");
+        removeCurtain();
         getLoopedEvent().end();
         setInProcess(false);
         //  getScourer().resetPosition();
@@ -148,36 +139,17 @@ public abstract class Selector {
      */
     public abstract void reset();
 
-    private AppableControl selectorButton;
+    public Curtain curtain;
 
     /**
      *
      * @return
      */
-    public AppableControl getSelectorButton() {
-        if (selectorButton == null) {
-            selectorButton = new AppableControl("selector", "", "", "") {
-                @Override
-                public void run() {
-                    if (!inProcess()) {
-                        start();
-                    } else {
-                        onSelected();
-                    }
-                }
-
-                @Override
-                public Preferences getPreferences() {
-                    if (preferences == null) {
-                        String name = "selector";
-                        Class<? extends AppableControl> aClass = this.getClass();
-                        preferences = Preferences.userNodeForPackage(aClass).node(name);
-                    }
-                    return preferences;
-                }
-            };
+    public Curtain getCurtain() {
+        if (curtain == null) {
+            curtain = new Curtain(this,"Selector=default");   
         }
-        return selectorButton;
+        return curtain;
     }
 
     /**
@@ -187,28 +159,21 @@ public abstract class Selector {
         runSelection();
     }
 
-    /**
-     *
-     * @param configGrid
-     * @param selectorButton
-     */
-    public void addSelectorButton(ConfigurableGrid configGrid, RunnableControl selectorButton) {
-        Parent parent = configGrid.getParent();
-        if (parent instanceof SubGrid) {
-            SubGrid subGrid = (SubGrid) parent;
-            LOGGER.info("Adding Selector button to grid " + gridToScour.getIndex());
-            subGrid.addToPane(selectorButton);
-        } else {
-            LOGGER.fatal("Scanner node's parent is neither a grid nor a subgrid");
-        }
+    public void addCurtain(SubGrid subGrid, Curtain curtain) {
+        LOGGER.info("Adding curtain to grid "
+                + subGrid.getConfigurableGrid().getIndex()
+                + " with order " + curtain.getButtonOrder()
+                + " for method " + this.getSelectionMethod().toString());
+        subGrid.addToPane(curtain);
+        curtain.toFront();
     }
 
     /**
      *
      */
-    public void removeSelectorButton() {
-        LOGGER.info("Removing selector button from grid: " + gridToScour.getIndex());
-        getSelectorButton().removeFromParent();
+    public void removeCurtain() {
+        LOGGER.info("Removing selector button from grid: " + gridToScour.getConfigurableGrid().getIndex());
+        getCurtain().removeFromParent();
     }
 
     /**
@@ -233,8 +198,8 @@ public abstract class Selector {
                 current.execute();
                 setExecuted(true);
                 stop();
-                if (gridToScour.isRootGrid()) {
-                    LOGGER.info("Restarting root grid: " + gridToScour.getIndex());
+                if (gridToScour.getConfigurableGrid().isRootGrid()) {
+                    LOGGER.info("Restarting root grid: " + gridToScour.getConfigurableGrid().getIndex());
                     configure();
                 }
             }

@@ -10,10 +10,9 @@ import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Navigation;
 import org.symfound.builder.user.selection.SelectionMethod;
-import org.symfound.controls.RunnableControl;
-import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.selection.Selector;
+import org.symfound.selection.Curtain;
 
 /**
  *
@@ -33,7 +32,7 @@ public class Stepper extends Selector {
      * @param gridToScour
      * @param user
      */
-    public Stepper(ConfigurableGrid gridToScour, User user) {
+    public Stepper(SubGrid gridToScour, User user) {
         super(gridToScour, SelectionMethod.STEP, user);
     }
 
@@ -96,15 +95,15 @@ public class Stepper extends Selector {
      */
     @Override
     public void invokeSubGrid(SubGrid nestedGrid) {
-        Stepper nestedStepper = nestedGrid.getConfigurableGrid().getStepper();
-        RunnableControl selector = nestedStepper.getSelectorButton();
-        addSelectorButton(gridToScour, selector);
+        Stepper nestedStepper = nestedGrid.getStepper();
+        Curtain selector = nestedStepper.getCurtain();
+        addCurtain(gridToScour, selector);
         LOGGER.info("Starting stepper in nested grid");
         nestedStepper.start();
 
         nestedStepper.executeProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                if (gridToScour.isRootGrid()) {
+                if (gridToScour.getConfigurableGrid().isRootGrid()) {
                     LOGGER.info("Restarting root grid");
                     configure();
 

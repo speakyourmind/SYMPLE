@@ -31,9 +31,9 @@ import org.symfound.tools.ui.ColourChoices;
  * @author Javed Gangjee
  */
 public class ToolbarGrid extends ButtonGrid {
-    
+
     private static final Integer DEFAULT_ROWS = 1;
-    private static final double CONTROL_MAX_HEIGHT = 200.0;
+    private static final double CONTROL_MAX_HEIGHT = 75.0;
     private static final double CONTROL_MAX_WIDTH = 75.0;
 
     /**
@@ -88,16 +88,16 @@ public class ToolbarGrid extends ButtonGrid {
     @Override
     public void configure(List<AppableControl> controlsQueue, FillMethod method, FillDirection direction) {
         build();
-        setPrefHeight(CONTROL_MAX_HEIGHT);
-        setMaxHeight(CONTROL_MAX_HEIGHT);
+       //     setPrefHeight(CONTROL_MAX_HEIGHT);
+        //setMaxHeight(CONTROL_MAX_HEIGHT);
         for (int i = 0; i < getControlsQueue().size(); i++) {
-            final RunnableControl control = getControlsQueue().get(i);
-            control.setControlType(ControlType.SETTING_CONTROL);
-            control.setPrefWidth(CONTROL_MAX_WIDTH);
-            control.setPrefHeight(CONTROL_MAX_HEIGHT);
-            control.setMaxWidth(CONTROL_MAX_WIDTH);
-            control.setMaxHeight(CONTROL_MAX_HEIGHT);
-            add(control, i, 0);
+        final RunnableControl control = getControlsQueue().get(i);
+        control.setControlType(ControlType.SETTING_CONTROL);
+      /*  control.setPrefWidth(CONTROL_MAX_WIDTH);
+        control.setPrefHeight(CONTROL_MAX_HEIGHT);
+        control.setMaxWidth(CONTROL_MAX_WIDTH);
+        control.setMaxHeight(CONTROL_MAX_HEIGHT);*/
+        add(control, i, 0);
         }
     }
 
@@ -108,6 +108,17 @@ public class ToolbarGrid extends ButtonGrid {
      */
     @Override
     public void fill(ParallelList<String, String> buildOrder, Integer size) {
+        List<AppableControl> requested = buildRequestedList(buildOrder);
+        
+        resetControlsQueue();
+        if (requested.size() > 0) {
+            getControlsQueue().addAll(requested);
+        } else {
+            LOGGER.warn("No controls available!");
+        }
+    }
+
+    public List<AppableControl> buildRequestedList(ParallelList<String, String> buildOrder) {
         List<AppableControl> requested = new ArrayList<>();
         for (int i = 0; i < buildOrder.getFirstList().size(); i++) {
             String toBuild = buildOrder.getFirstList().get(i);
@@ -168,7 +179,7 @@ public class ToolbarGrid extends ButtonGrid {
                     minimizeButton.setSymStyle("toolbar-minimized");
                     requested.add(minimizeButton);
                     break;
-                
+
                 case UserSettingsButton.KEY:
                     UserSettingsButton userSettingsButton = new UserSettingsButton();
                     userSettingsButton.setPane("apMain");
@@ -203,17 +214,10 @@ public class ToolbarGrid extends ButtonGrid {
                     execButton.setCancelText("CANCEL");
                     requested.add(execButton);
                     break;
-                
+
             }
         }
-        
-        resetControlsQueue();
-        
-        if (requested.size() > 0) {
-            getControlsQueue().addAll(requested);
-        } else {
-            LOGGER.warn("No controls available!");
-        }
+        return requested;
     }
-    
+
 }

@@ -12,10 +12,9 @@ import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Navigation;
 import org.symfound.builder.user.selection.SelectionMethod;
-import org.symfound.controls.RunnableControl;
-import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.selection.Selector;
+import org.symfound.selection.Curtain;
 
 /**
  *
@@ -35,7 +34,7 @@ public class Scanner extends Selector {
      * @param grid
      * @param user
      */
-    public Scanner(ConfigurableGrid grid, User user) {
+    public Scanner(SubGrid grid, User user) {
         super(grid, SelectionMethod.SCAN, user);
     }
 
@@ -81,9 +80,9 @@ public class Scanner extends Selector {
      */
     @Override
     public void invokeSubGrid(SubGrid currentGrid) {
-        Scanner scanner = currentGrid.getConfigurableGrid().getScanner();
-        RunnableControl button = scanner.getSelectorButton();
-        addSelectorButton(gridToScour, button);
+        Scanner scanner = currentGrid.getScanner();
+        Curtain button = scanner.getCurtain();
+        addCurtain(gridToScour, button);
         scanner.start();
         button.executeProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {

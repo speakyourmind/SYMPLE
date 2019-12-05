@@ -21,6 +21,10 @@ import org.symfound.controls.system.grid.editor.AddKeyButton;
 import org.symfound.controls.system.grid.editor.EditGridButton;
 import org.symfound.controls.system.grid.editor.KeyRemoveButton;
 import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
+import org.symfound.main.Main;
+import org.symfound.selection.modes.Scanner;
+import org.symfound.selection.modes.Scroller;
+import org.symfound.selection.modes.Stepper;
 
 /**
  *
@@ -94,6 +98,11 @@ public class SubGrid extends AppableControl {
 
         getConfigurableGrid().statusProperty().addListener((ob, o, n) -> {
             if (n.equals(ScreenStatus.PLAYING)) {
+                
+                getScanner().configure();
+                getStepper().configure();
+                getScroller().configure();
+
                 setDisable(false);
                 if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
                     addConfigButtons();
@@ -104,7 +113,6 @@ public class SubGrid extends AppableControl {
                 setDisable(true);
             }
         });
-
         ConfigurableGrid.editModeProperty().removeListener(getConfigButtonListener());
         ConfigurableGrid.editModeProperty().addListener(getConfigButtonListener());
 
@@ -113,6 +121,7 @@ public class SubGrid extends AppableControl {
     public ChangeListener<Boolean> getConfigButtonListener() {
         if (addRemoveListener == null) {
             addRemoveListener = (observable1, oldValue1, newValue1) -> {
+                
                 if (ConfigurableGrid.inEditMode() && isEditable()) {
                     addConfigButtons();
                 } else {
@@ -132,11 +141,10 @@ public class SubGrid extends AppableControl {
         addEditAppButtons();
         if (!getChildren().contains(getMenu())) {
             gridMenu = null;
-            if (this.getConfigurableGrid().isRootGrid()){
-            addToPane(getMenu(), 10.0, 10.0, null, null);
+            if (this.getConfigurableGrid().isRootGrid()) {
+                addToPane(getMenu(), 10.0, 10.0, null, null);
             } else {
-                
-            addToPane(getMenu(), 10.0, 90.0, null, null);
+                addToPane(getMenu(), 10.0, 90.0, null, null);
             }
         }
 
@@ -356,5 +364,49 @@ public class SubGrid extends AppableControl {
             preferences = Preferences.userNodeForPackage(aClass).node(name);
         }
         return preferences;
+    }
+
+    /**
+     *
+     */
+    public Scanner scanner;
+
+    /**
+     *
+     * @return
+     */
+    public Scanner getScanner() {
+        if (scanner == null) {
+            scanner = new Scanner(this, Main.getSession().getUser());
+        }
+        return scanner;
+    }
+
+    /**
+     *
+     */
+    public Stepper stepper;
+
+    /**
+     *
+     * @return
+     */
+    public Stepper getStepper() {
+        if (stepper == null) {
+            stepper = new Stepper(this, Main.getSession().getUser());
+        }
+        return stepper;
+    }
+    public Scroller scroller;
+
+    /**
+     *
+     * @return
+     */
+    public Scroller getScroller() {
+        if (scroller == null) {
+            scroller = new Scroller(this, Main.getSession().getUser());
+        }
+        return scroller;
     }
 }

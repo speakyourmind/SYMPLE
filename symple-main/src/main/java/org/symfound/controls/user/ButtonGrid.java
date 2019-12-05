@@ -146,6 +146,7 @@ public abstract class ButtonGrid extends FillableGrid {
             TwilioHistory.KEY,
             VersionUpdateButton.KEY,
             ClockButton.KEY);
+            
 //            DesktopController.KEY);
 
     public static final List<String> USABLE_KEY_CATALOGUE = Arrays.asList(ActiveTextArea.KEY,
