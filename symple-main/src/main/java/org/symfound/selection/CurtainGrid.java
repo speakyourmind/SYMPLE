@@ -95,8 +95,8 @@ public class CurtainGrid extends ButtonGrid {
                 case ScrollControlButton.KEY:
                     ScrollControlButton scrollButton = new ScrollControlButton((Scroller)selector,
                             HomeController.getScrollPane(), ScrollControl.valueOf(index.toUpperCase()));
-                    scrollButton.setText(index.toUpperCase());
-                    System.out.println("------------->"+ScrollControl.valueOf(index.toUpperCase()).toString());
+                   // scrollButton.setText(index.toUpperCase());
+                  //  System.out.println("------------->"+ScrollControl.valueOf(index.toUpperCase()).toString());
                     requested.add(scrollButton);
                     break;
                 case "Blank":

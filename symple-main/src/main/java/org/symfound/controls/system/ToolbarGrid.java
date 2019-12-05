@@ -124,7 +124,7 @@ public class ToolbarGrid extends ButtonGrid {
             String toBuild = buildOrder.getFirstList().get(i);
             switch (toBuild.trim()) {
                 case SnapshotButton.KEY:
-                    SnapshotButton snapshot = new SnapshotButton("toolbar-snapshot", HomeController.getGrid(), HomeController.getGrid().getIndex());
+                    SnapshotButton snapshot = new SnapshotButton("toolbar-snapshot", HomeController.getSubGrid(), HomeController.getSubGrid().getIndex());
                     snapshot.setControlType(ControlType.SETTING_CONTROL);
                     snapshot.setConfirmable(Boolean.FALSE);
                     snapshot.setPane("apMain");

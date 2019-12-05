@@ -94,7 +94,7 @@ public class NavigateButton extends AppableControl {
         
         openHomeScreen();
 
-        ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
+        ConfigurableGrid configurableGrid = HomeController.getSubGrid().getConfigurableGrid();
 
         if (getUser().getInteraction().getSelectionMethod().equals(SelectionMethod.SCAN) || getUser().getInteraction().getSelectionMethod().equals(SelectionMethod.STEP)) {
             Device current = getSession().getDeviceManager().getCurrent();

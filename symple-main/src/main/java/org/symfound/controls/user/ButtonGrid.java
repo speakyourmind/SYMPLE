@@ -652,7 +652,7 @@ public abstract class ButtonGrid extends FillableGrid {
                         requestedControls.add(clockButton);
                         break;
                     case ScreenButton.KEY:
-                        ConfigurableGrid homeGrid = HomeController.getGrid().getConfigurableGrid();
+                        ConfigurableGrid homeGrid = HomeController.getSubGrid().getConfigurableGrid();
                         ScreenButton screenButton = new ScreenButton(index);
                         screenButton.setKey(HomeController.KEY);
                         configureItem(screenButton);

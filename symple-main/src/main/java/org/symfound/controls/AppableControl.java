@@ -353,7 +353,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     public void configureFont(String fontFamily, FontWeight fw) {
         resetFont(fontFamily, fw);
         //TO DO: Could be an issue
-        HomeController.getGrid().getConfigurableGrid().statusProperty().addListener((observable, oldValue, newValue) -> {
+        HomeController.getSubGrid().getConfigurableGrid().statusProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.equals(ScreenStatus.PLAYING)) {
                 resetFont(fontFamily, fw);
                 //setFont();
@@ -1062,28 +1062,28 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 @Override
                 public void onOk() {
                     final EditAppButton thisEditButton = getEditAppButton();
-                    HomeController.getGrid().getChildren().add(thisEditButton.getPopup(thisEditButton.getDialog()));
+                    HomeController.getSubGrid().getChildren().add(thisEditButton.getPopup(thisEditButton.getDialog()));
                     final Double selectionTime = getSession().getUser().getInteraction().getSelectionTime();
                     getDialog().animate().startScale(selectionTime, 0.8, 1.0);
-                    final SubGrid homeGrid = HomeController.getGrid();
+                    final SubGrid homeGrid = HomeController.getSubGrid();
                     homeGrid.setInError(Boolean.FALSE);
                 }
 
                 @Override
                 public void onCancel() {
                     openHomeScreen();
-                    ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
+                    ConfigurableGrid configurableGrid = HomeController.getSubGrid().getConfigurableGrid();
                     configurableGrid.setIndex("home");
                     getSession().setPlaying(false);
 
-                    final SubGrid homeGrid = HomeController.getGrid();
+                    final SubGrid homeGrid = HomeController.getSubGrid();
                     homeGrid.setInError(Boolean.FALSE);
                     ConfigurableGrid.setEditMode(Boolean.FALSE);
 
                 }
 
             };
-            final SubGrid homeGrid = HomeController.getGrid();
+            final SubGrid homeGrid = HomeController.getSubGrid();
             homeGrid.indexProperty().addListener((observable, oldValue, newValue) -> {
                 homeGrid.setInError(Boolean.FALSE);
             });
@@ -1094,17 +1094,17 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
     private ScreenPopup<ScreenDialog> errorPopup;
 
     public void generateFixableError(String message) {
-        final SubGrid homeGrid = HomeController.getGrid();
+        final SubGrid homeGrid = HomeController.getSubGrid();
         if (!homeGrid.isInError()) {
             homeGrid.setInError(Boolean.TRUE);
             final FixableErrorDialog errDialog = getFixableErrorDialog(message);
             errorPopup = getPopup(errDialog);
             //  homeGrid.getChildren().add(errorPopup);
             //Pane pane = (Pane) getScene().lookup("#apMain");
-            HomeController.getGrid().getChildren().add(errorPopup);
+            HomeController.getSubGrid().getChildren().add(errorPopup);
 
         } else {
-            HomeController.getGrid().getChildren().remove(errorPopup);
+            HomeController.getSubGrid().getChildren().remove(errorPopup);
         }
     }
 

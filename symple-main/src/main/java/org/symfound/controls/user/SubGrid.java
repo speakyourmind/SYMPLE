@@ -376,9 +376,9 @@ public class SubGrid extends AppableControl {
      * @return
      */
     public Scanner getScanner() {
-        if (scanner == null) {
+       // if (scanner == null) {
             scanner = new Scanner(this, Main.getSession().getUser());
-        }
+        //}
         return scanner;
     }
 

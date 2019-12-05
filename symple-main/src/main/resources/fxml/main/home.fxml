@@ -13,15 +13,6 @@
 
 <AnchorPane fx:id="apMain" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="background" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../styles/default.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.symfound.main.HomeController">
     <children>
-        <GridPane fx:id="gpMain" layoutX="121.0" layoutY="52.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <columnConstraints>
-                <ColumnConstraints percentWidth = "10.0" hgrow="SOMETIMES" minWidth="10.0" />
-                <ColumnConstraints percentWidth = "90.0" hgrow="SOMETIMES" minWidth="10.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
-                <RowConstraints percentHeight="95.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-        </GridPane>
+  
     </children>
 </AnchorPane>

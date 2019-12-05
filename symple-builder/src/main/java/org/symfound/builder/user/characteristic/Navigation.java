@@ -152,29 +152,27 @@ public class Navigation extends Characteristic {
 
     /**
      *
-     
-    public static final String BUILD_ORDER_KEY = "app.navigation.appBuildOrder";
-    private ListProperty<String> appBuildOrder;
-
-    public void setAppBuildOrder(ObservableList<String> value) {
-        appBuildOrderProperty().setValue(value);
-        getPreferences().put(BUILD_ORDER_KEY, value.toString().replaceAll("[\\[\\]]", "").replaceAll(" ", ""));
-
-    }
-    public ObservableList<String> getAppBuildOrder() {
-        return appBuildOrderProperty().getValue();
-    }
-    public ListProperty<String> appBuildOrderProperty() {
-        if (appBuildOrder == null) {
-            TextOperator textOperator = new TextOperator();
-            final String buildConfig = getPreference(BUILD_ORDER_KEY);
-            final List<String> buildList = textOperator.splitAsList(buildConfig, BUTTON_DELIMITER);
-            ObservableList<String> list = FXCollections.observableArrayList(buildList);
-            appBuildOrder = new SimpleListProperty<>(list);
-        }
-        return appBuildOrder;
-    }
-*/
+     *
+     * public static final String BUILD_ORDER_KEY =
+     * "app.navigation.appBuildOrder"; private ListProperty<String>
+     * appBuildOrder;
+     *
+     * public void setAppBuildOrder(ObservableList<String> value) {
+     * appBuildOrderProperty().setValue(value);
+     * getPreferences().put(BUILD_ORDER_KEY,
+     * value.toString().replaceAll("[\\[\\]]", "").replaceAll(" ", ""));
+     *
+     * }
+     * public ObservableList<String> getAppBuildOrder() { return
+     * appBuildOrderProperty().getValue(); } public ListProperty<String>
+     * appBuildOrderProperty() { if (appBuildOrder == null) { TextOperator
+     * textOperator = new TextOperator(); final String buildConfig =
+     * getPreference(BUILD_ORDER_KEY); final List<String> buildList =
+     * textOperator.splitAsList(buildConfig, BUTTON_DELIMITER);
+     * ObservableList<String> list =
+     * FXCollections.observableArrayList(buildList); appBuildOrder = new
+     * SimpleListProperty<>(list); } return appBuildOrder; }
+     */
     /**
      *
      */
@@ -277,7 +275,7 @@ public class Navigation extends Characteristic {
         }
         return timeout;
     }
-     private static final String PLAY_SELECT_SOUND_KEY = "app.navigation.playSound";
+    private static final String PLAY_SELECT_SOUND_KEY = "app.navigation.playSound";
     private BooleanProperty playSelectSound;
 
     /**
@@ -311,7 +309,7 @@ public class Navigation extends Characteristic {
         }
         return playSelectSound;
     }
-    
+
     private static final String PLAY_SCOUR_SOUND_KEY = "app.navigation.playSound";
     private BooleanProperty playScourSound;
 
@@ -346,7 +344,7 @@ public class Navigation extends Characteristic {
         }
         return playScourSound;
     }
-    
+
     private static final String SPEAK_SELECTION_KEY = "app.navigation.speakSelection";
     private BooleanProperty speakSelection;
 
@@ -445,9 +443,7 @@ public class Navigation extends Characteristic {
         }
         return highlightBorder;
     }
-    
-    
-    
+
     private static final String SCOUR_SOUND_KEY = "app.general.scourSound";
     private StringProperty scourSound;
 
@@ -479,7 +475,7 @@ public class Navigation extends Characteristic {
         }
         return scourSound;
     }
-    
+
     private static final String SELECTION_SOUND_KEY = "app.general.selectionSound";
     private StringProperty selectionSound;
 
@@ -512,8 +508,7 @@ public class Navigation extends Characteristic {
         return selectionSound;
     }
 
-    
-     private static final String ON_FIRST_CLICK_KEY = "app.navigation.onFirstClick";
+    private static final String ON_FIRST_CLICK_KEY = "app.navigation.onFirstClick";
     private BooleanProperty onFirstClick;
 
     /**
@@ -548,7 +543,6 @@ public class Navigation extends Characteristic {
         return onFirstClick;
     }
 
-    
     private static final String PREVIOUS_INDEX_KEY = "app.general.previousIndex";
     private StringProperty previousIndex;
 
@@ -580,8 +574,39 @@ public class Navigation extends Characteristic {
         }
         return previousIndex;
     }
-    
-        private static final String CURRENT_INDEX_KEY = "app.general.previousIndex";
+    private static final String SCROLL_DISTANCE_KEY = "app.selection.scrollDistance";
+    private DoubleProperty scrollDistance;
+
+    /**
+     *
+     * @param value
+     */
+    public void setScrollDistance(Double value) {
+        scrollDistanceProperty().setValue(value);
+        getPreferences().put(SCROLL_DISTANCE_KEY, value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Double getScrollDistance() {
+        return scrollDistanceProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DoubleProperty scrollDistanceProperty() {
+        if (scrollDistance == null) {
+            Double initValue = Double.valueOf(getPreference(SCROLL_DISTANCE_KEY));
+            scrollDistance = new SimpleDoubleProperty(initValue);
+        }
+        return scrollDistance;
+    }
+
+    private static final String CURRENT_INDEX_KEY = "app.general.previousIndex";
     private StringProperty currentIndex;
 
     /**

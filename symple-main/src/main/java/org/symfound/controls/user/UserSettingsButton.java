@@ -114,6 +114,7 @@ public class UserSettingsButton extends SettingsButtonBase {
             private Slider dwellTimeSlider;
             private Slider scanTimeSlider;
             private Slider stepTimeSlider;
+            private Slider scrollTimeSlider;
             private Slider levelSlider;
             private OnOffButton assistedModeButton;
 
@@ -131,7 +132,7 @@ public class UserSettingsButton extends SettingsButtonBase {
             public TextField accountSIDField;
             public TextField authTokenField;
             public TextField fromNumberField;
-            //Selection
+            //Selection //TODO:Move to Selection Mode specific Settings
             private OnOffButton onFirstClickButton;
             private OnOffButton speakSelectionButton;
             private OnOffButton highlightBorderButton;
@@ -140,6 +141,7 @@ public class UserSettingsButton extends SettingsButtonBase {
             public TextField playScourField;
             private OnOffButton playSelectButton;
             public TextField playSelectionField;
+            private Slider scrollDistanceSlider;
 
             //Typing
             private Slider userDictWeightSlider;
@@ -229,6 +231,16 @@ public class UserSettingsButton extends SettingsButtonBase {
                 scanTimeSlider.setShowTickMarks(true);
 
                 selectionModeRow.add(scanTimeSlider, 2, 0, 1, 1);
+
+                scrollTimeSlider = new Slider(0.01, 1.0, 0.05);
+                scrollTimeSlider.setValue(getUser().getTiming().getScrollTime());
+                scrollTimeSlider.visibleProperty().bind((Bindings.equal(selectionChoiceBox.valueProperty(), SelectionMethod.SCROLL)));
+                scrollTimeSlider.setMajorTickUnit(0.1);
+                scrollTimeSlider.setMinorTickCount(1);
+                scrollTimeSlider.setShowTickLabels(true);
+                scrollTimeSlider.setShowTickMarks(true);
+
+                selectionModeRow.add(scrollTimeSlider, 2, 0, 1, 1);
 
                 stepTimeSlider = new Slider(1, 20, 1);
                 stepTimeSlider.setValue(getUser().getTiming().getStepTime());
@@ -787,6 +799,7 @@ public class UserSettingsButton extends SettingsButtonBase {
                 //APPLICATION
                 user.getTiming().setDwellTime(dwellTimeSlider.getValue());
                 user.getTiming().setScanTime(scanTimeSlider.getValue());
+                user.getTiming().setScrollTime(scrollTimeSlider.getValue());
                 user.getTiming().setStepTime(stepTimeSlider.getValue());
                 user.getAbility().setLevel(levelSlider.getValue());
                 user.getInteraction().setAssistedMode(assistedModeButton.getValue());
@@ -836,6 +849,7 @@ public class UserSettingsButton extends SettingsButtonBase {
                 //  final User user = getUser();
                 //APPLICATION 
                 dwellTimeSlider.setValue(getUser().getTiming().getDwellTime());
+                scrollTimeSlider.setValue(getUser().getTiming().getScrollTime());
                 scanTimeSlider.setValue(getUser().getTiming().getScanTime());
                 stepTimeSlider.setValue(getUser().getTiming().getStepTime());
                 selectionChoiceBox.setValue(getUser().getInteraction().getSelectionMethod());

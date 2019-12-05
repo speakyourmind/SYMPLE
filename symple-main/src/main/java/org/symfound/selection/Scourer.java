@@ -81,7 +81,7 @@ public class Scourer {
                 GridPane.setRowSpan(control, rowSpan);
             } else {
                 LOGGER.info("Return control to original parent root grid");
-                SubGrid subGrid = HomeController.getGrid();
+                SubGrid subGrid = HomeController.getSubGrid();
                 final ConfigurableGrid gridToView = subGrid.getConfigurableGrid();
                 gridToView.getChildren().remove(control);
                 GridPane.setColumnIndex(control, columnIndex);
@@ -153,7 +153,7 @@ public class Scourer {
                         // gridToScour.getChildren().remove(next);
                         next.removeFromParent();
                         LOGGER.info("Requiring full screen scanning while in a nested grid");
-                        SubGrid subGrid = HomeController.getGrid();
+                        SubGrid subGrid = HomeController.getSubGrid();
                         final ConfigurableGrid gridToView = subGrid.getConfigurableGrid();
                         GridPane.setColumnIndex(next, 0);
                         GridPane.setColumnSpan(next, gridToView.getColumnConstraints().size());

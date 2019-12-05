@@ -18,6 +18,8 @@
 package org.symfound.main;
 
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -28,9 +30,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import org.symfound.app.GridController;
+import org.symfound.controls.ScreenControl;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
 import static org.symfound.controls.ScreenControl.setSizeMax;
+import static org.symfound.controls.device.SwiftySettings.DEFAULT_CONFIG_COLUMNS;
+import static org.symfound.controls.device.SwiftySettings.DEFAULT_CONFIG_ROWS;
 import org.symfound.controls.system.Toolbar;
+import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
 
@@ -82,8 +88,6 @@ public class HomeController extends GridController {
     }
 
     @FXML
-    private GridPane gpMain;
-    @FXML
     private AnchorPane apMain;
 
     /**
@@ -93,28 +97,34 @@ public class HomeController extends GridController {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-      getSession().builtProperty().addListener((observable, oldValue, newValue) -> {
+        getSession().builtProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
+                 AnchorPane.setTopAnchor(getScreenGrid(), 0.0);
+                AnchorPane.setLeftAnchor(getScreenGrid(), 0.0);
+                AnchorPane.setRightAnchor(getScreenGrid(), 0.0);
+                AnchorPane.setBottomAnchor(getScreenGrid(), 0.0);
+                apMain.getChildren().add(getScreenGrid());
                 ConfigurableGrid.editModeProperty().bindBidirectional(FullSession.getMainUI().editModeProperty());
-                gpMain.getChildren().add(getToolbar());
-                gpMain.getChildren().add(getScrollPane());
+                getScreenGrid().getChildren().add(getToolbar());
+               getScreenGrid().getChildren().add(getScrollPane());
 
                 //getGrid().maxHeightProperty().bind(Bindings.multiply(0.96, gpMain.heightProperty()));
             }
-  
+
         });
     }
-    
+
     private static Toolbar toolbar;
-    public Toolbar getToolbar(){
-        if (toolbar==null){
-            toolbar= new Toolbar();
+
+    public Toolbar getToolbar() {
+        if (toolbar == null) {
+            toolbar = new Toolbar();
             toolbar.setButtonOrder("Snapshot=default,Update=default,Edit=default,User Settings=default,Minimize=default,Script=toolbar/home,Exit=default");
-            GridPane.setColumnSpan(toolbar,2);
+            GridPane.setColumnSpan(toolbar, 2);
         }
         return toolbar;
     }
-    
+
     private static ScrollPane scrollPane;
 
     public static ScrollPane getScrollPane() {
@@ -124,21 +134,41 @@ public class HomeController extends GridController {
             scrollPane.setFitToHeight(Boolean.TRUE);
             scrollPane.setFitToWidth(Boolean.TRUE);
             setSizeMax(scrollPane);
-            scrollPane.setContent(getGrid());
+            scrollPane.setContent(getSubGrid());
             scrollPane.getStylesheets().add(CSS_PATH);
             GridPane.setRowIndex(scrollPane, 1);
-            GridPane.setColumnSpan(scrollPane,2);
+            GridPane.setColumnSpan(scrollPane, 2);
         }
         return scrollPane;
     }
-    
+
+    private static BuildableGrid screenGrid;
+    public static GridPane getScreenGrid() {
+        if (screenGrid == null) {
+            screenGrid = new BuildableGrid();
+            //   screenGrid.setPadding(new Insets(0,0,0,0));
+            ScreenControl.setSizeMax(screenGrid);
+            screenGrid.setHgap(5.0);
+            screenGrid.setVgap(5.0);
+            screenGrid.setSpecRows(2);
+            List<Double> rowPercentages = Arrays.asList(5.0, 95.0);
+            screenGrid.buildRowsByPerc(rowPercentages);
+
+            screenGrid.setSpecColumns(2);
+            List<Double> columnPercentages = Arrays.asList(10.0, 90.0);
+            screenGrid.buildColumnsByPerc(columnPercentages);
+
+        }
+        return screenGrid;
+    }
+
     private static SubGrid grid;
 
     /**
      *
      * @return
      */
-    public static SubGrid getGrid() {
+    public static SubGrid getSubGrid() {
         if (grid == null) {
             grid = new SubGrid("home");
             grid.getConfigurableGrid().setRootGrid(true);

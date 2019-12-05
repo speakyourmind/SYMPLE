@@ -8,6 +8,7 @@ package org.symfound.selection.controls;
 import java.util.Arrays;
 import java.util.List;
 import java.util.prefs.Preferences;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -27,11 +28,11 @@ import org.symfound.selection.modes.Scroller;
 public class ScrollControlButton extends SelectionControl {
 
     public static final String KEY = "Scroll";
-    ScrollPane scrollPane;
-    Scroller scroller;
+    private ScrollPane scrollPane;
+    private Scroller scroller;
 
     public ScrollControlButton(Scroller scroller, ScrollPane scrollPane, ScrollControl control) {
-        super("settings-button", KEY, KEY, control.toString().toLowerCase());
+        super("transparent", KEY, KEY, control.toString().toLowerCase());
         this.scrollPane = scrollPane;
         this.scroller = scroller;
         initialize(control);
@@ -39,6 +40,13 @@ public class ScrollControlButton extends SelectionControl {
     }
 
     private void initialize(ScrollControl control) {
+
+        setCSS("transparent-" + getScrollControl().toString().toLowerCase(), getPrimaryControl());
+        scrollControlProperty().addListener((observeableValue, oldValue, newValue) -> {
+            setCSS("transparent-" + getScrollControl().toString().toLowerCase(), getPrimaryControl());
+            
+            
+        });
         setScrollControl(control);
         scroller.runScrollProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
@@ -46,27 +54,48 @@ public class ScrollControlButton extends SelectionControl {
                 scroller.setRunScroll(Boolean.FALSE);
             }
         });
-
     }
 
     @Override
     public void run() {
+        final Double scrollDistance = getUser().getNavigation().getScrollDistance();
+        LOGGER.info("Scrolling " + getScrollControl().toString().toLowerCase());
         switch (getScrollControl()) {
             case UP:
-                LOGGER.info("Scrolling up");
-                scrollPane.setVvalue(scrollPane.getVvalue() - 0.1);
+                if (scrollPane.getVvalue() != 0.0) {
+                 //   setVisible(Boolean.TRUE);
+                    scrollPane.setVvalue(scrollPane.getVvalue() - scrollDistance);
+                } else {
+                    LOGGER.info("Reached the end of the vertical scroll bar.");
+                   // setVisible(Boolean.FALSE);
+                }
                 break;
             case DOWN:
-                LOGGER.info("Scrolling down");
-                scrollPane.setVvalue(scrollPane.getVvalue() + 0.1);
+                if (scrollPane.getVvalue() != 1.0) {
+                   // setVisible(Boolean.TRUE);
+                    scrollPane.setVvalue(scrollPane.getVvalue() + scrollDistance);
+                } else {
+                    LOGGER.info("Reached the end of the vertical scroll bar.");
+                    //setVisible(Boolean.FALSE);
+                }
                 break;
             case LEFT:
-                LOGGER.info("Scrolling left");
-                scrollPane.setHvalue(scrollPane.getHvalue() - 0.1);
+                if (scrollPane.getHvalue() != 0.0) {
+                    //setVisible(Boolean.TRUE);
+                    scrollPane.setHvalue(scrollPane.getHvalue() - scrollDistance);
+                } else {
+                    LOGGER.info("Reached the end of the horizontal scroll bar.");
+                    //setVisible(Boolean.FALSE);
+                }
                 break;
             case RIGHT:
-                LOGGER.info("Scrolling right");
-                scrollPane.setHvalue(scrollPane.getHvalue() + 0.1);
+                if (scrollPane.getHvalue() != 1.0) {
+                    //setVisible(Boolean.TRUE);
+                    scrollPane.setHvalue(scrollPane.getHvalue() + scrollDistance);
+                } else {
+                    LOGGER.info("Reached the end of the horizontal scroll bar.");
+                    //setVisible(Boolean.FALSE);
+                }
                 break;
             default:
                 break;
@@ -75,11 +104,8 @@ public class ScrollControlButton extends SelectionControl {
 
     @Override
     public void mouseEnter(MouseEvent e) {
-        System.out.println("entered");
-     //   scroller.start();
-        
-         scroller.reset();
-        Double scanTime = getUser().getTiming().getScanTime();
+        scroller.reset();
+        Double scanTime = getUser().getTiming().getScrollTime();
         scroller.getLoopedEvent().setup(scanTime, (ActionEvent f) -> {
             run();
         });
@@ -89,7 +115,6 @@ public class ScrollControlButton extends SelectionControl {
 
     @Override
     public void mouseExit(MouseEvent e) {
-        System.out.println("exited");
         scroller.reset();
     }
 

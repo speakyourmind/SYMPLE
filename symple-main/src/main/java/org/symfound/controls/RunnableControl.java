@@ -255,7 +255,7 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
                     LOGGER.info("Post click navigation requested by " + this.getText());
                     appable.openHomeScreen();
 
-                    ConfigurableGrid configurableGrid = HomeController.getGrid().getConfigurableGrid();
+                    ConfigurableGrid configurableGrid = HomeController.getSubGrid().getConfigurableGrid();
                     final SelectionMethod selectionMethod = getUser().getInteraction().getSelectionMethod();
 
                     if (selectionMethod.equals(SelectionMethod.SCAN) || selectionMethod.equals(SelectionMethod.STEP)) {

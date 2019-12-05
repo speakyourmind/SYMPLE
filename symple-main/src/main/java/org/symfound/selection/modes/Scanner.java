@@ -5,14 +5,19 @@
  */
 package org.symfound.selection.modes;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.StringExpression;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Navigation;
 import org.symfound.builder.user.selection.SelectionMethod;
+import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
+import org.symfound.main.HomeController;
 import org.symfound.selection.Selector;
 import org.symfound.selection.Curtain;
 
@@ -38,6 +43,14 @@ public class Scanner extends Selector {
         super(grid, SelectionMethod.SCAN, user);
     }
 
+    /**
+     *
+     */
+    @Override
+    public void configure() {
+        startStop();
+        loadStartStopListener();
+    }
     /**
      *
      */
@@ -82,7 +95,7 @@ public class Scanner extends Selector {
     public void invokeSubGrid(SubGrid currentGrid) {
         Scanner scanner = currentGrid.getScanner();
         Curtain button = scanner.getCurtain();
-        addCurtain(gridToScour, button);
+        addCurtain(HomeController.getSubGrid(), button);
         scanner.start();
         button.executeProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
@@ -131,4 +144,20 @@ public class Scanner extends Selector {
         return autoStart;
     }
 
+    private static ChangeListener<String> startStopListener;
+    
+    public void loadStartStopListener() {
+        if (startStopListener == null) {
+            startStopListener = (observable, oldValue, newValue) -> {
+                startStop();
+            };
+            final StringExpression concatenatedBindings = Bindings.concat(
+                    getUser().getInteraction().assistedModeProperty().asString(),
+                    getUser().getInteraction().selectionMethodProperty().asString(),
+                    gridToScour.getConfigurableGrid().selectionMethodProperty().asString(),
+                    ConfigurableGrid.editModeProperty().asString());
+            concatenatedBindings.addListener(startStopListener);
+            
+        }
+    }
 }

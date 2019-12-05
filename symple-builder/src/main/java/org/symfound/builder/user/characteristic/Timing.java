@@ -64,6 +64,38 @@ public class Timing extends Characteristic {
         return dwellTime;
     }
 
+    private static final String SCROLL_TIME_KEY = "app.selection.scrollTime";
+    private DoubleProperty scrollTime;
+
+    /**
+     *
+     * @param value
+     */
+    public void setScrollTime(Double value) {
+        scrollTimeProperty().setValue(value);
+        getPreferences().put(SCROLL_TIME_KEY, value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Double getScrollTime() {
+        return scrollTimeProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DoubleProperty scrollTimeProperty() {
+        if (scrollTime == null) {
+            Double initValue = Double.valueOf(getPreference(SCROLL_TIME_KEY));
+            scrollTime = new SimpleDoubleProperty(initValue);
+        }
+        return scrollTime;
+    }
+    
     private static final String SCAN_TIME_KEY = "app.selection.scanTime";
     private DoubleProperty scanTime;
 
