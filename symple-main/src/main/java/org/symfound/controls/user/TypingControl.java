@@ -173,7 +173,7 @@ public abstract class TypingControl extends AppableControl {
     }
     /**
      *
-     */
+     */   
     public static final int DEFAULT_KEY_CODE = ActionKeyCode.UNASSIGNED;
 
     /**
