@@ -32,21 +32,29 @@ public abstract class TypingControl extends AppableControl {
         map.put(ActionKeyCode.CLEAR, "Clear");
         map.put(ActionKeyCode.ENTER, "Enter");
         map.put(ActionKeyCode.TAB, "Tab");
+        map.put(ActionKeyCode.ARROW_DOWN, "Down Arrow");
+        map.put(ActionKeyCode.ARROW_UP, "Up Arrow");
+        map.put(ActionKeyCode.ARROW_LEFT, "Left Arrow");
+        map.put(ActionKeyCode.ARROW_RIGHT, "Right Arrow");
 
         KEY_CODE_MAP = Collections.unmodifiableMap(map);
     }
 
     ;//TODO: Replace with BidiMap
-   public static final Map<String,Integer> REV_KEY_CODE_MAP;
+   public static final Map<String, Integer> REV_KEY_CODE_MAP;
 
     static {
-        HashMap<String,Integer> map = new HashMap<>();
-        map.put( "Button Text",ActionKeyCode.UNASSIGNED);
-        map.put( "Backspace",ActionKeyCode.BACK_SPACE);
-        map.put("Space",ActionKeyCode.SPACE);
-        map.put( "Clear",ActionKeyCode.CLEAR);
-        map.put("Enter",ActionKeyCode.ENTER);
-        map.put("Tab",ActionKeyCode.TAB);
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("Button Text", ActionKeyCode.UNASSIGNED);
+        map.put("Backspace", ActionKeyCode.BACK_SPACE);
+        map.put("Space", ActionKeyCode.SPACE);
+        map.put("Clear", ActionKeyCode.CLEAR);
+        map.put("Enter", ActionKeyCode.ENTER);
+        map.put("Tab", ActionKeyCode.TAB);
+        map.put("Down Arrow", ActionKeyCode.ARROW_DOWN);
+        map.put("Up Arrow", ActionKeyCode.ARROW_UP);
+        map.put("Left Arrow", ActionKeyCode.ARROW_LEFT);
+        map.put("Right Arrow", ActionKeyCode.ARROW_RIGHT);
 
         REV_KEY_CODE_MAP = Collections.unmodifiableMap(map);
     }
