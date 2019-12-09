@@ -110,7 +110,6 @@ public class FullSession extends Session {
      */
     public static String MAIN_SETTINGS = SCREENS_FOLDER + "main/main_settings";
 
-
     /**
      *
      */
@@ -209,6 +208,8 @@ public class FullSession extends Session {
                 //} else {
                 getMainUI().getStack().load(HOME);
                 getMainUI().open();
+                getMainUI().getScene().cursorProperty().bindBidirectional(getUser().getNavigation().cursorTypeProperty());
+
                 //}
                 LOGGER.info("Total Start Time = ".concat(getBuilder().getTimeElapsed().toString()));
                 getBuilder().end();

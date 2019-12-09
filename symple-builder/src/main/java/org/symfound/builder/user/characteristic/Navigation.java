@@ -648,6 +648,7 @@ public class Navigation extends Characteristic {
      */
     public void setCursor(Cursor value) {
         cursorTypeProperty().setValue(value);
+        
         getPreferences().put(CURSOR_TYPE_KEY, value.toString());
     }
 

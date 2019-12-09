@@ -592,7 +592,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         final AnimatedButton primaryControl = AppableControl.this.getPrimaryControl();
         primaryControl.setDisable(Boolean.FALSE);
 
-        snapshotButton = new SnapshotButton("settings-button",primaryControl, AppableControl.this.getText()) {
+        snapshotButton = new SnapshotButton("settings-button", primaryControl, AppableControl.this.getText()) {
             @Override
             public void run() {
                 super.run();
@@ -950,18 +950,18 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                 public void buildDialog() {
                     getStylesheets().add(CSS_PATH);
                     baseGrid.getStyleClass().add("border-background");
-                    List<Double> rowPercentages = Arrays.asList(7.5, 32.5, 60.0);
-                    buildBaseGrid(3, 1, rowPercentages);
-                    baseGrid.add(addSettingControls(), 0, 2);
+                    //     List<Double> rowPercentages = Arrays.asList(7.5, 32.5, 60.0);
+                    List<Double> rowPercentages = Arrays.asList(7.5, 92.5);
+                 //   buildBaseGrid(3, 1, rowPercentages);
+                      buildBaseGrid(2, 1, rowPercentages);
+                    baseGrid.add(addSettingControls(), 0, 1);
 
                     baseGrid.setVgap(0);
                     AnimatedPane actionPane = buildActionPane(HPos.CENTER, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
                     baseGrid.add(actionPane, 0, 0);
 
-                    AnimatedButton animatedButton = buildPreviewButton();
-
-                    baseGrid.add(animatedButton, 0, 1);
-
+                    //  AnimatedButton animatedButton = buildPreviewButton();
+                    //baseGrid.add(animatedButton, 0, 1);
                     //animatedButton.fontProperty().bind(fontTracking2);
                     fontTracking2.setValue(Font.font("Roboto", getFontScale()));
                     fontScaleSlider.valueProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) -> {

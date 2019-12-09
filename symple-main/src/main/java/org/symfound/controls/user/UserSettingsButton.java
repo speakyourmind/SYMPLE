@@ -34,8 +34,12 @@ import org.apache.log4j.Logger;
 import org.symfound.builder.user.User;
 import static org.symfound.builder.user.characteristic.Ability.MAX_LEVEL;
 import org.symfound.builder.user.characteristic.Interaction;
+import org.symfound.builder.user.characteristic.Navigation;
+import org.symfound.builder.user.characteristic.Social;
 import org.symfound.builder.user.characteristic.Speech;
 import org.symfound.builder.user.characteristic.Statistics;
+import org.symfound.builder.user.characteristic.Timing;
+import org.symfound.builder.user.characteristic.Typing;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.device.DeviceManager;
@@ -512,6 +516,9 @@ public class UserSettingsButton extends SettingsButtonBase {
                 SettingsRow cursorRow = createSettingRow("Cursor", "Choose the look of the cursor");
                 cursorChoiceBox = new ChoiceBox<>(FXCollections.observableArrayList(Arrays.asList(Cursor.NONE, Cursor.DEFAULT, Cursor.HAND)));
                 cursorChoiceBox.setValue(getUser().getNavigation().getCursor());
+                getUser().getNavigation().cursorTypeProperty().addListener((observable,oldValue,newValue)->{
+                    cursorChoiceBox.setValue(newValue);
+                });
                 cursorChoiceBox.setMaxSize(180.0, 60.0);
                 cursorChoiceBox.getStyleClass().add("settings-text-area");
                 cursorRow.add(cursorChoiceBox, 1, 0, 2, 1);
@@ -776,6 +783,7 @@ public class UserSettingsButton extends SettingsButtonBase {
                 smsSettings.add(twilioNumberRow);
                 Tab smsTab = buildTab("SMS", smsSettings);
 
+                selectionSettings.add(cursorRow);
                 selectionSettings.add(onFirstClickRow);
                 selectionSettings.add(speakSelectionRow);
                 selectionSettings.add(highlightBorderRow);
@@ -830,42 +838,46 @@ public class UserSettingsButton extends SettingsButtonBase {
                 selectability.setSensitivity((int) (dwellSensitivitySlider.getValue()));
                 selectability.getClickability().setEventType(new SelectionEventType(selectionEventChoiceBox.getValue()));
                 getUser().getInteraction().setSelectionMethod(selectionChoiceBox.getValue()); // TO DO: REMOVE
+                final Timing timing = user.getTiming();
 
                 //APPLICATION
-                user.getTiming().setDwellTime(dwellTimeSlider.getValue());
-                user.getTiming().setScanTime(scanTimeSlider.getValue());
-                user.getTiming().setScrollTime(scrollTimeSlider.getValue());
-                user.getTiming().setStepTime(stepTimeSlider.getValue());
+                timing.setDwellTime(dwellTimeSlider.getValue());
+                timing.setScanTime(scanTimeSlider.getValue());
+                timing.setScrollTime(scrollTimeSlider.getValue());
+                timing.setStepTime(stepTimeSlider.getValue());
                 user.getAbility().setLevel(levelSlider.getValue());
                 user.getInteraction().setAssistedMode(assistedModeButton.getValue());
 
                 TTSManager ttsPlayer = getSession().getTTSManager();
                 ttsPlayer.getIterator().set(voiceChoices.getValue());
-                getUser().getSpeech().setSpeakingVoice(voiceChoices.getValue());
-                LOGGER.info("Voice set to " + getUser().getSpeech().getSpeakingVoice());
+                user.getSpeech().setSpeakingVoice(voiceChoices.getValue());
+                LOGGER.info("Voice set to " + user.getSpeech().getSpeakingVoice());
+                final Social social = user.getSocial();
 
-                getUser().getSocial().setTwilioAccountSID(accountSIDField.getText());
-                getUser().getSocial().setTwilioAuthToken(authTokenField.getText());
-                getUser().getSocial().setTwilioFromNumber(fromNumberField.getText());
+                social.setTwilioAccountSID(accountSIDField.getText());
+                social.setTwilioAuthToken(authTokenField.getText());
+                social.setTwilioFromNumber(fromNumberField.getText());
+                final Navigation navigation = user.getNavigation();
 
-                getUser().getNavigation().setOnFirstClick(onFirstClickButton.getValue());
-                getUser().getNavigation().setSpeakSelection(speakSelectionButton.getValue());
-                getUser().getNavigation().setHighlightBorder(highlightBorderButton.getValue());
-                getUser().getNavigation().setFullScreen(fullScreenButton.getValue());
-                getUser().getNavigation().setPlayScourSound(playScourButton.getValue());
-                getUser().getNavigation().setScourSound(playScourField.getText());
-                getUser().getNavigation().setPlaySelectSound(playSelectButton.getValue());
-                getUser().getNavigation().setSelectionSound(playSelectionField.getText());
-                getUser().getNavigation().setScrollDistance(scrollDistanceSlider.getValue());
-
+                navigation.setOnFirstClick(onFirstClickButton.getValue());
+                navigation.setSpeakSelection(speakSelectionButton.getValue());
+                navigation.setHighlightBorder(highlightBorderButton.getValue());
+                navigation.setFullScreen(fullScreenButton.getValue());
+                navigation.setPlayScourSound(playScourButton.getValue());
+                navigation.setScourSound(playScourField.getText());
+                navigation.setPlaySelectSound(playSelectButton.getValue());
+                navigation.setSelectionSound(playSelectionField.getText());
+                navigation.setScrollDistance(scrollDistanceSlider.getValue());
+                navigation.setCursor(cursorChoiceBox.getValue());
+                final Typing typing = user.getTyping();
                 // TYPING
-                getUser().getTyping().setAutoComplete(autocompleteButton.getValue());
-                getUser().getTyping().setAutoCompleteTime(autocompleteSlider.getValue());
-                getUser().getTyping().setDictionaryWeight((int) userDictWeightSlider.getValue());
-                getUser().getContent().setHomeFolder(homeFolderField.getText());
-                getUser().getInteraction().setVolume(volumeSlider.getValue() * 0.1);
+                typing.setAutoComplete(autocompleteButton.getValue());
+                typing.setAutoCompleteTime(autocompleteSlider.getValue());
+                typing.setDictionaryWeight((int) userDictWeightSlider.getValue());
+                user.getContent().setHomeFolder(homeFolderField.getText());
+                user.getInteraction().setVolume(volumeSlider.getValue() * 0.1);
 
-                getUser().getProfile().setAutoUpdate(autoUpdateButton.getValue());
+                user.getProfile().setAutoUpdate(autoUpdateButton.getValue());
 
                 HomeController.setUpdated(true);
 
@@ -873,9 +885,10 @@ public class UserSettingsButton extends SettingsButtonBase {
 
             @Override
             public void resetSettings() {
+                final User user = getUser();
 
                 //DEVICE
-                final String activeDevice = getUser().getDeviceName();
+                final String activeDevice = user.getDeviceName();
                 //    getSession().getDeviceManager().getIterator().set(activeDevice);
                 deviceChoiceBox.setValue(activeDevice);
 
@@ -884,39 +897,40 @@ public class UserSettingsButton extends SettingsButtonBase {
                 resetSelectionControl(hardware);
                 //  final User user = getUser();
                 //APPLICATION 
-                dwellTimeSlider.setValue(getUser().getTiming().getDwellTime());
-                scrollTimeSlider.setValue(getUser().getTiming().getScrollTime());
-                scanTimeSlider.setValue(getUser().getTiming().getScanTime());
-                stepTimeSlider.setValue(getUser().getTiming().getStepTime());
-                selectionChoiceBox.setValue(getUser().getInteraction().getSelectionMethod());
-                levelSlider.setValue(getUser().getAbility().getLevel());
-                assistedModeButton.setValue(getUser().getInteraction().isInAssistedMode());
+                dwellTimeSlider.setValue(user.getTiming().getDwellTime());
+                scrollTimeSlider.setValue(user.getTiming().getScrollTime());
+                scanTimeSlider.setValue(user.getTiming().getScanTime());
+                stepTimeSlider.setValue(user.getTiming().getStepTime());
+                selectionChoiceBox.setValue(user.getInteraction().getSelectionMethod());
+                levelSlider.setValue(user.getAbility().getLevel());
+                assistedModeButton.setValue(user.getInteraction().isInAssistedMode());
 
-                voiceChoices.setValue(getUser().getSpeech().getSpeakingVoice());
+                voiceChoices.setValue(user.getSpeech().getSpeakingVoice());
 
-                accountSIDField.setText(getUser().getSocial().getTwilioAccountSID());
-                authTokenField.setText(getUser().getSocial().getTwilioAuthToken());
-                fromNumberField.setText(getUser().getSocial().getTwilioFromNumber());
+                accountSIDField.setText(user.getSocial().getTwilioAccountSID());
+                authTokenField.setText(user.getSocial().getTwilioAuthToken());
+                fromNumberField.setText(user.getSocial().getTwilioFromNumber());
 
-                onFirstClickButton.setValue(getUser().getNavigation().onFirstClick());
-                speakSelectionButton.setValue(getUser().getNavigation().speakSelection());
+                onFirstClickButton.setValue(user.getNavigation().onFirstClick());
+                speakSelectionButton.setValue(user.getNavigation().speakSelection());
                 highlightBorderButton.disableProperty().bind(fullScreenButton.valueProperty());
-                highlightBorderButton.setValue(getUser().getNavigation().highlightBorder());
-                fullScreenButton.setValue(getUser().getNavigation().fullScreen());
-                playScourButton.setValue(getUser().getNavigation().playScourSound());
-                playScourField.setText(getUser().getNavigation().getScourSound());
-                playSelectButton.setValue(getUser().getNavigation().playSelectSound());
-                playSelectionField.setText(getUser().getNavigation().getSelectionSound());
-                scrollDistanceSlider.setValue(getUser().getNavigation().getScrollDistance());
+                highlightBorderButton.setValue(user.getNavigation().highlightBorder());
+                fullScreenButton.setValue(user.getNavigation().fullScreen());
+                playScourButton.setValue(user.getNavigation().playScourSound());
+                playScourField.setText(user.getNavigation().getScourSound());
+                playSelectButton.setValue(user.getNavigation().playSelectSound());
+                playSelectionField.setText(user.getNavigation().getSelectionSound());
+                scrollDistanceSlider.setValue(user.getNavigation().getScrollDistance());
+                cursorChoiceBox.setValue(user.getNavigation().getCursor());
 
-                autocompleteButton.setValue(getUser().getTyping().needsAutoComplete());
-                autocompleteSlider.setValue(getUser().getTyping().getAutoCompleteTime());
-                userDictWeightSlider.setValue(getUser().getTyping().getDictionaryWeight());
+                autocompleteButton.setValue(user.getTyping().needsAutoComplete());
+                autocompleteSlider.setValue(user.getTyping().getAutoCompleteTime());
+                userDictWeightSlider.setValue(user.getTyping().getDictionaryWeight());
 
-                homeFolderField.setText(getUser().getContent().getHomeFolder());
-                volumeSlider.setValue(getUser().getInteraction().getVolume() * 10.0);
+                homeFolderField.setText(user.getContent().getHomeFolder());
+                volumeSlider.setValue(user.getInteraction().getVolume() * 10.0);
 
-                autoUpdateButton.setValue(getUser().getProfile().autoUpdate());
+                autoUpdateButton.setValue(user.getProfile().autoUpdate());
                 HomeController.setUpdated(false);
             }
 
