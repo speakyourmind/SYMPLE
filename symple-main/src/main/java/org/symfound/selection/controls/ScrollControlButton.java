@@ -14,9 +14,11 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Control;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseEvent;
+import static org.symfound.controls.ScreenControl.setSizeMax;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
 import org.symfound.selection.modes.Scroller;
@@ -28,24 +30,24 @@ import org.symfound.selection.modes.Scroller;
 public class ScrollControlButton extends SelectionControl {
 
     public static final String KEY = "Scroll";
-    private ScrollPane scrollPane;
-    private Scroller scroller;
+    private final ScrollPane scrollPane;
+    private final Scroller scroller;
 
     public ScrollControlButton(Scroller scroller, ScrollPane scrollPane, ScrollControl control) {
-        super("transparent", KEY, KEY, control.toString().toLowerCase());
+        super("selector", KEY, KEY, control.toString().toLowerCase());
         this.scrollPane = scrollPane;
         this.scroller = scroller;
         initialize(control);
 
     }
 
+
     private void initialize(ScrollControl control) {
 
-        setCSS("transparent-" + getScrollControl().toString().toLowerCase(), getPrimaryControl());
+        setCSS("selector-" + getScrollControl().toString().toLowerCase(), getPrimaryControl());
         scrollControlProperty().addListener((observeableValue, oldValue, newValue) -> {
-            setCSS("transparent-" + getScrollControl().toString().toLowerCase(), getPrimaryControl());
-            
-            
+            setCSS("selector-" + getScrollControl().toString().toLowerCase(), getPrimaryControl());
+
         });
         setScrollControl(control);
         scroller.runScrollProperty().addListener((observable, oldValue, newValue) -> {
@@ -59,21 +61,22 @@ public class ScrollControlButton extends SelectionControl {
     @Override
     public void run() {
         final Double scrollDistance = getUser().getNavigation().getScrollDistance();
-        LOGGER.info("Scrolling " + getScrollControl().toString().toLowerCase());
         switch (getScrollControl()) {
             case UP:
                 if (scrollPane.getVvalue() != 0.0) {
-                 //   setVisible(Boolean.TRUE);
+                    //   setVisible(Boolean.TRUE);
                     scrollPane.setVvalue(scrollPane.getVvalue() - scrollDistance);
+                    LOGGER.info("Scrolling up");
                 } else {
                     LOGGER.info("Reached the end of the vertical scroll bar.");
-                   // setVisible(Boolean.FALSE);
+                    // setVisible(Boolean.FALSE);
                 }
                 break;
             case DOWN:
                 if (scrollPane.getVvalue() != 1.0) {
-                   // setVisible(Boolean.TRUE);
+                    // setVisible(Boolean.TRUE);
                     scrollPane.setVvalue(scrollPane.getVvalue() + scrollDistance);
+                    LOGGER.info("Scrolling down");
                 } else {
                     LOGGER.info("Reached the end of the vertical scroll bar.");
                     //setVisible(Boolean.FALSE);
@@ -83,8 +86,10 @@ public class ScrollControlButton extends SelectionControl {
                 if (scrollPane.getHvalue() != 0.0) {
                     //setVisible(Boolean.TRUE);
                     scrollPane.setHvalue(scrollPane.getHvalue() - scrollDistance);
+                    LOGGER.info("Scrolling left");
                 } else {
                     LOGGER.info("Reached the end of the horizontal scroll bar.");
+                    scroller.reset();
                     //setVisible(Boolean.FALSE);
                 }
                 break;
@@ -92,9 +97,11 @@ public class ScrollControlButton extends SelectionControl {
                 if (scrollPane.getHvalue() != 1.0) {
                     //setVisible(Boolean.TRUE);
                     scrollPane.setHvalue(scrollPane.getHvalue() + scrollDistance);
+                    LOGGER.info("Scrolling right");
                 } else {
                     LOGGER.info("Reached the end of the horizontal scroll bar.");
                     //setVisible(Boolean.FALSE);
+                    scroller.reset();
                 }
                 break;
             default:

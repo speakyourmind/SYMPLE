@@ -1352,4 +1352,145 @@ public abstract class ButtonGrid extends FillableGrid {
         return enablePagination;
     }
 
+     private BooleanProperty fitToWidth;
+
+    /**
+     * Toggles the fitToWidth boolean property.
+     */
+    public void toggleFitToWidth() {
+        setFitToWidth(!isPaginationEnabled());
+    }
+
+    /**
+     *
+     * @param value
+     */
+    public void setFitToWidth(Boolean value) {
+        fitToWidthProperty().setValue(value);
+    }
+
+    /**
+     * Finds out whether the pause button is active.
+     *
+     * @return fitToWidth if true, false otherwise
+     */
+    public Boolean isFitToWidth() {
+        return fitToWidthProperty().getValue();
+    }
+
+    /**
+     * Represents the pause function of the button.
+     *
+     * @return fitToWidth
+     */
+    public BooleanProperty fitToWidthProperty() {
+        if (fitToWidth == null) {
+            fitToWidth = new SimpleBooleanProperty();
+        }
+        return fitToWidth;
+    }
+    
+       /**
+     *
+     */
+    public DoubleProperty overrideWidth;
+
+    /**
+     *
+     * @param value
+     */
+    public void setOverrideWidth(Double value) {
+        overrideWidthProperty().setValue(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Double getOverrideWidth() {
+        return overrideWidthProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DoubleProperty overrideWidthProperty() {
+        if (overrideWidth == null) {
+            overrideWidth = new SimpleDoubleProperty();
+        }
+        return overrideWidth;
+    }
+    
+    
+    
+      private BooleanProperty fitToHeight;
+
+    /**
+     * Toggles the fitToHeight boolean property.
+     */
+    public void toggleFitToHeight() {
+        setFitToHeight(!isPaginationEnabled());
+    }
+
+    /**
+     *
+     * @param value
+     */
+    public void setFitToHeight(Boolean value) {
+        fitToHeightProperty().setValue(value);
+    }
+
+    /**
+     * Finds out whether the pause button is active.
+     *
+     * @return fitToHeight if true, false otherwise
+     */
+    public Boolean isFitToHeight() {
+        return fitToHeightProperty().getValue();
+    }
+
+    /**
+     * Represents the pause function of the button.
+     *
+     * @return fitToHeight
+     */
+    public BooleanProperty fitToHeightProperty() {
+        if (fitToHeight == null) {
+            fitToHeight = new SimpleBooleanProperty();
+        }
+        return fitToHeight;
+    }
+    
+         /**
+     *
+     */
+    public DoubleProperty overrideHeight;
+
+    /**
+     *
+     * @param value
+     */
+    public void setOverrideHeight(Double value) {
+        overrideHeightProperty().setValue(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Double getOverrideHeight() {
+        return overrideHeightProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DoubleProperty overrideHeightProperty() {
+        if (overrideHeight == null) {
+            overrideHeight = new SimpleDoubleProperty();
+        }
+        return overrideHeight;
+    }
 }

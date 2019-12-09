@@ -64,6 +64,11 @@ public class ScriptButton extends TypingControl {
         initialize();
     }
 
+    public ScriptButton(String CSSClass, String index) {
+        super(CSSClass, KEY, index);
+        initialize();
+    }
+
     private void initialize() {
         configureStyle("Roboto", FontWeight.NORMAL);
 
@@ -147,7 +152,7 @@ public class ScriptButton extends TypingControl {
         } else {
             HashMap<Integer, String> map = new HashMap<>();
             LOGGER.warn("No active text area on the current screen");
-            ActiveTextArea.setScratchpad(new KeyAction(getActionKey(),text));
+            ActiveTextArea.setScratchpad(new KeyAction(getActionKey(), text));
         }
     }
 
@@ -553,7 +558,4 @@ public class ScriptButton extends TypingControl {
         return webhookEventEnd;
     }
 
-   
-    
-    
 }

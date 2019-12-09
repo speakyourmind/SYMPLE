@@ -24,10 +24,10 @@ import org.symfound.tools.iteration.ParallelList;
 public class Curtain extends AppableControl {
 
     public static final String KEY = "Curtain";
-    Selector selector;
+    public Selector selector;
 
     public Curtain(Selector selector, String buttonOrder) {
-        super("", KEY, "", "default");
+        super("transparent", KEY, "", "default");
         this.selector = selector;
         initialize(buttonOrder);
     }
@@ -35,10 +35,16 @@ public class Curtain extends AppableControl {
     /**
      *
      */
-
     private void initialize(String buttonOrder) {
+        loadControls(buttonOrder);
+    }
+
+    private CurtainGrid grid;
+
+    public void loadControls(String buttonOrder1) {
         grid = new CurtainGrid(selector);
-        this.setButtonOrder(buttonOrder);
+        grid.setCustomVGap(40.0);
+        this.setButtonOrder(buttonOrder1);
         grid.reload(getParallelList(), FillableGrid.FillMethod.ROW_WISE, FillableGrid.FillDirection.FORWARD, 1.0);
         buttonOrderProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println("Grid has reloaded" + newValue);
@@ -46,8 +52,6 @@ public class Curtain extends AppableControl {
         });
         addToPane(grid);
     }
-
-    private CurtainGrid grid;
 
     /**
      *

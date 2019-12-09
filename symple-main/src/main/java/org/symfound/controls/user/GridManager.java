@@ -16,6 +16,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.apache.log4j.Logger;
 import org.symfound.builder.controller.Editable;
+import static org.symfound.builder.user.characteristic.Ability.MAX_LEVEL;
 import static org.symfound.builder.user.characteristic.Navigation.BUTTON_DELIMITER;
 import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
 import org.symfound.builder.user.selection.SelectionMethod;
@@ -302,7 +303,7 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public DoubleProperty maxDifficultyProperty() {
-        String value = getPreferences().get("maxDifficulty", "10.0");
+        String value = getPreferences().get("maxDifficulty", MAX_LEVEL.toString());
         maxDifficulty = new SimpleDoubleProperty(Double.valueOf(value));
         return maxDifficulty;
     }
@@ -526,4 +527,128 @@ public abstract class GridManager implements Editable {
         //}
         return enablePagination;
     }
+    
+      private BooleanProperty fitToWidth;
+
+    /**
+     *
+     * @param value
+     */
+    public void setFitToWidth(Boolean value) {
+        fitToWidthProperty().set(value);
+        getPreferences().put("fitToWidth", value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean isFitToWidth() {
+        return fitToWidthProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty fitToWidthProperty() {
+        //  if (fitToWidth == null) {
+        fitToWidth = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("fitToWidth", "true")));
+        //}
+        return fitToWidth;
+    }
+    
+    
+    private DoubleProperty overrideWidth;
+
+    /**
+     *
+     * @param value
+     */
+    public void setOverrideWidth(Double value) {
+        overrideWidthProperty().setValue(value);
+        getPreferences().put("overrideWidth", value.toString());
+        LOGGER.info("Width set to: " + value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Double getOverrideWidth() {
+        return overrideWidthProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DoubleProperty overrideWidthProperty() {
+        String value = getPreferences().get("overrideWidth", MAX_LEVEL.toString());
+        overrideWidth = new SimpleDoubleProperty(Double.valueOf(value));
+        return overrideWidth;
+    }
+    
+       private BooleanProperty fitToHeight;
+
+    /**
+     *
+     * @param value
+     */
+    public void setFitToHeight(Boolean value) {
+        fitToHeightProperty().set(value);
+        getPreferences().put("fitToHeight", value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean isFitToHeight() {
+        return fitToHeightProperty().get();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public BooleanProperty fitToHeightProperty() {
+        //  if (fitToHeight == null) {
+        fitToHeight = new SimpleBooleanProperty(Boolean.valueOf(getPreferences().get("fitToHeight", "true")));
+        //}
+        return fitToHeight;
+    }
+    
+    
+    
+    private DoubleProperty overrideHeight;
+
+    /**
+     *
+     * @param value
+     */
+    public void setOverrideHeight(Double value) {
+        overrideHeightProperty().setValue(value);
+        getPreferences().put("overrideHeight", value.toString());
+        LOGGER.info("Height set to: " + value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Double getOverrideHeight() {
+        return overrideHeightProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DoubleProperty overrideHeightProperty() {
+        String value = getPreferences().get("overrideHeight", MAX_LEVEL.toString());
+        overrideHeight = new SimpleDoubleProperty(Double.valueOf(value));
+        return overrideHeight;
+    }
+    
 }

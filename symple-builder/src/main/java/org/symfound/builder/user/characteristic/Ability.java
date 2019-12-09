@@ -45,7 +45,7 @@ public class Ability extends Characteristic {
     /**
      *
      */
-    public static final Double MAX_LEVEL = 20.0;
+    public static final Double MAX_LEVEL = 30.0;
     private DoubleProperty level;
 
     /**

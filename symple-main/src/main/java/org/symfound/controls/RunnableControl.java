@@ -175,9 +175,8 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
      * @param e
      */
     public void mouseEnter(MouseEvent e) {
-        System.out.println("entered "+ this.getText());
         SelectionMethod deducedMethod = getDeducedSelectionMethod();
-        if (deducedMethod.equals(SelectionMethod.DWELL)) {
+        if (deducedMethod.equals(SelectionMethod.DWELL)||deducedMethod.equals(SelectionMethod.SCROLL)) {
             buttonHandler();
             enter();
         }
@@ -203,8 +202,8 @@ public class RunnableControl extends ScreenControl<AnimatedButton> implements Ru
      */
     public void mouseExit(MouseEvent e) {
         SelectionMethod deducedMethod = getDeducedSelectionMethod();
-        if (deducedMethod.equals(SelectionMethod.DWELL)) {
-            exit();
+       if (deducedMethod.equals(SelectionMethod.DWELL)||deducedMethod.equals(SelectionMethod.SCROLL)) {
+             exit();
         }
     }
 

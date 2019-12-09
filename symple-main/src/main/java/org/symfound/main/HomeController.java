@@ -99,14 +99,14 @@ public class HomeController extends GridController {
     public void initialize(URL location, ResourceBundle resources) {
         getSession().builtProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                 AnchorPane.setTopAnchor(getScreenGrid(), 0.0);
+                AnchorPane.setTopAnchor(getScreenGrid(), 0.0);
                 AnchorPane.setLeftAnchor(getScreenGrid(), 0.0);
                 AnchorPane.setRightAnchor(getScreenGrid(), 0.0);
                 AnchorPane.setBottomAnchor(getScreenGrid(), 0.0);
                 apMain.getChildren().add(getScreenGrid());
                 ConfigurableGrid.editModeProperty().bindBidirectional(FullSession.getMainUI().editModeProperty());
                 getScreenGrid().getChildren().add(getToolbar());
-               getScreenGrid().getChildren().add(getScrollPane());
+                getScreenGrid().getChildren().add(getScrollPane());
 
                 //getGrid().maxHeightProperty().bind(Bindings.multiply(0.96, gpMain.heightProperty()));
             }
@@ -131,10 +131,12 @@ public class HomeController extends GridController {
         if (scrollPane == null) {
             scrollPane = new ScrollPane();
             scrollPane.setPadding(new Insets(0));
-            scrollPane.setFitToHeight(Boolean.TRUE);
-            scrollPane.setFitToWidth(Boolean.TRUE);
+          //  scrollPane.setFitToHeight(Boolean.TRUE);
+          //  scrollPane.setFitToWidth(Boolean.TRUE);
             setSizeMax(scrollPane);
             scrollPane.setContent(getSubGrid());
+            //getSubGrid().setPrefWidth(25000.0);
+            //getSubGrid().setMaxWidth(50000.0);
             scrollPane.getStylesheets().add(CSS_PATH);
             GridPane.setRowIndex(scrollPane, 1);
             GridPane.setColumnSpan(scrollPane, 2);
@@ -143,6 +145,7 @@ public class HomeController extends GridController {
     }
 
     private static BuildableGrid screenGrid;
+
     public static GridPane getScreenGrid() {
         if (screenGrid == null) {
             screenGrid = new BuildableGrid();

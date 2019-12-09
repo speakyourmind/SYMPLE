@@ -46,7 +46,7 @@ public class SettingsRow extends BuildableGrid {
         build();
 
         background = new AnimatedPane();
-        background.getStyleClass().add("settings-pane");
+    //    background.getStyleClass().add("settings-pane");
         add(background, 0, 0, 3, 1);
 
         titledLabel = new TitledLabel();

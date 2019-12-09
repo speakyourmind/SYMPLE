@@ -5,11 +5,19 @@
  */
 package org.symfound.selection;
 
+import java.awt.AWTException;
+import java.awt.Point;
 import org.symfound.selection.controls.SelectorButton;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.prefs.Preferences;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import org.symfound.controls.AppableControl;
+import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl;
 import org.symfound.controls.user.FillableGrid.FillDirection;
 import org.symfound.tools.iteration.ParallelList;
@@ -17,11 +25,18 @@ import org.symfound.controls.user.ButtonGrid;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
 import org.symfound.controls.user.ScreenStatus;
 import org.symfound.controls.user.ScriptButton;
+import org.symfound.device.Device;
+import org.symfound.device.emulation.EmulationManager;
+import org.symfound.device.emulation.EmulationRequest;
+import org.symfound.device.hardware.Hardware;
+import org.symfound.device.hardware.characteristic.Movability;
 import org.symfound.main.HomeController;
+import org.symfound.main.Main;
 import org.symfound.selection.controls.ScrollControl;
 import org.symfound.selection.controls.ScrollControlButton;
+import static org.symfound.selection.controls.ScrollControlButton.KEY;
 import org.symfound.selection.modes.Scroller;
-import org.symfound.tools.ui.ColourChoices;
+import org.symfound.tools.timing.DelayedEvent;
 
 /**
  *
@@ -93,21 +108,59 @@ public class CurtainGrid extends ButtonGrid {
                     requested.add(selectorButton);
                     break;
                 case ScrollControlButton.KEY:
-                    ScrollControlButton scrollButton = new ScrollControlButton((Scroller)selector,
+                    ScrollControlButton scrollButton = new ScrollControlButton((Scroller) selector,
                             HomeController.getScrollPane(), ScrollControl.valueOf(index.toUpperCase()));
-                   // scrollButton.setText(index.toUpperCase());
-                  //  System.out.println("------------->"+ScrollControl.valueOf(index.toUpperCase()).toString());
                     requested.add(scrollButton);
                     break;
-                case "Blank":
-                    ScriptButton blankButton = new ScriptButton("blank");
-                    blankButton.setControlType(ScreenControl.ControlType.SETTING_CONTROL);
-                    blankButton.setEditable(Boolean.FALSE);
-                    blankButton.getStyleClass().clear();
-                    blankButton.getStyleClass().add("transparent");
-                    blankButton.setSymStyle("transparent");// TODO: Fix;
-                    blankButton.setBackgroundColour(ColourChoices.TRANSPARENT);
-                    requested.add(blankButton);
+                case "Scroll Selector":
+                    AppableControl scrollSelectorButton = new AppableControl("", "Scroll Selector", "", index) {
+                        @Override
+                        public void run() {
+                            selector.stop();
+                            Device current = getSession().getDeviceManager().getCurrent();
+                            EmulationManager em = current.getProcessor().getEmulationManager();
+                            final EmulationRequest emulationRequest = new EmulationRequest();
+                            emulationRequest.setPosition(new Point(0, 0));
+                            final Point nav = new Point((int) (getSession().getDisplay().getScreenWidth() / 2), (int) (getSession().getDisplay().getScreenHeight() / 2));
+                            em.getMouse().getAutomator().navigate(nav);
+
+                            //LOGGER.info("Key Pressed: " + event.getCode().getName() + "Toggling Mouse Control");
+                            Hardware currentHardware = Main.getSession().getDeviceManager().getCurrent().getHardware();
+                            Movability movability = currentHardware.getMovability();
+                            movability.setEnabled(Boolean.FALSE);
+                            LOGGER.info("Mouse Control is now " + movability.isEnabled());
+
+                            /*  try {
+                          em.getMouse().getAutomator().runLeftClick(nav);
+                          } catch (AWTException ex) {
+                          LOGGER.fatal(ex);
+                          }
+                             */
+                            DelayedEvent postSelectionHold = new DelayedEvent();
+                            postSelectionHold.setup(getUser().getTiming().getDwellTime() + 1.0, (ActionEvent e) -> {
+                                selector.startStop();
+                                movability.setEnabled(Boolean.TRUE);
+                            });
+                            postSelectionHold.play();
+                        }
+
+                        @Override
+                        public void click() {
+
+                        }
+
+                        @Override
+                        public Preferences getPreferences() {
+                            if (preferences == null) {
+                                String name = KEY.toLowerCase() + "/" + getIndex().toLowerCase();
+                                Class<? extends AppableControl> aClass = this.getClass();
+                                preferences = Preferences.userNodeForPackage(aClass).node(name);
+                            }
+                            return preferences;
+                        }
+
+                    };
+                    requested.add(scrollSelectorButton);
                     break;
 
             }

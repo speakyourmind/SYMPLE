@@ -17,6 +17,7 @@ public abstract class SettingsButtonBase  extends SystemControl{
 
     public SettingsButtonBase(String CSSClass, String key, String title) {
         super(CSSClass, key, title, "default");
+
     }
     
     

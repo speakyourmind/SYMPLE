@@ -84,7 +84,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
     public static BuildableGrid buildSettingsGrid(List<SettingsRow> settings) {
         Integer numRows = settings.size();
         BuildableGrid grid = new BuildableGrid();
-        grid.getStyleClass().add("background");
+   //     grid.getStyleClass().add("background");
         grid.setAlignment(Pos.CENTER);
         grid.setSpecRows(numRows);
         grid.buildRows();
@@ -92,7 +92,7 @@ public abstract class EditDialog extends OKCancelDialog implements SetResetable 
         grid.buildColumnsByPerc(Arrays.asList(100.0));
         grid.setHgap(20.0);
         grid.setPrefHeight(numRows * 200);
-        GridPane.setMargin(grid, new Insets(0, 40, 0, 40));
+   //     GridPane.setMargin(grid, new Insets(0, 40, 0, 40));
 
         for (int i = 0; i < settings.size(); i++) {
             grid.add(settings.get(i), 0, i, 1, 1);

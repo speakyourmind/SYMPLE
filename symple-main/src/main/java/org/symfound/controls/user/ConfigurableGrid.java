@@ -26,7 +26,9 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import org.apache.log4j.Logger;
 import org.symfound.builder.user.selection.SelectionMethod;
+import static org.symfound.controls.ScreenControl.setSizeMax;
 import org.symfound.device.hardware.Hardware;
+import org.symfound.main.HomeController;
 import org.symfound.tools.iteration.ParallelList;
 import org.symfound.tools.timing.DelayedEvent;
 
@@ -131,6 +133,33 @@ public class ConfigurableGrid extends ButtonGrid {
         enablePaginationProperty().addListener((observable, oldValue, newValue) -> {
             getGridManager().enablePagination(newValue);
         });
+          setFitToWidth(getGridManager().isFitToWidth());
+        HomeController.getScrollPane().setFitToWidth(getGridManager().isFitToWidth());
+        fitToWidthProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setFitToWidth(newValue);
+            HomeController.getScrollPane().setFitToWidth(newValue);
+        });
+
+       /*  setOverrideWidth(getGridManager().getOverrideWidth());
+        if (!isFitToWidth()) {
+            HomeController.getSubGrid().setPrefWidth(getOverrideWidth());
+            HomeController.getSubGrid().setMaxWidth(getOverrideWidth());
+        } else {
+            //  setSizeMax(HomeController.getSubGrid());
+        }
+        overrideWidthProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setOverrideWidth(newValue.doubleValue());
+        });*/
+        setFitToHeight(getGridManager().isFitToHeight());
+        HomeController.getScrollPane().setFitToHeight(getGridManager().isFitToHeight());
+        fitToHeightProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setFitToHeight(newValue);
+            HomeController.getScrollPane().setFitToHeight(newValue);
+        });
+       /* setOverrideHeight(getGridManager().getOverrideHeight());
+        overrideHeightProperty().addListener((observable, oldValue, newValue) -> {
+            getGridManager().setOverrideHeight(newValue.doubleValue());
+        });*/
         triggerReloadProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 reload();
@@ -158,6 +187,12 @@ public class ConfigurableGrid extends ButtonGrid {
             setMinDifficulty(getGridManager().getMinDifficulty());
             setOverrideRow(getGridManager().getOverrideRow());
             setOverrideColumn(getGridManager().getOverrideColumn());
+
+            setFitToWidth(getGridManager().isFitToWidth());
+            setOverrideWidth(getGridManager().getOverrideColumn());
+
+            setFitToHeight(getGridManager().isFitToHeight());
+            setOverrideHeight(getGridManager().getOverrideColumn());
             setOverrideStyle(getGridManager().getOverrideStyle());
             setSelectionMethod(getGridManager().getSelectionMethod());
             setPaused(getGridManager().isPaused());
@@ -166,9 +201,8 @@ public class ConfigurableGrid extends ButtonGrid {
             triggerReload();
         });
 
-
         triggerReload();
-        
+
     }
 
     /**
@@ -208,8 +242,6 @@ public class ConfigurableGrid extends ButtonGrid {
         reload(getValidatedKeyOrder(getOrder()), getFillMethod(), getFillDirection(), size);
 
     }
-
-
 
     /**
      *
@@ -302,7 +334,5 @@ public class ConfigurableGrid extends ButtonGrid {
         }
         return editMode;
     }
-
- 
 
 }

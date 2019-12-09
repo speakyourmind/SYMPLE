@@ -545,7 +545,8 @@
 .toolbar-home{-fx-background-image: url("../images/home_small.png");}
 .toolbar-update{-fx-background-image: url("../images/update_small.png");}
 .toolbar-stats{-fx-background-image: url("../images/stats.png");}
-.toolbar-settings{-fx-background-image: url("../images/settings_small.png");}
+.toolbar-settings{-fx-background-image: url("../images/settings_small.png");
+}
 
 .toolbar-edit,
 .toolbar-snapshot,
@@ -556,6 +557,7 @@
 .toolbar-minimized {
     -fx-background-size: 20 20;
     -fx-background-color: -fx-dark;
+    -fx-background-repeat: no-repeat;
 }
 .toolbar-home:hover,
 .toolbar-settings:hover,
@@ -912,7 +914,20 @@
 
 .selector,.selector:hover{
     -fx-background-color:-fx-orange;
+    -fx-opacity:0.0;
+}
+.selector-left,.selector-right,.selector-left:hover,.selector-right:hover{
+    -fx-background-color:-fx-blue;
     -fx-opacity:0.4;
+}
+
+.selector-left{    
+    -fx-background-image: url("../images/backspace.png");
+    -fx-background-size: contain;
+}
+.selector-right{    
+    -fx-background-image: url("../images/forward.png");
+    -fx-background-size: contain;
 }
 .locked{
     -fx-background-color:-fx-light;

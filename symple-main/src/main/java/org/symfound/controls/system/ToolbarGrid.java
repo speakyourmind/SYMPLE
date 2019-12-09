@@ -164,14 +164,6 @@ public class ToolbarGrid extends ButtonGrid {
                     updateButton.setCancelText("CANCEL");
                     requested.add(updateButton);
                     break;
-                case SettingsButton.KEY:
-                    SettingsButton settingsButton = new SettingsButton();
-                    settingsButton.setControlType(ControlType.SETTING_CONTROL);
-                    settingsButton.setEditable(Boolean.FALSE);
-                    // settingsButton.getStyleClass().remove("subgrid");
-                    settingsButton.setSymStyle("toolbar-settings");
-                    requested.add(settingsButton);
-                    break;
                 case MinimizeButton.KEY:
                     MinimizeButton minimizeButton = new MinimizeButton();
                     minimizeButton.setControlType(ControlType.SETTING_CONTROL);
@@ -183,7 +175,7 @@ public class ToolbarGrid extends ButtonGrid {
                 case UserSettingsButton.KEY:
                     UserSettingsButton userSettingsButton = new UserSettingsButton();
                     userSettingsButton.setPane("apMain");
-                    userSettingsButton.setSymStyle("toolbar-settings");
+                   // userSettingsButton.setSymStyle("toolbar-settings");
                     requested.add(userSettingsButton);
                     break;
                 case StatsButton.KEY:

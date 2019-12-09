@@ -12,6 +12,7 @@ import static org.symfound.main.Main.getVersionManager;
  *
  * @author Javed Gangjee
  */
+@Deprecated
 public final class SettingsButton extends AppableControl {
 
     /**

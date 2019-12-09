@@ -9,6 +9,7 @@ import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -20,18 +21,18 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
 import javafx.geometry.VPos;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
 import org.apache.log4j.Logger;
-import static org.symfound.app.DiagnosticController.MAX_LEVEL;
 import org.symfound.builder.user.User;
+import static org.symfound.builder.user.characteristic.Ability.MAX_LEVEL;
 import org.symfound.builder.user.characteristic.Interaction;
 import org.symfound.builder.user.characteristic.Speech;
 import org.symfound.builder.user.characteristic.Statistics;
@@ -49,6 +50,7 @@ import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.UIImportButton;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
+import org.symfound.controls.system.dialog.OKCancelDialog;
 import org.symfound.controls.user.voice.TTSManager;
 import org.symfound.device.Device;
 import org.symfound.device.hardware.Hardware;
@@ -85,19 +87,22 @@ public class UserSettingsButton extends SettingsButtonBase {
     public static final String DEFAULT_TITLE = "Launch User Settings";
 
     public UserSettingsButton() {
-        super("setting-button", KEY, DEFAULT_TITLE);
-
+        super("toolbar-settings", KEY, DEFAULT_TITLE);
+        initialize();
     }
 
-    private final List<SettingsRow> generalSettings = new ArrayList<>();
-    private final List<SettingsRow> deviceSettings = new ArrayList<>();
-    private final List<SettingsRow> selectionSettings = new ArrayList<>();
-    private final List<SettingsRow> voiceSettings = new ArrayList<>();
-    private final List<SettingsRow> typingSettings = new ArrayList<>();
-    private final List<SettingsRow> smsSettings = new ArrayList<>();
-    private final List<SettingsRow> statsSettings = new ArrayList<>();
-    private final List<SettingsRow> aboutSettings = new ArrayList<>();
-    private final List<SettingsRow> profileSettings = new ArrayList<>();
+    private void initialize() {
+        getDialog();
+    }
+
+    @Override
+    public OKCancelDialog getDialog() {
+        if (settingsDialog == null) {
+            settingsDialog = configureEditDialog();
+            settingsDialog.buildDialog();
+        }
+        return settingsDialog;
+    }
 
     /**
      *
@@ -109,6 +114,16 @@ public class UserSettingsButton extends SettingsButtonBase {
     @Override
     public EditDialog configureEditDialog() {
         EditDialog editDialog = new EditDialog("Settings") {
+            private final List<SettingsRow> generalSettings = new ArrayList<>();
+            private final List<SettingsRow> deviceSettings = new ArrayList<>();
+            private final List<SettingsRow> selectionSettings = new ArrayList<>();
+            private final List<SettingsRow> voiceSettings = new ArrayList<>();
+            private final List<SettingsRow> typingSettings = new ArrayList<>();
+            private final List<SettingsRow> smsSettings = new ArrayList<>();
+            private final List<SettingsRow> statsSettings = new ArrayList<>();
+            private final List<SettingsRow> aboutSettings = new ArrayList<>();
+            private final List<SettingsRow> profileSettings = new ArrayList<>();
+
             private ChoiceBox<SelectionMethod> selectionChoiceBox;
             private DiagnosticTestButton diagnosticTest;
             private Slider dwellTimeSlider;
@@ -142,6 +157,8 @@ public class UserSettingsButton extends SettingsButtonBase {
             private OnOffButton playSelectButton;
             public TextField playSelectionField;
             private Slider scrollDistanceSlider;
+
+            private ChoiceBox<Cursor> cursorChoiceBox;
 
             //Typing
             private Slider userDictWeightSlider;
@@ -192,16 +209,15 @@ public class UserSettingsButton extends SettingsButtonBase {
                 diagnosticTest.setMaxSize(180.0, 60.0);
                 GridPane.setHalignment(diagnosticTest, HPos.LEFT);
                 GridPane.setValignment(diagnosticTest, VPos.CENTER);
-                levelSlider = new Slider(1, 20, 11);
+                levelSlider = new Slider(1, MAX_LEVEL, 4);
                 levelSlider.setValue(getUser().getAbility().getLevel());
                 diagnosticTest.visibleProperty().bind(Bindings.and(
-                        levelSlider.valueProperty().isNotEqualTo(MAX_LEVEL), Bindings.or(
+                        levelSlider.valueProperty().isNotEqualTo(30), Bindings.or(
                         selectionChoiceBox.valueProperty().isEqualTo(SelectionMethod.CLICK),
                         selectionChoiceBox.valueProperty().isEqualTo(SelectionMethod.DWELL))));
-
                 levelRow.add(diagnosticTest, 1, 0, 1, 1);
-                levelSlider.setMajorTickUnit(1);
-                levelSlider.setMinorTickCount(1);
+                levelSlider.setMajorTickUnit(5);
+                levelSlider.setMinorTickCount(10);
                 levelSlider.setShowTickLabels(true);
                 levelSlider.setShowTickMarks(true);
                 levelSlider.setSnapToTicks(true);
@@ -482,6 +498,24 @@ public class UserSettingsButton extends SettingsButtonBase {
                 playSelectionField.getStyleClass().add("settings-text-area");
                 playSelectionRow.add(playSelectionField, 2, 0, 1, 1);
 
+                SettingsRow scrollDistanceRow = EditDialog.createSettingRow("Scroll Distance", "Amount to scroll the pane");
+                scrollDistanceSlider = new Slider(0.01, 1.0, 0.05);
+                scrollDistanceSlider.setValue(getUser().getNavigation().getScrollDistance());
+                scrollDistanceSlider.visibleProperty().bind((Bindings.equal(selectionChoiceBox.valueProperty(), SelectionMethod.SCROLL)));
+                scrollDistanceSlider.setMajorTickUnit(0.1);
+                scrollDistanceSlider.setMinorTickCount(1);
+                scrollDistanceSlider.setShowTickLabels(true);
+                scrollDistanceSlider.setShowTickMarks(true);
+
+                scrollDistanceRow.add(scrollDistanceSlider, 2, 0, 1, 1);
+
+                SettingsRow cursorRow = createSettingRow("Cursor", "Choose the look of the cursor");
+                cursorChoiceBox = new ChoiceBox<>(FXCollections.observableArrayList(Arrays.asList(Cursor.NONE, Cursor.DEFAULT, Cursor.HAND)));
+                cursorChoiceBox.setValue(getUser().getNavigation().getCursor());
+                cursorChoiceBox.setMaxSize(180.0, 60.0);
+                cursorChoiceBox.getStyleClass().add("settings-text-area");
+                cursorRow.add(cursorChoiceBox, 1, 0, 2, 1);
+
                 SettingsRow homeFolderRow = createSettingRow("Home folder", "Folder to search for all the media files");
                 homeFolderButton = new RunnableControl("settings-button") {
                     @Override
@@ -748,6 +782,7 @@ public class UserSettingsButton extends SettingsButtonBase {
                 selectionSettings.add(fullScreenRow);
                 selectionSettings.add(playScourRow);
                 selectionSettings.add(playSelectionRow);
+                selectionSettings.add(scrollDistanceRow);
                 Tab selectionTab = buildTab("Selection", selectionSettings);
 
                 profileSettings.add(resetRow);
@@ -821,6 +856,7 @@ public class UserSettingsButton extends SettingsButtonBase {
                 getUser().getNavigation().setScourSound(playScourField.getText());
                 getUser().getNavigation().setPlaySelectSound(playSelectButton.getValue());
                 getUser().getNavigation().setSelectionSound(playSelectionField.getText());
+                getUser().getNavigation().setScrollDistance(scrollDistanceSlider.getValue());
 
                 // TYPING
                 getUser().getTyping().setAutoComplete(autocompleteButton.getValue());
@@ -871,6 +907,7 @@ public class UserSettingsButton extends SettingsButtonBase {
                 playScourField.setText(getUser().getNavigation().getScourSound());
                 playSelectButton.setValue(getUser().getNavigation().playSelectSound());
                 playSelectionField.setText(getUser().getNavigation().getSelectionSound());
+                scrollDistanceSlider.setValue(getUser().getNavigation().getScrollDistance());
 
                 autocompleteButton.setValue(getUser().getTyping().needsAutoComplete());
                 autocompleteSlider.setValue(getUser().getTyping().getAutoCompleteTime());

@@ -22,6 +22,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Cursor;
 import org.symfound.builder.characteristic.Characteristic;
 import org.symfound.text.TextOperator;
 import org.symfound.tools.iteration.ParallelList;
@@ -574,7 +575,7 @@ public class Navigation extends Characteristic {
         }
         return previousIndex;
     }
-    private static final String SCROLL_DISTANCE_KEY = "app.selection.scrollDistance";
+    private static final String SCROLL_DISTANCE_KEY = "app.navigation.scrollDistance";
     private DoubleProperty scrollDistance;
 
     /**
@@ -636,5 +637,37 @@ public class Navigation extends Characteristic {
             currentIndex = new SimpleStringProperty(initValue);
         }
         return currentIndex;
+    }
+
+    private static final String CURSOR_TYPE_KEY = "app.navigation.cursorType";
+    private ObjectProperty<Cursor> cursorType;
+
+    /**
+     *
+     * @param value
+     */
+    public void setCursor(Cursor value) {
+        cursorTypeProperty().setValue(value);
+        getPreferences().put(CURSOR_TYPE_KEY, value.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Cursor getCursor() {
+        return cursorTypeProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public ObjectProperty<Cursor> cursorTypeProperty() {
+        if (cursorType == null) {
+            Cursor initValue = Cursor.cursor(getPreference(CURSOR_TYPE_KEY));
+            cursorType = new SimpleObjectProperty<>(initValue);
+        }
+        return cursorType;
     }
 }

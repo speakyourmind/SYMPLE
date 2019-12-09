@@ -119,7 +119,7 @@ public abstract class ScreenControl<T extends Labeled> extends AnimatedPane {
      *
      * @param control
      */
-    public final void load(Control control) {
+    public void load(Control control) {
         setSizeMax(control);
         addToPane(control);
     }
