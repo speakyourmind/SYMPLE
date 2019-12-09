@@ -5,6 +5,9 @@
  */
 package org.symfound.controls.user;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import org.symfound.controls.user.type.picto.PictoArea;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -18,6 +21,37 @@ import org.symfound.device.emulation.input.keyboard.ActionKeyCode;
  * @author Javed Gangjee
  */
 public abstract class TypingControl extends AppableControl {
+
+    public static final Map<Integer, String> KEY_CODE_MAP;
+
+    static {
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(ActionKeyCode.UNASSIGNED, "Button Text");
+        map.put(ActionKeyCode.BACK_SPACE, "Backspace");
+        map.put(ActionKeyCode.SPACE, "Space");
+        map.put(ActionKeyCode.CLEAR, "Clear");
+        map.put(ActionKeyCode.ENTER, "Enter");
+        map.put(ActionKeyCode.TAB, "Tab");
+
+        KEY_CODE_MAP = Collections.unmodifiableMap(map);
+    }
+
+    ;//TODO: Replace with BidiMap
+   public static final Map<String,Integer> REV_KEY_CODE_MAP;
+
+    static {
+        HashMap<String,Integer> map = new HashMap<>();
+        map.put( "Button Text",ActionKeyCode.UNASSIGNED);
+        map.put( "Backspace",ActionKeyCode.BACK_SPACE);
+        map.put("Space",ActionKeyCode.SPACE);
+        map.put( "Clear",ActionKeyCode.CLEAR);
+        map.put("Enter",ActionKeyCode.ENTER);
+        map.put("Tab",ActionKeyCode.TAB);
+
+        REV_KEY_CODE_MAP = Collections.unmodifiableMap(map);
+    }
+
+    ;
 
     /**
      *
@@ -96,6 +130,7 @@ public abstract class TypingControl extends AppableControl {
                 // Or it can lookup another pane in the scene.
                 picto = (PictoArea) getScene().lookup(pictoHash);
             }
+
         }
         return picto;
     }

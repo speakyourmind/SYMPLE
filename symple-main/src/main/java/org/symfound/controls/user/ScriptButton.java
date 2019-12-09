@@ -7,21 +7,20 @@ package org.symfound.controls.user;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.prefs.Preferences;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -35,6 +34,7 @@ import static org.symfound.controls.user.type.picto.PictoTwilioButton.LOGGER;
 import org.symfound.device.emulation.input.keyboard.ActionKeyCode;
 import org.symfound.main.Main;
 import org.symfound.social.sms.TwilioPoster;
+import org.symfound.tools.ui.ColourChoices;
 
 /**
  *
@@ -157,7 +157,7 @@ public class ScriptButton extends TypingControl {
     }
 
     private TextField toNumberField;
-    private TextField keyCodeField;
+    private ChoiceBox<String> keyCodeField;
     private OnOffButton typableButton;
     private OnOffButton smsEnabledButton;
     public List<SettingsRow> socialSettings = new ArrayList<>();
@@ -173,7 +173,7 @@ public class ScriptButton extends TypingControl {
      */
     @Override
     public void setAppableSettings() {
-        setKeyCodeConfig(Integer.valueOf(keyCodeField.getText()));
+        setKeyCodeConfig(REV_KEY_CODE_MAP.get(keyCodeField.getValue()));
         setTypable(typableButton.getValue());
         setSMSEnabled(smsEnabledButton.getValue());
         setToNumber(toNumberField.getText());
@@ -190,7 +190,7 @@ public class ScriptButton extends TypingControl {
      */
     @Override
     public void resetAppableSettings() {
-        keyCodeField.setText(getKeyCodeConfig().toString());
+        keyCodeField.setValue(KEY_CODE_MAP.get(getKeyCodeConfig()));
         typableButton.setValue(isTypable());
         smsEnabledButton.setValue(isSMSEnabled());
         toNumberField.setText(getToNumber());
@@ -218,8 +218,9 @@ public class ScriptButton extends TypingControl {
 
         typableRow.add(typableButton, 1, 0, 1, 1);
 
-        keyCodeField = new TextField();
-        keyCodeField.setText(getKeyCodeConfig().toString());
+        keyCodeField = new ChoiceBox<>(FXCollections.observableArrayList(
+                KEY_CODE_MAP.values()));
+        keyCodeField.setValue(KEY_CODE_MAP.get(getKeyCodeConfig()));
         keyCodeField.setMaxSize(180.0, 60.0);
         keyCodeField.getStyleClass().add("settings-text-area");
         typableRow.add(keyCodeField, 2, 0, 1, 1);

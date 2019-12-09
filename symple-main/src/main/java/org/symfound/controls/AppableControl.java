@@ -589,12 +589,13 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         }*/
 
         SettingsRow snapshotRow = EditDialog.createSettingRow("Snapshot", "Export this button as a .PNG file");
+
         final AnimatedButton primaryControl = AppableControl.this.getPrimaryControl();
-        primaryControl.setDisable(Boolean.FALSE);
 
         snapshotButton = new SnapshotButton("settings-button", primaryControl, AppableControl.this.getText()) {
             @Override
             public void run() {
+                primaryControl.setDisable(Boolean.FALSE);
                 super.run();
                 primaryControl.setDisable(Boolean.TRUE);
             }
@@ -952,8 +953,8 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
                     baseGrid.getStyleClass().add("border-background");
                     //     List<Double> rowPercentages = Arrays.asList(7.5, 32.5, 60.0);
                     List<Double> rowPercentages = Arrays.asList(7.5, 92.5);
-                 //   buildBaseGrid(3, 1, rowPercentages);
-                      buildBaseGrid(2, 1, rowPercentages);
+                    //   buildBaseGrid(3, 1, rowPercentages);
+                    buildBaseGrid(2, 1, rowPercentages);
                     baseGrid.add(addSettingControls(), 0, 1);
 
                     baseGrid.setVgap(0);
