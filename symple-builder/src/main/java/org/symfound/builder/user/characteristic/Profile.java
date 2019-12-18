@@ -49,6 +49,7 @@ public class Profile extends Characteristic {
      */
     public void setFirstUse(Boolean value) {
         firstUseProperty().setValue(value);
+        getPreferences().put("profile.firstUse", value.toString());
     }
 
     /**

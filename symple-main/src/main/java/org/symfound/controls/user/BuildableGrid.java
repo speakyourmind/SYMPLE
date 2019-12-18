@@ -35,16 +35,6 @@ public class BuildableGrid extends AnimatedGrid {
      */
     public static final Logger LOGGER = Logger.getLogger(NAME);
 
-    /**
-     *
-     */
-    public static final double LAUNCH_TIME_PER_CONTROL = 0.03;
-
-    /**
-     *
-     */
-    public static final double LAUNCH_TIME_INITIAL = 0.5;
-
 
     /**
      *

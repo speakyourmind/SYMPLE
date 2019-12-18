@@ -73,7 +73,7 @@ public class UserSettingsButton extends SettingsButtonBase {
     /**
      *
      */
-    public static final String NAME = SettingsButton.class.getName();
+    public static final String NAME = SettingsButtonBase.class.getName();
 
     /**
      *
@@ -220,8 +220,8 @@ public class UserSettingsButton extends SettingsButtonBase {
                         selectionChoiceBox.valueProperty().isEqualTo(SelectionMethod.CLICK),
                         selectionChoiceBox.valueProperty().isEqualTo(SelectionMethod.DWELL))));
                 levelRow.add(diagnosticTest, 1, 0, 1, 1);
-                levelSlider.setMajorTickUnit(5);
-                levelSlider.setMinorTickCount(10);
+                levelSlider.setMajorTickUnit(1);
+                levelSlider.setMinorTickCount(1);
                 levelSlider.setShowTickLabels(true);
                 levelSlider.setShowTickMarks(true);
                 levelSlider.setSnapToTicks(true);
@@ -516,7 +516,7 @@ public class UserSettingsButton extends SettingsButtonBase {
                 SettingsRow cursorRow = createSettingRow("Cursor", "Choose the look of the cursor");
                 cursorChoiceBox = new ChoiceBox<>(FXCollections.observableArrayList(Arrays.asList(Cursor.NONE, Cursor.DEFAULT, Cursor.HAND)));
                 cursorChoiceBox.setValue(getUser().getNavigation().getCursor());
-                getUser().getNavigation().cursorTypeProperty().addListener((observable,oldValue,newValue)->{
+                getUser().getNavigation().cursorTypeProperty().addListener((observable, oldValue, newValue) -> {
                     cursorChoiceBox.setValue(newValue);
                 });
                 cursorChoiceBox.setMaxSize(180.0, 60.0);
@@ -642,7 +642,6 @@ public class UserSettingsButton extends SettingsButtonBase {
                 DateFormat lastUsedFormatter = new SimpleDateFormat("d MMM yyyy, HH:mm:ss aaa");
                 lastUsedFormatter.setTimeZone(TimeZone.getDefault());
                 String lastUsedTime = lastUsedFormatter.format(lastUsedDate);
-                // if (getLastUsed() != 0L) {
                 lastUsedLabel.setText(lastUsedTime);
 
                 lastUsedRow.add(lastUsedLabel, 1, 0, 2, 1);
@@ -693,7 +692,7 @@ public class UserSettingsButton extends SettingsButtonBase {
                 resetButton = new SettingsRestoreButton();
                 resetButton.setControlType(ControlType.SETTING_CONTROL);
                 resetButton.setConfirmable(Boolean.TRUE);
-                resetButton.setSymStyle("settings-button");
+                resetButton.setSymStyle("delete-settings-button");
                 resetButton.setMaxSize(180.0, 60.0);
                 resetButton.setText("RESET");
                 resetButton.setOkText("CONFIRM");
@@ -793,10 +792,10 @@ public class UserSettingsButton extends SettingsButtonBase {
                 selectionSettings.add(scrollDistanceRow);
                 Tab selectionTab = buildTab("Selection", selectionSettings);
 
-                profileSettings.add(resetRow);
+                profileSettings.add(autoUpdateRow);
                 profileSettings.add(exportRow);
                 profileSettings.add(importRow);
-                profileSettings.add(autoUpdateRow);
+                profileSettings.add(resetRow);
                 Tab profileTab = buildTab("Profile", profileSettings);
 
                 aboutSettings.add(versionRow);

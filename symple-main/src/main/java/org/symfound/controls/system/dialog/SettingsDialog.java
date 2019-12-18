@@ -26,7 +26,7 @@ import org.symfound.controls.user.BuildableGrid;
  *
  * @author Javed Gangjee
  */
-public abstract class SettingsDialog extends OKDialog {
+public abstract class SettingsDialog extends OKCancelDialog {
 
     /**
      *
@@ -52,7 +52,7 @@ public abstract class SettingsDialog extends OKDialog {
      *
      */
     public SettingsDialog() {
-        super("", "", "DONE");
+        super("", "", "DONE","CANCEL");
     }
 
     /**
@@ -185,6 +185,10 @@ public abstract class SettingsDialog extends OKDialog {
      */
     @Override
     public void onOk() {
+
+    }
+  @Override
+    public void onCancel() {
 
     }
 

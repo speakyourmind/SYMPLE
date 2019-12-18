@@ -133,14 +133,14 @@ public class ConfigurableGrid extends ButtonGrid {
         enablePaginationProperty().addListener((observable, oldValue, newValue) -> {
             getGridManager().enablePagination(newValue);
         });
-          setFitToWidth(getGridManager().isFitToWidth());
+        setFitToWidth(getGridManager().isFitToWidth());
         HomeController.getScrollPane().setFitToWidth(getGridManager().isFitToWidth());
         fitToWidthProperty().addListener((observable, oldValue, newValue) -> {
             getGridManager().setFitToWidth(newValue);
             HomeController.getScrollPane().setFitToWidth(newValue);
         });
 
-       /*  setOverrideWidth(getGridManager().getOverrideWidth());
+        /*  setOverrideWidth(getGridManager().getOverrideWidth());
         if (!isFitToWidth()) {
             HomeController.getSubGrid().setPrefWidth(getOverrideWidth());
             HomeController.getSubGrid().setMaxWidth(getOverrideWidth());
@@ -156,7 +156,7 @@ public class ConfigurableGrid extends ButtonGrid {
             getGridManager().setFitToHeight(newValue);
             HomeController.getScrollPane().setFitToHeight(newValue);
         });
-       /* setOverrideHeight(getGridManager().getOverrideHeight());
+        /* setOverrideHeight(getGridManager().getOverrideHeight());
         overrideHeightProperty().addListener((observable, oldValue, newValue) -> {
             getGridManager().setOverrideHeight(newValue.doubleValue());
         });*/

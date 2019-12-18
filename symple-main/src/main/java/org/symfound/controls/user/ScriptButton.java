@@ -7,10 +7,10 @@ package org.symfound.controls.user;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.prefs.Preferences;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -34,7 +34,6 @@ import static org.symfound.controls.user.type.picto.PictoTwilioButton.LOGGER;
 import org.symfound.device.emulation.input.keyboard.ActionKeyCode;
 import org.symfound.main.Main;
 import org.symfound.social.sms.TwilioPoster;
-import org.symfound.tools.ui.ColourChoices;
 
 /**
  *
@@ -150,7 +149,6 @@ public class ScriptButton extends TypingControl {
         if (getTextArea() != null) {
             getTextArea().handle(getActionKey(), text);
         } else {
-            HashMap<Integer, String> map = new HashMap<>();
             LOGGER.warn("No active text area on the current screen");
             ActiveTextArea.setScratchpad(new KeyAction(getActionKey(), text));
         }
@@ -223,6 +221,7 @@ public class ScriptButton extends TypingControl {
         keyCodeField.setValue(KEY_CODE_MAP.get(getKeyCodeConfig()));
         keyCodeField.setMaxSize(180.0, 60.0);
         keyCodeField.getStyleClass().add("settings-text-area");
+        keyCodeField.disableProperty().bind(Bindings.not(typableButton.valueProperty()));
         typableRow.add(keyCodeField, 2, 0, 1, 1);
 
         SettingsRow settingsTo = createSettingRow("SMS", "Send button text to a number");

@@ -21,6 +21,16 @@ public class AnimatedGrid extends CommonGrid implements Animated {
     /**
      *
      */
+    public static final double LAUNCH_TIME_PER_CONTROL = 0.03;
+
+    /**
+     *
+     */
+    public static final double LAUNCH_TIME_INITIAL = 0.1;
+
+    /**
+     *
+     */
     public NodeAnimator nodeAnimator;
 
     /**
@@ -36,27 +46,6 @@ public class AnimatedGrid extends CommonGrid implements Animated {
         return nodeAnimator;
     }
 
-    /**
-     *
-     */
-    public void launchAnimation() {
-        Double time = LAUNCH_TIME_INITIAL;
-        setVisibleAll(false);
-        for (int i = 0; i < getSpecRows(); i++) {
-            for (int j = 0; j < getSpecColumns(); j++) {
-                Node child = get(i, j);
-                if (child != null) {
-                    time += LAUNCH_TIME_PER_CONTROL;
-                    if (child instanceof RunnableControl) {
-                        RunnableControl control = (RunnableControl) child;
-                        control.setVisible(true);
-                        control.animate().startScale(time, 0.0, 1.0);
-                    }
-                }
-            }
-        }
-
-    }
 
     /**
      *

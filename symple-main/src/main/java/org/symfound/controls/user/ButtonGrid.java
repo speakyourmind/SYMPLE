@@ -37,6 +37,7 @@ import org.symfound.controls.system.EditButton;
 import org.symfound.controls.system.grid.editor.EditGridButton;
 import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
+import static org.symfound.controls.user.ConfigurableGrid.inEditMode;
 import org.symfound.controls.user.media.MediaViewer;
 import org.symfound.controls.user.media.calendar.CalendarControlButton;
 import org.symfound.controls.user.media.calendar.CalendarViewer;
@@ -146,9 +147,8 @@ public abstract class ButtonGrid extends FillableGrid {
             TwilioHistory.KEY,
             VersionUpdateButton.KEY,
             ClockButton.KEY);
-            
-//            DesktopController.KEY);
 
+//            DesktopController.KEY);
     public static final List<String> USABLE_KEY_CATALOGUE = Arrays.asList(ActiveTextArea.KEY,
             SpeakGrid.KEY,
             SpeakUserButton.KEY,
@@ -335,9 +335,7 @@ public abstract class ButtonGrid extends FillableGrid {
 
         Insets insets = new Insets(DEFAULT_GRID_GAP);
         setPadding(insets);
-        /*        if (!AppGrid.inEditMode()) {
-        launchAnimation();
-        }*/
+     
         toBack();
 
     }
@@ -1352,7 +1350,7 @@ public abstract class ButtonGrid extends FillableGrid {
         return enablePagination;
     }
 
-     private BooleanProperty fitToWidth;
+    private BooleanProperty fitToWidth;
 
     /**
      * Toggles the fitToWidth boolean property.
@@ -1389,8 +1387,8 @@ public abstract class ButtonGrid extends FillableGrid {
         }
         return fitToWidth;
     }
-    
-       /**
+
+    /**
      *
      */
     public DoubleProperty overrideWidth;
@@ -1421,10 +1419,8 @@ public abstract class ButtonGrid extends FillableGrid {
         }
         return overrideWidth;
     }
-    
-    
-    
-      private BooleanProperty fitToHeight;
+
+    private BooleanProperty fitToHeight;
 
     /**
      * Toggles the fitToHeight boolean property.
@@ -1461,8 +1457,8 @@ public abstract class ButtonGrid extends FillableGrid {
         }
         return fitToHeight;
     }
-    
-         /**
+
+    /**
      *
      */
     public DoubleProperty overrideHeight;

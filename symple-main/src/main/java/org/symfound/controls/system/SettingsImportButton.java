@@ -39,33 +39,40 @@ public final class SettingsImportButton extends SettingsManagerControl {
      */
     @Override
     public void run() {
-        try {
-            Preferences.userRoot().node("/org/symfound").removeNode();
-        } catch (BackingStoreException ex) {
-            LOGGER.fatal(ex);
-        }
         final String fileSelection = getSelectedFile();
-        PreferencesImporter settingsImporter = new PreferencesImporter(fileSelection);
-        final Thread thread = new Thread(settingsImporter);
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException ex) {
-            LOGGER.fatal(ex);
+        if (!fileSelection.isEmpty()) {
+            try {
+                Preferences.userRoot().node("/org/symfound").removeNode();
+            } catch (BackingStoreException ex) {
+                LOGGER.fatal(ex);
+            }
+            PreferencesImporter settingsImporter = new PreferencesImporter(fileSelection);
+            final Thread thread = new Thread(settingsImporter);
+            thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException ex) {
+                LOGGER.fatal(ex);
+            }
+            deleteMasterFile();
+            getSession().exit(Boolean.FALSE);
+        } else {
+            LOGGER.warn("No valid file selection made");
         }
-        deleteMasterFile();
-        getSession().exit(Boolean.FALSE);
 
     }
 
     private String getSelectedFile() {
+        String importedFile = "";
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Import Settings Source");
         final ExtensionFilter xmlFilter = new ExtensionFilter("XML Files", "*.xml");
         fileChooser.getExtensionFilters().addAll(xmlFilter);
         final UI root = getPrimaryControl().getParentUI();
         File selectedFile = fileChooser.showOpenDialog(root);
-        String importedFile = selectedFile.getAbsolutePath();
+        if (selectedFile != null) {
+            importedFile = selectedFile.getAbsolutePath();
+        }
         return importedFile;
     }
 

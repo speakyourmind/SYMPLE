@@ -30,6 +30,8 @@ public class ScreenButton extends GenericButton {
     @Override
     public void run() {
         ConfigurableGrid homeGrid = HomeController.getSubGrid().getConfigurableGrid();
+        ActiveTextArea.get().replaceSelection("");
+
         LOGGER.info("Setting index to " + initIndex);
         homeGrid.setIndex(initIndex);
         super.run();

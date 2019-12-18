@@ -38,7 +38,7 @@ public abstract class SpeakButton extends TextCommunicatorButton {
     private void initialize() {
         bindToText();
         style();
-        configureFont("Roboto", FontWeight.BOLD);
+        configureFont("Roboto", FontWeight.NORMAL);
         concatStyleProperty().addListener((obversable, oldValue, newValue) -> {
             style();
         });

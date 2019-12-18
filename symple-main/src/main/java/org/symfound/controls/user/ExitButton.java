@@ -90,12 +90,13 @@ public final class ExitButton extends AppableControl {
 
     @Override
     public void run() {
+        getSession().shutdown(Boolean.TRUE);
         if (triggerUpdate()) {
             getVersionManager().update();
             this.getParentPane().getChildren().add(getUpdaterPopup());
         } else {
             LOGGER.info("Exiting the program");
-            getSession().exit(BACKUP_ON_EXIT);
+            getSession().close();
         }
     }
     ScreenPopup updaterPopup;

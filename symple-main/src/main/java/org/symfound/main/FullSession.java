@@ -21,6 +21,7 @@ import org.symfound.text.font.FontLoader;
 import com.sun.javafx.stage.StageHelper;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,7 +30,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.prefs.InvalidPreferencesFormatException;
+import java.util.prefs.Preferences;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import org.apache.log4j.Logger;
 import org.symfound.builder.Builder;
 import org.symfound.builder.loader.UIPath;
@@ -153,9 +158,9 @@ public class FullSession extends Session {
         } else {
             LOGGER.warn("Master file does not exist in " + masterFile
                     + ". Proceeding with default settings.");
-            /*if (getUser().getProfile().isFirstUse()) {
+            if (getUser().getProfile().isFirstUse()) {
                 String defaultFile = "templates/super.xml";
-                LOGGER.info("This is the user's first use. Loading template "+defaultFile);
+                LOGGER.info("This is the user's first use. Loading template " + defaultFile);
                 InputStream resourceAsStream = FullSession.class.getClassLoader().getResourceAsStream(defaultFile);
                 try {
                     Preferences.importPreferences(resourceAsStream);
@@ -168,7 +173,7 @@ public class FullSession extends Session {
                 LOGGER.info("Settings import from " + defaultFile + " complete");
 
                 getUser().getProfile().setFirstUse(Boolean.FALSE);
-            }*/
+            }
         }
 
         getBuilder().start(getBuildTimeout());
@@ -385,13 +390,6 @@ public class FullSession extends Session {
         }
     }
 
-    @Override
-    public void exit(Boolean backupSettings) {
-        shutdown(backupSettings);
-        close();
-
-    }
-
     public void shutdown(Boolean backupSettings) {
         resetStats();
         saveSettings(backupSettings);
@@ -411,6 +409,7 @@ public class FullSession extends Session {
             } catch (InterruptedException ex) {
                 LOGGER.warn("Unable to backup settings file to " + backupFolder, ex);
             }
+
         } else {
             LOGGER.info("Settings have not been backed up");
         }
@@ -444,6 +443,7 @@ public class FullSession extends Session {
         }
     }
 
+    @Override
     public void close() {
         LOGGER.info("Closing hardware");
         getDeviceManager().getCurrent().getHardware().close();
@@ -518,4 +518,5 @@ public class FullSession extends Session {
         String fileName = "/" + fullName + " " + suffix + " " + dateFormat.format(date) + ".xml";
         return fileName;
     }
+
 }

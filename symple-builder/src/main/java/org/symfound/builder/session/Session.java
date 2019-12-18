@@ -150,7 +150,7 @@ public abstract class Session implements Buildable {
         }
         return built;
     }
-
+public abstract void close();
     // Build Properties
     private final BooleanProperty playing = new SimpleBooleanProperty(false);
 
@@ -317,5 +317,32 @@ public abstract class Session implements Buildable {
         }
         return buildList;
     }
+  private static BooleanProperty saved = new SimpleBooleanProperty(true);
 
+    /**
+     *
+     * @param value
+     */
+    public static void setSaved(Boolean value) {
+        savedProperty().setValue(value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static boolean isSaved() {
+        return savedProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static BooleanProperty savedProperty() {
+        if (saved == null) {
+            saved = new SimpleBooleanProperty(false);
+        }
+        return saved;
+    }
 }

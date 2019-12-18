@@ -38,11 +38,14 @@
     -fx-text-alignment:center;
     -fx-text-fill: -fx-light;
     -fx-font-size: 1.6em;
+    -fx-effect:dropshadow(gaussian,-fx-dark,2.0,0.0,0,0);
+
 }
 
 
 .button:hover {
-    -fx-background-color: derive(-fx-dark,10%)
+    -fx-background-color: derive(-fx-dark,10%);
+    -fx-effect:dropshadow(gaussian,-fx-dark,6.0,0.0,0,0);
 }
 
 .label {
@@ -195,7 +198,14 @@
 .main-menu-button, .main-menu-button:hover  {
     -fx-background-color: -fx-dark;
 }
-
+.main-text{
+    -fx-border-color: -fx-dark;
+    -fx-border-insets: -3;
+    -fx-border-radius: 0;
+    -fx-border-width: 5;
+    -fx-font-size:4em;
+    -fx-font-color:-fx-dark;
+}
 .app-button-label{
     -fx-font-family:"Roboto Bk";
     -fx-text-fill: -fx-light;
@@ -557,7 +567,8 @@
 .toolbar-minimized {
     -fx-background-size: 20 20;
     -fx-background-color: -fx-dark;
-    -fx-background-repeat: no-repeat;
+    -fx-background-repeat: no-repeat;  
+    -fx-effect:dropshadow(gaussian,-fx-dark,0.0,0.0,0,0);
 }
 .toolbar-home:hover,
 .toolbar-settings:hover,
@@ -566,7 +577,8 @@
 .toolbar-update:hover,
 .toolbar-snapshot:hover,
 .toolbar-edit:hover{
-    -fx-background-color: -fx-blue;
+    -fx-background-color: -fx-blue;       
+    -fx-effect:dropshadow(gaussian,-fx-dark,0.0,0.0,0,0);
 }
 
 .toolbar-exit {
@@ -589,28 +601,30 @@
        -fx-min-height: 40px; 
        -fx-max-width: 40px;       
        -fx-max-height: 40px;*/
-    -fx-background-insets: 0,1;
+    -fx-background-insets: 0,0;
     -fx-background-size: 40;
 }
 
 .toolbar-remove {
     -fx-background-image: url("../images/main_exit.png");
     -fx-background-color: -fx-dark,-fx-blue;
+    -fx-effect:dropshadow(gaussian,-fx-dark,4.0,0.0,0,0);
 }
 
 .toolbar-edit-app{
     -fx-background-image: url("../images/edit_small.png");
     -fx-background-color: -fx-dark,-fx-blue;
     -fx-background-size: 20;
+    -fx-effect:dropshadow(gaussian,-fx-dark,4.0,0.0,0,0);
 }
 
 .toolbar-edit-grid,.toolbar-add{
     -fx-min-width: 80px;
     -fx-min-height: 80px; 
-    -fx-max-width: 80px;       
+    -fx-max-width: 80px;      
     -fx-max-height: 80px;
     -fx-background-color: -fx-dark,-fx-blue;
-    -fx-background-insets: 0,1;
+    -fx-background-insets: 0,0;
 }
 
 .toolbar-remove:hover,
@@ -618,6 +632,7 @@
 .toolbar-edit-grid:hover,
 .toolbar-add:hover{
     -fx-background-color:  derive(-fx-blue,10%);
+    -fx-effect:dropshadow(gaussian,-fx-dark,8.0,0.0,0,0);
 }
 .toolbar-add {
     -fx-background-image: url("../images/add.png");
@@ -640,19 +655,28 @@
     -fx-background-color: -fx-dark, -fx-light;
     -fx-background-insets: 0,5;
     -fx-text-fill: -fx-dark;
+    -fx-effect:dropshadow(gaussian,-fx-dark,0.0,0.0,0,0);
 
 }
 
 .settings-button{
     -fx-background-color:-fx-blue;
-
-    -fx-font-weight:bold;
+    -fx-font-weight:bold;    
+    -fx-effect:dropshadow(gaussian,-fx-dark,0.0,0.0,0,0);
 }
 
 .settings-button:hover{
     -fx-background-color: derive(-fx-blue,10%);
 }
 
+.delete-settings-button{
+    -fx-background-color:-fx-red;
+    -fx-font-weight:bold;
+}
+
+.delete-settings-button:hover{
+    -fx-background-color: derive(-fx-red,10%);
+}
 .settings-hyperlink{
     -fx-background-color:-fx-light;
     -fx-text-fill: -fx-blue;

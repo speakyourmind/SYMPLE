@@ -7,13 +7,9 @@ package org.symfound.controls.user;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.prefs.Preferences;
 import javafx.application.Platform;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.StringProperty;
@@ -29,11 +25,7 @@ import org.symfound.controls.system.EditAppButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import org.symfound.device.emulation.input.keyboard.ActionKeyCode;
-import org.symfound.device.emulation.input.switcher.SwitchDirection;
-import static org.symfound.device.emulation.input.switcher.SwitchDirector.DOWN;
-import static org.symfound.device.emulation.input.switcher.SwitchDirector.LEFT;
-import static org.symfound.device.emulation.input.switcher.SwitchDirector.RIGHT;
-import static org.symfound.device.emulation.input.switcher.SwitchDirector.UP;
+import org.symfound.main.HomeController;
 import org.symfound.text.TextAnalyzer;
 import org.symfound.text.TextOperator;
 import static org.symfound.text.TextOperator.EOL;
@@ -52,8 +44,6 @@ public class ActiveTextArea extends AppableControl {
     private static final Logger LOGGER = Logger.getLogger(NAME);
 
     private static final Boolean DEFAULT_WRAP_TEXT = Boolean.TRUE;
-    // private static final String DEFAULT_PROMPT_TEXT = "Select a letter button to begin typing...";
-
     //Autosave variables
     /**
      *
@@ -107,20 +97,22 @@ public class ActiveTextArea extends AppableControl {
                 getTextOperator().autoSave(savePath, readPath);
             }
         });
+        setCSS("main-text", get());
         get().requestFocus();
         configureStyle("Roboto", FontWeight.NORMAL);
         setSelectable(false);
 
         handleScratchpad();
+
         /*   scratchpadProperty().addListener((observable, oldValue, newValue) -> {
         handleScratchpad();
         });*/
     }
 
     public void handleScratchpad() {
-        if(getScratchpad().actionKey!=0){
-            handle(getScratchpad().actionKey,getScratchpad().text);
-            setScratchpad(new KeyAction(0,""));
+        if (getScratchpad().actionKey != 0) {
+            handle(getScratchpad().actionKey, getScratchpad().text);
+            setScratchpad(new KeyAction(0, ""));
         }
     }
 
@@ -143,7 +135,7 @@ public class ActiveTextArea extends AppableControl {
      */
     public final TextOperator getTextOperator() {
         if (textOperator == null) {
-            textOperator = new TextOperator(textArea);
+            textOperator = new TextOperator(get());
         }
         return textOperator;
     }
@@ -156,7 +148,7 @@ public class ActiveTextArea extends AppableControl {
      */
     public static final Predictor getPredictor() {
         if (predictor == null) {
-            predictor = new Predictor(textArea);
+            predictor = new Predictor(get());
         }
         return predictor;
     }
@@ -303,7 +295,6 @@ public class ActiveTextArea extends AppableControl {
             textArea = new TextArea();
             //setCSS("main-text", textArea);
             textArea.setWrapText(DEFAULT_WRAP_TEXT);
-//            textArea.setPromptText(DEFAULT_PROMPT_TEXT);
         }
         return textArea;
     }
@@ -438,7 +429,7 @@ public class ActiveTextArea extends AppableControl {
      */
     public static ObjectProperty<KeyAction> scratchpadProperty() {
         if (scratchpad == null) {
-            scratchpad = new SimpleObjectProperty<>(new KeyAction(0,""));
+            scratchpad = new SimpleObjectProperty<>(new KeyAction(0, ""));
         }
         return scratchpad;
     }

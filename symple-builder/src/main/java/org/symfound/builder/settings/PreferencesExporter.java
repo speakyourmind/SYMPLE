@@ -58,6 +58,7 @@ public class PreferencesExporter extends PreferencesTransporter {
             LOGGER.debug("Exporting preferences as " + fileName + " in " + folder);
             final String destination = folder + fileName;
             PreferencesManager.exportTo(destination, prefs);
+            
         } catch (BackingStoreException | IOException ex) {
             LOGGER.fatal("Error exporting preferences xml file " + fileName + " to folder " + folder, ex);
         }

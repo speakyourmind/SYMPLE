@@ -105,6 +105,7 @@ public class FillableGrid extends BuildableGrid {
             spread(method);
             disableAll(isPaused());
             setStatus(ScreenStatus.PLAYING);
+            
         };
         Platform.runLater(runnable);
     }
@@ -260,7 +261,12 @@ public class FillableGrid extends BuildableGrid {
                         test(screenControl);
                         //  screenControl.setGridLocation(k);
                         //System.out.println("Adding " + screenControl.getText() + " to column " + j + " to row " + i);
+                        
+                      //  RunnableControl control = (RunnableControl) child;
                         add(screenControl, j, i, DEFAULT_COLUMN_SPAN, DEFAULT_ROW_SPAN);
+                        
+                       // screenControl.setVisible(true);
+                     //   screenControl.animate().startScale(0.2, 0.1, 1.0);
                         k++;
                     }
                 }
@@ -274,6 +280,9 @@ public class FillableGrid extends BuildableGrid {
                         //System.out.println("Adding " + screenControl.getText() + " to column " + j + " to row " + i);
                         test(screenControl);
                         add(screenControl, i, j, DEFAULT_COLUMN_SPAN, DEFAULT_ROW_SPAN);
+                        
+                     //   screenControl.setVisible(true);
+                       // screenControl.animate().startScale(0.2, 0.1, 1.0);
                         k++;
                     }
                 }
@@ -305,6 +314,7 @@ public class FillableGrid extends BuildableGrid {
         }
         expand("row");
         expand("column");
+        
     }
 
     /**

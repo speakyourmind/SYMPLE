@@ -7,7 +7,7 @@
                     <CreateFolder/>
                     <RemoveFolder Id="RemoveDir0" On="uninstall" />
                     <RegistryKey Root="HKCU"  Key="Software\SpeakYourMind Foundation\SYMPLE">
-                        <RegistryValue Name="Version" Value="2.7.0" Type="string" KeyPath="yes"/>
+                        <RegistryValue Name="Version" Value="2.7.2" Type="string" KeyPath="yes"/>
                     </RegistryKey>
                     <File Id="FileId10000" Name="api-ms-win-core-console-l1-1-0.dll"  Source="api-ms-win-core-console-l1-1-0.dll" ProcessorArchitecture="x64"></File>
                     <File Id="FileId10001" Name="api-ms-win-core-datetime-l1-1-0.dll"  Source="api-ms-win-core-datetime-l1-1-0.dll" ProcessorArchitecture="x64"></File>

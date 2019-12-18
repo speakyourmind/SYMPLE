@@ -36,6 +36,8 @@ import static org.symfound.controls.ScreenControl.setSizeMax;
 import static org.symfound.controls.device.SwiftySettings.DEFAULT_CONFIG_COLUMNS;
 import static org.symfound.controls.device.SwiftySettings.DEFAULT_CONFIG_ROWS;
 import org.symfound.controls.system.Toolbar;
+import org.symfound.controls.user.ActiveTextArea;
+import static org.symfound.controls.user.ActiveTextArea.getPredictor;
 import org.symfound.controls.user.BuildableGrid;
 import org.symfound.controls.user.ConfigurableGrid;
 import org.symfound.controls.user.SubGrid;
@@ -119,7 +121,7 @@ public class HomeController extends GridController {
     public Toolbar getToolbar() {
         if (toolbar == null) {
             toolbar = new Toolbar();
-            toolbar.setButtonOrder("Snapshot=default,Update=default,Edit=default,User Settings=default,Minimize=default,Script=toolbar/home,Exit=default");
+            toolbar.setButtonOrder("Update=default,Snapshot=default,Edit=default,User Settings=default,Minimize=default,Script=toolbar/home,Exit=default");
             GridPane.setColumnSpan(toolbar, 2);
         }
         return toolbar;
@@ -131,8 +133,8 @@ public class HomeController extends GridController {
         if (scrollPane == null) {
             scrollPane = new ScrollPane();
             scrollPane.setPadding(new Insets(0));
-          //  scrollPane.setFitToHeight(Boolean.TRUE);
-          //  scrollPane.setFitToWidth(Boolean.TRUE);
+            //  scrollPane.setFitToHeight(Boolean.TRUE);
+            //  scrollPane.setFitToWidth(Boolean.TRUE);
             setSizeMax(scrollPane);
             scrollPane.setContent(getSubGrid());
             //getSubGrid().setPrefWidth(25000.0);
@@ -181,6 +183,7 @@ public class HomeController extends GridController {
                     setUpdated(false);
                 }
             });
+          
             setSizeMax(grid);
         }
         return grid;

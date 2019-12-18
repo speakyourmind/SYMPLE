@@ -199,7 +199,7 @@ public class EditGridButton extends SettingsButtonBase {
                 SettingsRow hGapRow = createSettingRow("Horizontal gap", "Adjust horizontal gaps between cells");
                 hGapSlider = new Slider(0.0, 200.0, grid.getCustomHGap());
                 hGapSlider.setMajorTickUnit(20);
-                hGapSlider.setMinorTickCount(2);
+                hGapSlider.setMinorTickCount(3);
                 hGapSlider.setShowTickLabels(true);
                 hGapSlider.setShowTickMarks(true);
                 hGapSlider.setSnapToTicks(true);
@@ -208,7 +208,7 @@ public class EditGridButton extends SettingsButtonBase {
                 SettingsRow vGapRow = createSettingRow("Vertical gap", "Adjust vertical gaps between cells");
                 vGapSlider = new Slider(0.0, 200.0, grid.getCustomVGap());
                 vGapSlider.setMajorTickUnit(20);
-                vGapSlider.setMinorTickCount(2);
+                vGapSlider.setMinorTickCount(3);
                 vGapSlider.setShowTickLabels(true);
                 vGapSlider.setShowTickMarks(true);
                 vGapSlider.setSnapToTicks(true);
@@ -217,7 +217,7 @@ public class EditGridButton extends SettingsButtonBase {
                 SettingsRow marginRow = createSettingRow("Margin", "Outer gap");
                 marginSlider = new Slider(0.0, 200.0, grid.getCustomMargin());
                 marginSlider.setMajorTickUnit(20);
-                marginSlider.setMinorTickCount(2);
+                marginSlider.setMinorTickCount(3);
                 marginSlider.setShowTickLabels(true);
                 marginSlider.setShowTickMarks(true);
                 marginSlider.setSnapToTicks(true);

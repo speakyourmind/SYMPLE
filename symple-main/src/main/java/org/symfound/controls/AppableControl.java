@@ -799,12 +799,13 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
         columnExpandRow.add(columnExpandSlider, 1, 0, 2, 1);
 
-        if (navigatePostClick()) {
+    //    if (navigatePostClick()) {
             SettingsRow navigateRow = createSettingRow("Navigate", "Screen to navigate to after click");
             List<String> navigatableScreens = new ArrayList<>();
+            navigatableScreens.add("");
             navigatableScreens.add(PREVIOUS_SCREEN_INDEX);
             try {
-                navigatableScreens = getNavigatableScreens("subgrid");
+                navigatableScreens.addAll(getNavigatableScreens("subgrid"));
             } catch (BackingStoreException ex) {
                 LOGGER.fatal("Unable to load Preferences" + ex.getMessage());
             }
@@ -814,7 +815,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             navigateIndexChoices.getStyleClass().add("settings-text-area");
             navigateRow.add(navigateIndexChoices, 1, 0, 2, 1);
             selectionSettings.add(navigateRow);
-        }
+    //    }
 
         SettingsRow totalUsageRow = EditDialog.createSettingRow("Usage Count", "Number of times this button has been clicked");
 
@@ -887,6 +888,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
     private List<String> getNavigatableScreens(String node) throws BackingStoreException {
         List<String> screenNames = new ArrayList<>();
+        
         List<String> childrenNames = Arrays.asList(Preferences.userNodeForPackage(this.getClass()).node(node).childrenNames());
         if (childrenNames.size() > 0) {
             for (String child : childrenNames) {

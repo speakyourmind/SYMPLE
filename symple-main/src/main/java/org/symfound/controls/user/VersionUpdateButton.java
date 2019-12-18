@@ -11,6 +11,7 @@ import org.symfound.controls.AppableControl;
 import org.symfound.builder.settings.PreferencesExporter;
 import org.symfound.controls.system.dialog.OKDialog;
 import org.symfound.controls.system.dialog.ScreenPopup;
+import static org.symfound.controls.user.ExitButton.LOGGER;
 import org.symfound.main.FullSession;
 import static org.symfound.main.Main.getVersionManager;
 
@@ -48,25 +49,10 @@ public class VersionUpdateButton extends AppableControl {
     @Override
     public void run() {
 
-        String backupFolder = getUser().getContent().getHomeFolder() + "/Documents/SYMPLE/Settings/Backup";
-        PathWriter backupPathWriter = new PathWriter(backupFolder);
-        backupPathWriter.file.mkdirs();
-
-        PreferencesExporter backupSettingsExporter = new PreferencesExporter(backupFolder, FullSession.getSettingsFileName("All"),"/org/symfound");
-        LOGGER.info("Backing up settings to folder: " + backupFolder);
-        Thread backupThread = new Thread(backupSettingsExporter);
-        try {
-            backupThread.start();
-            backupThread.join();
-        } catch (InterruptedException ex) {
-            LOGGER.warn("Unable to backup settings file to " + backupFolder, ex);
-        }
+        getSession().shutdown(Boolean.TRUE);
 
         getVersionManager().update();
-
-        getParentPane().getChildren().add(getUpdaterPopup());
-        final Double selectionTime = getSession().getUser().getInteraction().getSelectionTime();
-        getUpdaterDialog().animate().startScale(selectionTime, 0.8, 1.0);
+        this.getParentPane().getChildren().add(getUpdaterPopup());
 
         getVersionManager().msiDownloader.getTracker().beginProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
@@ -92,6 +78,7 @@ public class VersionUpdateButton extends AppableControl {
      *
      */
     public UpdaterDialog updaterDialog;
+
     /**
      *
      * @return
