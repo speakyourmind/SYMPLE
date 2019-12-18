@@ -11,7 +11,6 @@ import javafx.beans.binding.Bindings;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl.ControlType;
-import org.symfound.controls.user.StatsButton;
 import org.symfound.controls.user.ButtonGrid;
 import static org.symfound.controls.user.ButtonGrid.LOGGER;
 import org.symfound.controls.user.ConfigurableGrid;
@@ -177,13 +176,6 @@ public class ToolbarGrid extends ButtonGrid {
                     userSettingsButton.setPane("apMain");
                    // userSettingsButton.setSymStyle("toolbar-settings");
                     requested.add(userSettingsButton);
-                    break;
-                case StatsButton.KEY:
-                    StatsButton statsButton = new StatsButton();
-                    statsButton.setPane("apMain");
-                    statsButton.setOkText("CONFIRM");
-                    statsButton.setCancelText("CANCEL");
-                    requested.add(statsButton);
                     break;
                 case ExitButton.KEY:
                     ExitButton exitButton = new ExitButton();

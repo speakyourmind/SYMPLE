@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
@@ -18,7 +19,6 @@ import static org.symfound.controls.ScreenControl.setSize;
 import static org.symfound.controls.ScreenControl.setSizeMax;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.SettingsTab;
-import org.symfound.controls.system.dialog.SettingsDialog;
 import org.symfound.controls.user.ButtonGrid;
 import org.symfound.device.Device;
 import org.symfound.device.hardware.eyetracker.GamingEyeTracker;
@@ -45,7 +45,7 @@ public class EyeTrackerSettings extends DeviceSettings<GamingEyeTracker> {
     }
 
     private void initialize() {
-        populate();
+       populate();
     }
 
     /**
@@ -96,7 +96,7 @@ public class EyeTrackerSettings extends DeviceSettings<GamingEyeTracker> {
 
         calibrate.setSymStyle("settings-button");
         calibrate.setControlType(ControlType.SETTING_CONTROL);
-        setSize(calibrate, SettingsDialog.MAX_WIDTH, SettingsDialog.MAX_HEIGHT);
+        setSize(calibrate, MAX_WIDTH, MAX_HEIGHT);
         calibrate.setText("CALIBRATE");
         calibrate.setOnMouseClicked(null);
         calibrationRow.add(calibrate, 1, 0, 1, 1);
@@ -121,7 +121,7 @@ public class EyeTrackerSettings extends DeviceSettings<GamingEyeTracker> {
 
         troubleshoot.setSymStyle("settings-button");
         troubleshoot.setControlType(ControlType.SETTING_CONTROL);
-        setSize(troubleshoot, SettingsDialog.MAX_WIDTH, SettingsDialog.MAX_HEIGHT);
+        setSize(troubleshoot, MAX_WIDTH, MAX_HEIGHT);
         troubleshoot.setText("FIX");
         troubleshoot.setOnMouseClicked(null);
         troubleshootRow.add(troubleshoot, 1, 0, 1, 1);
@@ -141,6 +141,21 @@ public class EyeTrackerSettings extends DeviceSettings<GamingEyeTracker> {
             device = getSession().getDeviceManager().eyeTracker;
         }
         return device;
+    }
+
+    @Override
+    public Node addSettingControls() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSettings() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void resetSettings() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

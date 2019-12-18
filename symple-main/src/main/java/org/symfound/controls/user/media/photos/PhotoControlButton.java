@@ -22,12 +22,13 @@ import javafx.stage.DirectoryChooser;
 import static org.symfound.controls.AppableControl.LOGGER;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl;
+import static org.symfound.controls.device.DeviceSettings.MAX_HEIGHT;
+import static org.symfound.controls.device.DeviceSettings.MAX_WIDTH;
 import org.symfound.controls.system.EditAppButton;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.dialog.EditDialog;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
-import org.symfound.controls.system.dialog.SettingsDialog;
 import org.symfound.controls.user.ScreenStatus;
 import org.symfound.controls.user.media.MediaControlButton;
 
@@ -142,7 +143,7 @@ public class PhotoControlButton extends MediaControlButton<PhotoControl> {
         readFileChooser.setControlType(ScreenControl.ControlType.SETTING_CONTROL);
         readFileChooser.setSymStyle("settings-button");
         readFileChooser.setText("LOAD");
-        readFileChooser.setMaxSize(SettingsDialog.MAX_WIDTH, SettingsDialog.MAX_HEIGHT);
+        readFileChooser.setMaxSize(MAX_WIDTH, MAX_HEIGHT);
         //  readFilePathGrid.add(readFileChooser, 0, 0);
         settingsRowA.add(readFileChooser, 1, 0);
 

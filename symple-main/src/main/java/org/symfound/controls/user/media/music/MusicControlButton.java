@@ -26,10 +26,11 @@ import org.symfound.comm.file.PathReader;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.ScreenControl;
 import static org.symfound.controls.ScreenControl.CSS_PATH;
+import static org.symfound.controls.device.DeviceSettings.MAX_HEIGHT;
+import static org.symfound.controls.device.DeviceSettings.MAX_WIDTH;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
 import static org.symfound.controls.system.dialog.EditDialog.createSettingRow;
-import org.symfound.controls.system.dialog.SettingsDialog;
 import org.symfound.controls.user.AnimatedButton;
 import org.symfound.main.HomeController;
 
@@ -254,7 +255,7 @@ public class MusicControlButton extends MusicButton {
         readFileChooser.setControlType(ScreenControl.ControlType.SETTING_CONTROL);
         readFileChooser.setSymStyle("settings-button");
         readFileChooser.setText("LOAD");
-        readFileChooser.setMaxSize(SettingsDialog.MAX_WIDTH, SettingsDialog.MAX_HEIGHT);
+        readFileChooser.setMaxSize(MAX_WIDTH,MAX_HEIGHT);
         //  readFilePathGrid.add(readFileChooser, 0, 0);
         settingsRowA.add(readFileChooser, 1, 0);
 

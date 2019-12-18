@@ -10,7 +10,6 @@
     -fx-white:white;
     -fx-black:black;
     -fx-grey:derive(-fx-dark,60%);
-    -fx-alt-base:derive(-fx-dark,100%);
     -fx-light:derive(-fx-dark,160%);
     -fx-blue:#277CB4;
     -fx-purple:#8e44ad;
@@ -22,7 +21,6 @@
 .text {
     -fx-font-family: "Roboto";
     -fx-font-smoothing-type: gray;
-
 }
 
 .grid, #gpTier, #gpMain, .pane,.main,#apConfig{
@@ -204,7 +202,7 @@
     -fx-border-radius: 0;
     -fx-border-width: 5;
     -fx-font-size:4em;
-    -fx-font-color:-fx-dark;
+    -fx-text-fill:-fx-dark;
 }
 .app-button-label{
     -fx-font-family:"Roboto Bk";
@@ -467,11 +465,13 @@
     -fx-background-color:  -fx-blue, derive(-fx-blue,-10%), -fx-blue;
     -fx-text-alignment:center;
     -fx-text-fill: -fx-light;
+    -fx-effect:dropshadow(gaussian,-fx-dark,2.0,0.0,0,0);
 }
 
 .setting-button:hover {
     -fx-background-color:  -fx-blue, derive(-fx-blue,-10%), derive(-fx-blue,10%);
     -fx-text-fill: derive(-fx-light,10%);
+    -fx-effect:dropshadow(gaussian,-fx-dark,4.0,0.0,0,0);
 }
 
 .time-button {
@@ -659,14 +659,16 @@
 
 }
 
-.settings-button{
+.settings-button,.settings-button:hover{
     -fx-background-color:-fx-blue;
+    -fx-text-fill:-fx-light;
     -fx-font-weight:bold;    
-    -fx-effect:dropshadow(gaussian,-fx-dark,0.0,0.0,0,0);
+    -fx-effect:dropshadow(gaussian,-fx-dark,2.0,0.0,0,0);
 }
 
 .settings-button:hover{
     -fx-background-color: derive(-fx-blue,10%);
+    -fx-effect:dropshadow(gaussian,-fx-dark,4.0,0.0,0,0);
 }
 
 .delete-settings-button{

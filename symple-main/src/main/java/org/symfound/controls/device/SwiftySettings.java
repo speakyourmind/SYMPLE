@@ -11,6 +11,7 @@ import java.util.List;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import org.symfound.controls.system.OnOffButton;
 import org.symfound.controls.system.SettingsRow;
@@ -149,6 +150,21 @@ public class SwiftySettings extends DeviceSettings<Swifty> {
             device = getSession().getDeviceManager().swifty;
         }
         return device;
+    }
+
+    @Override
+    public Node addSettingControls() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSettings() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void resetSettings() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

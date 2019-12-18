@@ -2,6 +2,7 @@ package org.symfound.controls.system;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import org.symfound.controls.RunnableControl;
 import org.symfound.controls.user.AnimatedButton;
@@ -73,10 +74,15 @@ public class OnOffButton extends RunnableControl {
     public void toggleButton(Boolean newValue, String onValue, String offValue) {
         if (newValue) {
             getPrimaryControl().setText(onValue);
-            getPrimaryControl().setStyle("-fx-background-color:-fx-blue; -fx-background-insets: 0,0; -fx-text-fill: -fx-light; -fx-font-weight:bold; ");
+          getPrimaryControl().getStyleClass().remove("settings-text-area");
+           setCSS("settings-button",getPrimaryControl());
+          //  getPrimaryControl().setStyle("-fx-background-color:-fx-blue; -fx-background-insets: 0,0; -fx-text-fill: -fx-light; -fx-font-weight:bold; ");
         } else {
             getPrimaryControl().setText(offValue);
-            getPrimaryControl().setStyle("");
+          //  getPrimaryControl().setStyle("");
+          getPrimaryControl().getStyleClass().remove("settings-button");
+           setCSS("settings-text-area",getPrimaryControl());
+           
         }
     }
 

@@ -7,6 +7,7 @@ package org.symfound.controls.device;
 
 import java.util.Arrays;
 import java.util.List;
+import javafx.scene.Node;
 import org.symfound.controls.system.SettingsRow;
 import org.symfound.controls.system.SettingsTab;
 import org.symfound.device.Device;
@@ -51,5 +52,20 @@ public class GenericDeviceSettings extends DeviceSettings<Generic> {
             device = getSession().getDeviceManager().generic;
         }
         return device;
+    }
+
+    @Override
+    public Node addSettingControls() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSettings() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void resetSettings() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
