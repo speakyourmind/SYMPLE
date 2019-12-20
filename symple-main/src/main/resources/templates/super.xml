@@ -9,46 +9,7 @@
         <map/>
         <node name="builder">
           <map/>
-          <node name="user">
-            <map>
-              <entry key="app.selection.type" value="CLICK"/>
-              <entry key="app.general.timeout" value="15.0"/>
-              <entry key="app.navigation.ttsBuildOrder" value="Polly"/>
-              <entry key="app.navigation.buttonMap" value="Desktop=1"/>
-              <entry key="app.navigation.onFirstClick" value="true"/>
-              <entry key="app.navigation.speakSelection" value="false"/>
-              <entry key="app.navigation.highlightBorder" value="false"/>
-              <entry key="app.navigation.fullScreen" value="true"/>
-              <entry key="app.navigation.playSound" value="false"/>
-              <entry key="app.general.scourSound" value="C:\Windows\media\Windows Navigation Start.wav"/>
-              <entry key="app.general.selectionSound" value="C:\Windows\media\Windows Default.wav"/>
-              <entry key="app.speaking.voice" value="Matthew"/>
-              <entry key="app.typing.autocomplete.enabled" value="true"/>
-              <entry key="app.typing.autocomplete.time" value="5.34355828220859"/>
-              <entry key="app.typing.userDictWeight" value="10"/>
-              <entry key="app.media.volume" value="1.0"/>
-              <entry key="app.social.twilio.accountSID" value=""/>
-              <entry key="app.social.twilio.authToken" value=""/>
-              <entry key="app.social.twilio.fromNumber" value=""/>
-              <entry key="app.selection.dwellTime" value="2.2"/>
-              <entry key="app.selection.scanTime" value="3.0"/>
-              <entry key="app.selection.stepTime" value="4.0"/>
-              <entry key="app.navigation.level" value="6.0"/>
-              <entry key="app.selection.override" value="false"/>
-              <entry key="device.name" value="Other"/>
-              <entry key="device.movement.mouseControl" value="false"/>
-              <entry key="device.movement.selectionControl" value="false"/>
-              <entry key="profile.firstName" value=""/>
-              <entry key="profile.lastName" value=""/>
-              <entry key="profile.autoUpdate" value="true"/>
-              <entry key="app.general.homeFolder" value="C:\Users\Administrator"/>
-              <entry key="app.general.previousIndex" value="home"/>
-              <entry key="profile.firstUse" value="false"/>
-              <entry key="app.selection.scrollTime" value="0.5"/>
-              <entry key="app.navigation.scrollDistance" value="0.05"/>
-              <entry key="app.navigation.cursorType" value="DEFAULT"/>
-            </map>
-          </node>
+         
         </node>
         <node name="controls">
           <map/>
@@ -4971,12 +4932,7 @@
               </node>
             </node>
           </node>
-          <node name="selector">
-            <map>
-              <entry key="usage.lastUsed" value="1575398172645"/>
-              <entry key="usage.count" value="8"/>
-            </map>
-          </node>
+          
           <node name="subgrid">
             <map/>
           </node>

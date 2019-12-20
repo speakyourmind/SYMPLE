@@ -5,26 +5,19 @@
  */
 package org.symfound.selection;
 
-import java.awt.AWTException;
 import java.awt.Point;
 import org.symfound.selection.controls.SelectorButton;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
-import javafx.scene.Cursor;
 import org.symfound.controls.AppableControl;
-import org.symfound.controls.RunnableControl;
-import org.symfound.controls.ScreenControl;
 import org.symfound.controls.user.FillableGrid.FillDirection;
 import org.symfound.tools.iteration.ParallelList;
 import org.symfound.controls.user.ButtonGrid;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
 import org.symfound.controls.user.ScreenStatus;
-import org.symfound.controls.user.ScriptButton;
 import org.symfound.device.Device;
 import org.symfound.device.emulation.EmulationManager;
 import org.symfound.device.emulation.EmulationRequest;

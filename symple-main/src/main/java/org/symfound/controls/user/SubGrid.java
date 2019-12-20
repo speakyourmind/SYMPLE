@@ -98,11 +98,10 @@ public class SubGrid extends AppableControl {
 
         getConfigurableGrid().statusProperty().addListener((ob, o, n) -> {
             if (n.equals(ScreenStatus.PLAYING)) {
-                
                 getScanner().configure();
                 getStepper().configure();
                 getScroller().configure();
-
+                
                 setDisable(false);
                 if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
                     addConfigButtons();
@@ -113,15 +112,16 @@ public class SubGrid extends AppableControl {
                 setDisable(true);
             }
         });
-        ConfigurableGrid.editModeProperty().removeListener(getConfigButtonListener());
-        ConfigurableGrid.editModeProperty().addListener(getConfigButtonListener());
+        final BooleanProperty editModeProperty = ConfigurableGrid.editModeProperty();
+        editModeProperty.removeListener(getConfigButtonListener());
+        editModeProperty.addListener(getConfigButtonListener());
 
     }
 
     public ChangeListener<Boolean> getConfigButtonListener() {
         if (addRemoveListener == null) {
             addRemoveListener = (observable1, oldValue1, newValue1) -> {
-                
+
                 if (ConfigurableGrid.inEditMode() && isEditable()) {
                     addConfigButtons();
                 } else {
@@ -376,8 +376,8 @@ public class SubGrid extends AppableControl {
      * @return
      */
     public Scanner getScanner() {
-       // if (scanner == null) {
-            scanner = new Scanner(this, Main.getSession().getUser());
+        // if (scanner == null) {
+        scanner = new Scanner(this, Main.getSession().getUser());
         //}
         return scanner;
     }

@@ -36,12 +36,12 @@
     -fx-text-alignment:center;
     -fx-text-fill: -fx-light;
     -fx-font-size: 1.6em;
-    -fx-effect:dropshadow(gaussian,-fx-dark,3.0,0.0,0,0);
+    -fx-effect:dropshadow(gaussian,-fx-dark,4.0,0.0,0,0);
 }
 
 .button:hover {
     -fx-background-color: derive(-fx-dark,10%);
-    -fx-effect:dropshadow(gaussian,-fx-dark,6.0,0.0,0,0);
+    -fx-effect:dropshadow(gaussian,-fx-dark,8.0,0.0,0,0);
 }
 
 .label {
@@ -469,13 +469,13 @@
     -fx-background-color:  -fx-blue, derive(-fx-blue,-10%), -fx-blue;
     -fx-text-alignment:center;
     -fx-text-fill: -fx-light;
-    -fx-effect:dropshadow(gaussian,-fx-dark,2.0,0.0,0,0);
+    -fx-effect:dropshadow(gaussian,-fx-dark,3.0,0.0,0,0);
 }
 
 .setting-button:hover {
     -fx-background-color:  -fx-blue, derive(-fx-blue,-10%), derive(-fx-blue,10%);
     -fx-text-fill: derive(-fx-light,10%);
-    -fx-effect:dropshadow(gaussian,-fx-dark,4.0,0.0,0,0);
+    -fx-effect:dropshadow(gaussian,-fx-dark,6.0,0.0,0,0);
 }
 
 .time-button {
@@ -561,6 +561,7 @@
 .toolbar-settings{-fx-background-image: url("../images/settings_small.png");
 }
 
+.toolbar-exit,
 .toolbar-edit,
 .toolbar-snapshot,
 .toolbar-home,
@@ -573,6 +574,7 @@
     -fx-background-repeat: no-repeat;  
     -fx-effect:dropshadow(gaussian,-fx-dark,0.0,0.0,0,0);
 }
+.toolbar-exit:hover,
 .toolbar-home:hover,
 .toolbar-settings:hover,
 .toolbar-minimized:hover,
@@ -737,7 +739,6 @@
 
 .exit-button:hover {
     -fx-background-color:  -fx-blue, derive(-fx-red,-10%), derive(-fx-red,10%);
-    -fx-text-fill: derive(-fx-light,10%);
 }
 
 .calibration-background{-fx-background-color: -fx-dark;}
@@ -848,22 +849,20 @@
     -fx-background-radius: 0;
 }
 .scroll-bar:horizontal .thumb {
-    -fx-background-color: -fx-grey;
+    -fx-background-color: -fx-dark;
     -fx-background-insets: 4 0 4 0;
     -fx-background-radius: 0;
 }
 .scroll-bar:vertical .thumb {
-    -fx-background-color: -fx-grey;
+    -fx-background-color: -fx-dark;
     -fx-background-insets: 0 4 0 4;
     -fx-background-radius: 0;
 }
 .scroll-bar:horizontal .thumb:hover,
-.scroll-bar:vertical .thumb:hover {
-    -fx-background-color: -fx-grey;
-}
+.scroll-bar:vertical .thumb:hover,
 .scroll-bar:horizontal .thumb:pressed,
-.scroll-bar:vertical .thumb:pressed {
-    -fx-background-color: -fx-grey;
+.scroll-bar:vertical .thumb:pressed  {
+    -fx-background-color: -fx-dark;
 }
 .scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button {
     -fx-background-color:transparent;
@@ -877,12 +876,12 @@
 }
 .scroll-bar:horizontal .increment-arrow {
     -fx-shape: "M 0 0 L 4 8 L 8 0 Z";
-    -fx-background-color: -fx-grey;
+    -fx-background-color: -fx-dark;
     -fx-padding: 0.25em;
     -fx-rotate: -90;
 }
 .scroll-bar:vertical .increment-arrow {
-    -fx-background-color: -fx-grey;
+    -fx-background-color: -fx-dark;
     -fx-shape: "M 0 0 L 4 8 L 8 0 Z";
     -fx-padding: 0.25em;
     -fx-rotate: 0;
@@ -894,7 +893,7 @@
     -fx-rotate: 90;
 }
 .scroll-bar:vertical .decrement-arrow {
-    -fx-background-color: -fx-grey;
+    -fx-background-color: -fx-dark;
     -fx-shape: "M 0 0 L 4 8 L 8 0 Z";
     -fx-padding: 0.25em;
     -fx-rotate: -180;

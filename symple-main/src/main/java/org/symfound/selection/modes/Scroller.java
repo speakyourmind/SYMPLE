@@ -10,19 +10,23 @@ import javafx.beans.binding.StringExpression;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import org.symfound.builder.user.User;
 import org.symfound.builder.user.characteristic.Navigation;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.user.ConfigurableGrid;
+import static org.symfound.controls.user.ConfigurableGrid.inEditMode;
 import org.symfound.controls.user.SubGrid;
 import org.symfound.main.HomeController;
 import static org.symfound.main.Main.getSession;
 import org.symfound.selection.Curtain;
 import org.symfound.selection.Selector;
+import static org.symfound.selection.Selector.LOGGER;
 import org.symfound.selection.controls.ScrollControl;
 import org.symfound.selection.controls.ScrollControlButton;
 import static org.symfound.selection.modes.Scanner.LOGGER;
@@ -101,10 +105,8 @@ public class Scroller extends Selector {
         rightScroll.setMaxWidth(getSession().getDisplay().getScreenWidth() / 3);
 
         final GridPane screenGrid = HomeController.getScreenGrid();
-        if (subGrid.getWidth() > HomeController.getScreenGrid().getWidth()) {
-            screenGrid.getChildren().add(leftScroll);
-            screenGrid.getChildren().add(rightScroll);
-        }
+        screenGrid.getChildren().add(leftScroll);
+        screenGrid.getChildren().add(rightScroll);
         curtain.toFront();
     }
 
@@ -115,11 +117,12 @@ public class Scroller extends Selector {
     public void removeCurtain() {
         LOGGER.info("Removing curtain from grid: " + gridToScour.getConfigurableGrid().getIndex());
         final GridPane screenGrid = HomeController.getScreenGrid();
-        if (screenGrid.getChildren().contains(leftScroll)) {
-            screenGrid.getChildren().remove(leftScroll);
+        final ObservableList<Node> children = screenGrid.getChildren();
+        if (children.contains(leftScroll)) {
+            children.remove(leftScroll);
         }
-        if (screenGrid.getChildren().contains(rightScroll)) {
-            screenGrid.getChildren().remove(rightScroll);
+        if (children.contains(rightScroll)) {
+            children.remove(rightScroll);
         }
 
     }
@@ -179,5 +182,37 @@ public class Scroller extends Selector {
     public void configure() {
         startStop();
         loadStartStopListener();
+    }
+
+    @Override
+    public void startStop() {
+        SelectionMethod userMethod = getUser().getInteraction().getSelectionMethod();
+        SelectionMethod gridMethod = gridToScour.getConfigurableGrid().getSelectionMethod();
+
+        Boolean overrideSelectionMethod = getUser().getInteraction().isInAssistedMode();
+        SelectionMethod deducedMethod = (overrideSelectionMethod) ? gridMethod : userMethod;
+
+        final GridPane screenGrid = HomeController.getScreenGrid();
+
+        final int size = gridToScour.getConfigurableGrid().getGridManager().getOrder().getFirstList().size();
+        if (deducedMethod.equals(getSelectionMethod())
+                && !inEditMode()
+                && gridToScour.getConfigurableGrid().isRootGrid()
+                && size > 1
+                && HomeController.getSubGrid().getWidth() > HomeController.getScreenGrid().getWidth()) {
+            if (!inProcess()) {
+                removeCurtain();
+                LOGGER.info("Required method is " + deducedMethod.toString()
+                        + ". Starting selector:" + getSelectionMethod());
+                addCurtain(HomeController.getSubGrid(), getCurtain());
+            }
+        } else if (!deducedMethod.equals(getSelectionMethod())
+                || inEditMode()
+                || size <= 1
+                || HomeController.getSubGrid().getWidth() <= HomeController.getScreenGrid().getWidth()) {
+            LOGGER.info("Required method is " + deducedMethod.toString()
+                    + ". Stopping selector." + getSelectionMethod());
+            stop();
+        }
     }
 }
