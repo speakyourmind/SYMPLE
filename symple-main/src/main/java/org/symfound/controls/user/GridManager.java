@@ -22,6 +22,7 @@ import static org.symfound.builder.user.characteristic.Navigation.KEY_DELIMITER;
 import org.symfound.builder.user.selection.SelectionMethod;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_GRID_GAP;
 import static org.symfound.controls.user.CommonGrid.DEFAULT_MARGIN;
+import static org.symfound.main.Main.getSession;
 import org.symfound.tools.iteration.ParallelList;
 
 /**
@@ -425,7 +426,7 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public StringProperty overrideStyleProperty() {
-        //    if (overrideStyle == null) {
+        // if (overrideStyle == null) {
         overrideStyle = new SimpleStringProperty(getPreferences().get("overrideStyle", ""));
         //  }
         return overrideStyle;
@@ -584,7 +585,7 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public DoubleProperty overrideWidthProperty() {
-        String value = getPreferences().get("overrideWidth", MAX_LEVEL.toString());
+        String value = getPreferences().get("overrideWidth",getSession().getDisplay().getScreenWidth().toString());
         overrideWidth = new SimpleDoubleProperty(Double.valueOf(value));
         return overrideWidth;
     }
@@ -646,7 +647,7 @@ public abstract class GridManager implements Editable {
      * @return
      */
     public DoubleProperty overrideHeightProperty() {
-        String value = getPreferences().get("overrideHeight", MAX_LEVEL.toString());
+        String value = getPreferences().get("overrideHeight", getSession().getDisplay().getScreenHeight().toString());
         overrideHeight = new SimpleDoubleProperty(Double.valueOf(value));
         return overrideHeight;
     }

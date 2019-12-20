@@ -36,10 +36,8 @@
     -fx-text-alignment:center;
     -fx-text-fill: -fx-light;
     -fx-font-size: 1.6em;
-    -fx-effect:dropshadow(gaussian,-fx-dark,2.0,0.0,0,0);
-
+    -fx-effect:dropshadow(gaussian,-fx-dark,3.0,0.0,0,0);
 }
-
 
 .button:hover {
     -fx-background-color: derive(-fx-dark,10%);
@@ -70,7 +68,6 @@
     -fx-border-width: 5;
     -fx-background-color: transparent;
     -fx-background-radius: 0,0,0,0;
-
 }
 
 .choice-box {
@@ -428,13 +425,20 @@
 }
 
 .lock-button {
-    -fx-background-image: url("../images/home_lock.png");
-    -fx-background-size: contain;
+    -fx-background-image: url("../images/lock.png");
+    -fx-background-size: 100;
     -fx-background-color:  -fx-dark, derive(-fx-blue,-10%), -fx-blue;
     -fx-text-alignment:center;
     -fx-text-fill: -fx-light;
 }
-.lock-button:hover {
+.unlock-button {
+    -fx-background-image: url("../images/unlock.png");
+    -fx-background-size: 100;
+    -fx-background-color:  -fx-dark, derive(-fx-blue,-10%), -fx-blue;
+    -fx-text-alignment:center;
+    -fx-text-fill: -fx-light;
+}
+.lock-button:hover,.unlock-button:hover {
     -fx-background-color: -fx-dark, derive(-fx-blue,-10%), derive(-fx-blue,10%);
     -fx-text-fill: derive(-fx-light,10%);
 }
@@ -492,7 +496,6 @@
     -fx-background-color:  -fx-dark, derive(-fx-blue,-10%), -fx-blue; 
     -fx-text-alignment:center;
     -fx-text-fill: -fx-light;
-
 }
 
 .update-version-button:hover {

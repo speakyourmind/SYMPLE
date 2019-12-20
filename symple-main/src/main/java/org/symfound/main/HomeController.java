@@ -133,12 +133,8 @@ public class HomeController extends GridController {
         if (scrollPane == null) {
             scrollPane = new ScrollPane();
             scrollPane.setPadding(new Insets(0));
-            //  scrollPane.setFitToHeight(Boolean.TRUE);
-            //  scrollPane.setFitToWidth(Boolean.TRUE);
             setSizeMax(scrollPane);
             scrollPane.setContent(getSubGrid());
-            //getSubGrid().setPrefWidth(25000.0);
-            //getSubGrid().setMaxWidth(50000.0);
             scrollPane.getStylesheets().add(CSS_PATH);
             GridPane.setRowIndex(scrollPane, 1);
             GridPane.setColumnSpan(scrollPane, 2);
@@ -162,6 +158,10 @@ public class HomeController extends GridController {
             screenGrid.setSpecColumns(2);
             List<Double> columnPercentages = Arrays.asList(10.0, 90.0);
             screenGrid.buildColumnsByPerc(columnPercentages);
+            
+            screenGrid.setPrefWidth(10000.0);
+            screenGrid.setMaxWidth(10000.0);
+            
 
         }
         return screenGrid;

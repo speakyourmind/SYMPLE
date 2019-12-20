@@ -302,23 +302,6 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
      *
      */
     public void configButtons() {
-        /* boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
-
-        // TO DO : CAUSING ISSUES WITH PHOTO AND YOUTUBE. Try when playing?
-        if (ConfigurableGrid.inEditMode() && !isSettingsControl && isEditable()) {
-            addConfigButtons();
-        } else {
-            removeConfigButtons();
-        }
-
-        // TO DO: May cause issues creating too many listeners.
-        ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
-            if (newValue1 && !isSettingsControl && isEditable()) {
-                addConfigButtons();
-            } else {
-                removeConfigButtons();
-            }
-        });*/
     }
 
     public void configureStyle(String fontFamily, FontWeight fw) {
@@ -352,20 +335,19 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
     public void configureFont(String fontFamily, FontWeight fw) {
         resetFont(fontFamily, fw);
+        final AnimatedButton primaryControl = getPrimaryControl();
+        primaryControl.setFont(getFontTracker().fontTracking.getValue());
+        primaryControl.fontProperty().bind(getFontTracker().fontTracking);
         //TO DO: Could be an issue
         HomeController.getSubGrid().getConfigurableGrid().statusProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.equals(ScreenStatus.PLAYING)) {
                 resetFont(fontFamily, fw);
                 //setFont();
-                final AnimatedButton primaryControl = getPrimaryControl();
                 primaryControl.widthProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) -> {
-                    resetFont(fontFamily, fw);
+                    //    resetFont(fontFamily, fw);
                     setFont(fontFamily, fw);
-
                 });
-                primaryControl.setFont(getFontTracker().fontTracking.getValue());
 
-                primaryControl.fontProperty().bind(getFontTracker().fontTracking);
             }
         });
     }
@@ -518,6 +500,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
         setTitlePos(textAlignment.getValue().toString());
         setTextColour(textColourChoices.getValue());
         setFontScale(fontScaleSlider.getValue());
+        setFont("Roboto", FontWeight.NORMAL);
         setSpeakable(speakableButton.getValue());
         setWrapText(wrapTextButton.getValue());
 
@@ -799,23 +782,23 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
         columnExpandRow.add(columnExpandSlider, 1, 0, 2, 1);
 
-    //    if (navigatePostClick()) {
-            SettingsRow navigateRow = createSettingRow("Navigate", "Screen to navigate to after click");
-            List<String> navigatableScreens = new ArrayList<>();
-            navigatableScreens.add("");
-            navigatableScreens.add(PREVIOUS_SCREEN_INDEX);
-            try {
-                navigatableScreens.addAll(getNavigatableScreens("subgrid"));
-            } catch (BackingStoreException ex) {
-                LOGGER.fatal("Unable to load Preferences" + ex.getMessage());
-            }
-            navigateIndexChoices = new ChoiceBox<>(FXCollections.observableArrayList(navigatableScreens));
-            navigateIndexChoices.setValue(getNavigateIndex());
-            navigateIndexChoices.setMaxSize(180.0, 60.0);
-            navigateIndexChoices.getStyleClass().add("settings-text-area");
-            navigateRow.add(navigateIndexChoices, 1, 0, 2, 1);
-            selectionSettings.add(navigateRow);
-    //    }
+        //    if (navigatePostClick()) {
+        SettingsRow navigateRow = createSettingRow("Navigate", "Screen to navigate to after click");
+        List<String> navigatableScreens = new ArrayList<>();
+        navigatableScreens.add("");
+        navigatableScreens.add(PREVIOUS_SCREEN_INDEX);
+        try {
+            navigatableScreens.addAll(getNavigatableScreens("subgrid"));
+        } catch (BackingStoreException ex) {
+            LOGGER.fatal("Unable to load Preferences" + ex.getMessage());
+        }
+        navigateIndexChoices = new ChoiceBox<>(FXCollections.observableArrayList(navigatableScreens));
+        navigateIndexChoices.setValue(getNavigateIndex());
+        navigateIndexChoices.setMaxSize(180.0, 60.0);
+        navigateIndexChoices.getStyleClass().add("settings-text-area");
+        navigateRow.add(navigateIndexChoices, 1, 0, 2, 1);
+        selectionSettings.add(navigateRow);
+        //    }
 
         SettingsRow totalUsageRow = EditDialog.createSettingRow("Usage Count", "Number of times this button has been clicked");
 
@@ -888,7 +871,7 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
 
     private List<String> getNavigatableScreens(String node) throws BackingStoreException {
         List<String> screenNames = new ArrayList<>();
-        
+
         List<String> childrenNames = Arrays.asList(Preferences.userNodeForPackage(this.getClass()).node(node).childrenNames());
         if (childrenNames.size() > 0) {
             for (String child : childrenNames) {

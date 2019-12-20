@@ -1,9 +1,13 @@
 package org.symfound.controls.user;
 
 import java.util.prefs.Preferences;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.StringExpression;
+import javafx.geometry.Pos;
 import javafx.scene.text.FontWeight;
 import org.apache.log4j.Logger;
 import org.symfound.controls.AppableControl;
+import static org.symfound.controls.AppableControl.LOGGER;
 
 /**
  * This button disables the children of the pane, so they are no longer
@@ -46,8 +50,37 @@ public final class LockButton extends AppableControl {
     public LockButton(ButtonGrid lockGrid) {
         super("type-button", KEY, DEFAULT_TITLE, "default");
         this.lockGrid = lockGrid;
-        configureStyle("Roboto", FontWeight.BOLD);
-        
+        configureFont("Roboto", FontWeight.NORMAL);
+        if (lockGrid.isPaused()) {
+        //    setTitle("Unlock");
+          //  getPrimaryControl().setText("Unlock");
+            getPrimaryControl().getStyleClass().remove("lock-button");
+            setCSS("unlock-button", getPrimaryControl());
+            //  getPrimaryControl().setStyle("-fx-background-color:-fx-blue; -fx-background-insets: 0,0; -fx-text-fill: -fx-light; -fx-font-weight:bold; ");
+        } else {
+         //   setTitle("Lock");
+           // getPrimaryControl().setText("Lock");
+            //  getPrimaryControl().setStyle("");
+            getPrimaryControl().getStyleClass().remove("unlock-button");
+            setCSS("lock-button", getPrimaryControl());
+
+        }
+        lockGrid.pausedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+             //   setTitle("Unlock");
+             //   getPrimaryControl().setText("Unlock");
+                getPrimaryControl().getStyleClass().remove("lock-button");
+                setCSS("unlock-button", getPrimaryControl());
+                //  getPrimaryControl().setStyle("-fx-background-color:-fx-blue; -fx-background-insets: 0,0; -fx-text-fill: -fx-light; -fx-font-weight:bold; ");
+            } else {
+             //   setTitle("Lock");
+             //   getPrimaryControl().setText("Lock");
+                //  getPrimaryControl().setStyle("");
+                getPrimaryControl().getStyleClass().remove("unlock-button");
+                setCSS("lock-button", getPrimaryControl());
+
+            }
+        });
     }
 
     /**
@@ -57,7 +90,7 @@ public final class LockButton extends AppableControl {
     public void run() {
         LOGGER.info("Lock button pressed");
         lockGrid.togglePause();
-       
+
     }
 
     @Override

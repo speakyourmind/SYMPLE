@@ -582,12 +582,6 @@ public abstract class ButtonGrid extends FillableGrid {
                         musicButton.setGridLocation(i);
                         requestedControls.add(musicButton);
                         break;
-                    case SettingsButton.KEY:
-                        SettingsButton settingsButton = new SettingsButton();
-                        configureItem(settingsButton);
-                        settingsButton.setGridLocation(i);
-                        requestedControls.add(settingsButton);
-                        break;
                     case LockButton.KEY:
                         LockButton lockButton = new LockButton(this);
                         configureItem(lockButton);
