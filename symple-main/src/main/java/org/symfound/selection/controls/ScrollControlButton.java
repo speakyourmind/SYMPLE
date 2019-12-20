@@ -5,6 +5,7 @@
  */
 package org.symfound.selection.controls;
 
+import org.symfound.builder.user.selection.ScrollControl;
 import java.util.Arrays;
 import java.util.List;
 import java.util.prefs.Preferences;

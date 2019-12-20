@@ -23,7 +23,7 @@ import org.symfound.controls.user.AnimatedButton;
 import org.symfound.controls.user.AnimatedLabel;
 import org.symfound.controls.user.AnimatedPane;
 import org.symfound.controls.user.BuildableGrid;
-import org.symfound.main.settings.SetResetable;
+import org.symfound.builder.settings.SetResetable;
 
 /**
  *

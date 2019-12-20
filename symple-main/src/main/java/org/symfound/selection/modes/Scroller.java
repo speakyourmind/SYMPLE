@@ -27,7 +27,7 @@ import static org.symfound.main.Main.getSession;
 import org.symfound.selection.Curtain;
 import org.symfound.selection.Selector;
 import static org.symfound.selection.Selector.LOGGER;
-import org.symfound.selection.controls.ScrollControl;
+import org.symfound.builder.user.selection.ScrollControl;
 import org.symfound.selection.controls.ScrollControlButton;
 import static org.symfound.selection.modes.Scanner.LOGGER;
 

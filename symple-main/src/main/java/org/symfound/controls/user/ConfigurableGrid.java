@@ -198,6 +198,9 @@ public class ConfigurableGrid extends ButtonGrid {
             getUser().getNavigation().setPreviousIndex(oldValue1);
             getUser().getNavigation().setCurrentIndex(newValue1);
 
+            HomeController.getScrollPane().setHvalue(0.0);
+            HomeController.getScrollPane().setVvalue(0.0);
+
             setOrder(getGridManager().getOrder());
             setCustomHGap(getGridManager().getCustomHGap());
             setCustomMargin(getGridManager().getCustomMargin());

@@ -9,7 +9,6 @@
         <map/>
         <node name="builder">
           <map/>
-         
         </node>
         <node name="controls">
           <map/>
@@ -93,6 +92,25 @@
               <map>
                 <entry key="speakText" value="Exit"/>
                 <entry key="editable" value="false"/>
+              </map>
+            </node>
+            <node name="lock">
+              <map>
+                <entry key="title" value="Lock"/>
+                <entry key="titlePos" value="BOTTOM_CENTER"/>
+                <entry key="textColour" value="LIGHT"/>
+                <entry key="fontScale" value="25.0"/>
+                <entry key="speakable" value="true"/>
+                <entry key="wrapText" value="TRUE"/>
+                <entry key="speakText" value="Lock"/>
+                <entry key="overrideStyle" value=""/>
+                <entry key="backgroundColour" value="BLUE"/>
+                <entry key="backgroundSize" value="contain"/>
+                <entry key="backgroundURL" value="images/lock.png"/>
+                <entry key="showTitle" value="true"/>
+                <entry key="selectable" value="true"/>
+                <entry key="disablePrimary" value="false"/>
+                <entry key="navigateIndex" value=""/>
               </map>
             </node>
             <node name="main text">
@@ -674,8 +692,8 @@
                     <entry key="showTitle" value="true"/>
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
-                    <entry key="usage.lastUsed" value="1576613974625"/>
-                    <entry key="usage.count" value="7"/>
+                    <entry key="usage.lastUsed" value="1576866100571"/>
+                    <entry key="usage.count" value="11"/>
                   </map>
                   <node name="playlist_1">
                     <map>
@@ -693,8 +711,8 @@
                       <entry key="showTitle" value="true"/>
                       <entry key="selectable" value="true"/>
                       <entry key="disablePrimary" value="false"/>
-                      <entry key="usage.lastUsed" value="1567923893461"/>
-                      <entry key="usage.count" value="1"/>
+                      <entry key="usage.lastUsed" value="1576786950763"/>
+                      <entry key="usage.count" value="2"/>
                     </map>
                   </node>
                 </node>
@@ -717,8 +735,8 @@
                     <entry key="showTitle" value="true"/>
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
-                    <entry key="usage.lastUsed" value="1568190754759"/>
-                    <entry key="usage.count" value="18"/>
+                    <entry key="usage.lastUsed" value="1576786953316"/>
+                    <entry key="usage.count" value="19"/>
                     <entry key="wrapText" value="TRUE"/>
                   </map>
                   <node name="4phrase">
@@ -891,8 +909,8 @@
                   <entry key="showTitle" value="true"/>
                   <entry key="selectable" value="true"/>
                   <entry key="disablePrimary" value="false"/>
-                  <entry key="usage.lastUsed" value="1576613977043"/>
-                  <entry key="usage.count" value="13"/>
+                  <entry key="usage.lastUsed" value="1576866097855"/>
+                  <entry key="usage.count" value="16"/>
                 </map>
               </node>
               <node name="keyboard">
@@ -911,8 +929,8 @@
                   <entry key="showTitle" value="true"/>
                   <entry key="selectable" value="true"/>
                   <entry key="disablePrimary" value="false"/>
-                  <entry key="usage.lastUsed" value="1576665703654"/>
-                  <entry key="usage.count" value="36"/>
+                  <entry key="usage.lastUsed" value="1576866105996"/>
+                  <entry key="usage.count" value="53"/>
                   <entry key="wrapText" value="TRUE"/>
                 </map>
                 <node name="core-36">
@@ -956,15 +974,15 @@
                     <entry key="showTitle" value="true"/>
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
-                    <entry key="usage.lastUsed" value="1576665704654"/>
-                    <entry key="usage.count" value="21"/>
+                    <entry key="usage.lastUsed" value="1576849885566"/>
+                    <entry key="usage.count" value="22"/>
                   </map>
                 </node>
                 <node name="scroll">
                   <map>
                     <entry key="navigatePostClick" value="false"/>
-                    <entry key="usage.lastUsed" value="1575491602303"/>
-                    <entry key="usage.count" value="4"/>
+                    <entry key="usage.lastUsed" value="1576866109678"/>
+                    <entry key="usage.count" value="16"/>
                     <entry key="title" value="Scroll"/>
                     <entry key="titlePos" value="BOTTOM_CENTER"/>
                     <entry key="textColour" value="LIGHT"/>
@@ -980,12 +998,100 @@
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
                   </map>
+                  <node name="screen1">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value=".  A  B  C &#10;D  E  F"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="60.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="wrapText" value="TRUE"/>
+                      <entry key="speakText" value="A to F"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="DARK"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="columnExpand" value="0"/>
+                      <entry key="usage.lastUsed" value="1576864928355"/>
+                      <entry key="usage.count" value="17"/>
+                    </map>
+                  </node>
+                  <node name="screen2">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="G  H  I &#10;J  K  L"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="60.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="wrapText" value="TRUE"/>
+                      <entry key="speakText" value="G to L"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="DARK"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="columnExpand" value="0"/>
+                      <entry key="usage.lastUsed" value="1576866162826"/>
+                      <entry key="usage.count" value="7"/>
+                    </map>
+                  </node>
+                  <node name="screen3">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="M  N  O &#10;P  Q  R  S"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="60.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="wrapText" value="TRUE"/>
+                      <entry key="speakText" value="M to S"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="DARK"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="columnExpand" value="0"/>
+                      <entry key="usage.lastUsed" value="1576866119011"/>
+                      <entry key="usage.count" value="4"/>
+                    </map>
+                  </node>
+                  <node name="screen4">
+                    <map>
+                      <entry key="navigatePostClick" value="false"/>
+                      <entry key="title" value="T  U  V &#10;W  X  Y  Z"/>
+                      <entry key="titlePos" value="CENTER"/>
+                      <entry key="textColour" value="LIGHT"/>
+                      <entry key="fontScale" value="60.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="wrapText" value="TRUE"/>
+                      <entry key="speakText" value="T to Z"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="DARK"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="disablePrimary" value="false"/>
+                      <entry key="columnExpand" value="0"/>
+                      <entry key="usage.lastUsed" value="1576866206852"/>
+                      <entry key="usage.count" value="4"/>
+                    </map>
+                  </node>
                 </node>
                 <node name="tiered">
                   <map>
                     <entry key="navigatePostClick" value="false"/>
-                    <entry key="usage.lastUsed" value="1576665700454"/>
-                    <entry key="usage.count" value="26"/>
+                    <entry key="usage.lastUsed" value="1576849856397"/>
+                    <entry key="usage.count" value="30"/>
                     <entry key="title" value="Tiered"/>
                     <entry key="titlePos" value="BOTTOM_CENTER"/>
                     <entry key="textColour" value="LIGHT"/>
@@ -1019,8 +1125,8 @@
                       <entry key="selectable" value="true"/>
                       <entry key="disablePrimary" value="false"/>
                       <entry key="columnExpand" value="0"/>
-                      <entry key="usage.lastUsed" value="1576665316677"/>
-                      <entry key="usage.count" value="14"/>
+                      <entry key="usage.lastUsed" value="1576849861443"/>
+                      <entry key="usage.count" value="15"/>
                     </map>
                   </node>
                   <node name="screen2">
@@ -1217,6 +1323,8 @@
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
                     <entry key="navigateIndex" value=""/>
+                    <entry key="usage.lastUsed" value="1576862661272"/>
+                    <entry key="usage.count" value="2"/>
                   </map>
                 </node>
                 <node name="c">
@@ -1411,6 +1519,8 @@
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
                     <entry key="navigateIndex" value="-Previous"/>
+                    <entry key="usage.lastUsed" value="1576698993421"/>
+                    <entry key="usage.count" value="2"/>
                   </map>
                 </node>
                 <node name="g">
@@ -2055,8 +2165,8 @@
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
                     <entry key="navigateIndex" value="-Previous"/>
-                    <entry key="usage.lastUsed" value="1576664110531"/>
-                    <entry key="usage.count" value="3"/>
+                    <entry key="usage.lastUsed" value="1576866194654"/>
+                    <entry key="usage.count" value="7"/>
                   </map>
                 </node>
                 <node name="home">
@@ -2076,13 +2186,16 @@
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
                     <entry key="navigateIndex" value="home"/>
-                    <entry key="usage.count" value="20"/>
-                    <entry key="usage.lastUsed" value="1576615859137"/>
+                    <entry key="usage.count" value="21"/>
+                    <entry key="usage.lastUsed" value="1576849877455"/>
                     <entry key="smsEnabled" value="false"/>
                     <entry key="webhook.key" value=""/>
                     <entry key="webhook.event.start" value=""/>
                     <entry key="webhook.event.end" value=""/>
                     <entry key="backgroundSize" value="contain"/>
+                    <entry key="text.to" value=""/>
+                    <entry key="webhookEnabled" value="false"/>
+                    <entry key="wrapText" value="TRUE"/>
                   </map>
                 </node>
               </node>
@@ -3271,8 +3384,8 @@
                     <entry key="backgroundColour" value="DARK"/>
                     <entry key="backgroundURL" value="/images/home_small.png"/>
                     <entry key="overrideStyle" value="-fx-background-size:20 20;-fx-background-position: center;-fx-background-repeat:no-repeat;"/>
-                    <entry key="usage.lastUsed" value="1576665706257"/>
-                    <entry key="usage.count" value="124"/>
+                    <entry key="usage.lastUsed" value="1576866102809"/>
+                    <entry key="usage.count" value="134"/>
                   </map>
                 </node>
               </node>
@@ -3388,6 +3501,8 @@
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
                     <entry key="navigateIndex" value=""/>
+                    <entry key="usage.lastUsed" value="1576850149800"/>
+                    <entry key="usage.count" value="1"/>
                   </map>
                 </node>
                 <node name="clear">
@@ -4441,6 +4556,8 @@
                     <entry key="gap" value="5.0"/>
                     <entry key="vGap" value="5.0"/>
                     <entry key="maxDifficulty" value="30.0"/>
+                    <entry key="overrideWidth" value="1366.0"/>
+                    <entry key="overrideHeight" value="768.0"/>
                   </map>
                   <node name="playlist_1">
                     <map>
@@ -4568,6 +4685,10 @@
                   <entry key="enablePagination" value="false"/>
                   <entry key="margin" value="0.0"/>
                   <entry key="overrideStyle" value=""/>
+                  <entry key="fitToWidth" value="true"/>
+                  <entry key="overrideWidth" value="5000.0"/>
+                  <entry key="fitToHeight" value="true"/>
+                  <entry key="overrideHeight" value="500.0"/>
                 </map>
               </node>
               <node name="home-pg">
@@ -4587,6 +4708,9 @@
                   <entry key="overrideStyle" value=""/>
                   <entry key="maxDifficulty" value="30.0"/>
                   <entry key="fillMethod" value="COLUMN_WISE"/>
+                  <entry key="fitToWidth" value="true"/>
+                  <entry key="overrideWidth" value="1366.0"/>
+                  <entry key="overrideHeight" value="768.0"/>
                 </map>
                 <node name="controls">
                   <map>
@@ -4617,7 +4741,8 @@
                     <entry key="minDifficulty" value="0.0"/>
                     <entry key="overrideColumn" value="1.0"/>
                     <entry key="overrideRow" value="5.0"/>
-                    <entry key="overrideStyle" value="-fx-background-color:-fx-dark;"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="fitToWidth" value="true"/>
                   </map>
                   <node name="row1">
                     <map>
@@ -4656,19 +4781,82 @@
                 </node>
                 <node name="scroll">
                   <map>
-                    <entry key="order" value="Script=type/a,Script=type/b,Script=type/c,Script=type/d,Script=type/e,Script=type/f,Script=type/g,Script=type/h,Script=type/i,Script=type/j,Script=type/k,Script=type/l,Script=type/m,Script=type/n,Script=type/o,Script=type/p,Script=type/q,Script=type/r,Script=type/s,Script=type/t,Script=type/u,Script=type/v,Script=type/w,Script=type/x,Script=type/y,Script=type/z,"/>
+                    <entry key="order" value="Script=navigate/home,Main Text=default,Replace Key=default,Screen=keyboard/scroll/screen1,Screen=keyboard/scroll/screen2,Screen=keyboard/scroll/screen3,Screen=keyboard/scroll/screen4,Script=2step/backspace,Script=2step/space,Speak Main=default,"/>
                     <entry key="gap" value="20.0"/>
                     <entry key="margin" value="0.0"/>
                     <entry key="vGap" value="20.0"/>
                     <entry key="minDifficulty" value="0.0"/>
                     <entry key="overrideRow" value="1.0"/>
-                    <entry key="overrideColumn" value="20.0"/>
-                    <entry key="overrideStyle" value="-fx-background-color:-fx-dark;"/>
+                    <entry key="overrideColumn" value="10.0"/>
+                    <entry key="overrideStyle" value=""/>
+                    <entry key="fitToWidth" value="false"/>
+                    <entry key="overrideWidth" value="3250.0"/>
+                    <entry key="fillMethod" value="COLUMN_WISE"/>
                   </map>
+                  <node name="screen1">
+                    <map>
+                      <entry key="order" value="Script=navigate/back,Script=2step/fullstop,Script=2step/a,Script=2step/b,Script=2step/c,Script=2step/d,Script=2step/e,Script=2step/f,"/>
+                      <entry key="gap" value="40.0"/>
+                      <entry key="margin" value="20.0"/>
+                      <entry key="vGap" value="40.0"/>
+                      <entry key="fillMethod" value="ROW_WISE"/>
+                      <entry key="maxDifficulty" value="30.0"/>
+                      <entry key="overrideRow" value="1.0"/>
+                      <entry key="overrideColumn" value="9.0"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="fitToWidth" value="false"/>
+                      <entry key="overrideWidth" value="3000.0"/>
+                    </map>
+                  </node>
+                  <node name="screen2">
+                    <map>
+                      <entry key="order" value="Script=navigate/back,Script=2step/g,Script=2step/h,Script=2step/i,Script=2step/j,Script=2step/k,Script=2step/l,"/>
+                      <entry key="gap" value="40.0"/>
+                      <entry key="margin" value="20.0"/>
+                      <entry key="vGap" value="40.0"/>
+                      <entry key="fillMethod" value="ROW_WISE"/>
+                      <entry key="maxDifficulty" value="30.0"/>
+                      <entry key="overrideRow" value="1.0"/>
+                      <entry key="overrideColumn" value="7.0"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="fitToWidth" value="false"/>
+                      <entry key="overrideWidth" value="3000.0"/>
+                    </map>
+                  </node>
+                  <node name="screen3">
+                    <map>
+                      <entry key="order" value="Script=navigate/back,Script=2step/m,Script=2step/n,Script=2step/o,Script=2step/p,Script=2step/q,Script=2step/r,Script=2step/s,"/>
+                      <entry key="gap" value="40.0"/>
+                      <entry key="margin" value="20.0"/>
+                      <entry key="vGap" value="40.0"/>
+                      <entry key="fillMethod" value="ROW_WISE"/>
+                      <entry key="maxDifficulty" value="30.0"/>
+                      <entry key="overrideRow" value="1.0"/>
+                      <entry key="overrideColumn" value="8.0"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="fitToWidth" value="false"/>
+                      <entry key="overrideWidth" value="3000.0"/>
+                    </map>
+                  </node>
+                  <node name="screen4">
+                    <map>
+                      <entry key="order" value="Script=navigate/back,Script=2step/t,Script=2step/u,Script=2step/v,Script=2step/w,Script=2step/x,Script=2step/y,Script=2step/z,"/>
+                      <entry key="gap" value="40.0"/>
+                      <entry key="margin" value="20.0"/>
+                      <entry key="vGap" value="40.0"/>
+                      <entry key="fillMethod" value="ROW_WISE"/>
+                      <entry key="maxDifficulty" value="30.0"/>
+                      <entry key="overrideRow" value="1.0"/>
+                      <entry key="overrideColumn" value="8.0"/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="fitToWidth" value="false"/>
+                      <entry key="overrideWidth" value="3000.0"/>
+                    </map>
+                  </node>
                 </node>
                 <node name="tiered">
                   <map>
-                    <entry key="order" value="Script=navigate/home,Screen=keyboard/tiered/screen1,Screen=keyboard/tiered/screen2,Script=2step/clear,Script=2step/backspace,Main Text=default,Replace Key=default,Script=2step/space,Speak Main=default,Screen=keyboard/tiered/screen3,Screen=keyboard/tiered/screen4,Script=rest,Replace Key=default,Replace Key=default,"/>
+                    <entry key="order" value="Script=navigate/home,Screen=keyboard/tiered/screen1,Screen=keyboard/tiered/screen2,Script=2step/clear,Script=2step/backspace,Main Text=default,Replace Key=default,Script=2step/space,Speak Main=default,Screen=keyboard/tiered/screen3,Screen=keyboard/tiered/screen4,Lock=default,Replace Key=default,Replace Key=default,"/>
                     <entry key="gap" value="40.0"/>
                     <entry key="margin" value="5.0"/>
                     <entry key="vGap" value="40.0"/>
@@ -4678,6 +4866,8 @@
                     <entry key="overrideRow" value="3.0"/>
                     <entry key="overrideColumn" value="4.0"/>
                     <entry key="overrideStyle" value=""/>
+                    <entry key="paused" value="false"/>
+                    <entry key="fitToWidth" value="true"/>
                   </map>
                   <node name="screen1">
                     <map>
@@ -4897,9 +5087,7 @@
         <node name="selection">
           <map/>
           <node name="Curtain">
-            <map>
-              <entry key="overrideStyle" value="-fx-background-color:-fx-red"/>
-            </map>
+           
           </node>
           <node name="Selector">
             <map/>
@@ -4932,7 +5120,12 @@
               </node>
             </node>
           </node>
-          
+          <node name="selector">
+            <map>
+              <entry key="usage.lastUsed" value="1575398172645"/>
+              <entry key="usage.count" value="8"/>
+            </map>
+          </node>
           <node name="subgrid">
             <map/>
           </node>

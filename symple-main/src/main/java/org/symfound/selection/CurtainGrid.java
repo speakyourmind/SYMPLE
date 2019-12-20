@@ -25,7 +25,7 @@ import org.symfound.device.hardware.Hardware;
 import org.symfound.device.hardware.characteristic.Movability;
 import org.symfound.main.HomeController;
 import org.symfound.main.Main;
-import org.symfound.selection.controls.ScrollControl;
+import org.symfound.builder.user.selection.ScrollControl;
 import org.symfound.selection.controls.ScrollControlButton;
 import static org.symfound.selection.controls.ScrollControlButton.KEY;
 import org.symfound.selection.modes.Scroller;
