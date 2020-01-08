@@ -6,13 +6,8 @@
 package org.symfound.controls.user;
 
 import java.util.prefs.Preferences;
-import org.symfound.comm.file.PathWriter;
 import org.symfound.controls.AppableControl;
-import org.symfound.builder.settings.PreferencesExporter;
-import org.symfound.controls.system.dialog.OKDialog;
 import org.symfound.controls.system.dialog.ScreenPopup;
-import static org.symfound.controls.user.ExitButton.LOGGER;
-import org.symfound.main.FullSession;
 import static org.symfound.main.Main.getVersionManager;
 
 /**

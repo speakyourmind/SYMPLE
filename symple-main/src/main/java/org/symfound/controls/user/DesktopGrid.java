@@ -34,7 +34,6 @@ public class DesktopGrid extends BuildableGrid {
             MouseSelectionType.DRAG,
             MouseSelectionType.ZOOM,
             MouseSelectionType.OFF,
-            SettingsButton.KEY,
             OSK_KEY);
 
     /**

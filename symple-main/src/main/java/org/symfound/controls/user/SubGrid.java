@@ -158,7 +158,6 @@ public class SubGrid extends AppableControl {
             gridMenu.setSpecRows(2);
             gridMenu.setSpecColumns(1);
             gridMenu.build();
-            //gridMenu.add(getSettingsButton(), 0, 0);
             gridMenu.add(getAddKeyButton(), 0, 0);
             gridMenu.add(getEditGridButton(), 0, 1);
             gridMenu.setMaxHeight(110.0);
@@ -261,23 +260,6 @@ public class SubGrid extends AppableControl {
         editGridButton.toFront();
         //}
         return editGridButton;
-    }
-    SettingsButton settingsButton;
-
-    /**
-     *
-     * @return
-     */
-    public SettingsButton getSettingsButton() {
-        if (settingsButton == null) {
-            settingsButton = new SettingsButton();
-            settingsButton.setMinHeight(5.0);
-            settingsButton.setPrefHeight(60.0);
-            settingsButton.setMaxHeight(120.0);
-            settingsButton.setPane("apMain");
-            settingsButton.toFront();
-        }
-        return settingsButton;
     }
     AddKeyButton addKeyButton;
 

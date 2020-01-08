@@ -386,17 +386,6 @@ public abstract class AppableControl extends ConfirmableControl implements Clone
             getMainUI().open();
         }
     }
-
-    /*  private KeyRemoveButton keyRemoveButton;
-
-    public KeyRemoveButton getKeyRemoveButton() {
-        if (keyRemoveButton == null) {
-            keyRemoveButton = new KeyRemoveButton(getKey(), getIndex());
-            keyRemoveButton.setPane("apMain");
-            keyRemoveButton.setConfirmable(false);
-        }
-        return keyRemoveButton;
-    }*/
     /**
      *
      */

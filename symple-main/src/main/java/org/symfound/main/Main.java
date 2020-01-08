@@ -22,7 +22,7 @@ public class Main extends Application {
     /**
      *
      */
-    public static final String VERSION = "v2.7.4";
+    public static final String VERSION = "v2.7.5";
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -53,6 +53,7 @@ public class Main extends Application {
         if (sessionLauncher == null) {
             LOGGER.debug("Initializing session");
             User user = new User();
+            user.getProfile().setVersion(VERSION);
             FullSession fullSession = new FullSession(user);
             sessionLauncher = new SessionLauncher<>(fullSession);
            

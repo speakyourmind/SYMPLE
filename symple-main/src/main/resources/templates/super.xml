@@ -9,6 +9,9 @@
         <map/>
         <node name="builder">
           <map/>
+          <node name="user">
+          <map/>
+          </node>
         </node>
         <node name="controls">
           <map/>
@@ -124,14 +127,40 @@
             <node name="media">
               <map/>
               <node name="music">
-                <map>
-                  <entry key="folder" value="C:\Users\Administrator/music/"/>
-                </map>
+                <map/>
                 <node name="music control">
                   <map/>
+                  <node name="art">
+                    <map>
+                      <entry key="title" value=""/>
+                      <entry key="musicControl" value="TOGGLE"/>
+                      <entry key="shuffle" value="true"/>
+                      <entry key="showProgress" value="false"/>
+                      <entry key="showAlbumArt" value="true"/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="DARK"/>
+                      <entry key="fontScale" value="25.0"/>
+                      <entry key="speakable" value="false"/>
+                      <entry key="wrapText" value="TRUE"/>
+                      <entry key="speakText" value=""/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="TRANSPARENT"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="false"/>
+                      <entry key="selectable" value="false"/>
+                      <entry key="disablePrimary" value="true"/>
+                      <entry key="navigateIndex" value=""/>
+                    </map>
+                  </node>
+                  <node name="default">
+                    <map>
+                      <entry key="title" value=""/>
+                    </map>
+                  </node>
                   <node name="next">
                     <map>
-                      <entry key="title" value="Hotel California-Eagles"/>
+                      <entry key="title" value=""/>
                       <entry key="musicControl" value="NEXT"/>
                       <entry key="titlePos" value="BOTTOM_CENTER"/>
                       <entry key="overrideStyle" value=""/>
@@ -145,17 +174,18 @@
                       <entry key="textColour" value="DARK"/>
                       <entry key="fontScale" value="25.0"/>
                       <entry key="speakable" value="false"/>
-                      <entry key="speakText" value="Wish You Were Here-Pink Floyd"/>
+                      <entry key="speakText" value=""/>
                       <entry key="backgroundColour" value="LIGHT"/>
                       <entry key="backgroundSize" value="contain"/>
                       <entry key="backgroundURL" value=""/>
                       <entry key="selectable" value="true"/>
                       <entry key="navigateIndex" value=""/>
+                      <entry key="wrapText" value="TRUE"/>
                     </map>
                   </node>
                   <node name="previous">
                     <map>
-                      <entry key="title" value="Hotel California-Eagles"/>
+                      <entry key="title" value=""/>
                       <entry key="musicControl" value="PREVIOUS"/>
                       <entry key="titlePos" value="BOTTOM_CENTER"/>
                       <entry key="overrideStyle" value=""/>
@@ -169,7 +199,7 @@
                       <entry key="textColour" value="DARK"/>
                       <entry key="fontScale" value="25.0"/>
                       <entry key="speakable" value="false"/>
-                      <entry key="speakText" value="Pour Some Sugar On Me-Def Leppard"/>
+                      <entry key="speakText" value=""/>
                       <entry key="backgroundColour" value="LIGHT"/>
                       <entry key="backgroundSize" value="contain"/>
                       <entry key="backgroundURL" value=""/>
@@ -179,7 +209,7 @@
                   </node>
                   <node name="stop">
                     <map>
-                      <entry key="title" value="Hotel California-Eagles"/>
+                      <entry key="title" value=""/>
                       <entry key="musicControl" value="STOP"/>
                       <entry key="titlePos" value="BOTTOM_CENTER"/>
                       <entry key="overrideStyle" value=""/>
@@ -331,7 +361,6 @@
                   <map/>
                   <node name="next_1">
                     <map>
-                      <entry key="folder" value="C:\Users\Administrator/pictures/"/>
                       <entry key="shuffle" value="false"/>
                     </map>
                   </node>
@@ -444,6 +473,9 @@
                 <entry key="editable" value="false"/>
               </map>
             </node>
+            <node name="music control">
+              <map/>
+            </node>
             <node name="music info">
               <map/>
             </node>
@@ -460,8 +492,8 @@
                 <node name="music">
                   <map>
                     <entry key="navigatePostClick" value="false"/>
-                    <entry key="usage.lastUsed" value="1568141910803"/>
-                    <entry key="usage.count" value="4"/>
+                    <entry key="usage.lastUsed" value="1578081026309"/>
+                    <entry key="usage.count" value="10"/>
                     <entry key="title" value="Music"/>
                     <entry key="titlePos" value="BOTTOM_CENTER"/>
                     <entry key="textColour" value="LIGHT"/>
@@ -735,8 +767,8 @@
                     <entry key="showTitle" value="true"/>
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
-                    <entry key="usage.lastUsed" value="1576786953316"/>
-                    <entry key="usage.count" value="19"/>
+                    <entry key="usage.lastUsed" value="1578077772372"/>
+                    <entry key="usage.count" value="21"/>
                     <entry key="wrapText" value="TRUE"/>
                   </map>
                   <node name="4phrase">
@@ -755,8 +787,8 @@
                       <entry key="showTitle" value="true"/>
                       <entry key="selectable" value="true"/>
                       <entry key="disablePrimary" value="false"/>
-                      <entry key="usage.lastUsed" value="1568190743997"/>
-                      <entry key="usage.count" value="9"/>
+                      <entry key="usage.lastUsed" value="1578077768868"/>
+                      <entry key="usage.count" value="10"/>
                     </map>
                   </node>
                   <node name="6phrase">
@@ -929,8 +961,8 @@
                   <entry key="showTitle" value="true"/>
                   <entry key="selectable" value="true"/>
                   <entry key="disablePrimary" value="false"/>
-                  <entry key="usage.lastUsed" value="1576866105996"/>
-                  <entry key="usage.count" value="53"/>
+                  <entry key="usage.lastUsed" value="1578077801256"/>
+                  <entry key="usage.count" value="55"/>
                   <entry key="wrapText" value="TRUE"/>
                 </map>
                 <node name="core-36">
@@ -974,8 +1006,8 @@
                     <entry key="showTitle" value="true"/>
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
-                    <entry key="usage.lastUsed" value="1576849885566"/>
-                    <entry key="usage.count" value="22"/>
+                    <entry key="usage.lastUsed" value="1578077783397"/>
+                    <entry key="usage.count" value="23"/>
                   </map>
                 </node>
                 <node name="scroll">
@@ -1090,8 +1122,8 @@
                 <node name="tiered">
                   <map>
                     <entry key="navigatePostClick" value="false"/>
-                    <entry key="usage.lastUsed" value="1576849856397"/>
-                    <entry key="usage.count" value="30"/>
+                    <entry key="usage.lastUsed" value="1578077802694"/>
+                    <entry key="usage.count" value="31"/>
                     <entry key="title" value="Tiered"/>
                     <entry key="titlePos" value="BOTTOM_CENTER"/>
                     <entry key="textColour" value="LIGHT"/>
@@ -3384,8 +3416,8 @@
                     <entry key="backgroundColour" value="DARK"/>
                     <entry key="backgroundURL" value="/images/home_small.png"/>
                     <entry key="overrideStyle" value="-fx-background-size:20 20;-fx-background-position: center;-fx-background-repeat:no-repeat;"/>
-                    <entry key="usage.lastUsed" value="1576866102809"/>
-                    <entry key="usage.count" value="134"/>
+                    <entry key="usage.lastUsed" value="1578078683685"/>
+                    <entry key="usage.count" value="143"/>
                   </map>
                 </node>
               </node>
@@ -3530,8 +3562,8 @@
                     <entry key="selectable" value="true"/>
                     <entry key="disablePrimary" value="false"/>
                     <entry key="navigateIndex" value=""/>
-                    <entry key="usage.lastUsed" value="1576610159802"/>
-                    <entry key="usage.count" value="2"/>
+                    <entry key="usage.lastUsed" value="1578077788183"/>
+                    <entry key="usage.count" value="3"/>
                   </map>
                 </node>
                 <node name="d">
@@ -4448,6 +4480,8 @@
                     <entry key="gap" value="5.0"/>
                     <entry key="vGap" value="5.0"/>
                     <entry key="overrideStyle" value=""/>
+                    <entry key="overrideWidth" value="1366.0"/>
+                    <entry key="overrideHeight" value="768.0"/>
                   </map>
                   <node name="back">
                     <map>
@@ -4478,11 +4512,25 @@
                   </node>
                   <node name="info">
                     <map>
-                      <entry key="order" value="Music Info=default,"/>
+                      <entry key="order" value="Music Control=art,Music Info=default,"/>
                       <entry key="minDifficulty" value="1.0"/>
                       <entry key="overrideColumn" value="1.0"/>
                       <entry key="overrideRow" value="3.0"/>
                       <entry key="disablePrimary" value="false"/>
+                      <entry key="title" value=""/>
+                      <entry key="titlePos" value="BOTTOM_CENTER"/>
+                      <entry key="textColour" value="DARK"/>
+                      <entry key="fontScale" value="25.0"/>
+                      <entry key="speakable" value="true"/>
+                      <entry key="wrapText" value="TRUE"/>
+                      <entry key="speakText" value=" "/>
+                      <entry key="overrideStyle" value=""/>
+                      <entry key="backgroundColour" value="LIGHT"/>
+                      <entry key="backgroundSize" value="contain"/>
+                      <entry key="backgroundURL" value=""/>
+                      <entry key="showTitle" value="true"/>
+                      <entry key="selectable" value="true"/>
+                      <entry key="navigateIndex" value=""/>
                     </map>
                   </node>
                 </node>
@@ -4506,6 +4554,8 @@
                     <entry key="gap" value="5.0"/>
                     <entry key="vGap" value="5.0"/>
                     <entry key="maxDifficulty" value="30.0"/>
+                    <entry key="overrideWidth" value="1366.0"/>
+                    <entry key="overrideHeight" value="768.0"/>
                   </map>
                   <node name="folder_1">
                     <map>
@@ -4581,6 +4631,8 @@
                     <entry key="vGap" value="40.0"/>
                     <entry key="maxDifficulty" value="10.0"/>
                     <entry key="minDifficulty" value="0.0"/>
+                    <entry key="overrideWidth" value="1366.0"/>
+                    <entry key="overrideHeight" value="768.0"/>
                   </map>
                   <node name="4phrase">
                     <map>
@@ -5087,7 +5139,7 @@
         <node name="selection">
           <map/>
           <node name="Curtain">
-           
+            <map/>
           </node>
           <node name="Selector">
             <map/>

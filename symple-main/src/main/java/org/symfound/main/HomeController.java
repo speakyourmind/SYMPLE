@@ -121,7 +121,7 @@ public class HomeController extends GridController {
     public Toolbar getToolbar() {
         if (toolbar == null) {
             toolbar = new Toolbar();
-            toolbar.setButtonOrder("Update=default,Snapshot=default,Edit=default,User Settings=default,Minimize=default,Script=toolbar/home,Exit=default");
+            toolbar.setButtonOrder("Update=default,Snapshot=default,Edit=default,User Settings=default,Script=toolbar/home,Minimize=default,Exit=default");
             GridPane.setColumnSpan(toolbar, 2);
         }
         return toolbar;

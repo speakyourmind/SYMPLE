@@ -25,6 +25,7 @@ import javafx.scene.layout.Priority;
 import static org.symfound.builder.user.characteristic.Ability.MAX_LEVEL;
 import org.symfound.controls.AppableControl;
 import org.symfound.controls.RunnableControl;
+import static org.symfound.controls.user.ConfigurableGrid.inEditMode;
 
 /**
  *
@@ -104,11 +105,31 @@ public class FillableGrid extends BuildableGrid {
             populate(method);
             spread(method);
             disableAll(isPaused());
-            setStatus(ScreenStatus.PLAYING);  
+            setStatus(ScreenStatus.PLAYING);
+            /* if (!inEditMode()) {
+            launchAnimation();
+            }*/
         };
         Platform.runLater(runnable);
     }
 
+    public void launchAnimation() {
+        Double time = LAUNCH_TIME_INITIAL;
+        setVisibleAll(false);
+        for (int i = 0; i < getSpecRows(); i++) {
+            for (int j = 0; j < getSpecColumns(); j++) {
+                Node child = get(i, j);
+                if (child != null) {
+                    time += LAUNCH_TIME_PER_CONTROL;
+                    if (child instanceof RunnableControl) {
+                        RunnableControl control = (RunnableControl) child;
+                        control.setVisible(true);
+                        control.animate().startScale(time, 0.5, 1.0);
+                    }
+                }
+            }
+        }
+    }
     /**
      *
      * @param value
@@ -260,12 +281,12 @@ public class FillableGrid extends BuildableGrid {
                         test(screenControl);
                         //  screenControl.setGridLocation(k);
                         //System.out.println("Adding " + screenControl.getText() + " to column " + j + " to row " + i);
-                        
-                      //  RunnableControl control = (RunnableControl) child;
+
+                        //  RunnableControl control = (RunnableControl) child;
                         add(screenControl, j, i, DEFAULT_COLUMN_SPAN, DEFAULT_ROW_SPAN);
-                        
-                       // screenControl.setVisible(true);
-                     //   screenControl.animate().startScale(0.2, 0.1, 1.0);
+
+                        // screenControl.setVisible(true);
+                        //   screenControl.animate().startScale(0.2, 0.1, 1.0);
                         k++;
                     }
                 }
@@ -279,9 +300,9 @@ public class FillableGrid extends BuildableGrid {
                         //System.out.println("Adding " + screenControl.getText() + " to column " + j + " to row " + i);
                         test(screenControl);
                         add(screenControl, i, j, DEFAULT_COLUMN_SPAN, DEFAULT_ROW_SPAN);
-                        
-                     //   screenControl.setVisible(true);
-                       // screenControl.animate().startScale(0.2, 0.1, 1.0);
+
+                        //   screenControl.setVisible(true);
+                        // screenControl.animate().startScale(0.2, 0.1, 1.0);
                         k++;
                     }
                 }
@@ -313,7 +334,7 @@ public class FillableGrid extends BuildableGrid {
         }
         expand("row");
         expand("column");
-        
+
     }
 
     /**

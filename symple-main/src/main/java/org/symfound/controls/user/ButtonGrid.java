@@ -22,6 +22,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import static javafx.scene.layout.AnchorPane.setBottomAnchor;
@@ -33,6 +34,7 @@ import org.apache.log4j.Logger;
 //import org.symfound.app.DesktopController;
 import org.symfound.builder.user.selection.SelectionMethod;
 import org.symfound.controls.AppableControl;
+import org.symfound.controls.RunnableControl;
 import org.symfound.controls.system.EditButton;
 import org.symfound.controls.system.grid.editor.EditGridButton;
 import org.symfound.controls.system.grid.editor.ReplaceKeyButton;
@@ -140,7 +142,6 @@ public abstract class ButtonGrid extends FillableGrid {
             PictoArea.KEY,
             GenericButton.KEY,
             ExitButton.KEY,
-            SettingsButton.KEY,
             LockButton.KEY,
             EditGridButton.KEY,
             DeviceConfigButton.KEY,
@@ -171,7 +172,6 @@ public abstract class ButtonGrid extends FillableGrid {
             ExitButton.KEY,
             ExecButton.KEY,
             MinimizeButton.KEY,
-            SettingsButton.KEY,
             LockButton.KEY,
             TwilioHistory.KEY,
             VersionUpdateButton.KEY);
@@ -335,10 +335,11 @@ public abstract class ButtonGrid extends FillableGrid {
 
         Insets insets = new Insets(DEFAULT_GRID_GAP);
         setPadding(insets);
-     
+
         toBack();
 
     }
+
 
     @Override
     public void clear() {

@@ -351,7 +351,9 @@ public class MusicControlButton extends MusicButton {
             LOGGER.info("Updating song information and album art: " + title + "-" + artist);
             setTitle(title + "-" + artist);
             if (getAlbumArt() != null) {
+                System.out.println("Setting album art");
                 getAlbumArt().set(song);
+              
             }
         } else {
             LOGGER.warn("Song is null");

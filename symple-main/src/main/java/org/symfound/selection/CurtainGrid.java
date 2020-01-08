@@ -71,7 +71,7 @@ public class CurtainGrid extends ButtonGrid {
 
         Insets insets = new Insets(DEFAULT_GRID_GAP);
         setPadding(insets);
-        /*        if (!AppGrid.inEditMode()) {
+        /*    if (!AppGrid.inEditMode()) {
         launchAnimation();
         }*/
         toBack();

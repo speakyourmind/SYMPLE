@@ -134,6 +134,8 @@ public abstract class ScreenControl<T extends Labeled> extends AnimatedPane {
     public void setCSS(String CSSClass, Parent parent) {
         parent.getStylesheets().add(CSS_PATH);
         parent.getStyleClass().add(CSSClass);
+        
+        // TO DO: Do not use listener.
         symStyleProperty().addListener((observable, oldValue, newValue) -> {
             List<String> cssClasses = new ArrayList<>();
             if (newValue.contains(",")) {

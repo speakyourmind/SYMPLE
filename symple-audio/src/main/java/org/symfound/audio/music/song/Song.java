@@ -206,40 +206,40 @@ public final class Song extends PathReader {
         String albumArtStyle;
         if (id3v2Tag != null) {
             byte[] imageData = id3v2Tag.getAlbumImage();
-        
-        if (imageData != null) {
-            String mimeType = id3v2Tag.getAlbumImageMimeType();
-            try (
-                    // Write image to file - can determine appropriate file extension from the mime type
-                    RandomAccessFile ra = new RandomAccessFile("album-artwork", "rw")) {
-                ra.write(imageData);
-            }
-            String playPath = getPath().subSequence(0, getPath().lastIndexOf("\\")).toString();
 
-            PathReader songFolder = new PathReader(playPath);
-            songFolder.getFolderFilePaths().stream().forEach((artCheck) -> {
-                ExtensionAnalyzer ea = new ExtensionAnalyzer(artCheck);
-                if (ea.isPictureFile()) {
-                    artCheck = artCheck.replaceAll("\\\\", "/").replaceAll(" ", "%20");
-                    albumArtPath = "file:/" + artCheck;
+            if (imageData != null) {
+                String mimeType = id3v2Tag.getAlbumImageMimeType();
+                try (
+                        // Write image to file - can determine appropriate file extension from the mime type
+                        RandomAccessFile ra = new RandomAccessFile("album-artwork", "rw")) {
+                    ra.write(imageData);
                 }
-            });
-        }
+                String playPath = getPath().subSequence(0, getPath().lastIndexOf("\\")).toString();
 
-       albumArtStyle = "-fx-background color:-fx-dark;"
-                + "-fx-background-image: url(\"" + albumArtPath + "\");"
-                + "-fx-background-size: " + size + ";\n"
-                + "-fx-background-repeat: " + repeat + ";\n"
-                + "-fx-background-position: " + position + "";
+                PathReader songFolder = new PathReader(playPath);
+                songFolder.getFolderFilePaths().stream().forEach((artCheck) -> {
+                    ExtensionAnalyzer ea = new ExtensionAnalyzer(artCheck);
+                    if (ea.isPictureFile()) {
+                        artCheck = artCheck.replaceAll("\\\\", "/").replaceAll(" ", "%20");
+                        albumArtPath = "file:/" + artCheck;
+                    }
+                });
+            }
+
+            albumArtStyle = "-fx-background color:-fx-dark;"
+                    + "-fx-background-image: url(\"" + albumArtPath + "\");"
+                    + "-fx-background-size: " + size + ";\n"
+                    + "-fx-background-repeat: " + repeat + ";\n"
+                    + "-fx-background-position: " + position + "";
+            
         } else {
             LOGGER.info("No album art available");
-            albumArtStyle="-fx-background color:-fx-light;"
-                + "-fx-background-size: " + size + ";\n"
-                + "-fx-background-repeat: " + repeat + ";\n"
-                + "-fx-background-position: " + position + "";
+            albumArtStyle = "-fx-background color:-fx-light;"
+                    + "-fx-background-size: " + size + ";\n"
+                    + "-fx-background-repeat: " + repeat + ";\n"
+                    + "-fx-background-position: " + position + "";
         }
         return albumArtStyle;
-        
-        
+
     }
 }

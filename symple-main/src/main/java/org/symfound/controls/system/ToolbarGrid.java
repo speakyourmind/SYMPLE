@@ -18,7 +18,6 @@ import org.symfound.controls.user.ExecButton;
 import org.symfound.controls.user.ExitButton;
 import org.symfound.controls.user.MinimizeButton;
 import org.symfound.controls.user.ScriptButton;
-import org.symfound.controls.user.SettingsButton;
 import org.symfound.controls.user.UserSettingsButton;
 import org.symfound.controls.user.VersionUpdateButton;
 import org.symfound.main.HomeController;

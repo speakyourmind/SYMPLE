@@ -21,12 +21,12 @@ public class AnimatedGrid extends CommonGrid implements Animated {
     /**
      *
      */
-    public static final double LAUNCH_TIME_PER_CONTROL = 0.03;
+    public static final double LAUNCH_TIME_PER_CONTROL = 0.02;
 
     /**
      *
      */
-    public static final double LAUNCH_TIME_INITIAL = 0.1;
+    public static final double LAUNCH_TIME_INITIAL = 0.2;
 
     /**
      *

@@ -33,8 +33,6 @@ import java.util.List;
 import java.util.prefs.InvalidPreferencesFormatException;
 import java.util.prefs.Preferences;
 import javafx.application.Platform;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import org.apache.log4j.Logger;
 import org.symfound.builder.Builder;
 import org.symfound.builder.loader.UIPath;
@@ -113,16 +111,6 @@ public class FullSession extends Session {
     /**
      *
      */
-    public static String MAIN_SETTINGS = SCREENS_FOLDER + "main/main_settings";
-
-    /**
-     *
-     */
-    public static String SWITCH_CALIBRATION = SCREENS_FOLDER + "device/switch_calibration";
-
-    /**
-     *
-     */
     public static FontLoader localFonts;
 
     /**
@@ -167,9 +155,6 @@ public class FullSession extends Session {
                 } catch (IOException | InvalidPreferencesFormatException ex) {
                     LOGGER.warn(ex);
                 }
-
-                //    PreferencesImporter settingsImporter = new PreferencesImporter(resource);
-                //  settingsImporter.run();
                 LOGGER.info("Settings import from " + defaultFile + " complete");
 
                 getUser().getProfile().setFirstUse(Boolean.FALSE);

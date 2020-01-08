@@ -234,4 +234,36 @@ public class Profile extends Characteristic {
         return autoUpdate;
     }
     
+    private static final String VERSION_KEY = "profile.version";
+    private StringProperty version;
+
+    /**
+     *
+     * @param value
+     */
+    public void setVersion(String value) {
+        versionProperty().setValue(value);
+        getPreferences().put(VERSION_KEY, value);
+
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getVersion() {
+        return versionProperty().getValue();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StringProperty versionProperty() {
+        if (version == null) {
+            String initValue = getPreference(VERSION_KEY);
+            version = new SimpleStringProperty(initValue);
+        }
+        return version;
+    }
 }

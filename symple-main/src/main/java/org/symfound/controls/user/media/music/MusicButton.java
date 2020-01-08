@@ -56,20 +56,18 @@ public abstract class MusicButton extends AppableControl {
 
     }
 
-    /**
-     *????????????
-     */
+    /*
     @Override
     public void configButtons() {
-        boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
-        ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
-            if (newValue1 && !isSettingsControl && isEditable()) {
-                addConfigButtons();
-            } else {
-                removeConfigButtons();
-            }
-        });
+    boolean isSettingsControl = getControlType().equals(ControlType.SETTING_CONTROL);
+    ConfigurableGrid.editModeProperty().addListener((observable1, oldValue1, newValue1) -> {
+    if (newValue1 && !isSettingsControl && isEditable()) {
+    addConfigButtons();
+    } else {
+    removeConfigButtons();
     }
+    });
+    }*/
 
     /**
      *

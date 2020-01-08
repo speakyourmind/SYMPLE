@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import org.apache.log4j.Logger;
 import org.symfound.audio.music.song.Song;
 import org.symfound.controls.RunnableControl;
+import org.symfound.controls.user.AnimatedButton;
 import static org.symfound.tools.animation.NodeAnimator.*;
 
 /**
@@ -46,7 +47,6 @@ public class AlbumArt extends RunnableControl {
      */
     public void reset() {
         setStyle("");
-
     }
 
     /**
@@ -60,7 +60,7 @@ public class AlbumArt extends RunnableControl {
             try {
                 String albumArtStyle = song.getAlbumArtStyle("no-repeat", "center", "contain");
                 if (albumArtStyle != null) {
-                    setStyle(albumArtStyle);
+                    setSymStyle(albumArtStyle);
                 } else {
                     reset();
                 }
@@ -78,12 +78,8 @@ public class AlbumArt extends RunnableControl {
      */
     @Override
     public void loadPrimaryControl() {
-
+        primary = new AnimatedButton("");
     }
 
-    @Override
-    public void run() {
-        // Could add Play/Pause
-    }
 
 }
