@@ -10,6 +10,19 @@
   <li>Customizable Twitter, SMS, Video, Photos, Reddit, YouTube and Music apps.</li>
 </ul>
 
+<h2>Screenshots</h2>
+<p>One of thousands of iterations of the Home Screen</p>
+![Home](https://user-images.githubusercontent.com/4693081/120812175-bf0c2d80-c51a-11eb-863e-26dccee6a527.jpg)
+
+<p>Our responsive grid changes with your changing needs</p>
+![Music](https://user-images.githubusercontent.com/4693081/120812194-c3384b00-c51a-11eb-82f7-f00c7f0c2099.gif)
+
+<p>Keyboards can replicate your existing letter board</p>
+![Keyboard](https://user-images.githubusercontent.com/4693081/120812214-c7646880-c51a-11eb-803f-983c2f42a178.jpg)
+
+<p>Can still be used as a traditional communication app with AAC symbols.</p>
+![Pictos](https://user-images.githubusercontent.com/4693081/120812226-caf7ef80-c51a-11eb-8f58-ce5ad7621c4c.jpg)
+
 <h2>About Us</h2>
 <h3>SpeakYourMind Foundation</h3>
 <p>We are a 501(c)(3) nonprofit organization spun out of the BrainGate Lab at Brown University and Massachusetts General Hospital. We create, distribute, and support assistive communication technologies for individuals who are unable to effectively communicate due to neurological injury and disease.</p>
